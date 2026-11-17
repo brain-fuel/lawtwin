@@ -6,7 +6,7 @@ open LawSpec.Runtime
 
 type private LawtwinKafkaBrokerBridge(schema: Schema.Schema, symbols: Scalar.SymbolContext, handler: Effects.Handler) =
     interface LawSpec.Abilities.LawtwinKafka.IBroker with
-        member _.CreateTopicsRequest(value0, value1) =
+        member _.CreateTopicsRequest(text1, int32_1) =
             Effects.nativeTry
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
@@ -16,10 +16,10 @@ type private LawtwinKafkaBrokerBridge(schema: Schema.Schema, symbols: Scalar.Sym
                             handler
                             schema
                             "createTopicsRequest"
-                            [ Codec.text.FromNative value0; Codec.int32.FromNative value1 ]
+                            [ Codec.text.FromNative text1; Codec.int32.FromNative int32_1 ]
                     ))
 
-        member _.CreatePartitionsRequest(value0, value1) =
+        member _.CreatePartitionsRequest(text1, int32_1) =
             Effects.nativeTry
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
@@ -29,15 +29,15 @@ type private LawtwinKafkaBrokerBridge(schema: Schema.Schema, symbols: Scalar.Sym
                             handler
                             schema
                             "createPartitionsRequest"
-                            [ Codec.text.FromNative value0; Codec.int32.FromNative value1 ]
+                            [ Codec.text.FromNative text1; Codec.int32.FromNative int32_1 ]
                     ))
 
-        member _.MetadataRequest(value0) =
+        member _.MetadataRequest(text1) =
             Codec.toNative
                 (Codec.option Codec.int32)
-                (Effects.invoke handler schema "metadataRequest" [ Codec.text.FromNative value0 ])
+                (Effects.invoke handler schema "metadataRequest" [ Codec.text.FromNative text1 ])
 
-        member _.ProduceRequest(value0, value1, value2) =
+        member _.ProduceRequest(topicPartition1, maybe1, list1) =
             Effects.nativeTry
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
@@ -48,13 +48,13 @@ type private LawtwinKafkaBrokerBridge(schema: Schema.Schema, symbols: Scalar.Sym
                             schema
                             "produceRequest"
                             [
-                                Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) value0
-                                Codec.fromNative (Codec.option (LawSpec.Data.Codecs.producerTag ())) value1
-                                Codec.fromNative (Codec.list (LawSpec.Data.Codecs.record ())) value2
+                                Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) topicPartition1
+                                Codec.fromNative (Codec.option (LawSpec.Data.Codecs.producerTag ())) maybe1
+                                Codec.fromNative (Codec.list (LawSpec.Data.Codecs.record ())) list1
                             ]
                     ))
 
-        member _.FetchRequest(value0, value1, value2, value3) =
+        member _.FetchRequest(topicPartition1, int64_1, int32_1, isolationLevel1) =
             Effects.nativeTry
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
@@ -66,13 +66,13 @@ type private LawtwinKafkaBrokerBridge(schema: Schema.Schema, symbols: Scalar.Sym
                             schema
                             "fetchRequest"
                             [
-                                Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) value0
-                                Codec.int64.FromNative value1
-                                Codec.int32.FromNative value2
-                                Codec.fromNative (LawSpec.Data.Codecs.isolationLevel ()) value3
+                                Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) topicPartition1
+                                Codec.int64.FromNative int64_1
+                                Codec.int32.FromNative int32_1
+                                Codec.fromNative (LawSpec.Data.Codecs.isolationLevel ()) isolationLevel1
                             ]))
 
-        member _.ListOffsetsRequest(value0, value1, value2) =
+        member _.ListOffsetsRequest(topicPartition1, offsetSpec1, isolationLevel1) =
             Effects.nativeTry
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
@@ -83,13 +83,13 @@ type private LawtwinKafkaBrokerBridge(schema: Schema.Schema, symbols: Scalar.Sym
                             schema
                             "listOffsetsRequest"
                             [
-                                Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) value0
-                                Codec.fromNative (LawSpec.Data.Codecs.offsetSpec ()) value1
-                                Codec.fromNative (LawSpec.Data.Codecs.isolationLevel ()) value2
+                                Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) topicPartition1
+                                Codec.fromNative (LawSpec.Data.Codecs.offsetSpec ()) offsetSpec1
+                                Codec.fromNative (LawSpec.Data.Codecs.isolationLevel ()) isolationLevel1
                             ]
                     ))
 
-        member _.InitProducerIdRequest(value0) =
+        member _.InitProducerIdRequest(maybe1) =
             Effects.nativeTry
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
@@ -100,9 +100,9 @@ type private LawtwinKafkaBrokerBridge(schema: Schema.Schema, symbols: Scalar.Sym
                             handler
                             schema
                             "initProducerIdRequest"
-                            [ Codec.fromNative (Codec.option Codec.text) value0 ]))
+                            [ Codec.fromNative (Codec.option Codec.text) maybe1 ]))
 
-        member _.AddPartitionsToTxnRequest(value0, value1, value2, value3) =
+        member _.AddPartitionsToTxnRequest(text1, int64_1, int16_1, list1) =
             Effects.nativeTry
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
@@ -113,14 +113,14 @@ type private LawtwinKafkaBrokerBridge(schema: Schema.Schema, symbols: Scalar.Sym
                             schema
                             "addPartitionsToTxnRequest"
                             [
-                                Codec.text.FromNative value0
-                                Codec.int64.FromNative value1
-                                Codec.int16.FromNative value2
-                                Codec.fromNative (Codec.list (LawSpec.Data.Codecs.topicPartition ())) value3
+                                Codec.text.FromNative text1
+                                Codec.int64.FromNative int64_1
+                                Codec.int16.FromNative int16_1
+                                Codec.fromNative (Codec.list (LawSpec.Data.Codecs.topicPartition ())) list1
                             ]
                     ))
 
-        member _.TxnOffsetCommitRequest(value0, value1, value2, value3, value4) =
+        member _.TxnOffsetCommitRequest(text1, int64_1, int16_1, text2, list1) =
             Effects.nativeTry
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
@@ -131,15 +131,15 @@ type private LawtwinKafkaBrokerBridge(schema: Schema.Schema, symbols: Scalar.Sym
                             schema
                             "txnOffsetCommitRequest"
                             [
-                                Codec.text.FromNative value0
-                                Codec.int64.FromNative value1
-                                Codec.int16.FromNative value2
-                                Codec.text.FromNative value3
-                                Codec.fromNative (Codec.list (LawSpec.Data.Codecs.offsetEntry ())) value4
+                                Codec.text.FromNative text1
+                                Codec.int64.FromNative int64_1
+                                Codec.int16.FromNative int16_1
+                                Codec.text.FromNative text2
+                                Codec.fromNative (Codec.list (LawSpec.Data.Codecs.offsetEntry ())) list1
                             ]
                     ))
 
-        member _.EndTxnRequest(value0, value1, value2, value3) =
+        member _.EndTxnRequest(text1, int64_1, int16_1, bool1) =
             Effects.nativeTry
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
@@ -150,14 +150,14 @@ type private LawtwinKafkaBrokerBridge(schema: Schema.Schema, symbols: Scalar.Sym
                             schema
                             "endTxnRequest"
                             [
-                                Codec.text.FromNative value0
-                                Codec.int64.FromNative value1
-                                Codec.int16.FromNative value2
-                                Codec.bool.FromNative value3
+                                Codec.text.FromNative text1
+                                Codec.int64.FromNative int64_1
+                                Codec.int16.FromNative int16_1
+                                Codec.bool.FromNative bool1
                             ]
                     ))
 
-        member _.JoinGroupRequest(value0, value1, value2) =
+        member _.JoinGroupRequest(text1, text2, list1) =
             Effects.nativeTry
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
@@ -168,13 +168,13 @@ type private LawtwinKafkaBrokerBridge(schema: Schema.Schema, symbols: Scalar.Sym
                             schema
                             "joinGroupRequest"
                             [
-                                Codec.text.FromNative value0
-                                Codec.text.FromNative value1
-                                Codec.fromNative (Codec.list Codec.text) value2
+                                Codec.text.FromNative text1
+                                Codec.text.FromNative text2
+                                Codec.fromNative (Codec.list Codec.text) list1
                             ]
                     ))
 
-        member _.SyncGroupRequest(value0, value1, value2) =
+        member _.SyncGroupRequest(text1, text2, int32_1) =
             Effects.nativeTry
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
@@ -186,12 +186,12 @@ type private LawtwinKafkaBrokerBridge(schema: Schema.Schema, symbols: Scalar.Sym
                             schema
                             "syncGroupRequest"
                             [
-                                Codec.text.FromNative value0
-                                Codec.text.FromNative value1
-                                Codec.int32.FromNative value2
+                                Codec.text.FromNative text1
+                                Codec.text.FromNative text2
+                                Codec.int32.FromNative int32_1
                             ]))
 
-        member _.HeartbeatRequest(value0, value1, value2) =
+        member _.HeartbeatRequest(text1, text2, int32_1) =
             Effects.nativeTry
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
@@ -202,13 +202,13 @@ type private LawtwinKafkaBrokerBridge(schema: Schema.Schema, symbols: Scalar.Sym
                             schema
                             "heartbeatRequest"
                             [
-                                Codec.text.FromNative value0
-                                Codec.text.FromNative value1
-                                Codec.int32.FromNative value2
+                                Codec.text.FromNative text1
+                                Codec.text.FromNative text2
+                                Codec.int32.FromNative int32_1
                             ]
                     ))
 
-        member _.LeaveGroupRequest(value0, value1) =
+        member _.LeaveGroupRequest(text1, text2) =
             Effects.nativeTry
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
@@ -218,15 +218,15 @@ type private LawtwinKafkaBrokerBridge(schema: Schema.Schema, symbols: Scalar.Sym
                             handler
                             schema
                             "leaveGroupRequest"
-                            [ Codec.text.FromNative value0; Codec.text.FromNative value1 ]
+                            [ Codec.text.FromNative text1; Codec.text.FromNative text2 ]
                     ))
 
-        member _.DescribeGroupRequest(value0) =
+        member _.DescribeGroupRequest(text1) =
             Codec.toNative
                 (LawSpec.Data.Codecs.groupView ())
-                (Effects.invoke handler schema "describeGroupRequest" [ Codec.text.FromNative value0 ])
+                (Effects.invoke handler schema "describeGroupRequest" [ Codec.text.FromNative text1 ])
 
-        member _.OffsetCommitRequest(value0, value1, value2, value3) =
+        member _.OffsetCommitRequest(text1, text2, int32_1, list1) =
             Effects.nativeTry
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
@@ -237,14 +237,14 @@ type private LawtwinKafkaBrokerBridge(schema: Schema.Schema, symbols: Scalar.Sym
                             schema
                             "offsetCommitRequest"
                             [
-                                Codec.text.FromNative value0
-                                Codec.text.FromNative value1
-                                Codec.int32.FromNative value2
-                                Codec.fromNative (Codec.list (LawSpec.Data.Codecs.offsetEntry ())) value3
+                                Codec.text.FromNative text1
+                                Codec.text.FromNative text2
+                                Codec.int32.FromNative int32_1
+                                Codec.fromNative (Codec.list (LawSpec.Data.Codecs.offsetEntry ())) list1
                             ]
                     ))
 
-        member _.OffsetFetchRequest(value0, value1) =
+        member _.OffsetFetchRequest(text1, topicPartition1) =
             Codec.toNative
                 (Codec.option Codec.int64)
                 (Effects.invoke
@@ -252,8 +252,8 @@ type private LawtwinKafkaBrokerBridge(schema: Schema.Schema, symbols: Scalar.Sym
                     schema
                     "offsetFetchRequest"
                     [
-                        Codec.text.FromNative value0
-                        Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) value1
+                        Codec.text.FromNative text1
+                        Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) topicPartition1
                     ])
 
     interface Effects.IOrigin with
@@ -547,7 +547,7 @@ let lawtwinKafkaBrokerRecording
 
 type private LawtwinKafkaAdminBridge(schema: Schema.Schema, symbols: Scalar.SymbolContext, handler: Effects.Handler) =
     interface LawSpec.Abilities.LawtwinKafka.IAdmin with
-        member _.CreateTopic(value0, value1) =
+        member _.CreateTopic(text1, int32_1) =
             Effects.nativeTry
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
@@ -557,10 +557,10 @@ type private LawtwinKafkaAdminBridge(schema: Schema.Schema, symbols: Scalar.Symb
                             handler
                             schema
                             "createTopic"
-                            [ Codec.text.FromNative value0; Codec.int32.FromNative value1 ]
+                            [ Codec.text.FromNative text1; Codec.int32.FromNative int32_1 ]
                     ))
 
-        member _.CreatePartitions(value0, value1) =
+        member _.CreatePartitions(text1, int32_1) =
             Effects.nativeTry
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
@@ -570,15 +570,15 @@ type private LawtwinKafkaAdminBridge(schema: Schema.Schema, symbols: Scalar.Symb
                             handler
                             schema
                             "createPartitions"
-                            [ Codec.text.FromNative value0; Codec.int32.FromNative value1 ]
+                            [ Codec.text.FromNative text1; Codec.int32.FromNative int32_1 ]
                     ))
 
-        member _.PartitionsFor(value0) =
+        member _.PartitionsFor(text1) =
             Codec.toNative
                 (Codec.option Codec.int32)
-                (Effects.invoke handler schema "partitionsFor" [ Codec.text.FromNative value0 ])
+                (Effects.invoke handler schema "partitionsFor" [ Codec.text.FromNative text1 ])
 
-        member _.ListOffsets(value0, value1, value2) =
+        member _.ListOffsets(topicPartition1, offsetSpec1, isolationLevel1) =
             Effects.nativeTry
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
@@ -589,9 +589,9 @@ type private LawtwinKafkaAdminBridge(schema: Schema.Schema, symbols: Scalar.Symb
                             schema
                             "listOffsets"
                             [
-                                Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) value0
-                                Codec.fromNative (LawSpec.Data.Codecs.offsetSpec ()) value1
-                                Codec.fromNative (LawSpec.Data.Codecs.isolationLevel ()) value2
+                                Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) topicPartition1
+                                Codec.fromNative (LawSpec.Data.Codecs.offsetSpec ()) offsetSpec1
+                                Codec.fromNative (LawSpec.Data.Codecs.isolationLevel ()) isolationLevel1
                             ]
                     ))
 
@@ -689,15 +689,15 @@ let lawtwinKafkaAdminRecording
 type private LawtwinKafkaPartitionerBridge
     (schema: Schema.Schema, symbols: Scalar.SymbolContext, handler: Effects.Handler) =
     interface LawSpec.Abilities.LawtwinKafka.IPartitioner with
-        member _.ChoosePartition(value0, value1) =
+        member _.ChoosePartition(maybe1, int32_1) =
             Codec.int32.ToNative(
                 Effects.invoke
                     handler
                     schema
                     "choosePartition"
                     [
-                        Codec.fromNative (Codec.option Codec.bytes) value0
-                        Codec.int32.FromNative value1
+                        Codec.fromNative (Codec.option Codec.bytes) maybe1
+                        Codec.int32.FromNative int32_1
                     ]
             )
 
@@ -752,14 +752,14 @@ let lawtwinKafkaPartitionerRecording
 type private LawtwinKafkaProducerBridge(schema: Schema.Schema, symbols: Scalar.SymbolContext, handler: Effects.Handler)
     =
     interface LawSpec.Abilities.LawtwinKafka.IProducer with
-        member _.Send(value0) =
+        member _.Send(producerRecord1) =
             Codec.toNative
                 (Codec.either (LawSpec.Data.Codecs.kafkaError ()) (LawSpec.Data.Codecs.recordMetadata ()))
                 (Effects.invoke
                     handler
                     schema
                     "send"
-                    [ Codec.fromNative (LawSpec.Data.Codecs.producerRecord ()) value0 ])
+                    [ Codec.fromNative (LawSpec.Data.Codecs.producerRecord ()) producerRecord1 ])
 
         member _.Flush() =
             Codec.unit.ToNative(Effects.invoke handler schema "flush" [])
@@ -859,16 +859,16 @@ let lawtwinKafkaProducerRecording
 type private LawtwinKafkaConsumerBridge(schema: Schema.Schema, symbols: Scalar.SymbolContext, handler: Effects.Handler)
     =
     interface LawSpec.Abilities.LawtwinKafka.IConsumer with
-        member _.Assign(value0) =
+        member _.Assign(list1) =
             Codec.unit.ToNative(
                 Effects.invoke
                     handler
                     schema
                     "assign"
-                    [ Codec.fromNative (Codec.list (LawSpec.Data.Codecs.topicPartition ())) value0 ]
+                    [ Codec.fromNative (Codec.list (LawSpec.Data.Codecs.topicPartition ())) list1 ]
             )
 
-        member _.Subscribe(value0, value1, value2) =
+        member _.Subscribe(text1, text2, list1) =
             Codec.toNative
                 (Codec.either (LawSpec.Data.Codecs.kafkaError ()) (Codec.list (LawSpec.Data.Codecs.topicPartition ())))
                 (Effects.invoke
@@ -876,22 +876,22 @@ type private LawtwinKafkaConsumerBridge(schema: Schema.Schema, symbols: Scalar.S
                     schema
                     "subscribe"
                     [
-                        Codec.text.FromNative value0
-                        Codec.text.FromNative value1
-                        Codec.fromNative (Codec.list Codec.text) value2
+                        Codec.text.FromNative text1
+                        Codec.text.FromNative text2
+                        Codec.fromNative (Codec.list Codec.text) list1
                     ])
 
-        member _.Poll(value0) =
+        member _.Poll(int32_1) =
             Codec.toNative
                 (Codec.either (LawSpec.Data.Codecs.kafkaError ()) (Codec.list (LawSpec.Data.Codecs.consumerRecord ())))
-                (Effects.invoke handler schema "poll" [ Codec.int32.FromNative value0 ])
+                (Effects.invoke handler schema "poll" [ Codec.int32.FromNative int32_1 ])
 
         member _.CommitSync() =
             Codec.toNative
                 (Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.unit)
                 (Effects.invoke handler schema "commitSync" [])
 
-        member _.Seek(value0, value1) =
+        member _.Seek(topicPartition1, int64_1) =
             Codec.toNative
                 (Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.unit)
                 (Effects.invoke
@@ -899,35 +899,35 @@ type private LawtwinKafkaConsumerBridge(schema: Schema.Schema, symbols: Scalar.S
                     schema
                     "seek"
                     [
-                        Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) value0
-                        Codec.int64.FromNative value1
+                        Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) topicPartition1
+                        Codec.int64.FromNative int64_1
                     ])
 
-        member _.Position(value0) =
+        member _.Position(topicPartition1) =
             Codec.toNative
                 (Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.int64)
                 (Effects.invoke
                     handler
                     schema
                     "position"
-                    [ Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) value0 ])
+                    [ Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) topicPartition1 ])
 
-        member _.CommittedOffset(value0) =
+        member _.CommittedOffset(topicPartition1) =
             Codec.toNative
                 (Codec.option Codec.int64)
                 (Effects.invoke
                     handler
                     schema
                     "committedOffset"
-                    [ Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) value0 ])
+                    [ Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) topicPartition1 ])
 
-        member _.SetIsolationLevel(value0) =
+        member _.SetIsolationLevel(isolationLevel1) =
             Codec.unit.ToNative(
                 Effects.invoke
                     handler
                     schema
                     "setIsolationLevel"
-                    [ Codec.fromNative (LawSpec.Data.Codecs.isolationLevel ()) value0 ]
+                    [ Codec.fromNative (LawSpec.Data.Codecs.isolationLevel ()) isolationLevel1 ]
             )
 
         member _.Close() =
@@ -1062,7 +1062,7 @@ let lawtwinKafkaConsumerRecording
 type private LawtwinKafkaGroupCoordinatorBridge
     (schema: Schema.Schema, symbols: Scalar.SymbolContext, handler: Effects.Handler) =
     interface LawSpec.Abilities.LawtwinKafka.IGroupCoordinator with
-        member _.JoinGroup(value0, value1, value2) =
+        member _.JoinGroup(text1, text2, list1) =
             Effects.nativeTry
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
@@ -1073,13 +1073,13 @@ type private LawtwinKafkaGroupCoordinatorBridge
                             schema
                             "joinGroup"
                             [
-                                Codec.text.FromNative value0
-                                Codec.text.FromNative value1
-                                Codec.fromNative (Codec.list Codec.text) value2
+                                Codec.text.FromNative text1
+                                Codec.text.FromNative text2
+                                Codec.fromNative (Codec.list Codec.text) list1
                             ]
                     ))
 
-        member _.SyncGroup(value0, value1, value2) =
+        member _.SyncGroup(text1, text2, int32_1) =
             Effects.nativeTry
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
@@ -1091,12 +1091,12 @@ type private LawtwinKafkaGroupCoordinatorBridge
                             schema
                             "syncGroup"
                             [
-                                Codec.text.FromNative value0
-                                Codec.text.FromNative value1
-                                Codec.int32.FromNative value2
+                                Codec.text.FromNative text1
+                                Codec.text.FromNative text2
+                                Codec.int32.FromNative int32_1
                             ]))
 
-        member _.Heartbeat(value0, value1, value2) =
+        member _.Heartbeat(text1, text2, int32_1) =
             Effects.nativeTry
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
@@ -1107,13 +1107,13 @@ type private LawtwinKafkaGroupCoordinatorBridge
                             schema
                             "heartbeat"
                             [
-                                Codec.text.FromNative value0
-                                Codec.text.FromNative value1
-                                Codec.int32.FromNative value2
+                                Codec.text.FromNative text1
+                                Codec.text.FromNative text2
+                                Codec.int32.FromNative int32_1
                             ]
                     ))
 
-        member _.LeaveGroup(value0, value1) =
+        member _.LeaveGroup(text1, text2) =
             Effects.nativeTry
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
@@ -1123,15 +1123,15 @@ type private LawtwinKafkaGroupCoordinatorBridge
                             handler
                             schema
                             "leaveGroup"
-                            [ Codec.text.FromNative value0; Codec.text.FromNative value1 ]
+                            [ Codec.text.FromNative text1; Codec.text.FromNative text2 ]
                     ))
 
-        member _.DescribeGroup(value0) =
+        member _.DescribeGroup(text1) =
             Codec.toNative
                 (LawSpec.Data.Codecs.groupView ())
-                (Effects.invoke handler schema "describeGroup" [ Codec.text.FromNative value0 ])
+                (Effects.invoke handler schema "describeGroup" [ Codec.text.FromNative text1 ])
 
-        member _.CommitOffsets(value0, value1, value2, value3) =
+        member _.CommitOffsets(text1, text2, int32_1, list1) =
             Effects.nativeTry
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
@@ -1142,14 +1142,14 @@ type private LawtwinKafkaGroupCoordinatorBridge
                             schema
                             "commitOffsets"
                             [
-                                Codec.text.FromNative value0
-                                Codec.text.FromNative value1
-                                Codec.int32.FromNative value2
-                                Codec.fromNative (Codec.list (LawSpec.Data.Codecs.offsetEntry ())) value3
+                                Codec.text.FromNative text1
+                                Codec.text.FromNative text2
+                                Codec.int32.FromNative int32_1
+                                Codec.fromNative (Codec.list (LawSpec.Data.Codecs.offsetEntry ())) list1
                             ]
                     ))
 
-        member _.FetchOffset(value0, value1) =
+        member _.FetchOffset(text1, topicPartition1) =
             Codec.toNative
                 (Codec.option Codec.int64)
                 (Effects.invoke
@@ -1157,8 +1157,8 @@ type private LawtwinKafkaGroupCoordinatorBridge
                     schema
                     "fetchOffset"
                     [
-                        Codec.text.FromNative value0
-                        Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) value1
+                        Codec.text.FromNative text1
+                        Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) topicPartition1
                     ])
 
     interface Effects.IOrigin with
@@ -1304,35 +1304,35 @@ let lawtwinKafkaGroupCoordinatorRecording
 type private LawtwinKafkaTransactionsBridge
     (schema: Schema.Schema, symbols: Scalar.SymbolContext, handler: Effects.Handler) =
     interface LawSpec.Abilities.LawtwinKafka.ITransactions with
-        member _.InitTransactions(value0) =
+        member _.InitTransactions(text1) =
             Codec.toNative
                 (Codec.either (LawSpec.Data.Codecs.kafkaError ()) (LawSpec.Data.Codecs.producerIdAndEpoch ()))
-                (Effects.invoke handler schema "initTransactions" [ Codec.text.FromNative value0 ])
+                (Effects.invoke handler schema "initTransactions" [ Codec.text.FromNative text1 ])
 
         member _.BeginTransaction() =
             Codec.toNative
                 (Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.unit)
                 (Effects.invoke handler schema "beginTransaction" [])
 
-        member _.AddPartitionsToTransaction(value0) =
+        member _.AddPartitionsToTransaction(list1) =
             Codec.toNative
                 (Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.unit)
                 (Effects.invoke
                     handler
                     schema
                     "addPartitionsToTransaction"
-                    [ Codec.fromNative (Codec.list (LawSpec.Data.Codecs.topicPartition ())) value0 ])
+                    [ Codec.fromNative (Codec.list (LawSpec.Data.Codecs.topicPartition ())) list1 ])
 
-        member _.SendInTransaction(value0) =
+        member _.SendInTransaction(producerRecord1) =
             Codec.toNative
                 (Codec.either (LawSpec.Data.Codecs.kafkaError ()) (LawSpec.Data.Codecs.recordMetadata ()))
                 (Effects.invoke
                     handler
                     schema
                     "sendInTransaction"
-                    [ Codec.fromNative (LawSpec.Data.Codecs.producerRecord ()) value0 ])
+                    [ Codec.fromNative (LawSpec.Data.Codecs.producerRecord ()) producerRecord1 ])
 
-        member _.SendOffsetsToTransaction(value0, value1) =
+        member _.SendOffsetsToTransaction(text1, list1) =
             Codec.toNative
                 (Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.unit)
                 (Effects.invoke
@@ -1340,8 +1340,8 @@ type private LawtwinKafkaTransactionsBridge
                     schema
                     "sendOffsetsToTransaction"
                     [
-                        Codec.text.FromNative value0
-                        Codec.fromNative (Codec.list (LawSpec.Data.Codecs.offsetEntry ())) value1
+                        Codec.text.FromNative text1
+                        Codec.fromNative (Codec.list (LawSpec.Data.Codecs.offsetEntry ())) list1
                     ])
 
         member _.CommitTransaction() =

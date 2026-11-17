@@ -432,12 +432,12 @@ pub mod lawtwin_petstore
     pub fn referenceAddPet(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::State,
-        value0: crate::lawspec_data::Pet,
+        pet_1: crate::lawspec_data::Pet,
     ) -> ls::Result<crate::lawspec_data::Pair<crate::lawspec_data::Pet, crate::lawspec_data::State>>
     {
         ls::fast::direct2(
             state,
-            value0,
+            pet_1,
             crate::lawspec_definitions::typed::reference_add_pet,
         )
     }
@@ -446,14 +446,14 @@ pub mod lawtwin_petstore
     pub fn referenceCreateUser(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::State,
-        value0: std::option::Option<crate::lawspec_data::User>,
+        maybe_1: std::option::Option<crate::lawspec_data::User>,
     ) -> ls::Result<
         crate::lawspec_data::Pair<crate::lawspec_data::User, crate::lawspec_data::State>,
     >
     {
         ls::fast::direct2(
             state,
-            value0,
+            maybe_1,
             crate::lawspec_definitions::typed::reference_create_user,
         )
     }
@@ -462,14 +462,14 @@ pub mod lawtwin_petstore
     pub fn referenceCreateUsersWithListInput(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::State,
-        value0: std::option::Option<std::vec::Vec<crate::lawspec_data::User>>,
+        maybe_1: std::option::Option<std::vec::Vec<crate::lawspec_data::User>>,
     ) -> ls::Result<
         crate::lawspec_data::Pair<crate::lawspec_data::User, crate::lawspec_data::State>,
     >
     {
         ls::fast::direct2(
             state,
-            value0,
+            maybe_1,
             crate::lawspec_definitions::typed::reference_create_users_with_list_input,
         )
     }
@@ -478,12 +478,12 @@ pub mod lawtwin_petstore
     pub fn referenceDeleteOrder(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::State,
-        value0: i64,
+        int64_1: i64,
     ) -> ls::Result<crate::lawspec_data::Pair<(), crate::lawspec_data::State>>
     {
         ls::fast::direct2(
             state,
-            value0,
+            int64_1,
             crate::lawspec_definitions::typed::reference_delete_order,
         )
     }
@@ -492,14 +492,14 @@ pub mod lawtwin_petstore
     pub fn referenceDeletePet(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::State,
-        value0: i64,
-        value1: std::option::Option<std::string::String>,
+        int64_1: i64,
+        maybe_1: std::option::Option<std::string::String>,
     ) -> ls::Result<crate::lawspec_data::Pair<(), crate::lawspec_data::State>>
     {
         ls::fast::direct3(
             state,
-            value0,
-            value1,
+            int64_1,
+            maybe_1,
             crate::lawspec_definitions::typed::reference_delete_pet,
         )
     }
@@ -508,12 +508,12 @@ pub mod lawtwin_petstore
     pub fn referenceDeleteUser(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::State,
-        value0: std::string::String,
+        text_1: std::string::String,
     ) -> ls::Result<crate::lawspec_data::Pair<(), crate::lawspec_data::State>>
     {
         ls::fast::direct2(
             state,
-            value0,
+            text_1,
             crate::lawspec_definitions::typed::reference_delete_user,
         )
     }
@@ -522,7 +522,7 @@ pub mod lawtwin_petstore
     pub fn referenceFindPetsByStatus(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::State,
-        value0: crate::lawspec_data::PetStatus,
+        pet_status_1: crate::lawspec_data::PetStatus,
     ) -> ls::Result<
         crate::lawspec_data::Pair<
             std::vec::Vec<crate::lawspec_data::Pet>,
@@ -532,7 +532,7 @@ pub mod lawtwin_petstore
     {
         ls::fast::direct2(
             state,
-            value0,
+            pet_status_1,
             crate::lawspec_definitions::typed::reference_find_pets_by_status,
         )
     }
@@ -541,7 +541,7 @@ pub mod lawtwin_petstore
     pub fn referenceFindPetsByTags(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::State,
-        value0: std::vec::Vec<std::string::String>,
+        list_1: std::vec::Vec<std::string::String>,
     ) -> ls::Result<
         crate::lawspec_data::Pair<
             std::vec::Vec<crate::lawspec_data::Pet>,
@@ -551,7 +551,7 @@ pub mod lawtwin_petstore
     {
         ls::fast::direct2(
             state,
-            value0,
+            list_1,
             crate::lawspec_definitions::typed::reference_find_pets_by_tags,
         )
     }
@@ -577,14 +577,14 @@ pub mod lawtwin_petstore
     pub fn referenceGetOrderById(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::State,
-        value0: i64,
+        int64_1: i64,
     ) -> ls::Result<
         crate::lawspec_data::Pair<crate::lawspec_data::Order, crate::lawspec_data::State>,
     >
     {
         ls::fast::direct2(
             state,
-            value0,
+            int64_1,
             crate::lawspec_definitions::typed::reference_get_order_by_id,
         )
     }
@@ -593,12 +593,12 @@ pub mod lawtwin_petstore
     pub fn referenceGetPetById(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::State,
-        value0: i64,
+        int64_1: i64,
     ) -> ls::Result<crate::lawspec_data::Pair<crate::lawspec_data::Pet, crate::lawspec_data::State>>
     {
         ls::fast::direct2(
             state,
-            value0,
+            int64_1,
             crate::lawspec_definitions::typed::reference_get_pet_by_id,
         )
     }
@@ -607,14 +607,14 @@ pub mod lawtwin_petstore
     pub fn referenceGetUserByName(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::State,
-        value0: std::string::String,
+        text_1: std::string::String,
     ) -> ls::Result<
         crate::lawspec_data::Pair<crate::lawspec_data::User, crate::lawspec_data::State>,
     >
     {
         ls::fast::direct2(
             state,
-            value0,
+            text_1,
             crate::lawspec_definitions::typed::reference_get_user_by_name,
         )
     }
@@ -623,14 +623,14 @@ pub mod lawtwin_petstore
     pub fn referenceLoginUser(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::State,
-        value0: std::option::Option<std::string::String>,
-        value1: std::option::Option<std::string::String>,
+        maybe_1: std::option::Option<std::string::String>,
+        maybe_2: std::option::Option<std::string::String>,
     ) -> ls::Result<crate::lawspec_data::Pair<std::string::String, crate::lawspec_data::State>>
     {
         ls::fast::direct3(
             state,
-            value0,
-            value1,
+            maybe_1,
+            maybe_2,
             crate::lawspec_definitions::typed::reference_login_user,
         )
     }
@@ -651,14 +651,14 @@ pub mod lawtwin_petstore
     pub fn referencePlaceOrder(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::State,
-        value0: std::option::Option<crate::lawspec_data::Order>,
+        maybe_1: std::option::Option<crate::lawspec_data::Order>,
     ) -> ls::Result<
         crate::lawspec_data::Pair<crate::lawspec_data::Order, crate::lawspec_data::State>,
     >
     {
         ls::fast::direct2(
             state,
-            value0,
+            maybe_1,
             crate::lawspec_definitions::typed::reference_place_order,
         )
     }
@@ -676,12 +676,12 @@ pub mod lawtwin_petstore
     pub fn referenceUpdatePet(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::State,
-        value0: crate::lawspec_data::Pet,
+        pet_1: crate::lawspec_data::Pet,
     ) -> ls::Result<crate::lawspec_data::Pair<crate::lawspec_data::Pet, crate::lawspec_data::State>>
     {
         ls::fast::direct2(
             state,
-            value0,
+            pet_1,
             crate::lawspec_definitions::typed::reference_update_pet,
         )
     }
@@ -690,16 +690,16 @@ pub mod lawtwin_petstore
     pub fn referenceUpdatePetWithForm(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::State,
-        value0: i64,
-        value1: std::option::Option<std::string::String>,
-        value2: std::option::Option<std::string::String>,
+        int64_1: i64,
+        maybe_1: std::option::Option<std::string::String>,
+        maybe_2: std::option::Option<std::string::String>,
     ) -> ls::Result<crate::lawspec_data::Pair<crate::lawspec_data::Pet, crate::lawspec_data::State>>
     {
         ls::fast::direct4(
             state,
-            value0,
-            value1,
-            value2,
+            int64_1,
+            maybe_1,
+            maybe_2,
             crate::lawspec_definitions::typed::reference_update_pet_with_form,
         )
     }
@@ -708,14 +708,14 @@ pub mod lawtwin_petstore
     pub fn referenceUpdateUser(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::State,
-        value0: std::string::String,
-        value1: std::option::Option<crate::lawspec_data::User>,
+        text_1: std::string::String,
+        maybe_1: std::option::Option<crate::lawspec_data::User>,
     ) -> ls::Result<crate::lawspec_data::Pair<(), crate::lawspec_data::State>>
     {
         ls::fast::direct3(
             state,
-            value0,
-            value1,
+            text_1,
+            maybe_1,
             crate::lawspec_definitions::typed::reference_update_user,
         )
     }
@@ -724,18 +724,18 @@ pub mod lawtwin_petstore
     pub fn referenceUploadFile(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::State,
-        value0: i64,
-        value1: std::option::Option<std::string::String>,
-        value2: std::option::Option<std::vec::Vec<u8>>,
+        int64_1: i64,
+        maybe_1: std::option::Option<std::string::String>,
+        maybe_2: std::option::Option<std::vec::Vec<u8>>,
     ) -> ls::Result<
         crate::lawspec_data::Pair<crate::lawspec_data::ApiResponse, crate::lawspec_data::State>,
     >
     {
         ls::fast::direct4(
             state,
-            value0,
-            value1,
-            value2,
+            int64_1,
+            maybe_1,
+            maybe_2,
             crate::lawspec_definitions::typed::reference_upload_file,
         )
     }
@@ -5826,10 +5826,10 @@ pub mod typed
     }
 
     /// referenceAddPet — ../src/api.lawspec:185
-    pub fn reference_add_pet(state: State, value0: Pet) -> ls::Result<Pair<Pet, State>>
+    pub fn reference_add_pet(state: State, pet_1: Pet) -> ls::Result<Pair<Pet, State>>
     {
         Ok(lawtwin_petstore_model_model_add_pet(
-            value0.clone(),
+            pet_1.clone(),
             state.clone(),
         )?)
     }
@@ -5837,11 +5837,11 @@ pub mod typed
     /// referenceCreateUser — ../src/api.lawspec:196
     pub fn reference_create_user(
         state: State,
-        value0: Option<User>,
+        maybe_1: Option<User>,
     ) -> ls::Result<Pair<User, State>>
     {
         Ok(lawtwin_petstore_model_model_create_user(
-            value0.clone(),
+            maybe_1.clone(),
             state.clone(),
         )?)
     }
@@ -5849,20 +5849,20 @@ pub mod typed
     /// referenceCreateUsersWithListInput — ../src/api.lawspec:197
     pub fn reference_create_users_with_list_input(
         state: State,
-        value0: Option<ls::fast::List<User>>,
+        maybe_1: Option<ls::fast::List<User>>,
     ) -> ls::Result<Pair<User, State>>
     {
         Ok(lawtwin_petstore_handwritten_create_users_with_list_input(
-            value0.clone(),
+            maybe_1.clone(),
             state.clone(),
         )?)
     }
 
     /// referenceDeleteOrder — ../src/api.lawspec:195
-    pub fn reference_delete_order(state: State, value0: i64) -> ls::Result<Pair<(), State>>
+    pub fn reference_delete_order(state: State, int64_1: i64) -> ls::Result<Pair<(), State>>
     {
         Ok(lawtwin_petstore_model_model_delete_order(
-            value0,
+            int64_1,
             state.clone(),
         )?)
     }
@@ -5870,13 +5870,13 @@ pub mod typed
     /// referenceDeletePet — ../src/api.lawspec:190
     pub fn reference_delete_pet(
         state: State,
-        value0: i64,
-        value1: Option<ls::fast::Text>,
+        int64_1: i64,
+        maybe_1: Option<ls::fast::Text>,
     ) -> ls::Result<Pair<(), State>>
     {
         Ok(lawtwin_petstore_model_model_delete_pet(
-            value0,
-            value1.clone(),
+            int64_1,
+            maybe_1.clone(),
             state.clone(),
         )?)
     }
@@ -5884,11 +5884,11 @@ pub mod typed
     /// referenceDeleteUser — ../src/api.lawspec:202
     pub fn reference_delete_user(
         state: State,
-        value0: ls::fast::Text,
+        text_1: ls::fast::Text,
     ) -> ls::Result<Pair<(), State>>
     {
         Ok(lawtwin_petstore_model_model_delete_user(
-            value0.clone(),
+            text_1.clone(),
             state.clone(),
         )?)
     }
@@ -5896,11 +5896,11 @@ pub mod typed
     /// referenceFindPetsByStatus — ../src/api.lawspec:186
     pub fn reference_find_pets_by_status(
         state: State,
-        value0: PetStatus,
+        pet_status_1: PetStatus,
     ) -> ls::Result<Pair<ls::fast::List<Pet>, State>>
     {
         Ok(lawtwin_petstore_handwritten_find_pets_by_status(
-            value0,
+            pet_status_1,
             state.clone(),
         )?)
     }
@@ -5908,11 +5908,11 @@ pub mod typed
     /// referenceFindPetsByTags — ../src/api.lawspec:187
     pub fn reference_find_pets_by_tags(
         state: State,
-        value0: ls::fast::List<ls::fast::Text>,
+        list_1: ls::fast::List<ls::fast::Text>,
     ) -> ls::Result<Pair<ls::fast::List<Pet>, State>>
     {
         Ok(lawtwin_petstore_handwritten_find_pets_by_tags(
-            value0.clone(),
+            list_1.clone(),
             state.clone(),
         )?)
     }
@@ -5926,19 +5926,19 @@ pub mod typed
     }
 
     /// referenceGetOrderById — ../src/api.lawspec:194
-    pub fn reference_get_order_by_id(state: State, value0: i64) -> ls::Result<Pair<Order, State>>
+    pub fn reference_get_order_by_id(state: State, int64_1: i64) -> ls::Result<Pair<Order, State>>
     {
         Ok(lawtwin_petstore_model_model_get_order_by_id(
-            value0,
+            int64_1,
             state.clone(),
         )?)
     }
 
     /// referenceGetPetById — ../src/api.lawspec:188
-    pub fn reference_get_pet_by_id(state: State, value0: i64) -> ls::Result<Pair<Pet, State>>
+    pub fn reference_get_pet_by_id(state: State, int64_1: i64) -> ls::Result<Pair<Pet, State>>
     {
         Ok(lawtwin_petstore_model_model_get_pet_by_id(
-            value0,
+            int64_1,
             state.clone(),
         )?)
     }
@@ -5946,11 +5946,11 @@ pub mod typed
     /// referenceGetUserByName — ../src/api.lawspec:200
     pub fn reference_get_user_by_name(
         state: State,
-        value0: ls::fast::Text,
+        text_1: ls::fast::Text,
     ) -> ls::Result<Pair<User, State>>
     {
         Ok(lawtwin_petstore_model_model_get_user_by_name(
-            value0.clone(),
+            text_1.clone(),
             state.clone(),
         )?)
     }
@@ -5958,13 +5958,13 @@ pub mod typed
     /// referenceLoginUser — ../src/api.lawspec:198
     pub fn reference_login_user(
         state: State,
-        value0: Option<ls::fast::Text>,
-        value1: Option<ls::fast::Text>,
+        maybe_1: Option<ls::fast::Text>,
+        maybe_2: Option<ls::fast::Text>,
     ) -> ls::Result<Pair<ls::fast::Text, State>>
     {
         Ok(lawtwin_petstore_handwritten_login_user(
-            value0.clone(),
-            value1.clone(),
+            maybe_1.clone(),
+            maybe_2.clone(),
             state.clone(),
         )?)
     }
@@ -5978,11 +5978,11 @@ pub mod typed
     /// referencePlaceOrder — ../src/api.lawspec:193
     pub fn reference_place_order(
         state: State,
-        value0: Option<Order>,
+        maybe_1: Option<Order>,
     ) -> ls::Result<Pair<Order, State>>
     {
         Ok(lawtwin_petstore_model_model_place_order(
-            value0.clone(),
+            maybe_1.clone(),
             state.clone(),
         )?)
     }
@@ -5994,10 +5994,10 @@ pub mod typed
     }
 
     /// referenceUpdatePet — ../src/api.lawspec:184
-    pub fn reference_update_pet(state: State, value0: Pet) -> ls::Result<Pair<Pet, State>>
+    pub fn reference_update_pet(state: State, pet_1: Pet) -> ls::Result<Pair<Pet, State>>
     {
         Ok(lawtwin_petstore_model_model_update_pet(
-            value0.clone(),
+            pet_1.clone(),
             state.clone(),
         )?)
     }
@@ -6005,15 +6005,15 @@ pub mod typed
     /// referenceUpdatePetWithForm — ../src/api.lawspec:189
     pub fn reference_update_pet_with_form(
         state: State,
-        value0: i64,
-        value1: Option<ls::fast::Text>,
-        value2: Option<ls::fast::Text>,
+        int64_1: i64,
+        maybe_1: Option<ls::fast::Text>,
+        maybe_2: Option<ls::fast::Text>,
     ) -> ls::Result<Pair<Pet, State>>
     {
         Ok(lawtwin_petstore_handwritten_update_pet_with_form(
-            value0,
-            value1.clone(),
-            value2.clone(),
+            int64_1,
+            maybe_1.clone(),
+            maybe_2.clone(),
             state.clone(),
         )?)
     }
@@ -6021,13 +6021,13 @@ pub mod typed
     /// referenceUpdateUser — ../src/api.lawspec:201
     pub fn reference_update_user(
         state: State,
-        value0: ls::fast::Text,
-        value1: Option<User>,
+        text_1: ls::fast::Text,
+        maybe_1: Option<User>,
     ) -> ls::Result<Pair<(), State>>
     {
         Ok(lawtwin_petstore_model_model_update_user(
-            value0.clone(),
-            value1.clone(),
+            text_1.clone(),
+            maybe_1.clone(),
             state.clone(),
         )?)
     }
@@ -6035,15 +6035,15 @@ pub mod typed
     /// referenceUploadFile — ../src/api.lawspec:191
     pub fn reference_upload_file(
         state: State,
-        value0: i64,
-        value1: Option<ls::fast::Text>,
-        value2: Option<ls::fast::Bytes>,
+        int64_1: i64,
+        maybe_1: Option<ls::fast::Text>,
+        maybe_2: Option<ls::fast::Bytes>,
     ) -> ls::Result<Pair<ApiResponse, State>>
     {
         Ok(lawtwin_petstore_handwritten_upload_file(
-            value0,
-            value1.clone(),
-            value2.clone(),
+            int64_1,
+            maybe_1.clone(),
+            maybe_2.clone(),
             state.clone(),
         )?)
     }

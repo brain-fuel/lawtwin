@@ -12,262 +12,262 @@ var LawSpecDefinitions lawSpecDefinitions
 func (lawSpecDefinitions) ClusterAddPartitionsToTxnRequest(
 	symbols map[string]*LawSpecSymbol,
 	state BrokerState,
-	value0 string,
-	value1 int64,
-	value2 int16,
-	value3 []TopicPartition,
+	text1 string,
+	int641 int64,
+	int161 int16,
+	list1 []TopicPartition,
 ) Pair[LawSpecUnit, BrokerState] {
-	return lsfToNativePairUnitBrokerState(lsfClusterAddPartitionsToTxnRequest(lsfFromNativeBrokerState(state), lsfFromNativeText(value0), lsfFromNativeInt64(value1), lsfFromNativeInt16(value2), lsfFromNativeListTopicPartition(value3)))
+	return lsfToNativePairUnitBrokerState(lsfClusterAddPartitionsToTxnRequest(lsfFromNativeBrokerState(state), lsfFromNativeText(text1), lsfFromNativeInt64(int641), lsfFromNativeInt16(int161), lsfFromNativeListTopicPartition(list1)))
 }
 
 // clusterCommitOffsets — ../src/contract.lawspec:302.
 func (lawSpecDefinitions) ClusterCommitOffsets(
 	symbols map[string]*LawSpecSymbol,
 	state BrokerState,
-	value0 string,
-	value1 string,
-	value2 int32,
-	value3 []OffsetEntry,
+	text1 string,
+	text2 string,
+	int321 int32,
+	list1 []OffsetEntry,
 ) Pair[LawSpecUnit, BrokerState] {
-	return lsfToNativePairUnitBrokerState(lsfClusterCommitOffsets(lsfFromNativeBrokerState(state), lsfFromNativeText(value0), lsfFromNativeText(value1), lsfFromNativeInt32(value2), lsfFromNativeListOffsetEntry(value3)))
+	return lsfToNativePairUnitBrokerState(lsfClusterCommitOffsets(lsfFromNativeBrokerState(state), lsfFromNativeText(text1), lsfFromNativeText(text2), lsfFromNativeInt32(int321), lsfFromNativeListOffsetEntry(list1)))
 }
 
 // clusterCreatePartitions — ../src/contract.lawspec:294.
 func (lawSpecDefinitions) ClusterCreatePartitions(
 	symbols map[string]*LawSpecSymbol,
 	state BrokerState,
-	value0 string,
-	value1 int32,
+	text1 string,
+	int321 int32,
 ) Pair[LawSpecUnit, BrokerState] {
-	return lsfToNativePairUnitBrokerState(lsfClusterCreatePartitions(lsfFromNativeBrokerState(state), lsfFromNativeText(value0), lsfFromNativeInt32(value1)))
+	return lsfToNativePairUnitBrokerState(lsfClusterCreatePartitions(lsfFromNativeBrokerState(state), lsfFromNativeText(text1), lsfFromNativeInt32(int321)))
 }
 
 // clusterCreatePartitionsRequest — ../src/contract.lawspec:277.
 func (lawSpecDefinitions) ClusterCreatePartitionsRequest(
 	symbols map[string]*LawSpecSymbol,
 	state BrokerState,
-	value0 string,
-	value1 int32,
+	text1 string,
+	int321 int32,
 ) Pair[LawSpecUnit, BrokerState] {
-	return lsfToNativePairUnitBrokerState(lsfClusterCreatePartitions(lsfFromNativeBrokerState(state), lsfFromNativeText(value0), lsfFromNativeInt32(value1)))
+	return lsfToNativePairUnitBrokerState(lsfClusterCreatePartitions(lsfFromNativeBrokerState(state), lsfFromNativeText(text1), lsfFromNativeInt32(int321)))
 }
 
 // clusterCreateTopic — ../src/contract.lawspec:293.
 func (lawSpecDefinitions) ClusterCreateTopic(
 	symbols map[string]*LawSpecSymbol,
 	state BrokerState,
-	value0 string,
-	value1 int32,
+	text1 string,
+	int321 int32,
 ) Pair[LawSpecUnit, BrokerState] {
-	return lsfToNativePairUnitBrokerState(lsfClusterCreateTopic(lsfFromNativeBrokerState(state), lsfFromNativeText(value0), lsfFromNativeInt32(value1)))
+	return lsfToNativePairUnitBrokerState(lsfClusterCreateTopic(lsfFromNativeBrokerState(state), lsfFromNativeText(text1), lsfFromNativeInt32(int321)))
 }
 
 // clusterCreateTopicsRequest — ../src/contract.lawspec:276.
 func (lawSpecDefinitions) ClusterCreateTopicsRequest(
 	symbols map[string]*LawSpecSymbol,
 	state BrokerState,
-	value0 string,
-	value1 int32,
+	text1 string,
+	int321 int32,
 ) Pair[LawSpecUnit, BrokerState] {
-	return lsfToNativePairUnitBrokerState(lsfClusterCreateTopic(lsfFromNativeBrokerState(state), lsfFromNativeText(value0), lsfFromNativeInt32(value1)))
+	return lsfToNativePairUnitBrokerState(lsfClusterCreateTopic(lsfFromNativeBrokerState(state), lsfFromNativeText(text1), lsfFromNativeInt32(int321)))
 }
 
 // clusterDescribeGroup — ../src/contract.lawspec:301.
 func (lawSpecDefinitions) ClusterDescribeGroup(
 	symbols map[string]*LawSpecSymbol,
 	state BrokerState,
-	value0 string,
+	text1 string,
 ) Pair[GroupView, BrokerState] {
-	return lsfToNativePairGroupViewBrokerState(lsfClusterDescribeGroup(lsfFromNativeBrokerState(state), lsfFromNativeText(value0)))
+	return lsfToNativePairGroupViewBrokerState(lsfClusterDescribeGroup(lsfFromNativeBrokerState(state), lsfFromNativeText(text1)))
 }
 
 // clusterDescribeGroupRequest — ../src/contract.lawspec:290.
 func (lawSpecDefinitions) ClusterDescribeGroupRequest(
 	symbols map[string]*LawSpecSymbol,
 	state BrokerState,
-	value0 string,
+	text1 string,
 ) Pair[GroupView, BrokerState] {
-	return lsfToNativePairGroupViewBrokerState(lsfClusterDescribeGroup(lsfFromNativeBrokerState(state), lsfFromNativeText(value0)))
+	return lsfToNativePairGroupViewBrokerState(lsfClusterDescribeGroup(lsfFromNativeBrokerState(state), lsfFromNativeText(text1)))
 }
 
 // clusterEndTxnRequest — ../src/contract.lawspec:285.
 func (lawSpecDefinitions) ClusterEndTxnRequest(
 	symbols map[string]*LawSpecSymbol,
 	state BrokerState,
-	value0 string,
-	value1 int64,
-	value2 int16,
-	value3 bool,
+	text1 string,
+	int641 int64,
+	int161 int16,
+	bool1 bool,
 ) Pair[LawSpecUnit, BrokerState] {
-	return lsfToNativePairUnitBrokerState(lsfClusterEndTxnRequest(lsfFromNativeBrokerState(state), lsfFromNativeText(value0), lsfFromNativeInt64(value1), lsfFromNativeInt16(value2), lsfFromNativeBool(value3)))
+	return lsfToNativePairUnitBrokerState(lsfClusterEndTxnRequest(lsfFromNativeBrokerState(state), lsfFromNativeText(text1), lsfFromNativeInt64(int641), lsfFromNativeInt16(int161), lsfFromNativeBool(bool1)))
 }
 
 // clusterFetchOffset — ../src/contract.lawspec:303.
 func (lawSpecDefinitions) ClusterFetchOffset(
 	symbols map[string]*LawSpecSymbol,
 	state BrokerState,
-	value0 string,
-	value1 TopicPartition,
+	text1 string,
+	topicPartition1 TopicPartition,
 ) Pair[LawSpecMaybe[int64], BrokerState] {
-	return lsfToNativePairMaybeInt64BrokerState(lsfClusterFetchOffset(lsfFromNativeBrokerState(state), lsfFromNativeText(value0), lsfFromNativeTopicPartition(value1)))
+	return lsfToNativePairMaybeInt64BrokerState(lsfClusterFetchOffset(lsfFromNativeBrokerState(state), lsfFromNativeText(text1), lsfFromNativeTopicPartition(topicPartition1)))
 }
 
 // clusterFetchRequest — ../src/contract.lawspec:280.
 func (lawSpecDefinitions) ClusterFetchRequest(
 	symbols map[string]*LawSpecSymbol,
 	state BrokerState,
-	value0 TopicPartition,
-	value1 int64,
-	value2 int32,
-	value3 IsolationLevel,
+	topicPartition1 TopicPartition,
+	int641 int64,
+	int321 int32,
+	isolationLevel1 IsolationLevel,
 ) Pair[FetchResult, BrokerState] {
-	return lsfToNativePairFetchResultBrokerState(lsfClusterFetchRequest(lsfFromNativeBrokerState(state), lsfFromNativeTopicPartition(value0), lsfFromNativeInt64(value1), lsfFromNativeInt32(value2), lsfFromNativeIsolationLevel(value3)))
+	return lsfToNativePairFetchResultBrokerState(lsfClusterFetchRequest(lsfFromNativeBrokerState(state), lsfFromNativeTopicPartition(topicPartition1), lsfFromNativeInt64(int641), lsfFromNativeInt32(int321), lsfFromNativeIsolationLevel(isolationLevel1)))
 }
 
 // clusterHeartbeat — ../src/contract.lawspec:299.
 func (lawSpecDefinitions) ClusterHeartbeat(
 	symbols map[string]*LawSpecSymbol,
 	state BrokerState,
-	value0 string,
-	value1 string,
-	value2 int32,
+	text1 string,
+	text2 string,
+	int321 int32,
 ) Pair[LawSpecUnit, BrokerState] {
-	return lsfToNativePairUnitBrokerState(lsfClusterHeartbeat(lsfFromNativeBrokerState(state), lsfFromNativeText(value0), lsfFromNativeText(value1), lsfFromNativeInt32(value2)))
+	return lsfToNativePairUnitBrokerState(lsfClusterHeartbeat(lsfFromNativeBrokerState(state), lsfFromNativeText(text1), lsfFromNativeText(text2), lsfFromNativeInt32(int321)))
 }
 
 // clusterHeartbeatRequest — ../src/contract.lawspec:288.
 func (lawSpecDefinitions) ClusterHeartbeatRequest(
 	symbols map[string]*LawSpecSymbol,
 	state BrokerState,
-	value0 string,
-	value1 string,
-	value2 int32,
+	text1 string,
+	text2 string,
+	int321 int32,
 ) Pair[LawSpecUnit, BrokerState] {
-	return lsfToNativePairUnitBrokerState(lsfClusterHeartbeat(lsfFromNativeBrokerState(state), lsfFromNativeText(value0), lsfFromNativeText(value1), lsfFromNativeInt32(value2)))
+	return lsfToNativePairUnitBrokerState(lsfClusterHeartbeat(lsfFromNativeBrokerState(state), lsfFromNativeText(text1), lsfFromNativeText(text2), lsfFromNativeInt32(int321)))
 }
 
 // clusterInitProducerIdRequest — ../src/contract.lawspec:282.
 func (lawSpecDefinitions) ClusterInitProducerIdRequest(
 	symbols map[string]*LawSpecSymbol,
 	state BrokerState,
-	value0 LawSpecMaybe[string],
+	maybe1 LawSpecMaybe[string],
 ) Pair[ProducerIdAndEpoch, BrokerState] {
-	return lsfToNativePairProducerIdAndEpochBrokerState(lsfClusterInitProducerIdRequest(lsfFromNativeBrokerState(state), lsfFromNativeMaybeText(value0)))
+	return lsfToNativePairProducerIdAndEpochBrokerState(lsfClusterInitProducerIdRequest(lsfFromNativeBrokerState(state), lsfFromNativeMaybeText(maybe1)))
 }
 
 // clusterJoinGroup — ../src/contract.lawspec:297.
 func (lawSpecDefinitions) ClusterJoinGroup(
 	symbols map[string]*LawSpecSymbol,
 	state BrokerState,
-	value0 string,
-	value1 string,
-	value2 []string,
+	text1 string,
+	text2 string,
+	list1 []string,
 ) Pair[int32, BrokerState] {
-	return lsfToNativePairInt32BrokerState(lsfClusterJoinGroup(lsfFromNativeBrokerState(state), lsfFromNativeText(value0), lsfFromNativeText(value1), lsfFromNativeListText(value2)))
+	return lsfToNativePairInt32BrokerState(lsfClusterJoinGroup(lsfFromNativeBrokerState(state), lsfFromNativeText(text1), lsfFromNativeText(text2), lsfFromNativeListText(list1)))
 }
 
 // clusterJoinGroupRequest — ../src/contract.lawspec:286.
 func (lawSpecDefinitions) ClusterJoinGroupRequest(
 	symbols map[string]*LawSpecSymbol,
 	state BrokerState,
-	value0 string,
-	value1 string,
-	value2 []string,
+	text1 string,
+	text2 string,
+	list1 []string,
 ) Pair[int32, BrokerState] {
-	return lsfToNativePairInt32BrokerState(lsfClusterJoinGroup(lsfFromNativeBrokerState(state), lsfFromNativeText(value0), lsfFromNativeText(value1), lsfFromNativeListText(value2)))
+	return lsfToNativePairInt32BrokerState(lsfClusterJoinGroup(lsfFromNativeBrokerState(state), lsfFromNativeText(text1), lsfFromNativeText(text2), lsfFromNativeListText(list1)))
 }
 
 // clusterLeaveGroup — ../src/contract.lawspec:300.
 func (lawSpecDefinitions) ClusterLeaveGroup(
 	symbols map[string]*LawSpecSymbol,
 	state BrokerState,
-	value0 string,
-	value1 string,
+	text1 string,
+	text2 string,
 ) Pair[LawSpecUnit, BrokerState] {
-	return lsfToNativePairUnitBrokerState(lsfClusterLeaveGroup(lsfFromNativeBrokerState(state), lsfFromNativeText(value0), lsfFromNativeText(value1)))
+	return lsfToNativePairUnitBrokerState(lsfClusterLeaveGroup(lsfFromNativeBrokerState(state), lsfFromNativeText(text1), lsfFromNativeText(text2)))
 }
 
 // clusterLeaveGroupRequest — ../src/contract.lawspec:289.
 func (lawSpecDefinitions) ClusterLeaveGroupRequest(
 	symbols map[string]*LawSpecSymbol,
 	state BrokerState,
-	value0 string,
-	value1 string,
+	text1 string,
+	text2 string,
 ) Pair[LawSpecUnit, BrokerState] {
-	return lsfToNativePairUnitBrokerState(lsfClusterLeaveGroup(lsfFromNativeBrokerState(state), lsfFromNativeText(value0), lsfFromNativeText(value1)))
+	return lsfToNativePairUnitBrokerState(lsfClusterLeaveGroup(lsfFromNativeBrokerState(state), lsfFromNativeText(text1), lsfFromNativeText(text2)))
 }
 
 // clusterListOffsets — ../src/contract.lawspec:296.
 func (lawSpecDefinitions) ClusterListOffsets(
 	symbols map[string]*LawSpecSymbol,
 	state BrokerState,
-	value0 TopicPartition,
-	value1 OffsetSpec,
-	value2 IsolationLevel,
+	topicPartition1 TopicPartition,
+	offsetSpec1 OffsetSpec,
+	isolationLevel1 IsolationLevel,
 ) Pair[int64, BrokerState] {
-	return lsfToNativePairInt64BrokerState(lsfClusterListOffsets(lsfFromNativeBrokerState(state), lsfFromNativeTopicPartition(value0), lsfFromNativeOffsetSpec(value1), lsfFromNativeIsolationLevel(value2)))
+	return lsfToNativePairInt64BrokerState(lsfClusterListOffsets(lsfFromNativeBrokerState(state), lsfFromNativeTopicPartition(topicPartition1), lsfFromNativeOffsetSpec(offsetSpec1), lsfFromNativeIsolationLevel(isolationLevel1)))
 }
 
 // clusterListOffsetsRequest — ../src/contract.lawspec:281.
 func (lawSpecDefinitions) ClusterListOffsetsRequest(
 	symbols map[string]*LawSpecSymbol,
 	state BrokerState,
-	value0 TopicPartition,
-	value1 OffsetSpec,
-	value2 IsolationLevel,
+	topicPartition1 TopicPartition,
+	offsetSpec1 OffsetSpec,
+	isolationLevel1 IsolationLevel,
 ) Pair[int64, BrokerState] {
-	return lsfToNativePairInt64BrokerState(lsfClusterListOffsets(lsfFromNativeBrokerState(state), lsfFromNativeTopicPartition(value0), lsfFromNativeOffsetSpec(value1), lsfFromNativeIsolationLevel(value2)))
+	return lsfToNativePairInt64BrokerState(lsfClusterListOffsets(lsfFromNativeBrokerState(state), lsfFromNativeTopicPartition(topicPartition1), lsfFromNativeOffsetSpec(offsetSpec1), lsfFromNativeIsolationLevel(isolationLevel1)))
 }
 
 // clusterMetadataRequest — ../src/contract.lawspec:278.
 func (lawSpecDefinitions) ClusterMetadataRequest(
 	symbols map[string]*LawSpecSymbol,
 	state BrokerState,
-	value0 string,
+	text1 string,
 ) Pair[LawSpecMaybe[int32], BrokerState] {
-	return lsfToNativePairMaybeInt32BrokerState(lsfClusterMetadataRequest(lsfFromNativeBrokerState(state), lsfFromNativeText(value0)))
+	return lsfToNativePairMaybeInt32BrokerState(lsfClusterMetadataRequest(lsfFromNativeBrokerState(state), lsfFromNativeText(text1)))
 }
 
 // clusterOffsetCommitRequest — ../src/contract.lawspec:291.
 func (lawSpecDefinitions) ClusterOffsetCommitRequest(
 	symbols map[string]*LawSpecSymbol,
 	state BrokerState,
-	value0 string,
-	value1 string,
-	value2 int32,
-	value3 []OffsetEntry,
+	text1 string,
+	text2 string,
+	int321 int32,
+	list1 []OffsetEntry,
 ) Pair[LawSpecUnit, BrokerState] {
-	return lsfToNativePairUnitBrokerState(lsfClusterCommitOffsets(lsfFromNativeBrokerState(state), lsfFromNativeText(value0), lsfFromNativeText(value1), lsfFromNativeInt32(value2), lsfFromNativeListOffsetEntry(value3)))
+	return lsfToNativePairUnitBrokerState(lsfClusterCommitOffsets(lsfFromNativeBrokerState(state), lsfFromNativeText(text1), lsfFromNativeText(text2), lsfFromNativeInt32(int321), lsfFromNativeListOffsetEntry(list1)))
 }
 
 // clusterOffsetFetchRequest — ../src/contract.lawspec:292.
 func (lawSpecDefinitions) ClusterOffsetFetchRequest(
 	symbols map[string]*LawSpecSymbol,
 	state BrokerState,
-	value0 string,
-	value1 TopicPartition,
+	text1 string,
+	topicPartition1 TopicPartition,
 ) Pair[LawSpecMaybe[int64], BrokerState] {
-	return lsfToNativePairMaybeInt64BrokerState(lsfClusterFetchOffset(lsfFromNativeBrokerState(state), lsfFromNativeText(value0), lsfFromNativeTopicPartition(value1)))
+	return lsfToNativePairMaybeInt64BrokerState(lsfClusterFetchOffset(lsfFromNativeBrokerState(state), lsfFromNativeText(text1), lsfFromNativeTopicPartition(topicPartition1)))
 }
 
 // clusterPartitionsFor — ../src/contract.lawspec:295.
 func (lawSpecDefinitions) ClusterPartitionsFor(
 	symbols map[string]*LawSpecSymbol,
 	state BrokerState,
-	value0 string,
+	text1 string,
 ) Pair[LawSpecMaybe[int32], BrokerState] {
-	return lsfToNativePairMaybeInt32BrokerState(lsfClusterMetadataRequest(lsfFromNativeBrokerState(state), lsfFromNativeText(value0)))
+	return lsfToNativePairMaybeInt32BrokerState(lsfClusterMetadataRequest(lsfFromNativeBrokerState(state), lsfFromNativeText(text1)))
 }
 
 // clusterProduceRequest — ../src/contract.lawspec:279.
 func (lawSpecDefinitions) ClusterProduceRequest(
 	symbols map[string]*LawSpecSymbol,
 	state BrokerState,
-	value0 TopicPartition,
-	value1 LawSpecMaybe[ProducerTag],
-	value2 []Record,
+	topicPartition1 TopicPartition,
+	maybe1 LawSpecMaybe[ProducerTag],
+	list1 []Record,
 ) Pair[int64, BrokerState] {
-	return lsfToNativePairInt64BrokerState(lsfClusterProduceRequest(lsfFromNativeBrokerState(state), lsfFromNativeTopicPartition(value0), lsfFromNativeMaybeProducerTag(value1), lsfFromNativeListRecord(value2)))
+	return lsfToNativePairInt64BrokerState(lsfClusterProduceRequest(lsfFromNativeBrokerState(state), lsfFromNativeTopicPartition(topicPartition1), lsfFromNativeMaybeProducerTag(maybe1), lsfFromNativeListRecord(list1)))
 }
 
 // clusterStart — ../src/contract.lawspec:274.
@@ -282,44 +282,44 @@ func (lawSpecDefinitions) ClusterStart(
 func (lawSpecDefinitions) ClusterSyncGroup(
 	symbols map[string]*LawSpecSymbol,
 	state BrokerState,
-	value0 string,
-	value1 string,
-	value2 int32,
+	text1 string,
+	text2 string,
+	int321 int32,
 ) Pair[[]TopicPartition, BrokerState] {
-	return lsfToNativePairListTopicPartitionBrokerState(lsfClusterSyncGroup(lsfFromNativeBrokerState(state), lsfFromNativeText(value0), lsfFromNativeText(value1), lsfFromNativeInt32(value2)))
+	return lsfToNativePairListTopicPartitionBrokerState(lsfClusterSyncGroup(lsfFromNativeBrokerState(state), lsfFromNativeText(text1), lsfFromNativeText(text2), lsfFromNativeInt32(int321)))
 }
 
 // clusterSyncGroupRequest — ../src/contract.lawspec:287.
 func (lawSpecDefinitions) ClusterSyncGroupRequest(
 	symbols map[string]*LawSpecSymbol,
 	state BrokerState,
-	value0 string,
-	value1 string,
-	value2 int32,
+	text1 string,
+	text2 string,
+	int321 int32,
 ) Pair[[]TopicPartition, BrokerState] {
-	return lsfToNativePairListTopicPartitionBrokerState(lsfClusterSyncGroup(lsfFromNativeBrokerState(state), lsfFromNativeText(value0), lsfFromNativeText(value1), lsfFromNativeInt32(value2)))
+	return lsfToNativePairListTopicPartitionBrokerState(lsfClusterSyncGroup(lsfFromNativeBrokerState(state), lsfFromNativeText(text1), lsfFromNativeText(text2), lsfFromNativeInt32(int321)))
 }
 
 // clusterTxnOffsetCommitRequest — ../src/contract.lawspec:284.
 func (lawSpecDefinitions) ClusterTxnOffsetCommitRequest(
 	symbols map[string]*LawSpecSymbol,
 	state BrokerState,
-	value0 string,
-	value1 int64,
-	value2 int16,
-	value3 string,
-	value4 []OffsetEntry,
+	text1 string,
+	int641 int64,
+	int161 int16,
+	text2 string,
+	list1 []OffsetEntry,
 ) Pair[LawSpecUnit, BrokerState] {
-	return lsfToNativePairUnitBrokerState(lsfClusterTxnOffsetCommitRequest(lsfFromNativeBrokerState(state), lsfFromNativeText(value0), lsfFromNativeInt64(value1), lsfFromNativeInt16(value2), lsfFromNativeText(value3), lsfFromNativeListOffsetEntry(value4)))
+	return lsfToNativePairUnitBrokerState(lsfClusterTxnOffsetCommitRequest(lsfFromNativeBrokerState(state), lsfFromNativeText(text1), lsfFromNativeInt64(int641), lsfFromNativeInt16(int161), lsfFromNativeText(text2), lsfFromNativeListOffsetEntry(list1)))
 }
 
 // kafkaConsumerAssign — ../src/contract.lawspec:1382.
 func (lawSpecDefinitions) KafkaConsumerAssign(
 	symbols map[string]*LawSpecSymbol,
 	consumerState ConsumerState,
-	value0 []TopicPartition,
+	list1 []TopicPartition,
 ) Pair[LawSpecUnit, ConsumerState] {
-	return lsfToNativePairUnitConsumerState(lsfKafkaConsumerAssign(lsfFromNativeConsumerState(consumerState), lsfFromNativeListTopicPartition(value0)))
+	return lsfToNativePairUnitConsumerState(lsfKafkaConsumerAssign(lsfFromNativeConsumerState(consumerState), lsfFromNativeListTopicPartition(list1)))
 }
 
 // kafkaConsumerClose — ../src/contract.lawspec:1390.
@@ -363,7 +363,7 @@ func (lawSpecDefinitions) KafkaConsumerCommittedOffset(
 	symbols map[string]*LawSpecSymbol,
 	broker Broker,
 	consumerState ConsumerState,
-	value0 TopicPartition,
+	topicPartition1 TopicPartition,
 ) Pair[LawSpecMaybe[int64], ConsumerState] {
 	return lsNativeContext("contracttest.kafka::kafkaConsumerCommittedOffset", func() Pair[LawSpecMaybe[int64], ConsumerState] {
 		schema := _lawSpecDefinitionSchema
@@ -371,10 +371,10 @@ func (lawSpecDefinitions) KafkaConsumerCommittedOffset(
 		lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Broker": broker})
 		consumerStateCodec := lawSpecConsumerStateCodec(schema, bits, symbols)
 		consumerStateValue := consumerStateCodec.fromNative(consumerState)
-		value0Codec := lawSpecTopicPartitionCodec(schema, bits, symbols)
-		value0Value := value0Codec.fromNative(value0)
+		topicPartition1Codec := lawSpecTopicPartitionCodec(schema, bits, symbols)
+		topicPartition1Value := topicPartition1Codec.fromNative(topicPartition1)
 		resultCodec := lawSpecPairCodec(schema, bits, lsMaybeCodec(schema, bits, lsScalarCodec[int64](schema, bits, "Int64"), symbols), lawSpecConsumerStateCodec(schema, bits, symbols), symbols)
-		result := lawSpecEvaluateKafkaConsumerCommittedOffset_2(symbols, consumerStateValue, value0Value)
+		result := lawSpecEvaluateKafkaConsumerCommittedOffset_2(symbols, consumerStateValue, topicPartition1Value)
 		return resultCodec.toNative(result)
 	})
 }
@@ -384,7 +384,7 @@ func (lawSpecDefinitions) KafkaConsumerPoll(
 	symbols map[string]*LawSpecSymbol,
 	broker Broker,
 	consumerState ConsumerState,
-	value0 int32,
+	int321 int32,
 ) Pair[LawSpecEither[KafkaError, []ConsumerRecord], ConsumerState] {
 	return lsNativeContext("contracttest.kafka::kafkaConsumerPoll", func() Pair[LawSpecEither[KafkaError, []ConsumerRecord], ConsumerState] {
 		schema := _lawSpecDefinitionSchema
@@ -392,10 +392,10 @@ func (lawSpecDefinitions) KafkaConsumerPoll(
 		lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Broker": broker})
 		consumerStateCodec := lawSpecConsumerStateCodec(schema, bits, symbols)
 		consumerStateValue := consumerStateCodec.fromNative(consumerState)
-		value0Codec := lsScalarCodec[int32](schema, bits, "Int32")
-		value0Value := value0Codec.fromNative(value0)
+		int321Codec := lsScalarCodec[int32](schema, bits, "Int32")
+		int321Value := int321Codec.fromNative(int321)
 		resultCodec := lawSpecPairCodec(schema, bits, lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsListCodec(schema, bits, lawSpecConsumerRecordCodec(schema, bits, symbols), symbols), symbols), lawSpecConsumerStateCodec(schema, bits, symbols), symbols)
-		result := lawSpecEvaluateKafkaConsumerPoll_2(symbols, consumerStateValue, value0Value)
+		result := lawSpecEvaluateKafkaConsumerPoll_2(symbols, consumerStateValue, int321Value)
 		return resultCodec.toNative(result)
 	})
 }
@@ -405,7 +405,7 @@ func (lawSpecDefinitions) KafkaConsumerPosition(
 	symbols map[string]*LawSpecSymbol,
 	broker Broker,
 	consumerState ConsumerState,
-	value0 TopicPartition,
+	topicPartition1 TopicPartition,
 ) Pair[LawSpecEither[KafkaError, int64], ConsumerState] {
 	return lsNativeContext("contracttest.kafka::kafkaConsumerPosition", func() Pair[LawSpecEither[KafkaError, int64], ConsumerState] {
 		schema := _lawSpecDefinitionSchema
@@ -413,10 +413,10 @@ func (lawSpecDefinitions) KafkaConsumerPosition(
 		lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Broker": broker})
 		consumerStateCodec := lawSpecConsumerStateCodec(schema, bits, symbols)
 		consumerStateValue := consumerStateCodec.fromNative(consumerState)
-		value0Codec := lawSpecTopicPartitionCodec(schema, bits, symbols)
-		value0Value := value0Codec.fromNative(value0)
+		topicPartition1Codec := lawSpecTopicPartitionCodec(schema, bits, symbols)
+		topicPartition1Value := topicPartition1Codec.fromNative(topicPartition1)
 		resultCodec := lawSpecPairCodec(schema, bits, lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsScalarCodec[int64](schema, bits, "Int64"), symbols), lawSpecConsumerStateCodec(schema, bits, symbols), symbols)
-		result := lawSpecEvaluateKafkaConsumerPosition_2(symbols, consumerStateValue, value0Value)
+		result := lawSpecEvaluateKafkaConsumerPosition_2(symbols, consumerStateValue, topicPartition1Value)
 		return resultCodec.toNative(result)
 	})
 }
@@ -425,19 +425,19 @@ func (lawSpecDefinitions) KafkaConsumerPosition(
 func (lawSpecDefinitions) KafkaConsumerSeek(
 	symbols map[string]*LawSpecSymbol,
 	consumerState ConsumerState,
-	value0 TopicPartition,
-	value1 int64,
+	topicPartition1 TopicPartition,
+	int641 int64,
 ) Pair[LawSpecEither[KafkaError, LawSpecUnit], ConsumerState] {
-	return lsfToNativePairEitherKafkaErrorUnitConsumerState(lsfKafkaConsumerSeek(lsfFromNativeConsumerState(consumerState), lsfFromNativeTopicPartition(value0), lsfFromNativeInt64(value1)))
+	return lsfToNativePairEitherKafkaErrorUnitConsumerState(lsfKafkaConsumerSeek(lsfFromNativeConsumerState(consumerState), lsfFromNativeTopicPartition(topicPartition1), lsfFromNativeInt64(int641)))
 }
 
 // kafkaConsumerSetIsolationLevel — ../src/contract.lawspec:1389.
 func (lawSpecDefinitions) KafkaConsumerSetIsolationLevel(
 	symbols map[string]*LawSpecSymbol,
 	consumerState ConsumerState,
-	value0 IsolationLevel,
+	isolationLevel1 IsolationLevel,
 ) Pair[LawSpecUnit, ConsumerState] {
-	return lsfToNativePairUnitConsumerState(lsfKafkaConsumerSetIsolationLevel(lsfFromNativeConsumerState(consumerState), lsfFromNativeIsolationLevel(value0)))
+	return lsfToNativePairUnitConsumerState(lsfKafkaConsumerSetIsolationLevel(lsfFromNativeConsumerState(consumerState), lsfFromNativeIsolationLevel(isolationLevel1)))
 }
 
 // kafkaConsumerStart — ../src/contract.lawspec:1380.
@@ -453,9 +453,9 @@ func (lawSpecDefinitions) KafkaConsumerSubscribe(
 	symbols map[string]*LawSpecSymbol,
 	broker Broker,
 	consumerState ConsumerState,
-	value0 string,
-	value1 string,
-	value2 []string,
+	text1 string,
+	text2 string,
+	list1 []string,
 ) Pair[LawSpecEither[KafkaError, []TopicPartition], ConsumerState] {
 	return lsNativeContext("contracttest.kafka::kafkaConsumerSubscribe", func() Pair[LawSpecEither[KafkaError, []TopicPartition], ConsumerState] {
 		schema := _lawSpecDefinitionSchema
@@ -463,14 +463,14 @@ func (lawSpecDefinitions) KafkaConsumerSubscribe(
 		lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Broker": broker})
 		consumerStateCodec := lawSpecConsumerStateCodec(schema, bits, symbols)
 		consumerStateValue := consumerStateCodec.fromNative(consumerState)
-		value0Codec := lsScalarCodec[string](schema, bits, "Text")
-		value0Value := value0Codec.fromNative(value0)
-		value1Codec := lsScalarCodec[string](schema, bits, "Text")
-		value1Value := value1Codec.fromNative(value1)
-		value2Codec := lsListCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
-		value2Value := value2Codec.fromNative(value2)
+		text1Codec := lsScalarCodec[string](schema, bits, "Text")
+		text1Value := text1Codec.fromNative(text1)
+		text2Codec := lsScalarCodec[string](schema, bits, "Text")
+		text2Value := text2Codec.fromNative(text2)
+		list1Codec := lsListCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
+		list1Value := list1Codec.fromNative(list1)
 		resultCodec := lawSpecPairCodec(schema, bits, lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols), symbols), lawSpecConsumerStateCodec(schema, bits, symbols), symbols)
-		result := lawSpecEvaluateKafkaConsumerSubscribe_2(symbols, consumerStateValue, value0Value, value1Value, value2Value)
+		result := lawSpecEvaluateKafkaConsumerSubscribe_2(symbols, consumerStateValue, text1Value, text2Value, list1Value)
 		return resultCodec.toNative(result)
 	})
 }
@@ -533,7 +533,7 @@ func (lawSpecDefinitions) KafkaProducerSend(
 	broker Broker,
 	partitioner Partitioner,
 	producerState ProducerState,
-	value0 ProducerRecord,
+	producerRecord1 ProducerRecord,
 ) Pair[LawSpecEither[KafkaError, RecordMetadata], ProducerState] {
 	return lsNativeContext("contracttest.kafka::kafkaProducerSend", func() Pair[LawSpecEither[KafkaError, RecordMetadata], ProducerState] {
 		schema := _lawSpecDefinitionSchema
@@ -541,10 +541,10 @@ func (lawSpecDefinitions) KafkaProducerSend(
 		lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Broker": broker, "lawtwin.kafka::ability::Partitioner": partitioner})
 		producerStateCodec := lawSpecProducerStateCodec(schema, bits, symbols)
 		producerStateValue := producerStateCodec.fromNative(producerState)
-		value0Codec := lawSpecProducerRecordCodec(schema, bits, symbols)
-		value0Value := value0Codec.fromNative(value0)
+		producerRecord1Codec := lawSpecProducerRecordCodec(schema, bits, symbols)
+		producerRecord1Value := producerRecord1Codec.fromNative(producerRecord1)
 		resultCodec := lawSpecPairCodec(schema, bits, lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lawSpecRecordMetadataCodec(schema, bits, symbols), symbols), lawSpecProducerStateCodec(schema, bits, symbols), symbols)
-		result := lawSpecEvaluateKafkaProducerSend_2(symbols, producerStateValue, value0Value)
+		result := lawSpecEvaluateKafkaProducerSend_2(symbols, producerStateValue, producerRecord1Value)
 		return resultCodec.toNative(result)
 	})
 }
@@ -580,7 +580,7 @@ func (lawSpecDefinitions) KafkaTransactionsAddPartitionsToTransaction(
 	symbols map[string]*LawSpecSymbol,
 	broker Broker,
 	txnState TransactionState,
-	value0 []TopicPartition,
+	list1 []TopicPartition,
 ) Pair[LawSpecEither[KafkaError, LawSpecUnit], TransactionState] {
 	return lsNativeContext("contracttest.kafka::kafkaTransactionsAddPartitionsToTransaction", func() Pair[LawSpecEither[KafkaError, LawSpecUnit], TransactionState] {
 		schema := _lawSpecDefinitionSchema
@@ -588,10 +588,10 @@ func (lawSpecDefinitions) KafkaTransactionsAddPartitionsToTransaction(
 		lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Broker": broker})
 		txnStateCodec := lawSpecTransactionStateCodec(schema, bits, symbols)
 		txnStateValue := txnStateCodec.fromNative(txnState)
-		value0Codec := lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
-		value0Value := value0Codec.fromNative(value0)
+		list1Codec := lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
+		list1Value := list1Codec.fromNative(list1)
 		resultCodec := lawSpecPairCodec(schema, bits, lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsScalarCodec[LawSpecUnit](schema, bits, "Unit"), symbols), lawSpecTransactionStateCodec(schema, bits, symbols), symbols)
-		result := lawSpecEvaluateKafkaTransactionsAddPartitionsToTransaction_2(symbols, txnStateValue, value0Value)
+		result := lawSpecEvaluateKafkaTransactionsAddPartitionsToTransaction_2(symbols, txnStateValue, list1Value)
 		return resultCodec.toNative(result)
 	})
 }
@@ -627,7 +627,7 @@ func (lawSpecDefinitions) KafkaTransactionsInitTransactions(
 	symbols map[string]*LawSpecSymbol,
 	broker Broker,
 	txnState TransactionState,
-	value0 string,
+	text1 string,
 ) Pair[LawSpecEither[KafkaError, ProducerIdAndEpoch], TransactionState] {
 	return lsNativeContext("contracttest.kafka::kafkaTransactionsInitTransactions", func() Pair[LawSpecEither[KafkaError, ProducerIdAndEpoch], TransactionState] {
 		schema := _lawSpecDefinitionSchema
@@ -635,10 +635,10 @@ func (lawSpecDefinitions) KafkaTransactionsInitTransactions(
 		lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Broker": broker})
 		txnStateCodec := lawSpecTransactionStateCodec(schema, bits, symbols)
 		txnStateValue := txnStateCodec.fromNative(txnState)
-		value0Codec := lsScalarCodec[string](schema, bits, "Text")
-		value0Value := value0Codec.fromNative(value0)
+		text1Codec := lsScalarCodec[string](schema, bits, "Text")
+		text1Value := text1Codec.fromNative(text1)
 		resultCodec := lawSpecPairCodec(schema, bits, lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lawSpecProducerIdAndEpochCodec(schema, bits, symbols), symbols), lawSpecTransactionStateCodec(schema, bits, symbols), symbols)
-		result := lawSpecEvaluateKafkaTransactionsInitTransactions_2(symbols, txnStateValue, value0Value)
+		result := lawSpecEvaluateKafkaTransactionsInitTransactions_2(symbols, txnStateValue, text1Value)
 		return resultCodec.toNative(result)
 	})
 }
@@ -649,7 +649,7 @@ func (lawSpecDefinitions) KafkaTransactionsSendInTransaction(
 	broker Broker,
 	partitioner Partitioner,
 	txnState TransactionState,
-	value0 ProducerRecord,
+	producerRecord1 ProducerRecord,
 ) Pair[LawSpecEither[KafkaError, RecordMetadata], TransactionState] {
 	return lsNativeContext("contracttest.kafka::kafkaTransactionsSendInTransaction", func() Pair[LawSpecEither[KafkaError, RecordMetadata], TransactionState] {
 		schema := _lawSpecDefinitionSchema
@@ -657,10 +657,10 @@ func (lawSpecDefinitions) KafkaTransactionsSendInTransaction(
 		lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Broker": broker, "lawtwin.kafka::ability::Partitioner": partitioner})
 		txnStateCodec := lawSpecTransactionStateCodec(schema, bits, symbols)
 		txnStateValue := txnStateCodec.fromNative(txnState)
-		value0Codec := lawSpecProducerRecordCodec(schema, bits, symbols)
-		value0Value := value0Codec.fromNative(value0)
+		producerRecord1Codec := lawSpecProducerRecordCodec(schema, bits, symbols)
+		producerRecord1Value := producerRecord1Codec.fromNative(producerRecord1)
 		resultCodec := lawSpecPairCodec(schema, bits, lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lawSpecRecordMetadataCodec(schema, bits, symbols), symbols), lawSpecTransactionStateCodec(schema, bits, symbols), symbols)
-		result := lawSpecEvaluateKafkaTransactionsSendInTransaction_2(symbols, txnStateValue, value0Value)
+		result := lawSpecEvaluateKafkaTransactionsSendInTransaction_2(symbols, txnStateValue, producerRecord1Value)
 		return resultCodec.toNative(result)
 	})
 }
@@ -670,8 +670,8 @@ func (lawSpecDefinitions) KafkaTransactionsSendOffsetsToTransaction(
 	symbols map[string]*LawSpecSymbol,
 	broker Broker,
 	txnState TransactionState,
-	value0 string,
-	value1 []OffsetEntry,
+	text1 string,
+	list1 []OffsetEntry,
 ) Pair[LawSpecEither[KafkaError, LawSpecUnit], TransactionState] {
 	return lsNativeContext("contracttest.kafka::kafkaTransactionsSendOffsetsToTransaction", func() Pair[LawSpecEither[KafkaError, LawSpecUnit], TransactionState] {
 		schema := _lawSpecDefinitionSchema
@@ -679,12 +679,12 @@ func (lawSpecDefinitions) KafkaTransactionsSendOffsetsToTransaction(
 		lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Broker": broker})
 		txnStateCodec := lawSpecTransactionStateCodec(schema, bits, symbols)
 		txnStateValue := txnStateCodec.fromNative(txnState)
-		value0Codec := lsScalarCodec[string](schema, bits, "Text")
-		value0Value := value0Codec.fromNative(value0)
-		value1Codec := lsListCodec(schema, bits, lawSpecOffsetEntryCodec(schema, bits, symbols), symbols)
-		value1Value := value1Codec.fromNative(value1)
+		text1Codec := lsScalarCodec[string](schema, bits, "Text")
+		text1Value := text1Codec.fromNative(text1)
+		list1Codec := lsListCodec(schema, bits, lawSpecOffsetEntryCodec(schema, bits, symbols), symbols)
+		list1Value := list1Codec.fromNative(list1)
 		resultCodec := lawSpecPairCodec(schema, bits, lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsScalarCodec[LawSpecUnit](schema, bits, "Unit"), symbols), lawSpecTransactionStateCodec(schema, bits, symbols), symbols)
-		result := lawSpecEvaluateKafkaTransactionsSendOffsetsToTransaction_2(symbols, txnStateValue, value0Value, value1Value)
+		result := lawSpecEvaluateKafkaTransactionsSendOffsetsToTransaction_2(symbols, txnStateValue, text1Value, list1Value)
 		return resultCodec.toNative(result)
 	})
 }
@@ -3659,262 +3659,262 @@ func (lawSpecDefinitions) SuiteNamesThePackage(
 func lawSpecEvaluateClusterAddPartitionsToTxnRequest_2(
 	symbols map[string]*LawSpecSymbol,
 	state LawSpecValue,
-	value0 LawSpecValue,
-	value1 LawSpecValue,
-	value2 LawSpecValue,
-	value3 LawSpecValue,
+	text1 LawSpecValue,
+	int641 LawSpecValue,
+	int161 LawSpecValue,
+	list1 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairUnitBrokerState(lsfClusterAddPartitionsToTxnRequest(lsfFromValueBrokerState(state), lsfFromValueText(value0), lsfFromValueInt64(value1), lsfFromValueInt16(value2), lsfFromValueListTopicPartition(value3)))
+	return lsfToValuePairUnitBrokerState(lsfClusterAddPartitionsToTxnRequest(lsfFromValueBrokerState(state), lsfFromValueText(text1), lsfFromValueInt64(int641), lsfFromValueInt16(int161), lsfFromValueListTopicPartition(list1)))
 }
 
 // clusterCommitOffsets on logical values — ../src/contract.lawspec:302.
 func lawSpecEvaluateClusterCommitOffsets_2(
 	symbols map[string]*LawSpecSymbol,
 	state LawSpecValue,
-	value0 LawSpecValue,
-	value1 LawSpecValue,
-	value2 LawSpecValue,
-	value3 LawSpecValue,
+	text1 LawSpecValue,
+	text2 LawSpecValue,
+	int321 LawSpecValue,
+	list1 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairUnitBrokerState(lsfClusterCommitOffsets(lsfFromValueBrokerState(state), lsfFromValueText(value0), lsfFromValueText(value1), lsfFromValueInt32(value2), lsfFromValueListOffsetEntry(value3)))
+	return lsfToValuePairUnitBrokerState(lsfClusterCommitOffsets(lsfFromValueBrokerState(state), lsfFromValueText(text1), lsfFromValueText(text2), lsfFromValueInt32(int321), lsfFromValueListOffsetEntry(list1)))
 }
 
 // clusterCreatePartitions on logical values — ../src/contract.lawspec:294.
 func lawSpecEvaluateClusterCreatePartitions_2(
 	symbols map[string]*LawSpecSymbol,
 	state LawSpecValue,
-	value0 LawSpecValue,
-	value1 LawSpecValue,
+	text1 LawSpecValue,
+	int321 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairUnitBrokerState(lsfClusterCreatePartitions(lsfFromValueBrokerState(state), lsfFromValueText(value0), lsfFromValueInt32(value1)))
+	return lsfToValuePairUnitBrokerState(lsfClusterCreatePartitions(lsfFromValueBrokerState(state), lsfFromValueText(text1), lsfFromValueInt32(int321)))
 }
 
 // clusterCreatePartitionsRequest on logical values — ../src/contract.lawspec:277.
 func lawSpecEvaluateClusterCreatePartitionsRequest_2(
 	symbols map[string]*LawSpecSymbol,
 	state LawSpecValue,
-	value0 LawSpecValue,
-	value1 LawSpecValue,
+	text1 LawSpecValue,
+	int321 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairUnitBrokerState(lsfClusterCreatePartitions(lsfFromValueBrokerState(state), lsfFromValueText(value0), lsfFromValueInt32(value1)))
+	return lsfToValuePairUnitBrokerState(lsfClusterCreatePartitions(lsfFromValueBrokerState(state), lsfFromValueText(text1), lsfFromValueInt32(int321)))
 }
 
 // clusterCreateTopic on logical values — ../src/contract.lawspec:293.
 func lawSpecEvaluateClusterCreateTopic_2(
 	symbols map[string]*LawSpecSymbol,
 	state LawSpecValue,
-	value0 LawSpecValue,
-	value1 LawSpecValue,
+	text1 LawSpecValue,
+	int321 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairUnitBrokerState(lsfClusterCreateTopic(lsfFromValueBrokerState(state), lsfFromValueText(value0), lsfFromValueInt32(value1)))
+	return lsfToValuePairUnitBrokerState(lsfClusterCreateTopic(lsfFromValueBrokerState(state), lsfFromValueText(text1), lsfFromValueInt32(int321)))
 }
 
 // clusterCreateTopicsRequest on logical values — ../src/contract.lawspec:276.
 func lawSpecEvaluateClusterCreateTopicsRequest_2(
 	symbols map[string]*LawSpecSymbol,
 	state LawSpecValue,
-	value0 LawSpecValue,
-	value1 LawSpecValue,
+	text1 LawSpecValue,
+	int321 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairUnitBrokerState(lsfClusterCreateTopic(lsfFromValueBrokerState(state), lsfFromValueText(value0), lsfFromValueInt32(value1)))
+	return lsfToValuePairUnitBrokerState(lsfClusterCreateTopic(lsfFromValueBrokerState(state), lsfFromValueText(text1), lsfFromValueInt32(int321)))
 }
 
 // clusterDescribeGroup on logical values — ../src/contract.lawspec:301.
 func lawSpecEvaluateClusterDescribeGroup_2(
 	symbols map[string]*LawSpecSymbol,
 	state LawSpecValue,
-	value0 LawSpecValue,
+	text1 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairGroupViewBrokerState(lsfClusterDescribeGroup(lsfFromValueBrokerState(state), lsfFromValueText(value0)))
+	return lsfToValuePairGroupViewBrokerState(lsfClusterDescribeGroup(lsfFromValueBrokerState(state), lsfFromValueText(text1)))
 }
 
 // clusterDescribeGroupRequest on logical values — ../src/contract.lawspec:290.
 func lawSpecEvaluateClusterDescribeGroupRequest_2(
 	symbols map[string]*LawSpecSymbol,
 	state LawSpecValue,
-	value0 LawSpecValue,
+	text1 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairGroupViewBrokerState(lsfClusterDescribeGroup(lsfFromValueBrokerState(state), lsfFromValueText(value0)))
+	return lsfToValuePairGroupViewBrokerState(lsfClusterDescribeGroup(lsfFromValueBrokerState(state), lsfFromValueText(text1)))
 }
 
 // clusterEndTxnRequest on logical values — ../src/contract.lawspec:285.
 func lawSpecEvaluateClusterEndTxnRequest_2(
 	symbols map[string]*LawSpecSymbol,
 	state LawSpecValue,
-	value0 LawSpecValue,
-	value1 LawSpecValue,
-	value2 LawSpecValue,
-	value3 LawSpecValue,
+	text1 LawSpecValue,
+	int641 LawSpecValue,
+	int161 LawSpecValue,
+	bool1 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairUnitBrokerState(lsfClusterEndTxnRequest(lsfFromValueBrokerState(state), lsfFromValueText(value0), lsfFromValueInt64(value1), lsfFromValueInt16(value2), lsfFromValueBool(value3)))
+	return lsfToValuePairUnitBrokerState(lsfClusterEndTxnRequest(lsfFromValueBrokerState(state), lsfFromValueText(text1), lsfFromValueInt64(int641), lsfFromValueInt16(int161), lsfFromValueBool(bool1)))
 }
 
 // clusterFetchOffset on logical values — ../src/contract.lawspec:303.
 func lawSpecEvaluateClusterFetchOffset_2(
 	symbols map[string]*LawSpecSymbol,
 	state LawSpecValue,
-	value0 LawSpecValue,
-	value1 LawSpecValue,
+	text1 LawSpecValue,
+	topicPartition1 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairMaybeInt64BrokerState(lsfClusterFetchOffset(lsfFromValueBrokerState(state), lsfFromValueText(value0), lsfFromValueTopicPartition(value1)))
+	return lsfToValuePairMaybeInt64BrokerState(lsfClusterFetchOffset(lsfFromValueBrokerState(state), lsfFromValueText(text1), lsfFromValueTopicPartition(topicPartition1)))
 }
 
 // clusterFetchRequest on logical values — ../src/contract.lawspec:280.
 func lawSpecEvaluateClusterFetchRequest_2(
 	symbols map[string]*LawSpecSymbol,
 	state LawSpecValue,
-	value0 LawSpecValue,
-	value1 LawSpecValue,
-	value2 LawSpecValue,
-	value3 LawSpecValue,
+	topicPartition1 LawSpecValue,
+	int641 LawSpecValue,
+	int321 LawSpecValue,
+	isolationLevel1 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairFetchResultBrokerState(lsfClusterFetchRequest(lsfFromValueBrokerState(state), lsfFromValueTopicPartition(value0), lsfFromValueInt64(value1), lsfFromValueInt32(value2), lsfFromValueIsolationLevel(value3)))
+	return lsfToValuePairFetchResultBrokerState(lsfClusterFetchRequest(lsfFromValueBrokerState(state), lsfFromValueTopicPartition(topicPartition1), lsfFromValueInt64(int641), lsfFromValueInt32(int321), lsfFromValueIsolationLevel(isolationLevel1)))
 }
 
 // clusterHeartbeat on logical values — ../src/contract.lawspec:299.
 func lawSpecEvaluateClusterHeartbeat_2(
 	symbols map[string]*LawSpecSymbol,
 	state LawSpecValue,
-	value0 LawSpecValue,
-	value1 LawSpecValue,
-	value2 LawSpecValue,
+	text1 LawSpecValue,
+	text2 LawSpecValue,
+	int321 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairUnitBrokerState(lsfClusterHeartbeat(lsfFromValueBrokerState(state), lsfFromValueText(value0), lsfFromValueText(value1), lsfFromValueInt32(value2)))
+	return lsfToValuePairUnitBrokerState(lsfClusterHeartbeat(lsfFromValueBrokerState(state), lsfFromValueText(text1), lsfFromValueText(text2), lsfFromValueInt32(int321)))
 }
 
 // clusterHeartbeatRequest on logical values — ../src/contract.lawspec:288.
 func lawSpecEvaluateClusterHeartbeatRequest_2(
 	symbols map[string]*LawSpecSymbol,
 	state LawSpecValue,
-	value0 LawSpecValue,
-	value1 LawSpecValue,
-	value2 LawSpecValue,
+	text1 LawSpecValue,
+	text2 LawSpecValue,
+	int321 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairUnitBrokerState(lsfClusterHeartbeat(lsfFromValueBrokerState(state), lsfFromValueText(value0), lsfFromValueText(value1), lsfFromValueInt32(value2)))
+	return lsfToValuePairUnitBrokerState(lsfClusterHeartbeat(lsfFromValueBrokerState(state), lsfFromValueText(text1), lsfFromValueText(text2), lsfFromValueInt32(int321)))
 }
 
 // clusterInitProducerIdRequest on logical values — ../src/contract.lawspec:282.
 func lawSpecEvaluateClusterInitProducerIdRequest_2(
 	symbols map[string]*LawSpecSymbol,
 	state LawSpecValue,
-	value0 LawSpecValue,
+	maybe1 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairProducerIdAndEpochBrokerState(lsfClusterInitProducerIdRequest(lsfFromValueBrokerState(state), lsfFromValueMaybeText(value0)))
+	return lsfToValuePairProducerIdAndEpochBrokerState(lsfClusterInitProducerIdRequest(lsfFromValueBrokerState(state), lsfFromValueMaybeText(maybe1)))
 }
 
 // clusterJoinGroup on logical values — ../src/contract.lawspec:297.
 func lawSpecEvaluateClusterJoinGroup_2(
 	symbols map[string]*LawSpecSymbol,
 	state LawSpecValue,
-	value0 LawSpecValue,
-	value1 LawSpecValue,
-	value2 LawSpecValue,
+	text1 LawSpecValue,
+	text2 LawSpecValue,
+	list1 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairInt32BrokerState(lsfClusterJoinGroup(lsfFromValueBrokerState(state), lsfFromValueText(value0), lsfFromValueText(value1), lsfFromValueListText(value2)))
+	return lsfToValuePairInt32BrokerState(lsfClusterJoinGroup(lsfFromValueBrokerState(state), lsfFromValueText(text1), lsfFromValueText(text2), lsfFromValueListText(list1)))
 }
 
 // clusterJoinGroupRequest on logical values — ../src/contract.lawspec:286.
 func lawSpecEvaluateClusterJoinGroupRequest_2(
 	symbols map[string]*LawSpecSymbol,
 	state LawSpecValue,
-	value0 LawSpecValue,
-	value1 LawSpecValue,
-	value2 LawSpecValue,
+	text1 LawSpecValue,
+	text2 LawSpecValue,
+	list1 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairInt32BrokerState(lsfClusterJoinGroup(lsfFromValueBrokerState(state), lsfFromValueText(value0), lsfFromValueText(value1), lsfFromValueListText(value2)))
+	return lsfToValuePairInt32BrokerState(lsfClusterJoinGroup(lsfFromValueBrokerState(state), lsfFromValueText(text1), lsfFromValueText(text2), lsfFromValueListText(list1)))
 }
 
 // clusterLeaveGroup on logical values — ../src/contract.lawspec:300.
 func lawSpecEvaluateClusterLeaveGroup_2(
 	symbols map[string]*LawSpecSymbol,
 	state LawSpecValue,
-	value0 LawSpecValue,
-	value1 LawSpecValue,
+	text1 LawSpecValue,
+	text2 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairUnitBrokerState(lsfClusterLeaveGroup(lsfFromValueBrokerState(state), lsfFromValueText(value0), lsfFromValueText(value1)))
+	return lsfToValuePairUnitBrokerState(lsfClusterLeaveGroup(lsfFromValueBrokerState(state), lsfFromValueText(text1), lsfFromValueText(text2)))
 }
 
 // clusterLeaveGroupRequest on logical values — ../src/contract.lawspec:289.
 func lawSpecEvaluateClusterLeaveGroupRequest_2(
 	symbols map[string]*LawSpecSymbol,
 	state LawSpecValue,
-	value0 LawSpecValue,
-	value1 LawSpecValue,
+	text1 LawSpecValue,
+	text2 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairUnitBrokerState(lsfClusterLeaveGroup(lsfFromValueBrokerState(state), lsfFromValueText(value0), lsfFromValueText(value1)))
+	return lsfToValuePairUnitBrokerState(lsfClusterLeaveGroup(lsfFromValueBrokerState(state), lsfFromValueText(text1), lsfFromValueText(text2)))
 }
 
 // clusterListOffsets on logical values — ../src/contract.lawspec:296.
 func lawSpecEvaluateClusterListOffsets_2(
 	symbols map[string]*LawSpecSymbol,
 	state LawSpecValue,
-	value0 LawSpecValue,
-	value1 LawSpecValue,
-	value2 LawSpecValue,
+	topicPartition1 LawSpecValue,
+	offsetSpec1 LawSpecValue,
+	isolationLevel1 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairInt64BrokerState(lsfClusterListOffsets(lsfFromValueBrokerState(state), lsfFromValueTopicPartition(value0), lsfFromValueOffsetSpec(value1), lsfFromValueIsolationLevel(value2)))
+	return lsfToValuePairInt64BrokerState(lsfClusterListOffsets(lsfFromValueBrokerState(state), lsfFromValueTopicPartition(topicPartition1), lsfFromValueOffsetSpec(offsetSpec1), lsfFromValueIsolationLevel(isolationLevel1)))
 }
 
 // clusterListOffsetsRequest on logical values — ../src/contract.lawspec:281.
 func lawSpecEvaluateClusterListOffsetsRequest_2(
 	symbols map[string]*LawSpecSymbol,
 	state LawSpecValue,
-	value0 LawSpecValue,
-	value1 LawSpecValue,
-	value2 LawSpecValue,
+	topicPartition1 LawSpecValue,
+	offsetSpec1 LawSpecValue,
+	isolationLevel1 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairInt64BrokerState(lsfClusterListOffsets(lsfFromValueBrokerState(state), lsfFromValueTopicPartition(value0), lsfFromValueOffsetSpec(value1), lsfFromValueIsolationLevel(value2)))
+	return lsfToValuePairInt64BrokerState(lsfClusterListOffsets(lsfFromValueBrokerState(state), lsfFromValueTopicPartition(topicPartition1), lsfFromValueOffsetSpec(offsetSpec1), lsfFromValueIsolationLevel(isolationLevel1)))
 }
 
 // clusterMetadataRequest on logical values — ../src/contract.lawspec:278.
 func lawSpecEvaluateClusterMetadataRequest_2(
 	symbols map[string]*LawSpecSymbol,
 	state LawSpecValue,
-	value0 LawSpecValue,
+	text1 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairMaybeInt32BrokerState(lsfClusterMetadataRequest(lsfFromValueBrokerState(state), lsfFromValueText(value0)))
+	return lsfToValuePairMaybeInt32BrokerState(lsfClusterMetadataRequest(lsfFromValueBrokerState(state), lsfFromValueText(text1)))
 }
 
 // clusterOffsetCommitRequest on logical values — ../src/contract.lawspec:291.
 func lawSpecEvaluateClusterOffsetCommitRequest_2(
 	symbols map[string]*LawSpecSymbol,
 	state LawSpecValue,
-	value0 LawSpecValue,
-	value1 LawSpecValue,
-	value2 LawSpecValue,
-	value3 LawSpecValue,
+	text1 LawSpecValue,
+	text2 LawSpecValue,
+	int321 LawSpecValue,
+	list1 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairUnitBrokerState(lsfClusterCommitOffsets(lsfFromValueBrokerState(state), lsfFromValueText(value0), lsfFromValueText(value1), lsfFromValueInt32(value2), lsfFromValueListOffsetEntry(value3)))
+	return lsfToValuePairUnitBrokerState(lsfClusterCommitOffsets(lsfFromValueBrokerState(state), lsfFromValueText(text1), lsfFromValueText(text2), lsfFromValueInt32(int321), lsfFromValueListOffsetEntry(list1)))
 }
 
 // clusterOffsetFetchRequest on logical values — ../src/contract.lawspec:292.
 func lawSpecEvaluateClusterOffsetFetchRequest_2(
 	symbols map[string]*LawSpecSymbol,
 	state LawSpecValue,
-	value0 LawSpecValue,
-	value1 LawSpecValue,
+	text1 LawSpecValue,
+	topicPartition1 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairMaybeInt64BrokerState(lsfClusterFetchOffset(lsfFromValueBrokerState(state), lsfFromValueText(value0), lsfFromValueTopicPartition(value1)))
+	return lsfToValuePairMaybeInt64BrokerState(lsfClusterFetchOffset(lsfFromValueBrokerState(state), lsfFromValueText(text1), lsfFromValueTopicPartition(topicPartition1)))
 }
 
 // clusterPartitionsFor on logical values — ../src/contract.lawspec:295.
 func lawSpecEvaluateClusterPartitionsFor_2(
 	symbols map[string]*LawSpecSymbol,
 	state LawSpecValue,
-	value0 LawSpecValue,
+	text1 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairMaybeInt32BrokerState(lsfClusterMetadataRequest(lsfFromValueBrokerState(state), lsfFromValueText(value0)))
+	return lsfToValuePairMaybeInt32BrokerState(lsfClusterMetadataRequest(lsfFromValueBrokerState(state), lsfFromValueText(text1)))
 }
 
 // clusterProduceRequest on logical values — ../src/contract.lawspec:279.
 func lawSpecEvaluateClusterProduceRequest_2(
 	symbols map[string]*LawSpecSymbol,
 	state LawSpecValue,
-	value0 LawSpecValue,
-	value1 LawSpecValue,
-	value2 LawSpecValue,
+	topicPartition1 LawSpecValue,
+	maybe1 LawSpecValue,
+	list1 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairInt64BrokerState(lsfClusterProduceRequest(lsfFromValueBrokerState(state), lsfFromValueTopicPartition(value0), lsfFromValueMaybeProducerTag(value1), lsfFromValueListRecord(value2)))
+	return lsfToValuePairInt64BrokerState(lsfClusterProduceRequest(lsfFromValueBrokerState(state), lsfFromValueTopicPartition(topicPartition1), lsfFromValueMaybeProducerTag(maybe1), lsfFromValueListRecord(list1)))
 }
 
 // clusterStart on logical values — ../src/contract.lawspec:274.
@@ -3929,44 +3929,44 @@ func lawSpecEvaluateClusterStart_2(
 func lawSpecEvaluateClusterSyncGroup_2(
 	symbols map[string]*LawSpecSymbol,
 	state LawSpecValue,
-	value0 LawSpecValue,
-	value1 LawSpecValue,
-	value2 LawSpecValue,
+	text1 LawSpecValue,
+	text2 LawSpecValue,
+	int321 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairListTopicPartitionBrokerState(lsfClusterSyncGroup(lsfFromValueBrokerState(state), lsfFromValueText(value0), lsfFromValueText(value1), lsfFromValueInt32(value2)))
+	return lsfToValuePairListTopicPartitionBrokerState(lsfClusterSyncGroup(lsfFromValueBrokerState(state), lsfFromValueText(text1), lsfFromValueText(text2), lsfFromValueInt32(int321)))
 }
 
 // clusterSyncGroupRequest on logical values — ../src/contract.lawspec:287.
 func lawSpecEvaluateClusterSyncGroupRequest_2(
 	symbols map[string]*LawSpecSymbol,
 	state LawSpecValue,
-	value0 LawSpecValue,
-	value1 LawSpecValue,
-	value2 LawSpecValue,
+	text1 LawSpecValue,
+	text2 LawSpecValue,
+	int321 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairListTopicPartitionBrokerState(lsfClusterSyncGroup(lsfFromValueBrokerState(state), lsfFromValueText(value0), lsfFromValueText(value1), lsfFromValueInt32(value2)))
+	return lsfToValuePairListTopicPartitionBrokerState(lsfClusterSyncGroup(lsfFromValueBrokerState(state), lsfFromValueText(text1), lsfFromValueText(text2), lsfFromValueInt32(int321)))
 }
 
 // clusterTxnOffsetCommitRequest on logical values — ../src/contract.lawspec:284.
 func lawSpecEvaluateClusterTxnOffsetCommitRequest_2(
 	symbols map[string]*LawSpecSymbol,
 	state LawSpecValue,
-	value0 LawSpecValue,
-	value1 LawSpecValue,
-	value2 LawSpecValue,
-	value3 LawSpecValue,
-	value4 LawSpecValue,
+	text1 LawSpecValue,
+	int641 LawSpecValue,
+	int161 LawSpecValue,
+	text2 LawSpecValue,
+	list1 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairUnitBrokerState(lsfClusterTxnOffsetCommitRequest(lsfFromValueBrokerState(state), lsfFromValueText(value0), lsfFromValueInt64(value1), lsfFromValueInt16(value2), lsfFromValueText(value3), lsfFromValueListOffsetEntry(value4)))
+	return lsfToValuePairUnitBrokerState(lsfClusterTxnOffsetCommitRequest(lsfFromValueBrokerState(state), lsfFromValueText(text1), lsfFromValueInt64(int641), lsfFromValueInt16(int161), lsfFromValueText(text2), lsfFromValueListOffsetEntry(list1)))
 }
 
 // kafkaConsumerAssign on logical values — ../src/contract.lawspec:1382.
 func lawSpecEvaluateKafkaConsumerAssign_2(
 	symbols map[string]*LawSpecSymbol,
 	consumerState LawSpecValue,
-	value0 LawSpecValue,
+	list1 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairUnitConsumerState(lsfKafkaConsumerAssign(lsfFromValueConsumerState(consumerState), lsfFromValueListTopicPartition(value0)))
+	return lsfToValuePairUnitConsumerState(lsfKafkaConsumerAssign(lsfFromValueConsumerState(consumerState), lsfFromValueListTopicPartition(list1)))
 }
 
 // kafkaConsumerClose on logical values — ../src/contract.lawspec:1390.
@@ -3989,46 +3989,46 @@ func lawSpecEvaluateKafkaConsumerCommitSync_2(
 func lawSpecEvaluateKafkaConsumerCommittedOffset_2(
 	symbols map[string]*LawSpecSymbol,
 	consumerState LawSpecValue,
-	value0 LawSpecValue,
+	topicPartition1 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairMaybeInt64ConsumerState(lsfKafkaConsumerCommittedOffset(symbols, lsfFromValueConsumerState(consumerState), lsfFromValueTopicPartition(value0)))
+	return lsfToValuePairMaybeInt64ConsumerState(lsfKafkaConsumerCommittedOffset(symbols, lsfFromValueConsumerState(consumerState), lsfFromValueTopicPartition(topicPartition1)))
 }
 
 // kafkaConsumerPoll on logical values — ../src/contract.lawspec:1384.
 func lawSpecEvaluateKafkaConsumerPoll_2(
 	symbols map[string]*LawSpecSymbol,
 	consumerState LawSpecValue,
-	value0 LawSpecValue,
+	int321 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairEitherKafkaErrorListConsumerRecordConsumerState(lsfKafkaConsumerPoll(symbols, lsfFromValueConsumerState(consumerState), lsfFromValueInt32(value0)))
+	return lsfToValuePairEitherKafkaErrorListConsumerRecordConsumerState(lsfKafkaConsumerPoll(symbols, lsfFromValueConsumerState(consumerState), lsfFromValueInt32(int321)))
 }
 
 // kafkaConsumerPosition on logical values — ../src/contract.lawspec:1387.
 func lawSpecEvaluateKafkaConsumerPosition_2(
 	symbols map[string]*LawSpecSymbol,
 	consumerState LawSpecValue,
-	value0 LawSpecValue,
+	topicPartition1 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairEitherKafkaErrorInt64ConsumerState(lsfKafkaConsumerPosition(symbols, lsfFromValueConsumerState(consumerState), lsfFromValueTopicPartition(value0)))
+	return lsfToValuePairEitherKafkaErrorInt64ConsumerState(lsfKafkaConsumerPosition(symbols, lsfFromValueConsumerState(consumerState), lsfFromValueTopicPartition(topicPartition1)))
 }
 
 // kafkaConsumerSeek on logical values — ../src/contract.lawspec:1386.
 func lawSpecEvaluateKafkaConsumerSeek_2(
 	symbols map[string]*LawSpecSymbol,
 	consumerState LawSpecValue,
-	value0 LawSpecValue,
-	value1 LawSpecValue,
+	topicPartition1 LawSpecValue,
+	int641 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairEitherKafkaErrorUnitConsumerState(lsfKafkaConsumerSeek(lsfFromValueConsumerState(consumerState), lsfFromValueTopicPartition(value0), lsfFromValueInt64(value1)))
+	return lsfToValuePairEitherKafkaErrorUnitConsumerState(lsfKafkaConsumerSeek(lsfFromValueConsumerState(consumerState), lsfFromValueTopicPartition(topicPartition1), lsfFromValueInt64(int641)))
 }
 
 // kafkaConsumerSetIsolationLevel on logical values — ../src/contract.lawspec:1389.
 func lawSpecEvaluateKafkaConsumerSetIsolationLevel_2(
 	symbols map[string]*LawSpecSymbol,
 	consumerState LawSpecValue,
-	value0 LawSpecValue,
+	isolationLevel1 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairUnitConsumerState(lsfKafkaConsumerSetIsolationLevel(lsfFromValueConsumerState(consumerState), lsfFromValueIsolationLevel(value0)))
+	return lsfToValuePairUnitConsumerState(lsfKafkaConsumerSetIsolationLevel(lsfFromValueConsumerState(consumerState), lsfFromValueIsolationLevel(isolationLevel1)))
 }
 
 // kafkaConsumerStart on logical values — ../src/contract.lawspec:1380.
@@ -4043,11 +4043,11 @@ func lawSpecEvaluateKafkaConsumerStart_2(
 func lawSpecEvaluateKafkaConsumerSubscribe_2(
 	symbols map[string]*LawSpecSymbol,
 	consumerState LawSpecValue,
-	value0 LawSpecValue,
-	value1 LawSpecValue,
-	value2 LawSpecValue,
+	text1 LawSpecValue,
+	text2 LawSpecValue,
+	list1 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairEitherKafkaErrorListTopicPartitionConsumerState(lsfKafkaConsumerSubscribe(symbols, lsfFromValueConsumerState(consumerState), lsfFromValueText(value0), lsfFromValueText(value1), lsfFromValueListText(value2)))
+	return lsfToValuePairEitherKafkaErrorListTopicPartitionConsumerState(lsfKafkaConsumerSubscribe(symbols, lsfFromValueConsumerState(consumerState), lsfFromValueText(text1), lsfFromValueText(text2), lsfFromValueListText(list1)))
 }
 
 // kafkaProducerEnableIdempotence on logical values — ../src/contract.lawspec:1230.
@@ -4086,9 +4086,9 @@ func lawSpecEvaluateKafkaProducerRetryLastSend_2(
 func lawSpecEvaluateKafkaProducerSend_2(
 	symbols map[string]*LawSpecSymbol,
 	producerState LawSpecValue,
-	value0 LawSpecValue,
+	producerRecord1 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairEitherKafkaErrorRecordMetadataProducerState(lsfKafkaProducerSend(symbols, lsfFromValueProducerState(producerState), lsfFromValueProducerRecord(value0)))
+	return lsfToValuePairEitherKafkaErrorRecordMetadataProducerState(lsfKafkaProducerSend(symbols, lsfFromValueProducerState(producerState), lsfFromValueProducerRecord(producerRecord1)))
 }
 
 // kafkaProducerStart on logical values — ../src/contract.lawspec:1226.
@@ -4111,9 +4111,9 @@ func lawSpecEvaluateKafkaTransactionsAbortTransaction_2(
 func lawSpecEvaluateKafkaTransactionsAddPartitionsToTransaction_2(
 	symbols map[string]*LawSpecSymbol,
 	txnState LawSpecValue,
-	value0 LawSpecValue,
+	list1 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairEitherKafkaErrorUnitTransactionState(lsfKafkaTransactionsAddPartitionsToTransaction(symbols, lsfFromValueTransactionState(txnState), lsfFromValueListTopicPartition(value0)))
+	return lsfToValuePairEitherKafkaErrorUnitTransactionState(lsfKafkaTransactionsAddPartitionsToTransaction(symbols, lsfFromValueTransactionState(txnState), lsfFromValueListTopicPartition(list1)))
 }
 
 // kafkaTransactionsBeginTransaction on logical values — ../src/contract.lawspec:1733.
@@ -4136,28 +4136,28 @@ func lawSpecEvaluateKafkaTransactionsCommitTransaction_2(
 func lawSpecEvaluateKafkaTransactionsInitTransactions_2(
 	symbols map[string]*LawSpecSymbol,
 	txnState LawSpecValue,
-	value0 LawSpecValue,
+	text1 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairEitherKafkaErrorProducerIdAndEpochTransactionState(lsfKafkaTransactionsInitTransactions(symbols, lsfFromValueTransactionState(txnState), lsfFromValueText(value0)))
+	return lsfToValuePairEitherKafkaErrorProducerIdAndEpochTransactionState(lsfKafkaTransactionsInitTransactions(symbols, lsfFromValueTransactionState(txnState), lsfFromValueText(text1)))
 }
 
 // kafkaTransactionsSendInTransaction on logical values — ../src/contract.lawspec:1735.
 func lawSpecEvaluateKafkaTransactionsSendInTransaction_2(
 	symbols map[string]*LawSpecSymbol,
 	txnState LawSpecValue,
-	value0 LawSpecValue,
+	producerRecord1 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairEitherKafkaErrorRecordMetadataTransactionState(lsfKafkaTransactionsSendInTransaction(symbols, lsfFromValueTransactionState(txnState), lsfFromValueProducerRecord(value0)))
+	return lsfToValuePairEitherKafkaErrorRecordMetadataTransactionState(lsfKafkaTransactionsSendInTransaction(symbols, lsfFromValueTransactionState(txnState), lsfFromValueProducerRecord(producerRecord1)))
 }
 
 // kafkaTransactionsSendOffsetsToTransaction on logical values — ../src/contract.lawspec:1736.
 func lawSpecEvaluateKafkaTransactionsSendOffsetsToTransaction_2(
 	symbols map[string]*LawSpecSymbol,
 	txnState LawSpecValue,
-	value0 LawSpecValue,
-	value1 LawSpecValue,
+	text1 LawSpecValue,
+	list1 LawSpecValue,
 ) LawSpecValue {
-	return lsfToValuePairEitherKafkaErrorUnitTransactionState(lsfKafkaTransactionsSendOffsetsToTransaction(symbols, lsfFromValueTransactionState(txnState), lsfFromValueText(value0), lsfFromValueListOffsetEntry(value1)))
+	return lsfToValuePairEitherKafkaErrorUnitTransactionState(lsfKafkaTransactionsSendOffsetsToTransaction(symbols, lsfFromValueTransactionState(txnState), lsfFromValueText(text1), lsfFromValueListOffsetEntry(list1)))
 }
 
 // kafkaTransactionsStart on logical values — ../src/contract.lawspec:1730.

@@ -4,65 +4,65 @@ package kafka
 
 // Admin is the Admin ability: a handler answers each of its operations.
 type Admin interface {
-	CreateTopic(value0 string, value1 int32)
-	CreatePartitions(value0 string, value1 int32)
-	PartitionsFor(value0 string) LawSpecMaybe[int32]
-	ListOffsets(value0 TopicPartition, value1 OffsetSpec, value2 IsolationLevel) int64
+	CreateTopic(text1 string, int32_1 int32)
+	CreatePartitions(text1 string, int32_1 int32)
+	PartitionsFor(text1 string) LawSpecMaybe[int32]
+	ListOffsets(topicPartition1 TopicPartition, offsetSpec1 OffsetSpec, isolationLevel1 IsolationLevel) int64
 }
 
 // Broker is the Broker ability: a handler answers each of its operations.
 type Broker interface {
-	CreateTopicsRequest(value0 string, value1 int32)
-	CreatePartitionsRequest(value0 string, value1 int32)
-	MetadataRequest(value0 string) LawSpecMaybe[int32]
-	ProduceRequest(value0 TopicPartition, value1 LawSpecMaybe[ProducerTag], value2 []Record) int64
-	FetchRequest(value0 TopicPartition, value1 int64, value2 int32, value3 IsolationLevel) FetchResult
-	ListOffsetsRequest(value0 TopicPartition, value1 OffsetSpec, value2 IsolationLevel) int64
-	InitProducerIdRequest(value0 LawSpecMaybe[string]) ProducerIdAndEpoch
-	AddPartitionsToTxnRequest(value0 string, value1 int64, value2 int16, value3 []TopicPartition)
-	TxnOffsetCommitRequest(value0 string, value1 int64, value2 int16, value3 string, value4 []OffsetEntry)
-	EndTxnRequest(value0 string, value1 int64, value2 int16, value3 bool)
-	JoinGroupRequest(value0 string, value1 string, value2 []string) int32
-	SyncGroupRequest(value0 string, value1 string, value2 int32) []TopicPartition
-	HeartbeatRequest(value0 string, value1 string, value2 int32)
-	LeaveGroupRequest(value0 string, value1 string)
-	DescribeGroupRequest(value0 string) GroupView
-	OffsetCommitRequest(value0 string, value1 string, value2 int32, value3 []OffsetEntry)
-	OffsetFetchRequest(value0 string, value1 TopicPartition) LawSpecMaybe[int64]
+	CreateTopicsRequest(text1 string, int32_1 int32)
+	CreatePartitionsRequest(text1 string, int32_1 int32)
+	MetadataRequest(text1 string) LawSpecMaybe[int32]
+	ProduceRequest(topicPartition1 TopicPartition, maybe1 LawSpecMaybe[ProducerTag], list1 []Record) int64
+	FetchRequest(topicPartition1 TopicPartition, int64_1 int64, int32_1 int32, isolationLevel1 IsolationLevel) FetchResult
+	ListOffsetsRequest(topicPartition1 TopicPartition, offsetSpec1 OffsetSpec, isolationLevel1 IsolationLevel) int64
+	InitProducerIdRequest(maybe1 LawSpecMaybe[string]) ProducerIdAndEpoch
+	AddPartitionsToTxnRequest(text1 string, int64_1 int64, int16_1 int16, list1 []TopicPartition)
+	TxnOffsetCommitRequest(text1 string, int64_1 int64, int16_1 int16, text2 string, list1 []OffsetEntry)
+	EndTxnRequest(text1 string, int64_1 int64, int16_1 int16, bool1 bool)
+	JoinGroupRequest(text1 string, text2 string, list1 []string) int32
+	SyncGroupRequest(text1 string, text2 string, int32_1 int32) []TopicPartition
+	HeartbeatRequest(text1 string, text2 string, int32_1 int32)
+	LeaveGroupRequest(text1 string, text2 string)
+	DescribeGroupRequest(text1 string) GroupView
+	OffsetCommitRequest(text1 string, text2 string, int32_1 int32, list1 []OffsetEntry)
+	OffsetFetchRequest(text1 string, topicPartition1 TopicPartition) LawSpecMaybe[int64]
 }
 
 // Consumer is the Consumer ability: a handler answers each of its operations.
 type Consumer interface {
-	Assign(value0 []TopicPartition)
-	Subscribe(value0 string, value1 string, value2 []string) LawSpecEither[KafkaError, []TopicPartition]
-	Poll(value0 int32) LawSpecEither[KafkaError, []ConsumerRecord]
+	Assign(list1 []TopicPartition)
+	Subscribe(text1 string, text2 string, list1 []string) LawSpecEither[KafkaError, []TopicPartition]
+	Poll(int32_1 int32) LawSpecEither[KafkaError, []ConsumerRecord]
 	CommitSync() LawSpecEither[KafkaError, LawSpecUnit]
-	Seek(value0 TopicPartition, value1 int64) LawSpecEither[KafkaError, LawSpecUnit]
-	Position(value0 TopicPartition) LawSpecEither[KafkaError, int64]
-	CommittedOffset(value0 TopicPartition) LawSpecMaybe[int64]
-	SetIsolationLevel(value0 IsolationLevel)
+	Seek(topicPartition1 TopicPartition, int64_1 int64) LawSpecEither[KafkaError, LawSpecUnit]
+	Position(topicPartition1 TopicPartition) LawSpecEither[KafkaError, int64]
+	CommittedOffset(topicPartition1 TopicPartition) LawSpecMaybe[int64]
+	SetIsolationLevel(isolationLevel1 IsolationLevel)
 	Close()
 }
 
 // GroupCoordinator is the GroupCoordinator ability: a handler answers each of its operations.
 type GroupCoordinator interface {
-	JoinGroup(value0 string, value1 string, value2 []string) int32
-	SyncGroup(value0 string, value1 string, value2 int32) []TopicPartition
-	Heartbeat(value0 string, value1 string, value2 int32)
-	LeaveGroup(value0 string, value1 string)
-	DescribeGroup(value0 string) GroupView
-	CommitOffsets(value0 string, value1 string, value2 int32, value3 []OffsetEntry)
-	FetchOffset(value0 string, value1 TopicPartition) LawSpecMaybe[int64]
+	JoinGroup(text1 string, text2 string, list1 []string) int32
+	SyncGroup(text1 string, text2 string, int32_1 int32) []TopicPartition
+	Heartbeat(text1 string, text2 string, int32_1 int32)
+	LeaveGroup(text1 string, text2 string)
+	DescribeGroup(text1 string) GroupView
+	CommitOffsets(text1 string, text2 string, int32_1 int32, list1 []OffsetEntry)
+	FetchOffset(text1 string, topicPartition1 TopicPartition) LawSpecMaybe[int64]
 }
 
 // Partitioner is the Partitioner ability: a handler answers each of its operations.
 type Partitioner interface {
-	ChoosePartition(value0 LawSpecMaybe[[]byte], value1 int32) int32
+	ChoosePartition(maybe1 LawSpecMaybe[[]byte], int32_1 int32) int32
 }
 
 // Producer is the Producer ability: a handler answers each of its operations.
 type Producer interface {
-	Send(value0 ProducerRecord) LawSpecEither[KafkaError, RecordMetadata]
+	Send(producerRecord1 ProducerRecord) LawSpecEither[KafkaError, RecordMetadata]
 	Flush()
 	EnableIdempotence() LawSpecEither[KafkaError, ProducerIdAndEpoch]
 	RetryLastSend() LawSpecEither[KafkaError, RecordMetadata]
@@ -71,11 +71,11 @@ type Producer interface {
 
 // Transactions is the Transactions ability: a handler answers each of its operations.
 type Transactions interface {
-	InitTransactions(value0 string) LawSpecEither[KafkaError, ProducerIdAndEpoch]
+	InitTransactions(text1 string) LawSpecEither[KafkaError, ProducerIdAndEpoch]
 	BeginTransaction() LawSpecEither[KafkaError, LawSpecUnit]
-	AddPartitionsToTransaction(value0 []TopicPartition) LawSpecEither[KafkaError, LawSpecUnit]
-	SendInTransaction(value0 ProducerRecord) LawSpecEither[KafkaError, RecordMetadata]
-	SendOffsetsToTransaction(value0 string, value1 []OffsetEntry) LawSpecEither[KafkaError, LawSpecUnit]
+	AddPartitionsToTransaction(list1 []TopicPartition) LawSpecEither[KafkaError, LawSpecUnit]
+	SendInTransaction(producerRecord1 ProducerRecord) LawSpecEither[KafkaError, RecordMetadata]
+	SendOffsetsToTransaction(text1 string, list1 []OffsetEntry) LawSpecEither[KafkaError, LawSpecUnit]
 	CommitTransaction() LawSpecEither[KafkaError, LawSpecUnit]
 	AbortTransaction() LawSpecEither[KafkaError, LawSpecUnit]
 }
@@ -99,226 +99,226 @@ func StartCluster() *Cluster {
 	return NewCluster(map[string]*LawSpecSymbol{})
 }
 
-func (handler *Cluster) CreateTopicsRequest(value0 string, value1 int32) {
+func (handler *Cluster) CreateTopicsRequest(text1 string, int32_1 int32) {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterCreateTopic(handler.state, lsfFromNativeText(value0), lsfFromNativeInt32(value1))
+	pair := lsfClusterCreateTopic(handler.state, lsfFromNativeText(text1), lsfFromNativeInt32(int32_1))
 	handler.state = pair.fSecond
 	_ = pair.fFirst
 }
 
-func (handler *Cluster) CreatePartitionsRequest(value0 string, value1 int32) {
+func (handler *Cluster) CreatePartitionsRequest(text1 string, int32_1 int32) {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterCreatePartitions(handler.state, lsfFromNativeText(value0), lsfFromNativeInt32(value1))
+	pair := lsfClusterCreatePartitions(handler.state, lsfFromNativeText(text1), lsfFromNativeInt32(int32_1))
 	handler.state = pair.fSecond
 	_ = pair.fFirst
 }
 
-func (handler *Cluster) MetadataRequest(value0 string) LawSpecMaybe[int32] {
+func (handler *Cluster) MetadataRequest(text1 string) LawSpecMaybe[int32] {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterMetadataRequest(handler.state, lsfFromNativeText(value0))
+	pair := lsfClusterMetadataRequest(handler.state, lsfFromNativeText(text1))
 	handler.state = pair.fSecond
 	return lsfToNativeMaybeInt32(pair.fFirst)
 }
 
-func (handler *Cluster) ProduceRequest(value0 TopicPartition, value1 LawSpecMaybe[ProducerTag], value2 []Record) int64 {
+func (handler *Cluster) ProduceRequest(topicPartition1 TopicPartition, maybe1 LawSpecMaybe[ProducerTag], list1 []Record) int64 {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterProduceRequest(handler.state, lsfFromNativeTopicPartition(value0), lsfFromNativeMaybeProducerTag(value1), lsfFromNativeListRecord(value2))
+	pair := lsfClusterProduceRequest(handler.state, lsfFromNativeTopicPartition(topicPartition1), lsfFromNativeMaybeProducerTag(maybe1), lsfFromNativeListRecord(list1))
 	handler.state = pair.fSecond
 	return lsfToNativeInt64(pair.fFirst)
 }
 
-func (handler *Cluster) FetchRequest(value0 TopicPartition, value1 int64, value2 int32, value3 IsolationLevel) FetchResult {
+func (handler *Cluster) FetchRequest(topicPartition1 TopicPartition, int64_1 int64, int32_1 int32, isolationLevel1 IsolationLevel) FetchResult {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterFetchRequest(handler.state, lsfFromNativeTopicPartition(value0), lsfFromNativeInt64(value1), lsfFromNativeInt32(value2), lsfFromNativeIsolationLevel(value3))
+	pair := lsfClusterFetchRequest(handler.state, lsfFromNativeTopicPartition(topicPartition1), lsfFromNativeInt64(int64_1), lsfFromNativeInt32(int32_1), lsfFromNativeIsolationLevel(isolationLevel1))
 	handler.state = pair.fSecond
 	return lsfToNativeFetchResult(pair.fFirst)
 }
 
-func (handler *Cluster) ListOffsetsRequest(value0 TopicPartition, value1 OffsetSpec, value2 IsolationLevel) int64 {
+func (handler *Cluster) ListOffsetsRequest(topicPartition1 TopicPartition, offsetSpec1 OffsetSpec, isolationLevel1 IsolationLevel) int64 {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterListOffsets(handler.state, lsfFromNativeTopicPartition(value0), lsfFromNativeOffsetSpec(value1), lsfFromNativeIsolationLevel(value2))
+	pair := lsfClusterListOffsets(handler.state, lsfFromNativeTopicPartition(topicPartition1), lsfFromNativeOffsetSpec(offsetSpec1), lsfFromNativeIsolationLevel(isolationLevel1))
 	handler.state = pair.fSecond
 	return lsfToNativeInt64(pair.fFirst)
 }
 
-func (handler *Cluster) InitProducerIdRequest(value0 LawSpecMaybe[string]) ProducerIdAndEpoch {
+func (handler *Cluster) InitProducerIdRequest(maybe1 LawSpecMaybe[string]) ProducerIdAndEpoch {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterInitProducerIdRequest(handler.state, lsfFromNativeMaybeText(value0))
+	pair := lsfClusterInitProducerIdRequest(handler.state, lsfFromNativeMaybeText(maybe1))
 	handler.state = pair.fSecond
 	return lsfToNativeProducerIdAndEpoch(pair.fFirst)
 }
 
-func (handler *Cluster) AddPartitionsToTxnRequest(value0 string, value1 int64, value2 int16, value3 []TopicPartition) {
+func (handler *Cluster) AddPartitionsToTxnRequest(text1 string, int64_1 int64, int16_1 int16, list1 []TopicPartition) {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterAddPartitionsToTxnRequest(handler.state, lsfFromNativeText(value0), lsfFromNativeInt64(value1), lsfFromNativeInt16(value2), lsfFromNativeListTopicPartition(value3))
+	pair := lsfClusterAddPartitionsToTxnRequest(handler.state, lsfFromNativeText(text1), lsfFromNativeInt64(int64_1), lsfFromNativeInt16(int16_1), lsfFromNativeListTopicPartition(list1))
 	handler.state = pair.fSecond
 	_ = pair.fFirst
 }
 
-func (handler *Cluster) TxnOffsetCommitRequest(value0 string, value1 int64, value2 int16, value3 string, value4 []OffsetEntry) {
+func (handler *Cluster) TxnOffsetCommitRequest(text1 string, int64_1 int64, int16_1 int16, text2 string, list1 []OffsetEntry) {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterTxnOffsetCommitRequest(handler.state, lsfFromNativeText(value0), lsfFromNativeInt64(value1), lsfFromNativeInt16(value2), lsfFromNativeText(value3), lsfFromNativeListOffsetEntry(value4))
+	pair := lsfClusterTxnOffsetCommitRequest(handler.state, lsfFromNativeText(text1), lsfFromNativeInt64(int64_1), lsfFromNativeInt16(int16_1), lsfFromNativeText(text2), lsfFromNativeListOffsetEntry(list1))
 	handler.state = pair.fSecond
 	_ = pair.fFirst
 }
 
-func (handler *Cluster) EndTxnRequest(value0 string, value1 int64, value2 int16, value3 bool) {
+func (handler *Cluster) EndTxnRequest(text1 string, int64_1 int64, int16_1 int16, bool1 bool) {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterEndTxnRequest(handler.state, lsfFromNativeText(value0), lsfFromNativeInt64(value1), lsfFromNativeInt16(value2), lsfFromNativeBool(value3))
+	pair := lsfClusterEndTxnRequest(handler.state, lsfFromNativeText(text1), lsfFromNativeInt64(int64_1), lsfFromNativeInt16(int16_1), lsfFromNativeBool(bool1))
 	handler.state = pair.fSecond
 	_ = pair.fFirst
 }
 
-func (handler *Cluster) JoinGroupRequest(value0 string, value1 string, value2 []string) int32 {
+func (handler *Cluster) JoinGroupRequest(text1 string, text2 string, list1 []string) int32 {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterJoinGroup(handler.state, lsfFromNativeText(value0), lsfFromNativeText(value1), lsfFromNativeListText(value2))
+	pair := lsfClusterJoinGroup(handler.state, lsfFromNativeText(text1), lsfFromNativeText(text2), lsfFromNativeListText(list1))
 	handler.state = pair.fSecond
 	return lsfToNativeInt32(pair.fFirst)
 }
 
-func (handler *Cluster) SyncGroupRequest(value0 string, value1 string, value2 int32) []TopicPartition {
+func (handler *Cluster) SyncGroupRequest(text1 string, text2 string, int32_1 int32) []TopicPartition {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterSyncGroup(handler.state, lsfFromNativeText(value0), lsfFromNativeText(value1), lsfFromNativeInt32(value2))
+	pair := lsfClusterSyncGroup(handler.state, lsfFromNativeText(text1), lsfFromNativeText(text2), lsfFromNativeInt32(int32_1))
 	handler.state = pair.fSecond
 	return lsfToNativeListTopicPartition(pair.fFirst)
 }
 
-func (handler *Cluster) HeartbeatRequest(value0 string, value1 string, value2 int32) {
+func (handler *Cluster) HeartbeatRequest(text1 string, text2 string, int32_1 int32) {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterHeartbeat(handler.state, lsfFromNativeText(value0), lsfFromNativeText(value1), lsfFromNativeInt32(value2))
+	pair := lsfClusterHeartbeat(handler.state, lsfFromNativeText(text1), lsfFromNativeText(text2), lsfFromNativeInt32(int32_1))
 	handler.state = pair.fSecond
 	_ = pair.fFirst
 }
 
-func (handler *Cluster) LeaveGroupRequest(value0 string, value1 string) {
+func (handler *Cluster) LeaveGroupRequest(text1 string, text2 string) {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterLeaveGroup(handler.state, lsfFromNativeText(value0), lsfFromNativeText(value1))
+	pair := lsfClusterLeaveGroup(handler.state, lsfFromNativeText(text1), lsfFromNativeText(text2))
 	handler.state = pair.fSecond
 	_ = pair.fFirst
 }
 
-func (handler *Cluster) DescribeGroupRequest(value0 string) GroupView {
+func (handler *Cluster) DescribeGroupRequest(text1 string) GroupView {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterDescribeGroup(handler.state, lsfFromNativeText(value0))
+	pair := lsfClusterDescribeGroup(handler.state, lsfFromNativeText(text1))
 	handler.state = pair.fSecond
 	return lsfToNativeGroupView(pair.fFirst)
 }
 
-func (handler *Cluster) OffsetCommitRequest(value0 string, value1 string, value2 int32, value3 []OffsetEntry) {
+func (handler *Cluster) OffsetCommitRequest(text1 string, text2 string, int32_1 int32, list1 []OffsetEntry) {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterCommitOffsets(handler.state, lsfFromNativeText(value0), lsfFromNativeText(value1), lsfFromNativeInt32(value2), lsfFromNativeListOffsetEntry(value3))
+	pair := lsfClusterCommitOffsets(handler.state, lsfFromNativeText(text1), lsfFromNativeText(text2), lsfFromNativeInt32(int32_1), lsfFromNativeListOffsetEntry(list1))
 	handler.state = pair.fSecond
 	_ = pair.fFirst
 }
 
-func (handler *Cluster) OffsetFetchRequest(value0 string, value1 TopicPartition) LawSpecMaybe[int64] {
+func (handler *Cluster) OffsetFetchRequest(text1 string, topicPartition1 TopicPartition) LawSpecMaybe[int64] {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterFetchOffset(handler.state, lsfFromNativeText(value0), lsfFromNativeTopicPartition(value1))
+	pair := lsfClusterFetchOffset(handler.state, lsfFromNativeText(text1), lsfFromNativeTopicPartition(topicPartition1))
 	handler.state = pair.fSecond
 	return lsfToNativeMaybeInt64(pair.fFirst)
 }
 
-func (handler *Cluster) CreateTopic(value0 string, value1 int32) {
+func (handler *Cluster) CreateTopic(text1 string, int32_1 int32) {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterCreateTopic(handler.state, lsfFromNativeText(value0), lsfFromNativeInt32(value1))
+	pair := lsfClusterCreateTopic(handler.state, lsfFromNativeText(text1), lsfFromNativeInt32(int32_1))
 	handler.state = pair.fSecond
 	_ = pair.fFirst
 }
 
-func (handler *Cluster) CreatePartitions(value0 string, value1 int32) {
+func (handler *Cluster) CreatePartitions(text1 string, int32_1 int32) {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterCreatePartitions(handler.state, lsfFromNativeText(value0), lsfFromNativeInt32(value1))
+	pair := lsfClusterCreatePartitions(handler.state, lsfFromNativeText(text1), lsfFromNativeInt32(int32_1))
 	handler.state = pair.fSecond
 	_ = pair.fFirst
 }
 
-func (handler *Cluster) PartitionsFor(value0 string) LawSpecMaybe[int32] {
+func (handler *Cluster) PartitionsFor(text1 string) LawSpecMaybe[int32] {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterMetadataRequest(handler.state, lsfFromNativeText(value0))
+	pair := lsfClusterMetadataRequest(handler.state, lsfFromNativeText(text1))
 	handler.state = pair.fSecond
 	return lsfToNativeMaybeInt32(pair.fFirst)
 }
 
-func (handler *Cluster) ListOffsets(value0 TopicPartition, value1 OffsetSpec, value2 IsolationLevel) int64 {
+func (handler *Cluster) ListOffsets(topicPartition1 TopicPartition, offsetSpec1 OffsetSpec, isolationLevel1 IsolationLevel) int64 {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterListOffsets(handler.state, lsfFromNativeTopicPartition(value0), lsfFromNativeOffsetSpec(value1), lsfFromNativeIsolationLevel(value2))
+	pair := lsfClusterListOffsets(handler.state, lsfFromNativeTopicPartition(topicPartition1), lsfFromNativeOffsetSpec(offsetSpec1), lsfFromNativeIsolationLevel(isolationLevel1))
 	handler.state = pair.fSecond
 	return lsfToNativeInt64(pair.fFirst)
 }
 
-func (handler *Cluster) JoinGroup(value0 string, value1 string, value2 []string) int32 {
+func (handler *Cluster) JoinGroup(text1 string, text2 string, list1 []string) int32 {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterJoinGroup(handler.state, lsfFromNativeText(value0), lsfFromNativeText(value1), lsfFromNativeListText(value2))
+	pair := lsfClusterJoinGroup(handler.state, lsfFromNativeText(text1), lsfFromNativeText(text2), lsfFromNativeListText(list1))
 	handler.state = pair.fSecond
 	return lsfToNativeInt32(pair.fFirst)
 }
 
-func (handler *Cluster) SyncGroup(value0 string, value1 string, value2 int32) []TopicPartition {
+func (handler *Cluster) SyncGroup(text1 string, text2 string, int32_1 int32) []TopicPartition {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterSyncGroup(handler.state, lsfFromNativeText(value0), lsfFromNativeText(value1), lsfFromNativeInt32(value2))
+	pair := lsfClusterSyncGroup(handler.state, lsfFromNativeText(text1), lsfFromNativeText(text2), lsfFromNativeInt32(int32_1))
 	handler.state = pair.fSecond
 	return lsfToNativeListTopicPartition(pair.fFirst)
 }
 
-func (handler *Cluster) Heartbeat(value0 string, value1 string, value2 int32) {
+func (handler *Cluster) Heartbeat(text1 string, text2 string, int32_1 int32) {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterHeartbeat(handler.state, lsfFromNativeText(value0), lsfFromNativeText(value1), lsfFromNativeInt32(value2))
+	pair := lsfClusterHeartbeat(handler.state, lsfFromNativeText(text1), lsfFromNativeText(text2), lsfFromNativeInt32(int32_1))
 	handler.state = pair.fSecond
 	_ = pair.fFirst
 }
 
-func (handler *Cluster) LeaveGroup(value0 string, value1 string) {
+func (handler *Cluster) LeaveGroup(text1 string, text2 string) {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterLeaveGroup(handler.state, lsfFromNativeText(value0), lsfFromNativeText(value1))
+	pair := lsfClusterLeaveGroup(handler.state, lsfFromNativeText(text1), lsfFromNativeText(text2))
 	handler.state = pair.fSecond
 	_ = pair.fFirst
 }
 
-func (handler *Cluster) DescribeGroup(value0 string) GroupView {
+func (handler *Cluster) DescribeGroup(text1 string) GroupView {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterDescribeGroup(handler.state, lsfFromNativeText(value0))
+	pair := lsfClusterDescribeGroup(handler.state, lsfFromNativeText(text1))
 	handler.state = pair.fSecond
 	return lsfToNativeGroupView(pair.fFirst)
 }
 
-func (handler *Cluster) CommitOffsets(value0 string, value1 string, value2 int32, value3 []OffsetEntry) {
+func (handler *Cluster) CommitOffsets(text1 string, text2 string, int32_1 int32, list1 []OffsetEntry) {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterCommitOffsets(handler.state, lsfFromNativeText(value0), lsfFromNativeText(value1), lsfFromNativeInt32(value2), lsfFromNativeListOffsetEntry(value3))
+	pair := lsfClusterCommitOffsets(handler.state, lsfFromNativeText(text1), lsfFromNativeText(text2), lsfFromNativeInt32(int32_1), lsfFromNativeListOffsetEntry(list1))
 	handler.state = pair.fSecond
 	_ = pair.fFirst
 }
 
-func (handler *Cluster) FetchOffset(value0 string, value1 TopicPartition) LawSpecMaybe[int64] {
+func (handler *Cluster) FetchOffset(text1 string, topicPartition1 TopicPartition) LawSpecMaybe[int64] {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterFetchOffset(handler.state, lsfFromNativeText(value0), lsfFromNativeTopicPartition(value1))
+	pair := lsfClusterFetchOffset(handler.state, lsfFromNativeText(text1), lsfFromNativeTopicPartition(topicPartition1))
 	handler.state = pair.fSecond
 	return lsfToNativeMaybeInt64(pair.fFirst)
 }
@@ -352,7 +352,7 @@ func (handler *Cluster) SetTypedState(state *lsfBrokerState) {
 }
 
 // TryCreateTopicsRequest is CreateTopicsRequest, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
-func (handler *Cluster) TryCreateTopicsRequest(value0 string, value1 int32) (err error) {
+func (handler *Cluster) TryCreateTopicsRequest(text1 string, int32_1 int32) (err error) {
 	defer func() {
 		if problem := recover(); problem != nil {
 			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
@@ -365,12 +365,12 @@ func (handler *Cluster) TryCreateTopicsRequest(value0 string, value1 int32) (err
 			panic(problem)
 		}
 	}()
-	handler.CreateTopicsRequest(value0, value1)
+	handler.CreateTopicsRequest(text1, int32_1)
 	return nil
 }
 
 // TryCreatePartitionsRequest is CreatePartitionsRequest, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
-func (handler *Cluster) TryCreatePartitionsRequest(value0 string, value1 int32) (err error) {
+func (handler *Cluster) TryCreatePartitionsRequest(text1 string, int32_1 int32) (err error) {
 	defer func() {
 		if problem := recover(); problem != nil {
 			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
@@ -383,12 +383,12 @@ func (handler *Cluster) TryCreatePartitionsRequest(value0 string, value1 int32) 
 			panic(problem)
 		}
 	}()
-	handler.CreatePartitionsRequest(value0, value1)
+	handler.CreatePartitionsRequest(text1, int32_1)
 	return nil
 }
 
 // TryProduceRequest is ProduceRequest, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
-func (handler *Cluster) TryProduceRequest(value0 TopicPartition, value1 LawSpecMaybe[ProducerTag], value2 []Record) (result int64, err error) {
+func (handler *Cluster) TryProduceRequest(topicPartition1 TopicPartition, maybe1 LawSpecMaybe[ProducerTag], list1 []Record) (result int64, err error) {
 	defer func() {
 		if problem := recover(); problem != nil {
 			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
@@ -401,11 +401,11 @@ func (handler *Cluster) TryProduceRequest(value0 TopicPartition, value1 LawSpecM
 			panic(problem)
 		}
 	}()
-	return handler.ProduceRequest(value0, value1, value2), nil
+	return handler.ProduceRequest(topicPartition1, maybe1, list1), nil
 }
 
 // TryFetchRequest is FetchRequest, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
-func (handler *Cluster) TryFetchRequest(value0 TopicPartition, value1 int64, value2 int32, value3 IsolationLevel) (result FetchResult, err error) {
+func (handler *Cluster) TryFetchRequest(topicPartition1 TopicPartition, int64_1 int64, int32_1 int32, isolationLevel1 IsolationLevel) (result FetchResult, err error) {
 	defer func() {
 		if problem := recover(); problem != nil {
 			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
@@ -418,11 +418,11 @@ func (handler *Cluster) TryFetchRequest(value0 TopicPartition, value1 int64, val
 			panic(problem)
 		}
 	}()
-	return handler.FetchRequest(value0, value1, value2, value3), nil
+	return handler.FetchRequest(topicPartition1, int64_1, int32_1, isolationLevel1), nil
 }
 
 // TryListOffsetsRequest is ListOffsetsRequest, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
-func (handler *Cluster) TryListOffsetsRequest(value0 TopicPartition, value1 OffsetSpec, value2 IsolationLevel) (result int64, err error) {
+func (handler *Cluster) TryListOffsetsRequest(topicPartition1 TopicPartition, offsetSpec1 OffsetSpec, isolationLevel1 IsolationLevel) (result int64, err error) {
 	defer func() {
 		if problem := recover(); problem != nil {
 			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
@@ -435,11 +435,11 @@ func (handler *Cluster) TryListOffsetsRequest(value0 TopicPartition, value1 Offs
 			panic(problem)
 		}
 	}()
-	return handler.ListOffsetsRequest(value0, value1, value2), nil
+	return handler.ListOffsetsRequest(topicPartition1, offsetSpec1, isolationLevel1), nil
 }
 
 // TryInitProducerIdRequest is InitProducerIdRequest, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
-func (handler *Cluster) TryInitProducerIdRequest(value0 LawSpecMaybe[string]) (result ProducerIdAndEpoch, err error) {
+func (handler *Cluster) TryInitProducerIdRequest(maybe1 LawSpecMaybe[string]) (result ProducerIdAndEpoch, err error) {
 	defer func() {
 		if problem := recover(); problem != nil {
 			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
@@ -452,11 +452,11 @@ func (handler *Cluster) TryInitProducerIdRequest(value0 LawSpecMaybe[string]) (r
 			panic(problem)
 		}
 	}()
-	return handler.InitProducerIdRequest(value0), nil
+	return handler.InitProducerIdRequest(maybe1), nil
 }
 
 // TryAddPartitionsToTxnRequest is AddPartitionsToTxnRequest, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
-func (handler *Cluster) TryAddPartitionsToTxnRequest(value0 string, value1 int64, value2 int16, value3 []TopicPartition) (err error) {
+func (handler *Cluster) TryAddPartitionsToTxnRequest(text1 string, int64_1 int64, int16_1 int16, list1 []TopicPartition) (err error) {
 	defer func() {
 		if problem := recover(); problem != nil {
 			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
@@ -469,12 +469,12 @@ func (handler *Cluster) TryAddPartitionsToTxnRequest(value0 string, value1 int64
 			panic(problem)
 		}
 	}()
-	handler.AddPartitionsToTxnRequest(value0, value1, value2, value3)
+	handler.AddPartitionsToTxnRequest(text1, int64_1, int16_1, list1)
 	return nil
 }
 
 // TryTxnOffsetCommitRequest is TxnOffsetCommitRequest, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
-func (handler *Cluster) TryTxnOffsetCommitRequest(value0 string, value1 int64, value2 int16, value3 string, value4 []OffsetEntry) (err error) {
+func (handler *Cluster) TryTxnOffsetCommitRequest(text1 string, int64_1 int64, int16_1 int16, text2 string, list1 []OffsetEntry) (err error) {
 	defer func() {
 		if problem := recover(); problem != nil {
 			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
@@ -487,12 +487,12 @@ func (handler *Cluster) TryTxnOffsetCommitRequest(value0 string, value1 int64, v
 			panic(problem)
 		}
 	}()
-	handler.TxnOffsetCommitRequest(value0, value1, value2, value3, value4)
+	handler.TxnOffsetCommitRequest(text1, int64_1, int16_1, text2, list1)
 	return nil
 }
 
 // TryEndTxnRequest is EndTxnRequest, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
-func (handler *Cluster) TryEndTxnRequest(value0 string, value1 int64, value2 int16, value3 bool) (err error) {
+func (handler *Cluster) TryEndTxnRequest(text1 string, int64_1 int64, int16_1 int16, bool1 bool) (err error) {
 	defer func() {
 		if problem := recover(); problem != nil {
 			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
@@ -505,12 +505,12 @@ func (handler *Cluster) TryEndTxnRequest(value0 string, value1 int64, value2 int
 			panic(problem)
 		}
 	}()
-	handler.EndTxnRequest(value0, value1, value2, value3)
+	handler.EndTxnRequest(text1, int64_1, int16_1, bool1)
 	return nil
 }
 
 // TryJoinGroupRequest is JoinGroupRequest, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
-func (handler *Cluster) TryJoinGroupRequest(value0 string, value1 string, value2 []string) (result int32, err error) {
+func (handler *Cluster) TryJoinGroupRequest(text1 string, text2 string, list1 []string) (result int32, err error) {
 	defer func() {
 		if problem := recover(); problem != nil {
 			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
@@ -523,11 +523,11 @@ func (handler *Cluster) TryJoinGroupRequest(value0 string, value1 string, value2
 			panic(problem)
 		}
 	}()
-	return handler.JoinGroupRequest(value0, value1, value2), nil
+	return handler.JoinGroupRequest(text1, text2, list1), nil
 }
 
 // TrySyncGroupRequest is SyncGroupRequest, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
-func (handler *Cluster) TrySyncGroupRequest(value0 string, value1 string, value2 int32) (result []TopicPartition, err error) {
+func (handler *Cluster) TrySyncGroupRequest(text1 string, text2 string, int32_1 int32) (result []TopicPartition, err error) {
 	defer func() {
 		if problem := recover(); problem != nil {
 			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
@@ -540,11 +540,11 @@ func (handler *Cluster) TrySyncGroupRequest(value0 string, value1 string, value2
 			panic(problem)
 		}
 	}()
-	return handler.SyncGroupRequest(value0, value1, value2), nil
+	return handler.SyncGroupRequest(text1, text2, int32_1), nil
 }
 
 // TryHeartbeatRequest is HeartbeatRequest, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
-func (handler *Cluster) TryHeartbeatRequest(value0 string, value1 string, value2 int32) (err error) {
+func (handler *Cluster) TryHeartbeatRequest(text1 string, text2 string, int32_1 int32) (err error) {
 	defer func() {
 		if problem := recover(); problem != nil {
 			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
@@ -557,12 +557,12 @@ func (handler *Cluster) TryHeartbeatRequest(value0 string, value1 string, value2
 			panic(problem)
 		}
 	}()
-	handler.HeartbeatRequest(value0, value1, value2)
+	handler.HeartbeatRequest(text1, text2, int32_1)
 	return nil
 }
 
 // TryLeaveGroupRequest is LeaveGroupRequest, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
-func (handler *Cluster) TryLeaveGroupRequest(value0 string, value1 string) (err error) {
+func (handler *Cluster) TryLeaveGroupRequest(text1 string, text2 string) (err error) {
 	defer func() {
 		if problem := recover(); problem != nil {
 			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
@@ -575,12 +575,12 @@ func (handler *Cluster) TryLeaveGroupRequest(value0 string, value1 string) (err 
 			panic(problem)
 		}
 	}()
-	handler.LeaveGroupRequest(value0, value1)
+	handler.LeaveGroupRequest(text1, text2)
 	return nil
 }
 
 // TryOffsetCommitRequest is OffsetCommitRequest, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
-func (handler *Cluster) TryOffsetCommitRequest(value0 string, value1 string, value2 int32, value3 []OffsetEntry) (err error) {
+func (handler *Cluster) TryOffsetCommitRequest(text1 string, text2 string, int32_1 int32, list1 []OffsetEntry) (err error) {
 	defer func() {
 		if problem := recover(); problem != nil {
 			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
@@ -593,12 +593,12 @@ func (handler *Cluster) TryOffsetCommitRequest(value0 string, value1 string, val
 			panic(problem)
 		}
 	}()
-	handler.OffsetCommitRequest(value0, value1, value2, value3)
+	handler.OffsetCommitRequest(text1, text2, int32_1, list1)
 	return nil
 }
 
 // TryCreateTopic is CreateTopic, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
-func (handler *Cluster) TryCreateTopic(value0 string, value1 int32) (err error) {
+func (handler *Cluster) TryCreateTopic(text1 string, int32_1 int32) (err error) {
 	defer func() {
 		if problem := recover(); problem != nil {
 			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
@@ -611,12 +611,12 @@ func (handler *Cluster) TryCreateTopic(value0 string, value1 int32) (err error) 
 			panic(problem)
 		}
 	}()
-	handler.CreateTopic(value0, value1)
+	handler.CreateTopic(text1, int32_1)
 	return nil
 }
 
 // TryCreatePartitions is CreatePartitions, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
-func (handler *Cluster) TryCreatePartitions(value0 string, value1 int32) (err error) {
+func (handler *Cluster) TryCreatePartitions(text1 string, int32_1 int32) (err error) {
 	defer func() {
 		if problem := recover(); problem != nil {
 			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
@@ -629,12 +629,12 @@ func (handler *Cluster) TryCreatePartitions(value0 string, value1 int32) (err er
 			panic(problem)
 		}
 	}()
-	handler.CreatePartitions(value0, value1)
+	handler.CreatePartitions(text1, int32_1)
 	return nil
 }
 
 // TryListOffsets is ListOffsets, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
-func (handler *Cluster) TryListOffsets(value0 TopicPartition, value1 OffsetSpec, value2 IsolationLevel) (result int64, err error) {
+func (handler *Cluster) TryListOffsets(topicPartition1 TopicPartition, offsetSpec1 OffsetSpec, isolationLevel1 IsolationLevel) (result int64, err error) {
 	defer func() {
 		if problem := recover(); problem != nil {
 			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
@@ -647,11 +647,11 @@ func (handler *Cluster) TryListOffsets(value0 TopicPartition, value1 OffsetSpec,
 			panic(problem)
 		}
 	}()
-	return handler.ListOffsets(value0, value1, value2), nil
+	return handler.ListOffsets(topicPartition1, offsetSpec1, isolationLevel1), nil
 }
 
 // TryJoinGroup is JoinGroup, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
-func (handler *Cluster) TryJoinGroup(value0 string, value1 string, value2 []string) (result int32, err error) {
+func (handler *Cluster) TryJoinGroup(text1 string, text2 string, list1 []string) (result int32, err error) {
 	defer func() {
 		if problem := recover(); problem != nil {
 			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
@@ -664,11 +664,11 @@ func (handler *Cluster) TryJoinGroup(value0 string, value1 string, value2 []stri
 			panic(problem)
 		}
 	}()
-	return handler.JoinGroup(value0, value1, value2), nil
+	return handler.JoinGroup(text1, text2, list1), nil
 }
 
 // TrySyncGroup is SyncGroup, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
-func (handler *Cluster) TrySyncGroup(value0 string, value1 string, value2 int32) (result []TopicPartition, err error) {
+func (handler *Cluster) TrySyncGroup(text1 string, text2 string, int32_1 int32) (result []TopicPartition, err error) {
 	defer func() {
 		if problem := recover(); problem != nil {
 			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
@@ -681,11 +681,11 @@ func (handler *Cluster) TrySyncGroup(value0 string, value1 string, value2 int32)
 			panic(problem)
 		}
 	}()
-	return handler.SyncGroup(value0, value1, value2), nil
+	return handler.SyncGroup(text1, text2, int32_1), nil
 }
 
 // TryHeartbeat is Heartbeat, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
-func (handler *Cluster) TryHeartbeat(value0 string, value1 string, value2 int32) (err error) {
+func (handler *Cluster) TryHeartbeat(text1 string, text2 string, int32_1 int32) (err error) {
 	defer func() {
 		if problem := recover(); problem != nil {
 			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
@@ -698,12 +698,12 @@ func (handler *Cluster) TryHeartbeat(value0 string, value1 string, value2 int32)
 			panic(problem)
 		}
 	}()
-	handler.Heartbeat(value0, value1, value2)
+	handler.Heartbeat(text1, text2, int32_1)
 	return nil
 }
 
 // TryLeaveGroup is LeaveGroup, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
-func (handler *Cluster) TryLeaveGroup(value0 string, value1 string) (err error) {
+func (handler *Cluster) TryLeaveGroup(text1 string, text2 string) (err error) {
 	defer func() {
 		if problem := recover(); problem != nil {
 			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
@@ -716,12 +716,12 @@ func (handler *Cluster) TryLeaveGroup(value0 string, value1 string) (err error) 
 			panic(problem)
 		}
 	}()
-	handler.LeaveGroup(value0, value1)
+	handler.LeaveGroup(text1, text2)
 	return nil
 }
 
 // TryCommitOffsets is CommitOffsets, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
-func (handler *Cluster) TryCommitOffsets(value0 string, value1 string, value2 int32, value3 []OffsetEntry) (err error) {
+func (handler *Cluster) TryCommitOffsets(text1 string, text2 string, int32_1 int32, list1 []OffsetEntry) (err error) {
 	defer func() {
 		if problem := recover(); problem != nil {
 			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
@@ -734,7 +734,7 @@ func (handler *Cluster) TryCommitOffsets(value0 string, value1 string, value2 in
 			panic(problem)
 		}
 	}()
-	handler.CommitOffsets(value0, value1, value2, value3)
+	handler.CommitOffsets(text1, text2, int32_1, list1)
 	return nil
 }
 
@@ -757,26 +757,26 @@ func StartKafkaConsumer() *KafkaConsumer {
 	return NewKafkaConsumer(map[string]*LawSpecSymbol{})
 }
 
-func (handler *KafkaConsumer) Assign(value0 []TopicPartition) {
+func (handler *KafkaConsumer) Assign(list1 []TopicPartition) {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfKafkaConsumerAssign(handler.state, lsfFromNativeListTopicPartition(value0))
+	pair := lsfKafkaConsumerAssign(handler.state, lsfFromNativeListTopicPartition(list1))
 	handler.state = pair.fSecond
 	_ = pair.fFirst
 }
 
-func (handler *KafkaConsumer) Subscribe(value0 string, value1 string, value2 []string) LawSpecEither[KafkaError, []TopicPartition] {
+func (handler *KafkaConsumer) Subscribe(text1 string, text2 string, list1 []string) LawSpecEither[KafkaError, []TopicPartition] {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfKafkaConsumerSubscribe(handler.symbols, handler.state, lsfFromNativeText(value0), lsfFromNativeText(value1), lsfFromNativeListText(value2))
+	pair := lsfKafkaConsumerSubscribe(handler.symbols, handler.state, lsfFromNativeText(text1), lsfFromNativeText(text2), lsfFromNativeListText(list1))
 	handler.state = pair.fSecond
 	return lsfToNativeEitherKafkaErrorListTopicPartition(pair.fFirst)
 }
 
-func (handler *KafkaConsumer) Poll(value0 int32) LawSpecEither[KafkaError, []ConsumerRecord] {
+func (handler *KafkaConsumer) Poll(int32_1 int32) LawSpecEither[KafkaError, []ConsumerRecord] {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfKafkaConsumerPoll(handler.symbols, handler.state, lsfFromNativeInt32(value0))
+	pair := lsfKafkaConsumerPoll(handler.symbols, handler.state, lsfFromNativeInt32(int32_1))
 	handler.state = pair.fSecond
 	return lsfToNativeEitherKafkaErrorListConsumerRecord(pair.fFirst)
 }
@@ -789,34 +789,34 @@ func (handler *KafkaConsumer) CommitSync() LawSpecEither[KafkaError, LawSpecUnit
 	return lsfToNativeEitherKafkaErrorUnit(pair.fFirst)
 }
 
-func (handler *KafkaConsumer) Seek(value0 TopicPartition, value1 int64) LawSpecEither[KafkaError, LawSpecUnit] {
+func (handler *KafkaConsumer) Seek(topicPartition1 TopicPartition, int64_1 int64) LawSpecEither[KafkaError, LawSpecUnit] {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfKafkaConsumerSeek(handler.state, lsfFromNativeTopicPartition(value0), lsfFromNativeInt64(value1))
+	pair := lsfKafkaConsumerSeek(handler.state, lsfFromNativeTopicPartition(topicPartition1), lsfFromNativeInt64(int64_1))
 	handler.state = pair.fSecond
 	return lsfToNativeEitherKafkaErrorUnit(pair.fFirst)
 }
 
-func (handler *KafkaConsumer) Position(value0 TopicPartition) LawSpecEither[KafkaError, int64] {
+func (handler *KafkaConsumer) Position(topicPartition1 TopicPartition) LawSpecEither[KafkaError, int64] {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfKafkaConsumerPosition(handler.symbols, handler.state, lsfFromNativeTopicPartition(value0))
+	pair := lsfKafkaConsumerPosition(handler.symbols, handler.state, lsfFromNativeTopicPartition(topicPartition1))
 	handler.state = pair.fSecond
 	return lsfToNativeEitherKafkaErrorInt64(pair.fFirst)
 }
 
-func (handler *KafkaConsumer) CommittedOffset(value0 TopicPartition) LawSpecMaybe[int64] {
+func (handler *KafkaConsumer) CommittedOffset(topicPartition1 TopicPartition) LawSpecMaybe[int64] {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfKafkaConsumerCommittedOffset(handler.symbols, handler.state, lsfFromNativeTopicPartition(value0))
+	pair := lsfKafkaConsumerCommittedOffset(handler.symbols, handler.state, lsfFromNativeTopicPartition(topicPartition1))
 	handler.state = pair.fSecond
 	return lsfToNativeMaybeInt64(pair.fFirst)
 }
 
-func (handler *KafkaConsumer) SetIsolationLevel(value0 IsolationLevel) {
+func (handler *KafkaConsumer) SetIsolationLevel(isolationLevel1 IsolationLevel) {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfKafkaConsumerSetIsolationLevel(handler.state, lsfFromNativeIsolationLevel(value0))
+	pair := lsfKafkaConsumerSetIsolationLevel(handler.state, lsfFromNativeIsolationLevel(isolationLevel1))
 	handler.state = pair.fSecond
 	_ = pair.fFirst
 }
@@ -876,10 +876,10 @@ func StartKafkaProducer() *KafkaProducer {
 	return NewKafkaProducer(map[string]*LawSpecSymbol{})
 }
 
-func (handler *KafkaProducer) Send(value0 ProducerRecord) LawSpecEither[KafkaError, RecordMetadata] {
+func (handler *KafkaProducer) Send(producerRecord1 ProducerRecord) LawSpecEither[KafkaError, RecordMetadata] {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfKafkaProducerSend(handler.symbols, handler.state, lsfFromNativeProducerRecord(value0))
+	pair := lsfKafkaProducerSend(handler.symbols, handler.state, lsfFromNativeProducerRecord(producerRecord1))
 	handler.state = pair.fSecond
 	return lsfToNativeEitherKafkaErrorRecordMetadata(pair.fFirst)
 }
@@ -963,10 +963,10 @@ func StartKafkaTransactions() *KafkaTransactions {
 	return NewKafkaTransactions(map[string]*LawSpecSymbol{})
 }
 
-func (handler *KafkaTransactions) InitTransactions(value0 string) LawSpecEither[KafkaError, ProducerIdAndEpoch] {
+func (handler *KafkaTransactions) InitTransactions(text1 string) LawSpecEither[KafkaError, ProducerIdAndEpoch] {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfKafkaTransactionsInitTransactions(handler.symbols, handler.state, lsfFromNativeText(value0))
+	pair := lsfKafkaTransactionsInitTransactions(handler.symbols, handler.state, lsfFromNativeText(text1))
 	handler.state = pair.fSecond
 	return lsfToNativeEitherKafkaErrorProducerIdAndEpoch(pair.fFirst)
 }
@@ -979,26 +979,26 @@ func (handler *KafkaTransactions) BeginTransaction() LawSpecEither[KafkaError, L
 	return lsfToNativeEitherKafkaErrorUnit(pair.fFirst)
 }
 
-func (handler *KafkaTransactions) AddPartitionsToTransaction(value0 []TopicPartition) LawSpecEither[KafkaError, LawSpecUnit] {
+func (handler *KafkaTransactions) AddPartitionsToTransaction(list1 []TopicPartition) LawSpecEither[KafkaError, LawSpecUnit] {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfKafkaTransactionsAddPartitionsToTransaction(handler.symbols, handler.state, lsfFromNativeListTopicPartition(value0))
+	pair := lsfKafkaTransactionsAddPartitionsToTransaction(handler.symbols, handler.state, lsfFromNativeListTopicPartition(list1))
 	handler.state = pair.fSecond
 	return lsfToNativeEitherKafkaErrorUnit(pair.fFirst)
 }
 
-func (handler *KafkaTransactions) SendInTransaction(value0 ProducerRecord) LawSpecEither[KafkaError, RecordMetadata] {
+func (handler *KafkaTransactions) SendInTransaction(producerRecord1 ProducerRecord) LawSpecEither[KafkaError, RecordMetadata] {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfKafkaTransactionsSendInTransaction(handler.symbols, handler.state, lsfFromNativeProducerRecord(value0))
+	pair := lsfKafkaTransactionsSendInTransaction(handler.symbols, handler.state, lsfFromNativeProducerRecord(producerRecord1))
 	handler.state = pair.fSecond
 	return lsfToNativeEitherKafkaErrorRecordMetadata(pair.fFirst)
 }
 
-func (handler *KafkaTransactions) SendOffsetsToTransaction(value0 string, value1 []OffsetEntry) LawSpecEither[KafkaError, LawSpecUnit] {
+func (handler *KafkaTransactions) SendOffsetsToTransaction(text1 string, list1 []OffsetEntry) LawSpecEither[KafkaError, LawSpecUnit] {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfKafkaTransactionsSendOffsetsToTransaction(handler.symbols, handler.state, lsfFromNativeText(value0), lsfFromNativeListOffsetEntry(value1))
+	pair := lsfKafkaTransactionsSendOffsetsToTransaction(handler.symbols, handler.state, lsfFromNativeText(text1), lsfFromNativeListOffsetEntry(list1))
 	handler.state = pair.fSecond
 	return lsfToNativeEitherKafkaErrorUnit(pair.fFirst)
 }
@@ -1063,8 +1063,8 @@ func StartMurmurPartitioner() *MurmurPartitioner {
 	return NewMurmurPartitioner(map[string]*LawSpecSymbol{})
 }
 
-func (handler *MurmurPartitioner) ChoosePartition(value0 LawSpecMaybe[[]byte], value1 int32) int32 {
-	result := lsfMurmurPartitionerChoosePartition(lsfFromNativeMaybeBytes(value0), lsfFromNativeInt32(value1))
+func (handler *MurmurPartitioner) ChoosePartition(maybe1 LawSpecMaybe[[]byte], int32_1 int32) int32 {
+	result := lsfMurmurPartitionerChoosePartition(lsfFromNativeMaybeBytes(maybe1), lsfFromNativeInt32(int32_1))
 	return lsfToNativeInt32(result)
 }
 
@@ -1084,41 +1084,41 @@ func (recording *AdminRecording) lawSpecCalls() []LawSpecCall {
 	return recording.Calls
 }
 
-func (recording *AdminRecording) CreateTopic(value0 string, value1 int32) {
+func (recording *AdminRecording) CreateTopic(text1 string, int32_1 int32) {
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[int32](schema, bits, "Int32")
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "createTopic", Arguments: []LawSpecValue{codec0.fromNative(value0), codec1.fromNative(value1)}})
-	recording.Inner.CreateTopic(value0, value1)
+	text1Codec := lsScalarCodec[string](schema, bits, "Text")
+	int32_1Codec := lsScalarCodec[int32](schema, bits, "Int32")
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "createTopic", Arguments: []LawSpecValue{text1Codec.fromNative(text1), int32_1Codec.fromNative(int32_1)}})
+	recording.Inner.CreateTopic(text1, int32_1)
 }
 
-func (recording *AdminRecording) CreatePartitions(value0 string, value1 int32) {
+func (recording *AdminRecording) CreatePartitions(text1 string, int32_1 int32) {
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[int32](schema, bits, "Int32")
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "createPartitions", Arguments: []LawSpecValue{codec0.fromNative(value0), codec1.fromNative(value1)}})
-	recording.Inner.CreatePartitions(value0, value1)
+	text1Codec := lsScalarCodec[string](schema, bits, "Text")
+	int32_1Codec := lsScalarCodec[int32](schema, bits, "Int32")
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "createPartitions", Arguments: []LawSpecValue{text1Codec.fromNative(text1), int32_1Codec.fromNative(int32_1)}})
+	recording.Inner.CreatePartitions(text1, int32_1)
 }
 
-func (recording *AdminRecording) PartitionsFor(value0 string) LawSpecMaybe[int32] {
+func (recording *AdminRecording) PartitionsFor(text1 string) LawSpecMaybe[int32] {
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "partitionsFor", Arguments: []LawSpecValue{codec0.fromNative(value0)}})
-	return recording.Inner.PartitionsFor(value0)
+	text1Codec := lsScalarCodec[string](schema, bits, "Text")
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "partitionsFor", Arguments: []LawSpecValue{text1Codec.fromNative(text1)}})
+	return recording.Inner.PartitionsFor(text1)
 }
 
-func (recording *AdminRecording) ListOffsets(value0 TopicPartition, value1 OffsetSpec, value2 IsolationLevel) int64 {
+func (recording *AdminRecording) ListOffsets(topicPartition1 TopicPartition, offsetSpec1 OffsetSpec, isolationLevel1 IsolationLevel) int64 {
 	symbols := recording.symbols
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-	codec1 := lawSpecOffsetSpecCodec(schema, bits, symbols)
-	codec2 := lawSpecIsolationLevelCodec(schema, bits, symbols)
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "listOffsets", Arguments: []LawSpecValue{codec0.fromNative(value0), codec1.fromNative(value1), codec2.fromNative(value2)}})
-	return recording.Inner.ListOffsets(value0, value1, value2)
+	topicPartition1Codec := lawSpecTopicPartitionCodec(schema, bits, symbols)
+	offsetSpec1Codec := lawSpecOffsetSpecCodec(schema, bits, symbols)
+	isolationLevel1Codec := lawSpecIsolationLevelCodec(schema, bits, symbols)
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "listOffsets", Arguments: []LawSpecValue{topicPartition1Codec.fromNative(topicPartition1), offsetSpec1Codec.fromNative(offsetSpec1), isolationLevel1Codec.fromNative(isolationLevel1)}})
+	return recording.Inner.ListOffsets(topicPartition1, offsetSpec1, isolationLevel1)
 }
 
 // BrokerRecording records each call to a Broker handler, then passes it on.
@@ -1137,179 +1137,179 @@ func (recording *BrokerRecording) lawSpecCalls() []LawSpecCall {
 	return recording.Calls
 }
 
-func (recording *BrokerRecording) CreateTopicsRequest(value0 string, value1 int32) {
+func (recording *BrokerRecording) CreateTopicsRequest(text1 string, int32_1 int32) {
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[int32](schema, bits, "Int32")
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "createTopicsRequest", Arguments: []LawSpecValue{codec0.fromNative(value0), codec1.fromNative(value1)}})
-	recording.Inner.CreateTopicsRequest(value0, value1)
+	text1Codec := lsScalarCodec[string](schema, bits, "Text")
+	int32_1Codec := lsScalarCodec[int32](schema, bits, "Int32")
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "createTopicsRequest", Arguments: []LawSpecValue{text1Codec.fromNative(text1), int32_1Codec.fromNative(int32_1)}})
+	recording.Inner.CreateTopicsRequest(text1, int32_1)
 }
 
-func (recording *BrokerRecording) CreatePartitionsRequest(value0 string, value1 int32) {
+func (recording *BrokerRecording) CreatePartitionsRequest(text1 string, int32_1 int32) {
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[int32](schema, bits, "Int32")
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "createPartitionsRequest", Arguments: []LawSpecValue{codec0.fromNative(value0), codec1.fromNative(value1)}})
-	recording.Inner.CreatePartitionsRequest(value0, value1)
+	text1Codec := lsScalarCodec[string](schema, bits, "Text")
+	int32_1Codec := lsScalarCodec[int32](schema, bits, "Int32")
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "createPartitionsRequest", Arguments: []LawSpecValue{text1Codec.fromNative(text1), int32_1Codec.fromNative(int32_1)}})
+	recording.Inner.CreatePartitionsRequest(text1, int32_1)
 }
 
-func (recording *BrokerRecording) MetadataRequest(value0 string) LawSpecMaybe[int32] {
+func (recording *BrokerRecording) MetadataRequest(text1 string) LawSpecMaybe[int32] {
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "metadataRequest", Arguments: []LawSpecValue{codec0.fromNative(value0)}})
-	return recording.Inner.MetadataRequest(value0)
+	text1Codec := lsScalarCodec[string](schema, bits, "Text")
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "metadataRequest", Arguments: []LawSpecValue{text1Codec.fromNative(text1)}})
+	return recording.Inner.MetadataRequest(text1)
 }
 
-func (recording *BrokerRecording) ProduceRequest(value0 TopicPartition, value1 LawSpecMaybe[ProducerTag], value2 []Record) int64 {
+func (recording *BrokerRecording) ProduceRequest(topicPartition1 TopicPartition, maybe1 LawSpecMaybe[ProducerTag], list1 []Record) int64 {
 	symbols := recording.symbols
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-	codec1 := lsMaybeCodec(schema, bits, lawSpecProducerTagCodec(schema, bits, symbols), symbols)
-	codec2 := lsListCodec(schema, bits, lawSpecRecordCodec(schema, bits, symbols), symbols)
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "produceRequest", Arguments: []LawSpecValue{codec0.fromNative(value0), codec1.fromNative(value1), codec2.fromNative(value2)}})
-	return recording.Inner.ProduceRequest(value0, value1, value2)
+	topicPartition1Codec := lawSpecTopicPartitionCodec(schema, bits, symbols)
+	maybe1Codec := lsMaybeCodec(schema, bits, lawSpecProducerTagCodec(schema, bits, symbols), symbols)
+	list1Codec := lsListCodec(schema, bits, lawSpecRecordCodec(schema, bits, symbols), symbols)
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "produceRequest", Arguments: []LawSpecValue{topicPartition1Codec.fromNative(topicPartition1), maybe1Codec.fromNative(maybe1), list1Codec.fromNative(list1)}})
+	return recording.Inner.ProduceRequest(topicPartition1, maybe1, list1)
 }
 
-func (recording *BrokerRecording) FetchRequest(value0 TopicPartition, value1 int64, value2 int32, value3 IsolationLevel) FetchResult {
+func (recording *BrokerRecording) FetchRequest(topicPartition1 TopicPartition, int64_1 int64, int32_1 int32, isolationLevel1 IsolationLevel) FetchResult {
 	symbols := recording.symbols
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-	codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-	codec2 := lsScalarCodec[int32](schema, bits, "Int32")
-	codec3 := lawSpecIsolationLevelCodec(schema, bits, symbols)
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "fetchRequest", Arguments: []LawSpecValue{codec0.fromNative(value0), codec1.fromNative(value1), codec2.fromNative(value2), codec3.fromNative(value3)}})
-	return recording.Inner.FetchRequest(value0, value1, value2, value3)
+	topicPartition1Codec := lawSpecTopicPartitionCodec(schema, bits, symbols)
+	int64_1Codec := lsScalarCodec[int64](schema, bits, "Int64")
+	int32_1Codec := lsScalarCodec[int32](schema, bits, "Int32")
+	isolationLevel1Codec := lawSpecIsolationLevelCodec(schema, bits, symbols)
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "fetchRequest", Arguments: []LawSpecValue{topicPartition1Codec.fromNative(topicPartition1), int64_1Codec.fromNative(int64_1), int32_1Codec.fromNative(int32_1), isolationLevel1Codec.fromNative(isolationLevel1)}})
+	return recording.Inner.FetchRequest(topicPartition1, int64_1, int32_1, isolationLevel1)
 }
 
-func (recording *BrokerRecording) ListOffsetsRequest(value0 TopicPartition, value1 OffsetSpec, value2 IsolationLevel) int64 {
+func (recording *BrokerRecording) ListOffsetsRequest(topicPartition1 TopicPartition, offsetSpec1 OffsetSpec, isolationLevel1 IsolationLevel) int64 {
 	symbols := recording.symbols
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-	codec1 := lawSpecOffsetSpecCodec(schema, bits, symbols)
-	codec2 := lawSpecIsolationLevelCodec(schema, bits, symbols)
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "listOffsetsRequest", Arguments: []LawSpecValue{codec0.fromNative(value0), codec1.fromNative(value1), codec2.fromNative(value2)}})
-	return recording.Inner.ListOffsetsRequest(value0, value1, value2)
+	topicPartition1Codec := lawSpecTopicPartitionCodec(schema, bits, symbols)
+	offsetSpec1Codec := lawSpecOffsetSpecCodec(schema, bits, symbols)
+	isolationLevel1Codec := lawSpecIsolationLevelCodec(schema, bits, symbols)
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "listOffsetsRequest", Arguments: []LawSpecValue{topicPartition1Codec.fromNative(topicPartition1), offsetSpec1Codec.fromNative(offsetSpec1), isolationLevel1Codec.fromNative(isolationLevel1)}})
+	return recording.Inner.ListOffsetsRequest(topicPartition1, offsetSpec1, isolationLevel1)
 }
 
-func (recording *BrokerRecording) InitProducerIdRequest(value0 LawSpecMaybe[string]) ProducerIdAndEpoch {
+func (recording *BrokerRecording) InitProducerIdRequest(maybe1 LawSpecMaybe[string]) ProducerIdAndEpoch {
 	symbols := recording.symbols
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lsMaybeCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "initProducerIdRequest", Arguments: []LawSpecValue{codec0.fromNative(value0)}})
-	return recording.Inner.InitProducerIdRequest(value0)
+	maybe1Codec := lsMaybeCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "initProducerIdRequest", Arguments: []LawSpecValue{maybe1Codec.fromNative(maybe1)}})
+	return recording.Inner.InitProducerIdRequest(maybe1)
 }
 
-func (recording *BrokerRecording) AddPartitionsToTxnRequest(value0 string, value1 int64, value2 int16, value3 []TopicPartition) {
+func (recording *BrokerRecording) AddPartitionsToTxnRequest(text1 string, int64_1 int64, int16_1 int16, list1 []TopicPartition) {
 	symbols := recording.symbols
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-	codec2 := lsScalarCodec[int16](schema, bits, "Int16")
-	codec3 := lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "addPartitionsToTxnRequest", Arguments: []LawSpecValue{codec0.fromNative(value0), codec1.fromNative(value1), codec2.fromNative(value2), codec3.fromNative(value3)}})
-	recording.Inner.AddPartitionsToTxnRequest(value0, value1, value2, value3)
+	text1Codec := lsScalarCodec[string](schema, bits, "Text")
+	int64_1Codec := lsScalarCodec[int64](schema, bits, "Int64")
+	int16_1Codec := lsScalarCodec[int16](schema, bits, "Int16")
+	list1Codec := lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "addPartitionsToTxnRequest", Arguments: []LawSpecValue{text1Codec.fromNative(text1), int64_1Codec.fromNative(int64_1), int16_1Codec.fromNative(int16_1), list1Codec.fromNative(list1)}})
+	recording.Inner.AddPartitionsToTxnRequest(text1, int64_1, int16_1, list1)
 }
 
-func (recording *BrokerRecording) TxnOffsetCommitRequest(value0 string, value1 int64, value2 int16, value3 string, value4 []OffsetEntry) {
+func (recording *BrokerRecording) TxnOffsetCommitRequest(text1 string, int64_1 int64, int16_1 int16, text2 string, list1 []OffsetEntry) {
 	symbols := recording.symbols
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-	codec2 := lsScalarCodec[int16](schema, bits, "Int16")
-	codec3 := lsScalarCodec[string](schema, bits, "Text")
-	codec4 := lsListCodec(schema, bits, lawSpecOffsetEntryCodec(schema, bits, symbols), symbols)
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "txnOffsetCommitRequest", Arguments: []LawSpecValue{codec0.fromNative(value0), codec1.fromNative(value1), codec2.fromNative(value2), codec3.fromNative(value3), codec4.fromNative(value4)}})
-	recording.Inner.TxnOffsetCommitRequest(value0, value1, value2, value3, value4)
+	text1Codec := lsScalarCodec[string](schema, bits, "Text")
+	int64_1Codec := lsScalarCodec[int64](schema, bits, "Int64")
+	int16_1Codec := lsScalarCodec[int16](schema, bits, "Int16")
+	text2Codec := lsScalarCodec[string](schema, bits, "Text")
+	list1Codec := lsListCodec(schema, bits, lawSpecOffsetEntryCodec(schema, bits, symbols), symbols)
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "txnOffsetCommitRequest", Arguments: []LawSpecValue{text1Codec.fromNative(text1), int64_1Codec.fromNative(int64_1), int16_1Codec.fromNative(int16_1), text2Codec.fromNative(text2), list1Codec.fromNative(list1)}})
+	recording.Inner.TxnOffsetCommitRequest(text1, int64_1, int16_1, text2, list1)
 }
 
-func (recording *BrokerRecording) EndTxnRequest(value0 string, value1 int64, value2 int16, value3 bool) {
+func (recording *BrokerRecording) EndTxnRequest(text1 string, int64_1 int64, int16_1 int16, bool1 bool) {
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-	codec2 := lsScalarCodec[int16](schema, bits, "Int16")
-	codec3 := lsScalarCodec[bool](schema, bits, "Bool")
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "endTxnRequest", Arguments: []LawSpecValue{codec0.fromNative(value0), codec1.fromNative(value1), codec2.fromNative(value2), codec3.fromNative(value3)}})
-	recording.Inner.EndTxnRequest(value0, value1, value2, value3)
+	text1Codec := lsScalarCodec[string](schema, bits, "Text")
+	int64_1Codec := lsScalarCodec[int64](schema, bits, "Int64")
+	int16_1Codec := lsScalarCodec[int16](schema, bits, "Int16")
+	bool1Codec := lsScalarCodec[bool](schema, bits, "Bool")
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "endTxnRequest", Arguments: []LawSpecValue{text1Codec.fromNative(text1), int64_1Codec.fromNative(int64_1), int16_1Codec.fromNative(int16_1), bool1Codec.fromNative(bool1)}})
+	recording.Inner.EndTxnRequest(text1, int64_1, int16_1, bool1)
 }
 
-func (recording *BrokerRecording) JoinGroupRequest(value0 string, value1 string, value2 []string) int32 {
+func (recording *BrokerRecording) JoinGroupRequest(text1 string, text2 string, list1 []string) int32 {
 	symbols := recording.symbols
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[string](schema, bits, "Text")
-	codec2 := lsListCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "joinGroupRequest", Arguments: []LawSpecValue{codec0.fromNative(value0), codec1.fromNative(value1), codec2.fromNative(value2)}})
-	return recording.Inner.JoinGroupRequest(value0, value1, value2)
+	text1Codec := lsScalarCodec[string](schema, bits, "Text")
+	text2Codec := lsScalarCodec[string](schema, bits, "Text")
+	list1Codec := lsListCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "joinGroupRequest", Arguments: []LawSpecValue{text1Codec.fromNative(text1), text2Codec.fromNative(text2), list1Codec.fromNative(list1)}})
+	return recording.Inner.JoinGroupRequest(text1, text2, list1)
 }
 
-func (recording *BrokerRecording) SyncGroupRequest(value0 string, value1 string, value2 int32) []TopicPartition {
+func (recording *BrokerRecording) SyncGroupRequest(text1 string, text2 string, int32_1 int32) []TopicPartition {
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[string](schema, bits, "Text")
-	codec2 := lsScalarCodec[int32](schema, bits, "Int32")
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "syncGroupRequest", Arguments: []LawSpecValue{codec0.fromNative(value0), codec1.fromNative(value1), codec2.fromNative(value2)}})
-	return recording.Inner.SyncGroupRequest(value0, value1, value2)
+	text1Codec := lsScalarCodec[string](schema, bits, "Text")
+	text2Codec := lsScalarCodec[string](schema, bits, "Text")
+	int32_1Codec := lsScalarCodec[int32](schema, bits, "Int32")
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "syncGroupRequest", Arguments: []LawSpecValue{text1Codec.fromNative(text1), text2Codec.fromNative(text2), int32_1Codec.fromNative(int32_1)}})
+	return recording.Inner.SyncGroupRequest(text1, text2, int32_1)
 }
 
-func (recording *BrokerRecording) HeartbeatRequest(value0 string, value1 string, value2 int32) {
+func (recording *BrokerRecording) HeartbeatRequest(text1 string, text2 string, int32_1 int32) {
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[string](schema, bits, "Text")
-	codec2 := lsScalarCodec[int32](schema, bits, "Int32")
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "heartbeatRequest", Arguments: []LawSpecValue{codec0.fromNative(value0), codec1.fromNative(value1), codec2.fromNative(value2)}})
-	recording.Inner.HeartbeatRequest(value0, value1, value2)
+	text1Codec := lsScalarCodec[string](schema, bits, "Text")
+	text2Codec := lsScalarCodec[string](schema, bits, "Text")
+	int32_1Codec := lsScalarCodec[int32](schema, bits, "Int32")
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "heartbeatRequest", Arguments: []LawSpecValue{text1Codec.fromNative(text1), text2Codec.fromNative(text2), int32_1Codec.fromNative(int32_1)}})
+	recording.Inner.HeartbeatRequest(text1, text2, int32_1)
 }
 
-func (recording *BrokerRecording) LeaveGroupRequest(value0 string, value1 string) {
+func (recording *BrokerRecording) LeaveGroupRequest(text1 string, text2 string) {
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[string](schema, bits, "Text")
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "leaveGroupRequest", Arguments: []LawSpecValue{codec0.fromNative(value0), codec1.fromNative(value1)}})
-	recording.Inner.LeaveGroupRequest(value0, value1)
+	text1Codec := lsScalarCodec[string](schema, bits, "Text")
+	text2Codec := lsScalarCodec[string](schema, bits, "Text")
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "leaveGroupRequest", Arguments: []LawSpecValue{text1Codec.fromNative(text1), text2Codec.fromNative(text2)}})
+	recording.Inner.LeaveGroupRequest(text1, text2)
 }
 
-func (recording *BrokerRecording) DescribeGroupRequest(value0 string) GroupView {
+func (recording *BrokerRecording) DescribeGroupRequest(text1 string) GroupView {
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "describeGroupRequest", Arguments: []LawSpecValue{codec0.fromNative(value0)}})
-	return recording.Inner.DescribeGroupRequest(value0)
+	text1Codec := lsScalarCodec[string](schema, bits, "Text")
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "describeGroupRequest", Arguments: []LawSpecValue{text1Codec.fromNative(text1)}})
+	return recording.Inner.DescribeGroupRequest(text1)
 }
 
-func (recording *BrokerRecording) OffsetCommitRequest(value0 string, value1 string, value2 int32, value3 []OffsetEntry) {
+func (recording *BrokerRecording) OffsetCommitRequest(text1 string, text2 string, int32_1 int32, list1 []OffsetEntry) {
 	symbols := recording.symbols
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[string](schema, bits, "Text")
-	codec2 := lsScalarCodec[int32](schema, bits, "Int32")
-	codec3 := lsListCodec(schema, bits, lawSpecOffsetEntryCodec(schema, bits, symbols), symbols)
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "offsetCommitRequest", Arguments: []LawSpecValue{codec0.fromNative(value0), codec1.fromNative(value1), codec2.fromNative(value2), codec3.fromNative(value3)}})
-	recording.Inner.OffsetCommitRequest(value0, value1, value2, value3)
+	text1Codec := lsScalarCodec[string](schema, bits, "Text")
+	text2Codec := lsScalarCodec[string](schema, bits, "Text")
+	int32_1Codec := lsScalarCodec[int32](schema, bits, "Int32")
+	list1Codec := lsListCodec(schema, bits, lawSpecOffsetEntryCodec(schema, bits, symbols), symbols)
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "offsetCommitRequest", Arguments: []LawSpecValue{text1Codec.fromNative(text1), text2Codec.fromNative(text2), int32_1Codec.fromNative(int32_1), list1Codec.fromNative(list1)}})
+	recording.Inner.OffsetCommitRequest(text1, text2, int32_1, list1)
 }
 
-func (recording *BrokerRecording) OffsetFetchRequest(value0 string, value1 TopicPartition) LawSpecMaybe[int64] {
+func (recording *BrokerRecording) OffsetFetchRequest(text1 string, topicPartition1 TopicPartition) LawSpecMaybe[int64] {
 	symbols := recording.symbols
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "offsetFetchRequest", Arguments: []LawSpecValue{codec0.fromNative(value0), codec1.fromNative(value1)}})
-	return recording.Inner.OffsetFetchRequest(value0, value1)
+	text1Codec := lsScalarCodec[string](schema, bits, "Text")
+	topicPartition1Codec := lawSpecTopicPartitionCodec(schema, bits, symbols)
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "offsetFetchRequest", Arguments: []LawSpecValue{text1Codec.fromNative(text1), topicPartition1Codec.fromNative(topicPartition1)}})
+	return recording.Inner.OffsetFetchRequest(text1, topicPartition1)
 }
 
 // ConsumerRecording records each call to a Consumer handler, then passes it on.
@@ -1328,32 +1328,32 @@ func (recording *ConsumerRecording) lawSpecCalls() []LawSpecCall {
 	return recording.Calls
 }
 
-func (recording *ConsumerRecording) Assign(value0 []TopicPartition) {
+func (recording *ConsumerRecording) Assign(list1 []TopicPartition) {
 	symbols := recording.symbols
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "assign", Arguments: []LawSpecValue{codec0.fromNative(value0)}})
-	recording.Inner.Assign(value0)
+	list1Codec := lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "assign", Arguments: []LawSpecValue{list1Codec.fromNative(list1)}})
+	recording.Inner.Assign(list1)
 }
 
-func (recording *ConsumerRecording) Subscribe(value0 string, value1 string, value2 []string) LawSpecEither[KafkaError, []TopicPartition] {
+func (recording *ConsumerRecording) Subscribe(text1 string, text2 string, list1 []string) LawSpecEither[KafkaError, []TopicPartition] {
 	symbols := recording.symbols
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[string](schema, bits, "Text")
-	codec2 := lsListCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "subscribe", Arguments: []LawSpecValue{codec0.fromNative(value0), codec1.fromNative(value1), codec2.fromNative(value2)}})
-	return recording.Inner.Subscribe(value0, value1, value2)
+	text1Codec := lsScalarCodec[string](schema, bits, "Text")
+	text2Codec := lsScalarCodec[string](schema, bits, "Text")
+	list1Codec := lsListCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "subscribe", Arguments: []LawSpecValue{text1Codec.fromNative(text1), text2Codec.fromNative(text2), list1Codec.fromNative(list1)}})
+	return recording.Inner.Subscribe(text1, text2, list1)
 }
 
-func (recording *ConsumerRecording) Poll(value0 int32) LawSpecEither[KafkaError, []ConsumerRecord] {
+func (recording *ConsumerRecording) Poll(int32_1 int32) LawSpecEither[KafkaError, []ConsumerRecord] {
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lsScalarCodec[int32](schema, bits, "Int32")
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "poll", Arguments: []LawSpecValue{codec0.fromNative(value0)}})
-	return recording.Inner.Poll(value0)
+	int32_1Codec := lsScalarCodec[int32](schema, bits, "Int32")
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "poll", Arguments: []LawSpecValue{int32_1Codec.fromNative(int32_1)}})
+	return recording.Inner.Poll(int32_1)
 }
 
 func (recording *ConsumerRecording) CommitSync() LawSpecEither[KafkaError, LawSpecUnit] {
@@ -1361,41 +1361,41 @@ func (recording *ConsumerRecording) CommitSync() LawSpecEither[KafkaError, LawSp
 	return recording.Inner.CommitSync()
 }
 
-func (recording *ConsumerRecording) Seek(value0 TopicPartition, value1 int64) LawSpecEither[KafkaError, LawSpecUnit] {
+func (recording *ConsumerRecording) Seek(topicPartition1 TopicPartition, int64_1 int64) LawSpecEither[KafkaError, LawSpecUnit] {
 	symbols := recording.symbols
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-	codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "seek", Arguments: []LawSpecValue{codec0.fromNative(value0), codec1.fromNative(value1)}})
-	return recording.Inner.Seek(value0, value1)
+	topicPartition1Codec := lawSpecTopicPartitionCodec(schema, bits, symbols)
+	int64_1Codec := lsScalarCodec[int64](schema, bits, "Int64")
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "seek", Arguments: []LawSpecValue{topicPartition1Codec.fromNative(topicPartition1), int64_1Codec.fromNative(int64_1)}})
+	return recording.Inner.Seek(topicPartition1, int64_1)
 }
 
-func (recording *ConsumerRecording) Position(value0 TopicPartition) LawSpecEither[KafkaError, int64] {
+func (recording *ConsumerRecording) Position(topicPartition1 TopicPartition) LawSpecEither[KafkaError, int64] {
 	symbols := recording.symbols
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "position", Arguments: []LawSpecValue{codec0.fromNative(value0)}})
-	return recording.Inner.Position(value0)
+	topicPartition1Codec := lawSpecTopicPartitionCodec(schema, bits, symbols)
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "position", Arguments: []LawSpecValue{topicPartition1Codec.fromNative(topicPartition1)}})
+	return recording.Inner.Position(topicPartition1)
 }
 
-func (recording *ConsumerRecording) CommittedOffset(value0 TopicPartition) LawSpecMaybe[int64] {
+func (recording *ConsumerRecording) CommittedOffset(topicPartition1 TopicPartition) LawSpecMaybe[int64] {
 	symbols := recording.symbols
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "committedOffset", Arguments: []LawSpecValue{codec0.fromNative(value0)}})
-	return recording.Inner.CommittedOffset(value0)
+	topicPartition1Codec := lawSpecTopicPartitionCodec(schema, bits, symbols)
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "committedOffset", Arguments: []LawSpecValue{topicPartition1Codec.fromNative(topicPartition1)}})
+	return recording.Inner.CommittedOffset(topicPartition1)
 }
 
-func (recording *ConsumerRecording) SetIsolationLevel(value0 IsolationLevel) {
+func (recording *ConsumerRecording) SetIsolationLevel(isolationLevel1 IsolationLevel) {
 	symbols := recording.symbols
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lawSpecIsolationLevelCodec(schema, bits, symbols)
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "setIsolationLevel", Arguments: []LawSpecValue{codec0.fromNative(value0)}})
-	recording.Inner.SetIsolationLevel(value0)
+	isolationLevel1Codec := lawSpecIsolationLevelCodec(schema, bits, symbols)
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "setIsolationLevel", Arguments: []LawSpecValue{isolationLevel1Codec.fromNative(isolationLevel1)}})
+	recording.Inner.SetIsolationLevel(isolationLevel1)
 }
 
 func (recording *ConsumerRecording) Close() {
@@ -1419,74 +1419,74 @@ func (recording *GroupCoordinatorRecording) lawSpecCalls() []LawSpecCall {
 	return recording.Calls
 }
 
-func (recording *GroupCoordinatorRecording) JoinGroup(value0 string, value1 string, value2 []string) int32 {
+func (recording *GroupCoordinatorRecording) JoinGroup(text1 string, text2 string, list1 []string) int32 {
 	symbols := recording.symbols
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[string](schema, bits, "Text")
-	codec2 := lsListCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "joinGroup", Arguments: []LawSpecValue{codec0.fromNative(value0), codec1.fromNative(value1), codec2.fromNative(value2)}})
-	return recording.Inner.JoinGroup(value0, value1, value2)
+	text1Codec := lsScalarCodec[string](schema, bits, "Text")
+	text2Codec := lsScalarCodec[string](schema, bits, "Text")
+	list1Codec := lsListCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "joinGroup", Arguments: []LawSpecValue{text1Codec.fromNative(text1), text2Codec.fromNative(text2), list1Codec.fromNative(list1)}})
+	return recording.Inner.JoinGroup(text1, text2, list1)
 }
 
-func (recording *GroupCoordinatorRecording) SyncGroup(value0 string, value1 string, value2 int32) []TopicPartition {
+func (recording *GroupCoordinatorRecording) SyncGroup(text1 string, text2 string, int32_1 int32) []TopicPartition {
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[string](schema, bits, "Text")
-	codec2 := lsScalarCodec[int32](schema, bits, "Int32")
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "syncGroup", Arguments: []LawSpecValue{codec0.fromNative(value0), codec1.fromNative(value1), codec2.fromNative(value2)}})
-	return recording.Inner.SyncGroup(value0, value1, value2)
+	text1Codec := lsScalarCodec[string](schema, bits, "Text")
+	text2Codec := lsScalarCodec[string](schema, bits, "Text")
+	int32_1Codec := lsScalarCodec[int32](schema, bits, "Int32")
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "syncGroup", Arguments: []LawSpecValue{text1Codec.fromNative(text1), text2Codec.fromNative(text2), int32_1Codec.fromNative(int32_1)}})
+	return recording.Inner.SyncGroup(text1, text2, int32_1)
 }
 
-func (recording *GroupCoordinatorRecording) Heartbeat(value0 string, value1 string, value2 int32) {
+func (recording *GroupCoordinatorRecording) Heartbeat(text1 string, text2 string, int32_1 int32) {
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[string](schema, bits, "Text")
-	codec2 := lsScalarCodec[int32](schema, bits, "Int32")
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "heartbeat", Arguments: []LawSpecValue{codec0.fromNative(value0), codec1.fromNative(value1), codec2.fromNative(value2)}})
-	recording.Inner.Heartbeat(value0, value1, value2)
+	text1Codec := lsScalarCodec[string](schema, bits, "Text")
+	text2Codec := lsScalarCodec[string](schema, bits, "Text")
+	int32_1Codec := lsScalarCodec[int32](schema, bits, "Int32")
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "heartbeat", Arguments: []LawSpecValue{text1Codec.fromNative(text1), text2Codec.fromNative(text2), int32_1Codec.fromNative(int32_1)}})
+	recording.Inner.Heartbeat(text1, text2, int32_1)
 }
 
-func (recording *GroupCoordinatorRecording) LeaveGroup(value0 string, value1 string) {
+func (recording *GroupCoordinatorRecording) LeaveGroup(text1 string, text2 string) {
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[string](schema, bits, "Text")
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "leaveGroup", Arguments: []LawSpecValue{codec0.fromNative(value0), codec1.fromNative(value1)}})
-	recording.Inner.LeaveGroup(value0, value1)
+	text1Codec := lsScalarCodec[string](schema, bits, "Text")
+	text2Codec := lsScalarCodec[string](schema, bits, "Text")
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "leaveGroup", Arguments: []LawSpecValue{text1Codec.fromNative(text1), text2Codec.fromNative(text2)}})
+	recording.Inner.LeaveGroup(text1, text2)
 }
 
-func (recording *GroupCoordinatorRecording) DescribeGroup(value0 string) GroupView {
+func (recording *GroupCoordinatorRecording) DescribeGroup(text1 string) GroupView {
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "describeGroup", Arguments: []LawSpecValue{codec0.fromNative(value0)}})
-	return recording.Inner.DescribeGroup(value0)
+	text1Codec := lsScalarCodec[string](schema, bits, "Text")
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "describeGroup", Arguments: []LawSpecValue{text1Codec.fromNative(text1)}})
+	return recording.Inner.DescribeGroup(text1)
 }
 
-func (recording *GroupCoordinatorRecording) CommitOffsets(value0 string, value1 string, value2 int32, value3 []OffsetEntry) {
+func (recording *GroupCoordinatorRecording) CommitOffsets(text1 string, text2 string, int32_1 int32, list1 []OffsetEntry) {
 	symbols := recording.symbols
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[string](schema, bits, "Text")
-	codec2 := lsScalarCodec[int32](schema, bits, "Int32")
-	codec3 := lsListCodec(schema, bits, lawSpecOffsetEntryCodec(schema, bits, symbols), symbols)
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "commitOffsets", Arguments: []LawSpecValue{codec0.fromNative(value0), codec1.fromNative(value1), codec2.fromNative(value2), codec3.fromNative(value3)}})
-	recording.Inner.CommitOffsets(value0, value1, value2, value3)
+	text1Codec := lsScalarCodec[string](schema, bits, "Text")
+	text2Codec := lsScalarCodec[string](schema, bits, "Text")
+	int32_1Codec := lsScalarCodec[int32](schema, bits, "Int32")
+	list1Codec := lsListCodec(schema, bits, lawSpecOffsetEntryCodec(schema, bits, symbols), symbols)
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "commitOffsets", Arguments: []LawSpecValue{text1Codec.fromNative(text1), text2Codec.fromNative(text2), int32_1Codec.fromNative(int32_1), list1Codec.fromNative(list1)}})
+	recording.Inner.CommitOffsets(text1, text2, int32_1, list1)
 }
 
-func (recording *GroupCoordinatorRecording) FetchOffset(value0 string, value1 TopicPartition) LawSpecMaybe[int64] {
+func (recording *GroupCoordinatorRecording) FetchOffset(text1 string, topicPartition1 TopicPartition) LawSpecMaybe[int64] {
 	symbols := recording.symbols
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "fetchOffset", Arguments: []LawSpecValue{codec0.fromNative(value0), codec1.fromNative(value1)}})
-	return recording.Inner.FetchOffset(value0, value1)
+	text1Codec := lsScalarCodec[string](schema, bits, "Text")
+	topicPartition1Codec := lawSpecTopicPartitionCodec(schema, bits, symbols)
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "fetchOffset", Arguments: []LawSpecValue{text1Codec.fromNative(text1), topicPartition1Codec.fromNative(topicPartition1)}})
+	return recording.Inner.FetchOffset(text1, topicPartition1)
 }
 
 // PartitionerRecording records each call to a Partitioner handler, then passes it on.
@@ -1505,14 +1505,14 @@ func (recording *PartitionerRecording) lawSpecCalls() []LawSpecCall {
 	return recording.Calls
 }
 
-func (recording *PartitionerRecording) ChoosePartition(value0 LawSpecMaybe[[]byte], value1 int32) int32 {
+func (recording *PartitionerRecording) ChoosePartition(maybe1 LawSpecMaybe[[]byte], int32_1 int32) int32 {
 	symbols := recording.symbols
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lsMaybeCodec(schema, bits, lsScalarCodec[[]byte](schema, bits, "Bytes"), symbols)
-	codec1 := lsScalarCodec[int32](schema, bits, "Int32")
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "choosePartition", Arguments: []LawSpecValue{codec0.fromNative(value0), codec1.fromNative(value1)}})
-	return recording.Inner.ChoosePartition(value0, value1)
+	maybe1Codec := lsMaybeCodec(schema, bits, lsScalarCodec[[]byte](schema, bits, "Bytes"), symbols)
+	int32_1Codec := lsScalarCodec[int32](schema, bits, "Int32")
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "choosePartition", Arguments: []LawSpecValue{maybe1Codec.fromNative(maybe1), int32_1Codec.fromNative(int32_1)}})
+	return recording.Inner.ChoosePartition(maybe1, int32_1)
 }
 
 // ProducerRecording records each call to a Producer handler, then passes it on.
@@ -1531,13 +1531,13 @@ func (recording *ProducerRecording) lawSpecCalls() []LawSpecCall {
 	return recording.Calls
 }
 
-func (recording *ProducerRecording) Send(value0 ProducerRecord) LawSpecEither[KafkaError, RecordMetadata] {
+func (recording *ProducerRecording) Send(producerRecord1 ProducerRecord) LawSpecEither[KafkaError, RecordMetadata] {
 	symbols := recording.symbols
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lawSpecProducerRecordCodec(schema, bits, symbols)
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "send", Arguments: []LawSpecValue{codec0.fromNative(value0)}})
-	return recording.Inner.Send(value0)
+	producerRecord1Codec := lawSpecProducerRecordCodec(schema, bits, symbols)
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "send", Arguments: []LawSpecValue{producerRecord1Codec.fromNative(producerRecord1)}})
+	return recording.Inner.Send(producerRecord1)
 }
 
 func (recording *ProducerRecording) Flush() {
@@ -1576,12 +1576,12 @@ func (recording *TransactionsRecording) lawSpecCalls() []LawSpecCall {
 	return recording.Calls
 }
 
-func (recording *TransactionsRecording) InitTransactions(value0 string) LawSpecEither[KafkaError, ProducerIdAndEpoch] {
+func (recording *TransactionsRecording) InitTransactions(text1 string) LawSpecEither[KafkaError, ProducerIdAndEpoch] {
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "initTransactions", Arguments: []LawSpecValue{codec0.fromNative(value0)}})
-	return recording.Inner.InitTransactions(value0)
+	text1Codec := lsScalarCodec[string](schema, bits, "Text")
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "initTransactions", Arguments: []LawSpecValue{text1Codec.fromNative(text1)}})
+	return recording.Inner.InitTransactions(text1)
 }
 
 func (recording *TransactionsRecording) BeginTransaction() LawSpecEither[KafkaError, LawSpecUnit] {
@@ -1589,32 +1589,32 @@ func (recording *TransactionsRecording) BeginTransaction() LawSpecEither[KafkaEr
 	return recording.Inner.BeginTransaction()
 }
 
-func (recording *TransactionsRecording) AddPartitionsToTransaction(value0 []TopicPartition) LawSpecEither[KafkaError, LawSpecUnit] {
+func (recording *TransactionsRecording) AddPartitionsToTransaction(list1 []TopicPartition) LawSpecEither[KafkaError, LawSpecUnit] {
 	symbols := recording.symbols
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "addPartitionsToTransaction", Arguments: []LawSpecValue{codec0.fromNative(value0)}})
-	return recording.Inner.AddPartitionsToTransaction(value0)
+	list1Codec := lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "addPartitionsToTransaction", Arguments: []LawSpecValue{list1Codec.fromNative(list1)}})
+	return recording.Inner.AddPartitionsToTransaction(list1)
 }
 
-func (recording *TransactionsRecording) SendInTransaction(value0 ProducerRecord) LawSpecEither[KafkaError, RecordMetadata] {
+func (recording *TransactionsRecording) SendInTransaction(producerRecord1 ProducerRecord) LawSpecEither[KafkaError, RecordMetadata] {
 	symbols := recording.symbols
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lawSpecProducerRecordCodec(schema, bits, symbols)
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "sendInTransaction", Arguments: []LawSpecValue{codec0.fromNative(value0)}})
-	return recording.Inner.SendInTransaction(value0)
+	producerRecord1Codec := lawSpecProducerRecordCodec(schema, bits, symbols)
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "sendInTransaction", Arguments: []LawSpecValue{producerRecord1Codec.fromNative(producerRecord1)}})
+	return recording.Inner.SendInTransaction(producerRecord1)
 }
 
-func (recording *TransactionsRecording) SendOffsetsToTransaction(value0 string, value1 []OffsetEntry) LawSpecEither[KafkaError, LawSpecUnit] {
+func (recording *TransactionsRecording) SendOffsetsToTransaction(text1 string, list1 []OffsetEntry) LawSpecEither[KafkaError, LawSpecUnit] {
 	symbols := recording.symbols
 	schema := _lawSpecDefinitionSchema
 	bits := 64
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsListCodec(schema, bits, lawSpecOffsetEntryCodec(schema, bits, symbols), symbols)
-	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "sendOffsetsToTransaction", Arguments: []LawSpecValue{codec0.fromNative(value0), codec1.fromNative(value1)}})
-	return recording.Inner.SendOffsetsToTransaction(value0, value1)
+	text1Codec := lsScalarCodec[string](schema, bits, "Text")
+	list1Codec := lsListCodec(schema, bits, lawSpecOffsetEntryCodec(schema, bits, symbols), symbols)
+	recording.Calls = append(recording.Calls, LawSpecCall{Operation: "sendOffsetsToTransaction", Arguments: []LawSpecValue{text1Codec.fromNative(text1), list1Codec.fromNative(list1)}})
+	return recording.Inner.SendOffsetsToTransaction(text1, list1)
 }
 
 func (recording *TransactionsRecording) CommitTransaction() LawSpecEither[KafkaError, LawSpecUnit] {

@@ -842,6 +842,14 @@ func lsfTrim(text string) string {
 	return lsTextTrim(text)
 }
 
+func lsfIsUnicodeWhitespace(text string) bool {
+	return lsTextIsUnicodeWhitespace(text)
+}
+
+func lsfTrimASCIIControl(text string) string {
+	return lsTextTrimASCIIControl(text)
+}
+
 func lsfWords(text string) *lsfList[string] {
 	return lsfListOf(lsTextWords(text))
 }

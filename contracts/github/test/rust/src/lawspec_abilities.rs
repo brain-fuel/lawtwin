@@ -10,70 +10,70 @@ pub mod lawtwin_github
     {
         fn issuesListLabelsForRepo(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::option::Option<i64>,
-            value3: std::option::Option<i64>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            maybe_1: std::option::Option<i64>,
+            maybe_2: std::option::Option<i64>,
         ) -> std::vec::Vec<crate::lawspec_data::Label>;
         fn issuesCreateLabel(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: crate::lawspec_data::IssuesCreateLabelBody,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            issues_create_label_body_1: crate::lawspec_data::IssuesCreateLabelBody,
         ) -> crate::lawspec_data::Label;
         fn issuesGetLabel(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::string::String,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            text_3: std::string::String,
         ) -> crate::lawspec_data::Label;
         fn issuesDeleteLabel(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::string::String,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            text_3: std::string::String,
         ) -> ();
         fn issuesUpdateLabel(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::string::String,
-            value3: std::option::Option<crate::lawspec_data::IssuesUpdateLabelBody>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            text_3: std::string::String,
+            maybe_1: std::option::Option<crate::lawspec_data::IssuesUpdateLabelBody>,
         ) -> crate::lawspec_data::Label;
         fn issuesListMilestones(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::option::Option<crate::lawspec_data::IssuesListMilestonesState>,
-            value3: std::option::Option<crate::lawspec_data::IssuesListMilestonesSort>,
-            value4: std::option::Option<crate::lawspec_data::IssuesListMilestonesDirection>,
-            value5: std::option::Option<i64>,
-            value6: std::option::Option<i64>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            maybe_1: std::option::Option<crate::lawspec_data::IssuesListMilestonesState>,
+            maybe_2: std::option::Option<crate::lawspec_data::IssuesListMilestonesSort>,
+            maybe_3: std::option::Option<crate::lawspec_data::IssuesListMilestonesDirection>,
+            maybe_4: std::option::Option<i64>,
+            maybe_5: std::option::Option<i64>,
         ) -> std::vec::Vec<crate::lawspec_data::Milestone>;
         fn issuesCreateMilestone(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: crate::lawspec_data::IssuesCreateMilestoneBody,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            issues_create_milestone_body_1: crate::lawspec_data::IssuesCreateMilestoneBody,
         ) -> crate::lawspec_data::Milestone;
         fn issuesGetMilestone(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i64,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int64_1: i64,
         ) -> crate::lawspec_data::Milestone;
         fn issuesDeleteMilestone(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i64,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int64_1: i64,
         ) -> ();
         fn issuesUpdateMilestone(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i64,
-            value3: std::option::Option<crate::lawspec_data::IssuesUpdateMilestoneBody>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int64_1: i64,
+            maybe_1: std::option::Option<crate::lawspec_data::IssuesUpdateMilestoneBody>,
         ) -> crate::lawspec_data::Milestone;
     }
 
@@ -136,10 +136,10 @@ pub mod lawtwin_github
         /// issuesListLabelsForRepo, with the failure it raises as Err rather than a panic.
         pub fn try_issuesListLabelsForRepo(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::option::Option<i64>,
-            value3: std::option::Option<i64>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            maybe_1: std::option::Option<i64>,
+            maybe_2: std::option::Option<i64>,
         ) -> std::result::Result<
             std::vec::Vec<crate::lawspec_data::Label>,
             crate::lawspec_data::ApiError,
@@ -150,7 +150,7 @@ pub mod lawtwin_github
                 || {
                     Ok(
                         <Self as super::lawtwin_github::IssuesApi>::issuesListLabelsForRepo(
-                            self, value0, value1, value2, value3,
+                            self, text_1, text_2, maybe_1, maybe_2,
                         ),
                     )
                 },
@@ -179,9 +179,9 @@ pub mod lawtwin_github
         /// issuesCreateLabel, with the failure it raises as Err rather than a panic.
         pub fn try_issuesCreateLabel(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: crate::lawspec_data::IssuesCreateLabelBody,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            issues_create_label_body_1: crate::lawspec_data::IssuesCreateLabelBody,
         ) -> std::result::Result<crate::lawspec_data::Label, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
@@ -189,7 +189,10 @@ pub mod lawtwin_github
                 || {
                     Ok(
                         <Self as super::lawtwin_github::IssuesApi>::issuesCreateLabel(
-                            self, value0, value1, value2,
+                            self,
+                            text_1,
+                            text_2,
+                            issues_create_label_body_1,
                         ),
                     )
                 },
@@ -218,16 +221,16 @@ pub mod lawtwin_github
         /// issuesGetLabel, with the failure it raises as Err rather than a panic.
         pub fn try_issuesGetLabel(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::string::String,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            text_3: std::string::String,
         ) -> std::result::Result<crate::lawspec_data::Label, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.github.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_github::IssuesApi>::issuesGetLabel(
-                        self, value0, value1, value2,
+                        self, text_1, text_2, text_3,
                     ))
                 },
             )
@@ -255,9 +258,9 @@ pub mod lawtwin_github
         /// issuesDeleteLabel, with the failure it raises as Err rather than a panic.
         pub fn try_issuesDeleteLabel(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::string::String,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            text_3: std::string::String,
         ) -> std::result::Result<(), crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
@@ -265,7 +268,7 @@ pub mod lawtwin_github
                 || {
                     Ok(
                         <Self as super::lawtwin_github::IssuesApi>::issuesDeleteLabel(
-                            self, value0, value1, value2,
+                            self, text_1, text_2, text_3,
                         ),
                     )
                 },
@@ -294,10 +297,10 @@ pub mod lawtwin_github
         /// issuesUpdateLabel, with the failure it raises as Err rather than a panic.
         pub fn try_issuesUpdateLabel(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::string::String,
-            value3: std::option::Option<crate::lawspec_data::IssuesUpdateLabelBody>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            text_3: std::string::String,
+            maybe_1: std::option::Option<crate::lawspec_data::IssuesUpdateLabelBody>,
         ) -> std::result::Result<crate::lawspec_data::Label, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
@@ -305,7 +308,7 @@ pub mod lawtwin_github
                 || {
                     Ok(
                         <Self as super::lawtwin_github::IssuesApi>::issuesUpdateLabel(
-                            self, value0, value1, value2, value3,
+                            self, text_1, text_2, text_3, maybe_1,
                         ),
                     )
                 },
@@ -334,13 +337,13 @@ pub mod lawtwin_github
         /// issuesListMilestones, with the failure it raises as Err rather than a panic.
         pub fn try_issuesListMilestones(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::option::Option<crate::lawspec_data::IssuesListMilestonesState>,
-            value3: std::option::Option<crate::lawspec_data::IssuesListMilestonesSort>,
-            value4: std::option::Option<crate::lawspec_data::IssuesListMilestonesDirection>,
-            value5: std::option::Option<i64>,
-            value6: std::option::Option<i64>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            maybe_1: std::option::Option<crate::lawspec_data::IssuesListMilestonesState>,
+            maybe_2: std::option::Option<crate::lawspec_data::IssuesListMilestonesSort>,
+            maybe_3: std::option::Option<crate::lawspec_data::IssuesListMilestonesDirection>,
+            maybe_4: std::option::Option<i64>,
+            maybe_5: std::option::Option<i64>,
         ) -> std::result::Result<
             std::vec::Vec<crate::lawspec_data::Milestone>,
             crate::lawspec_data::ApiError,
@@ -351,7 +354,7 @@ pub mod lawtwin_github
                 || {
                     Ok(
                         <Self as super::lawtwin_github::IssuesApi>::issuesListMilestones(
-                            self, value0, value1, value2, value3, value4, value5, value6,
+                            self, text_1, text_2, maybe_1, maybe_2, maybe_3, maybe_4, maybe_5,
                         ),
                     )
                 },
@@ -380,9 +383,9 @@ pub mod lawtwin_github
         /// issuesCreateMilestone, with the failure it raises as Err rather than a panic.
         pub fn try_issuesCreateMilestone(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: crate::lawspec_data::IssuesCreateMilestoneBody,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            issues_create_milestone_body_1: crate::lawspec_data::IssuesCreateMilestoneBody,
         ) -> std::result::Result<crate::lawspec_data::Milestone, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
@@ -390,7 +393,10 @@ pub mod lawtwin_github
                 || {
                     Ok(
                         <Self as super::lawtwin_github::IssuesApi>::issuesCreateMilestone(
-                            self, value0, value1, value2,
+                            self,
+                            text_1,
+                            text_2,
+                            issues_create_milestone_body_1,
                         ),
                     )
                 },
@@ -419,9 +425,9 @@ pub mod lawtwin_github
         /// issuesGetMilestone, with the failure it raises as Err rather than a panic.
         pub fn try_issuesGetMilestone(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i64,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int64_1: i64,
         ) -> std::result::Result<crate::lawspec_data::Milestone, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
@@ -429,7 +435,7 @@ pub mod lawtwin_github
                 || {
                     Ok(
                         <Self as super::lawtwin_github::IssuesApi>::issuesGetMilestone(
-                            self, value0, value1, value2,
+                            self, text_1, text_2, int64_1,
                         ),
                     )
                 },
@@ -458,9 +464,9 @@ pub mod lawtwin_github
         /// issuesDeleteMilestone, with the failure it raises as Err rather than a panic.
         pub fn try_issuesDeleteMilestone(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i64,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int64_1: i64,
         ) -> std::result::Result<(), crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
@@ -468,7 +474,7 @@ pub mod lawtwin_github
                 || {
                     Ok(
                         <Self as super::lawtwin_github::IssuesApi>::issuesDeleteMilestone(
-                            self, value0, value1, value2,
+                            self, text_1, text_2, int64_1,
                         ),
                     )
                 },
@@ -497,10 +503,10 @@ pub mod lawtwin_github
         /// issuesUpdateMilestone, with the failure it raises as Err rather than a panic.
         pub fn try_issuesUpdateMilestone(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i64,
-            value3: std::option::Option<crate::lawspec_data::IssuesUpdateMilestoneBody>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int64_1: i64,
+            maybe_1: std::option::Option<crate::lawspec_data::IssuesUpdateMilestoneBody>,
         ) -> std::result::Result<crate::lawspec_data::Milestone, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
@@ -508,7 +514,7 @@ pub mod lawtwin_github
                 || {
                     Ok(
                         <Self as super::lawtwin_github::IssuesApi>::issuesUpdateMilestone(
-                            self, value0, value1, value2, value3,
+                            self, text_1, text_2, int64_1, maybe_1,
                         ),
                     )
                 },
@@ -539,20 +545,20 @@ pub mod lawtwin_github
     {
         fn issuesListLabelsForRepo(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::option::Option<i64>,
-            value3: std::option::Option<i64>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            maybe_1: std::option::Option<i64>,
+            maybe_2: std::option::Option<i64>,
         ) -> std::vec::Vec<crate::lawspec_data::Label>
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_issues_list_labels_for_repo(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                    <Option<i64> as ls::fast::Public>::from_native(value2),
-                    <Option<i64> as ls::fast::Public>::from_native(value3),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                    <Option<i64> as ls::fast::Public>::from_native(maybe_1),
+                    <Option<i64> as ls::fast::Public>::from_native(maybe_2),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -563,19 +569,19 @@ pub mod lawtwin_github
 
         fn issuesCreateLabel(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: crate::lawspec_data::IssuesCreateLabelBody,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            issues_create_label_body_1: crate::lawspec_data::IssuesCreateLabelBody,
         ) -> crate::lawspec_data::Label
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_issues_create_label(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_2),
                     <crate::lawspec_definitions::typed::IssuesCreateLabelBody as ls::fast::Public>::from_native(
-                        value2,
+                        issues_create_label_body_1,
                     ),
                 ),
             );
@@ -587,18 +593,18 @@ pub mod lawtwin_github
 
         fn issuesGetLabel(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::string::String,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            text_3: std::string::String,
         ) -> crate::lawspec_data::Label
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_issues_get_label(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value2),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_3),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -609,18 +615,18 @@ pub mod lawtwin_github
 
         fn issuesDeleteLabel(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::string::String,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            text_3: std::string::String,
         ) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_issues_delete_label(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value2),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_3),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -631,22 +637,22 @@ pub mod lawtwin_github
 
         fn issuesUpdateLabel(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::string::String,
-            value3: std::option::Option<crate::lawspec_data::IssuesUpdateLabelBody>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            text_3: std::string::String,
+            maybe_1: std::option::Option<crate::lawspec_data::IssuesUpdateLabelBody>,
         ) -> crate::lawspec_data::Label
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_issues_update_label(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value2),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_3),
                     <Option<
                         crate::lawspec_definitions::typed::IssuesUpdateLabelBody,
-                    > as ls::fast::Public>::from_native(value3),
+                    > as ls::fast::Public>::from_native(maybe_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -657,32 +663,32 @@ pub mod lawtwin_github
 
         fn issuesListMilestones(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::option::Option<crate::lawspec_data::IssuesListMilestonesState>,
-            value3: std::option::Option<crate::lawspec_data::IssuesListMilestonesSort>,
-            value4: std::option::Option<crate::lawspec_data::IssuesListMilestonesDirection>,
-            value5: std::option::Option<i64>,
-            value6: std::option::Option<i64>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            maybe_1: std::option::Option<crate::lawspec_data::IssuesListMilestonesState>,
+            maybe_2: std::option::Option<crate::lawspec_data::IssuesListMilestonesSort>,
+            maybe_3: std::option::Option<crate::lawspec_data::IssuesListMilestonesDirection>,
+            maybe_4: std::option::Option<i64>,
+            maybe_5: std::option::Option<i64>,
         ) -> std::vec::Vec<crate::lawspec_data::Milestone>
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_issues_list_milestones(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_2),
                     <Option<
                         crate::lawspec_definitions::typed::IssuesListMilestonesState,
-                    > as ls::fast::Public>::from_native(value2),
+                    > as ls::fast::Public>::from_native(maybe_1),
                     <Option<
                         crate::lawspec_definitions::typed::IssuesListMilestonesSort,
-                    > as ls::fast::Public>::from_native(value3),
+                    > as ls::fast::Public>::from_native(maybe_2),
                     <Option<
                         crate::lawspec_definitions::typed::IssuesListMilestonesDirection,
-                    > as ls::fast::Public>::from_native(value4),
-                    <Option<i64> as ls::fast::Public>::from_native(value5),
-                    <Option<i64> as ls::fast::Public>::from_native(value6),
+                    > as ls::fast::Public>::from_native(maybe_3),
+                    <Option<i64> as ls::fast::Public>::from_native(maybe_4),
+                    <Option<i64> as ls::fast::Public>::from_native(maybe_5),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -693,19 +699,19 @@ pub mod lawtwin_github
 
         fn issuesCreateMilestone(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: crate::lawspec_data::IssuesCreateMilestoneBody,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            issues_create_milestone_body_1: crate::lawspec_data::IssuesCreateMilestoneBody,
         ) -> crate::lawspec_data::Milestone
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_issues_create_milestone(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_2),
                     <crate::lawspec_definitions::typed::IssuesCreateMilestoneBody as ls::fast::Public>::from_native(
-                        value2,
+                        issues_create_milestone_body_1,
                     ),
                 ),
             );
@@ -717,18 +723,18 @@ pub mod lawtwin_github
 
         fn issuesGetMilestone(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i64,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int64_1: i64,
         ) -> crate::lawspec_data::Milestone
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_issues_get_milestone(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                    <i64 as ls::fast::Public>::from_native(value2),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                    <i64 as ls::fast::Public>::from_native(int64_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -739,18 +745,18 @@ pub mod lawtwin_github
 
         fn issuesDeleteMilestone(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i64,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int64_1: i64,
         ) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_issues_delete_milestone(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                    <i64 as ls::fast::Public>::from_native(value2),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                    <i64 as ls::fast::Public>::from_native(int64_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -761,22 +767,22 @@ pub mod lawtwin_github
 
         fn issuesUpdateMilestone(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i64,
-            value3: std::option::Option<crate::lawspec_data::IssuesUpdateMilestoneBody>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int64_1: i64,
+            maybe_1: std::option::Option<crate::lawspec_data::IssuesUpdateMilestoneBody>,
         ) -> crate::lawspec_data::Milestone
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_issues_update_milestone(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                    <i64 as ls::fast::Public>::from_native(value2),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                    <i64 as ls::fast::Public>::from_native(int64_1),
                     <Option<
                         crate::lawspec_definitions::typed::IssuesUpdateMilestoneBody,
-                    > as ls::fast::Public>::from_native(value3),
+                    > as ls::fast::Public>::from_native(maybe_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -808,199 +814,202 @@ pub mod lawtwin_github
     {
         fn issuesListLabelsForRepo(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::option::Option<i64>,
-            value3: std::option::Option<i64>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            maybe_1: std::option::Option<i64>,
+            maybe_2: std::option::Option<i64>,
         ) -> std::vec::Vec<crate::lawspec_data::Label>
         {
             self.calls.record(
                 "issuesListLabelsForRepo",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
-                    ls::IntoValue::into_value(value2.clone()),
-                    ls::IntoValue::into_value(value3.clone()),
+                    ls::IntoValue::into_value(text_1.clone()),
+                    ls::IntoValue::into_value(text_2.clone()),
+                    ls::IntoValue::into_value(maybe_1.clone()),
+                    ls::IntoValue::into_value(maybe_2.clone()),
                 ],
             );
             self.inner
-                .issuesListLabelsForRepo(value0, value1, value2, value3)
+                .issuesListLabelsForRepo(text_1, text_2, maybe_1, maybe_2)
         }
 
         fn issuesCreateLabel(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: crate::lawspec_data::IssuesCreateLabelBody,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            issues_create_label_body_1: crate::lawspec_data::IssuesCreateLabelBody,
         ) -> crate::lawspec_data::Label
         {
             self.calls.record(
                 "issuesCreateLabel",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
-                    ls::IntoValue::into_value(value2.clone()),
+                    ls::IntoValue::into_value(text_1.clone()),
+                    ls::IntoValue::into_value(text_2.clone()),
+                    ls::IntoValue::into_value(issues_create_label_body_1.clone()),
                 ],
             );
-            self.inner.issuesCreateLabel(value0, value1, value2)
+            self.inner
+                .issuesCreateLabel(text_1, text_2, issues_create_label_body_1)
         }
 
         fn issuesGetLabel(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::string::String,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            text_3: std::string::String,
         ) -> crate::lawspec_data::Label
         {
             self.calls.record(
                 "issuesGetLabel",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
-                    ls::IntoValue::into_value(value2.clone()),
+                    ls::IntoValue::into_value(text_1.clone()),
+                    ls::IntoValue::into_value(text_2.clone()),
+                    ls::IntoValue::into_value(text_3.clone()),
                 ],
             );
-            self.inner.issuesGetLabel(value0, value1, value2)
+            self.inner.issuesGetLabel(text_1, text_2, text_3)
         }
 
         fn issuesDeleteLabel(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::string::String,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            text_3: std::string::String,
         ) -> ()
         {
             self.calls.record(
                 "issuesDeleteLabel",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
-                    ls::IntoValue::into_value(value2.clone()),
+                    ls::IntoValue::into_value(text_1.clone()),
+                    ls::IntoValue::into_value(text_2.clone()),
+                    ls::IntoValue::into_value(text_3.clone()),
                 ],
             );
-            self.inner.issuesDeleteLabel(value0, value1, value2)
+            self.inner.issuesDeleteLabel(text_1, text_2, text_3)
         }
 
         fn issuesUpdateLabel(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::string::String,
-            value3: std::option::Option<crate::lawspec_data::IssuesUpdateLabelBody>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            text_3: std::string::String,
+            maybe_1: std::option::Option<crate::lawspec_data::IssuesUpdateLabelBody>,
         ) -> crate::lawspec_data::Label
         {
             self.calls.record(
                 "issuesUpdateLabel",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
-                    ls::IntoValue::into_value(value2.clone()),
-                    ls::IntoValue::into_value(value3.clone()),
+                    ls::IntoValue::into_value(text_1.clone()),
+                    ls::IntoValue::into_value(text_2.clone()),
+                    ls::IntoValue::into_value(text_3.clone()),
+                    ls::IntoValue::into_value(maybe_1.clone()),
                 ],
             );
-            self.inner.issuesUpdateLabel(value0, value1, value2, value3)
+            self.inner
+                .issuesUpdateLabel(text_1, text_2, text_3, maybe_1)
         }
 
         fn issuesListMilestones(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::option::Option<crate::lawspec_data::IssuesListMilestonesState>,
-            value3: std::option::Option<crate::lawspec_data::IssuesListMilestonesSort>,
-            value4: std::option::Option<crate::lawspec_data::IssuesListMilestonesDirection>,
-            value5: std::option::Option<i64>,
-            value6: std::option::Option<i64>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            maybe_1: std::option::Option<crate::lawspec_data::IssuesListMilestonesState>,
+            maybe_2: std::option::Option<crate::lawspec_data::IssuesListMilestonesSort>,
+            maybe_3: std::option::Option<crate::lawspec_data::IssuesListMilestonesDirection>,
+            maybe_4: std::option::Option<i64>,
+            maybe_5: std::option::Option<i64>,
         ) -> std::vec::Vec<crate::lawspec_data::Milestone>
         {
             self.calls.record(
                 "issuesListMilestones",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
-                    ls::IntoValue::into_value(value2.clone()),
-                    ls::IntoValue::into_value(value3.clone()),
-                    ls::IntoValue::into_value(value4.clone()),
-                    ls::IntoValue::into_value(value5.clone()),
-                    ls::IntoValue::into_value(value6.clone()),
+                    ls::IntoValue::into_value(text_1.clone()),
+                    ls::IntoValue::into_value(text_2.clone()),
+                    ls::IntoValue::into_value(maybe_1.clone()),
+                    ls::IntoValue::into_value(maybe_2.clone()),
+                    ls::IntoValue::into_value(maybe_3.clone()),
+                    ls::IntoValue::into_value(maybe_4.clone()),
+                    ls::IntoValue::into_value(maybe_5.clone()),
                 ],
             );
             self.inner
-                .issuesListMilestones(value0, value1, value2, value3, value4, value5, value6)
+                .issuesListMilestones(text_1, text_2, maybe_1, maybe_2, maybe_3, maybe_4, maybe_5)
         }
 
         fn issuesCreateMilestone(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: crate::lawspec_data::IssuesCreateMilestoneBody,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            issues_create_milestone_body_1: crate::lawspec_data::IssuesCreateMilestoneBody,
         ) -> crate::lawspec_data::Milestone
         {
             self.calls.record(
                 "issuesCreateMilestone",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
-                    ls::IntoValue::into_value(value2.clone()),
+                    ls::IntoValue::into_value(text_1.clone()),
+                    ls::IntoValue::into_value(text_2.clone()),
+                    ls::IntoValue::into_value(issues_create_milestone_body_1.clone()),
                 ],
             );
-            self.inner.issuesCreateMilestone(value0, value1, value2)
+            self.inner
+                .issuesCreateMilestone(text_1, text_2, issues_create_milestone_body_1)
         }
 
         fn issuesGetMilestone(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i64,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int64_1: i64,
         ) -> crate::lawspec_data::Milestone
         {
             self.calls.record(
                 "issuesGetMilestone",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
-                    ls::IntoValue::into_value(value2.clone()),
+                    ls::IntoValue::into_value(text_1.clone()),
+                    ls::IntoValue::into_value(text_2.clone()),
+                    ls::IntoValue::into_value(int64_1.clone()),
                 ],
             );
-            self.inner.issuesGetMilestone(value0, value1, value2)
+            self.inner.issuesGetMilestone(text_1, text_2, int64_1)
         }
 
         fn issuesDeleteMilestone(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i64,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int64_1: i64,
         ) -> ()
         {
             self.calls.record(
                 "issuesDeleteMilestone",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
-                    ls::IntoValue::into_value(value2.clone()),
+                    ls::IntoValue::into_value(text_1.clone()),
+                    ls::IntoValue::into_value(text_2.clone()),
+                    ls::IntoValue::into_value(int64_1.clone()),
                 ],
             );
-            self.inner.issuesDeleteMilestone(value0, value1, value2)
+            self.inner.issuesDeleteMilestone(text_1, text_2, int64_1)
         }
 
         fn issuesUpdateMilestone(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i64,
-            value3: std::option::Option<crate::lawspec_data::IssuesUpdateMilestoneBody>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int64_1: i64,
+            maybe_1: std::option::Option<crate::lawspec_data::IssuesUpdateMilestoneBody>,
         ) -> crate::lawspec_data::Milestone
         {
             self.calls.record(
                 "issuesUpdateMilestone",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
-                    ls::IntoValue::into_value(value2.clone()),
-                    ls::IntoValue::into_value(value3.clone()),
+                    ls::IntoValue::into_value(text_1.clone()),
+                    ls::IntoValue::into_value(text_2.clone()),
+                    ls::IntoValue::into_value(int64_1.clone()),
+                    ls::IntoValue::into_value(maybe_1.clone()),
                 ],
             );
             self.inner
-                .issuesUpdateMilestone(value0, value1, value2, value3)
+                .issuesUpdateMilestone(text_1, text_2, int64_1, maybe_1)
         }
     }
 
@@ -1019,32 +1028,32 @@ pub mod lawtwin_github
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("Text", vec![]),
             64,
             ctx,
         )?;
-        let native_1 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_2 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[2].clone(),
             &ls::TypeRef::named("Maybe", vec![ls::TypeRef::named("Int64", vec![])]),
             64,
             ctx,
         )?;
-        let native_2 = <std::option::Option<i64> as ls::FromValue>::from_value(value)?;
+        let maybe_1 = <std::option::Option<i64> as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[3].clone(),
             &ls::TypeRef::named("Maybe", vec![ls::TypeRef::named("Int64", vec![])]),
             64,
             ctx,
         )?;
-        let native_3 = <std::option::Option<i64> as ls::FromValue>::from_value(value)?;
+        let maybe_2 = <std::option::Option<i64> as ls::FromValue>::from_value(value)?;
         let native_result = ls::native_failures::<crate::lawspec_data::ApiError, _>(
             "lawspec::ability::Fail(lawtwin.github.model::type::ApiError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.issuesListLabelsForRepo(native_0, native_1, native_2, native_3),
+            || handler.issuesListLabelsForRepo(text_1, text_2, maybe_1, maybe_2),
             vec![],
         );
         schema.validate_with_context(
@@ -1076,26 +1085,26 @@ pub mod lawtwin_github
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("Text", vec![]),
             64,
             ctx,
         )?;
-        let native_1 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_2 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[2].clone(),
             &ls::TypeRef::named("lawtwin.github.model::type::IssuesCreateLabelBody", vec![]),
             64,
             ctx,
         )?;
-        let native_2 =
+        let issues_create_label_body_1 =
             <crate::lawspec_data::IssuesCreateLabelBody as ls::FromValue>::from_value(value)?;
         let native_result = ls::native_failures::<crate::lawspec_data::ApiError, _>(
             "lawspec::ability::Fail(lawtwin.github.model::type::ApiError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.issuesCreateLabel(native_0, native_1, native_2),
+            || handler.issuesCreateLabel(text_1, text_2, issues_create_label_body_1),
             vec![],
         );
         schema.validate_with_context(
@@ -1121,25 +1130,25 @@ pub mod lawtwin_github
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("Text", vec![]),
             64,
             ctx,
         )?;
-        let native_1 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_2 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[2].clone(),
             &ls::TypeRef::named("Text", vec![]),
             64,
             ctx,
         )?;
-        let native_2 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_3 = <std::string::String as ls::FromValue>::from_value(value)?;
         let native_result = ls::native_failures::<crate::lawspec_data::ApiError, _>(
             "lawspec::ability::Fail(lawtwin.github.model::type::ApiError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.issuesGetLabel(native_0, native_1, native_2),
+            || handler.issuesGetLabel(text_1, text_2, text_3),
             vec![],
         );
         schema.validate_with_context(
@@ -1165,25 +1174,25 @@ pub mod lawtwin_github
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("Text", vec![]),
             64,
             ctx,
         )?;
-        let native_1 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_2 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[2].clone(),
             &ls::TypeRef::named("Text", vec![]),
             64,
             ctx,
         )?;
-        let native_2 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_3 = <std::string::String as ls::FromValue>::from_value(value)?;
         ls::native_failures::<crate::lawspec_data::ApiError, _>(
             "lawspec::ability::Fail(lawtwin.github.model::type::ApiError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.issuesDeleteLabel(native_0, native_1, native_2),
+            || handler.issuesDeleteLabel(text_1, text_2, text_3),
             vec![],
         );
         Ok(ls::Value::Unit)
@@ -1204,21 +1213,21 @@ pub mod lawtwin_github
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("Text", vec![]),
             64,
             ctx,
         )?;
-        let native_1 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_2 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[2].clone(),
             &ls::TypeRef::named("Text", vec![]),
             64,
             ctx,
         )?;
-        let native_2 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_3 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[3].clone(),
             &ls::TypeRef::named(
@@ -1231,13 +1240,13 @@ pub mod lawtwin_github
             64,
             ctx,
         )?;
-        let native_3 = <std::option::Option<
+        let maybe_1 = <std::option::Option<
             crate::lawspec_data::IssuesUpdateLabelBody,
         > as ls::FromValue>::from_value(value)?;
         let native_result = ls::native_failures::<crate::lawspec_data::ApiError, _>(
             "lawspec::ability::Fail(lawtwin.github.model::type::ApiError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.issuesUpdateLabel(native_0, native_1, native_2, native_3),
+            || handler.issuesUpdateLabel(text_1, text_2, text_3, maybe_1),
             vec![],
         );
         schema.validate_with_context(
@@ -1263,14 +1272,14 @@ pub mod lawtwin_github
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("Text", vec![]),
             64,
             ctx,
         )?;
-        let native_1 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_2 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[2].clone(),
             &ls::TypeRef::named(
@@ -1283,7 +1292,7 @@ pub mod lawtwin_github
             64,
             ctx,
         )?;
-        let native_2 = <std::option::Option<
+        let maybe_1 = <std::option::Option<
             crate::lawspec_data::IssuesListMilestonesState,
         > as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
@@ -1298,7 +1307,7 @@ pub mod lawtwin_github
             64,
             ctx,
         )?;
-        let native_3 = <std::option::Option<
+        let maybe_2 = <std::option::Option<
             crate::lawspec_data::IssuesListMilestonesSort,
         > as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
@@ -1313,7 +1322,7 @@ pub mod lawtwin_github
             64,
             ctx,
         )?;
-        let native_4 = <std::option::Option<
+        let maybe_3 = <std::option::Option<
             crate::lawspec_data::IssuesListMilestonesDirection,
         > as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
@@ -1322,20 +1331,20 @@ pub mod lawtwin_github
             64,
             ctx,
         )?;
-        let native_5 = <std::option::Option<i64> as ls::FromValue>::from_value(value)?;
+        let maybe_4 = <std::option::Option<i64> as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[6].clone(),
             &ls::TypeRef::named("Maybe", vec![ls::TypeRef::named("Int64", vec![])]),
             64,
             ctx,
         )?;
-        let native_6 = <std::option::Option<i64> as ls::FromValue>::from_value(value)?;
+        let maybe_5 = <std::option::Option<i64> as ls::FromValue>::from_value(value)?;
         let native_result = ls::native_failures::<crate::lawspec_data::ApiError, _>(
             "lawspec::ability::Fail(lawtwin.github.model::type::ApiError)",
             |native| ls::IntoValue::into_value(native),
             || {
                 handler.issuesListMilestones(
-                    native_0, native_1, native_2, native_3, native_4, native_5, native_6,
+                    text_1, text_2, maybe_1, maybe_2, maybe_3, maybe_4, maybe_5,
                 )
             },
             vec![],
@@ -1369,14 +1378,14 @@ pub mod lawtwin_github
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("Text", vec![]),
             64,
             ctx,
         )?;
-        let native_1 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_2 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[2].clone(),
             &ls::TypeRef::named(
@@ -1386,12 +1395,12 @@ pub mod lawtwin_github
             64,
             ctx,
         )?;
-        let native_2 =
+        let issues_create_milestone_body_1 =
             <crate::lawspec_data::IssuesCreateMilestoneBody as ls::FromValue>::from_value(value)?;
         let native_result = ls::native_failures::<crate::lawspec_data::ApiError, _>(
             "lawspec::ability::Fail(lawtwin.github.model::type::ApiError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.issuesCreateMilestone(native_0, native_1, native_2),
+            || handler.issuesCreateMilestone(text_1, text_2, issues_create_milestone_body_1),
             vec![],
         );
         schema.validate_with_context(
@@ -1417,25 +1426,25 @@ pub mod lawtwin_github
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("Text", vec![]),
             64,
             ctx,
         )?;
-        let native_1 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_2 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[2].clone(),
             &ls::TypeRef::named("Int64", vec![]),
             64,
             ctx,
         )?;
-        let native_2 = <i64 as ls::FromValue>::from_value(value)?;
+        let int64_1 = <i64 as ls::FromValue>::from_value(value)?;
         let native_result = ls::native_failures::<crate::lawspec_data::ApiError, _>(
             "lawspec::ability::Fail(lawtwin.github.model::type::ApiError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.issuesGetMilestone(native_0, native_1, native_2),
+            || handler.issuesGetMilestone(text_1, text_2, int64_1),
             vec![],
         );
         schema.validate_with_context(
@@ -1461,25 +1470,25 @@ pub mod lawtwin_github
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("Text", vec![]),
             64,
             ctx,
         )?;
-        let native_1 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_2 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[2].clone(),
             &ls::TypeRef::named("Int64", vec![]),
             64,
             ctx,
         )?;
-        let native_2 = <i64 as ls::FromValue>::from_value(value)?;
+        let int64_1 = <i64 as ls::FromValue>::from_value(value)?;
         ls::native_failures::<crate::lawspec_data::ApiError, _>(
             "lawspec::ability::Fail(lawtwin.github.model::type::ApiError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.issuesDeleteMilestone(native_0, native_1, native_2),
+            || handler.issuesDeleteMilestone(text_1, text_2, int64_1),
             vec![],
         );
         Ok(ls::Value::Unit)
@@ -1500,21 +1509,21 @@ pub mod lawtwin_github
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("Text", vec![]),
             64,
             ctx,
         )?;
-        let native_1 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_2 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[2].clone(),
             &ls::TypeRef::named("Int64", vec![]),
             64,
             ctx,
         )?;
-        let native_2 = <i64 as ls::FromValue>::from_value(value)?;
+        let int64_1 = <i64 as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[3].clone(),
             &ls::TypeRef::named(
@@ -1527,13 +1536,13 @@ pub mod lawtwin_github
             64,
             ctx,
         )?;
-        let native_3 = <std::option::Option<
+        let maybe_1 = <std::option::Option<
             crate::lawspec_data::IssuesUpdateMilestoneBody,
         > as ls::FromValue>::from_value(value)?;
         let native_result = ls::native_failures::<crate::lawspec_data::ApiError, _>(
             "lawspec::ability::Fail(lawtwin.github.model::type::ApiError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.issuesUpdateMilestone(native_0, native_1, native_2, native_3),
+            || handler.issuesUpdateMilestone(text_1, text_2, int64_1, maybe_1),
             vec![],
         );
         schema.validate_with_context(
@@ -1608,10 +1617,10 @@ pub mod lawtwin_github_laws
         /// issuesListLabelsForRepo, with the failure it raises as Err rather than a panic.
         pub fn try_issuesListLabelsForRepo(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::option::Option<i64>,
-            value3: std::option::Option<i64>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            maybe_1: std::option::Option<i64>,
+            maybe_2: std::option::Option<i64>,
         ) -> std::result::Result<
             std::vec::Vec<crate::lawspec_data::Label>,
             crate::lawspec_data::ApiError,
@@ -1622,7 +1631,7 @@ pub mod lawtwin_github_laws
                 || {
                     Ok(
                         <Self as super::lawtwin_github::IssuesApi>::issuesListLabelsForRepo(
-                            self, value0, value1, value2, value3,
+                            self, text_1, text_2, maybe_1, maybe_2,
                         ),
                     )
                 },
@@ -1651,9 +1660,9 @@ pub mod lawtwin_github_laws
         /// issuesCreateLabel, with the failure it raises as Err rather than a panic.
         pub fn try_issuesCreateLabel(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: crate::lawspec_data::IssuesCreateLabelBody,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            issues_create_label_body_1: crate::lawspec_data::IssuesCreateLabelBody,
         ) -> std::result::Result<crate::lawspec_data::Label, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
@@ -1661,7 +1670,10 @@ pub mod lawtwin_github_laws
                 || {
                     Ok(
                         <Self as super::lawtwin_github::IssuesApi>::issuesCreateLabel(
-                            self, value0, value1, value2,
+                            self,
+                            text_1,
+                            text_2,
+                            issues_create_label_body_1,
                         ),
                     )
                 },
@@ -1690,16 +1702,16 @@ pub mod lawtwin_github_laws
         /// issuesGetLabel, with the failure it raises as Err rather than a panic.
         pub fn try_issuesGetLabel(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::string::String,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            text_3: std::string::String,
         ) -> std::result::Result<crate::lawspec_data::Label, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.github.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_github::IssuesApi>::issuesGetLabel(
-                        self, value0, value1, value2,
+                        self, text_1, text_2, text_3,
                     ))
                 },
             )
@@ -1727,9 +1739,9 @@ pub mod lawtwin_github_laws
         /// issuesDeleteLabel, with the failure it raises as Err rather than a panic.
         pub fn try_issuesDeleteLabel(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::string::String,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            text_3: std::string::String,
         ) -> std::result::Result<(), crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
@@ -1737,7 +1749,7 @@ pub mod lawtwin_github_laws
                 || {
                     Ok(
                         <Self as super::lawtwin_github::IssuesApi>::issuesDeleteLabel(
-                            self, value0, value1, value2,
+                            self, text_1, text_2, text_3,
                         ),
                     )
                 },
@@ -1766,10 +1778,10 @@ pub mod lawtwin_github_laws
         /// issuesUpdateLabel, with the failure it raises as Err rather than a panic.
         pub fn try_issuesUpdateLabel(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::string::String,
-            value3: std::option::Option<crate::lawspec_data::IssuesUpdateLabelBody>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            text_3: std::string::String,
+            maybe_1: std::option::Option<crate::lawspec_data::IssuesUpdateLabelBody>,
         ) -> std::result::Result<crate::lawspec_data::Label, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
@@ -1777,7 +1789,7 @@ pub mod lawtwin_github_laws
                 || {
                     Ok(
                         <Self as super::lawtwin_github::IssuesApi>::issuesUpdateLabel(
-                            self, value0, value1, value2, value3,
+                            self, text_1, text_2, text_3, maybe_1,
                         ),
                     )
                 },
@@ -1806,13 +1818,13 @@ pub mod lawtwin_github_laws
         /// issuesListMilestones, with the failure it raises as Err rather than a panic.
         pub fn try_issuesListMilestones(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::option::Option<crate::lawspec_data::IssuesListMilestonesState>,
-            value3: std::option::Option<crate::lawspec_data::IssuesListMilestonesSort>,
-            value4: std::option::Option<crate::lawspec_data::IssuesListMilestonesDirection>,
-            value5: std::option::Option<i64>,
-            value6: std::option::Option<i64>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            maybe_1: std::option::Option<crate::lawspec_data::IssuesListMilestonesState>,
+            maybe_2: std::option::Option<crate::lawspec_data::IssuesListMilestonesSort>,
+            maybe_3: std::option::Option<crate::lawspec_data::IssuesListMilestonesDirection>,
+            maybe_4: std::option::Option<i64>,
+            maybe_5: std::option::Option<i64>,
         ) -> std::result::Result<
             std::vec::Vec<crate::lawspec_data::Milestone>,
             crate::lawspec_data::ApiError,
@@ -1823,7 +1835,7 @@ pub mod lawtwin_github_laws
                 || {
                     Ok(
                         <Self as super::lawtwin_github::IssuesApi>::issuesListMilestones(
-                            self, value0, value1, value2, value3, value4, value5, value6,
+                            self, text_1, text_2, maybe_1, maybe_2, maybe_3, maybe_4, maybe_5,
                         ),
                     )
                 },
@@ -1852,9 +1864,9 @@ pub mod lawtwin_github_laws
         /// issuesCreateMilestone, with the failure it raises as Err rather than a panic.
         pub fn try_issuesCreateMilestone(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: crate::lawspec_data::IssuesCreateMilestoneBody,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            issues_create_milestone_body_1: crate::lawspec_data::IssuesCreateMilestoneBody,
         ) -> std::result::Result<crate::lawspec_data::Milestone, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
@@ -1862,7 +1874,10 @@ pub mod lawtwin_github_laws
                 || {
                     Ok(
                         <Self as super::lawtwin_github::IssuesApi>::issuesCreateMilestone(
-                            self, value0, value1, value2,
+                            self,
+                            text_1,
+                            text_2,
+                            issues_create_milestone_body_1,
                         ),
                     )
                 },
@@ -1891,9 +1906,9 @@ pub mod lawtwin_github_laws
         /// issuesGetMilestone, with the failure it raises as Err rather than a panic.
         pub fn try_issuesGetMilestone(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i64,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int64_1: i64,
         ) -> std::result::Result<crate::lawspec_data::Milestone, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
@@ -1901,7 +1916,7 @@ pub mod lawtwin_github_laws
                 || {
                     Ok(
                         <Self as super::lawtwin_github::IssuesApi>::issuesGetMilestone(
-                            self, value0, value1, value2,
+                            self, text_1, text_2, int64_1,
                         ),
                     )
                 },
@@ -1930,9 +1945,9 @@ pub mod lawtwin_github_laws
         /// issuesDeleteMilestone, with the failure it raises as Err rather than a panic.
         pub fn try_issuesDeleteMilestone(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i64,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int64_1: i64,
         ) -> std::result::Result<(), crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
@@ -1940,7 +1955,7 @@ pub mod lawtwin_github_laws
                 || {
                     Ok(
                         <Self as super::lawtwin_github::IssuesApi>::issuesDeleteMilestone(
-                            self, value0, value1, value2,
+                            self, text_1, text_2, int64_1,
                         ),
                     )
                 },
@@ -1969,10 +1984,10 @@ pub mod lawtwin_github_laws
         /// issuesUpdateMilestone, with the failure it raises as Err rather than a panic.
         pub fn try_issuesUpdateMilestone(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i64,
-            value3: std::option::Option<crate::lawspec_data::IssuesUpdateMilestoneBody>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int64_1: i64,
+            maybe_1: std::option::Option<crate::lawspec_data::IssuesUpdateMilestoneBody>,
         ) -> std::result::Result<crate::lawspec_data::Milestone, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
@@ -1980,7 +1995,7 @@ pub mod lawtwin_github_laws
                 || {
                     Ok(
                         <Self as super::lawtwin_github::IssuesApi>::issuesUpdateMilestone(
-                            self, value0, value1, value2, value3,
+                            self, text_1, text_2, int64_1, maybe_1,
                         ),
                     )
                 },
@@ -2011,20 +2026,20 @@ pub mod lawtwin_github_laws
     {
         fn issuesListLabelsForRepo(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::option::Option<i64>,
-            value3: std::option::Option<i64>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            maybe_1: std::option::Option<i64>,
+            maybe_2: std::option::Option<i64>,
         ) -> std::vec::Vec<crate::lawspec_data::Label>
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_issues_list_labels_for_repo(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                    <Option<i64> as ls::fast::Public>::from_native(value2),
-                    <Option<i64> as ls::fast::Public>::from_native(value3),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                    <Option<i64> as ls::fast::Public>::from_native(maybe_1),
+                    <Option<i64> as ls::fast::Public>::from_native(maybe_2),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -2035,19 +2050,19 @@ pub mod lawtwin_github_laws
 
         fn issuesCreateLabel(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: crate::lawspec_data::IssuesCreateLabelBody,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            issues_create_label_body_1: crate::lawspec_data::IssuesCreateLabelBody,
         ) -> crate::lawspec_data::Label
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_issues_create_label(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_2),
                     <crate::lawspec_definitions::typed::IssuesCreateLabelBody as ls::fast::Public>::from_native(
-                        value2,
+                        issues_create_label_body_1,
                     ),
                 ),
             );
@@ -2059,18 +2074,18 @@ pub mod lawtwin_github_laws
 
         fn issuesGetLabel(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::string::String,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            text_3: std::string::String,
         ) -> crate::lawspec_data::Label
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_issues_get_label(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value2),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_3),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -2081,18 +2096,18 @@ pub mod lawtwin_github_laws
 
         fn issuesDeleteLabel(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::string::String,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            text_3: std::string::String,
         ) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_issues_delete_label(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value2),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_3),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -2103,22 +2118,22 @@ pub mod lawtwin_github_laws
 
         fn issuesUpdateLabel(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::string::String,
-            value3: std::option::Option<crate::lawspec_data::IssuesUpdateLabelBody>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            text_3: std::string::String,
+            maybe_1: std::option::Option<crate::lawspec_data::IssuesUpdateLabelBody>,
         ) -> crate::lawspec_data::Label
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_issues_update_label(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value2),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_3),
                     <Option<
                         crate::lawspec_definitions::typed::IssuesUpdateLabelBody,
-                    > as ls::fast::Public>::from_native(value3),
+                    > as ls::fast::Public>::from_native(maybe_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -2129,32 +2144,32 @@ pub mod lawtwin_github_laws
 
         fn issuesListMilestones(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::option::Option<crate::lawspec_data::IssuesListMilestonesState>,
-            value3: std::option::Option<crate::lawspec_data::IssuesListMilestonesSort>,
-            value4: std::option::Option<crate::lawspec_data::IssuesListMilestonesDirection>,
-            value5: std::option::Option<i64>,
-            value6: std::option::Option<i64>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            maybe_1: std::option::Option<crate::lawspec_data::IssuesListMilestonesState>,
+            maybe_2: std::option::Option<crate::lawspec_data::IssuesListMilestonesSort>,
+            maybe_3: std::option::Option<crate::lawspec_data::IssuesListMilestonesDirection>,
+            maybe_4: std::option::Option<i64>,
+            maybe_5: std::option::Option<i64>,
         ) -> std::vec::Vec<crate::lawspec_data::Milestone>
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_issues_list_milestones(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_2),
                     <Option<
                         crate::lawspec_definitions::typed::IssuesListMilestonesState,
-                    > as ls::fast::Public>::from_native(value2),
+                    > as ls::fast::Public>::from_native(maybe_1),
                     <Option<
                         crate::lawspec_definitions::typed::IssuesListMilestonesSort,
-                    > as ls::fast::Public>::from_native(value3),
+                    > as ls::fast::Public>::from_native(maybe_2),
                     <Option<
                         crate::lawspec_definitions::typed::IssuesListMilestonesDirection,
-                    > as ls::fast::Public>::from_native(value4),
-                    <Option<i64> as ls::fast::Public>::from_native(value5),
-                    <Option<i64> as ls::fast::Public>::from_native(value6),
+                    > as ls::fast::Public>::from_native(maybe_3),
+                    <Option<i64> as ls::fast::Public>::from_native(maybe_4),
+                    <Option<i64> as ls::fast::Public>::from_native(maybe_5),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -2165,19 +2180,19 @@ pub mod lawtwin_github_laws
 
         fn issuesCreateMilestone(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: crate::lawspec_data::IssuesCreateMilestoneBody,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            issues_create_milestone_body_1: crate::lawspec_data::IssuesCreateMilestoneBody,
         ) -> crate::lawspec_data::Milestone
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_issues_create_milestone(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_2),
                     <crate::lawspec_definitions::typed::IssuesCreateMilestoneBody as ls::fast::Public>::from_native(
-                        value2,
+                        issues_create_milestone_body_1,
                     ),
                 ),
             );
@@ -2189,18 +2204,18 @@ pub mod lawtwin_github_laws
 
         fn issuesGetMilestone(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i64,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int64_1: i64,
         ) -> crate::lawspec_data::Milestone
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_issues_get_milestone(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                    <i64 as ls::fast::Public>::from_native(value2),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                    <i64 as ls::fast::Public>::from_native(int64_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -2211,18 +2226,18 @@ pub mod lawtwin_github_laws
 
         fn issuesDeleteMilestone(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i64,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int64_1: i64,
         ) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_issues_delete_milestone(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                    <i64 as ls::fast::Public>::from_native(value2),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                    <i64 as ls::fast::Public>::from_native(int64_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -2233,22 +2248,22 @@ pub mod lawtwin_github_laws
 
         fn issuesUpdateMilestone(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i64,
-            value3: std::option::Option<crate::lawspec_data::IssuesUpdateMilestoneBody>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int64_1: i64,
+            maybe_1: std::option::Option<crate::lawspec_data::IssuesUpdateMilestoneBody>,
         ) -> crate::lawspec_data::Milestone
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_issues_update_milestone(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                    <i64 as ls::fast::Public>::from_native(value2),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                    <i64 as ls::fast::Public>::from_native(int64_1),
                     <Option<
                         crate::lawspec_definitions::typed::IssuesUpdateMilestoneBody,
-                    > as ls::fast::Public>::from_native(value3),
+                    > as ls::fast::Public>::from_native(maybe_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -2322,10 +2337,10 @@ pub mod contracttest_github
         /// issuesListLabelsForRepo, with the failure it raises as Err rather than a panic.
         pub fn try_issuesListLabelsForRepo(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::option::Option<i64>,
-            value3: std::option::Option<i64>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            maybe_1: std::option::Option<i64>,
+            maybe_2: std::option::Option<i64>,
         ) -> std::result::Result<
             std::vec::Vec<crate::lawspec_data::Label>,
             crate::lawspec_data::ApiError,
@@ -2336,7 +2351,7 @@ pub mod contracttest_github
                 || {
                     Ok(
                         <Self as super::lawtwin_github::IssuesApi>::issuesListLabelsForRepo(
-                            self, value0, value1, value2, value3,
+                            self, text_1, text_2, maybe_1, maybe_2,
                         ),
                     )
                 },
@@ -2365,9 +2380,9 @@ pub mod contracttest_github
         /// issuesCreateLabel, with the failure it raises as Err rather than a panic.
         pub fn try_issuesCreateLabel(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: crate::lawspec_data::IssuesCreateLabelBody,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            issues_create_label_body_1: crate::lawspec_data::IssuesCreateLabelBody,
         ) -> std::result::Result<crate::lawspec_data::Label, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
@@ -2375,7 +2390,10 @@ pub mod contracttest_github
                 || {
                     Ok(
                         <Self as super::lawtwin_github::IssuesApi>::issuesCreateLabel(
-                            self, value0, value1, value2,
+                            self,
+                            text_1,
+                            text_2,
+                            issues_create_label_body_1,
                         ),
                     )
                 },
@@ -2404,16 +2422,16 @@ pub mod contracttest_github
         /// issuesGetLabel, with the failure it raises as Err rather than a panic.
         pub fn try_issuesGetLabel(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::string::String,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            text_3: std::string::String,
         ) -> std::result::Result<crate::lawspec_data::Label, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.github.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_github::IssuesApi>::issuesGetLabel(
-                        self, value0, value1, value2,
+                        self, text_1, text_2, text_3,
                     ))
                 },
             )
@@ -2441,9 +2459,9 @@ pub mod contracttest_github
         /// issuesDeleteLabel, with the failure it raises as Err rather than a panic.
         pub fn try_issuesDeleteLabel(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::string::String,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            text_3: std::string::String,
         ) -> std::result::Result<(), crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
@@ -2451,7 +2469,7 @@ pub mod contracttest_github
                 || {
                     Ok(
                         <Self as super::lawtwin_github::IssuesApi>::issuesDeleteLabel(
-                            self, value0, value1, value2,
+                            self, text_1, text_2, text_3,
                         ),
                     )
                 },
@@ -2480,10 +2498,10 @@ pub mod contracttest_github
         /// issuesUpdateLabel, with the failure it raises as Err rather than a panic.
         pub fn try_issuesUpdateLabel(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::string::String,
-            value3: std::option::Option<crate::lawspec_data::IssuesUpdateLabelBody>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            text_3: std::string::String,
+            maybe_1: std::option::Option<crate::lawspec_data::IssuesUpdateLabelBody>,
         ) -> std::result::Result<crate::lawspec_data::Label, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
@@ -2491,7 +2509,7 @@ pub mod contracttest_github
                 || {
                     Ok(
                         <Self as super::lawtwin_github::IssuesApi>::issuesUpdateLabel(
-                            self, value0, value1, value2, value3,
+                            self, text_1, text_2, text_3, maybe_1,
                         ),
                     )
                 },
@@ -2520,13 +2538,13 @@ pub mod contracttest_github
         /// issuesListMilestones, with the failure it raises as Err rather than a panic.
         pub fn try_issuesListMilestones(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::option::Option<crate::lawspec_data::IssuesListMilestonesState>,
-            value3: std::option::Option<crate::lawspec_data::IssuesListMilestonesSort>,
-            value4: std::option::Option<crate::lawspec_data::IssuesListMilestonesDirection>,
-            value5: std::option::Option<i64>,
-            value6: std::option::Option<i64>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            maybe_1: std::option::Option<crate::lawspec_data::IssuesListMilestonesState>,
+            maybe_2: std::option::Option<crate::lawspec_data::IssuesListMilestonesSort>,
+            maybe_3: std::option::Option<crate::lawspec_data::IssuesListMilestonesDirection>,
+            maybe_4: std::option::Option<i64>,
+            maybe_5: std::option::Option<i64>,
         ) -> std::result::Result<
             std::vec::Vec<crate::lawspec_data::Milestone>,
             crate::lawspec_data::ApiError,
@@ -2537,7 +2555,7 @@ pub mod contracttest_github
                 || {
                     Ok(
                         <Self as super::lawtwin_github::IssuesApi>::issuesListMilestones(
-                            self, value0, value1, value2, value3, value4, value5, value6,
+                            self, text_1, text_2, maybe_1, maybe_2, maybe_3, maybe_4, maybe_5,
                         ),
                     )
                 },
@@ -2566,9 +2584,9 @@ pub mod contracttest_github
         /// issuesCreateMilestone, with the failure it raises as Err rather than a panic.
         pub fn try_issuesCreateMilestone(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: crate::lawspec_data::IssuesCreateMilestoneBody,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            issues_create_milestone_body_1: crate::lawspec_data::IssuesCreateMilestoneBody,
         ) -> std::result::Result<crate::lawspec_data::Milestone, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
@@ -2576,7 +2594,10 @@ pub mod contracttest_github
                 || {
                     Ok(
                         <Self as super::lawtwin_github::IssuesApi>::issuesCreateMilestone(
-                            self, value0, value1, value2,
+                            self,
+                            text_1,
+                            text_2,
+                            issues_create_milestone_body_1,
                         ),
                     )
                 },
@@ -2605,9 +2626,9 @@ pub mod contracttest_github
         /// issuesGetMilestone, with the failure it raises as Err rather than a panic.
         pub fn try_issuesGetMilestone(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i64,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int64_1: i64,
         ) -> std::result::Result<crate::lawspec_data::Milestone, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
@@ -2615,7 +2636,7 @@ pub mod contracttest_github
                 || {
                     Ok(
                         <Self as super::lawtwin_github::IssuesApi>::issuesGetMilestone(
-                            self, value0, value1, value2,
+                            self, text_1, text_2, int64_1,
                         ),
                     )
                 },
@@ -2644,9 +2665,9 @@ pub mod contracttest_github
         /// issuesDeleteMilestone, with the failure it raises as Err rather than a panic.
         pub fn try_issuesDeleteMilestone(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i64,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int64_1: i64,
         ) -> std::result::Result<(), crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
@@ -2654,7 +2675,7 @@ pub mod contracttest_github
                 || {
                     Ok(
                         <Self as super::lawtwin_github::IssuesApi>::issuesDeleteMilestone(
-                            self, value0, value1, value2,
+                            self, text_1, text_2, int64_1,
                         ),
                     )
                 },
@@ -2683,10 +2704,10 @@ pub mod contracttest_github
         /// issuesUpdateMilestone, with the failure it raises as Err rather than a panic.
         pub fn try_issuesUpdateMilestone(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i64,
-            value3: std::option::Option<crate::lawspec_data::IssuesUpdateMilestoneBody>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int64_1: i64,
+            maybe_1: std::option::Option<crate::lawspec_data::IssuesUpdateMilestoneBody>,
         ) -> std::result::Result<crate::lawspec_data::Milestone, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
@@ -2694,7 +2715,7 @@ pub mod contracttest_github
                 || {
                     Ok(
                         <Self as super::lawtwin_github::IssuesApi>::issuesUpdateMilestone(
-                            self, value0, value1, value2, value3,
+                            self, text_1, text_2, int64_1, maybe_1,
                         ),
                     )
                 },
@@ -2725,20 +2746,20 @@ pub mod contracttest_github
     {
         fn issuesListLabelsForRepo(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::option::Option<i64>,
-            value3: std::option::Option<i64>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            maybe_1: std::option::Option<i64>,
+            maybe_2: std::option::Option<i64>,
         ) -> std::vec::Vec<crate::lawspec_data::Label>
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_issues_list_labels_for_repo(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                    <Option<i64> as ls::fast::Public>::from_native(value2),
-                    <Option<i64> as ls::fast::Public>::from_native(value3),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                    <Option<i64> as ls::fast::Public>::from_native(maybe_1),
+                    <Option<i64> as ls::fast::Public>::from_native(maybe_2),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -2749,19 +2770,19 @@ pub mod contracttest_github
 
         fn issuesCreateLabel(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: crate::lawspec_data::IssuesCreateLabelBody,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            issues_create_label_body_1: crate::lawspec_data::IssuesCreateLabelBody,
         ) -> crate::lawspec_data::Label
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_issues_create_label(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_2),
                     <crate::lawspec_definitions::typed::IssuesCreateLabelBody as ls::fast::Public>::from_native(
-                        value2,
+                        issues_create_label_body_1,
                     ),
                 ),
             );
@@ -2773,18 +2794,18 @@ pub mod contracttest_github
 
         fn issuesGetLabel(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::string::String,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            text_3: std::string::String,
         ) -> crate::lawspec_data::Label
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_issues_get_label(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value2),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_3),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -2795,18 +2816,18 @@ pub mod contracttest_github
 
         fn issuesDeleteLabel(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::string::String,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            text_3: std::string::String,
         ) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_issues_delete_label(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value2),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_3),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -2817,22 +2838,22 @@ pub mod contracttest_github
 
         fn issuesUpdateLabel(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::string::String,
-            value3: std::option::Option<crate::lawspec_data::IssuesUpdateLabelBody>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            text_3: std::string::String,
+            maybe_1: std::option::Option<crate::lawspec_data::IssuesUpdateLabelBody>,
         ) -> crate::lawspec_data::Label
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_issues_update_label(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value2),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_3),
                     <Option<
                         crate::lawspec_definitions::typed::IssuesUpdateLabelBody,
-                    > as ls::fast::Public>::from_native(value3),
+                    > as ls::fast::Public>::from_native(maybe_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -2843,32 +2864,32 @@ pub mod contracttest_github
 
         fn issuesListMilestones(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::option::Option<crate::lawspec_data::IssuesListMilestonesState>,
-            value3: std::option::Option<crate::lawspec_data::IssuesListMilestonesSort>,
-            value4: std::option::Option<crate::lawspec_data::IssuesListMilestonesDirection>,
-            value5: std::option::Option<i64>,
-            value6: std::option::Option<i64>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            maybe_1: std::option::Option<crate::lawspec_data::IssuesListMilestonesState>,
+            maybe_2: std::option::Option<crate::lawspec_data::IssuesListMilestonesSort>,
+            maybe_3: std::option::Option<crate::lawspec_data::IssuesListMilestonesDirection>,
+            maybe_4: std::option::Option<i64>,
+            maybe_5: std::option::Option<i64>,
         ) -> std::vec::Vec<crate::lawspec_data::Milestone>
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_issues_list_milestones(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_2),
                     <Option<
                         crate::lawspec_definitions::typed::IssuesListMilestonesState,
-                    > as ls::fast::Public>::from_native(value2),
+                    > as ls::fast::Public>::from_native(maybe_1),
                     <Option<
                         crate::lawspec_definitions::typed::IssuesListMilestonesSort,
-                    > as ls::fast::Public>::from_native(value3),
+                    > as ls::fast::Public>::from_native(maybe_2),
                     <Option<
                         crate::lawspec_definitions::typed::IssuesListMilestonesDirection,
-                    > as ls::fast::Public>::from_native(value4),
-                    <Option<i64> as ls::fast::Public>::from_native(value5),
-                    <Option<i64> as ls::fast::Public>::from_native(value6),
+                    > as ls::fast::Public>::from_native(maybe_3),
+                    <Option<i64> as ls::fast::Public>::from_native(maybe_4),
+                    <Option<i64> as ls::fast::Public>::from_native(maybe_5),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -2879,19 +2900,19 @@ pub mod contracttest_github
 
         fn issuesCreateMilestone(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: crate::lawspec_data::IssuesCreateMilestoneBody,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            issues_create_milestone_body_1: crate::lawspec_data::IssuesCreateMilestoneBody,
         ) -> crate::lawspec_data::Milestone
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_issues_create_milestone(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_2),
                     <crate::lawspec_definitions::typed::IssuesCreateMilestoneBody as ls::fast::Public>::from_native(
-                        value2,
+                        issues_create_milestone_body_1,
                     ),
                 ),
             );
@@ -2903,18 +2924,18 @@ pub mod contracttest_github
 
         fn issuesGetMilestone(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i64,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int64_1: i64,
         ) -> crate::lawspec_data::Milestone
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_issues_get_milestone(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                    <i64 as ls::fast::Public>::from_native(value2),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                    <i64 as ls::fast::Public>::from_native(int64_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -2925,18 +2946,18 @@ pub mod contracttest_github
 
         fn issuesDeleteMilestone(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i64,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int64_1: i64,
         ) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_issues_delete_milestone(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                    <i64 as ls::fast::Public>::from_native(value2),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                    <i64 as ls::fast::Public>::from_native(int64_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -2947,22 +2968,22 @@ pub mod contracttest_github
 
         fn issuesUpdateMilestone(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i64,
-            value3: std::option::Option<crate::lawspec_data::IssuesUpdateMilestoneBody>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int64_1: i64,
+            maybe_1: std::option::Option<crate::lawspec_data::IssuesUpdateMilestoneBody>,
         ) -> crate::lawspec_data::Milestone
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_issues_update_milestone(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                    <i64 as ls::fast::Public>::from_native(value2),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                    <i64 as ls::fast::Public>::from_native(int64_1),
                     <Option<
                         crate::lawspec_definitions::typed::IssuesUpdateMilestoneBody,
-                    > as ls::fast::Public>::from_native(value3),
+                    > as ls::fast::Public>::from_native(maybe_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);

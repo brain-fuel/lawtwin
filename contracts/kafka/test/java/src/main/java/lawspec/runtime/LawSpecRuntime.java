@@ -277,29 +277,33 @@ public final class LawSpecRuntime
     }
 
     // Text shows as the string it is, so a failure reads as the law was written.
-    private String shownData()
+    String shownData()
     {
       boolean text =
           type.equals("Text") || type.equals("CodePointText") || type.equals("Utf16Text");
       if (text && data instanceof List<?> units)
       {
-        var shown = new StringBuilder("\"");
+        var points = new ArrayList<Integer>();
         for (Object unit : units)
         {
           if (!(unit instanceof Integer point))
           {
             return String.valueOf(data);
           }
-          if (type.equals("Utf16Text"))
+          int last = points.size() - 1;
+          // A UTF-16 pair shows as its character; a unit without its partner stays a surrogate.
+          if (type.equals("Utf16Text") && last >= 0 && point >= 0xDC00 && point <= 0xDFFF
+              && points.get(last) >= 0xD800 && points.get(last) <= 0xDBFF)
           {
-            shown.append((char) (int) point);
+            char high = (char) (int) points.get(last);
+            points.set(last, Character.toCodePoint(high, (char) (int) point));
           }
           else
           {
-            shown.appendCodePoint(point);
+            points.add(point);
           }
         }
-        return shown.append('"').toString();
+        return shownText(points);
       }
       return data instanceof int[] units ? Arrays.toString(units) : String.valueOf(data);
     }
@@ -307,6 +311,93 @@ public final class LawSpecRuntime
 
   public record Complex(double real, double imaginary)
   {
+  }
+
+  /**
+   * A text as a quoted literal for a failure message. A character that would not be seen is
+   * written as an escape: a quote or backslash, a control, a lone surrogate (\uD800), a format
+   * character, a separator other than the space, or an unassigned code point.
+   */
+  static String shownText(Iterable<Integer> points)
+  {
+    var shown = new StringBuilder("\"");
+    for (int point : points)
+    {
+      int category = point >= 0 && point <= Character.MAX_CODE_POINT
+          ? Character.getType(point) : Character.UNASSIGNED;
+      if (point == '"' || point == '\\')
+      {
+        shown.append('\\').append((char) point);
+      }
+      else if (point == '\n')
+      {
+        shown.append("\\n");
+      }
+      else if (point == '\t')
+      {
+        shown.append("\\t");
+      }
+      else if (point == '\r')
+      {
+        shown.append("\\r");
+      }
+      else if (point == ' ' || (category != Character.CONTROL && category != Character.SURROGATE
+          && category != Character.FORMAT && category != Character.UNASSIGNED
+          && category != Character.PRIVATE_USE && category != Character.SPACE_SEPARATOR
+          && category != Character.LINE_SEPARATOR && category != Character.PARAGRAPH_SEPARATOR))
+      {
+        shown.appendCodePoint(point);
+      }
+      else if (point >= 0 && point <= 0xFFFF)
+      {
+        shown.append(String.format("\\u%04X", point));
+      }
+      else
+      {
+        shown.append(String.format("\\u{%X}", point));
+      }
+    }
+    return shown.append('"').toString();
+  }
+
+  /** A value as a failure message shows it: a text as an escaped literal, other data as written. */
+  public static String shown(Value value)
+  {
+    return value == null ? "null" : value.shownData();
+  }
+
+  /** What a failure inside a law's expression says, for the headline of the test's failure. */
+  static String failureCause(Throwable error)
+  {
+    String message = error.getMessage();
+    boolean own = error.getClass() == IllegalArgumentException.class
+        || error.getClass() == IllegalStateException.class;
+    if (message == null || message.isEmpty())
+    {
+      return error.getClass().getName();
+    }
+    return own ? message : error.getClass().getSimpleName() + ": " + message;
+  }
+
+  /**
+   * A law's failure with the inputs of the failing case by name, so a boundary or generated case
+   * shows what it was given and not only its index. A failure that already carries them is kept.
+   */
+  public static AssertionError withInputs(AssertionError failure, String[] names, Value[] values)
+  {
+    String message = String.valueOf(failure.getMessage());
+    if (names.length == 0 || message.contains(" | inputs: "))
+    {
+      return failure;
+    }
+    var inputs = new StringBuilder(" | inputs: ");
+    for (int i = 0; i < names.length && i < values.length; i++)
+    {
+      inputs.append(i == 0 ? "" : ", ").append(names[i]).append(" = ").append(shown(values[i]));
+    }
+    var described = new AssertionError(message + inputs, failure.getCause());
+    described.setStackTrace(failure.getStackTrace());
+    return described;
   }
 
   /**
@@ -420,6 +511,118 @@ public final class LawSpecRuntime
     {
       fields = List.copyOf(fields);
     }
+
+    // What a failure prints, and what a test library prints for a counterexample.
+    @Override
+    public String toString()
+    {
+      var shown = new StringBuilder("Data[tag=").append(tag).append(", fields=[");
+      for (int i = 0; i < fields.size(); i++)
+      {
+        Object field = fields.get(i);
+        shown.append(i == 0 ? "" : ", ").append(masked(tag, i) ? concealed(tag, i, field) : field);
+      }
+      return shown.append("]]").toString();
+    }
+  }
+
+  // The fields a masking block hides, by constructor tag and position. The generated schema
+  // class registers them; everything this runtime prints about a failure shows such a field as
+  // ***, whatever its mask. A counterexample is replayed by its seed, never by what was printed.
+  private static final Map<String, java.util.Set<Integer>> MASKED_FIELDS =
+      new java.util.concurrent.ConcurrentHashMap<>();
+
+  public static void maskFields(String tag, int... positions)
+  {
+    var hidden = new java.util.HashSet<Integer>();
+    for (int position : positions)
+    {
+      hidden.add(position);
+    }
+    MASKED_FIELDS.put(tag, java.util.Set.copyOf(hidden));
+  }
+
+  // The fields a masking block shows as digest, by constructor tag and position, each with its
+  // context: a failure shows such a field's digest, which is what the record's own rendering shows.
+  private static final Map<String, Map<Integer, String>> DIGEST_FIELDS =
+      new java.util.concurrent.ConcurrentHashMap<>();
+
+  public static void digestField(String tag, int position, String context)
+  {
+    DIGEST_FIELDS.computeIfAbsent(tag, key -> new java.util.concurrent.ConcurrentHashMap<>())
+        .put(position, context);
+  }
+
+  /** What a failure shows of a masked field: its digest, or three stars. */
+  static String concealed(String tag, int position, Object field)
+  {
+    var contexts = DIGEST_FIELDS.get(tag);
+    String context = contexts == null ? null : contexts.get(position);
+    if (context != null && field instanceof Value value && "Text".equals(value.type()))
+    {
+      return maskDigestBlake3In(context, codePointsText(value));
+    }
+    return "***";
+  }
+
+  /** A Bytes value's bytes. */
+  private static byte[] octets(Value value)
+  {
+    var units = (List<?>) value.data;
+    byte[] bytes = new byte[units.size()];
+    for (int i = 0; i < bytes.length; i++)
+    {
+      bytes[i] = (byte) ((Number) units.get(i)).intValue();
+    }
+    return bytes;
+  }
+
+  private static Value bytesValue(byte[] bytes)
+  {
+    var units = new ArrayList<Integer>();
+    for (byte b : bytes)
+    {
+      units.add(b & 0xff);
+    }
+    return new Value("Bytes", List.copyOf(units));
+  }
+
+  static boolean masked(String tag, int position)
+  {
+    var hidden = MASKED_FIELDS.get(tag);
+    return hidden != null && hidden.contains(position);
+  }
+
+  /** A value's canonical text (render) for a failure message, each masked field as ***. */
+  static String renderMasked(Value v)
+  {
+    if (MASKED_FIELDS.isEmpty())
+    {
+      return render(v);
+    }
+    Object data = v.data();
+    if (data instanceof List<?> items && !items.isEmpty() && items.get(0) instanceof Value)
+    {
+      var parts = new ArrayList<String>();
+      for (Object item : items)
+      {
+        parts.add(renderMasked((Value) item));
+      }
+      return "[" + String.join(", ", parts) + "]";
+    }
+    if (data instanceof Data value && !value.fields().isEmpty())
+    {
+      String tag = value.tag();
+      int cut = tag.lastIndexOf("::");
+      var parts = new ArrayList<String>();
+      for (int i = 0; i < value.fields().size(); i++)
+      {
+        Value field = value.fields().get(i);
+        parts.add(masked(tag, i) ? concealed(tag, i, field) : renderMasked(field));
+      }
+      return (cut < 0 ? tag : tag.substring(cut + 2)) + "(" + String.join(", ", parts) + ")";
+    }
+    return render(v);
   }
 
   public record Ratio(BigInteger n, BigInteger d)
@@ -530,7 +733,8 @@ public final class LawSpecRuntime
     }
     catch (RuntimeException error)
     {
-      throw new AssertionError(context, error);
+      // The cause's text is the headline: a build tool's summary shows nothing else.
+      throw new AssertionError(context + " | " + failureCause(error), error);
     }
   }
 
@@ -1705,6 +1909,18 @@ public final class LawSpecRuntime
         return textList(textSplit(codePointsText(args[0]), codePointsText(args[1])));
       case "trim":
         return textValue(textTrim(codePointsText(args[0])));
+      case "isUnicodeWhitespace":
+        return bool(textIsUnicodeWhitespace(codePointsText(args[0])));
+      case "trimAsciiControl":
+        return textValue(textTrimAsciiControl(codePointsText(args[0])));
+      case "rfc822Uncommented":
+        return textValue(textRfc822Uncommented(codePointsText(args[0])));
+      case "blake3":
+        return bytesValue(blake3(octets(args[0])));
+      case "blake3Keyed":
+        return bytesValue(blake3Keyed(octets(args[0]), octets(args[1])));
+      case "blake3DeriveKey":
+        return bytesValue(blake3DeriveKey(codePointsText(args[0]), octets(args[1])));
       case "words":
         return textList(textWords(codePointsText(args[0])));
       case "lines":
@@ -2198,6 +2414,22 @@ public final class LawSpecRuntime
     if (!condition)
     {
       throw new IllegalArgumentException(context);
+    }
+  }
+
+  /** As requireContract, naming the values the contract was checked on. */
+  public static void requireContract(boolean condition, String context, String[] names,
+      Value... values)
+  {
+    if (!condition)
+    {
+      var described = new StringBuilder(context);
+      for (int i = 0; i < names.length && i < values.length; i++)
+      {
+        described.append(i == 0 ? " | " : ", ").append(names[i]).append(" = ")
+            .append(shown(values[i]));
+      }
+      throw new IllegalArgumentException(described.toString());
     }
   }
 
@@ -4007,17 +4239,24 @@ public final class LawSpecRuntime
           && x.fields().size() == y.fields().size())
       {
         String name = x.tag().substring(x.tag().lastIndexOf("::") + 2);
+        boolean hiddenDiffers = false;
         for (int i = 0; i < x.fields().size(); i++)
         {
           if (!render(x.fields().get(i)).equals(render(y.fields().get(i))))
           {
+            // A masked field's values are not printed: the difference is reported without them.
+            if (masked(x.tag(), i))
+            {
+              hiddenDiffers = true;
+              continue;
+            }
             path.add("field " + (i + 1) + " of " + name);
             a = x.fields().get(i);
             b = y.fields().get(i);
             continue loop;
           }
         }
-        return "";
+        return hiddenDiffers ? " | the values differ only in masked fields" : "";
       }
       break;
     }
@@ -4027,8 +4266,8 @@ public final class LawSpecRuntime
     }
     if (shownA == null)
     {
-      shownA = render(a);
-      shownB = render(b);
+      shownA = renderMasked(a);
+      shownB = renderMasked(b);
     }
     return " | first difference at " + String.join(", ", path) + ": expected " + shownB
         + ", actual " + shownA;
@@ -6043,7 +6282,7 @@ public final class LawSpecRuntime
         if (!command.unit && compareValues(result, wanted) != 0)
         {
           return new ModelFailure(step,
-              "returned " + render(result) + "; the model returns " + render(wanted));
+              "returned " + renderMasked(result) + "; the model returns " + renderMasked(wanted));
         }
         failure = checkState(model, symbols, state, expected);
         if (failure != null)
@@ -6073,7 +6312,7 @@ public final class LawSpecRuntime
       var actual = model.abstractState.apply(symbols, List.of(state));
       if (compareValues(actual, expected) != 0)
       {
-        return "the state is " + render(actual) + "; the model is " + render(expected);
+        return "the state is " + renderMasked(actual) + "; the model is " + renderMasked(expected);
       }
     }
     for (int k = 0; k < model.invariants.size(); k++)
@@ -6177,12 +6416,13 @@ public final class LawSpecRuntime
     return new Shrunk(run, failure);
   }
 
+  // The arguments of a call as a failure message shows them.
   private static String renderAll(List<Value> args)
   {
     var parts = new ArrayList<String>();
     for (var a : args)
     {
-      parts.add(render(a));
+      parts.add(renderMasked(a));
     }
     return String.join(", ", parts);
   }
@@ -6538,7 +6778,7 @@ public final class LawSpecRuntime
       for (int k = 0; k < branches.get(i).size(); k++)
       {
         observed.add(branchName(i) + ": " + model.commands.get(branches.get(i).get(k).index()).name
-            + "() returned " + render(history.get(i)[k].result()));
+            + "() returned " + renderMasked(history.get(i)[k].result()));
       }
     }
     return "no order of the parallel calls agrees with the model (" + String.join("; ", observed)
@@ -7778,8 +8018,8 @@ public final class LawSpecRuntime
           Value wanted = scenarioConstant(form(act.get(2)));
           if (actual == null || compareValues(actual, wanted) != 0)
           {
-            run.failures.add("expect " + name + " = " + render(wanted) + " failed: " + name + " is "
-                + (actual == null ? "None" : render(actual)));
+            run.failures.add("expect " + name + " = " + renderMasked(wanted) + " failed: " + name
+                + " is " + (actual == null ? "None" : renderMasked(actual)));
             return false;
           }
         }
@@ -7945,8 +8185,8 @@ public final class LawSpecRuntime
       var observed = new ArrayList<String>();
       for (var c : sorted)
       {
-        observed
-            .add(c.command().name + "(" + renderAll(c.args()) + ") returned " + render(c.result()));
+        observed.add(c.command().name + "(" + renderAll(c.args()) + ") returned "
+            + renderMasked(c.result()));
       }
       return new ScenarioOutcome(title, "the calls are not " + consistent(model.consistency)
           + " with the model (" + String.join("; ", observed) + ")");
@@ -9554,6 +9794,341 @@ public final class LawSpecRuntime
     return new String(points, start, end - start);
   }
 
+  /** Whether every code point is Unicode White_Space; the empty text is. */
+  public static boolean textIsUnicodeWhitespace(String text)
+  {
+    return text.codePoints().allMatch(LawSpecRuntime::textWhiteSpace);
+  }
+
+  // BLAKE3 (the BLAKE3 specification, section 2) with its default 32-byte output: the hash, the
+  // keyed hash and key derivation, for the blake3 functions and the hash and digest masks. One
+  // thread, no SIMD; the official test vectors check every mode (the contracts-digest acceptance
+  // suite). Source: https://github.com/BLAKE3-team/BLAKE3, vectors at commit
+  // ae3e8e6b3a5ae3190ca5d62820789b17886a0038; CC0 1.0 or Apache-2.0. ref:DEC-blake3-port
+  private static final int[] BLAKE3_IV = {0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a,
+      0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19};
+  private static final int[] BLAKE3_SCHEDULE =
+      {2, 6, 3, 10, 7, 0, 4, 13, 1, 11, 12, 5, 9, 14, 15, 8};
+  private static final int BLAKE3_CHUNK_START = 1;
+  private static final int BLAKE3_CHUNK_END = 2;
+  private static final int BLAKE3_PARENT = 4;
+  private static final int BLAKE3_ROOT = 8;
+  private static final int BLAKE3_KEYED_HASH = 16;
+  private static final int BLAKE3_DERIVE_KEY_CONTEXT = 32;
+  private static final int BLAKE3_DERIVE_KEY_MATERIAL = 64;
+
+  /** The 32-byte BLAKE3 hash of some bytes: LawSpec's {@code blake3}. */
+  public static byte[] blake3(byte[] bytes)
+  {
+    return blake3Digest(BLAKE3_IV, 0, bytes);
+  }
+
+  /**
+   * The 32-byte BLAKE3 keyed hash of some bytes: LawSpec's {@code blake3Keyed}.
+   *
+   * @throws IllegalArgumentException when the key is not 32 bytes
+   */
+  public static byte[] blake3Keyed(byte[] key, byte[] bytes)
+  {
+    if (key == null || key.length != 32)
+    {
+      throw new IllegalArgumentException("blake3Keyed: the key is 32 bytes");
+    }
+    return blake3Digest(blake3Key(key), BLAKE3_KEYED_HASH, bytes);
+  }
+
+  /**
+   * The 32 bytes BLAKE3 derives from some key material in a context, which is a text: LawSpec's
+   * {@code blake3DeriveKey}.
+   */
+  public static byte[] blake3DeriveKey(String context, byte[] material)
+  {
+    byte[] contextKey = blake3Digest(BLAKE3_IV, BLAKE3_DERIVE_KEY_CONTEXT, scalarUtf8(context));
+    return blake3Digest(blake3Key(contextKey), BLAKE3_DERIVE_KEY_MATERIAL, material);
+  }
+
+  private static int[] blake3Key(byte[] key)
+  {
+    return java.util.Arrays.copyOf(blake3Words(key, 0, 32), 8);
+  }
+
+  /** A text's UTF-8 bytes, a lone surrogate encoded as U+FFFD. */
+  static byte[] scalarUtf8(String value)
+  {
+    var scalar = new StringBuilder();
+    String text = String.valueOf(value);
+    for (int i = 0; i < text.length(); i++)
+    {
+      char unit = text.charAt(i);
+      boolean pair = Character.isHighSurrogate(unit) && i + 1 < text.length()
+          && Character.isLowSurrogate(text.charAt(i + 1));
+      if (pair)
+      {
+        scalar.append(unit).append(text.charAt(i + 1));
+        i++;
+      }
+      else
+      {
+        scalar.append(Character.isSurrogate(unit) ? '\uFFFD' : unit);
+      }
+    }
+    return scalar.toString().getBytes(java.nio.charset.StandardCharsets.UTF_8);
+  }
+
+  /**
+   * The word hash, a colon and the BLAKE3 keyed hash of the text's UTF-8 bytes in hexadecimal:
+   * LawSpec's {@code maskHashBlake3 key text}. A lone surrogate is hashed as U+FFFD.
+   *
+   * @throws IllegalArgumentException when the key is not 32 bytes
+   */
+  public static String maskHashBlake3With(byte[] secret, String value)
+  {
+    if (secret == null || secret.length != 32)
+    {
+      throw new IllegalArgumentException("LawSpec masking: the hash key is 32 bytes");
+    }
+    return "hash:" + hex(blake3Keyed(secret, scalarUtf8(value)));
+  }
+
+  /**
+   * The word digest, a colon and the BLAKE3 hash of the text's UTF-8 bytes in hexadecimal:
+   * LawSpec's {@code maskDigestBlake3 text}. A lone surrogate is hashed as U+FFFD.
+   */
+  public static String maskDigestBlake3(String value)
+  {
+    return "digest:" + hex(blake3(scalarUtf8(value)));
+  }
+
+  /**
+   * The digest of a text within a context, by BLAKE3's key derivation: LawSpec's {@code
+   * maskDigestBlake3In context text}.
+   */
+  public static String maskDigestBlake3In(String context, String value)
+  {
+    return "digest:" + hex(blake3DeriveKey("lawspec 0.34 mask " + context, scalarUtf8(value)));
+  }
+
+  /**
+   * The 32-byte output from a key of eight words and a mode's flag: the initial value and no flag
+   * hash, a key and KEYED_HASH hash under the key, and the two DERIVE_KEY flags derive a key.
+   */
+  private static byte[] blake3Digest(int[] key, int mode, byte[] bytes)
+  {
+    int chunks = Math.max(1, (bytes.length + 1023) / 1024);
+    // The reference implementation's merge: a stack of subtree chaining values, one subtree
+    // closed per trailing zero of the chunk count.
+    int[][] stack = new int[32][];
+    int depth = 0;
+    for (int index = 0; index < chunks - 1; index++)
+    {
+      int[] cv = blake3Chunk(key, mode, bytes, index, 0);
+      for (int total = index + 1; total % 2 == 0; total /= 2)
+      {
+        depth--;
+        cv = blake3Compress(key, blake3Join(stack[depth], cv), 0, 64, mode | BLAKE3_PARENT);
+      }
+      stack[depth] = cv;
+      depth++;
+    }
+    int[] root;
+    if (depth == 0)
+    {
+      root = blake3Chunk(key, mode, bytes, chunks - 1, BLAKE3_ROOT);
+    }
+    else
+    {
+      int[] cv = blake3Chunk(key, mode, bytes, chunks - 1, 0);
+      while (depth > 1)
+      {
+        depth--;
+        cv = blake3Compress(key, blake3Join(stack[depth], cv), 0, 64, mode | BLAKE3_PARENT);
+      }
+      int flags = mode | BLAKE3_PARENT | BLAKE3_ROOT;
+      root = blake3Compress(key, blake3Join(stack[0], cv), 0, 64, flags);
+    }
+    byte[] out = new byte[32];
+    for (int i = 0; i < 8; i++)
+    {
+      for (int shift = 0; shift < 4; shift++)
+      {
+        out[4 * i + shift] = (byte) (root[i] >>> (8 * shift));
+      }
+    }
+    return out;
+  }
+
+  /** A chunk's chaining value; its last block carries the extra flags. */
+  private static int[] blake3Chunk(int[] key, int mode, byte[] bytes, int index, int last)
+  {
+    int end = Math.min(bytes.length, index * 1024 + 1024);
+    int offset = index * 1024;
+    int[] cv = key;
+    int flags = mode | BLAKE3_CHUNK_START;
+    while (end - offset > 64)
+    {
+      cv = blake3Compress(cv, blake3Words(bytes, offset, 64), index, 64, flags);
+      flags = mode;
+      offset += 64;
+    }
+    return blake3Compress(cv, blake3Words(bytes, offset, end - offset), index, end - offset,
+        flags | BLAKE3_CHUNK_END | last);
+  }
+
+  private static int[] blake3Join(int[] left, int[] right)
+  {
+    int[] words = new int[16];
+    System.arraycopy(left, 0, words, 0, 8);
+    System.arraycopy(right, 0, words, 8, 8);
+    return words;
+  }
+
+  /** Sixteen little-endian words of a block, zero padded past its length. */
+  private static int[] blake3Words(byte[] bytes, int offset, int length)
+  {
+    int[] words = new int[16];
+    for (int i = 0; i < length; i++)
+    {
+      words[i >>> 2] |= (bytes[offset + i] & 255) << (8 * (i & 3));
+    }
+    return words;
+  }
+
+  /** The first eight words of BLAKE3's compression: a chaining value. */
+  private static int[] blake3Compress(int[] cv, int[] block, long counter, int length, int flags)
+  {
+    int[] state = new int[16];
+    System.arraycopy(cv, 0, state, 0, 8);
+    System.arraycopy(BLAKE3_IV, 0, state, 8, 4);
+    state[12] = (int) counter;
+    state[13] = (int) (counter >>> 32);
+    state[14] = length;
+    state[15] = flags;
+    int[] m = block;
+    for (int round = 0; round < 7; round++)
+    {
+      blake3Mix(state, 0, 4, 8, 12, m[0], m[1]);
+      blake3Mix(state, 1, 5, 9, 13, m[2], m[3]);
+      blake3Mix(state, 2, 6, 10, 14, m[4], m[5]);
+      blake3Mix(state, 3, 7, 11, 15, m[6], m[7]);
+      blake3Mix(state, 0, 5, 10, 15, m[8], m[9]);
+      blake3Mix(state, 1, 6, 11, 12, m[10], m[11]);
+      blake3Mix(state, 2, 7, 8, 13, m[12], m[13]);
+      blake3Mix(state, 3, 4, 9, 14, m[14], m[15]);
+      int[] next = new int[16];
+      for (int i = 0; i < 16; i++)
+      {
+        next[i] = m[BLAKE3_SCHEDULE[i]];
+      }
+      m = next;
+    }
+    int[] out = new int[8];
+    for (int i = 0; i < 8; i++)
+    {
+      out[i] = state[i] ^ state[i + 8];
+    }
+    return out;
+  }
+
+  private static void blake3Mix(int[] state, int a, int b, int c, int d, int x, int y)
+  {
+    state[a] = state[a] + state[b] + x;
+    state[d] = Integer.rotateRight(state[d] ^ state[a], 16);
+    state[c] = state[c] + state[d];
+    state[b] = Integer.rotateRight(state[b] ^ state[c], 12);
+    state[a] = state[a] + state[b] + y;
+    state[d] = Integer.rotateRight(state[d] ^ state[a], 8);
+    state[c] = state[c] + state[d];
+    state[b] = Integer.rotateRight(state[b] ^ state[c], 7);
+  }
+
+  /**
+   * An RFC 822 address without its comments, as Mail::RFC822::Address's valid() removes them
+   * before it matches: while a comment with no comment inside it starts where the quoted strings
+   * before it are closed, the last such comment becomes one space. A backslash quotes the next
+   * character. The rfc822Address format matches the result (LawSpec.Formats).
+   */
+  public static String textRfc822Uncommented(String text)
+  {
+    String source = text;
+    while (true)
+    {
+      String shorter = withoutLastComment(source);
+      if (shorter == null)
+      {
+        return source;
+      }
+      source = shorter;
+    }
+  }
+
+  private static String withoutLastComment(String source)
+  {
+    // Whether a comment may start at each position: outside quoted strings and not straight
+    // after a backslash. A position the scan does not reach is not one.
+    boolean[] outside = new boolean[source.length() + 1];
+    boolean quoted = false;
+    int at = 0;
+    while (true)
+    {
+      outside[at] = !quoted;
+      if (at >= source.length())
+      {
+        break;
+      }
+      if (source.charAt(at) == '\\')
+      {
+        if (at + 1 >= source.length())
+        {
+          break;
+        }
+        outside[at + 1] = false;
+        at += 2;
+        continue;
+      }
+      if (source.charAt(at) == '"')
+      {
+        quoted = !quoted;
+      }
+      at++;
+    }
+    for (int start = source.length() - 1; start >= 0; start--)
+    {
+      if (!outside[start] || source.charAt(start) != '(')
+      {
+        continue;
+      }
+      int end = start + 1;
+      while (end < source.length() && source.charAt(end) != ')' && source.charAt(end) != '(')
+      {
+        end += source.charAt(end) == '\\' ? 2 : 1;
+      }
+      if (end < source.length() && source.charAt(end) == ')')
+      {
+        return source.substring(0, start) + " " + source.substring(end + 1);
+      }
+    }
+    return null;
+  }
+
+  /**
+   * The text without the code points up to U+0020 at its two ends, which is what String.trim()
+   * removes.
+   */
+  public static String textTrimAsciiControl(String text)
+  {
+    int start = 0;
+    int end = text.length();
+    while (start < end && text.charAt(start) <= 0x20)
+    {
+      start++;
+    }
+    while (end > start && text.charAt(end - 1) <= 0x20)
+    {
+      end--;
+    }
+    return text.substring(start, end);
+  }
+
   /** The runs of a text that hold no white space. */
   public static java.util.List<String> textWords(String text)
   {
@@ -9777,6 +10352,74 @@ public final class LawSpecRuntime
         law.replaceAll("[^A-Za-z0-9_-]", "_") + ".json");
   }
 
+  // Reach: how many generated cases satisfied each guard of a law's claim
+  // (docs/reference/refinements.md, "Guards and reach"). A generated test
+  // passes each guard's value through reach, which counts it and returns it
+  // unchanged, so a guard, and any adapter it calls, is evaluated exactly
+  // once. The counts of each law are written when the JVM exits, as one JSON
+  // file under LAWSPEC_STATS, which lawspec test reads. Example tests are not
+  // generated cases and are not counted.
+  private static final java.util.Map<String, java.util.List<long[]>> REACH =
+      new java.util.LinkedHashMap<>();
+
+  private static void writeReach()
+  {
+    var directory = System.getenv("LAWSPEC_STATS");
+    synchronized (REACH)
+    {
+      try
+      {
+        java.nio.file.Files.createDirectories(java.nio.file.Path.of(directory));
+        for (var entry : REACH.entrySet())
+        {
+          var sites = new StringBuilder();
+          for (var site : entry.getValue())
+          {
+            sites.append(sites.length() == 0 ? "" : ",").append("{\"evaluated\":")
+                .append(site[0]).append(",\"held\":").append(site[1]).append('}');
+          }
+          var law = entry.getKey();
+          java.nio.file.Files.writeString(
+              java.nio.file.Path.of(directory, "reach_" + law.replaceAll("[^A-Za-z0-9_-]", "_")
+                  + "_" + ProcessHandle.current().pid() + ".json"),
+              "{\"law\":\"" + law.replace("\\", "\\\\").replace("\"", "\\\"")
+                  + "\",\"reach\":[" + sites + "]}");
+        }
+      }
+      catch (Exception ignored)
+      {
+        // Statistics are a convenience; a run never fails for want of them.
+      }
+    }
+  }
+
+  public static boolean reach(String law, int site, boolean held, boolean generated)
+  {
+    var directory = System.getenv("LAWSPEC_STATS");
+    if (!generated || directory == null || directory.isEmpty())
+    {
+      return held;
+    }
+    synchronized (REACH)
+    {
+      if (REACH.isEmpty())
+      {
+        Runtime.getRuntime().addShutdownHook(new Thread(LawSpecRuntime::writeReach));
+      }
+      var sites = REACH.computeIfAbsent(law, key -> new java.util.ArrayList<>());
+      while (sites.size() <= site)
+      {
+        sites.add(new long[2]);
+      }
+      sites.get(site)[0] += 1;
+      if (held)
+      {
+        sites.get(site)[1] += 1;
+      }
+    }
+    return held;
+  }
+
   public static void searchRemember(String law, List<String> descriptors, List<Value> values)
   {
     var file = searchFile(law);
@@ -9840,6 +10483,245 @@ public final class LawSpecRuntime
       check.check(values);
     }
     java.nio.file.Files.deleteIfExists(file);
+  }
+
+  // The kept-values store (docs/reference/cli.md, "Kept values"). A run that
+  // draws a case holding a value of a restricted type records the case's inputs
+  // in the wire encoding under .lawspec/found, in a file named by a hash of
+  // the definitions its inputs reach, so a changed restriction makes the old
+  // values unreachable. A later run replays them as extra cases of the law
+  // after checking each against the current definitions; one that no longer
+  // meets them is dropped. A spec is "KEY CAP TAG...": the cap is how many
+  // values a key keeps (0 keeps none), the tags are the constructors of the
+  // restricted types.
+  private static final java.util.Set<String> KEPT_RECORDED =
+      java.util.concurrent.ConcurrentHashMap.newKeySet();
+
+  private record KeptEntry(List<String> inputs, int used)
+  {
+  }
+
+  private static java.nio.file.Path keptFile(String spec)
+  {
+    var directory = System.getenv("LAWSPEC_FOUND");
+    if (directory == null || directory.isEmpty())
+    {
+      var failures = System.getenv("LAWSPEC_FAILURES");
+      if (failures == null || failures.isEmpty())
+      {
+        return null;
+      }
+      // The failure database is .lawspec/failures/<target>/<project>.
+      directory = java.nio.file.Path.of(failures, "..", "..", "..", "found").normalize().toString();
+    }
+    return java.nio.file.Path.of(directory, spec.split(" ")[0] + ".json");
+  }
+
+  private static int keptCap(String spec)
+  {
+    return Integer.parseInt(spec.split(" ")[1]);
+  }
+
+  private static List<KeptEntry> keptRead(java.nio.file.Path file)
+  {
+    var entries = new ArrayList<KeptEntry>();
+    try
+    {
+      var text = java.nio.file.Files.readString(file);
+      var matcher = java.util.regex.Pattern
+          .compile("\\{\"inputs\":\\[([^\\]]*)\\],\"used\":(\\d+)\\}").matcher(text);
+      while (matcher.find())
+      {
+        var inputs = new ArrayList<String>();
+        var hexes = java.util.regex.Pattern.compile("\"([0-9a-fA-F]*)\"").matcher(matcher.group(1));
+        while (hexes.find())
+        {
+          inputs.add(hexes.group(1));
+        }
+        entries.add(new KeptEntry(inputs, Integer.parseInt(matcher.group(2))));
+      }
+    }
+    catch (java.io.IOException | RuntimeException e)
+    {
+      entries.clear();
+    }
+    return entries;
+  }
+
+  // Merge into what is on disk now, since another target's run may have
+  // written since this one read: write a temporary file, then rename it.
+  private static void keptUpdate(java.nio.file.Path file, String spec,
+      java.util.function.UnaryOperator<List<KeptEntry>> change)
+      throws java.io.IOException
+  {
+    var entries = change.apply(keptRead(file));
+    var cap = keptCap(spec);
+    entries = entries.subList(Math.max(0, entries.size() - cap), entries.size());
+    var directory = file.getParent();
+    if (!java.nio.file.Files.exists(directory))
+    {
+      java.nio.file.Files.createDirectories(directory);
+      java.nio.file.Files.writeString(directory.resolve(".gitignore"), "*\n");
+    }
+    var out = new StringBuilder("{\"key\":\"").append(spec.split(" ")[0]).append("\",\"values\":[");
+    for (int i = 0; i < entries.size(); i++)
+    {
+      out.append(i == 0 ? "" : ",").append("{\"inputs\":[");
+      var inputs = entries.get(i).inputs();
+      for (int j = 0; j < inputs.size(); j++)
+      {
+        out.append(j == 0 ? "" : ",").append('"').append(inputs.get(j)).append('"');
+      }
+      out.append("],\"used\":").append(entries.get(i).used()).append('}');
+    }
+    out.append("]}\n");
+    var temporary = file.resolveSibling(file.getFileName() + "." + ProcessHandle.current().pid()
+        + "." + Thread.currentThread().getId() + ".tmp");
+    java.nio.file.Files.writeString(temporary, out);
+    java.nio.file.Files.move(temporary, file, java.nio.file.StandardCopyOption.REPLACE_EXISTING,
+        java.nio.file.StandardCopyOption.ATOMIC_MOVE);
+  }
+
+  private static boolean keptHolds(Object data, java.util.Set<String> tags)
+  {
+    if (data instanceof Value value)
+    {
+      return keptHolds(value.data(), tags);
+    }
+    if (data instanceof List<?> items)
+    {
+      return items.stream().anyMatch(item -> keptHolds(item, tags));
+    }
+    if (data instanceof Data tagged)
+    {
+      return tags.contains(tagged.tag()) || keptHolds(tagged.fields(), tags);
+    }
+    return false;
+  }
+
+  public static void keptRecord(String spec, List<String> descriptors, List<Value> values)
+  {
+    if (KEPT_RECORDED.contains(spec))
+    {
+      return;
+    }
+    var file = keptCap(spec) > 0 ? keptFile(spec) : null;
+    if (file == null)
+    {
+      KEPT_RECORDED.add(spec);
+      return;
+    }
+    var words = spec.split(" ");
+    var tags = java.util.Set.copyOf(java.util.Arrays.asList(words).subList(2, words.length));
+    if (!keptHolds(values, tags))
+    {
+      return;
+    }
+    KEPT_RECORDED.add(spec);
+    try
+    {
+      var inputs = new ArrayList<String>();
+      for (int i = 0; i < descriptors.size(); i++)
+      {
+        var described = valuesFrom(descriptors.get(i));
+        inputs.add(java.util.HexFormat.of()
+            .formatHex(wireEncode(described.values(), described.descriptor(), values.get(i))));
+      }
+      keptUpdate(file, spec, entries -> {
+        var kept = new ArrayList<KeptEntry>();
+        KeptEntry same = null;
+        for (var entry : entries)
+        {
+          if (entry.inputs().equals(inputs))
+          {
+            same = entry;
+          }
+          else
+          {
+            kept.add(entry);
+          }
+        }
+        kept.add(same != null ? same : new KeptEntry(inputs, 0));
+        return kept;
+      });
+    }
+    catch (RuntimeException | java.io.IOException e)
+    {
+      // A value the wire cannot encode is not kept.
+    }
+  }
+
+  /** Checks the decoded input at an index against its type's definition; throws if it fails. */
+  public interface KeptAdmit
+  {
+    Value admit(int index, Value value);
+  }
+
+  public static void keptReplay(String law, String spec, List<String> descriptors,
+      KeptAdmit admit, SearchCase check)
+      throws Exception
+  {
+    var file = keptCap(spec) > 0 ? keptFile(spec) : null;
+    if (file == null)
+    {
+      return;
+    }
+    var dropped = new java.util.HashSet<List<String>>();
+    var used = new java.util.LinkedHashSet<List<String>>();
+    try
+    {
+      var entries = keptRead(file);
+      for (var entry : entries.subList(Math.max(0, entries.size() - keptCap(spec)), entries.size()))
+      {
+        var values = new ArrayList<Value>();
+        try
+        {
+          for (int i = 0; i < descriptors.size(); i++)
+          {
+            var described = valuesFrom(descriptors.get(i));
+            var value = wireDecode(described.values(), described.descriptor(),
+                java.util.HexFormat.of().parseHex(entry.inputs().get(i)));
+            values.add(admit.admit(i, value));
+          }
+        }
+        catch (RuntimeException e)
+        {
+          dropped.add(entry.inputs());
+          continue;
+        }
+        if (check.check(values) == null)
+        {
+          dropped.add(entry.inputs());
+        }
+        else
+        {
+          used.add(entry.inputs());
+        }
+      }
+    }
+    finally
+    {
+      if (!dropped.isEmpty() || !used.isEmpty())
+      {
+        keptUpdate(file, spec, entries -> {
+          var kept = new ArrayList<KeptEntry>();
+          for (var entry : entries)
+          {
+            if (!dropped.contains(entry.inputs()))
+            {
+              kept.add(used.contains(entry.inputs())
+                  ? new KeptEntry(entry.inputs(), entry.used() + 1) : entry);
+            }
+          }
+          return kept;
+        });
+      }
+    }
+    if (!used.isEmpty())
+    {
+      System.out.println(law + ": ran " + used.size()
+          + " kept value(s) found by earlier runs in .lawspec/found");
+    }
   }
 
   private static List<Value> searchMoves(Values table, Object descriptor, Value v)

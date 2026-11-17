@@ -910,14 +910,22 @@ def lawtwin_github_model_valid_issues_update_milestone_body(symbols, value):
 
 
 # referenceIssuesCreateLabel — ../src/api.lawspec:207
-def reference_issues_create_label(symbols, state, value0, value1, value2):
+def reference_issues_create_label(
+    symbols,
+    state,
+    text_1,
+    text_2,
+    issues_create_label_body_1,
+):
     try:
         return _typed.to_pair_label_state(
             _typed.reference_issues_create_label(
                 _typed.from_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_issues_create_label_body(value2),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_issues_create_label_body(
+                    issues_create_label_body_1,
+                ),
             ),
         )
     except (
@@ -932,14 +940,22 @@ def reference_issues_create_label(symbols, state, value0, value1, value2):
 
 
 # referenceIssuesCreateMilestone — ../src/api.lawspec:212
-def reference_issues_create_milestone(symbols, state, value0, value1, value2):
+def reference_issues_create_milestone(
+    symbols,
+    state,
+    text_1,
+    text_2,
+    issues_create_milestone_body_1,
+):
     try:
         return _typed.to_pair_milestone_state(
             _typed.reference_issues_create_milestone(
                 _typed.from_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_issues_create_milestone_body(value2),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_issues_create_milestone_body(
+                    issues_create_milestone_body_1,
+                ),
             ),
         )
     except (
@@ -954,14 +970,14 @@ def reference_issues_create_milestone(symbols, state, value0, value1, value2):
 
 
 # referenceIssuesDeleteLabel — ../src/api.lawspec:209
-def reference_issues_delete_label(symbols, state, value0, value1, value2):
+def reference_issues_delete_label(symbols, state, text_1, text_2, text_3):
     try:
         return _typed.to_pair_unit_state(
             _typed.reference_issues_delete_label(
                 _typed.from_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_text(value2),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_text(text_3),
             ),
         )
     except (
@@ -976,14 +992,14 @@ def reference_issues_delete_label(symbols, state, value0, value1, value2):
 
 
 # referenceIssuesDeleteMilestone — ../src/api.lawspec:214
-def reference_issues_delete_milestone(symbols, state, value0, value1, value2):
+def reference_issues_delete_milestone(symbols, state, text_1, text_2, int64_1):
     try:
         return _typed.to_pair_unit_state(
             _typed.reference_issues_delete_milestone(
                 _typed.from_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_int64(value2),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_int64(int64_1),
             ),
         )
     except (
@@ -998,14 +1014,14 @@ def reference_issues_delete_milestone(symbols, state, value0, value1, value2):
 
 
 # referenceIssuesGetLabel — ../src/api.lawspec:208
-def reference_issues_get_label(symbols, state, value0, value1, value2):
+def reference_issues_get_label(symbols, state, text_1, text_2, text_3):
     try:
         return _typed.to_pair_label_state(
             _typed.reference_issues_get_label(
                 _typed.from_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_text(value2),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_text(text_3),
             ),
         )
     except (
@@ -1019,14 +1035,14 @@ def reference_issues_get_label(symbols, state, value0, value1, value2):
 
 
 # referenceIssuesGetMilestone — ../src/api.lawspec:213
-def reference_issues_get_milestone(symbols, state, value0, value1, value2):
+def reference_issues_get_milestone(symbols, state, text_1, text_2, int64_1):
     try:
         return _typed.to_pair_milestone_state(
             _typed.reference_issues_get_milestone(
                 _typed.from_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_int64(value2),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_int64(int64_1),
             ),
         )
     except (
@@ -1044,19 +1060,19 @@ def reference_issues_get_milestone(symbols, state, value0, value1, value2):
 def reference_issues_list_labels_for_repo(
     symbols,
     state,
-    value0,
-    value1,
-    value2,
-    value3,
+    text_1,
+    text_2,
+    maybe_1,
+    maybe_2,
 ):
     try:
         return _typed.to_pair_list_label_state(
             _typed.reference_issues_list_labels_for_repo(
                 _typed.from_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_maybe_int64(value2),
-                _typed.from_maybe_int64(value3),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_maybe_int64(maybe_1),
+                _typed.from_maybe_int64(maybe_2),
             ),
         )
     except (
@@ -1074,25 +1090,25 @@ def reference_issues_list_labels_for_repo(
 def reference_issues_list_milestones(
     symbols,
     state,
-    value0,
-    value1,
-    value2,
-    value3,
-    value4,
-    value5,
-    value6,
+    text_1,
+    text_2,
+    maybe_1,
+    maybe_2,
+    maybe_3,
+    maybe_4,
+    maybe_5,
 ):
     try:
         return _typed.to_pair_list_milestone_state(
             _typed.reference_issues_list_milestones(
                 _typed.from_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_maybe_issues_list_milestones_state(value2),
-                _typed.from_maybe_issues_list_milestones_sort(value3),
-                _typed.from_maybe_issues_list_milestones_direction(value4),
-                _typed.from_maybe_int64(value5),
-                _typed.from_maybe_int64(value6),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_maybe_issues_list_milestones_state(maybe_1),
+                _typed.from_maybe_issues_list_milestones_sort(maybe_2),
+                _typed.from_maybe_issues_list_milestones_direction(maybe_3),
+                _typed.from_maybe_int64(maybe_4),
+                _typed.from_maybe_int64(maybe_5),
             ),
         )
     except (
@@ -1110,19 +1126,19 @@ def reference_issues_list_milestones(
 def reference_issues_update_label(
     symbols,
     state,
-    value0,
-    value1,
-    value2,
-    value3,
+    text_1,
+    text_2,
+    text_3,
+    maybe_1,
 ):
     try:
         return _typed.to_pair_label_state(
             _typed.reference_issues_update_label(
                 _typed.from_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_text(value2),
-                _typed.from_maybe_issues_update_label_body(value3),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_text(text_3),
+                _typed.from_maybe_issues_update_label_body(maybe_1),
             ),
         )
     except (
@@ -1140,19 +1156,19 @@ def reference_issues_update_label(
 def reference_issues_update_milestone(
     symbols,
     state,
-    value0,
-    value1,
-    value2,
-    value3,
+    text_1,
+    text_2,
+    int64_1,
+    maybe_1,
 ):
     try:
         return _typed.to_pair_milestone_state(
             _typed.reference_issues_update_milestone(
                 _typed.from_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_int64(value2),
-                _typed.from_maybe_issues_update_milestone_body(value3),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_int64(int64_1),
+                _typed.from_maybe_issues_update_milestone_body(maybe_1),
             ),
         )
     except (
@@ -2090,14 +2106,22 @@ def no_hand_written_laws_yet(symbols, u):
 
 
 # referenceIssuesCreateLabel — ../src/api.lawspec:207
-def reference_issues_create_label_2(symbols, state, value0, value1, value2):
+def reference_issues_create_label_2(
+    symbols,
+    state,
+    text_1,
+    text_2,
+    issues_create_label_body_1,
+):
     try:
         return _typed.to_pair_label_state(
             _typed.reference_issues_create_label(
                 _typed.from_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_issues_create_label_body(value2),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_issues_create_label_body(
+                    issues_create_label_body_1,
+                ),
             ),
         )
     except (
@@ -2112,14 +2136,22 @@ def reference_issues_create_label_2(symbols, state, value0, value1, value2):
 
 
 # referenceIssuesCreateMilestone — ../src/api.lawspec:212
-def reference_issues_create_milestone_2(symbols, state, value0, value1, value2):
+def reference_issues_create_milestone_2(
+    symbols,
+    state,
+    text_1,
+    text_2,
+    issues_create_milestone_body_1,
+):
     try:
         return _typed.to_pair_milestone_state(
             _typed.reference_issues_create_milestone(
                 _typed.from_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_issues_create_milestone_body(value2),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_issues_create_milestone_body(
+                    issues_create_milestone_body_1,
+                ),
             ),
         )
     except (
@@ -2134,14 +2166,14 @@ def reference_issues_create_milestone_2(symbols, state, value0, value1, value2):
 
 
 # referenceIssuesDeleteLabel — ../src/api.lawspec:209
-def reference_issues_delete_label_2(symbols, state, value0, value1, value2):
+def reference_issues_delete_label_2(symbols, state, text_1, text_2, text_3):
     try:
         return _typed.to_pair_unit_state(
             _typed.reference_issues_delete_label(
                 _typed.from_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_text(value2),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_text(text_3),
             ),
         )
     except (
@@ -2156,14 +2188,20 @@ def reference_issues_delete_label_2(symbols, state, value0, value1, value2):
 
 
 # referenceIssuesDeleteMilestone — ../src/api.lawspec:214
-def reference_issues_delete_milestone_2(symbols, state, value0, value1, value2):
+def reference_issues_delete_milestone_2(
+    symbols,
+    state,
+    text_1,
+    text_2,
+    int64_1,
+):
     try:
         return _typed.to_pair_unit_state(
             _typed.reference_issues_delete_milestone(
                 _typed.from_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_int64(value2),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_int64(int64_1),
             ),
         )
     except (
@@ -2178,14 +2216,14 @@ def reference_issues_delete_milestone_2(symbols, state, value0, value1, value2):
 
 
 # referenceIssuesGetLabel — ../src/api.lawspec:208
-def reference_issues_get_label_2(symbols, state, value0, value1, value2):
+def reference_issues_get_label_2(symbols, state, text_1, text_2, text_3):
     try:
         return _typed.to_pair_label_state(
             _typed.reference_issues_get_label(
                 _typed.from_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_text(value2),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_text(text_3),
             ),
         )
     except (
@@ -2200,14 +2238,14 @@ def reference_issues_get_label_2(symbols, state, value0, value1, value2):
 
 
 # referenceIssuesGetMilestone — ../src/api.lawspec:213
-def reference_issues_get_milestone_2(symbols, state, value0, value1, value2):
+def reference_issues_get_milestone_2(symbols, state, text_1, text_2, int64_1):
     try:
         return _typed.to_pair_milestone_state(
             _typed.reference_issues_get_milestone(
                 _typed.from_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_int64(value2),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_int64(int64_1),
             ),
         )
     except (
@@ -2225,19 +2263,19 @@ def reference_issues_get_milestone_2(symbols, state, value0, value1, value2):
 def reference_issues_list_labels_for_repo_2(
     symbols,
     state,
-    value0,
-    value1,
-    value2,
-    value3,
+    text_1,
+    text_2,
+    maybe_1,
+    maybe_2,
 ):
     try:
         return _typed.to_pair_list_label_state(
             _typed.reference_issues_list_labels_for_repo(
                 _typed.from_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_maybe_int64(value2),
-                _typed.from_maybe_int64(value3),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_maybe_int64(maybe_1),
+                _typed.from_maybe_int64(maybe_2),
             ),
         )
     except (
@@ -2255,25 +2293,25 @@ def reference_issues_list_labels_for_repo_2(
 def reference_issues_list_milestones_2(
     symbols,
     state,
-    value0,
-    value1,
-    value2,
-    value3,
-    value4,
-    value5,
-    value6,
+    text_1,
+    text_2,
+    maybe_1,
+    maybe_2,
+    maybe_3,
+    maybe_4,
+    maybe_5,
 ):
     try:
         return _typed.to_pair_list_milestone_state(
             _typed.reference_issues_list_milestones(
                 _typed.from_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_maybe_issues_list_milestones_state(value2),
-                _typed.from_maybe_issues_list_milestones_sort(value3),
-                _typed.from_maybe_issues_list_milestones_direction(value4),
-                _typed.from_maybe_int64(value5),
-                _typed.from_maybe_int64(value6),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_maybe_issues_list_milestones_state(maybe_1),
+                _typed.from_maybe_issues_list_milestones_sort(maybe_2),
+                _typed.from_maybe_issues_list_milestones_direction(maybe_3),
+                _typed.from_maybe_int64(maybe_4),
+                _typed.from_maybe_int64(maybe_5),
             ),
         )
     except (
@@ -2291,19 +2329,19 @@ def reference_issues_list_milestones_2(
 def reference_issues_update_label_2(
     symbols,
     state,
-    value0,
-    value1,
-    value2,
-    value3,
+    text_1,
+    text_2,
+    text_3,
+    maybe_1,
 ):
     try:
         return _typed.to_pair_label_state(
             _typed.reference_issues_update_label(
                 _typed.from_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_text(value2),
-                _typed.from_maybe_issues_update_label_body(value3),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_text(text_3),
+                _typed.from_maybe_issues_update_label_body(maybe_1),
             ),
         )
     except (
@@ -2321,19 +2359,19 @@ def reference_issues_update_label_2(
 def reference_issues_update_milestone_2(
     symbols,
     state,
-    value0,
-    value1,
-    value2,
-    value3,
+    text_1,
+    text_2,
+    int64_1,
+    maybe_1,
 ):
     try:
         return _typed.to_pair_milestone_state(
             _typed.reference_issues_update_milestone(
                 _typed.from_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_int64(value2),
-                _typed.from_maybe_issues_update_milestone_body(value3),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_int64(int64_1),
+                _typed.from_maybe_issues_update_milestone_body(maybe_1),
             ),
         )
     except (
@@ -4073,14 +4111,22 @@ def lawtwin_github_model_valid_issues_update_milestone_body_3(symbols, value):
 
 
 # referenceIssuesCreateLabel — ../src/api.lawspec:207
-def reference_issues_create_label_3(symbols, state, value0, value1, value2):
+def reference_issues_create_label_3(
+    symbols,
+    state,
+    text_1,
+    text_2,
+    issues_create_label_body_1,
+):
     try:
         return _typed.to_pair_label_state(
             _typed.reference_issues_create_label(
                 _typed.from_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_issues_create_label_body(value2),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_issues_create_label_body(
+                    issues_create_label_body_1,
+                ),
             ),
         )
     except (
@@ -4095,14 +4141,22 @@ def reference_issues_create_label_3(symbols, state, value0, value1, value2):
 
 
 # referenceIssuesCreateMilestone — ../src/api.lawspec:212
-def reference_issues_create_milestone_3(symbols, state, value0, value1, value2):
+def reference_issues_create_milestone_3(
+    symbols,
+    state,
+    text_1,
+    text_2,
+    issues_create_milestone_body_1,
+):
     try:
         return _typed.to_pair_milestone_state(
             _typed.reference_issues_create_milestone(
                 _typed.from_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_issues_create_milestone_body(value2),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_issues_create_milestone_body(
+                    issues_create_milestone_body_1,
+                ),
             ),
         )
     except (
@@ -4117,14 +4171,14 @@ def reference_issues_create_milestone_3(symbols, state, value0, value1, value2):
 
 
 # referenceIssuesDeleteLabel — ../src/api.lawspec:209
-def reference_issues_delete_label_3(symbols, state, value0, value1, value2):
+def reference_issues_delete_label_3(symbols, state, text_1, text_2, text_3):
     try:
         return _typed.to_pair_unit_state(
             _typed.reference_issues_delete_label(
                 _typed.from_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_text(value2),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_text(text_3),
             ),
         )
     except (
@@ -4139,14 +4193,20 @@ def reference_issues_delete_label_3(symbols, state, value0, value1, value2):
 
 
 # referenceIssuesDeleteMilestone — ../src/api.lawspec:214
-def reference_issues_delete_milestone_3(symbols, state, value0, value1, value2):
+def reference_issues_delete_milestone_3(
+    symbols,
+    state,
+    text_1,
+    text_2,
+    int64_1,
+):
     try:
         return _typed.to_pair_unit_state(
             _typed.reference_issues_delete_milestone(
                 _typed.from_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_int64(value2),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_int64(int64_1),
             ),
         )
     except (
@@ -4161,14 +4221,14 @@ def reference_issues_delete_milestone_3(symbols, state, value0, value1, value2):
 
 
 # referenceIssuesGetLabel — ../src/api.lawspec:208
-def reference_issues_get_label_3(symbols, state, value0, value1, value2):
+def reference_issues_get_label_3(symbols, state, text_1, text_2, text_3):
     try:
         return _typed.to_pair_label_state(
             _typed.reference_issues_get_label(
                 _typed.from_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_text(value2),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_text(text_3),
             ),
         )
     except (
@@ -4183,14 +4243,14 @@ def reference_issues_get_label_3(symbols, state, value0, value1, value2):
 
 
 # referenceIssuesGetMilestone — ../src/api.lawspec:213
-def reference_issues_get_milestone_3(symbols, state, value0, value1, value2):
+def reference_issues_get_milestone_3(symbols, state, text_1, text_2, int64_1):
     try:
         return _typed.to_pair_milestone_state(
             _typed.reference_issues_get_milestone(
                 _typed.from_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_int64(value2),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_int64(int64_1),
             ),
         )
     except (
@@ -4208,19 +4268,19 @@ def reference_issues_get_milestone_3(symbols, state, value0, value1, value2):
 def reference_issues_list_labels_for_repo_3(
     symbols,
     state,
-    value0,
-    value1,
-    value2,
-    value3,
+    text_1,
+    text_2,
+    maybe_1,
+    maybe_2,
 ):
     try:
         return _typed.to_pair_list_label_state(
             _typed.reference_issues_list_labels_for_repo(
                 _typed.from_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_maybe_int64(value2),
-                _typed.from_maybe_int64(value3),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_maybe_int64(maybe_1),
+                _typed.from_maybe_int64(maybe_2),
             ),
         )
     except (
@@ -4238,25 +4298,25 @@ def reference_issues_list_labels_for_repo_3(
 def reference_issues_list_milestones_3(
     symbols,
     state,
-    value0,
-    value1,
-    value2,
-    value3,
-    value4,
-    value5,
-    value6,
+    text_1,
+    text_2,
+    maybe_1,
+    maybe_2,
+    maybe_3,
+    maybe_4,
+    maybe_5,
 ):
     try:
         return _typed.to_pair_list_milestone_state(
             _typed.reference_issues_list_milestones(
                 _typed.from_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_maybe_issues_list_milestones_state(value2),
-                _typed.from_maybe_issues_list_milestones_sort(value3),
-                _typed.from_maybe_issues_list_milestones_direction(value4),
-                _typed.from_maybe_int64(value5),
-                _typed.from_maybe_int64(value6),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_maybe_issues_list_milestones_state(maybe_1),
+                _typed.from_maybe_issues_list_milestones_sort(maybe_2),
+                _typed.from_maybe_issues_list_milestones_direction(maybe_3),
+                _typed.from_maybe_int64(maybe_4),
+                _typed.from_maybe_int64(maybe_5),
             ),
         )
     except (
@@ -4274,19 +4334,19 @@ def reference_issues_list_milestones_3(
 def reference_issues_update_label_3(
     symbols,
     state,
-    value0,
-    value1,
-    value2,
-    value3,
+    text_1,
+    text_2,
+    text_3,
+    maybe_1,
 ):
     try:
         return _typed.to_pair_label_state(
             _typed.reference_issues_update_label(
                 _typed.from_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_text(value2),
-                _typed.from_maybe_issues_update_label_body(value3),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_text(text_3),
+                _typed.from_maybe_issues_update_label_body(maybe_1),
             ),
         )
     except (
@@ -4304,19 +4364,19 @@ def reference_issues_update_label_3(
 def reference_issues_update_milestone_3(
     symbols,
     state,
-    value0,
-    value1,
-    value2,
-    value3,
+    text_1,
+    text_2,
+    int64_1,
+    maybe_1,
 ):
     try:
         return _typed.to_pair_milestone_state(
             _typed.reference_issues_update_milestone(
                 _typed.from_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_int64(value2),
-                _typed.from_maybe_issues_update_milestone_body(value3),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_int64(int64_1),
+                _typed.from_maybe_issues_update_milestone_body(maybe_1),
             ),
         )
     except (

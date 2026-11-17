@@ -14,45 +14,45 @@ public final class Collections
       lawspec.runtime.LawSpecDataSchema.create();
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Short>
-      boundedInt16(Map<String, Object> symbols, java.lang.Number value0)
+      boundedInt16(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeInt16(
         lawspec.runtime.LawSpecTyped.boundedInt16(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Integer>
-      boundedInt32(Map<String, Object> symbols, java.lang.Number value0)
+      boundedInt32(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeInt32(
         lawspec.runtime.LawSpecTyped.boundedInt32(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Long>
-      boundedInt64(Map<String, Object> symbols, java.lang.Number value0)
+      boundedInt64(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeInt64(
         lawspec.runtime.LawSpecTyped.boundedInt64(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Byte>
-      boundedInt8(Map<String, Object> symbols, java.lang.Number value0)
+      boundedInt8(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeInt8(
         lawspec.runtime.LawSpecTyped.boundedInt8(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<lawspec.runtime.LawSpecRuntime.Value>
-      boundedIntSize(Map<String, Object> symbols, java.lang.Number value0)
+      boundedIntSize(Map<String, Object> symbols, java.lang.Number value)
   {
     try
     {
-      var codec0 = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.boundedIntSize(symbols, argument0);
+      var valueCodec = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
+      var valueValue = valueCodec.encode(value);
+      var result = lawspec.runtime.LawSpecDefinitionBodies.boundedIntSize(symbols, valueValue);
       var resultCodec =
           SCHEMA.maybe(
               SCHEMA.supported(new lawspec.runtime.LawSpecSchema.Named("IntSize"), 64, symbols),
@@ -72,29 +72,29 @@ public final class Collections
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Integer>
-      boundedUint16(Map<String, Object> symbols, java.lang.Number value0)
+      boundedUint16(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeUint16(
         lawspec.runtime.LawSpecTyped.boundedUint16(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Long>
-      boundedUint32(Map<String, Object> symbols, java.lang.Number value0)
+      boundedUint32(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeUint32(
         lawspec.runtime.LawSpecTyped.boundedUint32(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.math.BigInteger>
-      boundedUint64(Map<String, Object> symbols, java.lang.Number value0)
+      boundedUint64(Map<String, Object> symbols, java.lang.Number value)
   {
     try
     {
-      var codec0 = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.boundedUint64(symbols, argument0);
+      var valueCodec = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
+      var valueValue = valueCodec.encode(value);
+      var result = lawspec.runtime.LawSpecDefinitionBodies.boundedUint64(symbols, valueValue);
       var resultCodec =
           SCHEMA.maybe(SCHEMA.scalar("UInt64", 64, java.math.BigInteger.class), 64, symbols);
       return resultCodec.decode(result);
@@ -111,21 +111,21 @@ public final class Collections
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Short>
-      boundedUint8(Map<String, Object> symbols, java.lang.Number value0)
+      boundedUint8(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeUint8(
         lawspec.runtime.LawSpecTyped.boundedUint8(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<lawspec.runtime.LawSpecRuntime.Value>
-      boundedUintPtr(Map<String, Object> symbols, java.lang.Number value0)
+      boundedUintPtr(Map<String, Object> symbols, java.lang.Number value)
   {
     try
     {
-      var codec0 = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.boundedUintPtr(symbols, argument0);
+      var valueCodec = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
+      var valueValue = valueCodec.encode(value);
+      var result = lawspec.runtime.LawSpecDefinitionBodies.boundedUintPtr(symbols, valueValue);
       var resultCodec =
           SCHEMA.maybe(
               SCHEMA.supported(new lawspec.runtime.LawSpecSchema.Named("UIntPtr"), 64, symbols),
@@ -145,13 +145,13 @@ public final class Collections
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<lawspec.runtime.LawSpecRuntime.Value>
-      boundedUintSize(Map<String, Object> symbols, java.lang.Number value0)
+      boundedUintSize(Map<String, Object> symbols, java.lang.Number value)
   {
     try
     {
-      var codec0 = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.boundedUintSize(symbols, argument0);
+      var valueCodec = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
+      var valueValue = valueCodec.encode(value);
+      var result = lawspec.runtime.LawSpecDefinitionBodies.boundedUintSize(symbols, valueValue);
       var resultCodec =
           SCHEMA.maybe(
               SCHEMA.supported(new lawspec.runtime.LawSpecSchema.Named("UIntSize"), 64, symbols),
@@ -170,44 +170,43 @@ public final class Collections
     }
   }
 
-  public static java.lang.Short
-      saturatingInt16(Map<String, Object> symbols, java.lang.Number value0)
+  public static java.lang.Short saturatingInt16(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeInt16(
         lawspec.runtime.LawSpecTyped.saturatingInt16(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
   public static java.lang.Integer
-      saturatingInt32(Map<String, Object> symbols, java.lang.Number value0)
+      saturatingInt32(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeInt32(
         lawspec.runtime.LawSpecTyped.saturatingInt32(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
-  public static java.lang.Long saturatingInt64(Map<String, Object> symbols, java.lang.Number value0)
+  public static java.lang.Long saturatingInt64(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeInt64(
         lawspec.runtime.LawSpecTyped.saturatingInt64(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
-  public static java.lang.Byte saturatingInt8(Map<String, Object> symbols, java.lang.Number value0)
+  public static java.lang.Byte saturatingInt8(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeInt8(
         lawspec.runtime.LawSpecTyped.saturatingInt8(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Value
-      saturatingIntSize(Map<String, Object> symbols, java.lang.Number value0)
+      saturatingIntSize(Map<String, Object> symbols, java.lang.Number value)
   {
     try
     {
-      var codec0 = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.saturatingIntSize(symbols, argument0);
+      var valueCodec = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
+      var valueValue = valueCodec.encode(value);
+      var result = lawspec.runtime.LawSpecDefinitionBodies.saturatingIntSize(symbols, valueValue);
       var resultCodec =
           SCHEMA.supported(new lawspec.runtime.LawSpecSchema.Named("IntSize"), 64, symbols);
       return resultCodec.decode(result);
@@ -224,29 +223,28 @@ public final class Collections
   }
 
   public static java.lang.Integer
-      saturatingUint16(Map<String, Object> symbols, java.lang.Number value0)
+      saturatingUint16(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeUint16(
         lawspec.runtime.LawSpecTyped.saturatingUint16(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
-  public static java.lang.Long
-      saturatingUint32(Map<String, Object> symbols, java.lang.Number value0)
+  public static java.lang.Long saturatingUint32(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeUint32(
         lawspec.runtime.LawSpecTyped.saturatingUint32(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
   public static java.math.BigInteger
-      saturatingUint64(Map<String, Object> symbols, java.lang.Number value0)
+      saturatingUint64(Map<String, Object> symbols, java.lang.Number value)
   {
     try
     {
-      var codec0 = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.saturatingUint64(symbols, argument0);
+      var valueCodec = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
+      var valueValue = valueCodec.encode(value);
+      var result = lawspec.runtime.LawSpecDefinitionBodies.saturatingUint64(symbols, valueValue);
       var resultCodec = SCHEMA.scalar("UInt64", 64, java.math.BigInteger.class);
       return resultCodec.decode(result);
     }
@@ -261,22 +259,21 @@ public final class Collections
     }
   }
 
-  public static java.lang.Short
-      saturatingUint8(Map<String, Object> symbols, java.lang.Number value0)
+  public static java.lang.Short saturatingUint8(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeUint8(
         lawspec.runtime.LawSpecTyped.saturatingUint8(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Value
-      saturatingUintPtr(Map<String, Object> symbols, java.lang.Number value0)
+      saturatingUintPtr(Map<String, Object> symbols, java.lang.Number value)
   {
     try
     {
-      var codec0 = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.saturatingUintPtr(symbols, argument0);
+      var valueCodec = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
+      var valueValue = valueCodec.encode(value);
+      var result = lawspec.runtime.LawSpecDefinitionBodies.saturatingUintPtr(symbols, valueValue);
       var resultCodec =
           SCHEMA.supported(new lawspec.runtime.LawSpecSchema.Named("UIntPtr"), 64, symbols);
       return resultCodec.decode(result);
@@ -293,13 +290,13 @@ public final class Collections
   }
 
   public static lawspec.runtime.LawSpecRuntime.Value
-      saturatingUintSize(Map<String, Object> symbols, java.lang.Number value0)
+      saturatingUintSize(Map<String, Object> symbols, java.lang.Number value)
   {
     try
     {
-      var codec0 = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.saturatingUintSize(symbols, argument0);
+      var valueCodec = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
+      var valueValue = valueCodec.encode(value);
+      var result = lawspec.runtime.LawSpecDefinitionBodies.saturatingUintSize(symbols, valueValue);
       var resultCodec =
           SCHEMA.supported(new lawspec.runtime.LawSpecSchema.Named("UIntSize"), 64, symbols);
       return resultCodec.decode(result);
@@ -315,43 +312,42 @@ public final class Collections
     }
   }
 
-  public static java.lang.Short wrappingInt16(Map<String, Object> symbols, java.lang.Number value0)
+  public static java.lang.Short wrappingInt16(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeInt16(
         lawspec.runtime.LawSpecTyped.wrappingInt16(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
-  public static java.lang.Integer
-      wrappingInt32(Map<String, Object> symbols, java.lang.Number value0)
+  public static java.lang.Integer wrappingInt32(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeInt32(
         lawspec.runtime.LawSpecTyped.wrappingInt32(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
-  public static java.lang.Long wrappingInt64(Map<String, Object> symbols, java.lang.Number value0)
+  public static java.lang.Long wrappingInt64(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeInt64(
         lawspec.runtime.LawSpecTyped.wrappingInt64(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
-  public static java.lang.Byte wrappingInt8(Map<String, Object> symbols, java.lang.Number value0)
+  public static java.lang.Byte wrappingInt8(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeInt8(
         lawspec.runtime.LawSpecTyped.wrappingInt8(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Value
-      wrappingIntSize(Map<String, Object> symbols, java.lang.Number value0)
+      wrappingIntSize(Map<String, Object> symbols, java.lang.Number value)
   {
     try
     {
-      var codec0 = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.wrappingIntSize(symbols, argument0);
+      var valueCodec = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
+      var valueValue = valueCodec.encode(value);
+      var result = lawspec.runtime.LawSpecDefinitionBodies.wrappingIntSize(symbols, valueValue);
       var resultCodec =
           SCHEMA.supported(new lawspec.runtime.LawSpecSchema.Named("IntSize"), 64, symbols);
       return resultCodec.decode(result);
@@ -368,28 +364,28 @@ public final class Collections
   }
 
   public static java.lang.Integer
-      wrappingUint16(Map<String, Object> symbols, java.lang.Number value0)
+      wrappingUint16(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeUint16(
         lawspec.runtime.LawSpecTyped.wrappingUint16(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
-  public static java.lang.Long wrappingUint32(Map<String, Object> symbols, java.lang.Number value0)
+  public static java.lang.Long wrappingUint32(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeUint32(
         lawspec.runtime.LawSpecTyped.wrappingUint32(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
   public static java.math.BigInteger
-      wrappingUint64(Map<String, Object> symbols, java.lang.Number value0)
+      wrappingUint64(Map<String, Object> symbols, java.lang.Number value)
   {
     try
     {
-      var codec0 = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.wrappingUint64(symbols, argument0);
+      var valueCodec = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
+      var valueValue = valueCodec.encode(value);
+      var result = lawspec.runtime.LawSpecDefinitionBodies.wrappingUint64(symbols, valueValue);
       var resultCodec = SCHEMA.scalar("UInt64", 64, java.math.BigInteger.class);
       return resultCodec.decode(result);
     }
@@ -404,21 +400,21 @@ public final class Collections
     }
   }
 
-  public static java.lang.Short wrappingUint8(Map<String, Object> symbols, java.lang.Number value0)
+  public static java.lang.Short wrappingUint8(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeUint8(
         lawspec.runtime.LawSpecTyped.wrappingUint8(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Value
-      wrappingUintPtr(Map<String, Object> symbols, java.lang.Number value0)
+      wrappingUintPtr(Map<String, Object> symbols, java.lang.Number value)
   {
     try
     {
-      var codec0 = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.wrappingUintPtr(symbols, argument0);
+      var valueCodec = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
+      var valueValue = valueCodec.encode(value);
+      var result = lawspec.runtime.LawSpecDefinitionBodies.wrappingUintPtr(symbols, valueValue);
       var resultCodec =
           SCHEMA.supported(new lawspec.runtime.LawSpecSchema.Named("UIntPtr"), 64, symbols);
       return resultCodec.decode(result);
@@ -435,13 +431,13 @@ public final class Collections
   }
 
   public static lawspec.runtime.LawSpecRuntime.Value
-      wrappingUintSize(Map<String, Object> symbols, java.lang.Number value0)
+      wrappingUintSize(Map<String, Object> symbols, java.lang.Number value)
   {
     try
     {
-      var codec0 = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.wrappingUintSize(symbols, argument0);
+      var valueCodec = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
+      var valueValue = valueCodec.encode(value);
+      var result = lawspec.runtime.LawSpecDefinitionBodies.wrappingUintSize(symbols, valueValue);
       var resultCodec =
           SCHEMA.supported(new lawspec.runtime.LawSpecSchema.Named("UIntSize"), 64, symbols);
       return resultCodec.decode(result);

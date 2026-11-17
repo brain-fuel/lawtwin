@@ -17,10 +17,10 @@ MACHINE_BITS = 64
 def clusterAddPartitionsToTxnRequest(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.BrokerState,
-    value0: _builtins.str,
-    value1: _builtins.int,
-    value2: _builtins.int,
-    value3: _builtins.list[data.TopicPartition],
+    text_1: _builtins.str,
+    int64_1: _builtins.int,
+    int16_1: _builtins.int,
+    list_1: _builtins.list[data.TopicPartition],
 ) -> data.Pair[ls.Absence, data.BrokerState]:
     try:
         state = _lawspec_schema.from_native(
@@ -29,40 +29,40 @@ def clusterAddPartitionsToTxnRequest(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        int64_1 = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value1,
+            int64_1,
             MACHINE_BITS,
             symbols,
         )
-        value2 = _lawspec_schema.from_native(
+        int16_1 = _lawspec_schema.from_native(
             _schema.Named("Int16"),
-            value2,
+            int16_1,
             MACHINE_BITS,
             symbols,
         )
-        value3 = _lawspec_schema.from_native(
+        list_1 = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
             ),
-            value3,
+            list_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.cluster_add_partitions_to_txn_request_2(
             symbols,
             state,
-            value0,
-            value1,
-            value2,
-            value3,
+            text_1,
+            int64_1,
+            int16_1,
+            list_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -91,10 +91,10 @@ def clusterAddPartitionsToTxnRequest(
 def clusterCommitOffsets(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.BrokerState,
-    value0: _builtins.str,
-    value1: _builtins.str,
-    value2: _builtins.int,
-    value3: _builtins.list[data.OffsetEntry],
+    text_1: _builtins.str,
+    text_2: _builtins.str,
+    int32_1: _builtins.int,
+    list_1: _builtins.list[data.OffsetEntry],
 ) -> data.Pair[ls.Absence, data.BrokerState]:
     try:
         state = _lawspec_schema.from_native(
@@ -103,40 +103,40 @@ def clusterCommitOffsets(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        text_2 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value1,
+            text_2,
             MACHINE_BITS,
             symbols,
         )
-        value2 = _lawspec_schema.from_native(
+        int32_1 = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value2,
+            int32_1,
             MACHINE_BITS,
             symbols,
         )
-        value3 = _lawspec_schema.from_native(
+        list_1 = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::OffsetEntry")],
             ),
-            value3,
+            list_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.cluster_commit_offsets_2(
             symbols,
             state,
-            value0,
-            value1,
-            value2,
-            value3,
+            text_1,
+            text_2,
+            int32_1,
+            list_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -164,8 +164,8 @@ def clusterCommitOffsets(
 def clusterCreatePartitions(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.BrokerState,
-    value0: _builtins.str,
-    value1: _builtins.int,
+    text_1: _builtins.str,
+    int32_1: _builtins.int,
 ) -> data.Pair[ls.Absence, data.BrokerState]:
     try:
         state = _lawspec_schema.from_native(
@@ -174,23 +174,23 @@ def clusterCreatePartitions(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        int32_1 = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value1,
+            int32_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.cluster_create_partitions_2(
             symbols,
             state,
-            value0,
-            value1,
+            text_1,
+            int32_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -219,8 +219,8 @@ def clusterCreatePartitions(
 def clusterCreatePartitionsRequest(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.BrokerState,
-    value0: _builtins.str,
-    value1: _builtins.int,
+    text_1: _builtins.str,
+    int32_1: _builtins.int,
 ) -> data.Pair[ls.Absence, data.BrokerState]:
     try:
         state = _lawspec_schema.from_native(
@@ -229,23 +229,23 @@ def clusterCreatePartitionsRequest(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        int32_1 = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value1,
+            int32_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.cluster_create_partitions_request_2(
             symbols,
             state,
-            value0,
-            value1,
+            text_1,
+            int32_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -274,8 +274,8 @@ def clusterCreatePartitionsRequest(
 def clusterCreateTopic(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.BrokerState,
-    value0: _builtins.str,
-    value1: _builtins.int,
+    text_1: _builtins.str,
+    int32_1: _builtins.int,
 ) -> data.Pair[ls.Absence, data.BrokerState]:
     try:
         state = _lawspec_schema.from_native(
@@ -284,23 +284,23 @@ def clusterCreateTopic(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        int32_1 = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value1,
+            int32_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.cluster_create_topic_2(
             symbols,
             state,
-            value0,
-            value1,
+            text_1,
+            int32_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -328,8 +328,8 @@ def clusterCreateTopic(
 def clusterCreateTopicsRequest(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.BrokerState,
-    value0: _builtins.str,
-    value1: _builtins.int,
+    text_1: _builtins.str,
+    int32_1: _builtins.int,
 ) -> data.Pair[ls.Absence, data.BrokerState]:
     try:
         state = _lawspec_schema.from_native(
@@ -338,23 +338,23 @@ def clusterCreateTopicsRequest(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        int32_1 = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value1,
+            int32_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.cluster_create_topics_request_2(
             symbols,
             state,
-            value0,
-            value1,
+            text_1,
+            int32_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -383,7 +383,7 @@ def clusterCreateTopicsRequest(
 def clusterDescribeGroup(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.BrokerState,
-    value0: _builtins.str,
+    text_1: _builtins.str,
 ) -> data.Pair[data.GroupView, data.BrokerState]:
     try:
         state = _lawspec_schema.from_native(
@@ -392,13 +392,13 @@ def clusterDescribeGroup(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        result = _definitions.cluster_describe_group_2(symbols, state, value0)
+        result = _definitions.cluster_describe_group_2(symbols, state, text_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -425,7 +425,7 @@ def clusterDescribeGroup(
 def clusterDescribeGroupRequest(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.BrokerState,
-    value0: _builtins.str,
+    text_1: _builtins.str,
 ) -> data.Pair[data.GroupView, data.BrokerState]:
     try:
         state = _lawspec_schema.from_native(
@@ -434,16 +434,16 @@ def clusterDescribeGroupRequest(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.cluster_describe_group_request_2(
             symbols,
             state,
-            value0,
+            text_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -472,10 +472,10 @@ def clusterDescribeGroupRequest(
 def clusterEndTxnRequest(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.BrokerState,
-    value0: _builtins.str,
-    value1: _builtins.int,
-    value2: _builtins.int,
-    value3: _builtins.bool,
+    text_1: _builtins.str,
+    int64_1: _builtins.int,
+    int16_1: _builtins.int,
+    bool_1: _builtins.bool,
 ) -> data.Pair[ls.Absence, data.BrokerState]:
     try:
         state = _lawspec_schema.from_native(
@@ -484,37 +484,37 @@ def clusterEndTxnRequest(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        int64_1 = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value1,
+            int64_1,
             MACHINE_BITS,
             symbols,
         )
-        value2 = _lawspec_schema.from_native(
+        int16_1 = _lawspec_schema.from_native(
             _schema.Named("Int16"),
-            value2,
+            int16_1,
             MACHINE_BITS,
             symbols,
         )
-        value3 = _lawspec_schema.from_native(
+        bool_1 = _lawspec_schema.from_native(
             _schema.Named("Bool"),
-            value3,
+            bool_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.cluster_end_txn_request_2(
             symbols,
             state,
-            value0,
-            value1,
-            value2,
-            value3,
+            text_1,
+            int64_1,
+            int16_1,
+            bool_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -542,8 +542,8 @@ def clusterEndTxnRequest(
 def clusterFetchOffset(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.BrokerState,
-    value0: _builtins.str,
-    value1: data.TopicPartition,
+    text_1: _builtins.str,
+    topic_partition_1: data.TopicPartition,
 ) -> data.Pair[_schema.Maybe[_builtins.int], data.BrokerState]:
     try:
         state = _lawspec_schema.from_native(
@@ -552,23 +552,23 @@ def clusterFetchOffset(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        topic_partition_1 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value1,
+            topic_partition_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.cluster_fetch_offset_2(
             symbols,
             state,
-            value0,
-            value1,
+            text_1,
+            topic_partition_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -596,10 +596,10 @@ def clusterFetchOffset(
 def clusterFetchRequest(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.BrokerState,
-    value0: data.TopicPartition,
-    value1: _builtins.int,
-    value2: _builtins.int,
-    value3: data.IsolationLevel,
+    topic_partition_1: data.TopicPartition,
+    int64_1: _builtins.int,
+    int32_1: _builtins.int,
+    isolation_level_1: data.IsolationLevel,
 ) -> data.Pair[data.FetchResult, data.BrokerState]:
     try:
         state = _lawspec_schema.from_native(
@@ -608,37 +608,37 @@ def clusterFetchRequest(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        topic_partition_1 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value0,
+            topic_partition_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        int64_1 = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value1,
+            int64_1,
             MACHINE_BITS,
             symbols,
         )
-        value2 = _lawspec_schema.from_native(
+        int32_1 = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value2,
+            int32_1,
             MACHINE_BITS,
             symbols,
         )
-        value3 = _lawspec_schema.from_native(
+        isolation_level_1 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::IsolationLevel"),
-            value3,
+            isolation_level_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.cluster_fetch_request_2(
             symbols,
             state,
-            value0,
-            value1,
-            value2,
-            value3,
+            topic_partition_1,
+            int64_1,
+            int32_1,
+            isolation_level_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -666,9 +666,9 @@ def clusterFetchRequest(
 def clusterHeartbeat(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.BrokerState,
-    value0: _builtins.str,
-    value1: _builtins.str,
-    value2: _builtins.int,
+    text_1: _builtins.str,
+    text_2: _builtins.str,
+    int32_1: _builtins.int,
 ) -> data.Pair[ls.Absence, data.BrokerState]:
     try:
         state = _lawspec_schema.from_native(
@@ -677,30 +677,30 @@ def clusterHeartbeat(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        text_2 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value1,
+            text_2,
             MACHINE_BITS,
             symbols,
         )
-        value2 = _lawspec_schema.from_native(
+        int32_1 = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value2,
+            int32_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.cluster_heartbeat_2(
             symbols,
             state,
-            value0,
-            value1,
-            value2,
+            text_1,
+            text_2,
+            int32_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -728,9 +728,9 @@ def clusterHeartbeat(
 def clusterHeartbeatRequest(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.BrokerState,
-    value0: _builtins.str,
-    value1: _builtins.str,
-    value2: _builtins.int,
+    text_1: _builtins.str,
+    text_2: _builtins.str,
+    int32_1: _builtins.int,
 ) -> data.Pair[ls.Absence, data.BrokerState]:
     try:
         state = _lawspec_schema.from_native(
@@ -739,30 +739,30 @@ def clusterHeartbeatRequest(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        text_2 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value1,
+            text_2,
             MACHINE_BITS,
             symbols,
         )
-        value2 = _lawspec_schema.from_native(
+        int32_1 = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value2,
+            int32_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.cluster_heartbeat_request_2(
             symbols,
             state,
-            value0,
-            value1,
-            value2,
+            text_1,
+            text_2,
+            int32_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -791,7 +791,7 @@ def clusterHeartbeatRequest(
 def clusterInitProducerIdRequest(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.BrokerState,
-    value0: _schema.Maybe[_builtins.str],
+    maybe_1: _schema.Maybe[_builtins.str],
 ) -> data.Pair[data.ProducerIdAndEpoch, data.BrokerState]:
     try:
         state = _lawspec_schema.from_native(
@@ -800,16 +800,16 @@ def clusterInitProducerIdRequest(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        maybe_1 = _lawspec_schema.from_native(
             _schema.Named("Maybe", [_schema.Named("Text")]),
-            value0,
+            maybe_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.cluster_init_producer_id_request_2(
             symbols,
             state,
-            value0,
+            maybe_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -840,9 +840,9 @@ def clusterInitProducerIdRequest(
 def clusterJoinGroup(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.BrokerState,
-    value0: _builtins.str,
-    value1: _builtins.str,
-    value2: _builtins.list[_builtins.str],
+    text_1: _builtins.str,
+    text_2: _builtins.str,
+    list_1: _builtins.list[_builtins.str],
 ) -> data.Pair[_builtins.int, data.BrokerState]:
     try:
         state = _lawspec_schema.from_native(
@@ -851,30 +851,30 @@ def clusterJoinGroup(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        text_2 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value1,
+            text_2,
             MACHINE_BITS,
             symbols,
         )
-        value2 = _lawspec_schema.from_native(
+        list_1 = _lawspec_schema.from_native(
             _schema.Named("List", [_schema.Named("Text")]),
-            value2,
+            list_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.cluster_join_group_2(
             symbols,
             state,
-            value0,
-            value1,
-            value2,
+            text_1,
+            text_2,
+            list_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -902,9 +902,9 @@ def clusterJoinGroup(
 def clusterJoinGroupRequest(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.BrokerState,
-    value0: _builtins.str,
-    value1: _builtins.str,
-    value2: _builtins.list[_builtins.str],
+    text_1: _builtins.str,
+    text_2: _builtins.str,
+    list_1: _builtins.list[_builtins.str],
 ) -> data.Pair[_builtins.int, data.BrokerState]:
     try:
         state = _lawspec_schema.from_native(
@@ -913,30 +913,30 @@ def clusterJoinGroupRequest(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        text_2 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value1,
+            text_2,
             MACHINE_BITS,
             symbols,
         )
-        value2 = _lawspec_schema.from_native(
+        list_1 = _lawspec_schema.from_native(
             _schema.Named("List", [_schema.Named("Text")]),
-            value2,
+            list_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.cluster_join_group_request_2(
             symbols,
             state,
-            value0,
-            value1,
-            value2,
+            text_1,
+            text_2,
+            list_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -965,8 +965,8 @@ def clusterJoinGroupRequest(
 def clusterLeaveGroup(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.BrokerState,
-    value0: _builtins.str,
-    value1: _builtins.str,
+    text_1: _builtins.str,
+    text_2: _builtins.str,
 ) -> data.Pair[ls.Absence, data.BrokerState]:
     try:
         state = _lawspec_schema.from_native(
@@ -975,23 +975,23 @@ def clusterLeaveGroup(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        text_2 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value1,
+            text_2,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.cluster_leave_group_2(
             symbols,
             state,
-            value0,
-            value1,
+            text_1,
+            text_2,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1019,8 +1019,8 @@ def clusterLeaveGroup(
 def clusterLeaveGroupRequest(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.BrokerState,
-    value0: _builtins.str,
-    value1: _builtins.str,
+    text_1: _builtins.str,
+    text_2: _builtins.str,
 ) -> data.Pair[ls.Absence, data.BrokerState]:
     try:
         state = _lawspec_schema.from_native(
@@ -1029,23 +1029,23 @@ def clusterLeaveGroupRequest(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        text_2 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value1,
+            text_2,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.cluster_leave_group_request_2(
             symbols,
             state,
-            value0,
-            value1,
+            text_1,
+            text_2,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1074,9 +1074,9 @@ def clusterLeaveGroupRequest(
 def clusterListOffsets(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.BrokerState,
-    value0: data.TopicPartition,
-    value1: data.OffsetSpec,
-    value2: data.IsolationLevel,
+    topic_partition_1: data.TopicPartition,
+    offset_spec_1: data.OffsetSpec,
+    isolation_level_1: data.IsolationLevel,
 ) -> data.Pair[_builtins.int, data.BrokerState]:
     try:
         state = _lawspec_schema.from_native(
@@ -1085,30 +1085,30 @@ def clusterListOffsets(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        topic_partition_1 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value0,
+            topic_partition_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        offset_spec_1 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::OffsetSpec"),
-            value1,
+            offset_spec_1,
             MACHINE_BITS,
             symbols,
         )
-        value2 = _lawspec_schema.from_native(
+        isolation_level_1 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::IsolationLevel"),
-            value2,
+            isolation_level_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.cluster_list_offsets_2(
             symbols,
             state,
-            value0,
-            value1,
-            value2,
+            topic_partition_1,
+            offset_spec_1,
+            isolation_level_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1136,9 +1136,9 @@ def clusterListOffsets(
 def clusterListOffsetsRequest(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.BrokerState,
-    value0: data.TopicPartition,
-    value1: data.OffsetSpec,
-    value2: data.IsolationLevel,
+    topic_partition_1: data.TopicPartition,
+    offset_spec_1: data.OffsetSpec,
+    isolation_level_1: data.IsolationLevel,
 ) -> data.Pair[_builtins.int, data.BrokerState]:
     try:
         state = _lawspec_schema.from_native(
@@ -1147,30 +1147,30 @@ def clusterListOffsetsRequest(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        topic_partition_1 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value0,
+            topic_partition_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        offset_spec_1 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::OffsetSpec"),
-            value1,
+            offset_spec_1,
             MACHINE_BITS,
             symbols,
         )
-        value2 = _lawspec_schema.from_native(
+        isolation_level_1 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::IsolationLevel"),
-            value2,
+            isolation_level_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.cluster_list_offsets_request_2(
             symbols,
             state,
-            value0,
-            value1,
-            value2,
+            topic_partition_1,
+            offset_spec_1,
+            isolation_level_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1199,7 +1199,7 @@ def clusterListOffsetsRequest(
 def clusterMetadataRequest(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.BrokerState,
-    value0: _builtins.str,
+    text_1: _builtins.str,
 ) -> data.Pair[_schema.Maybe[_builtins.int], data.BrokerState]:
     try:
         state = _lawspec_schema.from_native(
@@ -1208,13 +1208,13 @@ def clusterMetadataRequest(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        result = _definitions.cluster_metadata_request_2(symbols, state, value0)
+        result = _definitions.cluster_metadata_request_2(symbols, state, text_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -1242,10 +1242,10 @@ def clusterMetadataRequest(
 def clusterOffsetCommitRequest(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.BrokerState,
-    value0: _builtins.str,
-    value1: _builtins.str,
-    value2: _builtins.int,
-    value3: _builtins.list[data.OffsetEntry],
+    text_1: _builtins.str,
+    text_2: _builtins.str,
+    int32_1: _builtins.int,
+    list_1: _builtins.list[data.OffsetEntry],
 ) -> data.Pair[ls.Absence, data.BrokerState]:
     try:
         state = _lawspec_schema.from_native(
@@ -1254,40 +1254,40 @@ def clusterOffsetCommitRequest(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        text_2 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value1,
+            text_2,
             MACHINE_BITS,
             symbols,
         )
-        value2 = _lawspec_schema.from_native(
+        int32_1 = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value2,
+            int32_1,
             MACHINE_BITS,
             symbols,
         )
-        value3 = _lawspec_schema.from_native(
+        list_1 = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::OffsetEntry")],
             ),
-            value3,
+            list_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.cluster_offset_commit_request_2(
             symbols,
             state,
-            value0,
-            value1,
-            value2,
-            value3,
+            text_1,
+            text_2,
+            int32_1,
+            list_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1316,8 +1316,8 @@ def clusterOffsetCommitRequest(
 def clusterOffsetFetchRequest(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.BrokerState,
-    value0: _builtins.str,
-    value1: data.TopicPartition,
+    text_1: _builtins.str,
+    topic_partition_1: data.TopicPartition,
 ) -> data.Pair[_schema.Maybe[_builtins.int], data.BrokerState]:
     try:
         state = _lawspec_schema.from_native(
@@ -1326,23 +1326,23 @@ def clusterOffsetFetchRequest(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        topic_partition_1 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value1,
+            topic_partition_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.cluster_offset_fetch_request_2(
             symbols,
             state,
-            value0,
-            value1,
+            text_1,
+            topic_partition_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1371,7 +1371,7 @@ def clusterOffsetFetchRequest(
 def clusterPartitionsFor(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.BrokerState,
-    value0: _builtins.str,
+    text_1: _builtins.str,
 ) -> data.Pair[_schema.Maybe[_builtins.int], data.BrokerState]:
     try:
         state = _lawspec_schema.from_native(
@@ -1380,13 +1380,13 @@ def clusterPartitionsFor(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        result = _definitions.cluster_partitions_for_2(symbols, state, value0)
+        result = _definitions.cluster_partitions_for_2(symbols, state, text_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -1413,9 +1413,9 @@ def clusterPartitionsFor(
 def clusterProduceRequest(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.BrokerState,
-    value0: data.TopicPartition,
-    value1: _schema.Maybe[data.ProducerTag],
-    value2: _builtins.list[data.Record],
+    topic_partition_1: data.TopicPartition,
+    maybe_1: _schema.Maybe[data.ProducerTag],
+    list_1: _builtins.list[data.Record],
 ) -> data.Pair[_builtins.int, data.BrokerState]:
     try:
         state = _lawspec_schema.from_native(
@@ -1424,36 +1424,36 @@ def clusterProduceRequest(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        topic_partition_1 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value0,
+            topic_partition_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        maybe_1 = _lawspec_schema.from_native(
             _schema.Named(
                 "Maybe",
                 [_schema.Named("lawtwin.kafka.model::type::ProducerTag")],
             ),
-            value1,
+            maybe_1,
             MACHINE_BITS,
             symbols,
         )
-        value2 = _lawspec_schema.from_native(
+        list_1 = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::Record")],
             ),
-            value2,
+            list_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.cluster_produce_request_2(
             symbols,
             state,
-            value0,
-            value1,
-            value2,
+            topic_partition_1,
+            maybe_1,
+            list_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1511,9 +1511,9 @@ def clusterStart(
 def clusterSyncGroup(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.BrokerState,
-    value0: _builtins.str,
-    value1: _builtins.str,
-    value2: _builtins.int,
+    text_1: _builtins.str,
+    text_2: _builtins.str,
+    int32_1: _builtins.int,
 ) -> data.Pair[_builtins.list[data.TopicPartition], data.BrokerState]:
     try:
         state = _lawspec_schema.from_native(
@@ -1522,30 +1522,30 @@ def clusterSyncGroup(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        text_2 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value1,
+            text_2,
             MACHINE_BITS,
             symbols,
         )
-        value2 = _lawspec_schema.from_native(
+        int32_1 = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value2,
+            int32_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.cluster_sync_group_2(
             symbols,
             state,
-            value0,
-            value1,
-            value2,
+            text_1,
+            text_2,
+            int32_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1580,9 +1580,9 @@ def clusterSyncGroup(
 def clusterSyncGroupRequest(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.BrokerState,
-    value0: _builtins.str,
-    value1: _builtins.str,
-    value2: _builtins.int,
+    text_1: _builtins.str,
+    text_2: _builtins.str,
+    int32_1: _builtins.int,
 ) -> data.Pair[_builtins.list[data.TopicPartition], data.BrokerState]:
     try:
         state = _lawspec_schema.from_native(
@@ -1591,30 +1591,30 @@ def clusterSyncGroupRequest(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        text_2 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value1,
+            text_2,
             MACHINE_BITS,
             symbols,
         )
-        value2 = _lawspec_schema.from_native(
+        int32_1 = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value2,
+            int32_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.cluster_sync_group_request_2(
             symbols,
             state,
-            value0,
-            value1,
-            value2,
+            text_1,
+            text_2,
+            int32_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1650,11 +1650,11 @@ def clusterSyncGroupRequest(
 def clusterTxnOffsetCommitRequest(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.BrokerState,
-    value0: _builtins.str,
-    value1: _builtins.int,
-    value2: _builtins.int,
-    value3: _builtins.str,
-    value4: _builtins.list[data.OffsetEntry],
+    text_1: _builtins.str,
+    int64_1: _builtins.int,
+    int16_1: _builtins.int,
+    text_2: _builtins.str,
+    list_1: _builtins.list[data.OffsetEntry],
 ) -> data.Pair[ls.Absence, data.BrokerState]:
     try:
         state = _lawspec_schema.from_native(
@@ -1663,47 +1663,47 @@ def clusterTxnOffsetCommitRequest(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        int64_1 = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value1,
+            int64_1,
             MACHINE_BITS,
             symbols,
         )
-        value2 = _lawspec_schema.from_native(
+        int16_1 = _lawspec_schema.from_native(
             _schema.Named("Int16"),
-            value2,
+            int16_1,
             MACHINE_BITS,
             symbols,
         )
-        value3 = _lawspec_schema.from_native(
+        text_2 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value3,
+            text_2,
             MACHINE_BITS,
             symbols,
         )
-        value4 = _lawspec_schema.from_native(
+        list_1 = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::OffsetEntry")],
             ),
-            value4,
+            list_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.cluster_txn_offset_commit_request_2(
             symbols,
             state,
-            value0,
-            value1,
-            value2,
-            value3,
-            value4,
+            text_1,
+            int64_1,
+            int16_1,
+            text_2,
+            list_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1732,7 +1732,7 @@ def clusterTxnOffsetCommitRequest(
 def kafkaConsumerAssign(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     consumer_state: data.ConsumerState,
-    value0: _builtins.list[data.TopicPartition],
+    list_1: _builtins.list[data.TopicPartition],
 ) -> data.Pair[ls.Absence, data.ConsumerState]:
     try:
         consumer_state = _lawspec_schema.from_native(
@@ -1741,19 +1741,19 @@ def kafkaConsumerAssign(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        list_1 = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
             ),
-            value0,
+            list_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.kafka_consumer_assign_2(
             symbols,
             consumer_state,
-            value0,
+            list_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1868,7 +1868,7 @@ def kafkaConsumerCommittedOffset(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
     consumer_state: data.ConsumerState,
-    value0: data.TopicPartition,
+    topic_partition_1: data.TopicPartition,
 ) -> data.Pair[_schema.Maybe[_builtins.int], data.ConsumerState]:
     try:
         ls.install_handlers(symbols, {"lawtwin.kafka::ability::Broker": broker})
@@ -1878,16 +1878,16 @@ def kafkaConsumerCommittedOffset(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        topic_partition_1 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value0,
+            topic_partition_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.kafka_consumer_committed_offset_2(
             symbols,
             consumer_state,
-            value0,
+            topic_partition_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1917,7 +1917,7 @@ def kafkaConsumerPoll(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
     consumer_state: data.ConsumerState,
-    value0: _builtins.int,
+    int32_1: _builtins.int,
 ) -> data.Pair[
     _schema.Either[data.KafkaError, _builtins.list[data.ConsumerRecord]],
     data.ConsumerState,
@@ -1930,16 +1930,16 @@ def kafkaConsumerPoll(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        int32_1 = _lawspec_schema.from_native(
             _schema.Named("Int32"),
-            value0,
+            int32_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.kafka_consumer_poll_2(
             symbols,
             consumer_state,
-            value0,
+            int32_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -1983,7 +1983,7 @@ def kafkaConsumerPosition(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
     consumer_state: data.ConsumerState,
-    value0: data.TopicPartition,
+    topic_partition_1: data.TopicPartition,
 ) -> data.Pair[
     _schema.Either[data.KafkaError, _builtins.int], data.ConsumerState
 ]:
@@ -1995,16 +1995,16 @@ def kafkaConsumerPosition(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        topic_partition_1 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value0,
+            topic_partition_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.kafka_consumer_position_2(
             symbols,
             consumer_state,
-            value0,
+            topic_partition_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -2041,8 +2041,8 @@ def kafkaConsumerPosition(
 def kafkaConsumerSeek(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     consumer_state: data.ConsumerState,
-    value0: data.TopicPartition,
-    value1: _builtins.int,
+    topic_partition_1: data.TopicPartition,
+    int64_1: _builtins.int,
 ) -> data.Pair[_schema.Either[data.KafkaError, ls.Absence], data.ConsumerState]:
     try:
         consumer_state = _lawspec_schema.from_native(
@@ -2051,23 +2051,23 @@ def kafkaConsumerSeek(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        topic_partition_1 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-            value0,
+            topic_partition_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        int64_1 = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value1,
+            int64_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.kafka_consumer_seek_2(
             symbols,
             consumer_state,
-            value0,
-            value1,
+            topic_partition_1,
+            int64_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -2103,7 +2103,7 @@ def kafkaConsumerSeek(
 def kafkaConsumerSetIsolationLevel(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     consumer_state: data.ConsumerState,
-    value0: data.IsolationLevel,
+    isolation_level_1: data.IsolationLevel,
 ) -> data.Pair[ls.Absence, data.ConsumerState]:
     try:
         consumer_state = _lawspec_schema.from_native(
@@ -2112,16 +2112,16 @@ def kafkaConsumerSetIsolationLevel(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        isolation_level_1 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka.model::type::IsolationLevel"),
-            value0,
+            isolation_level_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.kafka_consumer_set_isolation_level_2(
             symbols,
             consumer_state,
-            value0,
+            isolation_level_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -2180,9 +2180,9 @@ def kafkaConsumerSubscribe(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
     consumer_state: data.ConsumerState,
-    value0: _builtins.str,
-    value1: _builtins.str,
-    value2: _builtins.list[_builtins.str],
+    text_1: _builtins.str,
+    text_2: _builtins.str,
+    list_1: _builtins.list[_builtins.str],
 ) -> data.Pair[
     _schema.Either[data.KafkaError, _builtins.list[data.TopicPartition]],
     data.ConsumerState,
@@ -2195,30 +2195,30 @@ def kafkaConsumerSubscribe(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        text_2 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value1,
+            text_2,
             MACHINE_BITS,
             symbols,
         )
-        value2 = _lawspec_schema.from_native(
+        list_1 = _lawspec_schema.from_native(
             _schema.Named("List", [_schema.Named("Text")]),
-            value2,
+            list_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.kafka_consumer_subscribe_2(
             symbols,
             consumer_state,
-            value0,
-            value1,
-            value2,
+            text_1,
+            text_2,
+            list_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -2451,7 +2451,7 @@ def kafkaProducerSend(
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
     partitioner: "lawspec_abilities.lawtwin.kafka.Partitioner",
     producer_state: data.ProducerState,
-    value0: data.ProducerRecord,
+    producer_record_1: data.ProducerRecord,
 ) -> data.Pair[
     _schema.Either[data.KafkaError, data.RecordMetadata], data.ProducerState
 ]:
@@ -2469,16 +2469,16 @@ def kafkaProducerSend(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        producer_record_1 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ProducerRecord"),
-            value0,
+            producer_record_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.kafka_producer_send_2(
             symbols,
             producer_state,
-            value0,
+            producer_record_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -2597,7 +2597,7 @@ def kafkaTransactionsAddPartitionsToTransaction(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
     txn_state: data.TransactionState,
-    value0: _builtins.list[data.TopicPartition],
+    list_1: _builtins.list[data.TopicPartition],
 ) -> data.Pair[
     _schema.Either[data.KafkaError, ls.Absence], data.TransactionState
 ]:
@@ -2609,12 +2609,12 @@ def kafkaTransactionsAddPartitionsToTransaction(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        list_1 = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
             ),
-            value0,
+            list_1,
             MACHINE_BITS,
             symbols,
         )
@@ -2622,7 +2622,7 @@ def kafkaTransactionsAddPartitionsToTransaction(
             _definitions.kafka_transactions_add_partitions_to_transaction_2(
                 symbols,
                 txn_state,
-                value0,
+                list_1,
             )
         )
         return _lawspec_schema.to_native(
@@ -2761,7 +2761,7 @@ def kafkaTransactionsInitTransactions(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
     txn_state: data.TransactionState,
-    value0: _builtins.str,
+    text_1: _builtins.str,
 ) -> data.Pair[
     _schema.Either[data.KafkaError, data.ProducerIdAndEpoch],
     data.TransactionState,
@@ -2774,16 +2774,16 @@ def kafkaTransactionsInitTransactions(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.kafka_transactions_init_transactions_2(
             symbols,
             txn_state,
-            value0,
+            text_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -2824,7 +2824,7 @@ def kafkaTransactionsSendInTransaction(
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
     partitioner: "lawspec_abilities.lawtwin.kafka.Partitioner",
     txn_state: data.TransactionState,
-    value0: data.ProducerRecord,
+    producer_record_1: data.ProducerRecord,
 ) -> data.Pair[
     _schema.Either[data.KafkaError, data.RecordMetadata], data.TransactionState
 ]:
@@ -2842,16 +2842,16 @@ def kafkaTransactionsSendInTransaction(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        producer_record_1 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.kafka::type::ProducerRecord"),
-            value0,
+            producer_record_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.kafka_transactions_send_in_transaction_2(
             symbols,
             txn_state,
-            value0,
+            producer_record_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -2891,8 +2891,8 @@ def kafkaTransactionsSendOffsetsToTransaction(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     broker: "lawspec_abilities.lawtwin.kafka.Broker",
     txn_state: data.TransactionState,
-    value0: _builtins.str,
-    value1: _builtins.list[data.OffsetEntry],
+    text_1: _builtins.str,
+    list_1: _builtins.list[data.OffsetEntry],
 ) -> data.Pair[
     _schema.Either[data.KafkaError, ls.Absence], data.TransactionState
 ]:
@@ -2904,26 +2904,26 @@ def kafkaTransactionsSendOffsetsToTransaction(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        list_1 = _lawspec_schema.from_native(
             _schema.Named(
                 "List",
                 [_schema.Named("lawtwin.kafka.model::type::OffsetEntry")],
             ),
-            value1,
+            list_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.kafka_transactions_send_offsets_to_transaction_2(
             symbols,
             txn_state,
-            value0,
-            value1,
+            text_1,
+            list_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(

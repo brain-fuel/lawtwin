@@ -9,8 +9,8 @@ object LawSpecKotlinAdapters {
     @JvmStatic
     fun performLawtwinKafkaAbilityBrokerLeavegrouprequest(
         symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
-        value1: LawSpecRuntime.Value,
+        text1: LawSpecRuntime.Value,
+        text2: LawSpecRuntime.Value,
     ): LawSpecRuntime.Value =
         LawSpecRuntime.nativeFailures(
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
@@ -29,13 +29,13 @@ object LawSpecKotlinAdapters {
                                         MACHINE_BITS,
                                         kotlin.String::class.javaObjectType,
                                     )
-                                    .decode(value0),
+                                    .decode(text1),
                                 SCHEMA.scalar(
                                         "Text",
                                         MACHINE_BITS,
                                         kotlin.String::class.javaObjectType,
                                     )
-                                    .decode(value1),
+                                    .decode(text2),
                             )
                     )
             },
@@ -44,10 +44,10 @@ object LawSpecKotlinAdapters {
     @JvmStatic
     fun performLawtwinKafkaAbilityBrokerOffsetcommitrequest(
         symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
-        value1: LawSpecRuntime.Value,
-        value2: LawSpecRuntime.Value,
-        value3: LawSpecRuntime.Value,
+        text1: LawSpecRuntime.Value,
+        text2: LawSpecRuntime.Value,
+        int32_1: LawSpecRuntime.Value,
+        list1: LawSpecRuntime.Value,
     ): LawSpecRuntime.Value =
         LawSpecRuntime.nativeFailures(
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
@@ -66,19 +66,19 @@ object LawSpecKotlinAdapters {
                                         MACHINE_BITS,
                                         kotlin.String::class.javaObjectType,
                                     )
-                                    .decode(value0),
+                                    .decode(text1),
                                 SCHEMA.scalar(
                                         "Text",
                                         MACHINE_BITS,
                                         kotlin.String::class.javaObjectType,
                                     )
-                                    .decode(value1),
+                                    .decode(text2),
                                 SCHEMA.scalar(
                                         "Int32",
                                         MACHINE_BITS,
                                         kotlin.Int::class.javaObjectType,
                                     )
-                                    .decode(value2),
+                                    .decode(int32_1),
                                 SCHEMA.list(
                                         LawSpecDataCodecs.offsetEntryCodec(
                                             SCHEMA,
@@ -88,7 +88,7 @@ object LawSpecKotlinAdapters {
                                         MACHINE_BITS,
                                         symbols,
                                     )
-                                    .decode(value3),
+                                    .decode(list1),
                             )
                     )
             },
@@ -97,9 +97,9 @@ object LawSpecKotlinAdapters {
     @JvmStatic
     fun performLawtwinKafkaAbilityBrokerSyncgrouprequest(
         symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
-        value1: LawSpecRuntime.Value,
-        value2: LawSpecRuntime.Value,
+        text1: LawSpecRuntime.Value,
+        text2: LawSpecRuntime.Value,
+        int32_1: LawSpecRuntime.Value,
     ): LawSpecRuntime.Value =
         LawSpecRuntime.nativeFailures(
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
@@ -122,19 +122,19 @@ object LawSpecKotlinAdapters {
                                         MACHINE_BITS,
                                         kotlin.String::class.javaObjectType,
                                     )
-                                    .decode(value0),
+                                    .decode(text1),
                                 SCHEMA.scalar(
                                         "Text",
                                         MACHINE_BITS,
                                         kotlin.String::class.javaObjectType,
                                     )
-                                    .decode(value1),
+                                    .decode(text2),
                                 SCHEMA.scalar(
                                         "Int32",
                                         MACHINE_BITS,
                                         kotlin.Int::class.javaObjectType,
                                     )
-                                    .decode(value2),
+                                    .decode(int32_1),
                             )
                     )
             },
@@ -143,9 +143,9 @@ object LawSpecKotlinAdapters {
     @JvmStatic
     fun performLawtwinKafkaAbilityBrokerHeartbeatrequest(
         symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
-        value1: LawSpecRuntime.Value,
-        value2: LawSpecRuntime.Value,
+        text1: LawSpecRuntime.Value,
+        text2: LawSpecRuntime.Value,
+        int32_1: LawSpecRuntime.Value,
     ): LawSpecRuntime.Value =
         LawSpecRuntime.nativeFailures(
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
@@ -164,19 +164,19 @@ object LawSpecKotlinAdapters {
                                         MACHINE_BITS,
                                         kotlin.String::class.javaObjectType,
                                     )
-                                    .decode(value0),
+                                    .decode(text1),
                                 SCHEMA.scalar(
                                         "Text",
                                         MACHINE_BITS,
                                         kotlin.String::class.javaObjectType,
                                     )
-                                    .decode(value1),
+                                    .decode(text2),
                                 SCHEMA.scalar(
                                         "Int32",
                                         MACHINE_BITS,
                                         kotlin.Int::class.javaObjectType,
                                     )
-                                    .decode(value2),
+                                    .decode(int32_1),
                             )
                     )
             },
@@ -185,8 +185,8 @@ object LawSpecKotlinAdapters {
     @JvmStatic
     fun performLawtwinKafkaAbilityBrokerCreatetopicsrequest(
         symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
-        value1: LawSpecRuntime.Value,
+        text1: LawSpecRuntime.Value,
+        int32_1: LawSpecRuntime.Value,
     ): LawSpecRuntime.Value =
         LawSpecRuntime.nativeFailures(
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
@@ -205,13 +205,13 @@ object LawSpecKotlinAdapters {
                                         MACHINE_BITS,
                                         kotlin.String::class.javaObjectType,
                                     )
-                                    .decode(value0),
+                                    .decode(text1),
                                 SCHEMA.scalar(
                                         "Int32",
                                         MACHINE_BITS,
                                         kotlin.Int::class.javaObjectType,
                                     )
-                                    .decode(value1),
+                                    .decode(int32_1),
                             )
                     )
             },
@@ -220,9 +220,9 @@ object LawSpecKotlinAdapters {
     @JvmStatic
     fun performLawtwinKafkaAbilityBrokerJoingrouprequest(
         symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
-        value1: LawSpecRuntime.Value,
-        value2: LawSpecRuntime.Value,
+        text1: LawSpecRuntime.Value,
+        text2: LawSpecRuntime.Value,
+        list1: LawSpecRuntime.Value,
     ): LawSpecRuntime.Value =
         LawSpecRuntime.nativeFailures(
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
@@ -241,13 +241,13 @@ object LawSpecKotlinAdapters {
                                         MACHINE_BITS,
                                         kotlin.String::class.javaObjectType,
                                     )
-                                    .decode(value0),
+                                    .decode(text1),
                                 SCHEMA.scalar(
                                         "Text",
                                         MACHINE_BITS,
                                         kotlin.String::class.javaObjectType,
                                     )
-                                    .decode(value1),
+                                    .decode(text2),
                                 SCHEMA.list(
                                         SCHEMA.scalar(
                                             "Text",
@@ -257,7 +257,7 @@ object LawSpecKotlinAdapters {
                                         MACHINE_BITS,
                                         symbols,
                                     )
-                                    .decode(value2),
+                                    .decode(list1),
                             )
                     )
             },
@@ -266,9 +266,9 @@ object LawSpecKotlinAdapters {
     @JvmStatic
     fun performLawtwinKafkaAbilityGroupcoordinatorJoingroup(
         symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
-        value1: LawSpecRuntime.Value,
-        value2: LawSpecRuntime.Value,
+        text1: LawSpecRuntime.Value,
+        text2: LawSpecRuntime.Value,
+        list1: LawSpecRuntime.Value,
     ): LawSpecRuntime.Value =
         LawSpecRuntime.nativeFailures(
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
@@ -287,13 +287,13 @@ object LawSpecKotlinAdapters {
                                         MACHINE_BITS,
                                         kotlin.String::class.javaObjectType,
                                     )
-                                    .decode(value0),
+                                    .decode(text1),
                                 SCHEMA.scalar(
                                         "Text",
                                         MACHINE_BITS,
                                         kotlin.String::class.javaObjectType,
                                     )
-                                    .decode(value1),
+                                    .decode(text2),
                                 SCHEMA.list(
                                         SCHEMA.scalar(
                                             "Text",
@@ -303,7 +303,7 @@ object LawSpecKotlinAdapters {
                                         MACHINE_BITS,
                                         symbols,
                                     )
-                                    .decode(value2),
+                                    .decode(list1),
                             )
                     )
             },
@@ -312,7 +312,7 @@ object LawSpecKotlinAdapters {
     @JvmStatic
     fun performLawtwinKafkaAbilityBrokerMetadatarequest(
         symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
+        text1: LawSpecRuntime.Value,
     ): LawSpecRuntime.Value =
         SCHEMA.maybe(
                 SCHEMA.scalar("Int32", MACHINE_BITS, kotlin.Int::class.javaObjectType),
@@ -324,15 +324,15 @@ object LawSpecKotlinAdapters {
                         as lawspec.abilities.lawtwin.Kafka.Broker)
                     .metadataRequest(
                         SCHEMA.scalar("Text", MACHINE_BITS, kotlin.String::class.javaObjectType)
-                            .decode(value0)
+                            .decode(text1)
                     )
             )
 
     @JvmStatic
     fun performLawtwinKafkaAbilityPartitionerChoosepartition(
         symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
-        value1: LawSpecRuntime.Value,
+        maybe1: LawSpecRuntime.Value,
+        int32_1: LawSpecRuntime.Value,
     ): LawSpecRuntime.Value =
         SCHEMA.scalar("Int32", MACHINE_BITS, kotlin.Int::class.javaObjectType)
             .encode(
@@ -348,16 +348,16 @@ object LawSpecKotlinAdapters {
                                 MACHINE_BITS,
                                 symbols,
                             )
-                            .decode(value0),
+                            .decode(maybe1),
                         SCHEMA.scalar("Int32", MACHINE_BITS, kotlin.Int::class.javaObjectType)
-                            .decode(value1),
+                            .decode(int32_1),
                     )
             )
 
     @JvmStatic
     fun performLawtwinKafkaAbilityConsumerAssign(
         symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
+        list1: LawSpecRuntime.Value,
     ): LawSpecRuntime.Value =
         LawSpecKotlinCodecs.unit(SCHEMA, MACHINE_BITS)
             .encode(
@@ -373,15 +373,15 @@ object LawSpecKotlinAdapters {
                                 MACHINE_BITS,
                                 symbols,
                             )
-                            .decode(value0)
+                            .decode(list1)
                     )
             )
 
     @JvmStatic
     fun performLawtwinKafkaAbilityConsumerSeek(
         symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
-        value1: LawSpecRuntime.Value,
+        topicPartition1: LawSpecRuntime.Value,
+        int64_1: LawSpecRuntime.Value,
     ): LawSpecRuntime.Value =
         SCHEMA.either(
                 LawSpecDataCodecs.kafkaErrorCodec(SCHEMA, MACHINE_BITS, symbols),
@@ -394,9 +394,9 @@ object LawSpecKotlinAdapters {
                         as lawspec.abilities.lawtwin.Kafka.Consumer)
                     .seek(
                         LawSpecDataCodecs.topicPartitionCodec(SCHEMA, MACHINE_BITS, symbols)
-                            .decode(value0),
+                            .decode(topicPartition1),
                         SCHEMA.scalar("Int64", MACHINE_BITS, kotlin.Long::class.javaObjectType)
-                            .decode(value1),
+                            .decode(int64_1),
                     )
             )
 
@@ -430,9 +430,9 @@ object LawSpecKotlinAdapters {
     @JvmStatic
     fun performLawtwinKafkaAbilityConsumerSubscribe(
         symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
-        value1: LawSpecRuntime.Value,
-        value2: LawSpecRuntime.Value,
+        text1: LawSpecRuntime.Value,
+        text2: LawSpecRuntime.Value,
+        list1: LawSpecRuntime.Value,
     ): LawSpecRuntime.Value =
         SCHEMA.either(
                 LawSpecDataCodecs.kafkaErrorCodec(SCHEMA, MACHINE_BITS, symbols),
@@ -449,9 +449,9 @@ object LawSpecKotlinAdapters {
                         as lawspec.abilities.lawtwin.Kafka.Consumer)
                     .subscribe(
                         SCHEMA.scalar("Text", MACHINE_BITS, kotlin.String::class.javaObjectType)
-                            .decode(value0),
+                            .decode(text1),
                         SCHEMA.scalar("Text", MACHINE_BITS, kotlin.String::class.javaObjectType)
-                            .decode(value1),
+                            .decode(text2),
                         SCHEMA.list(
                                 SCHEMA.scalar(
                                     "Text",
@@ -461,14 +461,14 @@ object LawSpecKotlinAdapters {
                                 MACHINE_BITS,
                                 symbols,
                             )
-                            .decode(value2),
+                            .decode(list1),
                     )
             )
 
     @JvmStatic
     fun performLawtwinKafkaAbilityConsumerPosition(
         symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
+        topicPartition1: LawSpecRuntime.Value,
     ): LawSpecRuntime.Value =
         SCHEMA.either(
                 LawSpecDataCodecs.kafkaErrorCodec(SCHEMA, MACHINE_BITS, symbols),
@@ -481,14 +481,14 @@ object LawSpecKotlinAdapters {
                         as lawspec.abilities.lawtwin.Kafka.Consumer)
                     .position(
                         LawSpecDataCodecs.topicPartitionCodec(SCHEMA, MACHINE_BITS, symbols)
-                            .decode(value0)
+                            .decode(topicPartition1)
                     )
             )
 
     @JvmStatic
     fun performLawtwinKafkaAbilityConsumerCommittedoffset(
         symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
+        topicPartition1: LawSpecRuntime.Value,
     ): LawSpecRuntime.Value =
         SCHEMA.maybe(
                 SCHEMA.scalar("Int64", MACHINE_BITS, kotlin.Long::class.javaObjectType),
@@ -500,14 +500,14 @@ object LawSpecKotlinAdapters {
                         as lawspec.abilities.lawtwin.Kafka.Consumer)
                     .committedOffset(
                         LawSpecDataCodecs.topicPartitionCodec(SCHEMA, MACHINE_BITS, symbols)
-                            .decode(value0)
+                            .decode(topicPartition1)
                     )
             )
 
     @JvmStatic
     fun performLawtwinKafkaAbilityConsumerPoll(
         symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
+        int32_1: LawSpecRuntime.Value,
     ): LawSpecRuntime.Value =
         SCHEMA.either(
                 LawSpecDataCodecs.kafkaErrorCodec(SCHEMA, MACHINE_BITS, symbols),
@@ -524,17 +524,17 @@ object LawSpecKotlinAdapters {
                         as lawspec.abilities.lawtwin.Kafka.Consumer)
                     .poll(
                         SCHEMA.scalar("Int32", MACHINE_BITS, kotlin.Int::class.javaObjectType)
-                            .decode(value0)
+                            .decode(int32_1)
                     )
             )
 
     @JvmStatic
     fun performLawtwinKafkaAbilityBrokerFetchrequest(
         symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
-        value1: LawSpecRuntime.Value,
-        value2: LawSpecRuntime.Value,
-        value3: LawSpecRuntime.Value,
+        topicPartition1: LawSpecRuntime.Value,
+        int64_1: LawSpecRuntime.Value,
+        int32_1: LawSpecRuntime.Value,
+        isolationLevel1: LawSpecRuntime.Value,
     ): LawSpecRuntime.Value =
         LawSpecRuntime.nativeFailures(
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
@@ -549,21 +549,21 @@ object LawSpecKotlinAdapters {
                                 as lawspec.abilities.lawtwin.Kafka.Broker)
                             .fetchRequest(
                                 LawSpecDataCodecs.topicPartitionCodec(SCHEMA, MACHINE_BITS, symbols)
-                                    .decode(value0),
+                                    .decode(topicPartition1),
                                 SCHEMA.scalar(
                                         "Int64",
                                         MACHINE_BITS,
                                         kotlin.Long::class.javaObjectType,
                                     )
-                                    .decode(value1),
+                                    .decode(int64_1),
                                 SCHEMA.scalar(
                                         "Int32",
                                         MACHINE_BITS,
                                         kotlin.Int::class.javaObjectType,
                                     )
-                                    .decode(value2),
+                                    .decode(int32_1),
                                 LawSpecDataCodecs.isolationLevelCodec(SCHEMA, MACHINE_BITS, symbols)
-                                    .decode(value3),
+                                    .decode(isolationLevel1),
                             )
                     )
             },
@@ -572,8 +572,8 @@ object LawSpecKotlinAdapters {
     @JvmStatic
     fun performLawtwinKafkaAbilityBrokerOffsetfetchrequest(
         symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
-        value1: LawSpecRuntime.Value,
+        text1: LawSpecRuntime.Value,
+        topicPartition1: LawSpecRuntime.Value,
     ): LawSpecRuntime.Value =
         SCHEMA.maybe(
                 SCHEMA.scalar("Int64", MACHINE_BITS, kotlin.Long::class.javaObjectType),
@@ -585,20 +585,20 @@ object LawSpecKotlinAdapters {
                         as lawspec.abilities.lawtwin.Kafka.Broker)
                     .offsetFetchRequest(
                         SCHEMA.scalar("Text", MACHINE_BITS, kotlin.String::class.javaObjectType)
-                            .decode(value0),
+                            .decode(text1),
                         LawSpecDataCodecs.topicPartitionCodec(SCHEMA, MACHINE_BITS, symbols)
-                            .decode(value1),
+                            .decode(topicPartition1),
                     )
             )
 
     @JvmStatic
     fun performLawtwinKafkaAbilityBrokerTxnoffsetcommitrequest(
         symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
-        value1: LawSpecRuntime.Value,
-        value2: LawSpecRuntime.Value,
-        value3: LawSpecRuntime.Value,
-        value4: LawSpecRuntime.Value,
+        text1: LawSpecRuntime.Value,
+        int64_1: LawSpecRuntime.Value,
+        int16_1: LawSpecRuntime.Value,
+        text2: LawSpecRuntime.Value,
+        list1: LawSpecRuntime.Value,
     ): LawSpecRuntime.Value =
         LawSpecRuntime.nativeFailures(
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
@@ -617,25 +617,25 @@ object LawSpecKotlinAdapters {
                                         MACHINE_BITS,
                                         kotlin.String::class.javaObjectType,
                                     )
-                                    .decode(value0),
+                                    .decode(text1),
                                 SCHEMA.scalar(
                                         "Int64",
                                         MACHINE_BITS,
                                         kotlin.Long::class.javaObjectType,
                                     )
-                                    .decode(value1),
+                                    .decode(int64_1),
                                 SCHEMA.scalar(
                                         "Int16",
                                         MACHINE_BITS,
                                         kotlin.Short::class.javaObjectType,
                                     )
-                                    .decode(value2),
+                                    .decode(int16_1),
                                 SCHEMA.scalar(
                                         "Text",
                                         MACHINE_BITS,
                                         kotlin.String::class.javaObjectType,
                                     )
-                                    .decode(value3),
+                                    .decode(text2),
                                 SCHEMA.list(
                                         LawSpecDataCodecs.offsetEntryCodec(
                                             SCHEMA,
@@ -645,7 +645,7 @@ object LawSpecKotlinAdapters {
                                         MACHINE_BITS,
                                         symbols,
                                     )
-                                    .decode(value4),
+                                    .decode(list1),
                             )
                     )
             },
@@ -654,7 +654,7 @@ object LawSpecKotlinAdapters {
     @JvmStatic
     fun performLawtwinKafkaAbilityBrokerInitproduceridrequest(
         symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
+        maybe1: LawSpecRuntime.Value,
     ): LawSpecRuntime.Value =
         LawSpecRuntime.nativeFailures(
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
@@ -677,7 +677,7 @@ object LawSpecKotlinAdapters {
                                         MACHINE_BITS,
                                         symbols,
                                     )
-                                    .decode(value0)
+                                    .decode(maybe1)
                             )
                     )
             },
@@ -686,10 +686,10 @@ object LawSpecKotlinAdapters {
     @JvmStatic
     fun performLawtwinKafkaAbilityBrokerAddpartitionstotxnrequest(
         symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
-        value1: LawSpecRuntime.Value,
-        value2: LawSpecRuntime.Value,
-        value3: LawSpecRuntime.Value,
+        text1: LawSpecRuntime.Value,
+        int64_1: LawSpecRuntime.Value,
+        int16_1: LawSpecRuntime.Value,
+        list1: LawSpecRuntime.Value,
     ): LawSpecRuntime.Value =
         LawSpecRuntime.nativeFailures(
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
@@ -708,19 +708,19 @@ object LawSpecKotlinAdapters {
                                         MACHINE_BITS,
                                         kotlin.String::class.javaObjectType,
                                     )
-                                    .decode(value0),
+                                    .decode(text1),
                                 SCHEMA.scalar(
                                         "Int64",
                                         MACHINE_BITS,
                                         kotlin.Long::class.javaObjectType,
                                     )
-                                    .decode(value1),
+                                    .decode(int64_1),
                                 SCHEMA.scalar(
                                         "Int16",
                                         MACHINE_BITS,
                                         kotlin.Short::class.javaObjectType,
                                     )
-                                    .decode(value2),
+                                    .decode(int16_1),
                                 SCHEMA.list(
                                         LawSpecDataCodecs.topicPartitionCodec(
                                             SCHEMA,
@@ -730,7 +730,7 @@ object LawSpecKotlinAdapters {
                                         MACHINE_BITS,
                                         symbols,
                                     )
-                                    .decode(value3),
+                                    .decode(list1),
                             )
                     )
             },
@@ -739,9 +739,9 @@ object LawSpecKotlinAdapters {
     @JvmStatic
     fun performLawtwinKafkaAbilityBrokerProducerequest(
         symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
-        value1: LawSpecRuntime.Value,
-        value2: LawSpecRuntime.Value,
+        topicPartition1: LawSpecRuntime.Value,
+        maybe1: LawSpecRuntime.Value,
+        list1: LawSpecRuntime.Value,
     ): LawSpecRuntime.Value =
         LawSpecRuntime.nativeFailures(
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
@@ -756,7 +756,7 @@ object LawSpecKotlinAdapters {
                                 as lawspec.abilities.lawtwin.Kafka.Broker)
                             .produceRequest(
                                 LawSpecDataCodecs.topicPartitionCodec(SCHEMA, MACHINE_BITS, symbols)
-                                    .decode(value0),
+                                    .decode(topicPartition1),
                                 SCHEMA.maybe(
                                         LawSpecDataCodecs.producerTagCodec(
                                             SCHEMA,
@@ -766,7 +766,7 @@ object LawSpecKotlinAdapters {
                                         MACHINE_BITS,
                                         symbols,
                                     )
-                                    .decode(value1),
+                                    .decode(maybe1),
                                 SCHEMA.list(
                                         LawSpecDataCodecs.recordCodec(
                                             SCHEMA,
@@ -776,7 +776,7 @@ object LawSpecKotlinAdapters {
                                         MACHINE_BITS,
                                         symbols,
                                     )
-                                    .decode(value2),
+                                    .decode(list1),
                             )
                     )
             },
@@ -785,10 +785,10 @@ object LawSpecKotlinAdapters {
     @JvmStatic
     fun performLawtwinKafkaAbilityBrokerEndtxnrequest(
         symbols: MutableMap<String, Any>,
-        value0: LawSpecRuntime.Value,
-        value1: LawSpecRuntime.Value,
-        value2: LawSpecRuntime.Value,
-        value3: LawSpecRuntime.Value,
+        text1: LawSpecRuntime.Value,
+        int64_1: LawSpecRuntime.Value,
+        int16_1: LawSpecRuntime.Value,
+        bool1: LawSpecRuntime.Value,
     ): LawSpecRuntime.Value =
         LawSpecRuntime.nativeFailures(
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
@@ -807,25 +807,25 @@ object LawSpecKotlinAdapters {
                                         MACHINE_BITS,
                                         kotlin.String::class.javaObjectType,
                                     )
-                                    .decode(value0),
+                                    .decode(text1),
                                 SCHEMA.scalar(
                                         "Int64",
                                         MACHINE_BITS,
                                         kotlin.Long::class.javaObjectType,
                                     )
-                                    .decode(value1),
+                                    .decode(int64_1),
                                 SCHEMA.scalar(
                                         "Int16",
                                         MACHINE_BITS,
                                         kotlin.Short::class.javaObjectType,
                                     )
-                                    .decode(value2),
+                                    .decode(int16_1),
                                 SCHEMA.scalar(
                                         "Bool",
                                         MACHINE_BITS,
                                         kotlin.Boolean::class.javaObjectType,
                                     )
-                                    .decode(value3),
+                                    .decode(bool1),
                             )
                     )
             },

@@ -386,18 +386,18 @@ pub mod lawtwin_kafka
     pub fn clusterAddPartitionsToTxnRequest(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::BrokerState,
-        value0: std::string::String,
-        value1: i64,
-        value2: i16,
-        value3: std::vec::Vec<crate::lawspec_data::TopicPartition>,
+        text_1: std::string::String,
+        int64_1: i64,
+        int16_1: i16,
+        list_1: std::vec::Vec<crate::lawspec_data::TopicPartition>,
     ) -> ls::Result<crate::lawspec_data::Pair<(), crate::lawspec_data::BrokerState>>
     {
         ls::fast::direct5(
             state,
-            value0,
-            value1,
-            value2,
-            value3,
+            text_1,
+            int64_1,
+            int16_1,
+            list_1,
             crate::lawspec_definitions::typed::cluster_add_partitions_to_txn_request,
         )
     }
@@ -406,18 +406,18 @@ pub mod lawtwin_kafka
     pub fn clusterCommitOffsets(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::BrokerState,
-        value0: std::string::String,
-        value1: std::string::String,
-        value2: i32,
-        value3: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
+        text_1: std::string::String,
+        text_2: std::string::String,
+        int32_1: i32,
+        list_1: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
     ) -> ls::Result<crate::lawspec_data::Pair<(), crate::lawspec_data::BrokerState>>
     {
         ls::fast::direct5(
             state,
-            value0,
-            value1,
-            value2,
-            value3,
+            text_1,
+            text_2,
+            int32_1,
+            list_1,
             crate::lawspec_definitions::typed::cluster_commit_offsets,
         )
     }
@@ -426,14 +426,14 @@ pub mod lawtwin_kafka
     pub fn clusterCreatePartitions(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::BrokerState,
-        value0: std::string::String,
-        value1: i32,
+        text_1: std::string::String,
+        int32_1: i32,
     ) -> ls::Result<crate::lawspec_data::Pair<(), crate::lawspec_data::BrokerState>>
     {
         ls::fast::direct3(
             state,
-            value0,
-            value1,
+            text_1,
+            int32_1,
             crate::lawspec_definitions::typed::cluster_create_partitions,
         )
     }
@@ -444,14 +444,14 @@ pub mod lawtwin_kafka
     pub fn clusterCreateTopic(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::BrokerState,
-        value0: std::string::String,
-        value1: i32,
+        text_1: std::string::String,
+        int32_1: i32,
     ) -> ls::Result<crate::lawspec_data::Pair<(), crate::lawspec_data::BrokerState>>
     {
         ls::fast::direct3(
             state,
-            value0,
-            value1,
+            text_1,
+            int32_1,
             crate::lawspec_definitions::typed::cluster_create_topic,
         )
     }
@@ -462,14 +462,14 @@ pub mod lawtwin_kafka
     pub fn clusterDescribeGroup(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::BrokerState,
-        value0: std::string::String,
+        text_1: std::string::String,
     ) -> ls::Result<
         crate::lawspec_data::Pair<crate::lawspec_data::GroupView, crate::lawspec_data::BrokerState>,
     >
     {
         ls::fast::direct2(
             state,
-            value0,
+            text_1,
             crate::lawspec_definitions::typed::cluster_describe_group,
         )
     }
@@ -480,18 +480,18 @@ pub mod lawtwin_kafka
     pub fn clusterEndTxnRequest(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::BrokerState,
-        value0: std::string::String,
-        value1: i64,
-        value2: i16,
-        value3: bool,
+        text_1: std::string::String,
+        int64_1: i64,
+        int16_1: i16,
+        bool_1: bool,
     ) -> ls::Result<crate::lawspec_data::Pair<(), crate::lawspec_data::BrokerState>>
     {
         ls::fast::direct5(
             state,
-            value0,
-            value1,
-            value2,
-            value3,
+            text_1,
+            int64_1,
+            int16_1,
+            bool_1,
             crate::lawspec_definitions::typed::cluster_end_txn_request,
         )
     }
@@ -500,16 +500,16 @@ pub mod lawtwin_kafka
     pub fn clusterFetchOffset(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::BrokerState,
-        value0: std::string::String,
-        value1: crate::lawspec_data::TopicPartition,
+        text_1: std::string::String,
+        topic_partition_1: crate::lawspec_data::TopicPartition,
     ) -> ls::Result<
         crate::lawspec_data::Pair<std::option::Option<i64>, crate::lawspec_data::BrokerState>,
     >
     {
         ls::fast::direct3(
             state,
-            value0,
-            value1,
+            text_1,
+            topic_partition_1,
             crate::lawspec_definitions::typed::cluster_fetch_offset,
         )
     }
@@ -518,10 +518,10 @@ pub mod lawtwin_kafka
     pub fn clusterFetchRequest(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::BrokerState,
-        value0: crate::lawspec_data::TopicPartition,
-        value1: i64,
-        value2: i32,
-        value3: crate::lawspec_data::IsolationLevel,
+        topic_partition_1: crate::lawspec_data::TopicPartition,
+        int64_1: i64,
+        int32_1: i32,
+        isolation_level_1: crate::lawspec_data::IsolationLevel,
     ) -> ls::Result<
         crate::lawspec_data::Pair<
             crate::lawspec_data::FetchResult,
@@ -531,10 +531,10 @@ pub mod lawtwin_kafka
     {
         ls::fast::direct5(
             state,
-            value0,
-            value1,
-            value2,
-            value3,
+            topic_partition_1,
+            int64_1,
+            int32_1,
+            isolation_level_1,
             crate::lawspec_definitions::typed::cluster_fetch_request,
         )
     }
@@ -543,16 +543,16 @@ pub mod lawtwin_kafka
     pub fn clusterHeartbeat(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::BrokerState,
-        value0: std::string::String,
-        value1: std::string::String,
-        value2: i32,
+        text_1: std::string::String,
+        text_2: std::string::String,
+        int32_1: i32,
     ) -> ls::Result<crate::lawspec_data::Pair<(), crate::lawspec_data::BrokerState>>
     {
         ls::fast::direct4(
             state,
-            value0,
-            value1,
-            value2,
+            text_1,
+            text_2,
+            int32_1,
             crate::lawspec_definitions::typed::cluster_heartbeat,
         )
     }
@@ -563,7 +563,7 @@ pub mod lawtwin_kafka
     pub fn clusterInitProducerIdRequest(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::BrokerState,
-        value0: std::option::Option<std::string::String>,
+        maybe_1: std::option::Option<std::string::String>,
     ) -> ls::Result<
         crate::lawspec_data::Pair<
             crate::lawspec_data::ProducerIdAndEpoch,
@@ -573,7 +573,7 @@ pub mod lawtwin_kafka
     {
         ls::fast::direct2(
             state,
-            value0,
+            maybe_1,
             crate::lawspec_definitions::typed::cluster_init_producer_id_request,
         )
     }
@@ -582,16 +582,16 @@ pub mod lawtwin_kafka
     pub fn clusterJoinGroup(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::BrokerState,
-        value0: std::string::String,
-        value1: std::string::String,
-        value2: std::vec::Vec<std::string::String>,
+        text_1: std::string::String,
+        text_2: std::string::String,
+        list_1: std::vec::Vec<std::string::String>,
     ) -> ls::Result<crate::lawspec_data::Pair<i32, crate::lawspec_data::BrokerState>>
     {
         ls::fast::direct4(
             state,
-            value0,
-            value1,
-            value2,
+            text_1,
+            text_2,
+            list_1,
             crate::lawspec_definitions::typed::cluster_join_group,
         )
     }
@@ -602,14 +602,14 @@ pub mod lawtwin_kafka
     pub fn clusterLeaveGroup(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::BrokerState,
-        value0: std::string::String,
-        value1: std::string::String,
+        text_1: std::string::String,
+        text_2: std::string::String,
     ) -> ls::Result<crate::lawspec_data::Pair<(), crate::lawspec_data::BrokerState>>
     {
         ls::fast::direct3(
             state,
-            value0,
-            value1,
+            text_1,
+            text_2,
             crate::lawspec_definitions::typed::cluster_leave_group,
         )
     }
@@ -620,16 +620,16 @@ pub mod lawtwin_kafka
     pub fn clusterListOffsets(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::BrokerState,
-        value0: crate::lawspec_data::TopicPartition,
-        value1: crate::lawspec_data::OffsetSpec,
-        value2: crate::lawspec_data::IsolationLevel,
+        topic_partition_1: crate::lawspec_data::TopicPartition,
+        offset_spec_1: crate::lawspec_data::OffsetSpec,
+        isolation_level_1: crate::lawspec_data::IsolationLevel,
     ) -> ls::Result<crate::lawspec_data::Pair<i64, crate::lawspec_data::BrokerState>>
     {
         ls::fast::direct4(
             state,
-            value0,
-            value1,
-            value2,
+            topic_partition_1,
+            offset_spec_1,
+            isolation_level_1,
             crate::lawspec_definitions::typed::cluster_list_offsets,
         )
     }
@@ -646,14 +646,14 @@ pub mod lawtwin_kafka
     pub fn clusterPartitionsFor(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::BrokerState,
-        value0: std::string::String,
+        text_1: std::string::String,
     ) -> ls::Result<
         crate::lawspec_data::Pair<std::option::Option<i32>, crate::lawspec_data::BrokerState>,
     >
     {
         ls::fast::direct2(
             state,
-            value0,
+            text_1,
             crate::lawspec_definitions::typed::cluster_metadata_request,
         )
     }
@@ -662,16 +662,16 @@ pub mod lawtwin_kafka
     pub fn clusterProduceRequest(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::BrokerState,
-        value0: crate::lawspec_data::TopicPartition,
-        value1: std::option::Option<crate::lawspec_data::ProducerTag>,
-        value2: std::vec::Vec<crate::lawspec_data::Record>,
+        topic_partition_1: crate::lawspec_data::TopicPartition,
+        maybe_1: std::option::Option<crate::lawspec_data::ProducerTag>,
+        list_1: std::vec::Vec<crate::lawspec_data::Record>,
     ) -> ls::Result<crate::lawspec_data::Pair<i64, crate::lawspec_data::BrokerState>>
     {
         ls::fast::direct4(
             state,
-            value0,
-            value1,
-            value2,
+            topic_partition_1,
+            maybe_1,
+            list_1,
             crate::lawspec_definitions::typed::cluster_produce_request,
         )
     }
@@ -689,9 +689,9 @@ pub mod lawtwin_kafka
     pub fn clusterSyncGroup(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::BrokerState,
-        value0: std::string::String,
-        value1: std::string::String,
-        value2: i32,
+        text_1: std::string::String,
+        text_2: std::string::String,
+        int32_1: i32,
     ) -> ls::Result<
         crate::lawspec_data::Pair<
             std::vec::Vec<crate::lawspec_data::TopicPartition>,
@@ -701,9 +701,9 @@ pub mod lawtwin_kafka
     {
         ls::fast::direct4(
             state,
-            value0,
-            value1,
-            value2,
+            text_1,
+            text_2,
+            int32_1,
             crate::lawspec_definitions::typed::cluster_sync_group,
         )
     }
@@ -714,20 +714,20 @@ pub mod lawtwin_kafka
     pub fn clusterTxnOffsetCommitRequest(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::BrokerState,
-        value0: std::string::String,
-        value1: i64,
-        value2: i16,
-        value3: std::string::String,
-        value4: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
+        text_1: std::string::String,
+        int64_1: i64,
+        int16_1: i16,
+        text_2: std::string::String,
+        list_1: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
     ) -> ls::Result<crate::lawspec_data::Pair<(), crate::lawspec_data::BrokerState>>
     {
         ls::fast::direct6(
             state,
-            value0,
-            value1,
-            value2,
-            value3,
-            value4,
+            text_1,
+            int64_1,
+            int16_1,
+            text_2,
+            list_1,
             crate::lawspec_definitions::typed::cluster_txn_offset_commit_request,
         )
     }
@@ -1349,12 +1349,12 @@ pub mod lawtwin_kafka
     pub fn kafkaConsumerAssign(
         _ctx: &mut ls::Context,
         consumer_state: crate::lawspec_data::ConsumerState,
-        value0: std::vec::Vec<crate::lawspec_data::TopicPartition>,
+        list_1: std::vec::Vec<crate::lawspec_data::TopicPartition>,
     ) -> ls::Result<crate::lawspec_data::Pair<(), crate::lawspec_data::ConsumerState>>
     {
         ls::fast::direct2(
             consumer_state,
-            value0,
+            list_1,
             crate::lawspec_definitions::typed::kafka_consumer_assign,
         )
     }
@@ -1439,7 +1439,7 @@ pub mod lawtwin_kafka
         ctx: &mut ls::Context,
         broker: std::sync::Arc<dyn crate::lawspec_abilities::lawtwin_kafka::Broker>,
         consumer_state: crate::lawspec_data::ConsumerState,
-        value0: crate::lawspec_data::TopicPartition,
+        topic_partition_1: crate::lawspec_data::TopicPartition,
     ) -> ls::Result<
         crate::lawspec_data::Pair<std::option::Option<i64>, crate::lawspec_data::ConsumerState>,
     >
@@ -1450,7 +1450,7 @@ pub mod lawtwin_kafka
         )]);
         let arguments = vec![
             ls::IntoValue::into_value(consumer_state),
-            ls::IntoValue::into_value(value0),
+            ls::IntoValue::into_value(topic_partition_1),
         ];
         let result = super::kafka_consumer_committed_offset(ctx, arguments)?;
         let schema = crate::lawspec_schema::schema()?;
@@ -1477,7 +1477,7 @@ pub mod lawtwin_kafka
         ctx: &mut ls::Context,
         broker: std::sync::Arc<dyn crate::lawspec_abilities::lawtwin_kafka::Broker>,
         consumer_state: crate::lawspec_data::ConsumerState,
-        value0: i32,
+        int32_1: i32,
     ) -> ls::Result<
         crate::lawspec_data::Pair<
             ls::Either<
@@ -1494,7 +1494,7 @@ pub mod lawtwin_kafka
         )]);
         let arguments = vec![
             ls::IntoValue::into_value(consumer_state),
-            ls::IntoValue::into_value(value0),
+            ls::IntoValue::into_value(int32_1),
         ];
         let result = super::kafka_consumer_poll(ctx, arguments)?;
         let schema = crate::lawspec_schema::schema()?;
@@ -1536,7 +1536,7 @@ pub mod lawtwin_kafka
         ctx: &mut ls::Context,
         broker: std::sync::Arc<dyn crate::lawspec_abilities::lawtwin_kafka::Broker>,
         consumer_state: crate::lawspec_data::ConsumerState,
-        value0: crate::lawspec_data::TopicPartition,
+        topic_partition_1: crate::lawspec_data::TopicPartition,
     ) -> ls::Result<
         crate::lawspec_data::Pair<
             ls::Either<crate::lawspec_data::KafkaError, i64>,
@@ -1550,7 +1550,7 @@ pub mod lawtwin_kafka
         )]);
         let arguments = vec![
             ls::IntoValue::into_value(consumer_state),
-            ls::IntoValue::into_value(value0),
+            ls::IntoValue::into_value(topic_partition_1),
         ];
         let result = super::kafka_consumer_position(ctx, arguments)?;
         let schema = crate::lawspec_schema::schema()?;
@@ -1582,8 +1582,8 @@ pub mod lawtwin_kafka
     pub fn kafkaConsumerSeek(
         _ctx: &mut ls::Context,
         consumer_state: crate::lawspec_data::ConsumerState,
-        value0: crate::lawspec_data::TopicPartition,
-        value1: i64,
+        topic_partition_1: crate::lawspec_data::TopicPartition,
+        int64_1: i64,
     ) -> ls::Result<
         crate::lawspec_data::Pair<
             ls::Either<crate::lawspec_data::KafkaError, ()>,
@@ -1593,8 +1593,8 @@ pub mod lawtwin_kafka
     {
         ls::fast::direct3(
             consumer_state,
-            value0,
-            value1,
+            topic_partition_1,
+            int64_1,
             crate::lawspec_definitions::typed::kafka_consumer_seek,
         )
     }
@@ -1603,12 +1603,12 @@ pub mod lawtwin_kafka
     pub fn kafkaConsumerSetIsolationLevel(
         _ctx: &mut ls::Context,
         consumer_state: crate::lawspec_data::ConsumerState,
-        value0: crate::lawspec_data::IsolationLevel,
+        isolation_level_1: crate::lawspec_data::IsolationLevel,
     ) -> ls::Result<crate::lawspec_data::Pair<(), crate::lawspec_data::ConsumerState>>
     {
         ls::fast::direct2(
             consumer_state,
-            value0,
+            isolation_level_1,
             crate::lawspec_definitions::typed::kafka_consumer_set_isolation_level,
         )
     }
@@ -1630,9 +1630,9 @@ pub mod lawtwin_kafka
         ctx: &mut ls::Context,
         broker: std::sync::Arc<dyn crate::lawspec_abilities::lawtwin_kafka::Broker>,
         consumer_state: crate::lawspec_data::ConsumerState,
-        value0: std::string::String,
-        value1: std::string::String,
-        value2: std::vec::Vec<std::string::String>,
+        text_1: std::string::String,
+        text_2: std::string::String,
+        list_1: std::vec::Vec<std::string::String>,
     ) -> ls::Result<
         crate::lawspec_data::Pair<
             ls::Either<
@@ -1649,9 +1649,9 @@ pub mod lawtwin_kafka
         )]);
         let arguments = vec![
             ls::IntoValue::into_value(consumer_state),
-            ls::IntoValue::into_value(value0),
-            ls::IntoValue::into_value(value1),
-            ls::IntoValue::into_value(value2),
+            ls::IntoValue::into_value(text_1),
+            ls::IntoValue::into_value(text_2),
+            ls::IntoValue::into_value(list_1),
         ];
         let result = super::kafka_consumer_subscribe(ctx, arguments)?;
         let schema = crate::lawspec_schema::schema()?;
@@ -1812,7 +1812,7 @@ pub mod lawtwin_kafka
         broker: std::sync::Arc<dyn crate::lawspec_abilities::lawtwin_kafka::Broker>,
         partitioner: std::sync::Arc<dyn crate::lawspec_abilities::lawtwin_kafka::Partitioner>,
         producer_state: crate::lawspec_data::ProducerState,
-        value0: crate::lawspec_data::ProducerRecord,
+        producer_record_1: crate::lawspec_data::ProducerRecord,
     ) -> ls::Result<
         crate::lawspec_data::Pair<
             ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::RecordMetadata>,
@@ -1832,7 +1832,7 @@ pub mod lawtwin_kafka
         ]);
         let arguments = vec![
             ls::IntoValue::into_value(producer_state),
-            ls::IntoValue::into_value(value0),
+            ls::IntoValue::into_value(producer_record_1),
         ];
         let result = super::kafka_producer_send(ctx, arguments)?;
         let schema = crate::lawspec_schema::schema()?;
@@ -1920,7 +1920,7 @@ pub mod lawtwin_kafka
         ctx: &mut ls::Context,
         broker: std::sync::Arc<dyn crate::lawspec_abilities::lawtwin_kafka::Broker>,
         txn_state: crate::lawspec_data::TransactionState,
-        value0: std::vec::Vec<crate::lawspec_data::TopicPartition>,
+        list_1: std::vec::Vec<crate::lawspec_data::TopicPartition>,
     ) -> ls::Result<
         crate::lawspec_data::Pair<
             ls::Either<crate::lawspec_data::KafkaError, ()>,
@@ -1934,7 +1934,7 @@ pub mod lawtwin_kafka
         )]);
         let arguments = vec![
             ls::IntoValue::into_value(txn_state),
-            ls::IntoValue::into_value(value0),
+            ls::IntoValue::into_value(list_1),
         ];
         let result = super::kafka_transactions_add_partitions_to_transaction(ctx, arguments)?;
         let schema = crate::lawspec_schema::schema()?;
@@ -2027,7 +2027,7 @@ pub mod lawtwin_kafka
         ctx: &mut ls::Context,
         broker: std::sync::Arc<dyn crate::lawspec_abilities::lawtwin_kafka::Broker>,
         txn_state: crate::lawspec_data::TransactionState,
-        value0: std::string::String,
+        text_1: std::string::String,
     ) -> ls::Result<
         crate::lawspec_data::Pair<
             ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::ProducerIdAndEpoch>,
@@ -2041,7 +2041,7 @@ pub mod lawtwin_kafka
         )]);
         let arguments = vec![
             ls::IntoValue::into_value(txn_state),
-            ls::IntoValue::into_value(value0),
+            ls::IntoValue::into_value(text_1),
         ];
         let result = super::kafka_transactions_init_transactions(ctx, arguments)?;
         let schema = crate::lawspec_schema::schema()?;
@@ -2078,7 +2078,7 @@ pub mod lawtwin_kafka
         broker: std::sync::Arc<dyn crate::lawspec_abilities::lawtwin_kafka::Broker>,
         partitioner: std::sync::Arc<dyn crate::lawspec_abilities::lawtwin_kafka::Partitioner>,
         txn_state: crate::lawspec_data::TransactionState,
-        value0: crate::lawspec_data::ProducerRecord,
+        producer_record_1: crate::lawspec_data::ProducerRecord,
     ) -> ls::Result<
         crate::lawspec_data::Pair<
             ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::RecordMetadata>,
@@ -2098,7 +2098,7 @@ pub mod lawtwin_kafka
         ]);
         let arguments = vec![
             ls::IntoValue::into_value(txn_state),
-            ls::IntoValue::into_value(value0),
+            ls::IntoValue::into_value(producer_record_1),
         ];
         let result = super::kafka_transactions_send_in_transaction(ctx, arguments)?;
         let schema = crate::lawspec_schema::schema()?;
@@ -2131,8 +2131,8 @@ pub mod lawtwin_kafka
         ctx: &mut ls::Context,
         broker: std::sync::Arc<dyn crate::lawspec_abilities::lawtwin_kafka::Broker>,
         txn_state: crate::lawspec_data::TransactionState,
-        value0: std::string::String,
-        value1: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
+        text_1: std::string::String,
+        list_1: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
     ) -> ls::Result<
         crate::lawspec_data::Pair<
             ls::Either<crate::lawspec_data::KafkaError, ()>,
@@ -2146,8 +2146,8 @@ pub mod lawtwin_kafka
         )]);
         let arguments = vec![
             ls::IntoValue::into_value(txn_state),
-            ls::IntoValue::into_value(value0),
-            ls::IntoValue::into_value(value1),
+            ls::IntoValue::into_value(text_1),
+            ls::IntoValue::into_value(list_1),
         ];
         let result = super::kafka_transactions_send_offsets_to_transaction(ctx, arguments)?;
         let schema = crate::lawspec_schema::schema()?;
@@ -8379,13 +8379,13 @@ pub fn kafka_consumer_committed_offset(
     let value = arguments
         .next()
         .ok_or("definition argument count mismatch")?;
-    let value0 =
+    let topic_partition_1 =
         <crate::lawspec_definitions::typed::TopicPartition as ls::fast::Dyn>::from_dyn(value)?;
     Ok(ls::fast::Dyn::to_dyn(
         &crate::lawspec_definitions::typed::kafka_consumer_committed_offset(
             ctx,
             consumer_state,
-            value0,
+            topic_partition_1,
         )?,
     ))
 }
@@ -8404,9 +8404,9 @@ pub fn kafka_consumer_poll(
     let value = arguments
         .next()
         .ok_or("definition argument count mismatch")?;
-    let value0 = <i32 as ls::fast::Dyn>::from_dyn(value)?;
+    let int32_1 = <i32 as ls::fast::Dyn>::from_dyn(value)?;
     Ok(ls::fast::Dyn::to_dyn(
-        &crate::lawspec_definitions::typed::kafka_consumer_poll(ctx, consumer_state, value0)?,
+        &crate::lawspec_definitions::typed::kafka_consumer_poll(ctx, consumer_state, int32_1)?,
     ))
 }
 
@@ -8424,10 +8424,14 @@ pub fn kafka_consumer_position(
     let value = arguments
         .next()
         .ok_or("definition argument count mismatch")?;
-    let value0 =
+    let topic_partition_1 =
         <crate::lawspec_definitions::typed::TopicPartition as ls::fast::Dyn>::from_dyn(value)?;
     Ok(ls::fast::Dyn::to_dyn(
-        &crate::lawspec_definitions::typed::kafka_consumer_position(ctx, consumer_state, value0)?,
+        &crate::lawspec_definitions::typed::kafka_consumer_position(
+            ctx,
+            consumer_state,
+            topic_partition_1,
+        )?,
     ))
 }
 
@@ -8478,22 +8482,22 @@ pub fn kafka_consumer_subscribe(
     let value = arguments
         .next()
         .ok_or("definition argument count mismatch")?;
-    let value0 = <ls::fast::Text as ls::fast::Dyn>::from_dyn(value)?;
+    let text_1 = <ls::fast::Text as ls::fast::Dyn>::from_dyn(value)?;
     let value = arguments
         .next()
         .ok_or("definition argument count mismatch")?;
-    let value1 = <ls::fast::Text as ls::fast::Dyn>::from_dyn(value)?;
+    let text_2 = <ls::fast::Text as ls::fast::Dyn>::from_dyn(value)?;
     let value = arguments
         .next()
         .ok_or("definition argument count mismatch")?;
-    let value2 = <ls::fast::List<ls::fast::Text> as ls::fast::Dyn>::from_dyn(value)?;
+    let list_1 = <ls::fast::List<ls::fast::Text> as ls::fast::Dyn>::from_dyn(value)?;
     Ok(ls::fast::Dyn::to_dyn(
         &crate::lawspec_definitions::typed::kafka_consumer_subscribe(
             ctx,
             consumer_state,
-            value0,
-            value1,
-            value2,
+            text_1,
+            text_2,
+            list_1,
         )?,
     ))
 }
@@ -8566,10 +8570,14 @@ pub fn kafka_producer_send(
     let value = arguments
         .next()
         .ok_or("definition argument count mismatch")?;
-    let value0 =
+    let producer_record_1 =
         <crate::lawspec_definitions::typed::ProducerRecord as ls::fast::Dyn>::from_dyn(value)?;
     Ok(ls::fast::Dyn::to_dyn(
-        &crate::lawspec_definitions::typed::kafka_producer_send(ctx, producer_state, value0)?,
+        &crate::lawspec_definitions::typed::kafka_producer_send(
+            ctx,
+            producer_state,
+            producer_record_1,
+        )?,
     ))
 }
 
@@ -8614,12 +8622,12 @@ pub fn kafka_transactions_add_partitions_to_transaction(
     let value = arguments
         .next()
         .ok_or("definition argument count mismatch")?;
-    let value0 = <ls::fast::List<
+    let list_1 = <ls::fast::List<
         crate::lawspec_definitions::typed::TopicPartition,
     > as ls::fast::Dyn>::from_dyn(value)?;
     Ok(ls::fast::Dyn::to_dyn(
         &crate::lawspec_definitions::typed::kafka_transactions_add_partitions_to_transaction(
-            ctx, txn_state, value0,
+            ctx, txn_state, list_1,
         )?,
     ))
 }
@@ -8665,10 +8673,10 @@ pub fn kafka_transactions_init_transactions(
     let value = arguments
         .next()
         .ok_or("definition argument count mismatch")?;
-    let value0 = <ls::fast::Text as ls::fast::Dyn>::from_dyn(value)?;
+    let text_1 = <ls::fast::Text as ls::fast::Dyn>::from_dyn(value)?;
     Ok(ls::fast::Dyn::to_dyn(
         &crate::lawspec_definitions::typed::kafka_transactions_init_transactions(
-            ctx, txn_state, value0,
+            ctx, txn_state, text_1,
         )?,
     ))
 }
@@ -8687,11 +8695,13 @@ pub fn kafka_transactions_send_in_transaction(
     let value = arguments
         .next()
         .ok_or("definition argument count mismatch")?;
-    let value0 =
+    let producer_record_1 =
         <crate::lawspec_definitions::typed::ProducerRecord as ls::fast::Dyn>::from_dyn(value)?;
     Ok(ls::fast::Dyn::to_dyn(
         &crate::lawspec_definitions::typed::kafka_transactions_send_in_transaction(
-            ctx, txn_state, value0,
+            ctx,
+            txn_state,
+            producer_record_1,
         )?,
     ))
 }
@@ -8710,16 +8720,16 @@ pub fn kafka_transactions_send_offsets_to_transaction(
     let value = arguments
         .next()
         .ok_or("definition argument count mismatch")?;
-    let value0 = <ls::fast::Text as ls::fast::Dyn>::from_dyn(value)?;
+    let text_1 = <ls::fast::Text as ls::fast::Dyn>::from_dyn(value)?;
     let value = arguments
         .next()
         .ok_or("definition argument count mismatch")?;
-    let value1 = <ls::fast::List<
+    let list_1 = <ls::fast::List<
         crate::lawspec_definitions::typed::OffsetEntry,
     > as ls::fast::Dyn>::from_dyn(value)?;
     Ok(ls::fast::Dyn::to_dyn(
         &crate::lawspec_definitions::typed::kafka_transactions_send_offsets_to_transaction(
-            ctx, txn_state, value0, value1,
+            ctx, txn_state, text_1, list_1,
         )?,
     ))
 }
@@ -15033,11 +15043,14 @@ pub mod typed
         {
             match &*self.0
             {
-                ProducerStateNode::ProducerState(f0, f1, f2) => crate::lawspec_data::ProducerState {
-                    identity: f0.to_native(),
-                    sequences: f1.to_native(),
-                    lastSend: f2.to_native(),
-                },
+                ProducerStateNode::ProducerState(f0, f1, f2) =>
+                {
+                    crate::lawspec_data::ProducerState {
+                        identity: f0.to_native(),
+                        sequences: f1.to_native(),
+                        lastSend: f2.to_native(),
+                    }
+                }
             }
         }
         fn from_native(native: Self::Native) -> Self
@@ -15860,11 +15873,14 @@ pub mod typed
         {
             match &*self.0
             {
-                ProducerEntryNode::ProducerEntry(f0, f1, f2) => crate::lawspec_data::ProducerEntry {
-                    epoch: f0.to_native(),
-                    transactionalId: f1.to_native(),
-                    txn: f2.to_native(),
-                },
+                ProducerEntryNode::ProducerEntry(f0, f1, f2) =>
+                {
+                    crate::lawspec_data::ProducerEntry {
+                        epoch: f0.to_native(),
+                        transactionalId: f1.to_native(),
+                        txn: f2.to_native(),
+                    }
+                }
             }
         }
         fn from_native(native: Self::Native) -> Self
@@ -16759,17 +16775,17 @@ pub mod typed
     /// clusterAddPartitionsToTxnRequest — ../src/contract.lawspec:283
     pub fn cluster_add_partitions_to_txn_request(
         state: BrokerState,
-        value0: ls::fast::Text,
-        value1: i64,
-        value2: i16,
-        value3: ls::fast::List<TopicPartition>,
+        text_1: ls::fast::Text,
+        int64_1: i64,
+        int16_1: i16,
+        list_1: ls::fast::List<TopicPartition>,
     ) -> ls::Result<Pair<(), BrokerState>>
     {
         Ok(lawtwin_kafka_model_add_partitions_to_txn(
-            value0.clone(),
-            value1,
-            value2,
-            value3.clone(),
+            text_1.clone(),
+            int64_1,
+            int16_1,
+            list_1.clone(),
             state.clone(),
         )?)
     }
@@ -16777,17 +16793,17 @@ pub mod typed
     /// clusterCommitOffsets — ../src/contract.lawspec:302
     pub fn cluster_commit_offsets(
         state: BrokerState,
-        value0: ls::fast::Text,
-        value1: ls::fast::Text,
-        value2: i32,
-        value3: ls::fast::List<OffsetEntry>,
+        text_1: ls::fast::Text,
+        text_2: ls::fast::Text,
+        int32_1: i32,
+        list_1: ls::fast::List<OffsetEntry>,
     ) -> ls::Result<Pair<(), BrokerState>>
     {
         Ok(lawtwin_kafka_model_offset_commit(
-            value0.clone(),
-            value1.clone(),
-            value2,
-            value3.clone(),
+            text_1.clone(),
+            text_2.clone(),
+            int32_1,
+            list_1.clone(),
             state.clone(),
         )?)
     }
@@ -16795,13 +16811,13 @@ pub mod typed
     /// clusterCreatePartitions — ../src/contract.lawspec:294
     pub fn cluster_create_partitions(
         state: BrokerState,
-        value0: ls::fast::Text,
-        value1: i32,
+        text_1: ls::fast::Text,
+        int32_1: i32,
     ) -> ls::Result<Pair<(), BrokerState>>
     {
         Ok(lawtwin_kafka_model_create_partitions(
-            value0.clone(),
-            value1,
+            text_1.clone(),
+            int32_1,
             state.clone(),
         )?)
     }
@@ -16809,13 +16825,13 @@ pub mod typed
     /// clusterCreateTopic — ../src/contract.lawspec:293
     pub fn cluster_create_topic(
         state: BrokerState,
-        value0: ls::fast::Text,
-        value1: i32,
+        text_1: ls::fast::Text,
+        int32_1: i32,
     ) -> ls::Result<Pair<(), BrokerState>>
     {
         Ok(lawtwin_kafka_model_create_topic(
-            value0.clone(),
-            value1,
+            text_1.clone(),
+            int32_1,
             state.clone(),
         )?)
     }
@@ -16823,11 +16839,11 @@ pub mod typed
     /// clusterDescribeGroup — ../src/contract.lawspec:301
     pub fn cluster_describe_group(
         state: BrokerState,
-        value0: ls::fast::Text,
+        text_1: ls::fast::Text,
     ) -> ls::Result<Pair<GroupView, BrokerState>>
     {
         Ok(lawtwin_kafka_model_describe_group(
-            value0.clone(),
+            text_1.clone(),
             state.clone(),
         )?)
     }
@@ -16835,17 +16851,17 @@ pub mod typed
     /// clusterEndTxnRequest — ../src/contract.lawspec:285
     pub fn cluster_end_txn_request(
         state: BrokerState,
-        value0: ls::fast::Text,
-        value1: i64,
-        value2: i16,
-        value3: bool,
+        text_1: ls::fast::Text,
+        int64_1: i64,
+        int16_1: i16,
+        bool_1: bool,
     ) -> ls::Result<Pair<(), BrokerState>>
     {
         Ok(lawtwin_kafka_model_end_txn(
-            value0.clone(),
-            value1,
-            value2,
-            value3,
+            text_1.clone(),
+            int64_1,
+            int16_1,
+            bool_1,
             state.clone(),
         )?)
     }
@@ -16853,13 +16869,13 @@ pub mod typed
     /// clusterFetchOffset — ../src/contract.lawspec:303
     pub fn cluster_fetch_offset(
         state: BrokerState,
-        value0: ls::fast::Text,
-        value1: TopicPartition,
+        text_1: ls::fast::Text,
+        topic_partition_1: TopicPartition,
     ) -> ls::Result<Pair<Option<i64>, BrokerState>>
     {
         Ok(lawtwin_kafka_model_offset_fetch(
-            value0.clone(),
-            value1.clone(),
+            text_1.clone(),
+            topic_partition_1.clone(),
             state.clone(),
         )?)
     }
@@ -16867,17 +16883,17 @@ pub mod typed
     /// clusterFetchRequest — ../src/contract.lawspec:280
     pub fn cluster_fetch_request(
         state: BrokerState,
-        value0: TopicPartition,
-        value1: i64,
-        value2: i32,
-        value3: IsolationLevel,
+        topic_partition_1: TopicPartition,
+        int64_1: i64,
+        int32_1: i32,
+        isolation_level_1: IsolationLevel,
     ) -> ls::Result<Pair<FetchResult, BrokerState>>
     {
         Ok(lawtwin_kafka_model_fetch(
-            value0.clone(),
-            value1,
-            value2,
-            value3,
+            topic_partition_1.clone(),
+            int64_1,
+            int32_1,
+            isolation_level_1,
             state.clone(),
         )?)
     }
@@ -16885,15 +16901,15 @@ pub mod typed
     /// clusterHeartbeat — ../src/contract.lawspec:299
     pub fn cluster_heartbeat(
         state: BrokerState,
-        value0: ls::fast::Text,
-        value1: ls::fast::Text,
-        value2: i32,
+        text_1: ls::fast::Text,
+        text_2: ls::fast::Text,
+        int32_1: i32,
     ) -> ls::Result<Pair<(), BrokerState>>
     {
         Ok(lawtwin_kafka_model_heartbeat(
-            value0.clone(),
-            value1.clone(),
-            value2,
+            text_1.clone(),
+            text_2.clone(),
+            int32_1,
             state.clone(),
         )?)
     }
@@ -16901,11 +16917,11 @@ pub mod typed
     /// clusterInitProducerIdRequest — ../src/contract.lawspec:282
     pub fn cluster_init_producer_id_request(
         state: BrokerState,
-        value0: Option<ls::fast::Text>,
+        maybe_1: Option<ls::fast::Text>,
     ) -> ls::Result<Pair<ProducerIdAndEpoch, BrokerState>>
     {
         Ok(lawtwin_kafka_model_init_producer_id(
-            value0.clone(),
+            maybe_1.clone(),
             state.clone(),
         )?)
     }
@@ -16913,15 +16929,15 @@ pub mod typed
     /// clusterJoinGroup — ../src/contract.lawspec:297
     pub fn cluster_join_group(
         state: BrokerState,
-        value0: ls::fast::Text,
-        value1: ls::fast::Text,
-        value2: ls::fast::List<ls::fast::Text>,
+        text_1: ls::fast::Text,
+        text_2: ls::fast::Text,
+        list_1: ls::fast::List<ls::fast::Text>,
     ) -> ls::Result<Pair<i32, BrokerState>>
     {
         Ok(lawtwin_kafka_model_join_group(
-            value0.clone(),
-            value1.clone(),
-            value2.clone(),
+            text_1.clone(),
+            text_2.clone(),
+            list_1.clone(),
             state.clone(),
         )?)
     }
@@ -16929,13 +16945,13 @@ pub mod typed
     /// clusterLeaveGroup — ../src/contract.lawspec:300
     pub fn cluster_leave_group(
         state: BrokerState,
-        value0: ls::fast::Text,
-        value1: ls::fast::Text,
+        text_1: ls::fast::Text,
+        text_2: ls::fast::Text,
     ) -> ls::Result<Pair<(), BrokerState>>
     {
         Ok(lawtwin_kafka_model_leave_group(
-            value0.clone(),
-            value1.clone(),
+            text_1.clone(),
+            text_2.clone(),
             state.clone(),
         )?)
     }
@@ -16943,15 +16959,15 @@ pub mod typed
     /// clusterListOffsets — ../src/contract.lawspec:296
     pub fn cluster_list_offsets(
         state: BrokerState,
-        value0: TopicPartition,
-        value1: OffsetSpec,
-        value2: IsolationLevel,
+        topic_partition_1: TopicPartition,
+        offset_spec_1: OffsetSpec,
+        isolation_level_1: IsolationLevel,
     ) -> ls::Result<Pair<i64, BrokerState>>
     {
         Ok(lawtwin_kafka_model_list_offsets(
-            value0.clone(),
-            value1,
-            value2,
+            topic_partition_1.clone(),
+            offset_spec_1,
+            isolation_level_1,
             state.clone(),
         )?)
     }
@@ -16959,24 +16975,24 @@ pub mod typed
     /// clusterMetadataRequest — ../src/contract.lawspec:278
     pub fn cluster_metadata_request(
         state: BrokerState,
-        value0: ls::fast::Text,
+        text_1: ls::fast::Text,
     ) -> ls::Result<Pair<Option<i32>, BrokerState>>
     {
-        Ok(lawtwin_kafka_model_metadata(value0.clone(), state.clone())?)
+        Ok(lawtwin_kafka_model_metadata(text_1.clone(), state.clone())?)
     }
 
     /// clusterProduceRequest — ../src/contract.lawspec:279
     pub fn cluster_produce_request(
         state: BrokerState,
-        value0: TopicPartition,
-        value1: Option<ProducerTag>,
-        value2: ls::fast::List<Record>,
+        topic_partition_1: TopicPartition,
+        maybe_1: Option<ProducerTag>,
+        list_1: ls::fast::List<Record>,
     ) -> ls::Result<Pair<i64, BrokerState>>
     {
         Ok(lawtwin_kafka_model_produce(
-            value0.clone(),
-            value1.clone(),
-            value2.clone(),
+            topic_partition_1.clone(),
+            maybe_1.clone(),
+            list_1.clone(),
             state.clone(),
         )?)
     }
@@ -16990,15 +17006,15 @@ pub mod typed
     /// clusterSyncGroup — ../src/contract.lawspec:298
     pub fn cluster_sync_group(
         state: BrokerState,
-        value0: ls::fast::Text,
-        value1: ls::fast::Text,
-        value2: i32,
+        text_1: ls::fast::Text,
+        text_2: ls::fast::Text,
+        int32_1: i32,
     ) -> ls::Result<Pair<ls::fast::List<TopicPartition>, BrokerState>>
     {
         Ok(lawtwin_kafka_model_sync_group(
-            value0.clone(),
-            value1.clone(),
-            value2,
+            text_1.clone(),
+            text_2.clone(),
+            int32_1,
             state.clone(),
         )?)
     }
@@ -17006,19 +17022,19 @@ pub mod typed
     /// clusterTxnOffsetCommitRequest — ../src/contract.lawspec:284
     pub fn cluster_txn_offset_commit_request(
         state: BrokerState,
-        value0: ls::fast::Text,
-        value1: i64,
-        value2: i16,
-        value3: ls::fast::Text,
-        value4: ls::fast::List<OffsetEntry>,
+        text_1: ls::fast::Text,
+        int64_1: i64,
+        int16_1: i16,
+        text_2: ls::fast::Text,
+        list_1: ls::fast::List<OffsetEntry>,
     ) -> ls::Result<Pair<(), BrokerState>>
     {
         Ok(lawtwin_kafka_model_txn_offset_commit(
-            value0.clone(),
-            value1,
-            value2,
-            value3.clone(),
-            value4.clone(),
+            text_1.clone(),
+            int64_1,
+            int16_1,
+            text_2.clone(),
+            list_1.clone(),
             state.clone(),
         )?)
     }
@@ -18417,10 +18433,10 @@ pub mod typed
     /// kafkaConsumerAssign — ../src/contract.lawspec:1382
     pub fn kafka_consumer_assign(
         consumer_state: ConsumerState,
-        value0: ls::fast::List<TopicPartition>,
+        list_1: ls::fast::List<TopicPartition>,
     ) -> ls::Result<Pair<(), ConsumerState>>
     {
-        Ok(consumer_assign(value0.clone(), consumer_state.clone())?)
+        Ok(consumer_assign(list_1.clone(), consumer_state.clone())?)
     }
 
     /// kafkaConsumerClose — ../src/contract.lawspec:1390
@@ -18451,11 +18467,11 @@ pub mod typed
     pub fn kafka_consumer_committed_offset(
         ctx: &mut ls::Context,
         consumer_state: ConsumerState,
-        value0: TopicPartition,
+        topic_partition_1: TopicPartition,
     ) -> ls::Result<Pair<Option<i64>, ConsumerState>>
     {
         Ok({
-            let argument: TopicPartition = value0.clone();
+            let argument: TopicPartition = topic_partition_1.clone();
             let argument_2: ConsumerState = consumer_state.clone();
             consumer_committed(&mut *ctx, argument, argument_2)?
         })
@@ -18465,11 +18481,11 @@ pub mod typed
     pub fn kafka_consumer_poll(
         ctx: &mut ls::Context,
         consumer_state: ConsumerState,
-        value0: i32,
+        int32_1: i32,
     ) -> ls::Result<Pair<ls::Either<KafkaError, ls::fast::List<ConsumerRecord>>, ConsumerState>>
     {
         Ok({
-            let argument: i32 = value0;
+            let argument: i32 = int32_1;
             let argument_2: ConsumerState = consumer_state.clone();
             consumer_poll(&mut *ctx, argument, argument_2)?
         })
@@ -18479,11 +18495,11 @@ pub mod typed
     pub fn kafka_consumer_position(
         ctx: &mut ls::Context,
         consumer_state: ConsumerState,
-        value0: TopicPartition,
+        topic_partition_1: TopicPartition,
     ) -> ls::Result<Pair<ls::Either<KafkaError, i64>, ConsumerState>>
     {
         Ok({
-            let argument: TopicPartition = value0.clone();
+            let argument: TopicPartition = topic_partition_1.clone();
             let argument_2: ConsumerState = consumer_state.clone();
             consumer_position_of(&mut *ctx, argument, argument_2)?
         })
@@ -18492,13 +18508,13 @@ pub mod typed
     /// kafkaConsumerSeek — ../src/contract.lawspec:1386
     pub fn kafka_consumer_seek(
         consumer_state: ConsumerState,
-        value0: TopicPartition,
-        value1: i64,
+        topic_partition_1: TopicPartition,
+        int64_1: i64,
     ) -> ls::Result<Pair<ls::Either<KafkaError, ()>, ConsumerState>>
     {
         Ok(consumer_seek(
-            value0.clone(),
-            value1,
+            topic_partition_1.clone(),
+            int64_1,
             consumer_state.clone(),
         )?)
     }
@@ -18506,10 +18522,13 @@ pub mod typed
     /// kafkaConsumerSetIsolationLevel — ../src/contract.lawspec:1389
     pub fn kafka_consumer_set_isolation_level(
         consumer_state: ConsumerState,
-        value0: IsolationLevel,
+        isolation_level_1: IsolationLevel,
     ) -> ls::Result<Pair<(), ConsumerState>>
     {
-        Ok(consumer_isolation(value0, consumer_state.clone())?)
+        Ok(consumer_isolation(
+            isolation_level_1,
+            consumer_state.clone(),
+        )?)
     }
 
     /// kafkaConsumerStart — ../src/contract.lawspec:1380
@@ -18522,15 +18541,15 @@ pub mod typed
     pub fn kafka_consumer_subscribe(
         ctx: &mut ls::Context,
         consumer_state: ConsumerState,
-        value0: ls::fast::Text,
-        value1: ls::fast::Text,
-        value2: ls::fast::List<ls::fast::Text>,
+        text_1: ls::fast::Text,
+        text_2: ls::fast::Text,
+        list_1: ls::fast::List<ls::fast::Text>,
     ) -> ls::Result<Pair<ls::Either<KafkaError, ls::fast::List<TopicPartition>>, ConsumerState>>
     {
         Ok({
-            let argument: ls::fast::Text = value0.clone();
-            let argument_2: ls::fast::Text = value1.clone();
-            let argument_3: ls::fast::List<ls::fast::Text> = value2.clone();
+            let argument: ls::fast::Text = text_1.clone();
+            let argument_2: ls::fast::Text = text_2.clone();
+            let argument_3: ls::fast::List<ls::fast::Text> = list_1.clone();
             let argument_4: ConsumerState = consumer_state.clone();
             consumer_join(&mut *ctx, argument, argument_2, argument_3, argument_4)?
         })
@@ -18580,11 +18599,11 @@ pub mod typed
     pub fn kafka_producer_send(
         ctx: &mut ls::Context,
         producer_state: ProducerState,
-        value0: ProducerRecord,
+        producer_record_1: ProducerRecord,
     ) -> ls::Result<Pair<ls::Either<KafkaError, RecordMetadata>, ProducerState>>
     {
         Ok({
-            let argument: ProducerRecord = value0.clone();
+            let argument: ProducerRecord = producer_record_1.clone();
             let argument_2: ProducerState = producer_state.clone();
             producer_send(&mut *ctx, argument, argument_2)?
         })
@@ -18612,11 +18631,11 @@ pub mod typed
     pub fn kafka_transactions_add_partitions_to_transaction(
         ctx: &mut ls::Context,
         txn_state: TransactionState,
-        value0: ls::fast::List<TopicPartition>,
+        list_1: ls::fast::List<TopicPartition>,
     ) -> ls::Result<Pair<ls::Either<KafkaError, ()>, TransactionState>>
     {
         Ok({
-            let argument: ls::fast::List<TopicPartition> = value0.clone();
+            let argument: ls::fast::List<TopicPartition> = list_1.clone();
             let argument_2: TransactionState = txn_state.clone();
             transactions_add(&mut *ctx, argument, argument_2)?
         })
@@ -18646,11 +18665,11 @@ pub mod typed
     pub fn kafka_transactions_init_transactions(
         ctx: &mut ls::Context,
         txn_state: TransactionState,
-        value0: ls::fast::Text,
+        text_1: ls::fast::Text,
     ) -> ls::Result<Pair<ls::Either<KafkaError, ProducerIdAndEpoch>, TransactionState>>
     {
         Ok({
-            let argument: ls::fast::Text = value0.clone();
+            let argument: ls::fast::Text = text_1.clone();
             let argument_2: TransactionState = txn_state.clone();
             transactions_init(&mut *ctx, argument, argument_2)?
         })
@@ -18660,11 +18679,11 @@ pub mod typed
     pub fn kafka_transactions_send_in_transaction(
         ctx: &mut ls::Context,
         txn_state: TransactionState,
-        value0: ProducerRecord,
+        producer_record_1: ProducerRecord,
     ) -> ls::Result<Pair<ls::Either<KafkaError, RecordMetadata>, TransactionState>>
     {
         Ok({
-            let argument: ProducerRecord = value0.clone();
+            let argument: ProducerRecord = producer_record_1.clone();
             let argument_2: TransactionState = txn_state.clone();
             transactions_send(&mut *ctx, argument, argument_2)?
         })
@@ -18674,13 +18693,13 @@ pub mod typed
     pub fn kafka_transactions_send_offsets_to_transaction(
         ctx: &mut ls::Context,
         txn_state: TransactionState,
-        value0: ls::fast::Text,
-        value1: ls::fast::List<OffsetEntry>,
+        text_1: ls::fast::Text,
+        list_1: ls::fast::List<OffsetEntry>,
     ) -> ls::Result<Pair<ls::Either<KafkaError, ()>, TransactionState>>
     {
         Ok({
-            let argument: ls::fast::Text = value0.clone();
-            let argument_2: ls::fast::List<OffsetEntry> = value1.clone();
+            let argument: ls::fast::Text = text_1.clone();
+            let argument_2: ls::fast::List<OffsetEntry> = list_1.clone();
             let argument_3: TransactionState = txn_state.clone();
             transactions_offsets(&mut *ctx, argument, argument_2, argument_3)?
         })

@@ -1136,61 +1136,71 @@ def lawtwin_github_model_valid_issues_update_milestone_body(value):
 
 
 # referenceIssuesCreateLabel — ../src/api.lawspec:207
-def reference_issues_create_label(state, value0, value1, value2):
+def reference_issues_create_label(
+    state,
+    text_1,
+    text_2,
+    issues_create_label_body_1,
+):
     return lawtwin_github_model_model_issues_create_label(
-        value0,
-        value1,
-        value2,
+        text_1,
+        text_2,
+        issues_create_label_body_1,
         state,
     )
 
 
 # referenceIssuesCreateMilestone — ../src/api.lawspec:212
-def reference_issues_create_milestone(state, value0, value1, value2):
+def reference_issues_create_milestone(
+    state,
+    text_1,
+    text_2,
+    issues_create_milestone_body_1,
+):
     return lawtwin_github_model_model_issues_create_milestone(
-        value0,
-        value1,
-        value2,
+        text_1,
+        text_2,
+        issues_create_milestone_body_1,
         state,
     )
 
 
 # referenceIssuesDeleteLabel — ../src/api.lawspec:209
-def reference_issues_delete_label(state, value0, value1, value2):
+def reference_issues_delete_label(state, text_1, text_2, text_3):
     return lawtwin_github_model_model_issues_delete_label(
-        value0,
-        value1,
-        value2,
+        text_1,
+        text_2,
+        text_3,
         state,
     )
 
 
 # referenceIssuesDeleteMilestone — ../src/api.lawspec:214
-def reference_issues_delete_milestone(state, value0, value1, value2):
+def reference_issues_delete_milestone(state, text_1, text_2, int64_1):
     return lawtwin_github_model_model_issues_delete_milestone(
-        value0,
-        value1,
-        value2,
+        text_1,
+        text_2,
+        int64_1,
         state,
     )
 
 
 # referenceIssuesGetLabel — ../src/api.lawspec:208
-def reference_issues_get_label(state, value0, value1, value2):
+def reference_issues_get_label(state, text_1, text_2, text_3):
     return lawtwin_github_model_model_issues_get_label(
-        value0,
-        value1,
-        value2,
+        text_1,
+        text_2,
+        text_3,
         state,
     )
 
 
 # referenceIssuesGetMilestone — ../src/api.lawspec:213
-def reference_issues_get_milestone(state, value0, value1, value2):
+def reference_issues_get_milestone(state, text_1, text_2, int64_1):
     return lawtwin_github_model_model_issues_get_milestone(
-        value0,
-        value1,
-        value2,
+        text_1,
+        text_2,
+        int64_1,
         state,
     )
 
@@ -1198,16 +1208,16 @@ def reference_issues_get_milestone(state, value0, value1, value2):
 # referenceIssuesListLabelsForRepo — ../src/api.lawspec:206
 def reference_issues_list_labels_for_repo(
     state,
-    value0,
-    value1,
-    value2,
-    value3,
+    text_1,
+    text_2,
+    maybe_1,
+    maybe_2,
 ):
     return lawtwin_github_model_model_issues_list_labels_for_repo(
-        value0,
-        value1,
-        value2,
-        value3,
+        text_1,
+        text_2,
+        maybe_1,
+        maybe_2,
         state,
     )
 
@@ -1215,44 +1225,44 @@ def reference_issues_list_labels_for_repo(
 # referenceIssuesListMilestones — ../src/api.lawspec:211
 def reference_issues_list_milestones(
     state,
-    value0,
-    value1,
-    value2,
-    value3,
-    value4,
-    value5,
-    value6,
+    text_1,
+    text_2,
+    maybe_1,
+    maybe_2,
+    maybe_3,
+    maybe_4,
+    maybe_5,
 ):
     return lawtwin_github_model_model_issues_list_milestones(
-        value0,
-        value1,
-        value2,
-        value3,
-        value4,
-        value5,
-        value6,
+        text_1,
+        text_2,
+        maybe_1,
+        maybe_2,
+        maybe_3,
+        maybe_4,
+        maybe_5,
         state,
     )
 
 
 # referenceIssuesUpdateLabel — ../src/api.lawspec:210
-def reference_issues_update_label(state, value0, value1, value2, value3):
+def reference_issues_update_label(state, text_1, text_2, text_3, maybe_1):
     return lawtwin_github_model_model_issues_update_label(
-        value0,
-        value1,
-        value2,
-        value3,
+        text_1,
+        text_2,
+        text_3,
+        maybe_1,
         state,
     )
 
 
 # referenceIssuesUpdateMilestone — ../src/api.lawspec:215
-def reference_issues_update_milestone(state, value0, value1, value2, value3):
+def reference_issues_update_milestone(state, text_1, text_2, int64_1, maybe_1):
     return lawtwin_github_model_model_issues_update_milestone(
-        value0,
-        value1,
-        value2,
-        value3,
+        text_1,
+        text_2,
+        int64_1,
+        maybe_1,
         state,
     )
 

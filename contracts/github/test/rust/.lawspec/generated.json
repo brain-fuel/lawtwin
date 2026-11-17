@@ -3,18 +3,18 @@
   "files": {
     "tests/lawspec_collections_lawspec.rs": "a880301072a33bc704ef7371cda9bb8b3424bebaf0ca777d38e01db9f65abf34",
     "tests/lawspec_matchers_lawspec.rs": "790c8d3ed4f640cf3f9fef56372e095afa29ce509fb2acc0ecdbcb71d35711c0",
-    "tests/lawtwin_github_lawspec.rs": "c8d2894b14fcc153799646c5457443be2d99ecf92cc881726941a606796cb5d3",
+    "tests/lawtwin_github_lawspec.rs": "12ac2a4e061d5f2084d6e71985da88391f7babf803a7e5ad3435c0aaf858a776",
     "tests/lawtwin_github_handwritten_lawspec.rs": "396b7b82d43674066fbb32e4d9dd41ec0e9636c13bbe4aa991e1c490aa8d3d01",
     "tests/lawtwin_github_laws_lawspec.rs": "0a22ea4b59f8b0025d911d68b21d2cf10eb0c5d2060b3604c0bac6786ab5e1a1",
     "tests/lawtwin_github_model_lawspec.rs": "bc15bd29fb063d414bd7ecfc1571385afd90fb6e280ecb65fd84f7911e8c072f",
     "tests/contracttest_github_lawspec.rs": "c104d3797fd61bd1686437ef1f9535ada5f7cbdf47ac790f55ac8232dc415fcb",
     "src/lawspec_data.rs": "268aff47d0504d15f0f5983a8924dd45daebf739d860c65d23b8c5ef60f9abd3",
     "src/lawspec_schema.rs": "e33496575e9a46481f4944b5dcb604ab746bdc138f5b9ed7939f3f72589d1c04",
-    "src/lawspec_definitions.rs": "2b73a231cc203eef7ab866abd93eecbe82c4f256aecccd76b98ebe02b0bfe1ee",
-    "src/lawspec_abilities.rs": "93903d1296a81f3bfe22296e3cb9a2b5d1fd96dd424f620c85471b7e3d6060ab",
-    "src/lawspec_runtime.rs": "589ebfb1da0ca20bb77f945a751b9830c0a565be3ef7af25d989f1de34d32c01",
+    "src/lawspec_definitions.rs": "1a09a9991ca9276f0d5546f0fa2445cb92c670e66fe995fa595c3eeee7b30311",
+    "src/lawspec_abilities.rs": "70812a741fd456dc0d792da3015c552c8be9124107af7a3d09ecb0af13c8d4fc",
+    "src/lawspec_runtime.rs": "8b97a164c9ed6d9a0d54cb86a19cf7bc6f34a4c345f7866237d826861f8c2dcf",
     "src/lawspec_modules.rs": "9678d4f33db9710a2ea8081e77cbf3e14abd2702a844c6e8fc2bfeffc624cf17",
-    "tests/support/lawspec_strategies.rs": "625bdd707e7f1768e6642b14b9733a48a985b250703c64e946abec87b6a26269",
+    "tests/support/lawspec_strategies.rs": "3e57e6cbbd8edd3c828367383a181d055ebba8d24c3c2cf9248cfda0b839644b",
     "src/lawspec_remote.rs": "d317c5ab9722c3a8b3593af244a00a76cc8f313376d126728730b03ac9d4fefc"
   },
   "adapters": {

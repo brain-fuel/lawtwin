@@ -5525,122 +5525,128 @@ public final class LawSpecTyped
   public static Pair<LawSpecFast.Unit, BrokerState>
       clusterAddPartitionsToTxnRequest(
           BrokerState state,
-          String value0,
-          long value1,
-          long value2,
-          LawSpecFast.List<TopicPartition> value3)
+          String text1,
+          long int641,
+          long int161,
+          LawSpecFast.List<TopicPartition> list1)
   {
-    return lawtwinKafkaModelAddPartitionsToTxn(value0, value1, value2, value3, state);
+    return lawtwinKafkaModelAddPartitionsToTxn(text1, int641, int161, list1, state);
   }
 
   /** clusterCommitOffsets */
   public static Pair<LawSpecFast.Unit, BrokerState>
       clusterCommitOffsets(
           BrokerState state,
-          String value0,
-          String value1,
-          long value2,
-          LawSpecFast.List<OffsetEntry> value3)
+          String text1,
+          String text2,
+          long int321,
+          LawSpecFast.List<OffsetEntry> list1)
   {
-    return lawtwinKafkaModelOffsetCommit(value0, value1, value2, value3, state);
+    return lawtwinKafkaModelOffsetCommit(text1, text2, int321, list1, state);
   }
 
   /** clusterCreatePartitions */
   public static Pair<LawSpecFast.Unit, BrokerState>
-      clusterCreatePartitions(BrokerState state, String value0, long value1)
+      clusterCreatePartitions(BrokerState state, String text1, long int321)
   {
-    return lawtwinKafkaModelCreatePartitions(value0, value1, state);
+    return lawtwinKafkaModelCreatePartitions(text1, int321, state);
   }
 
   /** clusterCreateTopic */
   public static Pair<LawSpecFast.Unit, BrokerState>
-      clusterCreateTopic(BrokerState state, String value0, long value1)
+      clusterCreateTopic(BrokerState state, String text1, long int321)
   {
-    return lawtwinKafkaModelCreateTopic(value0, value1, state);
+    return lawtwinKafkaModelCreateTopic(text1, int321, state);
   }
 
   /** clusterDescribeGroup */
-  public static Pair<GroupView, BrokerState> clusterDescribeGroup(BrokerState state, String value0)
+  public static Pair<GroupView, BrokerState> clusterDescribeGroup(BrokerState state, String text1)
   {
-    return lawtwinKafkaModelDescribeGroup(value0, state);
+    return lawtwinKafkaModelDescribeGroup(text1, state);
   }
 
   /** clusterEndTxnRequest */
   public static Pair<LawSpecFast.Unit, BrokerState>
-      clusterEndTxnRequest(
-          BrokerState state, String value0, long value1, long value2, boolean value3)
+      clusterEndTxnRequest(BrokerState state, String text1, long int641, long int161, boolean bool1)
   {
-    return lawtwinKafkaModelEndTxn(value0, value1, value2, value3, state);
+    return lawtwinKafkaModelEndTxn(text1, int641, int161, bool1, state);
   }
 
   /** clusterFetchOffset */
   public static Pair<LawSpecFast.Maybe<Long>, BrokerState>
-      clusterFetchOffset(BrokerState state, String value0, TopicPartition value1)
+      clusterFetchOffset(BrokerState state, String text1, TopicPartition topicPartition1)
   {
-    return lawtwinKafkaModelOffsetFetch(value0, value1, state);
+    return lawtwinKafkaModelOffsetFetch(text1, topicPartition1, state);
   }
 
   /** clusterFetchRequest */
   public static Pair<FetchResult, BrokerState>
       clusterFetchRequest(
-          BrokerState state, TopicPartition value0, long value1, long value2, IsolationLevel value3)
+          BrokerState state,
+          TopicPartition topicPartition1,
+          long int641,
+          long int321,
+          IsolationLevel isolationLevel1)
   {
-    return lawtwinKafkaModelFetch(value0, value1, value2, value3, state);
+    return lawtwinKafkaModelFetch(topicPartition1, int641, int321, isolationLevel1, state);
   }
 
   /** clusterHeartbeat */
   public static Pair<LawSpecFast.Unit, BrokerState>
-      clusterHeartbeat(BrokerState state, String value0, String value1, long value2)
+      clusterHeartbeat(BrokerState state, String text1, String text2, long int321)
   {
-    return lawtwinKafkaModelHeartbeat(value0, value1, value2, state);
+    return lawtwinKafkaModelHeartbeat(text1, text2, int321, state);
   }
 
   /** clusterInitProducerIdRequest */
   public static Pair<ProducerIdAndEpoch, BrokerState>
-      clusterInitProducerIdRequest(BrokerState state, LawSpecFast.Maybe<String> value0)
+      clusterInitProducerIdRequest(BrokerState state, LawSpecFast.Maybe<String> maybe1)
   {
-    return lawtwinKafkaModelInitProducerId(value0, state);
+    return lawtwinKafkaModelInitProducerId(maybe1, state);
   }
 
   /** clusterJoinGroup */
   public static Pair<Long, BrokerState>
       clusterJoinGroup(
-          BrokerState state, String value0, String value1, LawSpecFast.List<String> value2)
+          BrokerState state, String text1, String text2, LawSpecFast.List<String> list1)
   {
-    return lawtwinKafkaModelJoinGroup(value0, value1, value2, state);
+    return lawtwinKafkaModelJoinGroup(text1, text2, list1, state);
   }
 
   /** clusterLeaveGroup */
   public static Pair<LawSpecFast.Unit, BrokerState>
-      clusterLeaveGroup(BrokerState state, String value0, String value1)
+      clusterLeaveGroup(BrokerState state, String text1, String text2)
   {
-    return lawtwinKafkaModelLeaveGroup(value0, value1, state);
+    return lawtwinKafkaModelLeaveGroup(text1, text2, state);
   }
 
   /** clusterListOffsets */
   public static Pair<Long, BrokerState>
       clusterListOffsets(
-          BrokerState state, TopicPartition value0, OffsetSpec value1, IsolationLevel value2)
+          BrokerState state,
+          TopicPartition topicPartition1,
+          OffsetSpec offsetSpec1,
+          IsolationLevel isolationLevel1)
   {
-    return lawtwinKafkaModelListOffsets(value0, value1, value2, state);
+    return lawtwinKafkaModelListOffsets(topicPartition1, offsetSpec1, isolationLevel1, state);
   }
 
   /** clusterMetadataRequest */
   public static Pair<LawSpecFast.Maybe<Long>, BrokerState>
-      clusterMetadataRequest(BrokerState state, String value0)
+      clusterMetadataRequest(BrokerState state, String text1)
   {
-    return lawtwinKafkaModelMetadata(value0, state);
+    return lawtwinKafkaModelMetadata(text1, state);
   }
 
   /** clusterProduceRequest */
   public static Pair<Long, BrokerState>
       clusterProduceRequest(
           BrokerState state,
-          TopicPartition value0,
-          LawSpecFast.Maybe<ProducerTag> value1,
-          LawSpecFast.List<Record> value2)
+          TopicPartition topicPartition1,
+          LawSpecFast.Maybe<ProducerTag> maybe1,
+          LawSpecFast.List<Record> list1)
   {
-    return lawtwinKafkaModelProduce(value0, value1, value2, state);
+    return lawtwinKafkaModelProduce(topicPartition1, maybe1, list1, state);
   }
 
   /** clusterStart */
@@ -5651,22 +5657,22 @@ public final class LawSpecTyped
 
   /** clusterSyncGroup */
   public static Pair<LawSpecFast.List<TopicPartition>, BrokerState>
-      clusterSyncGroup(BrokerState state, String value0, String value1, long value2)
+      clusterSyncGroup(BrokerState state, String text1, String text2, long int321)
   {
-    return lawtwinKafkaModelSyncGroup(value0, value1, value2, state);
+    return lawtwinKafkaModelSyncGroup(text1, text2, int321, state);
   }
 
   /** clusterTxnOffsetCommitRequest */
   public static Pair<LawSpecFast.Unit, BrokerState>
       clusterTxnOffsetCommitRequest(
           BrokerState state,
-          String value0,
-          long value1,
-          long value2,
-          String value3,
-          LawSpecFast.List<OffsetEntry> value4)
+          String text1,
+          long int641,
+          long int161,
+          String text2,
+          LawSpecFast.List<OffsetEntry> list1)
   {
-    return lawtwinKafkaModelTxnOffsetCommit(value0, value1, value2, value3, value4, state);
+    return lawtwinKafkaModelTxnOffsetCommit(text1, int641, int161, text2, list1, state);
   }
 
   /** committedFrom */
@@ -6644,9 +6650,9 @@ public final class LawSpecTyped
 
   /** kafkaConsumerAssign */
   public static Pair<LawSpecFast.Unit, ConsumerState>
-      kafkaConsumerAssign(ConsumerState consumerState, LawSpecFast.List<TopicPartition> value0)
+      kafkaConsumerAssign(ConsumerState consumerState, LawSpecFast.List<TopicPartition> list1)
   {
-    return consumerAssign(value0, consumerState);
+    return consumerAssign(list1, consumerState);
   }
 
   /** kafkaConsumerClose */
@@ -6666,40 +6672,44 @@ public final class LawSpecTyped
   /** kafkaConsumerCommittedOffset */
   public static Pair<LawSpecFast.Maybe<Long>, ConsumerState>
       kafkaConsumerCommittedOffset(
-          java.util.Map<String, Object> symbols, ConsumerState consumerState, TopicPartition value0)
+          java.util.Map<String, Object> symbols,
+          ConsumerState consumerState,
+          TopicPartition topicPartition1)
   {
-    return consumerCommitted(symbols, value0, consumerState);
+    return consumerCommitted(symbols, topicPartition1, consumerState);
   }
 
   /** kafkaConsumerPoll */
   public static Pair<
       LawSpecFast.Either<KafkaError, LawSpecFast.List<ConsumerRecord>>, ConsumerState>
       kafkaConsumerPoll(
-          java.util.Map<String, Object> symbols, ConsumerState consumerState, long value0)
+          java.util.Map<String, Object> symbols, ConsumerState consumerState, long int321)
   {
-    return consumerPoll(symbols, value0, consumerState);
+    return consumerPoll(symbols, int321, consumerState);
   }
 
   /** kafkaConsumerPosition */
   public static Pair<LawSpecFast.Either<KafkaError, Long>, ConsumerState>
       kafkaConsumerPosition(
-          java.util.Map<String, Object> symbols, ConsumerState consumerState, TopicPartition value0)
+          java.util.Map<String, Object> symbols,
+          ConsumerState consumerState,
+          TopicPartition topicPartition1)
   {
-    return consumerPositionOf(symbols, value0, consumerState);
+    return consumerPositionOf(symbols, topicPartition1, consumerState);
   }
 
   /** kafkaConsumerSeek */
   public static Pair<LawSpecFast.Either<KafkaError, LawSpecFast.Unit>, ConsumerState>
-      kafkaConsumerSeek(ConsumerState consumerState, TopicPartition value0, long value1)
+      kafkaConsumerSeek(ConsumerState consumerState, TopicPartition topicPartition1, long int641)
   {
-    return consumerSeek(value0, value1, consumerState);
+    return consumerSeek(topicPartition1, int641, consumerState);
   }
 
   /** kafkaConsumerSetIsolationLevel */
   public static Pair<LawSpecFast.Unit, ConsumerState>
-      kafkaConsumerSetIsolationLevel(ConsumerState consumerState, IsolationLevel value0)
+      kafkaConsumerSetIsolationLevel(ConsumerState consumerState, IsolationLevel isolationLevel1)
   {
-    return consumerIsolation(value0, consumerState);
+    return consumerIsolation(isolationLevel1, consumerState);
   }
 
   /** kafkaConsumerStart */
@@ -6714,11 +6724,11 @@ public final class LawSpecTyped
       kafkaConsumerSubscribe(
           java.util.Map<String, Object> symbols,
           ConsumerState consumerState,
-          String value0,
-          String value1,
-          LawSpecFast.List<String> value2)
+          String text1,
+          String text2,
+          LawSpecFast.List<String> list1)
   {
-    return consumerJoin(symbols, value0, value1, value2, consumerState);
+    return consumerJoin(symbols, text1, text2, list1, consumerState);
   }
 
   /** kafkaProducerEnableIdempotence */
@@ -6753,9 +6763,11 @@ public final class LawSpecTyped
   /** kafkaProducerSend */
   public static Pair<LawSpecFast.Either<KafkaError, RecordMetadata>, ProducerState>
       kafkaProducerSend(
-          java.util.Map<String, Object> symbols, ProducerState producerState, ProducerRecord value0)
+          java.util.Map<String, Object> symbols,
+          ProducerState producerState,
+          ProducerRecord producerRecord1)
   {
-    return producerSend(symbols, value0, producerState);
+    return producerSend(symbols, producerRecord1, producerState);
   }
 
   /** kafkaProducerStart */
@@ -6777,9 +6789,9 @@ public final class LawSpecTyped
       kafkaTransactionsAddPartitionsToTransaction(
           java.util.Map<String, Object> symbols,
           TransactionState txnState,
-          LawSpecFast.List<TopicPartition> value0)
+          LawSpecFast.List<TopicPartition> list1)
   {
-    return transactionsAdd(symbols, value0, txnState);
+    return transactionsAdd(symbols, list1, txnState);
   }
 
   /** kafkaTransactionsBeginTransaction */
@@ -6800,17 +6812,19 @@ public final class LawSpecTyped
   /** kafkaTransactionsInitTransactions */
   public static Pair<LawSpecFast.Either<KafkaError, ProducerIdAndEpoch>, TransactionState>
       kafkaTransactionsInitTransactions(
-          java.util.Map<String, Object> symbols, TransactionState txnState, String value0)
+          java.util.Map<String, Object> symbols, TransactionState txnState, String text1)
   {
-    return transactionsInit(symbols, value0, txnState);
+    return transactionsInit(symbols, text1, txnState);
   }
 
   /** kafkaTransactionsSendInTransaction */
   public static Pair<LawSpecFast.Either<KafkaError, RecordMetadata>, TransactionState>
       kafkaTransactionsSendInTransaction(
-          java.util.Map<String, Object> symbols, TransactionState txnState, ProducerRecord value0)
+          java.util.Map<String, Object> symbols,
+          TransactionState txnState,
+          ProducerRecord producerRecord1)
   {
-    return transactionsSend(symbols, value0, txnState);
+    return transactionsSend(symbols, producerRecord1, txnState);
   }
 
   /** kafkaTransactionsSendOffsetsToTransaction */
@@ -6818,10 +6832,10 @@ public final class LawSpecTyped
       kafkaTransactionsSendOffsetsToTransaction(
           java.util.Map<String, Object> symbols,
           TransactionState txnState,
-          String value0,
-          LawSpecFast.List<OffsetEntry> value1)
+          String text1,
+          LawSpecFast.List<OffsetEntry> list1)
   {
-    return transactionsOffsets(symbols, value0, value1, txnState);
+    return transactionsOffsets(symbols, text1, list1, txnState);
   }
 
   /** kafkaTransactionsStart */

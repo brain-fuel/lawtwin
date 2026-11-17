@@ -40,12 +40,12 @@ public final class Kafka
     }
 
     @Override
-    public synchronized void createTopicsRequest(java.lang.String value0, java.lang.Integer value1)
+    public synchronized void createTopicsRequest(java.lang.String text1, java.lang.Integer int32_1)
     {
       var pair = lawspec.runtime.LawSpecTyped.clusterCreateTopic(
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-          lawspec.runtime.LawSpecTyped.fromNativeInt32(value1)
+          lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+          lawspec.runtime.LawSpecTyped.fromNativeInt32(int32_1)
       );
       state = pair.second;
       var result = pair.first;
@@ -53,14 +53,14 @@ public final class Kafka
 
     @Override
     public synchronized void createPartitionsRequest(
-        java.lang.String value0,
-        java.lang.Integer value1
+        java.lang.String text1,
+        java.lang.Integer int32_1
     )
     {
       var pair = lawspec.runtime.LawSpecTyped.clusterCreatePartitions(
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-          lawspec.runtime.LawSpecTyped.fromNativeInt32(value1)
+          lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+          lawspec.runtime.LawSpecTyped.fromNativeInt32(int32_1)
       );
       state = pair.second;
       var result = pair.first;
@@ -68,11 +68,11 @@ public final class Kafka
 
     @Override
     public synchronized lawspec.runtime.LawSpecRuntime.Maybe<
-            java.lang.Integer> metadataRequest(java.lang.String value0)
+            java.lang.Integer> metadataRequest(java.lang.String text1)
     {
       var pair = lawspec.runtime.LawSpecTyped.clusterMetadataRequest(
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeText(value0)
+          lawspec.runtime.LawSpecTyped.fromNativeText(text1)
       );
       state = pair.second;
       var result = pair.first;
@@ -81,16 +81,16 @@ public final class Kafka
 
     @Override
     public synchronized java.lang.Long produceRequest(
-        lawspec.data.TopicPartition value0,
-        lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerTag> value1,
-        java.util.List<lawspec.data.Record> value2
+        lawspec.data.TopicPartition topicPartition1,
+        lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerTag> maybe1,
+        java.util.List<lawspec.data.Record> list1
     )
     {
       var pair = lawspec.runtime.LawSpecTyped.clusterProduceRequest(
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0),
-          lawspec.runtime.LawSpecTyped.fromNativeMaybeProducerTag(value1),
-          lawspec.runtime.LawSpecTyped.fromNativeListRecord(value2)
+          lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(topicPartition1),
+          lawspec.runtime.LawSpecTyped.fromNativeMaybeProducerTag(maybe1),
+          lawspec.runtime.LawSpecTyped.fromNativeListRecord(list1)
       );
       state = pair.second;
       var result = pair.first;
@@ -99,18 +99,18 @@ public final class Kafka
 
     @Override
     public synchronized lawspec.data.FetchResult fetchRequest(
-        lawspec.data.TopicPartition value0,
-        java.lang.Long value1,
-        java.lang.Integer value2,
-        lawspec.data.IsolationLevel value3
+        lawspec.data.TopicPartition topicPartition1,
+        java.lang.Long int64_1,
+        java.lang.Integer int32_1,
+        lawspec.data.IsolationLevel isolationLevel1
     )
     {
       var pair = lawspec.runtime.LawSpecTyped.clusterFetchRequest(
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0),
-          lawspec.runtime.LawSpecTyped.fromNativeInt64(value1),
-          lawspec.runtime.LawSpecTyped.fromNativeInt32(value2),
-          lawspec.runtime.LawSpecTyped.fromNativeIsolationLevel(value3)
+          lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(topicPartition1),
+          lawspec.runtime.LawSpecTyped.fromNativeInt64(int64_1),
+          lawspec.runtime.LawSpecTyped.fromNativeInt32(int32_1),
+          lawspec.runtime.LawSpecTyped.fromNativeIsolationLevel(isolationLevel1)
       );
       state = pair.second;
       var result = pair.first;
@@ -119,16 +119,16 @@ public final class Kafka
 
     @Override
     public synchronized java.lang.Long listOffsetsRequest(
-        lawspec.data.TopicPartition value0,
-        lawspec.data.OffsetSpec value1,
-        lawspec.data.IsolationLevel value2
+        lawspec.data.TopicPartition topicPartition1,
+        lawspec.data.OffsetSpec offsetSpec1,
+        lawspec.data.IsolationLevel isolationLevel1
     )
     {
       var pair = lawspec.runtime.LawSpecTyped.clusterListOffsets(
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0),
-          lawspec.runtime.LawSpecTyped.fromNativeOffsetSpec(value1),
-          lawspec.runtime.LawSpecTyped.fromNativeIsolationLevel(value2)
+          lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(topicPartition1),
+          lawspec.runtime.LawSpecTyped.fromNativeOffsetSpec(offsetSpec1),
+          lawspec.runtime.LawSpecTyped.fromNativeIsolationLevel(isolationLevel1)
       );
       state = pair.second;
       var result = pair.first;
@@ -137,12 +137,12 @@ public final class Kafka
 
     @Override
     public synchronized lawspec.data.ProducerIdAndEpoch initProducerIdRequest(
-        lawspec.runtime.LawSpecRuntime.Maybe<java.lang.String> value0
+        lawspec.runtime.LawSpecRuntime.Maybe<java.lang.String> maybe1
     )
     {
       var pair = lawspec.runtime.LawSpecTyped.clusterInitProducerIdRequest(
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeMaybeText(value0)
+          lawspec.runtime.LawSpecTyped.fromNativeMaybeText(maybe1)
       );
       state = pair.second;
       var result = pair.first;
@@ -151,18 +151,18 @@ public final class Kafka
 
     @Override
     public synchronized void addPartitionsToTxnRequest(
-        java.lang.String value0,
-        java.lang.Long value1,
-        java.lang.Short value2,
-        java.util.List<lawspec.data.TopicPartition> value3
+        java.lang.String text1,
+        java.lang.Long int64_1,
+        java.lang.Short int16_1,
+        java.util.List<lawspec.data.TopicPartition> list1
     )
     {
       var pair = lawspec.runtime.LawSpecTyped.clusterAddPartitionsToTxnRequest(
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-          lawspec.runtime.LawSpecTyped.fromNativeInt64(value1),
-          lawspec.runtime.LawSpecTyped.fromNativeInt16(value2),
-          lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(value3)
+          lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+          lawspec.runtime.LawSpecTyped.fromNativeInt64(int64_1),
+          lawspec.runtime.LawSpecTyped.fromNativeInt16(int16_1),
+          lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(list1)
       );
       state = pair.second;
       var result = pair.first;
@@ -170,20 +170,20 @@ public final class Kafka
 
     @Override
     public synchronized void txnOffsetCommitRequest(
-        java.lang.String value0,
-        java.lang.Long value1,
-        java.lang.Short value2,
-        java.lang.String value3,
-        java.util.List<lawspec.data.OffsetEntry> value4
+        java.lang.String text1,
+        java.lang.Long int64_1,
+        java.lang.Short int16_1,
+        java.lang.String text2,
+        java.util.List<lawspec.data.OffsetEntry> list1
     )
     {
       var pair = lawspec.runtime.LawSpecTyped.clusterTxnOffsetCommitRequest(
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-          lawspec.runtime.LawSpecTyped.fromNativeInt64(value1),
-          lawspec.runtime.LawSpecTyped.fromNativeInt16(value2),
-          lawspec.runtime.LawSpecTyped.fromNativeText(value3),
-          lawspec.runtime.LawSpecTyped.fromNativeListOffsetEntry(value4)
+          lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+          lawspec.runtime.LawSpecTyped.fromNativeInt64(int64_1),
+          lawspec.runtime.LawSpecTyped.fromNativeInt16(int16_1),
+          lawspec.runtime.LawSpecTyped.fromNativeText(text2),
+          lawspec.runtime.LawSpecTyped.fromNativeListOffsetEntry(list1)
       );
       state = pair.second;
       var result = pair.first;
@@ -191,18 +191,18 @@ public final class Kafka
 
     @Override
     public synchronized void endTxnRequest(
-        java.lang.String value0,
-        java.lang.Long value1,
-        java.lang.Short value2,
-        java.lang.Boolean value3
+        java.lang.String text1,
+        java.lang.Long int64_1,
+        java.lang.Short int16_1,
+        java.lang.Boolean bool1
     )
     {
       var pair = lawspec.runtime.LawSpecTyped.clusterEndTxnRequest(
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-          lawspec.runtime.LawSpecTyped.fromNativeInt64(value1),
-          lawspec.runtime.LawSpecTyped.fromNativeInt16(value2),
-          lawspec.runtime.LawSpecTyped.fromNativeBool(value3)
+          lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+          lawspec.runtime.LawSpecTyped.fromNativeInt64(int64_1),
+          lawspec.runtime.LawSpecTyped.fromNativeInt16(int16_1),
+          lawspec.runtime.LawSpecTyped.fromNativeBool(bool1)
       );
       state = pair.second;
       var result = pair.first;
@@ -210,16 +210,16 @@ public final class Kafka
 
     @Override
     public synchronized java.lang.Integer joinGroupRequest(
-        java.lang.String value0,
-        java.lang.String value1,
-        java.util.List<java.lang.String> value2
+        java.lang.String text1,
+        java.lang.String text2,
+        java.util.List<java.lang.String> list1
     )
     {
       var pair = lawspec.runtime.LawSpecTyped.clusterJoinGroup(
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-          lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-          lawspec.runtime.LawSpecTyped.fromNativeListText(value2)
+          lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+          lawspec.runtime.LawSpecTyped.fromNativeText(text2),
+          lawspec.runtime.LawSpecTyped.fromNativeListText(list1)
       );
       state = pair.second;
       var result = pair.first;
@@ -229,16 +229,16 @@ public final class Kafka
     @Override
     public synchronized java.util.List<
             lawspec.data.TopicPartition> syncGroupRequest(
-        java.lang.String value0,
-        java.lang.String value1,
-        java.lang.Integer value2
+        java.lang.String text1,
+        java.lang.String text2,
+        java.lang.Integer int32_1
     )
     {
       var pair = lawspec.runtime.LawSpecTyped.clusterSyncGroup(
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-          lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-          lawspec.runtime.LawSpecTyped.fromNativeInt32(value2)
+          lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+          lawspec.runtime.LawSpecTyped.fromNativeText(text2),
+          lawspec.runtime.LawSpecTyped.fromNativeInt32(int32_1)
       );
       state = pair.second;
       var result = pair.first;
@@ -247,39 +247,39 @@ public final class Kafka
 
     @Override
     public synchronized void heartbeatRequest(
-        java.lang.String value0,
-        java.lang.String value1,
-        java.lang.Integer value2
+        java.lang.String text1,
+        java.lang.String text2,
+        java.lang.Integer int32_1
     )
     {
       var pair = lawspec.runtime.LawSpecTyped.clusterHeartbeat(
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-          lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-          lawspec.runtime.LawSpecTyped.fromNativeInt32(value2)
+          lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+          lawspec.runtime.LawSpecTyped.fromNativeText(text2),
+          lawspec.runtime.LawSpecTyped.fromNativeInt32(int32_1)
       );
       state = pair.second;
       var result = pair.first;
     }
 
     @Override
-    public synchronized void leaveGroupRequest(java.lang.String value0, java.lang.String value1)
+    public synchronized void leaveGroupRequest(java.lang.String text1, java.lang.String text2)
     {
       var pair = lawspec.runtime.LawSpecTyped.clusterLeaveGroup(
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-          lawspec.runtime.LawSpecTyped.fromNativeText(value1)
+          lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+          lawspec.runtime.LawSpecTyped.fromNativeText(text2)
       );
       state = pair.second;
       var result = pair.first;
     }
 
     @Override
-    public synchronized lawspec.data.GroupView describeGroupRequest(java.lang.String value0)
+    public synchronized lawspec.data.GroupView describeGroupRequest(java.lang.String text1)
     {
       var pair = lawspec.runtime.LawSpecTyped.clusterDescribeGroup(
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeText(value0)
+          lawspec.runtime.LawSpecTyped.fromNativeText(text1)
       );
       state = pair.second;
       var result = pair.first;
@@ -288,18 +288,18 @@ public final class Kafka
 
     @Override
     public synchronized void offsetCommitRequest(
-        java.lang.String value0,
-        java.lang.String value1,
-        java.lang.Integer value2,
-        java.util.List<lawspec.data.OffsetEntry> value3
+        java.lang.String text1,
+        java.lang.String text2,
+        java.lang.Integer int32_1,
+        java.util.List<lawspec.data.OffsetEntry> list1
     )
     {
       var pair = lawspec.runtime.LawSpecTyped.clusterCommitOffsets(
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-          lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-          lawspec.runtime.LawSpecTyped.fromNativeInt32(value2),
-          lawspec.runtime.LawSpecTyped.fromNativeListOffsetEntry(value3)
+          lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+          lawspec.runtime.LawSpecTyped.fromNativeText(text2),
+          lawspec.runtime.LawSpecTyped.fromNativeInt32(int32_1),
+          lawspec.runtime.LawSpecTyped.fromNativeListOffsetEntry(list1)
       );
       state = pair.second;
       var result = pair.first;
@@ -308,14 +308,14 @@ public final class Kafka
     @Override
     public synchronized lawspec.runtime.LawSpecRuntime.Maybe<
             java.lang.Long> offsetFetchRequest(
-        java.lang.String value0,
-        lawspec.data.TopicPartition value1
+        java.lang.String text1,
+        lawspec.data.TopicPartition topicPartition1
     )
     {
       var pair = lawspec.runtime.LawSpecTyped.clusterFetchOffset(
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-          lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value1)
+          lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+          lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(topicPartition1)
       );
       state = pair.second;
       var result = pair.first;
@@ -323,24 +323,24 @@ public final class Kafka
     }
 
     @Override
-    public synchronized void createTopic(java.lang.String value0, java.lang.Integer value1)
+    public synchronized void createTopic(java.lang.String text1, java.lang.Integer int32_1)
     {
       var pair = lawspec.runtime.LawSpecTyped.clusterCreateTopic(
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-          lawspec.runtime.LawSpecTyped.fromNativeInt32(value1)
+          lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+          lawspec.runtime.LawSpecTyped.fromNativeInt32(int32_1)
       );
       state = pair.second;
       var result = pair.first;
     }
 
     @Override
-    public synchronized void createPartitions(java.lang.String value0, java.lang.Integer value1)
+    public synchronized void createPartitions(java.lang.String text1, java.lang.Integer int32_1)
     {
       var pair = lawspec.runtime.LawSpecTyped.clusterCreatePartitions(
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-          lawspec.runtime.LawSpecTyped.fromNativeInt32(value1)
+          lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+          lawspec.runtime.LawSpecTyped.fromNativeInt32(int32_1)
       );
       state = pair.second;
       var result = pair.first;
@@ -348,11 +348,11 @@ public final class Kafka
 
     @Override
     public synchronized lawspec.runtime.LawSpecRuntime.Maybe<
-            java.lang.Integer> partitionsFor(java.lang.String value0)
+            java.lang.Integer> partitionsFor(java.lang.String text1)
     {
       var pair = lawspec.runtime.LawSpecTyped.clusterMetadataRequest(
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeText(value0)
+          lawspec.runtime.LawSpecTyped.fromNativeText(text1)
       );
       state = pair.second;
       var result = pair.first;
@@ -361,16 +361,16 @@ public final class Kafka
 
     @Override
     public synchronized java.lang.Long listOffsets(
-        lawspec.data.TopicPartition value0,
-        lawspec.data.OffsetSpec value1,
-        lawspec.data.IsolationLevel value2
+        lawspec.data.TopicPartition topicPartition1,
+        lawspec.data.OffsetSpec offsetSpec1,
+        lawspec.data.IsolationLevel isolationLevel1
     )
     {
       var pair = lawspec.runtime.LawSpecTyped.clusterListOffsets(
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0),
-          lawspec.runtime.LawSpecTyped.fromNativeOffsetSpec(value1),
-          lawspec.runtime.LawSpecTyped.fromNativeIsolationLevel(value2)
+          lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(topicPartition1),
+          lawspec.runtime.LawSpecTyped.fromNativeOffsetSpec(offsetSpec1),
+          lawspec.runtime.LawSpecTyped.fromNativeIsolationLevel(isolationLevel1)
       );
       state = pair.second;
       var result = pair.first;
@@ -379,16 +379,16 @@ public final class Kafka
 
     @Override
     public synchronized java.lang.Integer joinGroup(
-        java.lang.String value0,
-        java.lang.String value1,
-        java.util.List<java.lang.String> value2
+        java.lang.String text1,
+        java.lang.String text2,
+        java.util.List<java.lang.String> list1
     )
     {
       var pair = lawspec.runtime.LawSpecTyped.clusterJoinGroup(
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-          lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-          lawspec.runtime.LawSpecTyped.fromNativeListText(value2)
+          lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+          lawspec.runtime.LawSpecTyped.fromNativeText(text2),
+          lawspec.runtime.LawSpecTyped.fromNativeListText(list1)
       );
       state = pair.second;
       var result = pair.first;
@@ -398,16 +398,16 @@ public final class Kafka
     @Override
     public synchronized java.util.List<
             lawspec.data.TopicPartition> syncGroup(
-        java.lang.String value0,
-        java.lang.String value1,
-        java.lang.Integer value2
+        java.lang.String text1,
+        java.lang.String text2,
+        java.lang.Integer int32_1
     )
     {
       var pair = lawspec.runtime.LawSpecTyped.clusterSyncGroup(
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-          lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-          lawspec.runtime.LawSpecTyped.fromNativeInt32(value2)
+          lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+          lawspec.runtime.LawSpecTyped.fromNativeText(text2),
+          lawspec.runtime.LawSpecTyped.fromNativeInt32(int32_1)
       );
       state = pair.second;
       var result = pair.first;
@@ -416,39 +416,39 @@ public final class Kafka
 
     @Override
     public synchronized void heartbeat(
-        java.lang.String value0,
-        java.lang.String value1,
-        java.lang.Integer value2
+        java.lang.String text1,
+        java.lang.String text2,
+        java.lang.Integer int32_1
     )
     {
       var pair = lawspec.runtime.LawSpecTyped.clusterHeartbeat(
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-          lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-          lawspec.runtime.LawSpecTyped.fromNativeInt32(value2)
+          lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+          lawspec.runtime.LawSpecTyped.fromNativeText(text2),
+          lawspec.runtime.LawSpecTyped.fromNativeInt32(int32_1)
       );
       state = pair.second;
       var result = pair.first;
     }
 
     @Override
-    public synchronized void leaveGroup(java.lang.String value0, java.lang.String value1)
+    public synchronized void leaveGroup(java.lang.String text1, java.lang.String text2)
     {
       var pair = lawspec.runtime.LawSpecTyped.clusterLeaveGroup(
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-          lawspec.runtime.LawSpecTyped.fromNativeText(value1)
+          lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+          lawspec.runtime.LawSpecTyped.fromNativeText(text2)
       );
       state = pair.second;
       var result = pair.first;
     }
 
     @Override
-    public synchronized lawspec.data.GroupView describeGroup(java.lang.String value0)
+    public synchronized lawspec.data.GroupView describeGroup(java.lang.String text1)
     {
       var pair = lawspec.runtime.LawSpecTyped.clusterDescribeGroup(
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeText(value0)
+          lawspec.runtime.LawSpecTyped.fromNativeText(text1)
       );
       state = pair.second;
       var result = pair.first;
@@ -457,18 +457,18 @@ public final class Kafka
 
     @Override
     public synchronized void commitOffsets(
-        java.lang.String value0,
-        java.lang.String value1,
-        java.lang.Integer value2,
-        java.util.List<lawspec.data.OffsetEntry> value3
+        java.lang.String text1,
+        java.lang.String text2,
+        java.lang.Integer int32_1,
+        java.util.List<lawspec.data.OffsetEntry> list1
     )
     {
       var pair = lawspec.runtime.LawSpecTyped.clusterCommitOffsets(
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-          lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-          lawspec.runtime.LawSpecTyped.fromNativeInt32(value2),
-          lawspec.runtime.LawSpecTyped.fromNativeListOffsetEntry(value3)
+          lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+          lawspec.runtime.LawSpecTyped.fromNativeText(text2),
+          lawspec.runtime.LawSpecTyped.fromNativeInt32(int32_1),
+          lawspec.runtime.LawSpecTyped.fromNativeListOffsetEntry(list1)
       );
       state = pair.second;
       var result = pair.first;
@@ -476,12 +476,15 @@ public final class Kafka
 
     @Override
     public synchronized lawspec.runtime.LawSpecRuntime.Maybe<
-            java.lang.Long> fetchOffset(java.lang.String value0, lawspec.data.TopicPartition value1)
+            java.lang.Long> fetchOffset(
+        java.lang.String text1,
+        lawspec.data.TopicPartition topicPartition1
+    )
     {
       var pair = lawspec.runtime.LawSpecTyped.clusterFetchOffset(
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-          lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value1)
+          lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+          lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(topicPartition1)
       );
       state = pair.second;
       var result = pair.first;
@@ -514,13 +517,13 @@ public final class Kafka
 
     /** createTopicsRequest, with the failure it raises as an Outcome rather than an exception. */
     public lawspec.runtime.LawSpecFast.Outcome<Void, lawspec.data.KafkaError> tryCreateTopicsRequest(
-        java.lang.String value0,
-        java.lang.Integer value1
+        java.lang.String text1,
+        java.lang.Integer int32_1
     )
     {
       try
       {
-        createTopicsRequest(value0, value1);
+        createTopicsRequest(text1, int32_1);
         return lawspec.runtime.LawSpecFast.Outcome.success(null);
       }
       catch (LawSpecRuntime.Failure failure)
@@ -537,13 +540,13 @@ public final class Kafka
 
     /** createPartitionsRequest, with the failure it raises as an Outcome rather than an exception. */
     public lawspec.runtime.LawSpecFast.Outcome<Void, lawspec.data.KafkaError> tryCreatePartitionsRequest(
-        java.lang.String value0,
-        java.lang.Integer value1
+        java.lang.String text1,
+        java.lang.Integer int32_1
     )
     {
       try
       {
-        createPartitionsRequest(value0, value1);
+        createPartitionsRequest(text1, int32_1);
         return lawspec.runtime.LawSpecFast.Outcome.success(null);
       }
       catch (LawSpecRuntime.Failure failure)
@@ -560,14 +563,14 @@ public final class Kafka
 
     /** produceRequest, with the failure it raises as an Outcome rather than an exception. */
     public lawspec.runtime.LawSpecFast.Outcome<java.lang.Long, lawspec.data.KafkaError> tryProduceRequest(
-        lawspec.data.TopicPartition value0,
-        lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerTag> value1,
-        java.util.List<lawspec.data.Record> value2
+        lawspec.data.TopicPartition topicPartition1,
+        lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerTag> maybe1,
+        java.util.List<lawspec.data.Record> list1
     )
     {
       try
       {
-        return lawspec.runtime.LawSpecFast.Outcome.success(produceRequest(value0, value1, value2));
+        return lawspec.runtime.LawSpecFast.Outcome.success(produceRequest(topicPartition1, maybe1, list1));
       }
       catch (LawSpecRuntime.Failure failure)
       {
@@ -583,15 +586,15 @@ public final class Kafka
 
     /** fetchRequest, with the failure it raises as an Outcome rather than an exception. */
     public lawspec.runtime.LawSpecFast.Outcome<lawspec.data.FetchResult, lawspec.data.KafkaError> tryFetchRequest(
-        lawspec.data.TopicPartition value0,
-        java.lang.Long value1,
-        java.lang.Integer value2,
-        lawspec.data.IsolationLevel value3
+        lawspec.data.TopicPartition topicPartition1,
+        java.lang.Long int64_1,
+        java.lang.Integer int32_1,
+        lawspec.data.IsolationLevel isolationLevel1
     )
     {
       try
       {
-        return lawspec.runtime.LawSpecFast.Outcome.success(fetchRequest(value0, value1, value2, value3));
+        return lawspec.runtime.LawSpecFast.Outcome.success(fetchRequest(topicPartition1, int64_1, int32_1, isolationLevel1));
       }
       catch (LawSpecRuntime.Failure failure)
       {
@@ -607,14 +610,14 @@ public final class Kafka
 
     /** listOffsetsRequest, with the failure it raises as an Outcome rather than an exception. */
     public lawspec.runtime.LawSpecFast.Outcome<java.lang.Long, lawspec.data.KafkaError> tryListOffsetsRequest(
-        lawspec.data.TopicPartition value0,
-        lawspec.data.OffsetSpec value1,
-        lawspec.data.IsolationLevel value2
+        lawspec.data.TopicPartition topicPartition1,
+        lawspec.data.OffsetSpec offsetSpec1,
+        lawspec.data.IsolationLevel isolationLevel1
     )
     {
       try
       {
-        return lawspec.runtime.LawSpecFast.Outcome.success(listOffsetsRequest(value0, value1, value2));
+        return lawspec.runtime.LawSpecFast.Outcome.success(listOffsetsRequest(topicPartition1, offsetSpec1, isolationLevel1));
       }
       catch (LawSpecRuntime.Failure failure)
       {
@@ -630,12 +633,12 @@ public final class Kafka
 
     /** initProducerIdRequest, with the failure it raises as an Outcome rather than an exception. */
     public lawspec.runtime.LawSpecFast.Outcome<lawspec.data.ProducerIdAndEpoch, lawspec.data.KafkaError> tryInitProducerIdRequest(
-        lawspec.runtime.LawSpecRuntime.Maybe<java.lang.String> value0
+        lawspec.runtime.LawSpecRuntime.Maybe<java.lang.String> maybe1
     )
     {
       try
       {
-        return lawspec.runtime.LawSpecFast.Outcome.success(initProducerIdRequest(value0));
+        return lawspec.runtime.LawSpecFast.Outcome.success(initProducerIdRequest(maybe1));
       }
       catch (LawSpecRuntime.Failure failure)
       {
@@ -653,15 +656,15 @@ public final class Kafka
      * addPartitionsToTxnRequest, with the failure it raises as an Outcome rather than an exception.
      */
     public lawspec.runtime.LawSpecFast.Outcome<Void, lawspec.data.KafkaError> tryAddPartitionsToTxnRequest(
-        java.lang.String value0,
-        java.lang.Long value1,
-        java.lang.Short value2,
-        java.util.List<lawspec.data.TopicPartition> value3
+        java.lang.String text1,
+        java.lang.Long int64_1,
+        java.lang.Short int16_1,
+        java.util.List<lawspec.data.TopicPartition> list1
     )
     {
       try
       {
-        addPartitionsToTxnRequest(value0, value1, value2, value3);
+        addPartitionsToTxnRequest(text1, int64_1, int16_1, list1);
         return lawspec.runtime.LawSpecFast.Outcome.success(null);
       }
       catch (LawSpecRuntime.Failure failure)
@@ -678,16 +681,16 @@ public final class Kafka
 
     /** txnOffsetCommitRequest, with the failure it raises as an Outcome rather than an exception. */
     public lawspec.runtime.LawSpecFast.Outcome<Void, lawspec.data.KafkaError> tryTxnOffsetCommitRequest(
-        java.lang.String value0,
-        java.lang.Long value1,
-        java.lang.Short value2,
-        java.lang.String value3,
-        java.util.List<lawspec.data.OffsetEntry> value4
+        java.lang.String text1,
+        java.lang.Long int64_1,
+        java.lang.Short int16_1,
+        java.lang.String text2,
+        java.util.List<lawspec.data.OffsetEntry> list1
     )
     {
       try
       {
-        txnOffsetCommitRequest(value0, value1, value2, value3, value4);
+        txnOffsetCommitRequest(text1, int64_1, int16_1, text2, list1);
         return lawspec.runtime.LawSpecFast.Outcome.success(null);
       }
       catch (LawSpecRuntime.Failure failure)
@@ -704,15 +707,15 @@ public final class Kafka
 
     /** endTxnRequest, with the failure it raises as an Outcome rather than an exception. */
     public lawspec.runtime.LawSpecFast.Outcome<Void, lawspec.data.KafkaError> tryEndTxnRequest(
-        java.lang.String value0,
-        java.lang.Long value1,
-        java.lang.Short value2,
-        java.lang.Boolean value3
+        java.lang.String text1,
+        java.lang.Long int64_1,
+        java.lang.Short int16_1,
+        java.lang.Boolean bool1
     )
     {
       try
       {
-        endTxnRequest(value0, value1, value2, value3);
+        endTxnRequest(text1, int64_1, int16_1, bool1);
         return lawspec.runtime.LawSpecFast.Outcome.success(null);
       }
       catch (LawSpecRuntime.Failure failure)
@@ -729,14 +732,14 @@ public final class Kafka
 
     /** joinGroupRequest, with the failure it raises as an Outcome rather than an exception. */
     public lawspec.runtime.LawSpecFast.Outcome<java.lang.Integer, lawspec.data.KafkaError> tryJoinGroupRequest(
-        java.lang.String value0,
-        java.lang.String value1,
-        java.util.List<java.lang.String> value2
+        java.lang.String text1,
+        java.lang.String text2,
+        java.util.List<java.lang.String> list1
     )
     {
       try
       {
-        return lawspec.runtime.LawSpecFast.Outcome.success(joinGroupRequest(value0, value1, value2));
+        return lawspec.runtime.LawSpecFast.Outcome.success(joinGroupRequest(text1, text2, list1));
       }
       catch (LawSpecRuntime.Failure failure)
       {
@@ -753,14 +756,14 @@ public final class Kafka
     /** syncGroupRequest, with the failure it raises as an Outcome rather than an exception. */
     public lawspec.runtime.LawSpecFast.Outcome<java.util.List<
             lawspec.data.TopicPartition>, lawspec.data.KafkaError> trySyncGroupRequest(
-        java.lang.String value0,
-        java.lang.String value1,
-        java.lang.Integer value2
+        java.lang.String text1,
+        java.lang.String text2,
+        java.lang.Integer int32_1
     )
     {
       try
       {
-        return lawspec.runtime.LawSpecFast.Outcome.success(syncGroupRequest(value0, value1, value2));
+        return lawspec.runtime.LawSpecFast.Outcome.success(syncGroupRequest(text1, text2, int32_1));
       }
       catch (LawSpecRuntime.Failure failure)
       {
@@ -776,14 +779,14 @@ public final class Kafka
 
     /** heartbeatRequest, with the failure it raises as an Outcome rather than an exception. */
     public lawspec.runtime.LawSpecFast.Outcome<Void, lawspec.data.KafkaError> tryHeartbeatRequest(
-        java.lang.String value0,
-        java.lang.String value1,
-        java.lang.Integer value2
+        java.lang.String text1,
+        java.lang.String text2,
+        java.lang.Integer int32_1
     )
     {
       try
       {
-        heartbeatRequest(value0, value1, value2);
+        heartbeatRequest(text1, text2, int32_1);
         return lawspec.runtime.LawSpecFast.Outcome.success(null);
       }
       catch (LawSpecRuntime.Failure failure)
@@ -800,13 +803,13 @@ public final class Kafka
 
     /** leaveGroupRequest, with the failure it raises as an Outcome rather than an exception. */
     public lawspec.runtime.LawSpecFast.Outcome<Void, lawspec.data.KafkaError> tryLeaveGroupRequest(
-        java.lang.String value0,
-        java.lang.String value1
+        java.lang.String text1,
+        java.lang.String text2
     )
     {
       try
       {
-        leaveGroupRequest(value0, value1);
+        leaveGroupRequest(text1, text2);
         return lawspec.runtime.LawSpecFast.Outcome.success(null);
       }
       catch (LawSpecRuntime.Failure failure)
@@ -823,15 +826,15 @@ public final class Kafka
 
     /** offsetCommitRequest, with the failure it raises as an Outcome rather than an exception. */
     public lawspec.runtime.LawSpecFast.Outcome<Void, lawspec.data.KafkaError> tryOffsetCommitRequest(
-        java.lang.String value0,
-        java.lang.String value1,
-        java.lang.Integer value2,
-        java.util.List<lawspec.data.OffsetEntry> value3
+        java.lang.String text1,
+        java.lang.String text2,
+        java.lang.Integer int32_1,
+        java.util.List<lawspec.data.OffsetEntry> list1
     )
     {
       try
       {
-        offsetCommitRequest(value0, value1, value2, value3);
+        offsetCommitRequest(text1, text2, int32_1, list1);
         return lawspec.runtime.LawSpecFast.Outcome.success(null);
       }
       catch (LawSpecRuntime.Failure failure)
@@ -848,13 +851,13 @@ public final class Kafka
 
     /** createTopic, with the failure it raises as an Outcome rather than an exception. */
     public lawspec.runtime.LawSpecFast.Outcome<Void, lawspec.data.KafkaError> tryCreateTopic(
-        java.lang.String value0,
-        java.lang.Integer value1
+        java.lang.String text1,
+        java.lang.Integer int32_1
     )
     {
       try
       {
-        createTopic(value0, value1);
+        createTopic(text1, int32_1);
         return lawspec.runtime.LawSpecFast.Outcome.success(null);
       }
       catch (LawSpecRuntime.Failure failure)
@@ -871,13 +874,13 @@ public final class Kafka
 
     /** createPartitions, with the failure it raises as an Outcome rather than an exception. */
     public lawspec.runtime.LawSpecFast.Outcome<Void, lawspec.data.KafkaError> tryCreatePartitions(
-        java.lang.String value0,
-        java.lang.Integer value1
+        java.lang.String text1,
+        java.lang.Integer int32_1
     )
     {
       try
       {
-        createPartitions(value0, value1);
+        createPartitions(text1, int32_1);
         return lawspec.runtime.LawSpecFast.Outcome.success(null);
       }
       catch (LawSpecRuntime.Failure failure)
@@ -894,14 +897,14 @@ public final class Kafka
 
     /** listOffsets, with the failure it raises as an Outcome rather than an exception. */
     public lawspec.runtime.LawSpecFast.Outcome<java.lang.Long, lawspec.data.KafkaError> tryListOffsets(
-        lawspec.data.TopicPartition value0,
-        lawspec.data.OffsetSpec value1,
-        lawspec.data.IsolationLevel value2
+        lawspec.data.TopicPartition topicPartition1,
+        lawspec.data.OffsetSpec offsetSpec1,
+        lawspec.data.IsolationLevel isolationLevel1
     )
     {
       try
       {
-        return lawspec.runtime.LawSpecFast.Outcome.success(listOffsets(value0, value1, value2));
+        return lawspec.runtime.LawSpecFast.Outcome.success(listOffsets(topicPartition1, offsetSpec1, isolationLevel1));
       }
       catch (LawSpecRuntime.Failure failure)
       {
@@ -917,14 +920,14 @@ public final class Kafka
 
     /** joinGroup, with the failure it raises as an Outcome rather than an exception. */
     public lawspec.runtime.LawSpecFast.Outcome<java.lang.Integer, lawspec.data.KafkaError> tryJoinGroup(
-        java.lang.String value0,
-        java.lang.String value1,
-        java.util.List<java.lang.String> value2
+        java.lang.String text1,
+        java.lang.String text2,
+        java.util.List<java.lang.String> list1
     )
     {
       try
       {
-        return lawspec.runtime.LawSpecFast.Outcome.success(joinGroup(value0, value1, value2));
+        return lawspec.runtime.LawSpecFast.Outcome.success(joinGroup(text1, text2, list1));
       }
       catch (LawSpecRuntime.Failure failure)
       {
@@ -941,14 +944,14 @@ public final class Kafka
     /** syncGroup, with the failure it raises as an Outcome rather than an exception. */
     public lawspec.runtime.LawSpecFast.Outcome<java.util.List<
             lawspec.data.TopicPartition>, lawspec.data.KafkaError> trySyncGroup(
-        java.lang.String value0,
-        java.lang.String value1,
-        java.lang.Integer value2
+        java.lang.String text1,
+        java.lang.String text2,
+        java.lang.Integer int32_1
     )
     {
       try
       {
-        return lawspec.runtime.LawSpecFast.Outcome.success(syncGroup(value0, value1, value2));
+        return lawspec.runtime.LawSpecFast.Outcome.success(syncGroup(text1, text2, int32_1));
       }
       catch (LawSpecRuntime.Failure failure)
       {
@@ -964,14 +967,14 @@ public final class Kafka
 
     /** heartbeat, with the failure it raises as an Outcome rather than an exception. */
     public lawspec.runtime.LawSpecFast.Outcome<Void, lawspec.data.KafkaError> tryHeartbeat(
-        java.lang.String value0,
-        java.lang.String value1,
-        java.lang.Integer value2
+        java.lang.String text1,
+        java.lang.String text2,
+        java.lang.Integer int32_1
     )
     {
       try
       {
-        heartbeat(value0, value1, value2);
+        heartbeat(text1, text2, int32_1);
         return lawspec.runtime.LawSpecFast.Outcome.success(null);
       }
       catch (LawSpecRuntime.Failure failure)
@@ -988,13 +991,13 @@ public final class Kafka
 
     /** leaveGroup, with the failure it raises as an Outcome rather than an exception. */
     public lawspec.runtime.LawSpecFast.Outcome<Void, lawspec.data.KafkaError> tryLeaveGroup(
-        java.lang.String value0,
-        java.lang.String value1
+        java.lang.String text1,
+        java.lang.String text2
     )
     {
       try
       {
-        leaveGroup(value0, value1);
+        leaveGroup(text1, text2);
         return lawspec.runtime.LawSpecFast.Outcome.success(null);
       }
       catch (LawSpecRuntime.Failure failure)
@@ -1011,15 +1014,15 @@ public final class Kafka
 
     /** commitOffsets, with the failure it raises as an Outcome rather than an exception. */
     public lawspec.runtime.LawSpecFast.Outcome<Void, lawspec.data.KafkaError> tryCommitOffsets(
-        java.lang.String value0,
-        java.lang.String value1,
-        java.lang.Integer value2,
-        java.util.List<lawspec.data.OffsetEntry> value3
+        java.lang.String text1,
+        java.lang.String text2,
+        java.lang.Integer int32_1,
+        java.util.List<lawspec.data.OffsetEntry> list1
     )
     {
       try
       {
-        commitOffsets(value0, value1, value2, value3);
+        commitOffsets(text1, text2, int32_1, list1);
         return lawspec.runtime.LawSpecFast.Outcome.success(null);
       }
       catch (LawSpecRuntime.Failure failure)
@@ -1054,13 +1057,13 @@ public final class Kafka
 
     @Override
     public synchronized java.lang.Integer choosePartition(
-        lawspec.runtime.LawSpecRuntime.Maybe<byte[]> value0,
-        java.lang.Integer value1
+        lawspec.runtime.LawSpecRuntime.Maybe<byte[]> maybe1,
+        java.lang.Integer int32_1
     )
     {
       var result = lawspec.runtime.LawSpecTyped.murmurPartitionerChoosePartition(
-          lawspec.runtime.LawSpecTyped.fromNativeMaybeBytes(value0),
-          lawspec.runtime.LawSpecTyped.fromNativeInt32(value1)
+          lawspec.runtime.LawSpecTyped.fromNativeMaybeBytes(maybe1),
+          lawspec.runtime.LawSpecTyped.fromNativeInt32(int32_1)
       );
       return lawspec.runtime.LawSpecTyped.toNativeInt32(result);
     }
@@ -1088,12 +1091,12 @@ public final class Kafka
     @Override
     public synchronized lawspec.runtime.LawSpecRuntime.Either<
             lawspec.data.KafkaError,
-            lawspec.data.RecordMetadata> send(lawspec.data.ProducerRecord value0)
+            lawspec.data.RecordMetadata> send(lawspec.data.ProducerRecord producerRecord1)
     {
       var pair = lawspec.runtime.LawSpecTyped.kafkaProducerSend(
           symbols,
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeProducerRecord(value0)
+          lawspec.runtime.LawSpecTyped.fromNativeProducerRecord(producerRecord1)
       );
       state = pair.second;
       var result = pair.first;
@@ -1183,11 +1186,11 @@ public final class Kafka
     }
 
     @Override
-    public synchronized void assign(java.util.List<lawspec.data.TopicPartition> value0)
+    public synchronized void assign(java.util.List<lawspec.data.TopicPartition> list1)
     {
       var pair = lawspec.runtime.LawSpecTyped.kafkaConsumerAssign(
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(value0)
+          lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(list1)
       );
       state = pair.second;
       var result = pair.first;
@@ -1198,17 +1201,17 @@ public final class Kafka
             lawspec.data.KafkaError,
             java.util.List<
                     lawspec.data.TopicPartition>> subscribe(
-        java.lang.String value0,
-        java.lang.String value1,
-        java.util.List<java.lang.String> value2
+        java.lang.String text1,
+        java.lang.String text2,
+        java.util.List<java.lang.String> list1
     )
     {
       var pair = lawspec.runtime.LawSpecTyped.kafkaConsumerSubscribe(
           symbols,
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-          lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-          lawspec.runtime.LawSpecTyped.fromNativeListText(value2)
+          lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+          lawspec.runtime.LawSpecTyped.fromNativeText(text2),
+          lawspec.runtime.LawSpecTyped.fromNativeListText(list1)
       );
       state = pair.second;
       var result = pair.first;
@@ -1218,12 +1221,12 @@ public final class Kafka
     @Override
     public synchronized lawspec.runtime.LawSpecRuntime.Either<
             lawspec.data.KafkaError,
-            java.util.List<lawspec.data.ConsumerRecord>> poll(java.lang.Integer value0)
+            java.util.List<lawspec.data.ConsumerRecord>> poll(java.lang.Integer int32_1)
     {
       var pair = lawspec.runtime.LawSpecTyped.kafkaConsumerPoll(
           symbols,
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeInt32(value0)
+          lawspec.runtime.LawSpecTyped.fromNativeInt32(int32_1)
       );
       state = pair.second;
       var result = pair.first;
@@ -1244,14 +1247,14 @@ public final class Kafka
     public synchronized lawspec.runtime.LawSpecRuntime.Either<
             lawspec.data.KafkaError,
             lawspec.runtime.LawSpecRuntime.Value> seek(
-        lawspec.data.TopicPartition value0,
-        java.lang.Long value1
+        lawspec.data.TopicPartition topicPartition1,
+        java.lang.Long int64_1
     )
     {
       var pair = lawspec.runtime.LawSpecTyped.kafkaConsumerSeek(
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0),
-          lawspec.runtime.LawSpecTyped.fromNativeInt64(value1)
+          lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(topicPartition1),
+          lawspec.runtime.LawSpecTyped.fromNativeInt64(int64_1)
       );
       state = pair.second;
       var result = pair.first;
@@ -1260,12 +1263,13 @@ public final class Kafka
 
     @Override
     public synchronized lawspec.runtime.LawSpecRuntime.Either<
-            lawspec.data.KafkaError, java.lang.Long> position(lawspec.data.TopicPartition value0)
+            lawspec.data.KafkaError,
+            java.lang.Long> position(lawspec.data.TopicPartition topicPartition1)
     {
       var pair = lawspec.runtime.LawSpecTyped.kafkaConsumerPosition(
           symbols,
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0)
+          lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(topicPartition1)
       );
       state = pair.second;
       var result = pair.first;
@@ -1274,12 +1278,12 @@ public final class Kafka
 
     @Override
     public synchronized lawspec.runtime.LawSpecRuntime.Maybe<
-            java.lang.Long> committedOffset(lawspec.data.TopicPartition value0)
+            java.lang.Long> committedOffset(lawspec.data.TopicPartition topicPartition1)
     {
       var pair = lawspec.runtime.LawSpecTyped.kafkaConsumerCommittedOffset(
           symbols,
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0)
+          lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(topicPartition1)
       );
       state = pair.second;
       var result = pair.first;
@@ -1287,11 +1291,11 @@ public final class Kafka
     }
 
     @Override
-    public synchronized void setIsolationLevel(lawspec.data.IsolationLevel value0)
+    public synchronized void setIsolationLevel(lawspec.data.IsolationLevel isolationLevel1)
     {
       var pair = lawspec.runtime.LawSpecTyped.kafkaConsumerSetIsolationLevel(
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeIsolationLevel(value0)
+          lawspec.runtime.LawSpecTyped.fromNativeIsolationLevel(isolationLevel1)
       );
       state = pair.second;
       var result = pair.first;
@@ -1353,12 +1357,12 @@ public final class Kafka
     @Override
     public synchronized lawspec.runtime.LawSpecRuntime.Either<
             lawspec.data.KafkaError,
-            lawspec.data.ProducerIdAndEpoch> initTransactions(java.lang.String value0)
+            lawspec.data.ProducerIdAndEpoch> initTransactions(java.lang.String text1)
     {
       var pair = lawspec.runtime.LawSpecTyped.kafkaTransactionsInitTransactions(
           symbols,
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeText(value0)
+          lawspec.runtime.LawSpecTyped.fromNativeText(text1)
       );
       state = pair.second;
       var result = pair.first;
@@ -1379,13 +1383,13 @@ public final class Kafka
     public synchronized lawspec.runtime.LawSpecRuntime.Either<
             lawspec.data.KafkaError,
             lawspec.runtime.LawSpecRuntime.Value> addPartitionsToTransaction(
-        java.util.List<lawspec.data.TopicPartition> value0
+        java.util.List<lawspec.data.TopicPartition> list1
     )
     {
       var pair = lawspec.runtime.LawSpecTyped.kafkaTransactionsAddPartitionsToTransaction(
           symbols,
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(value0)
+          lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(list1)
       );
       state = pair.second;
       var result = pair.first;
@@ -1395,12 +1399,14 @@ public final class Kafka
     @Override
     public synchronized lawspec.runtime.LawSpecRuntime.Either<
             lawspec.data.KafkaError,
-            lawspec.data.RecordMetadata> sendInTransaction(lawspec.data.ProducerRecord value0)
+            lawspec.data.RecordMetadata> sendInTransaction(
+        lawspec.data.ProducerRecord producerRecord1
+    )
     {
       var pair = lawspec.runtime.LawSpecTyped.kafkaTransactionsSendInTransaction(
           symbols,
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeProducerRecord(value0)
+          lawspec.runtime.LawSpecTyped.fromNativeProducerRecord(producerRecord1)
       );
       state = pair.second;
       var result = pair.first;
@@ -1411,15 +1417,15 @@ public final class Kafka
     public synchronized lawspec.runtime.LawSpecRuntime.Either<
             lawspec.data.KafkaError,
             lawspec.runtime.LawSpecRuntime.Value> sendOffsetsToTransaction(
-        java.lang.String value0,
-        java.util.List<lawspec.data.OffsetEntry> value1
+        java.lang.String text1,
+        java.util.List<lawspec.data.OffsetEntry> list1
     )
     {
       var pair = lawspec.runtime.LawSpecTyped.kafkaTransactionsSendOffsetsToTransaction(
           symbols,
           state,
-          lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-          lawspec.runtime.LawSpecTyped.fromNativeListOffsetEntry(value1)
+          lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+          lawspec.runtime.LawSpecTyped.fromNativeListOffsetEntry(list1)
       );
       state = pair.second;
       var result = pair.first;

@@ -14,39 +14,38 @@ public final class LawSpecDefinitionBodies
   private static final lawspec.runtime.LawSpecSchema SCHEMA =
       lawspec.runtime.LawSpecDataSchema.create();
 
-  public static Value boundedInt16(Map<String, Object> symbols, Value input0)
+  public static Value boundedInt16(Map<String, Object> symbols, Value valueValue)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_MAYBE_INT16.encode(
         lawspec.runtime.LawSpecTyped.boundedInt16(
-            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(valueValue)));
   }
 
-  public static Value boundedInt32(Map<String, Object> symbols, Value input0)
+  public static Value boundedInt32(Map<String, Object> symbols, Value valueValue)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_MAYBE_INT32.encode(
         lawspec.runtime.LawSpecTyped.boundedInt32(
-            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(valueValue)));
   }
 
-  public static Value boundedInt64(Map<String, Object> symbols, Value input0)
+  public static Value boundedInt64(Map<String, Object> symbols, Value valueValue)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_MAYBE_INT64.encode(
         lawspec.runtime.LawSpecTyped.boundedInt64(
-            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(valueValue)));
   }
 
-  public static Value boundedInt8(Map<String, Object> symbols, Value input0)
+  public static Value boundedInt8(Map<String, Object> symbols, Value valueValue)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_MAYBE_INT8.encode(
         lawspec.runtime.LawSpecTyped.boundedInt8(
-            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(valueValue)));
   }
 
-  public static Value boundedIntSize(Map<String, Object> symbols, Value input0)
+  public static Value boundedIntSize(Map<String, Object> symbols, Value valueValue)
   {
     try
     {
-      var valueValue = input0;
       var result =
           (LawSpecRuntime.truth(
                   LawSpecRuntime.bool(
@@ -84,25 +83,24 @@ public final class LawSpecDefinitionBodies
     }
   }
 
-  public static Value boundedUint16(Map<String, Object> symbols, Value input0)
+  public static Value boundedUint16(Map<String, Object> symbols, Value valueValue)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_MAYBE_UINT16.encode(
         lawspec.runtime.LawSpecTyped.boundedUint16(
-            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(valueValue)));
   }
 
-  public static Value boundedUint32(Map<String, Object> symbols, Value input0)
+  public static Value boundedUint32(Map<String, Object> symbols, Value valueValue)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_MAYBE_UINT32.encode(
         lawspec.runtime.LawSpecTyped.boundedUint32(
-            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(valueValue)));
   }
 
-  public static Value boundedUint64(Map<String, Object> symbols, Value input0)
+  public static Value boundedUint64(Map<String, Object> symbols, Value valueValue)
   {
     try
     {
-      var valueValue = input0;
       var result =
           (LawSpecRuntime.truth(
                   LawSpecRuntime.bool(
@@ -138,18 +136,17 @@ public final class LawSpecDefinitionBodies
     }
   }
 
-  public static Value boundedUint8(Map<String, Object> symbols, Value input0)
+  public static Value boundedUint8(Map<String, Object> symbols, Value valueValue)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_MAYBE_UINT8.encode(
         lawspec.runtime.LawSpecTyped.boundedUint8(
-            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(valueValue)));
   }
 
-  public static Value boundedUintPtr(Map<String, Object> symbols, Value input0)
+  public static Value boundedUintPtr(Map<String, Object> symbols, Value valueValue)
   {
     try
     {
-      var valueValue = input0;
       var result =
           (LawSpecRuntime.truth(
                   LawSpecRuntime.bool(
@@ -185,11 +182,10 @@ public final class LawSpecDefinitionBodies
     }
   }
 
-  public static Value boundedUintSize(Map<String, Object> symbols, Value input0)
+  public static Value boundedUintSize(Map<String, Object> symbols, Value valueValue)
   {
     try
     {
-      var valueValue = input0;
       var result =
           (LawSpecRuntime.truth(
                   LawSpecRuntime.bool(
@@ -225,39 +221,38 @@ public final class LawSpecDefinitionBodies
     }
   }
 
-  public static Value saturatingInt16(Map<String, Object> symbols, Value input0)
+  public static Value saturatingInt16(Map<String, Object> symbols, Value valueValue)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_INT16.encode(
         lawspec.runtime.LawSpecTyped.saturatingInt16(
-            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(valueValue)));
   }
 
-  public static Value saturatingInt32(Map<String, Object> symbols, Value input0)
+  public static Value saturatingInt32(Map<String, Object> symbols, Value valueValue)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_INT32.encode(
         lawspec.runtime.LawSpecTyped.saturatingInt32(
-            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(valueValue)));
   }
 
-  public static Value saturatingInt64(Map<String, Object> symbols, Value input0)
+  public static Value saturatingInt64(Map<String, Object> symbols, Value valueValue)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_INT64.encode(
         lawspec.runtime.LawSpecTyped.saturatingInt64(
-            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(valueValue)));
   }
 
-  public static Value saturatingInt8(Map<String, Object> symbols, Value input0)
+  public static Value saturatingInt8(Map<String, Object> symbols, Value valueValue)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_INT8.encode(
         lawspec.runtime.LawSpecTyped.saturatingInt8(
-            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(valueValue)));
   }
 
-  public static Value saturatingIntSize(Map<String, Object> symbols, Value input0)
+  public static Value saturatingIntSize(Map<String, Object> symbols, Value valueValue)
   {
     try
     {
-      var valueValue = input0;
       var result =
           (LawSpecRuntime.truth(
                   LawSpecRuntime.binary(
@@ -297,25 +292,24 @@ public final class LawSpecDefinitionBodies
     }
   }
 
-  public static Value saturatingUint16(Map<String, Object> symbols, Value input0)
+  public static Value saturatingUint16(Map<String, Object> symbols, Value valueValue)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_UINT16.encode(
         lawspec.runtime.LawSpecTyped.saturatingUint16(
-            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(valueValue)));
   }
 
-  public static Value saturatingUint32(Map<String, Object> symbols, Value input0)
+  public static Value saturatingUint32(Map<String, Object> symbols, Value valueValue)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_UINT32.encode(
         lawspec.runtime.LawSpecTyped.saturatingUint32(
-            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(valueValue)));
   }
 
-  public static Value saturatingUint64(Map<String, Object> symbols, Value input0)
+  public static Value saturatingUint64(Map<String, Object> symbols, Value valueValue)
   {
     try
     {
-      var valueValue = input0;
       var result =
           (LawSpecRuntime.truth(
                   LawSpecRuntime.binary(
@@ -354,18 +348,17 @@ public final class LawSpecDefinitionBodies
     }
   }
 
-  public static Value saturatingUint8(Map<String, Object> symbols, Value input0)
+  public static Value saturatingUint8(Map<String, Object> symbols, Value valueValue)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_UINT8.encode(
         lawspec.runtime.LawSpecTyped.saturatingUint8(
-            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(valueValue)));
   }
 
-  public static Value saturatingUintPtr(Map<String, Object> symbols, Value input0)
+  public static Value saturatingUintPtr(Map<String, Object> symbols, Value valueValue)
   {
     try
     {
-      var valueValue = input0;
       var result =
           (LawSpecRuntime.truth(
                   LawSpecRuntime.binary(
@@ -404,11 +397,10 @@ public final class LawSpecDefinitionBodies
     }
   }
 
-  public static Value saturatingUintSize(Map<String, Object> symbols, Value input0)
+  public static Value saturatingUintSize(Map<String, Object> symbols, Value valueValue)
   {
     try
     {
-      var valueValue = input0;
       var result =
           (LawSpecRuntime.truth(
                   LawSpecRuntime.binary(
@@ -447,39 +439,38 @@ public final class LawSpecDefinitionBodies
     }
   }
 
-  public static Value wrappingInt16(Map<String, Object> symbols, Value input0)
+  public static Value wrappingInt16(Map<String, Object> symbols, Value valueValue)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_INT16.encode(
         lawspec.runtime.LawSpecTyped.wrappingInt16(
-            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(valueValue)));
   }
 
-  public static Value wrappingInt32(Map<String, Object> symbols, Value input0)
+  public static Value wrappingInt32(Map<String, Object> symbols, Value valueValue)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_INT32.encode(
         lawspec.runtime.LawSpecTyped.wrappingInt32(
-            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(valueValue)));
   }
 
-  public static Value wrappingInt64(Map<String, Object> symbols, Value input0)
+  public static Value wrappingInt64(Map<String, Object> symbols, Value valueValue)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_INT64.encode(
         lawspec.runtime.LawSpecTyped.wrappingInt64(
-            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(valueValue)));
   }
 
-  public static Value wrappingInt8(Map<String, Object> symbols, Value input0)
+  public static Value wrappingInt8(Map<String, Object> symbols, Value valueValue)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_INT8.encode(
         lawspec.runtime.LawSpecTyped.wrappingInt8(
-            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(valueValue)));
   }
 
-  public static Value wrappingIntSize(Map<String, Object> symbols, Value input0)
+  public static Value wrappingIntSize(Map<String, Object> symbols, Value valueValue)
   {
     try
     {
-      var valueValue = input0;
       var result =
           LawSpecRuntime.block(() -> {
             var r = LawSpecRuntime.binary(
@@ -564,25 +555,24 @@ public final class LawSpecDefinitionBodies
     }
   }
 
-  public static Value wrappingUint16(Map<String, Object> symbols, Value input0)
+  public static Value wrappingUint16(Map<String, Object> symbols, Value valueValue)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_UINT16.encode(
         lawspec.runtime.LawSpecTyped.wrappingUint16(
-            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(valueValue)));
   }
 
-  public static Value wrappingUint32(Map<String, Object> symbols, Value input0)
+  public static Value wrappingUint32(Map<String, Object> symbols, Value valueValue)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_UINT32.encode(
         lawspec.runtime.LawSpecTyped.wrappingUint32(
-            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(valueValue)));
   }
 
-  public static Value wrappingUint64(Map<String, Object> symbols, Value input0)
+  public static Value wrappingUint64(Map<String, Object> symbols, Value valueValue)
   {
     try
     {
-      var valueValue = input0;
       var result =
           LawSpecRuntime.block(() -> {
             var r = LawSpecRuntime.binary(
@@ -657,18 +647,17 @@ public final class LawSpecDefinitionBodies
     }
   }
 
-  public static Value wrappingUint8(Map<String, Object> symbols, Value input0)
+  public static Value wrappingUint8(Map<String, Object> symbols, Value valueValue)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_UINT8.encode(
         lawspec.runtime.LawSpecTyped.wrappingUint8(
-            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(valueValue)));
   }
 
-  public static Value wrappingUintPtr(Map<String, Object> symbols, Value input0)
+  public static Value wrappingUintPtr(Map<String, Object> symbols, Value valueValue)
   {
     try
     {
-      var valueValue = input0;
       var result =
           LawSpecRuntime.block(() -> {
             var r = LawSpecRuntime.binary(
@@ -743,11 +732,10 @@ public final class LawSpecDefinitionBodies
     }
   }
 
-  public static Value wrappingUintSize(Map<String, Object> symbols, Value input0)
+  public static Value wrappingUintSize(Map<String, Object> symbols, Value valueValue)
   {
     try
     {
-      var valueValue = input0;
       var result =
           LawSpecRuntime.block(() -> {
             var r = LawSpecRuntime.binary(
@@ -822,6100 +810,5900 @@ public final class LawSpecDefinitionBodies
     }
   }
 
-  public static Value matchersMatchesRegex(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value matchersMatchesRegex(Map<String, Object> symbols, Value t, Value r)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_BOOL.encode(
         lawspec.runtime.LawSpecTyped.matchersMatchesRegex(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_REGEX.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(t),
+            lawspec.runtime.LawSpecTyped.CODEC_REGEX.decode(r)));
   }
 
-  public static Value allAtLeast(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value allAtLeast(Map<String, Object> symbols, Value floor, Value xs)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_BOOL.encode(
         lawspec.runtime.LawSpecTyped.allAtLeast(
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_INT64.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(floor),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_INT64.decode(xs)));
   }
 
-  public static Value assignmentIn(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value assignmentIn(Map<String, Object> symbols, Value m, Value ms)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.encode(
         lawspec.runtime.LawSpecTyped.assignmentIn(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_MEMBER_ASSIGNMENT.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(m),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_MEMBER_ASSIGNMENT.decode(ms)));
   }
 
   public static Value clusterAddPartitionsToTxnRequest(
       Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4)
+      Value state,
+      Value text1,
+      Value int641,
+      Value int161,
+      Value list1)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_UNIT_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.clusterAddPartitionsToTxnRequest(
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_INT16.decode(input3),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(input4)));
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(state),
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(text1),
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(int641),
+            lawspec.runtime.LawSpecTyped.CODEC_INT16.decode(int161),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(list1)));
   }
 
   public static Value clusterCommitOffsets(
-      Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4)
+      Map<String, Object> symbols, Value state, Value text1, Value text2, Value int321, Value list1)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_UNIT_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.clusterCommitOffsets(
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(input3),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_OFFSET_ENTRY.decode(input4)));
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(state),
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(text1),
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(text2),
+            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(int321),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_OFFSET_ENTRY.decode(list1)));
   }
 
   public static Value clusterCreatePartitions(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value state, Value text1, Value int321)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_UNIT_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.clusterCreatePartitions(
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(state),
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(text1),
+            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(int321)));
   }
 
   public static Value clusterCreatePartitionsRequest(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value state, Value text1, Value int321)
   {
-    return clusterCreatePartitions(symbols, input0, input1, input2);
+    return clusterCreatePartitions(symbols, state, text1, int321);
   }
 
   public static Value clusterCreateTopic(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value state, Value text1, Value int321)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_UNIT_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.clusterCreateTopic(
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(state),
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(text1),
+            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(int321)));
   }
 
   public static Value clusterCreateTopicsRequest(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value state, Value text1, Value int321)
   {
-    return clusterCreateTopic(symbols, input0, input1, input2);
+    return clusterCreateTopic(symbols, state, text1, int321);
   }
 
-  public static Value clusterDescribeGroup(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value clusterDescribeGroup(Map<String, Object> symbols, Value state, Value text1)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_GROUP_VIEW_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.clusterDescribeGroup(
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(state),
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(text1)));
   }
 
   public static Value clusterDescribeGroupRequest(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value state, Value text1)
   {
-    return clusterDescribeGroup(symbols, input0, input1);
+    return clusterDescribeGroup(symbols, state, text1);
   }
 
   public static Value clusterEndTxnRequest(
       Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4)
+      Value state,
+      Value text1,
+      Value int641,
+      Value int161,
+      Value bool1)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_UNIT_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.clusterEndTxnRequest(
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_INT16.decode(input3),
-            lawspec.runtime.LawSpecTyped.CODEC_BOOL.decode(input4)));
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(state),
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(text1),
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(int641),
+            lawspec.runtime.LawSpecTyped.CODEC_INT16.decode(int161),
+            lawspec.runtime.LawSpecTyped.CODEC_BOOL.decode(bool1)));
   }
 
   public static Value clusterFetchOffset(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value state, Value text1, Value topicPartition1)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_MAYBE_INT64_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.clusterFetchOffset(
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(state),
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(text1),
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(topicPartition1)));
   }
 
   public static Value clusterFetchRequest(
       Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4)
+      Value state,
+      Value topicPartition1,
+      Value int641,
+      Value int321,
+      Value isolationLevel1)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_FETCH_RESULT_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.clusterFetchRequest(
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(input3),
-            lawspec.runtime.LawSpecTyped.CODEC_ISOLATION_LEVEL.decode(input4)));
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(state),
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(topicPartition1),
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(int641),
+            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(int321),
+            lawspec.runtime.LawSpecTyped.CODEC_ISOLATION_LEVEL.decode(isolationLevel1)));
   }
 
   public static Value clusterHeartbeat(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value state, Value text1, Value text2, Value int321)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_UNIT_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.clusterHeartbeat(
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(input3)));
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(state),
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(text1),
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(text2),
+            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(int321)));
   }
 
   public static Value clusterHeartbeatRequest(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value state, Value text1, Value text2, Value int321)
   {
-    return clusterHeartbeat(symbols, input0, input1, input2, input3);
+    return clusterHeartbeat(symbols, state, text1, text2, int321);
   }
 
   public static Value clusterInitProducerIdRequest(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value state, Value maybe1)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_PRODUCER_ID_AND_EPOCH_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.clusterInitProducerIdRequest(
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_MAYBE_TEXT.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(state),
+            lawspec.runtime.LawSpecTyped.CODEC_MAYBE_TEXT.decode(maybe1)));
   }
 
   public static Value clusterJoinGroup(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value state, Value text1, Value text2, Value list1)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_INT32_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.clusterJoinGroup(
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(input3)));
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(state),
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(text1),
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(text2),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(list1)));
   }
 
   public static Value clusterJoinGroupRequest(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value state, Value text1, Value text2, Value list1)
   {
-    return clusterJoinGroup(symbols, input0, input1, input2, input3);
+    return clusterJoinGroup(symbols, state, text1, text2, list1);
   }
 
   public static Value clusterLeaveGroup(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value state, Value text1, Value text2)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_UNIT_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.clusterLeaveGroup(
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(state),
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(text1),
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(text2)));
   }
 
   public static Value clusterLeaveGroupRequest(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value state, Value text1, Value text2)
   {
-    return clusterLeaveGroup(symbols, input0, input1, input2);
+    return clusterLeaveGroup(symbols, state, text1, text2);
   }
 
   public static Value clusterListOffsets(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols,
+      Value state,
+      Value topicPartition1,
+      Value offsetSpec1,
+      Value isolationLevel1)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_INT64_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.clusterListOffsets(
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_OFFSET_SPEC.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_ISOLATION_LEVEL.decode(input3)));
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(state),
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(topicPartition1),
+            lawspec.runtime.LawSpecTyped.CODEC_OFFSET_SPEC.decode(offsetSpec1),
+            lawspec.runtime.LawSpecTyped.CODEC_ISOLATION_LEVEL.decode(isolationLevel1)));
   }
 
   public static Value clusterListOffsetsRequest(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols,
+      Value state,
+      Value topicPartition1,
+      Value offsetSpec1,
+      Value isolationLevel1)
   {
-    return clusterListOffsets(symbols, input0, input1, input2, input3);
+    return clusterListOffsets(symbols, state, topicPartition1, offsetSpec1, isolationLevel1);
   }
 
-  public static Value clusterMetadataRequest(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value clusterMetadataRequest(Map<String, Object> symbols, Value state, Value text1)
   {
-    return clusterPartitionsFor(symbols, input0, input1);
+    return clusterPartitionsFor(symbols, state, text1);
   }
 
   public static Value clusterOffsetCommitRequest(
-      Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4)
+      Map<String, Object> symbols, Value state, Value text1, Value text2, Value int321, Value list1)
   {
-    return clusterCommitOffsets(symbols, input0, input1, input2, input3, input4);
+    return clusterCommitOffsets(symbols, state, text1, text2, int321, list1);
   }
 
   public static Value clusterOffsetFetchRequest(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value state, Value text1, Value topicPartition1)
   {
-    return clusterFetchOffset(symbols, input0, input1, input2);
+    return clusterFetchOffset(symbols, state, text1, topicPartition1);
   }
 
-  public static Value clusterPartitionsFor(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value clusterPartitionsFor(Map<String, Object> symbols, Value state, Value text1)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_MAYBE_INT32_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.clusterMetadataRequest(
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(state),
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(text1)));
   }
 
   public static Value clusterProduceRequest(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value state, Value topicPartition1, Value maybe1, Value list1)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_INT64_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.clusterProduceRequest(
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_MAYBE_PRODUCER_TAG.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_RECORD.decode(input3)));
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(state),
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(topicPartition1),
+            lawspec.runtime.LawSpecTyped.CODEC_MAYBE_PRODUCER_TAG.decode(maybe1),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_RECORD.decode(list1)));
   }
 
-  public static Value clusterStart(Map<String, Object> symbols, Value input0)
+  public static Value clusterStart(Map<String, Object> symbols, Value unitValue)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.clusterStart(
-            lawspec.runtime.LawSpecTyped.CODEC_UNIT.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_UNIT.decode(unitValue)));
   }
 
   public static Value clusterSyncGroup(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value state, Value text1, Value text2, Value int321)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_LIST_TOPIC_PARTITION_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.clusterSyncGroup(
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(input3)));
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(state),
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(text1),
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(text2),
+            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(int321)));
   }
 
   public static Value clusterSyncGroupRequest(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value state, Value text1, Value text2, Value int321)
   {
-    return clusterSyncGroup(symbols, input0, input1, input2, input3);
+    return clusterSyncGroup(symbols, state, text1, text2, int321);
   }
 
   public static Value clusterTxnOffsetCommitRequest(
       Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4,
-      Value input5)
+      Value state,
+      Value text1,
+      Value int641,
+      Value int161,
+      Value text2,
+      Value list1)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_UNIT_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.clusterTxnOffsetCommitRequest(
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_INT16.decode(input3),
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input4),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_OFFSET_ENTRY.decode(input5)));
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(state),
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(text1),
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(int641),
+            lawspec.runtime.LawSpecTyped.CODEC_INT16.decode(int161),
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(text2),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_OFFSET_ENTRY.decode(list1)));
   }
 
-  public static Value committedFrom(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value committedFrom(Map<String, Object> symbols, Value tp, Value offset)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_RECORD.encode(
         lawspec.runtime.LawSpecTyped.committedFrom(
             symbols,
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(tp),
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(offset)));
   }
 
-  public static Value consumerAssign(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value consumerAssign(Map<String, Object> symbols, Value tps, Value c)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_UNIT_CONSUMER_STATE.encode(
         lawspec.runtime.LawSpecTyped.consumerAssign(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(tps),
+            lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(c)));
   }
 
-  public static Value consumerClose(Map<String, Object> symbols, Value input0)
+  public static Value consumerClose(Map<String, Object> symbols, Value c)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_UNIT_CONSUMER_STATE.encode(
         lawspec.runtime.LawSpecTyped.consumerClose(
-            symbols, lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(input0)));
+            symbols, lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(c)));
   }
 
-  public static Value consumerCommit(Map<String, Object> symbols, Value input0)
+  public static Value consumerCommit(Map<String, Object> symbols, Value c)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_EITHER_KAFKA_ERROR_UNIT_CONSUMER_STATE.encode(
         lawspec.runtime.LawSpecTyped.consumerCommit(
-            symbols, lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(input0)));
+            symbols, lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(c)));
   }
 
-  public static Value consumerCommitted(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value consumerCommitted(Map<String, Object> symbols, Value tp, Value c)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_MAYBE_INT64_CONSUMER_STATE.encode(
         lawspec.runtime.LawSpecTyped.consumerCommitted(
             symbols,
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(tp),
+            lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(c)));
   }
 
-  public static Value consumerIsolation(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value consumerIsolation(Map<String, Object> symbols, Value level, Value c)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_UNIT_CONSUMER_STATE.encode(
         lawspec.runtime.LawSpecTyped.consumerIsolation(
-            lawspec.runtime.LawSpecTyped.CODEC_ISOLATION_LEVEL.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_ISOLATION_LEVEL.decode(level),
+            lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(c)));
   }
 
   public static Value consumerJoin(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value g, Value m, Value topics, Value c)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_EITHER_KAFKA_ERROR_LIST_TOPIC_PARTITION_CONSUMER_STATE
         .encode(
             lawspec.runtime.LawSpecTyped.consumerJoin(
                 symbols,
-                lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-                lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input1),
-                lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(input2),
-                lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(input3)));
+                lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(g),
+                lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(m),
+                lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(topics),
+                lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(c)));
   }
 
-  public static Value consumerPoll(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value consumerPoll(Map<String, Object> symbols, Value n, Value c)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_EITHER_KAFKA_ERROR_LIST_CONSUMER_RECORD_CONSUMER_STATE
         .encode(
             lawspec.runtime.LawSpecTyped.consumerPoll(
                 symbols,
-                lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(input0),
-                lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(input1)));
+                lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(n),
+                lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(c)));
   }
 
-  public static Value consumerPosition(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value consumerPosition(Map<String, Object> symbols, Value tp, Value c)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_INT64_CONSUMER_STATE.encode(
         lawspec.runtime.LawSpecTyped.consumerPosition(
             symbols,
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(tp),
+            lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(c)));
   }
 
-  public static Value consumerPositionOf(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value consumerPositionOf(Map<String, Object> symbols, Value tp, Value c)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_EITHER_KAFKA_ERROR_INT64_CONSUMER_STATE.encode(
         lawspec.runtime.LawSpecTyped.consumerPositionOf(
             symbols,
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(tp),
+            lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(c)));
   }
 
-  public static Value consumerRecords(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value consumerRecords(Map<String, Object> symbols, Value tp, Value rs)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_CONSUMER_RECORD.encode(
         lawspec.runtime.LawSpecTyped.consumerRecords(
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_FETCHED_RECORD.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(tp),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_FETCHED_RECORD.decode(rs)));
   }
 
-  public static Value consumerRefresh(Map<String, Object> symbols, Value input0)
+  public static Value consumerRefresh(Map<String, Object> symbols, Value c)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_EITHER_KAFKA_ERROR_UNIT_CONSUMER_STATE.encode(
         lawspec.runtime.LawSpecTyped.consumerRefresh(
-            symbols, lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(input0)));
+            symbols, lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(c)));
   }
 
-  public static Value consumerSeek(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+  public static Value consumerSeek(Map<String, Object> symbols, Value tp, Value offset, Value c)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_EITHER_KAFKA_ERROR_UNIT_CONSUMER_STATE.encode(
         lawspec.runtime.LawSpecTyped.consumerSeek(
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(tp),
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(offset),
+            lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(c)));
   }
 
-  public static Value coversOnce(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+  public static Value coversOnce(Map<String, Object> symbols, Value t, Value n, Value view)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_BOOL.encode(
         lawspec.runtime.LawSpecTyped.coversOnce(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_GROUP_VIEW.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(t),
+            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(n),
+            lawspec.runtime.LawSpecTyped.CODEC_GROUP_VIEW.decode(view)));
   }
 
-  public static Value created(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value created(Map<String, Object> symbols, Value t, Value n)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_BOOL.encode(
         lawspec.runtime.LawSpecTyped.created(
             symbols,
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(t),
+            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(n)));
   }
 
-  public static Value fencedBy(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value fencedBy(Map<String, Object> symbols, Value old, Value newValue)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_BOOL.encode(
         lawspec.runtime.LawSpecTyped.fencedBy(
-            lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_ID_AND_EPOCH.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_ID_AND_EPOCH.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_ID_AND_EPOCH.decode(old),
+            lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_ID_AND_EPOCH.decode(newValue)));
   }
 
-  public static Value followsBatch(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+  public static Value followsBatch(Map<String, Object> symbols, Value a, Value batch, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_BOOL.encode(
         lawspec.runtime.LawSpecTyped.followsBatch(
-            lawspec.runtime.LawSpecTyped.CODEC_EITHER_KAFKA_ERROR_INT64.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_RECORD.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_EITHER_KAFKA_ERROR_INT64.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_EITHER_KAFKA_ERROR_INT64.decode(a),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_RECORD.decode(batch),
+            lawspec.runtime.LawSpecTyped.CODEC_EITHER_KAFKA_ERROR_INT64.decode(b)));
   }
 
-  public static Value followsOne(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value followsOne(Map<String, Object> symbols, Value a, Value latest)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_BOOL.encode(
         lawspec.runtime.LawSpecTyped.followsOne(
-            lawspec.runtime.LawSpecTyped.CODEC_EITHER_KAFKA_ERROR_RECORD_METADATA.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_EITHER_KAFKA_ERROR_INT64.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_EITHER_KAFKA_ERROR_RECORD_METADATA.decode(a),
+            lawspec.runtime.LawSpecTyped.CODEC_EITHER_KAFKA_ERROR_INT64.decode(latest)));
   }
 
-  public static Value freshConsumer(Map<String, Object> symbols, Value input0)
+  public static Value freshConsumer(Map<String, Object> symbols, Value u)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.encode(
         lawspec.runtime.LawSpecTyped.freshConsumer(
-            lawspec.runtime.LawSpecTyped.CODEC_UNIT.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_UNIT.decode(u)));
   }
 
-  public static Value freshProducer(Map<String, Object> symbols, Value input0)
+  public static Value freshProducer(Map<String, Object> symbols, Value u)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_STATE.encode(
         lawspec.runtime.LawSpecTyped.freshProducer(
-            lawspec.runtime.LawSpecTyped.CODEC_UNIT.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_UNIT.decode(u)));
   }
 
-  public static Value freshTransactions(Map<String, Object> symbols, Value input0)
+  public static Value freshTransactions(Map<String, Object> symbols, Value u)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_TRANSACTION_STATE.encode(
         lawspec.runtime.LawSpecTyped.freshTransactions(
-            lawspec.runtime.LawSpecTyped.CODEC_UNIT.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_UNIT.decode(u)));
   }
 
-  public static Value identityOf(Map<String, Object> symbols, Value input0)
+  public static Value identityOf(Map<String, Object> symbols, Value st)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_MAYBE_PRODUCER_ID_AND_EPOCH_PRODUCER_STATE
         .encode(
             lawspec.runtime.LawSpecTyped.identityOf(
-                lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_STATE.decode(input0)));
+                lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_STATE.decode(st)));
   }
 
-  public static Value increasing(Map<String, Object> symbols, Value input0)
+  public static Value increasing(Map<String, Object> symbols, Value xs)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_BOOL.encode(
         lawspec.runtime.LawSpecTyped.increasing(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_INT64.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_INT64.decode(xs)));
   }
 
-  public static Value joinAll(Map<String, Object> symbols, Value input0, Value input1, Value input2)
+  public static Value joinAll(Map<String, Object> symbols, Value g, Value ms, Value topics)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_BOOL.encode(
         lawspec.runtime.LawSpecTyped.joinAll(
             symbols,
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(g),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(ms),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(topics)));
   }
 
-  public static Value joinEach(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+  public static Value joinEach(Map<String, Object> symbols, Value g, Value ms, Value topics)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_BOOL.encode(
         lawspec.runtime.LawSpecTyped.joinEach(
             symbols,
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(g),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(ms),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(topics)));
   }
 
-  public static Value kafkaConsumerAssign(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value kafkaConsumerAssign(
+      Map<String, Object> symbols, Value consumerState, Value list1)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_UNIT_CONSUMER_STATE.encode(
         lawspec.runtime.LawSpecTyped.kafkaConsumerAssign(
-            lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(consumerState),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(list1)));
   }
 
-  public static Value kafkaConsumerClose(Map<String, Object> symbols, Value input0)
+  public static Value kafkaConsumerClose(Map<String, Object> symbols, Value consumerState)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_UNIT_CONSUMER_STATE.encode(
         lawspec.runtime.LawSpecTyped.kafkaConsumerClose(
-            symbols, lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(input0)));
+            symbols, lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(consumerState)));
   }
 
-  public static Value kafkaConsumerCommitSync(Map<String, Object> symbols, Value input0)
+  public static Value kafkaConsumerCommitSync(Map<String, Object> symbols, Value consumerState)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_EITHER_KAFKA_ERROR_UNIT_CONSUMER_STATE.encode(
         lawspec.runtime.LawSpecTyped.kafkaConsumerCommitSync(
-            symbols, lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(input0)));
+            symbols, lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(consumerState)));
   }
 
   public static Value kafkaConsumerCommittedOffset(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value consumerState, Value topicPartition1)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_MAYBE_INT64_CONSUMER_STATE.encode(
         lawspec.runtime.LawSpecTyped.kafkaConsumerCommittedOffset(
             symbols,
-            lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(consumerState),
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(topicPartition1)));
   }
 
-  public static Value kafkaConsumerPoll(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value kafkaConsumerPoll(
+      Map<String, Object> symbols, Value consumerState, Value int321)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_EITHER_KAFKA_ERROR_LIST_CONSUMER_RECORD_CONSUMER_STATE
         .encode(
             lawspec.runtime.LawSpecTyped.kafkaConsumerPoll(
                 symbols,
-                lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(input0),
-                lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(input1)));
+                lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(consumerState),
+                lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(int321)));
   }
 
-  public static Value kafkaConsumerPosition(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value kafkaConsumerPosition(
+      Map<String, Object> symbols, Value consumerState, Value topicPartition1)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_EITHER_KAFKA_ERROR_INT64_CONSUMER_STATE.encode(
         lawspec.runtime.LawSpecTyped.kafkaConsumerPosition(
             symbols,
-            lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(consumerState),
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(topicPartition1)));
   }
 
   public static Value kafkaConsumerSeek(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value consumerState, Value topicPartition1, Value int641)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_EITHER_KAFKA_ERROR_UNIT_CONSUMER_STATE.encode(
         lawspec.runtime.LawSpecTyped.kafkaConsumerSeek(
-            lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(consumerState),
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(topicPartition1),
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(int641)));
   }
 
   public static Value kafkaConsumerSetIsolationLevel(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value consumerState, Value isolationLevel1)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_UNIT_CONSUMER_STATE.encode(
         lawspec.runtime.LawSpecTyped.kafkaConsumerSetIsolationLevel(
-            lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_ISOLATION_LEVEL.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(consumerState),
+            lawspec.runtime.LawSpecTyped.CODEC_ISOLATION_LEVEL.decode(isolationLevel1)));
   }
 
-  public static Value kafkaConsumerStart(Map<String, Object> symbols, Value input0)
+  public static Value kafkaConsumerStart(Map<String, Object> symbols, Value unitValue)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.encode(
         lawspec.runtime.LawSpecTyped.kafkaConsumerStart(
-            lawspec.runtime.LawSpecTyped.CODEC_UNIT.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_UNIT.decode(unitValue)));
   }
 
   public static Value kafkaConsumerSubscribe(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value consumerState, Value text1, Value text2, Value list1)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_EITHER_KAFKA_ERROR_LIST_TOPIC_PARTITION_CONSUMER_STATE
         .encode(
             lawspec.runtime.LawSpecTyped.kafkaConsumerSubscribe(
                 symbols,
-                lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(input0),
-                lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input1),
-                lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input2),
-                lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(input3)));
+                lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(consumerState),
+                lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(text1),
+                lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(text2),
+                lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(list1)));
   }
 
-  public static Value kafkaProducerEnableIdempotence(Map<String, Object> symbols, Value input0)
+  public static Value kafkaProducerEnableIdempotence(
+      Map<String, Object> symbols, Value producerState)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_EITHER_KAFKA_ERROR_PRODUCER_ID_AND_EPOCH_PRODUCER_STATE
         .encode(
             lawspec.runtime.LawSpecTyped.kafkaProducerEnableIdempotence(
-                symbols, lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_STATE.decode(input0)));
+                symbols, lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_STATE.decode(producerState)));
   }
 
-  public static Value kafkaProducerFlush(Map<String, Object> symbols, Value input0)
+  public static Value kafkaProducerFlush(Map<String, Object> symbols, Value producerState)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_UNIT_PRODUCER_STATE.encode(
         lawspec.runtime.LawSpecTyped.kafkaProducerFlush(
-            lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_STATE.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_STATE.decode(producerState)));
   }
 
-  public static Value kafkaProducerProducerIdentity(Map<String, Object> symbols, Value input0)
+  public static Value kafkaProducerProducerIdentity(
+      Map<String, Object> symbols, Value producerState)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_MAYBE_PRODUCER_ID_AND_EPOCH_PRODUCER_STATE
         .encode(
             lawspec.runtime.LawSpecTyped.kafkaProducerProducerIdentity(
-                lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_STATE.decode(input0)));
+                lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_STATE.decode(producerState)));
   }
 
-  public static Value kafkaProducerRetryLastSend(Map<String, Object> symbols, Value input0)
+  public static Value kafkaProducerRetryLastSend(Map<String, Object> symbols, Value producerState)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_EITHER_KAFKA_ERROR_RECORD_METADATA_PRODUCER_STATE
         .encode(
             lawspec.runtime.LawSpecTyped.kafkaProducerRetryLastSend(
-                symbols, lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_STATE.decode(input0)));
+                symbols, lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_STATE.decode(producerState)));
   }
 
-  public static Value kafkaProducerSend(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value kafkaProducerSend(
+      Map<String, Object> symbols, Value producerState, Value producerRecord1)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_EITHER_KAFKA_ERROR_RECORD_METADATA_PRODUCER_STATE
         .encode(
             lawspec.runtime.LawSpecTyped.kafkaProducerSend(
                 symbols,
-                lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_STATE.decode(input0),
-                lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_RECORD.decode(input1)));
+                lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_STATE.decode(producerState),
+                lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_RECORD.decode(producerRecord1)));
   }
 
-  public static Value kafkaProducerStart(Map<String, Object> symbols, Value input0)
+  public static Value kafkaProducerStart(Map<String, Object> symbols, Value unitValue)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_STATE.encode(
         lawspec.runtime.LawSpecTyped.kafkaProducerStart(
-            lawspec.runtime.LawSpecTyped.CODEC_UNIT.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_UNIT.decode(unitValue)));
   }
 
-  public static Value kafkaTransactionsAbortTransaction(Map<String, Object> symbols, Value input0)
+  public static Value kafkaTransactionsAbortTransaction(Map<String, Object> symbols, Value txnState)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_EITHER_KAFKA_ERROR_UNIT_TRANSACTION_STATE.encode(
         lawspec.runtime.LawSpecTyped.kafkaTransactionsAbortTransaction(
-            symbols, lawspec.runtime.LawSpecTyped.CODEC_TRANSACTION_STATE.decode(input0)));
+            symbols, lawspec.runtime.LawSpecTyped.CODEC_TRANSACTION_STATE.decode(txnState)));
   }
 
   public static Value kafkaTransactionsAddPartitionsToTransaction(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value txnState, Value list1)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_EITHER_KAFKA_ERROR_UNIT_TRANSACTION_STATE.encode(
         lawspec.runtime.LawSpecTyped.kafkaTransactionsAddPartitionsToTransaction(
             symbols,
-            lawspec.runtime.LawSpecTyped.CODEC_TRANSACTION_STATE.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TRANSACTION_STATE.decode(txnState),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(list1)));
   }
 
-  public static Value kafkaTransactionsBeginTransaction(Map<String, Object> symbols, Value input0)
+  public static Value kafkaTransactionsBeginTransaction(Map<String, Object> symbols, Value txnState)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_EITHER_KAFKA_ERROR_UNIT_TRANSACTION_STATE.encode(
         lawspec.runtime.LawSpecTyped.kafkaTransactionsBeginTransaction(
-            lawspec.runtime.LawSpecTyped.CODEC_TRANSACTION_STATE.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_TRANSACTION_STATE.decode(txnState)));
   }
 
-  public static Value kafkaTransactionsCommitTransaction(Map<String, Object> symbols, Value input0)
+  public static Value kafkaTransactionsCommitTransaction(
+      Map<String, Object> symbols, Value txnState)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_EITHER_KAFKA_ERROR_UNIT_TRANSACTION_STATE.encode(
         lawspec.runtime.LawSpecTyped.kafkaTransactionsCommitTransaction(
-            symbols, lawspec.runtime.LawSpecTyped.CODEC_TRANSACTION_STATE.decode(input0)));
+            symbols, lawspec.runtime.LawSpecTyped.CODEC_TRANSACTION_STATE.decode(txnState)));
   }
 
   public static Value kafkaTransactionsInitTransactions(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value txnState, Value text1)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_EITHER_KAFKA_ERROR_PRODUCER_ID_AND_EPOCH_TRANSACTION_STATE
         .encode(
             lawspec.runtime.LawSpecTyped.kafkaTransactionsInitTransactions(
                 symbols,
-                lawspec.runtime.LawSpecTyped.CODEC_TRANSACTION_STATE.decode(input0),
-                lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input1)));
+                lawspec.runtime.LawSpecTyped.CODEC_TRANSACTION_STATE.decode(txnState),
+                lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(text1)));
   }
 
   public static Value kafkaTransactionsSendInTransaction(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value txnState, Value producerRecord1)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_EITHER_KAFKA_ERROR_RECORD_METADATA_TRANSACTION_STATE
         .encode(
             lawspec.runtime.LawSpecTyped.kafkaTransactionsSendInTransaction(
                 symbols,
-                lawspec.runtime.LawSpecTyped.CODEC_TRANSACTION_STATE.decode(input0),
-                lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_RECORD.decode(input1)));
+                lawspec.runtime.LawSpecTyped.CODEC_TRANSACTION_STATE.decode(txnState),
+                lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_RECORD.decode(producerRecord1)));
   }
 
   public static Value kafkaTransactionsSendOffsetsToTransaction(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value txnState, Value text1, Value list1)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_EITHER_KAFKA_ERROR_UNIT_TRANSACTION_STATE.encode(
         lawspec.runtime.LawSpecTyped.kafkaTransactionsSendOffsetsToTransaction(
             symbols,
-            lawspec.runtime.LawSpecTyped.CODEC_TRANSACTION_STATE.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_OFFSET_ENTRY.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_TRANSACTION_STATE.decode(txnState),
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(text1),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_OFFSET_ENTRY.decode(list1)));
   }
 
-  public static Value kafkaTransactionsStart(Map<String, Object> symbols, Value input0)
+  public static Value kafkaTransactionsStart(Map<String, Object> symbols, Value unitValue)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_TRANSACTION_STATE.encode(
         lawspec.runtime.LawSpecTyped.kafkaTransactionsStart(
-            lawspec.runtime.LawSpecTyped.CODEC_UNIT.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_UNIT.decode(unitValue)));
   }
 
   public static Value keepPositions(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value tps, Value positions, Value acc)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TOPIC_PARTITION_INT64.encode(
         lawspec.runtime.LawSpecTyped.keepPositions(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TOPIC_PARTITION_INT64.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TOPIC_PARTITION_INT64.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(tps),
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TOPIC_PARTITION_INT64.decode(positions),
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TOPIC_PARTITION_INT64.decode(acc)));
   }
 
-  public static Value collectionsBoundedInt(Map<String, Object> symbols, Value input0)
+  public static Value collectionsBoundedInt(Map<String, Object> symbols, Value valueValue)
   {
-    return boundedInt16(symbols, input0);
+    return boundedInt16(symbols, valueValue);
   }
 
-  public static Value collectionsBoundedInt2(Map<String, Object> symbols, Value input0)
+  public static Value collectionsBoundedInt2(Map<String, Object> symbols, Value valueValue)
   {
-    return boundedInt32(symbols, input0);
+    return boundedInt32(symbols, valueValue);
   }
 
-  public static Value collectionsBoundedInt3(Map<String, Object> symbols, Value input0)
+  public static Value collectionsBoundedInt3(Map<String, Object> symbols, Value valueValue)
   {
-    return boundedInt64(symbols, input0);
+    return boundedInt64(symbols, valueValue);
   }
 
-  public static Value collectionsBoundedInt4(Map<String, Object> symbols, Value input0)
+  public static Value collectionsBoundedInt4(Map<String, Object> symbols, Value valueValue)
   {
-    return boundedInt8(symbols, input0);
+    return boundedInt8(symbols, valueValue);
   }
 
-  public static Value collectionsBoundedIntSize(Map<String, Object> symbols, Value input0)
+  public static Value collectionsBoundedIntSize(Map<String, Object> symbols, Value valueValue)
   {
-    return boundedIntSize(symbols, input0);
+    return boundedIntSize(symbols, valueValue);
   }
 
-  public static Value collectionsBoundedUint(Map<String, Object> symbols, Value input0)
+  public static Value collectionsBoundedUint(Map<String, Object> symbols, Value valueValue)
   {
-    return boundedUint16(symbols, input0);
+    return boundedUint16(symbols, valueValue);
   }
 
-  public static Value collectionsBoundedUint2(Map<String, Object> symbols, Value input0)
+  public static Value collectionsBoundedUint2(Map<String, Object> symbols, Value valueValue)
   {
-    return boundedUint32(symbols, input0);
+    return boundedUint32(symbols, valueValue);
   }
 
-  public static Value collectionsBoundedUint3(Map<String, Object> symbols, Value input0)
+  public static Value collectionsBoundedUint3(Map<String, Object> symbols, Value valueValue)
   {
-    return boundedUint64(symbols, input0);
+    return boundedUint64(symbols, valueValue);
   }
 
-  public static Value collectionsBoundedUint4(Map<String, Object> symbols, Value input0)
+  public static Value collectionsBoundedUint4(Map<String, Object> symbols, Value valueValue)
   {
-    return boundedUint8(symbols, input0);
+    return boundedUint8(symbols, valueValue);
   }
 
-  public static Value collectionsBoundedUintPtr(Map<String, Object> symbols, Value input0)
+  public static Value collectionsBoundedUintPtr(Map<String, Object> symbols, Value valueValue)
   {
-    return boundedUintPtr(symbols, input0);
+    return boundedUintPtr(symbols, valueValue);
   }
 
-  public static Value collectionsBoundedUintSize(Map<String, Object> symbols, Value input0)
+  public static Value collectionsBoundedUintSize(Map<String, Object> symbols, Value valueValue)
   {
-    return boundedUintSize(symbols, input0);
+    return boundedUintSize(symbols, valueValue);
   }
 
-  public static Value collectionsSaturatingInt(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSaturatingInt(Map<String, Object> symbols, Value valueValue)
   {
-    return saturatingInt16(symbols, input0);
+    return saturatingInt16(symbols, valueValue);
   }
 
-  public static Value collectionsSaturatingInt2(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSaturatingInt2(Map<String, Object> symbols, Value valueValue)
   {
-    return saturatingInt32(symbols, input0);
+    return saturatingInt32(symbols, valueValue);
   }
 
-  public static Value collectionsSaturatingInt3(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSaturatingInt3(Map<String, Object> symbols, Value valueValue)
   {
-    return saturatingInt64(symbols, input0);
+    return saturatingInt64(symbols, valueValue);
   }
 
-  public static Value collectionsSaturatingInt4(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSaturatingInt4(Map<String, Object> symbols, Value valueValue)
   {
-    return saturatingInt8(symbols, input0);
+    return saturatingInt8(symbols, valueValue);
   }
 
-  public static Value collectionsSaturatingIntSize(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSaturatingIntSize(Map<String, Object> symbols, Value valueValue)
   {
-    return saturatingIntSize(symbols, input0);
+    return saturatingIntSize(symbols, valueValue);
   }
 
-  public static Value collectionsSaturatingUint(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSaturatingUint(Map<String, Object> symbols, Value valueValue)
   {
-    return saturatingUint16(symbols, input0);
+    return saturatingUint16(symbols, valueValue);
   }
 
-  public static Value collectionsSaturatingUint2(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSaturatingUint2(Map<String, Object> symbols, Value valueValue)
   {
-    return saturatingUint32(symbols, input0);
+    return saturatingUint32(symbols, valueValue);
   }
 
-  public static Value collectionsSaturatingUint3(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSaturatingUint3(Map<String, Object> symbols, Value valueValue)
   {
-    return saturatingUint64(symbols, input0);
+    return saturatingUint64(symbols, valueValue);
   }
 
-  public static Value collectionsSaturatingUint4(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSaturatingUint4(Map<String, Object> symbols, Value valueValue)
   {
-    return saturatingUint8(symbols, input0);
+    return saturatingUint8(symbols, valueValue);
   }
 
-  public static Value collectionsSaturatingUintPtr(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSaturatingUintPtr(Map<String, Object> symbols, Value valueValue)
   {
-    return saturatingUintPtr(symbols, input0);
+    return saturatingUintPtr(symbols, valueValue);
   }
 
-  public static Value collectionsSaturatingUintSize(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSaturatingUintSize(Map<String, Object> symbols, Value valueValue)
   {
-    return saturatingUintSize(symbols, input0);
+    return saturatingUintSize(symbols, valueValue);
   }
 
-  public static Value collectionsWrappingInt(Map<String, Object> symbols, Value input0)
+  public static Value collectionsWrappingInt(Map<String, Object> symbols, Value valueValue)
   {
-    return wrappingInt16(symbols, input0);
+    return wrappingInt16(symbols, valueValue);
   }
 
-  public static Value collectionsWrappingInt2(Map<String, Object> symbols, Value input0)
+  public static Value collectionsWrappingInt2(Map<String, Object> symbols, Value valueValue)
   {
-    return wrappingInt32(symbols, input0);
+    return wrappingInt32(symbols, valueValue);
   }
 
-  public static Value collectionsWrappingInt3(Map<String, Object> symbols, Value input0)
+  public static Value collectionsWrappingInt3(Map<String, Object> symbols, Value valueValue)
   {
-    return wrappingInt64(symbols, input0);
+    return wrappingInt64(symbols, valueValue);
   }
 
-  public static Value collectionsWrappingInt4(Map<String, Object> symbols, Value input0)
+  public static Value collectionsWrappingInt4(Map<String, Object> symbols, Value valueValue)
   {
-    return wrappingInt8(symbols, input0);
+    return wrappingInt8(symbols, valueValue);
   }
 
-  public static Value collectionsWrappingIntSize(Map<String, Object> symbols, Value input0)
+  public static Value collectionsWrappingIntSize(Map<String, Object> symbols, Value valueValue)
   {
-    return wrappingIntSize(symbols, input0);
+    return wrappingIntSize(symbols, valueValue);
   }
 
-  public static Value collectionsWrappingUint(Map<String, Object> symbols, Value input0)
+  public static Value collectionsWrappingUint(Map<String, Object> symbols, Value valueValue)
   {
-    return wrappingUint16(symbols, input0);
+    return wrappingUint16(symbols, valueValue);
   }
 
-  public static Value collectionsWrappingUint2(Map<String, Object> symbols, Value input0)
+  public static Value collectionsWrappingUint2(Map<String, Object> symbols, Value valueValue)
   {
-    return wrappingUint32(symbols, input0);
+    return wrappingUint32(symbols, valueValue);
   }
 
-  public static Value collectionsWrappingUint3(Map<String, Object> symbols, Value input0)
+  public static Value collectionsWrappingUint3(Map<String, Object> symbols, Value valueValue)
   {
-    return wrappingUint64(symbols, input0);
+    return wrappingUint64(symbols, valueValue);
   }
 
-  public static Value collectionsWrappingUint4(Map<String, Object> symbols, Value input0)
+  public static Value collectionsWrappingUint4(Map<String, Object> symbols, Value valueValue)
   {
-    return wrappingUint8(symbols, input0);
+    return wrappingUint8(symbols, valueValue);
   }
 
-  public static Value collectionsWrappingUintPtr(Map<String, Object> symbols, Value input0)
+  public static Value collectionsWrappingUintPtr(Map<String, Object> symbols, Value valueValue)
   {
-    return wrappingUintPtr(symbols, input0);
+    return wrappingUintPtr(symbols, valueValue);
   }
 
-  public static Value collectionsWrappingUintSize(Map<String, Object> symbols, Value input0)
+  public static Value collectionsWrappingUintSize(Map<String, Object> symbols, Value valueValue)
   {
-    return wrappingUintSize(symbols, input0);
+    return wrappingUintSize(symbols, valueValue);
   }
 
   public static Value collectionsKeyValDeleteItemsIntListEntryIntInt(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_INT64.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValDeleteItems(
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_INT64.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_INT64.decode(es)));
   }
 
   public static Value collectionsKeyValDeleteItemsTextListEntryTextListText(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TEXT.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValDeleteItems2(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TEXT.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TEXT.decode(es)));
   }
 
   public static Value collectionsKeyValDeleteIntKeyValIntInt(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_INT64_INT64.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValDelete(
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_INT64_INT64.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_INT64_INT64.decode(m)));
   }
 
   public static Value collectionsKeyValDeleteTextKeyValTextListText(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_LIST_TEXT.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValDelete2(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_LIST_TEXT.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_LIST_TEXT.decode(m)));
   }
 
   public static Value collectionsKeyValEntriesKeyValTextListText(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value m)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TEXT.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValEntries(
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_LIST_TEXT.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_LIST_TEXT.decode(m)));
   }
 
-  public static Value collectionsKeyValEntriesKeyValTextGroup(
-      Map<String, Object> symbols, Value input0)
+  public static Value collectionsKeyValEntriesKeyValTextGroup(Map<String, Object> symbols, Value m)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_GROUP.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValEntries2(
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_GROUP.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_GROUP.decode(m)));
   }
 
   public static Value collectionsKeyValEntriesKeyValTextListTopicPartition(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value m)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TOPIC_PARTITION.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValEntries3(
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_LIST_TOPIC_PARTITION.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_LIST_TOPIC_PARTITION.decode(m)));
   }
 
   public static Value collectionsKeyValFromItemsListEntryTextIntListEntryTextInt(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value es, Value acc)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_INT64.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValFromItems(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_INT64.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_INT64.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_INT64.decode(es),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_INT64.decode(acc)));
   }
 
   public static Value collectionsKeyValFromItemsListEntryGroupPartitionIntListEntryGroupPartitionInt(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value es, Value acc)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_GROUP_PARTITION_INT64.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValFromItems2(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_GROUP_PARTITION_INT64.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_GROUP_PARTITION_INT64.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_GROUP_PARTITION_INT64.decode(es),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_GROUP_PARTITION_INT64.decode(acc)));
   }
 
   public static Value collectionsKeyValFromItemsListEntryTopicPartitionIntListEntryTopicPartitionInt(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value es, Value acc)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TOPIC_PARTITION_INT32.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValFromItems3(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TOPIC_PARTITION_INT32.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TOPIC_PARTITION_INT32.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TOPIC_PARTITION_INT32.decode(es),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TOPIC_PARTITION_INT32.decode(acc)));
   }
 
   public static Value collectionsKeyValFromItemsListEntryTopicPartitionPartitionLogListEntryTopicPartitionPartitionLog(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value es, Value acc)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TOPIC_PARTITION_PARTITION_LOG.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValFromItems4(
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TOPIC_PARTITION_PARTITION_LOG.decode(es),
             lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TOPIC_PARTITION_PARTITION_LOG.decode(
-                input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TOPIC_PARTITION_PARTITION_LOG.decode(
-                input1)));
+                acc)));
   }
 
   public static Value collectionsKeyValFromItemsListEntryTextListTextListEntryTextListText(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value es, Value acc)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TEXT.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValFromItems5(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TEXT.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TEXT.decode(es),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TEXT.decode(acc)));
   }
 
   public static Value collectionsKeyValFromItemsListEntryTextListTopicPartitionListEntryTextListTopicPartition(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value es, Value acc)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TOPIC_PARTITION.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValFromItems6(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TOPIC_PARTITION.decode(
-                input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TOPIC_PARTITION.decode(es),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TOPIC_PARTITION.decode(acc)));
   }
 
   public static Value collectionsKeyValFromItemsListEntryTextIntListEntryTextInt2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value es, Value acc)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_INT32.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValFromItems7(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_INT32.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_INT32.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_INT32.decode(es),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_INT32.decode(acc)));
   }
 
   public static Value collectionsKeyValFromItemsListEntryIntIntListEntryIntInt(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value es, Value acc)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_INT64.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValFromItems8(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_INT64.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_INT64.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_INT64.decode(es),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_INT64.decode(acc)));
   }
 
   public static Value collectionsKeyValFromItemsListEntryTopicPartitionIntListEntryTopicPartitionInt2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value es, Value acc)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TOPIC_PARTITION_INT64.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValFromItems9(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TOPIC_PARTITION_INT64.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TOPIC_PARTITION_INT64.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TOPIC_PARTITION_INT64.decode(es),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TOPIC_PARTITION_INT64.decode(acc)));
   }
 
   public static Value collectionsKeyValFromItemsListEntryIntListBatchMetaListEntryIntListBatchMeta(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value es, Value acc)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_LIST_BATCH_META.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValFromItems10(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_LIST_BATCH_META.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_LIST_BATCH_META.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_LIST_BATCH_META.decode(es),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_LIST_BATCH_META.decode(acc)));
   }
 
   public static Value collectionsKeyValFromItemsListEntryTextGroupListEntryTextGroup(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value es, Value acc)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_GROUP.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValFromItems11(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_GROUP.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_GROUP.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_GROUP.decode(es),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_GROUP.decode(acc)));
   }
 
   public static Value collectionsKeyValFromItemsListEntryIntProducerEntryListEntryIntProducerEntry(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value es, Value acc)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_PRODUCER_ENTRY.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValFromItems12(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_PRODUCER_ENTRY.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_PRODUCER_ENTRY.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_PRODUCER_ENTRY.decode(es),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_PRODUCER_ENTRY.decode(acc)));
   }
 
   public static Value collectionsKeyValKeysItemsListEntryTextListText(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValKeysItems(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TEXT.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TEXT.decode(es)));
   }
 
-  public static Value collectionsKeyValKeysKeyValTextListText(
-      Map<String, Object> symbols, Value input0)
+  public static Value collectionsKeyValKeysKeyValTextListText(Map<String, Object> symbols, Value m)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValKeys(
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_LIST_TEXT.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_LIST_TEXT.decode(m)));
   }
 
   public static Value collectionsKeyValLookupItemsTopicPartitionListEntryTopicPartitionPartitionLog(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_MAYBE_PARTITION_LOG.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookupItems(
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input0),
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(k),
             lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TOPIC_PARTITION_PARTITION_LOG.decode(
-                input1)));
+                es)));
   }
 
   public static Value collectionsKeyValLookupItemsTextListEntryTextListTopicPartition(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_MAYBE_LIST_TOPIC_PARTITION.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookupItems2(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TOPIC_PARTITION.decode(
-                input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TOPIC_PARTITION.decode(es)));
   }
 
   public static Value collectionsKeyValLookupItemsTextListEntryTextInt(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_MAYBE_INT32.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookupItems3(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_INT32.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_INT32.decode(es)));
   }
 
   public static Value collectionsKeyValLookupItemsIntListEntryIntListBatchMeta(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_MAYBE_LIST_BATCH_META.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookupItems4(
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_LIST_BATCH_META.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_LIST_BATCH_META.decode(es)));
   }
 
   public static Value collectionsKeyValLookupItemsTopicPartitionListEntryTopicPartitionInt(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_MAYBE_INT32.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookupItems5(
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TOPIC_PARTITION_INT32.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TOPIC_PARTITION_INT32.decode(es)));
   }
 
   public static Value collectionsKeyValLookupItemsTopicPartitionListEntryTopicPartitionInt2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_MAYBE_INT64.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookupItems6(
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TOPIC_PARTITION_INT64.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TOPIC_PARTITION_INT64.decode(es)));
   }
 
   public static Value collectionsKeyValLookupItemsIntListEntryIntProducerEntry(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_MAYBE_PRODUCER_ENTRY.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookupItems7(
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_PRODUCER_ENTRY.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_PRODUCER_ENTRY.decode(es)));
   }
 
   public static Value collectionsKeyValLookupItemsTextListEntryTextListText(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_MAYBE_LIST_TEXT.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookupItems8(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TEXT.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TEXT.decode(es)));
   }
 
   public static Value collectionsKeyValLookupItemsGroupPartitionListEntryGroupPartitionInt(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_MAYBE_INT64.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookupItems9(
-            lawspec.runtime.LawSpecTyped.CODEC_GROUP_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_GROUP_PARTITION_INT64.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_GROUP_PARTITION.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_GROUP_PARTITION_INT64.decode(es)));
   }
 
   public static Value collectionsKeyValLookupItemsTextListEntryTextGroup(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_MAYBE_GROUP.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookupItems10(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_GROUP.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_GROUP.decode(es)));
   }
 
   public static Value collectionsKeyValLookupItemsIntListEntryIntInt(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_MAYBE_INT64.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookupItems11(
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_INT64.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_INT64.decode(es)));
   }
 
   public static Value collectionsKeyValLookupItemsTextListEntryTextInt2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_MAYBE_INT64.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookupItems12(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_INT64.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_INT64.decode(es)));
   }
 
   public static Value collectionsKeyValLookupTopicPartitionKeyValTopicPartitionInt(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_MAYBE_INT64.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookup(
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TOPIC_PARTITION_INT64.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TOPIC_PARTITION_INT64.decode(m)));
   }
 
   public static Value collectionsKeyValLookupIntKeyValIntListBatchMeta(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_MAYBE_LIST_BATCH_META.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookup2(
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_INT64_LIST_BATCH_META.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_INT64_LIST_BATCH_META.decode(m)));
   }
 
   public static Value collectionsKeyValLookupTextKeyValTextListTopicPartition(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_MAYBE_LIST_TOPIC_PARTITION.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookup3(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_LIST_TOPIC_PARTITION.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_LIST_TOPIC_PARTITION.decode(m)));
   }
 
   public static Value collectionsKeyValLookupIntKeyValIntProducerEntry(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_MAYBE_PRODUCER_ENTRY.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookup4(
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_INT64_PRODUCER_ENTRY.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_INT64_PRODUCER_ENTRY.decode(m)));
   }
 
   public static Value collectionsKeyValLookupGroupPartitionKeyValGroupPartitionInt(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_MAYBE_INT64.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookup5(
-            lawspec.runtime.LawSpecTyped.CODEC_GROUP_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_GROUP_PARTITION_INT64.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_GROUP_PARTITION.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_GROUP_PARTITION_INT64.decode(m)));
   }
 
   public static Value collectionsKeyValLookupTopicPartitionKeyValTopicPartitionInt2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_MAYBE_INT32.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookup6(
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TOPIC_PARTITION_INT32.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TOPIC_PARTITION_INT32.decode(m)));
   }
 
   public static Value collectionsKeyValLookupIntKeyValIntInt(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_MAYBE_INT64.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookup7(
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_INT64_INT64.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_INT64_INT64.decode(m)));
   }
 
   public static Value collectionsKeyValLookupTextKeyValTextGroup(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_MAYBE_GROUP.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookup8(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_GROUP.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_GROUP.decode(m)));
   }
 
   public static Value collectionsKeyValLookupTextKeyValTextInt(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_MAYBE_INT32.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookup9(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_INT32.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_INT32.decode(m)));
   }
 
   public static Value collectionsKeyValLookupTopicPartitionKeyValTopicPartitionPartitionLog(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_MAYBE_PARTITION_LOG.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookup10(
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TOPIC_PARTITION_PARTITION_LOG.decode(
-                input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TOPIC_PARTITION_PARTITION_LOG.decode(m)));
   }
 
   public static Value collectionsKeyValLookupTextKeyValTextListText(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_MAYBE_LIST_TEXT.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookup11(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_LIST_TEXT.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_LIST_TEXT.decode(m)));
   }
 
   public static Value collectionsKeyValLookupTextKeyValTextInt2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_MAYBE_INT64.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookup12(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_INT64.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_INT64.decode(m)));
   }
 
   public static Value collectionsKeyValOfListEntryTextListTopicPartition(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_LIST_TOPIC_PARTITION.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValOf(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TOPIC_PARTITION.decode(
-                input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TOPIC_PARTITION.decode(es)));
   }
 
-  public static Value collectionsKeyValOfListEntryTextInt(Map<String, Object> symbols, Value input0)
+  public static Value collectionsKeyValOfListEntryTextInt(Map<String, Object> symbols, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_INT64.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValOf2(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_INT64.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_INT64.decode(es)));
   }
 
   public static Value collectionsKeyValOfListEntryIntListBatchMeta(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_INT64_LIST_BATCH_META.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValOf3(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_LIST_BATCH_META.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_LIST_BATCH_META.decode(es)));
   }
 
-  public static Value collectionsKeyValOfListEntryTextGroup(
-      Map<String, Object> symbols, Value input0)
+  public static Value collectionsKeyValOfListEntryTextGroup(Map<String, Object> symbols, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_GROUP.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValOf4(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_GROUP.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_GROUP.decode(es)));
   }
 
-  public static Value collectionsKeyValOfListEntryTextInt2(
-      Map<String, Object> symbols, Value input0)
+  public static Value collectionsKeyValOfListEntryTextInt2(Map<String, Object> symbols, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_INT32.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValOf5(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_INT32.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_INT32.decode(es)));
   }
 
   public static Value collectionsKeyValOfListEntryIntProducerEntry(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_INT64_PRODUCER_ENTRY.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValOf6(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_PRODUCER_ENTRY.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_PRODUCER_ENTRY.decode(es)));
   }
 
   public static Value collectionsKeyValOfListEntryTopicPartitionPartitionLog(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TOPIC_PARTITION_PARTITION_LOG.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValOf7(
             lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TOPIC_PARTITION_PARTITION_LOG.decode(
-                input0)));
+                es)));
   }
 
   public static Value collectionsKeyValOfListEntryTopicPartitionInt(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TOPIC_PARTITION_INT32.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValOf8(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TOPIC_PARTITION_INT32.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TOPIC_PARTITION_INT32.decode(es)));
   }
 
   public static Value collectionsKeyValOfListEntryTopicPartitionInt2(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TOPIC_PARTITION_INT64.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValOf9(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TOPIC_PARTITION_INT64.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TOPIC_PARTITION_INT64.decode(es)));
   }
 
   public static Value collectionsKeyValOfListEntryGroupPartitionInt(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_GROUP_PARTITION_INT64.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValOf10(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_GROUP_PARTITION_INT64.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_GROUP_PARTITION_INT64.decode(es)));
   }
 
   public static Value collectionsKeyValOfListEntryTextListText(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_LIST_TEXT.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValOf11(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TEXT.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TEXT.decode(es)));
   }
 
-  public static Value collectionsKeyValOfListEntryIntInt(Map<String, Object> symbols, Value input0)
+  public static Value collectionsKeyValOfListEntryIntInt(Map<String, Object> symbols, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_INT64_INT64.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValOf12(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_INT64.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_INT64.decode(es)));
   }
 
   public static Value collectionsKeyValPutItemsTopicPartitionPartitionLogListEntryTopicPartitionPartitionLog(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TOPIC_PARTITION_PARTITION_LOG.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPutItems(
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_PARTITION_LOG.decode(input1),
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_PARTITION_LOG.decode(v),
             lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TOPIC_PARTITION_PARTITION_LOG.decode(
-                input2)));
+                es)));
   }
 
   public static Value collectionsKeyValPutItemsGroupPartitionIntListEntryGroupPartitionInt(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_GROUP_PARTITION_INT64.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPutItems2(
-            lawspec.runtime.LawSpecTyped.CODEC_GROUP_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_GROUP_PARTITION_INT64.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_GROUP_PARTITION.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(v),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_GROUP_PARTITION_INT64.decode(es)));
   }
 
   public static Value collectionsKeyValPutItemsTextGroupListEntryTextGroup(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_GROUP.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPutItems3(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_GROUP.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_GROUP.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_GROUP.decode(v),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_GROUP.decode(es)));
   }
 
   public static Value collectionsKeyValPutItemsIntProducerEntryListEntryIntProducerEntry(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_PRODUCER_ENTRY.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPutItems4(
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_ENTRY.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_PRODUCER_ENTRY.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_ENTRY.decode(v),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_PRODUCER_ENTRY.decode(es)));
   }
 
   public static Value collectionsKeyValPutItemsTextIntListEntryTextInt(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_INT32.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPutItems5(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_INT32.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(v),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_INT32.decode(es)));
   }
 
   public static Value collectionsKeyValPutItemsTextIntListEntryTextInt2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_INT64.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPutItems6(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_INT64.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(v),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_INT64.decode(es)));
   }
 
   public static Value collectionsKeyValPutItemsTextListTopicPartitionListEntryTextListTopicPartition(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TOPIC_PARTITION.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPutItems7(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TOPIC_PARTITION.decode(
-                input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(v),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TOPIC_PARTITION.decode(es)));
   }
 
   public static Value collectionsKeyValPutItemsIntListBatchMetaListEntryIntListBatchMeta(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_LIST_BATCH_META.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPutItems8(
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_BATCH_META.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_LIST_BATCH_META.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_BATCH_META.decode(v),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_LIST_BATCH_META.decode(es)));
   }
 
   public static Value collectionsKeyValPutItemsTextListTextListEntryTextListText(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TEXT.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPutItems9(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TEXT.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(v),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TEXT.decode(es)));
   }
 
   public static Value collectionsKeyValPutItemsTopicPartitionIntListEntryTopicPartitionInt(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TOPIC_PARTITION_INT64.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPutItems10(
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TOPIC_PARTITION_INT64.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(v),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TOPIC_PARTITION_INT64.decode(es)));
   }
 
   public static Value collectionsKeyValPutItemsTopicPartitionIntListEntryTopicPartitionInt2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TOPIC_PARTITION_INT32.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPutItems11(
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TOPIC_PARTITION_INT32.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(v),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TOPIC_PARTITION_INT32.decode(es)));
   }
 
   public static Value collectionsKeyValPutItemsIntIntListEntryIntInt(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_INT64.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPutItems12(
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_INT64.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(v),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_INT64.decode(es)));
   }
 
   public static Value collectionsKeyValPutGroupPartitionIntKeyValGroupPartitionInt(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value m)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_GROUP_PARTITION_INT64.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPut(
-            lawspec.runtime.LawSpecTyped.CODEC_GROUP_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_GROUP_PARTITION_INT64.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_GROUP_PARTITION.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(v),
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_GROUP_PARTITION_INT64.decode(m)));
   }
 
   public static Value collectionsKeyValPutTextIntKeyValTextInt(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value m)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_INT32.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPut2(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_INT32.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(v),
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_INT32.decode(m)));
   }
 
   public static Value collectionsKeyValPutTextListTopicPartitionKeyValTextListTopicPartition(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value m)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_LIST_TOPIC_PARTITION.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPut3(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_LIST_TOPIC_PARTITION.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(v),
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_LIST_TOPIC_PARTITION.decode(m)));
   }
 
   public static Value collectionsKeyValPutTopicPartitionIntKeyValTopicPartitionInt(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value m)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TOPIC_PARTITION_INT64.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPut4(
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TOPIC_PARTITION_INT64.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(v),
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TOPIC_PARTITION_INT64.decode(m)));
   }
 
   public static Value collectionsKeyValPutIntProducerEntryKeyValIntProducerEntry(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value m)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_INT64_PRODUCER_ENTRY.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPut5(
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_ENTRY.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_INT64_PRODUCER_ENTRY.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_ENTRY.decode(v),
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_INT64_PRODUCER_ENTRY.decode(m)));
   }
 
   public static Value collectionsKeyValPutIntListBatchMetaKeyValIntListBatchMeta(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value m)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_INT64_LIST_BATCH_META.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPut6(
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_BATCH_META.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_INT64_LIST_BATCH_META.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_BATCH_META.decode(v),
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_INT64_LIST_BATCH_META.decode(m)));
   }
 
   public static Value collectionsKeyValPutTextGroupKeyValTextGroup(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value m)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_GROUP.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPut7(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_GROUP.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_GROUP.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_GROUP.decode(v),
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_GROUP.decode(m)));
   }
 
   public static Value collectionsKeyValPutIntIntKeyValIntInt(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value m)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_INT64_INT64.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPut8(
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_INT64_INT64.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(v),
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_INT64_INT64.decode(m)));
   }
 
   public static Value collectionsKeyValPutTextListTextKeyValTextListText(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value m)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_LIST_TEXT.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPut9(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_LIST_TEXT.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(v),
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_LIST_TEXT.decode(m)));
   }
 
   public static Value collectionsKeyValPutTopicPartitionPartitionLogKeyValTopicPartitionPartitionLog(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value m)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TOPIC_PARTITION_PARTITION_LOG.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPut10(
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_PARTITION_LOG.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TOPIC_PARTITION_PARTITION_LOG.decode(
-                input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_PARTITION_LOG.decode(v),
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TOPIC_PARTITION_PARTITION_LOG.decode(m)));
   }
 
   public static Value collectionsKeyValPutTopicPartitionIntKeyValTopicPartitionInt2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value m)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TOPIC_PARTITION_INT32.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPut11(
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TOPIC_PARTITION_INT32.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(v),
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TOPIC_PARTITION_INT32.decode(m)));
   }
 
   public static Value collectionsKeyValPutTextIntKeyValTextInt2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value m)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_INT64.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPut12(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_INT64.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(k),
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(v),
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_INT64.decode(m)));
   }
 
   public static Value collectionsKeyValValuesItemsListEntryIntInt(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_INT64.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValValuesItems(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_INT64.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_INT64_INT64.decode(es)));
   }
 
-  public static Value collectionsKeyValValuesKeyValIntInt(Map<String, Object> symbols, Value input0)
+  public static Value collectionsKeyValValuesKeyValIntInt(Map<String, Object> symbols, Value m)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_INT64.encode(
         lawspec.runtime.LawSpecTyped.collectionsKeyValValues(
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_INT64_INT64.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_INT64_INT64.decode(m)));
   }
 
   public static Value collectionsSetFromItemsListIntListInt(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value xs, Value acc)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_INT32.encode(
         lawspec.runtime.LawSpecTyped.collectionsSetFromItems(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_INT32.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_INT32.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_INT32.decode(xs),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_INT32.decode(acc)));
   }
 
   public static Value collectionsSetFromItemsListIntListInt2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value xs, Value acc)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_INT64.encode(
         lawspec.runtime.LawSpecTyped.collectionsSetFromItems2(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_INT64.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_INT64.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_INT64.decode(xs),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_INT64.decode(acc)));
   }
 
   public static Value collectionsSetFromItemsListTextListText(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value xs, Value acc)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.encode(
         lawspec.runtime.LawSpecTyped.collectionsSetFromItems3(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(xs),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(acc)));
   }
 
   public static Value collectionsSetInsertItemsIntListInt(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value x, Value xs)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_INT32.encode(
         lawspec.runtime.LawSpecTyped.collectionsSetInsertItems(
-            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_INT32.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(x),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_INT32.decode(xs)));
   }
 
   public static Value collectionsSetInsertItemsIntListInt2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value x, Value xs)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_INT64.encode(
         lawspec.runtime.LawSpecTyped.collectionsSetInsertItems2(
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_INT64.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(x),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_INT64.decode(xs)));
   }
 
   public static Value collectionsSetInsertItemsTextListText(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value x, Value xs)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.encode(
         lawspec.runtime.LawSpecTyped.collectionsSetInsertItems3(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(x),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(xs)));
   }
 
   public static Value collectionsSetMemberItemsIntListInt(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value x, Value xs)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_BOOL.encode(
         lawspec.runtime.LawSpecTyped.collectionsSetMemberItems(
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_INT64.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(x),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_INT64.decode(xs)));
   }
 
-  public static Value collectionsSetMemberIntSetInt(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value collectionsSetMemberIntSetInt(Map<String, Object> symbols, Value x, Value s)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_BOOL.encode(
         lawspec.runtime.LawSpecTyped.collectionsSetMember(
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_SET_INT64.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(x),
+            lawspec.runtime.LawSpecTyped.CODEC_SET_INT64.decode(s)));
   }
 
-  public static Value collectionsSetOfListText(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSetOfListText(Map<String, Object> symbols, Value xs)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_SET_TEXT.encode(
         lawspec.runtime.LawSpecTyped.collectionsSetOf(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(xs)));
   }
 
-  public static Value collectionsSetOfListInt(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSetOfListInt(Map<String, Object> symbols, Value xs)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_SET_INT32.encode(
         lawspec.runtime.LawSpecTyped.collectionsSetOf2(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_INT32.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_INT32.decode(xs)));
   }
 
-  public static Value collectionsSetOfListInt2(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSetOfListInt2(Map<String, Object> symbols, Value xs)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_SET_INT64.encode(
         lawspec.runtime.LawSpecTyped.collectionsSetOf3(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_INT64.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_INT64.decode(xs)));
   }
 
   public static Value collectionsSetRemoveItemsTextListText(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value x, Value xs)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.encode(
         lawspec.runtime.LawSpecTyped.collectionsSetRemoveItems(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(x),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(xs)));
   }
 
-  public static Value collectionsSetRemoveTextSetText(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value collectionsSetRemoveTextSetText(Map<String, Object> symbols, Value x, Value s)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_SET_TEXT.encode(
         lawspec.runtime.LawSpecTyped.collectionsSetRemove(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_SET_TEXT.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(x),
+            lawspec.runtime.LawSpecTyped.CODEC_SET_TEXT.decode(s)));
   }
 
   public static Value collectionsSetUnionSetTextSetText(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value s, Value t)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_SET_TEXT.encode(
         lawspec.runtime.LawSpecTyped.collectionsSetUnion(
-            lawspec.runtime.LawSpecTyped.CODEC_SET_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_SET_TEXT.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_SET_TEXT.decode(s),
+            lawspec.runtime.LawSpecTyped.CODEC_SET_TEXT.decode(t)));
   }
 
   public static Value lawtwinKafkaModelAddPartitionsToTxn(
-      Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4)
+      Map<String, Object> symbols, Value txid, Value pid, Value epoch, Value tps, Value b)
   {
-    return addPartitionsToTxn(symbols, input0, input1, input2, input3, input4);
+    return addPartitionsToTxn(symbols, txid, pid, epoch, tps, b);
   }
 
-  public static Value lawtwinKafkaModelAllKnown(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaModelAllKnown(Map<String, Object> symbols, Value tps, Value b)
   {
-    return allKnown(symbols, input0, input1);
+    return allKnown(symbols, tps, b);
   }
 
   public static Value lawtwinKafkaModelAppendBatch(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value rs, Value writer, Value transactional, Value l)
   {
-    return appendBatch(symbols, input0, input1, input2, input3);
+    return appendBatch(symbols, rs, writer, transactional, l);
   }
 
   public static Value lawtwinKafkaModelAppendRecords(
       Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4)
+      Value rs,
+      Value offset,
+      Value writer,
+      Value transactional,
+      Value es)
   {
-    return appendRecords(symbols, input0, input1, input2, input3, input4);
+    return appendRecords(symbols, rs, offset, writer, transactional, es);
   }
 
-  public static Value lawtwinKafkaModelApplyOffsets(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaModelApplyOffsets(Map<String, Object> symbols, Value os, Value b)
   {
-    return applyOffsets(symbols, input0, input1);
+    return applyOffsets(symbols, os, b);
   }
 
   public static Value lawtwinKafkaModelAssignPartitions(
-      Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4)
+      Map<String, Object> symbols, Value topic, Value ps, Value owners, Value waiting, Value a)
   {
-    return assignPartitions(symbols, input0, input1, input2, input3, input4);
+    return assignPartitions(symbols, topic, ps, owners, waiting, a);
   }
 
   public static Value lawtwinKafkaModelAssignTo(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value member, Value tp, Value a)
   {
-    return assignTo(symbols, input0, input1, input2);
+    return assignTo(symbols, member, tp, a);
   }
 
   public static Value lawtwinKafkaModelAssignTopics(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value topics, Value subs, Value b, Value a)
   {
-    return assignTopics(symbols, input0, input1, input2, input3);
+    return assignTopics(symbols, topics, subs, b, a);
   }
 
   public static Value lawtwinKafkaModelCheckMember(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value g, Value member, Value generation, Value b)
   {
-    return checkMember(symbols, input0, input1, input2, input3);
+    return checkMember(symbols, g, member, generation, b);
   }
 
   public static Value lawtwinKafkaModelCheckTxnProducer(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value txid, Value pid, Value epoch, Value b)
   {
-    return checkTxnProducer(symbols, input0, input1, input2, input3);
+    return checkTxnProducer(symbols, txid, pid, epoch, b);
   }
 
   public static Value lawtwinKafkaModelCommitAll(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value g, Value offsets, Value b)
   {
-    return commitAll(symbols, input0, input1, input2);
+    return commitAll(symbols, g, offsets, b);
   }
 
   public static Value lawtwinKafkaModelComputeAssignment(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value subscriptions, Value b)
   {
-    return computeAssignment(symbols, input0, input1);
+    return computeAssignment(symbols, subscriptions, b);
   }
 
   public static Value lawtwinKafkaModelCreatePartitions(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value name, Value total, Value b)
   {
-    return createPartitions(symbols, input0, input1, input2);
+    return createPartitions(symbols, name, total, b);
   }
 
   public static Value lawtwinKafkaModelCreateTopic(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value name, Value n, Value b)
   {
-    return createTopic(symbols, input0, input1, input2);
+    return createTopic(symbols, name, n, b);
   }
 
-  public static Value lawtwinKafkaModelDescribeGroup(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaModelDescribeGroup(Map<String, Object> symbols, Value g, Value b)
   {
-    return describeGroup(symbols, input0, input1);
+    return describeGroup(symbols, g, b);
   }
 
   public static Value lawtwinKafkaModelEmptyAssignments(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value members, Value a)
   {
-    return emptyAssignments(symbols, input0, input1);
+    return emptyAssignments(symbols, members, a);
   }
 
-  public static Value lawtwinKafkaModelEmptyBroker(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaModelEmptyBroker(Map<String, Object> symbols, Value u)
   {
-    return emptyBroker(symbols, input0);
+    return emptyBroker(symbols, u);
   }
 
-  public static Value lawtwinKafkaModelEmptyGroup(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaModelEmptyGroup(Map<String, Object> symbols, Value u)
   {
-    return emptyGroup(symbols, input0);
+    return emptyGroup(symbols, u);
   }
 
-  public static Value lawtwinKafkaModelEmptyLog(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaModelEmptyLog(Map<String, Object> symbols, Value u)
   {
-    return emptyLog(symbols, input0);
+    return emptyLog(symbols, u);
   }
 
   public static Value lawtwinKafkaModelEndTxn(
-      Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4)
+      Map<String, Object> symbols, Value txid, Value pid, Value epoch, Value commit, Value b)
   {
-    return endTxn(symbols, input0, input1, input2, input3, input4);
+    return endTxn(symbols, txid, pid, epoch, commit, b);
   }
 
   public static Value lawtwinKafkaModelExpectedSequence(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value epoch, Value ms)
   {
-    return expectedSequence(symbols, input0, input1);
+    return expectedSequence(symbols, epoch, ms);
   }
 
   public static Value lawtwinKafkaModelFetch(
-      Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4)
+      Map<String, Object> symbols, Value tp, Value from, Value maxRecords, Value isolation, Value b)
   {
-    return fetch(symbols, input0, input1, input2, input3, input4);
+    return fetch(symbols, tp, from, maxRecords, isolation, b);
   }
 
   public static Value lawtwinKafkaModelFindDuplicate(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value epoch, Value first, Value last, Value ms)
   {
-    return findDuplicate(symbols, input0, input1, input2, input3);
+    return findDuplicate(symbols, epoch, first, last, ms);
   }
 
   public static Value lawtwinKafkaModelFinishTxn(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value pid, Value commit, Value txn, Value b)
   {
-    return finishTxn(symbols, input0, input1, input2, input3);
+    return finishTxn(symbols, pid, commit, txn, b);
   }
 
-  public static Value lawtwinKafkaModelGroupOf(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaModelGroupOf(Map<String, Object> symbols, Value g, Value b)
   {
-    return groupOf(symbols, input0, input1);
+    return groupOf(symbols, g, b);
   }
 
   public static Value lawtwinKafkaModelHeartbeat(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value g, Value member, Value generation, Value b)
   {
-    return heartbeat(symbols, input0, input1, input2, input3);
+    return heartbeat(symbols, g, member, generation, b);
   }
 
-  public static Value lawtwinKafkaModelHighWatermark(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaModelHighWatermark(Map<String, Object> symbols, Value l)
   {
-    return highWatermark(symbols, input0);
+    return highWatermark(symbols, l);
   }
 
   public static Value lawtwinKafkaModelInitProducerId(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value txid, Value b)
   {
-    return initProducerId(symbols, input0, input1);
+    return initProducerId(symbols, txid, b);
   }
 
   public static Value lawtwinKafkaModelIsAborted(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value writer, Value offset, Value aborted)
   {
-    return isAborted(symbols, input0, input1, input2);
+    return isAborted(symbols, writer, offset, aborted);
   }
 
   public static Value lawtwinKafkaModelJoinGroup(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value g, Value member, Value topics, Value b)
   {
-    return joinGroup(symbols, input0, input1, input2, input3);
+    return joinGroup(symbols, g, member, topics, b);
   }
 
   public static Value lawtwinKafkaModelKnownPartition(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value tp, Value b)
   {
-    return knownPartition(symbols, input0, input1);
+    return knownPartition(symbols, tp, b);
   }
 
   public static Value lawtwinKafkaModelLastOffsetOf(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value rs, Value fallbackOffset)
   {
-    return lastOffsetOf(symbols, input0, input1);
+    return lastOffsetOf(symbols, rs, fallbackOffset);
   }
 
-  public static Value lawtwinKafkaModelLastStableOffset(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaModelLastStableOffset(Map<String, Object> symbols, Value l)
   {
-    return lastStableOffset(symbols, input0);
+    return lastStableOffset(symbols, l);
   }
 
   public static Value lawtwinKafkaModelLeaveGroup(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value g, Value member, Value b)
   {
-    return leaveGroup(symbols, input0, input1, input2);
+    return leaveGroup(symbols, g, member, b);
   }
 
   public static Value lawtwinKafkaModelListOffsets(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value tp, Value spec, Value isolation, Value b)
   {
-    return listOffsets(symbols, input0, input1, input2, input3);
+    return listOffsets(symbols, tp, spec, isolation, b);
   }
 
-  public static Value lawtwinKafkaModelLogOf(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaModelLogOf(Map<String, Object> symbols, Value tp, Value b)
   {
-    return logOf(symbols, input0, input1);
+    return logOf(symbols, tp, b);
   }
 
-  public static Value lawtwinKafkaModelMax64(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaModelMax64(Map<String, Object> symbols, Value a, Value b)
   {
-    return max64(symbols, input0, input1);
+    return max64(symbols, a, b);
   }
 
-  public static Value lawtwinKafkaModelMaxPartitions(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaModelMaxPartitions(Map<String, Object> symbols, Value u)
   {
-    return maxPartitions(symbols, input0);
+    return maxPartitions(symbols, u);
   }
 
-  public static Value lawtwinKafkaModelMemberViews(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaModelMemberViews(Map<String, Object> symbols, Value a)
   {
-    return memberViews(symbols, input0);
+    return memberViews(symbols, a);
   }
 
-  public static Value lawtwinKafkaModelMetadata(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaModelMetadata(Map<String, Object> symbols, Value name, Value b)
   {
-    return metadata(symbols, input0, input1);
+    return metadata(symbols, name, b);
   }
 
-  public static Value lawtwinKafkaModelMin64(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaModelMin64(Map<String, Object> symbols, Value a, Value b)
   {
-    return min64(symbols, input0, input1);
+    return min64(symbols, a, b);
   }
 
-  public static Value lawtwinKafkaModelMinOf(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaModelMinOf(Map<String, Object> symbols, Value xs, Value m)
   {
-    return minOf(symbols, input0, input1);
+    return minOf(symbols, xs, m);
   }
 
-  public static Value lawtwinKafkaModelNewProducer(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaModelNewProducer(Map<String, Object> symbols, Value txid, Value b)
   {
-    return newProducer(symbols, input0, input1);
+    return newProducer(symbols, txid, b);
   }
 
   public static Value lawtwinKafkaModelNextFetchOffset(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value from, Value limit, Value taken, Value all)
   {
-    return nextFetchOffset(symbols, input0, input1, input2, input3);
+    return nextFetchOffset(symbols, from, limit, taken, all);
   }
 
   public static Value lawtwinKafkaModelOffsetCommit(
-      Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4)
+      Map<String, Object> symbols, Value g, Value member, Value generation, Value offsets, Value b)
   {
-    return offsetCommit(symbols, input0, input1, input2, input3, input4);
+    return offsetCommit(symbols, g, member, generation, offsets, b);
   }
 
   public static Value lawtwinKafkaModelOffsetFetch(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value g, Value tp, Value b)
   {
-    return offsetFetch(symbols, input0, input1, input2);
+    return offsetFetch(symbols, g, tp, b);
   }
 
-  public static Value lawtwinKafkaModelOffsetPartitions(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaModelOffsetPartitions(Map<String, Object> symbols, Value offsets)
   {
-    return offsetPartitions(symbols, input0);
+    return offsetPartitions(symbols, offsets);
   }
 
   public static Value lawtwinKafkaModelPartitionCountOf(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value topic, Value b)
   {
-    return partitionCountOf(symbols, input0, input1);
+    return partitionCountOf(symbols, topic, b);
   }
 
-  public static Value lawtwinKafkaModelPartitionsBelow(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaModelPartitionsBelow(Map<String, Object> symbols, Value n)
   {
-    return partitionsBelow(symbols, input0);
+    return partitionsBelow(symbols, n);
   }
 
   public static Value lawtwinKafkaModelPendingFor(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value groupValue, Value offsets, Value acc)
   {
-    return pendingFor(symbols, input0, input1, input2);
+    return pendingFor(symbols, groupValue, offsets, acc);
   }
 
   public static Value lawtwinKafkaModelProduce(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value tp, Value tagValue, Value rs, Value b)
   {
-    return produce(symbols, input0, input1, input2, input3);
+    return produce(symbols, tp, tagValue, rs, b);
   }
 
   public static Value lawtwinKafkaModelProduceTagged(
-      Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4)
+      Map<String, Object> symbols, Value tp, Value t, Value rs, Value l, Value b)
   {
-    return produceTagged(symbols, input0, input1, input2, input3, input4);
+    return produceTagged(symbols, tp, t, rs, l, b);
   }
 
   public static Value lawtwinKafkaModelPutGroup(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value g, Value groupValue, Value b)
   {
-    return putGroup(symbols, input0, input1, input2);
+    return putGroup(symbols, g, groupValue, b);
   }
 
   public static Value lawtwinKafkaModelPutLog(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value tp, Value l, Value b)
   {
-    return putLog(symbols, input0, input1, input2);
+    return putLog(symbols, tp, l, b);
   }
 
   public static Value lawtwinKafkaModelPutProducer(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value pid, Value entry, Value b)
   {
-    return putProducer(symbols, input0, input1, input2);
+    return putProducer(symbols, pid, entry, b);
   }
 
   public static Value lawtwinKafkaModelReadable(
       Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4,
-      Value input5)
+      Value es,
+      Value from,
+      Value limit,
+      Value committedOnly,
+      Value aborted,
+      Value acc)
   {
-    return readable(symbols, input0, input1, input2, input3, input4, input5);
+    return readable(symbols, es, from, limit, committedOnly, aborted, acc);
   }
 
   public static Value lawtwinKafkaModelRebalance(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value groupValue, Value b)
   {
-    return rebalance(symbols, input0, input1);
+    return rebalance(symbols, groupValue, b);
   }
 
   public static Value lawtwinKafkaModelRebalanceGroups(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value topic, Value gs, Value b, Value acc)
   {
-    return rebalanceGroups(symbols, input0, input1, input2, input3);
+    return rebalanceGroups(symbols, topic, gs, b, acc);
   }
 
   public static Value lawtwinKafkaModelRebalanceTopic(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value topic, Value b)
   {
-    return rebalanceTopic(symbols, input0, input1);
+    return rebalanceTopic(symbols, topic, b);
   }
 
   public static Value lawtwinKafkaModelRememberBatch(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value writer, Value meta, Value l)
   {
-    return rememberBatch(symbols, input0, input1, input2);
+    return rememberBatch(symbols, writer, meta, l);
   }
 
   public static Value lawtwinKafkaModelReversePending(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value os, Value acc)
   {
-    return reversePending(symbols, input0, input1);
+    return reversePending(symbols, os, acc);
   }
 
   public static Value lawtwinKafkaModelSubscribedTopics(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value subs, Value acc)
   {
-    return subscribedTopics(symbols, input0, input1);
+    return subscribedTopics(symbols, subs, acc);
   }
 
   public static Value lawtwinKafkaModelSubscribersOf(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value topic, Value subs)
   {
-    return subscribersOf(symbols, input0, input1);
+    return subscribersOf(symbols, topic, subs);
   }
 
   public static Value lawtwinKafkaModelSubscribesTo(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value topic, Value groupValue)
   {
-    return subscribesTo(symbols, input0, input1);
+    return subscribesTo(symbols, topic, groupValue);
   }
 
   public static Value lawtwinKafkaModelSyncGroup(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value g, Value member, Value generation, Value b)
   {
-    return syncGroup(symbols, input0, input1, input2, input3);
+    return syncGroup(symbols, g, member, generation, b);
   }
 
   public static Value lawtwinKafkaModelTxnHasPartition(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value tp, Value txn)
   {
-    return txnHasPartition(symbols, input0, input1);
+    return txnHasPartition(symbols, tp, txn);
   }
 
   public static Value lawtwinKafkaModelTxnOffsetCommit(
       Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4,
-      Value input5)
+      Value txid,
+      Value pid,
+      Value epoch,
+      Value groupValue,
+      Value offsets,
+      Value b)
   {
-    return txnOffsetCommit(symbols, input0, input1, input2, input3, input4, input5);
+    return txnOffsetCommit(symbols, txid, pid, epoch, groupValue, offsets, b);
   }
 
   public static Value lawtwinKafkaModelUnionPartitions(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value xs, Value ys)
   {
-    return unionPartitions(symbols, input0, input1);
+    return unionPartitions(symbols, xs, ys);
   }
 
-  public static Value lawtwinKafkaModelValidTopicName(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaModelValidTopicName(Map<String, Object> symbols, Value name)
   {
-    return validTopicName(symbols, input0);
+    return validTopicName(symbols, name);
   }
 
   public static Value lawtwinKafkaModelWriteMarker(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value pid, Value commit, Value l)
   {
-    return writeMarker(symbols, input0, input1, input2);
+    return writeMarker(symbols, pid, commit, l);
   }
 
   public static Value lawtwinKafkaModelWriteMarkers(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value pid, Value commit, Value tps, Value b)
   {
-    return writeMarkers(symbols, input0, input1, input2, input3);
+    return writeMarkers(symbols, pid, commit, tps, b);
   }
 
-  public static Value memberIds(Map<String, Object> symbols, Value input0)
+  public static Value memberIds(Map<String, Object> symbols, Value ms)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.encode(
         lawspec.runtime.LawSpecTyped.memberIds(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(ms)));
   }
 
-  public static Value missingFrom(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value missingFrom(Map<String, Object> symbols, Value tps, Value have)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.encode(
         lawspec.runtime.LawSpecTyped.missingFrom(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(tps),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(have)));
   }
 
-  public static Value mul32(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value mul32(Map<String, Object> symbols, Value a, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_UINT32.encode(
         lawspec.runtime.LawSpecTyped.mul32(
-            lawspec.runtime.LawSpecTyped.CODEC_UINT32.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_UINT32.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_UINT32.decode(a),
+            lawspec.runtime.LawSpecTyped.CODEC_UINT32.decode(b)));
   }
 
-  public static Value murmur2(Map<String, Object> symbols, Value input0)
+  public static Value murmur2(Map<String, Object> symbols, Value key)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_UINT32.encode(
-        lawspec.runtime.LawSpecTyped.murmur2(
-            lawspec.runtime.LawSpecTyped.CODEC_BYTES.decode(input0)));
+        lawspec.runtime.LawSpecTyped.murmur2(lawspec.runtime.LawSpecTyped.CODEC_BYTES.decode(key)));
   }
 
-  public static Value murmurChunks(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value murmurChunks(Map<String, Object> symbols, Value octets, Value h)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_UINT32.encode(
         lawspec.runtime.LawSpecTyped.murmurChunks(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_UINT8.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_UINT32.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_UINT8.decode(octets),
+            lawspec.runtime.LawSpecTyped.CODEC_UINT32.decode(h)));
   }
 
-  public static Value murmurM(Map<String, Object> symbols, Value input0)
+  public static Value murmurM(Map<String, Object> symbols, Value u)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_UINT32.encode(
-        lawspec.runtime.LawSpecTyped.murmurM(
-            lawspec.runtime.LawSpecTyped.CODEC_UNIT.decode(input0)));
+        lawspec.runtime.LawSpecTyped.murmurM(lawspec.runtime.LawSpecTyped.CODEC_UNIT.decode(u)));
   }
 
   public static Value murmurPartitionerChoosePartition(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value key, Value n)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_INT32.encode(
         lawspec.runtime.LawSpecTyped.murmurPartitionerChoosePartition(
-            lawspec.runtime.LawSpecTyped.CODEC_MAYBE_BYTES.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_MAYBE_BYTES.decode(key),
+            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(n)));
   }
 
-  public static Value ownedOf(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value ownedOf(Map<String, Object> symbols, Value t, Value ms)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_INT32.encode(
         lawspec.runtime.LawSpecTyped.ownedOf(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_MEMBER_ASSIGNMENT.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(t),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_MEMBER_ASSIGNMENT.decode(ms)));
   }
 
-  public static Value partitionOf(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+  public static Value partitionOf(Map<String, Object> symbols, Value topic, Value choice, Value r)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_EITHER_KAFKA_ERROR_TOPIC_PARTITION.encode(
         lawspec.runtime.LawSpecTyped.partitionOf(
             symbols,
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_PARTITION_CHOICE.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_RECORD.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(topic),
+            lawspec.runtime.LawSpecTyped.CODEC_PARTITION_CHOICE.decode(choice),
+            lawspec.runtime.LawSpecTyped.CODEC_RECORD.decode(r)));
   }
 
-  public static Value partitionsOfTopic(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value partitionsOfTopic(Map<String, Object> symbols, Value t, Value tps)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_INT32.encode(
         lawspec.runtime.LawSpecTyped.partitionsOfTopic(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(t),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(tps)));
   }
 
   public static Value pollPartitions(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value tps, Value n, Value c, Value acc)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_EITHER_KAFKA_ERROR_LIST_CONSUMER_RECORD_CONSUMER_STATE
         .encode(
             lawspec.runtime.LawSpecTyped.pollPartitions(
                 symbols,
-                lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(input0),
-                lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(input1),
-                lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(input2),
-                lawspec.runtime.LawSpecTyped.CODEC_LIST_CONSUMER_RECORD.decode(input3)));
+                lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(tps),
+                lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(n),
+                lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(c),
+                lawspec.runtime.LawSpecTyped.CODEC_LIST_CONSUMER_RECORD.decode(acc)));
   }
 
-  public static Value positionsToCommit(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value positionsToCommit(Map<String, Object> symbols, Value tps, Value positions)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_OFFSET_ENTRY.encode(
         lawspec.runtime.LawSpecTyped.positionsToCommit(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TOPIC_PARTITION_INT64.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(tps),
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TOPIC_PARTITION_INT64.decode(positions)));
   }
 
-  public static Value producerFlush(Map<String, Object> symbols, Value input0)
+  public static Value producerFlush(Map<String, Object> symbols, Value st)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_UNIT_PRODUCER_STATE.encode(
         lawspec.runtime.LawSpecTyped.producerFlush(
-            lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_STATE.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_STATE.decode(st)));
   }
 
-  public static Value producerIdempotent(Map<String, Object> symbols, Value input0)
+  public static Value producerIdempotent(Map<String, Object> symbols, Value st)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_EITHER_KAFKA_ERROR_PRODUCER_ID_AND_EPOCH_PRODUCER_STATE
         .encode(
             lawspec.runtime.LawSpecTyped.producerIdempotent(
-                symbols, lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_STATE.decode(input0)));
+                symbols, lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_STATE.decode(st)));
   }
 
-  public static Value producerRetry(Map<String, Object> symbols, Value input0)
+  public static Value producerRetry(Map<String, Object> symbols, Value st)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_EITHER_KAFKA_ERROR_RECORD_METADATA_PRODUCER_STATE
         .encode(
             lawspec.runtime.LawSpecTyped.producerRetry(
-                symbols, lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_STATE.decode(input0)));
+                symbols, lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_STATE.decode(st)));
   }
 
-  public static Value producerSend(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value producerSend(Map<String, Object> symbols, Value pr, Value st)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_EITHER_KAFKA_ERROR_RECORD_METADATA_PRODUCER_STATE
         .encode(
             lawspec.runtime.LawSpecTyped.producerSend(
                 symbols,
-                lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_RECORD.decode(input0),
-                lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_STATE.decode(input1)));
+                lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_RECORD.decode(pr),
+                lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_STATE.decode(st)));
   }
 
-  public static Value readFrom(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+  public static Value readFrom(Map<String, Object> symbols, Value tp, Value offset, Value isolation)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_RECORD.encode(
         lawspec.runtime.LawSpecTyped.readFrom(
             symbols,
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_ISOLATION_LEVEL.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(tp),
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(offset),
+            lawspec.runtime.LawSpecTyped.CODEC_ISOLATION_LEVEL.decode(isolation)));
   }
 
   public static Value readInOrder(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value a, Value b, Value first, Value second)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_BOOL.encode(
         lawspec.runtime.LawSpecTyped.readInOrder(
             symbols,
-            lawspec.runtime.LawSpecTyped.CODEC_EITHER_KAFKA_ERROR_RECORD_METADATA.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_EITHER_KAFKA_ERROR_RECORD_METADATA.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_RECORD.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_RECORD.decode(input3)));
+            lawspec.runtime.LawSpecTyped.CODEC_EITHER_KAFKA_ERROR_RECORD_METADATA.decode(a),
+            lawspec.runtime.LawSpecTyped.CODEC_EITHER_KAFKA_ERROR_RECORD_METADATA.decode(b),
+            lawspec.runtime.LawSpecTyped.CODEC_RECORD.decode(first),
+            lawspec.runtime.LawSpecTyped.CODEC_RECORD.decode(second)));
   }
 
-  public static Value receivedOffsets(Map<String, Object> symbols, Value input0)
+  public static Value receivedOffsets(Map<String, Object> symbols, Value rs)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_INT64.encode(
         lawspec.runtime.LawSpecTyped.receivedOffsets(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_CONSUMER_RECORD.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_CONSUMER_RECORD.decode(rs)));
   }
 
-  public static Value receivedRecords(Map<String, Object> symbols, Value input0)
+  public static Value receivedRecords(Map<String, Object> symbols, Value rs)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_RECORD.encode(
         lawspec.runtime.LawSpecTyped.receivedRecords(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_CONSUMER_RECORD.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_CONSUMER_RECORD.decode(rs)));
   }
 
-  public static Value recordsOf(Map<String, Object> symbols, Value input0)
+  public static Value recordsOf(Map<String, Object> symbols, Value rs)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_RECORD.encode(
         lawspec.runtime.LawSpecTyped.recordsOf(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_FETCHED_RECORD.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_FETCHED_RECORD.decode(rs)));
   }
 
   public static Value resumesAtCommitted(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value t, Value g, Value m, Value n)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_BOOL.encode(
         lawspec.runtime.LawSpecTyped.resumesAtCommitted(
             symbols,
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(input3)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(t),
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(g),
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(m),
+            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(n)));
   }
 
-  public static Value samePartition(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value samePartition(Map<String, Object> symbols, Value a, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_BOOL.encode(
         lawspec.runtime.LawSpecTyped.samePartition(
-            lawspec.runtime.LawSpecTyped.CODEC_EITHER_KAFKA_ERROR_RECORD_METADATA.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_EITHER_KAFKA_ERROR_RECORD_METADATA.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_EITHER_KAFKA_ERROR_RECORD_METADATA.decode(a),
+            lawspec.runtime.LawSpecTyped.CODEC_EITHER_KAFKA_ERROR_RECORD_METADATA.decode(b)));
   }
 
-  public static Value sequenceFor(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value sequenceFor(Map<String, Object> symbols, Value tp, Value sequences)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_INT32.encode(
         lawspec.runtime.LawSpecTyped.sequenceFor(
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TOPIC_PARTITION_INT32.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(tp),
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TOPIC_PARTITION_INT32.decode(sequences)));
   }
 
-  public static Value smallBatch(Map<String, Object> symbols, Value input0)
+  public static Value smallBatch(Map<String, Object> symbols, Value batch)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_BOOL.encode(
         lawspec.runtime.LawSpecTyped.smallBatch(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_RECORD.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_RECORD.decode(batch)));
   }
 
-  public static Value stableBelowHigh(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+  public static Value stableBelowHigh(Map<String, Object> symbols, Value t, Value txid, Value batch)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_BOOL.encode(
         lawspec.runtime.LawSpecTyped.stableBelowHigh(
             symbols,
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_RECORD.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(t),
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(txid),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_RECORD.decode(batch)));
   }
 
-  public static Value tagFor(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value tagFor(Map<String, Object> symbols, Value identity, Value sequence)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_MAYBE_PRODUCER_TAG.encode(
         lawspec.runtime.LawSpecTyped.tagFor(
-            lawspec.runtime.LawSpecTyped.CODEC_MAYBE_PRODUCER_ID_AND_EPOCH.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_MAYBE_PRODUCER_ID_AND_EPOCH.decode(identity),
+            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(sequence)));
   }
 
-  public static Value tagOf(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value tagOf(Map<String, Object> symbols, Value pe, Value sequence)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_TAG.encode(
         lawspec.runtime.LawSpecTyped.tagOf(
-            lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_ID_AND_EPOCH.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_ID_AND_EPOCH.decode(pe),
+            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(sequence)));
   }
 
-  public static Value toPositive(Map<String, Object> symbols, Value input0)
+  public static Value toPositive(Map<String, Object> symbols, Value h)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_UINT32.encode(
         lawspec.runtime.LawSpecTyped.toPositive(
-            lawspec.runtime.LawSpecTyped.CODEC_UINT32.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_UINT32.decode(h)));
   }
 
   public static Value transactionThenRead(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value t, Value txid, Value batch, Value commit)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_BOOL.encode(
         lawspec.runtime.LawSpecTyped.transactionThenRead(
             symbols,
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_RECORD.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_BOOL.decode(input3)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(t),
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(txid),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_RECORD.decode(batch),
+            lawspec.runtime.LawSpecTyped.CODEC_BOOL.decode(commit)));
   }
 
   public static Value transactionalOffsets(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value t, Value txid, Value g, Value offset)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_BOOL.encode(
         lawspec.runtime.LawSpecTyped.transactionalOffsets(
             symbols,
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input3)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(t),
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(txid),
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(g),
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(offset)));
   }
 
-  public static Value transactionsAbort(Map<String, Object> symbols, Value input0)
+  public static Value transactionsAbort(Map<String, Object> symbols, Value st)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_EITHER_KAFKA_ERROR_UNIT_TRANSACTION_STATE.encode(
         lawspec.runtime.LawSpecTyped.transactionsAbort(
-            symbols, lawspec.runtime.LawSpecTyped.CODEC_TRANSACTION_STATE.decode(input0)));
+            symbols, lawspec.runtime.LawSpecTyped.CODEC_TRANSACTION_STATE.decode(st)));
   }
 
-  public static Value transactionsAdd(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value transactionsAdd(Map<String, Object> symbols, Value tps, Value st)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_EITHER_KAFKA_ERROR_UNIT_TRANSACTION_STATE.encode(
         lawspec.runtime.LawSpecTyped.transactionsAdd(
             symbols,
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TRANSACTION_STATE.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(tps),
+            lawspec.runtime.LawSpecTyped.CODEC_TRANSACTION_STATE.decode(st)));
   }
 
-  public static Value transactionsBegin(Map<String, Object> symbols, Value input0)
+  public static Value transactionsBegin(Map<String, Object> symbols, Value st)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_EITHER_KAFKA_ERROR_UNIT_TRANSACTION_STATE.encode(
         lawspec.runtime.LawSpecTyped.transactionsBegin(
-            lawspec.runtime.LawSpecTyped.CODEC_TRANSACTION_STATE.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_TRANSACTION_STATE.decode(st)));
   }
 
-  public static Value transactionsCommit(Map<String, Object> symbols, Value input0)
+  public static Value transactionsCommit(Map<String, Object> symbols, Value st)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_EITHER_KAFKA_ERROR_UNIT_TRANSACTION_STATE.encode(
         lawspec.runtime.LawSpecTyped.transactionsCommit(
-            symbols, lawspec.runtime.LawSpecTyped.CODEC_TRANSACTION_STATE.decode(input0)));
+            symbols, lawspec.runtime.LawSpecTyped.CODEC_TRANSACTION_STATE.decode(st)));
   }
 
-  public static Value transactionsEnd(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value transactionsEnd(Map<String, Object> symbols, Value commit, Value st)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_EITHER_KAFKA_ERROR_UNIT_TRANSACTION_STATE.encode(
         lawspec.runtime.LawSpecTyped.transactionsEnd(
             symbols,
-            lawspec.runtime.LawSpecTyped.CODEC_BOOL.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TRANSACTION_STATE.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_BOOL.decode(commit),
+            lawspec.runtime.LawSpecTyped.CODEC_TRANSACTION_STATE.decode(st)));
   }
 
-  public static Value transactionsInit(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value transactionsInit(Map<String, Object> symbols, Value txid, Value st)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_EITHER_KAFKA_ERROR_PRODUCER_ID_AND_EPOCH_TRANSACTION_STATE
         .encode(
             lawspec.runtime.LawSpecTyped.transactionsInit(
                 symbols,
-                lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-                lawspec.runtime.LawSpecTyped.CODEC_TRANSACTION_STATE.decode(input1)));
+                lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(txid),
+                lawspec.runtime.LawSpecTyped.CODEC_TRANSACTION_STATE.decode(st)));
   }
 
   public static Value transactionsOffsets(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value g, Value offsets, Value st)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_EITHER_KAFKA_ERROR_UNIT_TRANSACTION_STATE.encode(
         lawspec.runtime.LawSpecTyped.transactionsOffsets(
             symbols,
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_OFFSET_ENTRY.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_TRANSACTION_STATE.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(g),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_OFFSET_ENTRY.decode(offsets),
+            lawspec.runtime.LawSpecTyped.CODEC_TRANSACTION_STATE.decode(st)));
   }
 
-  public static Value transactionsSend(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value transactionsSend(Map<String, Object> symbols, Value pr, Value st)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_EITHER_KAFKA_ERROR_RECORD_METADATA_TRANSACTION_STATE
         .encode(
             lawspec.runtime.LawSpecTyped.transactionsSend(
                 symbols,
-                lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_RECORD.decode(input0),
-                lawspec.runtime.LawSpecTyped.CODEC_TRANSACTION_STATE.decode(input1)));
+                lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_RECORD.decode(pr),
+                lawspec.runtime.LawSpecTyped.CODEC_TRANSACTION_STATE.decode(st)));
   }
 
-  public static Value uncommittedFrom(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value uncommittedFrom(Map<String, Object> symbols, Value tp, Value offset)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_RECORD.encode(
         lawspec.runtime.LawSpecTyped.uncommittedFrom(
             symbols,
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(tp),
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(offset)));
   }
 
-  public static Value viewOf(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value viewOf(Map<String, Object> symbols, Value m, Value view)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.encode(
         lawspec.runtime.LawSpecTyped.viewOf(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_GROUP_VIEW.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(m),
+            lawspec.runtime.LawSpecTyped.CODEC_GROUP_VIEW.decode(view)));
   }
 
   public static Value withAssignment(
-      Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4,
-      Value input5)
+      Map<String, Object> symbols, Value g, Value m, Value gen, Value topics, Value tps, Value c)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.encode(
         lawspec.runtime.LawSpecTyped.withAssignment(
-            lawspec.runtime.LawSpecTyped.CODEC_MAYBE_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(input3),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(input4),
-            lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(input5)));
+            lawspec.runtime.LawSpecTyped.CODEC_MAYBE_TEXT.decode(g),
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(m),
+            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(gen),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(topics),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(tps),
+            lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(c)));
   }
 
-  public static Value withPosition(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+  public static Value withPosition(Map<String, Object> symbols, Value tp, Value offset, Value c)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.encode(
         lawspec.runtime.LawSpecTyped.withPosition(
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(tp),
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(offset),
+            lawspec.runtime.LawSpecTyped.CODEC_CONSUMER_STATE.decode(c)));
   }
 
-  public static Value writeAborted(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+  public static Value writeAborted(Map<String, Object> symbols, Value tp, Value txid, Value r)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_MAYBE_INT64.encode(
         lawspec.runtime.LawSpecTyped.writeAborted(
             symbols,
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_RECORD.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(tp),
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(txid),
+            lawspec.runtime.LawSpecTyped.CODEC_RECORD.decode(r)));
   }
 
-  public static Value xor32(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value xor32(Map<String, Object> symbols, Value a, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_UINT32.encode(
         lawspec.runtime.LawSpecTyped.xor32(
-            lawspec.runtime.LawSpecTyped.CODEC_UINT32.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_UINT32.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_UINT32.decode(a),
+            lawspec.runtime.LawSpecTyped.CODEC_UINT32.decode(b)));
   }
 
-  public static Value xorBits(Map<String, Object> symbols, Value input0, Value input1, Value input2)
+  public static Value xorBits(Map<String, Object> symbols, Value a, Value b, Value bit)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_INTEGER.encode(
         lawspec.runtime.LawSpecTyped.xorBits(
-            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(a),
+            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(b),
+            lawspec.runtime.LawSpecTyped.CODEC_INTEGER.decode(bit)));
   }
 
   public static Value addPartitionsToTxn(
-      Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4)
+      Map<String, Object> symbols, Value txid, Value pid, Value epoch, Value tps, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_UNIT_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAddPartitionsToTxn(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_INT16.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(input3),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input4)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(txid),
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(pid),
+            lawspec.runtime.LawSpecTyped.CODEC_INT16.decode(epoch),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(tps),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b)));
   }
 
-  public static Value allKnown(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value allKnown(Map<String, Object> symbols, Value tps, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_BOOL.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAllKnown(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(tps),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b)));
   }
 
   public static Value appendBatch(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value rs, Value writer, Value transactional, Value l)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PARTITION_LOG.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAppendBatch(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_RECORD.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_BOOL.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_PARTITION_LOG.decode(input3)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_RECORD.decode(rs),
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(writer),
+            lawspec.runtime.LawSpecTyped.CODEC_BOOL.decode(transactional),
+            lawspec.runtime.LawSpecTyped.CODEC_PARTITION_LOG.decode(l)));
   }
 
   public static Value appendRecords(
       Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4)
+      Value rs,
+      Value offset,
+      Value writer,
+      Value transactional,
+      Value es)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_INT64_LIST_LOG_ENTRY.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAppendRecords(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_RECORD.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_BOOL.decode(input3),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_LOG_ENTRY.decode(input4)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_RECORD.decode(rs),
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(offset),
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(writer),
+            lawspec.runtime.LawSpecTyped.CODEC_BOOL.decode(transactional),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_LOG_ENTRY.decode(es)));
   }
 
-  public static Value applyOffsets(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value applyOffsets(Map<String, Object> symbols, Value os, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelApplyOffsets(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_PENDING_OFFSET.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_PENDING_OFFSET.decode(os),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b)));
   }
 
   public static Value assignPartitions(
-      Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4)
+      Map<String, Object> symbols, Value topic, Value ps, Value owners, Value waiting, Value a)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_LIST_TOPIC_PARTITION.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAssignPartitions(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_INT32.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(input3),
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_LIST_TOPIC_PARTITION.decode(input4)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(topic),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_INT32.decode(ps),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(owners),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(waiting),
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_LIST_TOPIC_PARTITION.decode(a)));
   }
 
-  public static Value assignTo(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+  public static Value assignTo(Map<String, Object> symbols, Value member, Value tp, Value a)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_LIST_TOPIC_PARTITION.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAssignTo(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_LIST_TOPIC_PARTITION.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(member),
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(tp),
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_LIST_TOPIC_PARTITION.decode(a)));
   }
 
   public static Value assignTopics(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value topics, Value subs, Value b, Value a)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_LIST_TOPIC_PARTITION.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAssignTopics(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TEXT.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_LIST_TOPIC_PARTITION.decode(input3)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(topics),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TEXT.decode(subs),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b),
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_LIST_TOPIC_PARTITION.decode(a)));
   }
 
   public static Value checkMember(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value g, Value member, Value generation, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_GROUP.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCheckMember(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input3)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(g),
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(member),
+            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(generation),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b)));
   }
 
   public static Value checkTxnProducer(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value txid, Value pid, Value epoch, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_ENTRY.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCheckTxnProducer(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_INT16.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input3)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(txid),
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(pid),
+            lawspec.runtime.LawSpecTyped.CODEC_INT16.decode(epoch),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b)));
   }
 
-  public static Value commitAll(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+  public static Value commitAll(Map<String, Object> symbols, Value g, Value offsets, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCommitAll(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_OFFSET_ENTRY.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(g),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_OFFSET_ENTRY.decode(offsets),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b)));
   }
 
-  public static Value computeAssignment(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value computeAssignment(Map<String, Object> symbols, Value subscriptions, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_LIST_TOPIC_PARTITION.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelComputeAssignment(
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_LIST_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_LIST_TEXT.decode(subscriptions),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b)));
   }
 
   public static Value createPartitions(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value name, Value total, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_UNIT_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCreatePartitions(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(name),
+            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(total),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b)));
   }
 
-  public static Value createTopic(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+  public static Value createTopic(Map<String, Object> symbols, Value name, Value n, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_UNIT_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCreateTopic(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(name),
+            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(n),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b)));
   }
 
-  public static Value describeGroup(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value describeGroup(Map<String, Object> symbols, Value g, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_GROUP_VIEW_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelDescribeGroup(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(g),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b)));
   }
 
-  public static Value emptyAssignments(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value emptyAssignments(Map<String, Object> symbols, Value members, Value a)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_LIST_TOPIC_PARTITION.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEmptyAssignments(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_LIST_TOPIC_PARTITION.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(members),
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_LIST_TOPIC_PARTITION.decode(a)));
   }
 
-  public static Value emptyBroker(Map<String, Object> symbols, Value input0)
+  public static Value emptyBroker(Map<String, Object> symbols, Value u)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEmptyBroker(
-            lawspec.runtime.LawSpecTyped.CODEC_UNIT.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_UNIT.decode(u)));
   }
 
-  public static Value emptyGroup(Map<String, Object> symbols, Value input0)
+  public static Value emptyGroup(Map<String, Object> symbols, Value u)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_GROUP.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEmptyGroup(
-            lawspec.runtime.LawSpecTyped.CODEC_UNIT.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_UNIT.decode(u)));
   }
 
-  public static Value emptyLog(Map<String, Object> symbols, Value input0)
+  public static Value emptyLog(Map<String, Object> symbols, Value u)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PARTITION_LOG.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEmptyLog(
-            lawspec.runtime.LawSpecTyped.CODEC_UNIT.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_UNIT.decode(u)));
   }
 
   public static Value endTxn(
-      Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4)
+      Map<String, Object> symbols, Value txid, Value pid, Value epoch, Value commit, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_UNIT_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEndTxn(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_INT16.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_BOOL.decode(input3),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input4)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(txid),
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(pid),
+            lawspec.runtime.LawSpecTyped.CODEC_INT16.decode(epoch),
+            lawspec.runtime.LawSpecTyped.CODEC_BOOL.decode(commit),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b)));
   }
 
-  public static Value expectedSequence(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value expectedSequence(Map<String, Object> symbols, Value epoch, Value ms)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_INT32.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelExpectedSequence(
-            lawspec.runtime.LawSpecTyped.CODEC_INT16.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_BATCH_META.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_INT16.decode(epoch),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_BATCH_META.decode(ms)));
   }
 
   public static Value fetch(
-      Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4)
+      Map<String, Object> symbols, Value tp, Value from, Value maxRecords, Value isolation, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_FETCH_RESULT_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelFetch(
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_ISOLATION_LEVEL.decode(input3),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input4)));
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(tp),
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(from),
+            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(maxRecords),
+            lawspec.runtime.LawSpecTyped.CODEC_ISOLATION_LEVEL.decode(isolation),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b)));
   }
 
   public static Value findDuplicate(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value epoch, Value first, Value last, Value ms)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_MAYBE_INT64.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelFindDuplicate(
-            lawspec.runtime.LawSpecTyped.CODEC_INT16.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_BATCH_META.decode(input3)));
+            lawspec.runtime.LawSpecTyped.CODEC_INT16.decode(epoch),
+            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(first),
+            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(last),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_BATCH_META.decode(ms)));
   }
 
   public static Value finishTxn(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value pid, Value commit, Value txn, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelFinishTxn(
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_BOOL.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_TXN_STATE.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input3)));
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(pid),
+            lawspec.runtime.LawSpecTyped.CODEC_BOOL.decode(commit),
+            lawspec.runtime.LawSpecTyped.CODEC_TXN_STATE.decode(txn),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b)));
   }
 
-  public static Value groupOf(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value groupOf(Map<String, Object> symbols, Value g, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_GROUP.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelGroupOf(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(g),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b)));
   }
 
   public static Value heartbeat(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value g, Value member, Value generation, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_UNIT_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelHeartbeat(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input3)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(g),
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(member),
+            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(generation),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b)));
   }
 
-  public static Value highWatermark(Map<String, Object> symbols, Value input0)
+  public static Value highWatermark(Map<String, Object> symbols, Value l)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_INT64.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelHighWatermark(
-            lawspec.runtime.LawSpecTyped.CODEC_PARTITION_LOG.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_PARTITION_LOG.decode(l)));
   }
 
-  public static Value initProducerId(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value initProducerId(Map<String, Object> symbols, Value txid, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_PRODUCER_ID_AND_EPOCH_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelInitProducerId(
-            lawspec.runtime.LawSpecTyped.CODEC_MAYBE_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_MAYBE_TEXT.decode(txid),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b)));
   }
 
   public static Value isAborted(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value writer, Value offset, Value aborted)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_BOOL.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelIsAborted(
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ABORTED_TXN.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(writer),
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(offset),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ABORTED_TXN.decode(aborted)));
   }
 
   public static Value joinGroup(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value g, Value member, Value topics, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_INT32_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelJoinGroup(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input3)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(g),
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(member),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.decode(topics),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b)));
   }
 
-  public static Value knownPartition(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value knownPartition(Map<String, Object> symbols, Value tp, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_BOOL.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelKnownPartition(
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(tp),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b)));
   }
 
-  public static Value lastOffsetOf(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lastOffsetOf(Map<String, Object> symbols, Value rs, Value fallbackOffset)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_INT64.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelLastOffsetOf(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_FETCHED_RECORD.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_FETCHED_RECORD.decode(rs),
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(fallbackOffset)));
   }
 
-  public static Value lastStableOffset(Map<String, Object> symbols, Value input0)
+  public static Value lastStableOffset(Map<String, Object> symbols, Value l)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_INT64.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelLastStableOffset(
-            lawspec.runtime.LawSpecTyped.CODEC_PARTITION_LOG.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_PARTITION_LOG.decode(l)));
   }
 
-  public static Value collectionsBoundedInt5(Map<String, Object> symbols, Value input0)
+  public static Value collectionsBoundedInt5(Map<String, Object> symbols, Value valueValue)
   {
-    return boundedInt16(symbols, input0);
+    return boundedInt16(symbols, valueValue);
   }
 
-  public static Value collectionsBoundedInt6(Map<String, Object> symbols, Value input0)
+  public static Value collectionsBoundedInt6(Map<String, Object> symbols, Value valueValue)
   {
-    return boundedInt32(symbols, input0);
+    return boundedInt32(symbols, valueValue);
   }
 
-  public static Value collectionsBoundedInt7(Map<String, Object> symbols, Value input0)
+  public static Value collectionsBoundedInt7(Map<String, Object> symbols, Value valueValue)
   {
-    return boundedInt64(symbols, input0);
+    return boundedInt64(symbols, valueValue);
   }
 
-  public static Value collectionsBoundedInt8(Map<String, Object> symbols, Value input0)
+  public static Value collectionsBoundedInt8(Map<String, Object> symbols, Value valueValue)
   {
-    return boundedInt8(symbols, input0);
+    return boundedInt8(symbols, valueValue);
   }
 
-  public static Value collectionsBoundedIntSize2(Map<String, Object> symbols, Value input0)
+  public static Value collectionsBoundedIntSize2(Map<String, Object> symbols, Value valueValue)
   {
-    return boundedIntSize(symbols, input0);
+    return boundedIntSize(symbols, valueValue);
   }
 
-  public static Value collectionsBoundedUint5(Map<String, Object> symbols, Value input0)
+  public static Value collectionsBoundedUint5(Map<String, Object> symbols, Value valueValue)
   {
-    return boundedUint16(symbols, input0);
+    return boundedUint16(symbols, valueValue);
   }
 
-  public static Value collectionsBoundedUint6(Map<String, Object> symbols, Value input0)
+  public static Value collectionsBoundedUint6(Map<String, Object> symbols, Value valueValue)
   {
-    return boundedUint32(symbols, input0);
+    return boundedUint32(symbols, valueValue);
   }
 
-  public static Value collectionsBoundedUint7(Map<String, Object> symbols, Value input0)
+  public static Value collectionsBoundedUint7(Map<String, Object> symbols, Value valueValue)
   {
-    return boundedUint64(symbols, input0);
+    return boundedUint64(symbols, valueValue);
   }
 
-  public static Value collectionsBoundedUint8(Map<String, Object> symbols, Value input0)
+  public static Value collectionsBoundedUint8(Map<String, Object> symbols, Value valueValue)
   {
-    return boundedUint8(symbols, input0);
+    return boundedUint8(symbols, valueValue);
   }
 
-  public static Value collectionsBoundedUintPtr2(Map<String, Object> symbols, Value input0)
+  public static Value collectionsBoundedUintPtr2(Map<String, Object> symbols, Value valueValue)
   {
-    return boundedUintPtr(symbols, input0);
+    return boundedUintPtr(symbols, valueValue);
   }
 
-  public static Value collectionsBoundedUintSize2(Map<String, Object> symbols, Value input0)
+  public static Value collectionsBoundedUintSize2(Map<String, Object> symbols, Value valueValue)
   {
-    return boundedUintSize(symbols, input0);
+    return boundedUintSize(symbols, valueValue);
   }
 
-  public static Value collectionsSaturatingInt5(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSaturatingInt5(Map<String, Object> symbols, Value valueValue)
   {
-    return saturatingInt16(symbols, input0);
+    return saturatingInt16(symbols, valueValue);
   }
 
-  public static Value collectionsSaturatingInt6(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSaturatingInt6(Map<String, Object> symbols, Value valueValue)
   {
-    return saturatingInt32(symbols, input0);
+    return saturatingInt32(symbols, valueValue);
   }
 
-  public static Value collectionsSaturatingInt7(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSaturatingInt7(Map<String, Object> symbols, Value valueValue)
   {
-    return saturatingInt64(symbols, input0);
+    return saturatingInt64(symbols, valueValue);
   }
 
-  public static Value collectionsSaturatingInt8(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSaturatingInt8(Map<String, Object> symbols, Value valueValue)
   {
-    return saturatingInt8(symbols, input0);
+    return saturatingInt8(symbols, valueValue);
   }
 
-  public static Value collectionsSaturatingIntSize2(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSaturatingIntSize2(Map<String, Object> symbols, Value valueValue)
   {
-    return saturatingIntSize(symbols, input0);
+    return saturatingIntSize(symbols, valueValue);
   }
 
-  public static Value collectionsSaturatingUint5(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSaturatingUint5(Map<String, Object> symbols, Value valueValue)
   {
-    return saturatingUint16(symbols, input0);
+    return saturatingUint16(symbols, valueValue);
   }
 
-  public static Value collectionsSaturatingUint6(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSaturatingUint6(Map<String, Object> symbols, Value valueValue)
   {
-    return saturatingUint32(symbols, input0);
+    return saturatingUint32(symbols, valueValue);
   }
 
-  public static Value collectionsSaturatingUint7(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSaturatingUint7(Map<String, Object> symbols, Value valueValue)
   {
-    return saturatingUint64(symbols, input0);
+    return saturatingUint64(symbols, valueValue);
   }
 
-  public static Value collectionsSaturatingUint8(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSaturatingUint8(Map<String, Object> symbols, Value valueValue)
   {
-    return saturatingUint8(symbols, input0);
+    return saturatingUint8(symbols, valueValue);
   }
 
-  public static Value collectionsSaturatingUintPtr2(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSaturatingUintPtr2(Map<String, Object> symbols, Value valueValue)
   {
-    return saturatingUintPtr(symbols, input0);
+    return saturatingUintPtr(symbols, valueValue);
   }
 
-  public static Value collectionsSaturatingUintSize2(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSaturatingUintSize2(Map<String, Object> symbols, Value valueValue)
   {
-    return saturatingUintSize(symbols, input0);
+    return saturatingUintSize(symbols, valueValue);
   }
 
-  public static Value collectionsWrappingInt5(Map<String, Object> symbols, Value input0)
+  public static Value collectionsWrappingInt5(Map<String, Object> symbols, Value valueValue)
   {
-    return wrappingInt16(symbols, input0);
+    return wrappingInt16(symbols, valueValue);
   }
 
-  public static Value collectionsWrappingInt6(Map<String, Object> symbols, Value input0)
+  public static Value collectionsWrappingInt6(Map<String, Object> symbols, Value valueValue)
   {
-    return wrappingInt32(symbols, input0);
+    return wrappingInt32(symbols, valueValue);
   }
 
-  public static Value collectionsWrappingInt7(Map<String, Object> symbols, Value input0)
+  public static Value collectionsWrappingInt7(Map<String, Object> symbols, Value valueValue)
   {
-    return wrappingInt64(symbols, input0);
+    return wrappingInt64(symbols, valueValue);
   }
 
-  public static Value collectionsWrappingInt8(Map<String, Object> symbols, Value input0)
+  public static Value collectionsWrappingInt8(Map<String, Object> symbols, Value valueValue)
   {
-    return wrappingInt8(symbols, input0);
+    return wrappingInt8(symbols, valueValue);
   }
 
-  public static Value collectionsWrappingIntSize2(Map<String, Object> symbols, Value input0)
+  public static Value collectionsWrappingIntSize2(Map<String, Object> symbols, Value valueValue)
   {
-    return wrappingIntSize(symbols, input0);
+    return wrappingIntSize(symbols, valueValue);
   }
 
-  public static Value collectionsWrappingUint5(Map<String, Object> symbols, Value input0)
+  public static Value collectionsWrappingUint5(Map<String, Object> symbols, Value valueValue)
   {
-    return wrappingUint16(symbols, input0);
+    return wrappingUint16(symbols, valueValue);
   }
 
-  public static Value collectionsWrappingUint6(Map<String, Object> symbols, Value input0)
+  public static Value collectionsWrappingUint6(Map<String, Object> symbols, Value valueValue)
   {
-    return wrappingUint32(symbols, input0);
+    return wrappingUint32(symbols, valueValue);
   }
 
-  public static Value collectionsWrappingUint7(Map<String, Object> symbols, Value input0)
+  public static Value collectionsWrappingUint7(Map<String, Object> symbols, Value valueValue)
   {
-    return wrappingUint64(symbols, input0);
+    return wrappingUint64(symbols, valueValue);
   }
 
-  public static Value collectionsWrappingUint8(Map<String, Object> symbols, Value input0)
+  public static Value collectionsWrappingUint8(Map<String, Object> symbols, Value valueValue)
   {
-    return wrappingUint8(symbols, input0);
+    return wrappingUint8(symbols, valueValue);
   }
 
-  public static Value collectionsWrappingUintPtr2(Map<String, Object> symbols, Value input0)
+  public static Value collectionsWrappingUintPtr2(Map<String, Object> symbols, Value valueValue)
   {
-    return wrappingUintPtr(symbols, input0);
+    return wrappingUintPtr(symbols, valueValue);
   }
 
-  public static Value collectionsWrappingUintSize2(Map<String, Object> symbols, Value input0)
+  public static Value collectionsWrappingUintSize2(Map<String, Object> symbols, Value valueValue)
   {
-    return wrappingUintSize(symbols, input0);
+    return wrappingUintSize(symbols, valueValue);
   }
 
   public static Value collectionsKeyValDeleteItemsIntListEntryIntInt2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
-    return collectionsKeyValDeleteItemsIntListEntryIntInt(symbols, input0, input1);
+    return collectionsKeyValDeleteItemsIntListEntryIntInt(symbols, k, es);
   }
 
   public static Value collectionsKeyValDeleteItemsTextListEntryTextListText2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
-    return collectionsKeyValDeleteItemsTextListEntryTextListText(symbols, input0, input1);
+    return collectionsKeyValDeleteItemsTextListEntryTextListText(symbols, k, es);
   }
 
   public static Value collectionsKeyValDeleteIntKeyValIntInt2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
-    return collectionsKeyValDeleteIntKeyValIntInt(symbols, input0, input1);
+    return collectionsKeyValDeleteIntKeyValIntInt(symbols, k, m);
   }
 
   public static Value collectionsKeyValDeleteTextKeyValTextListText2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
-    return collectionsKeyValDeleteTextKeyValTextListText(symbols, input0, input1);
+    return collectionsKeyValDeleteTextKeyValTextListText(symbols, k, m);
   }
 
   public static Value collectionsKeyValEntriesKeyValTextListText2(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value m)
   {
-    return collectionsKeyValEntriesKeyValTextListText(symbols, input0);
+    return collectionsKeyValEntriesKeyValTextListText(symbols, m);
   }
 
-  public static Value collectionsKeyValEntriesKeyValTextGroup2(
-      Map<String, Object> symbols, Value input0)
+  public static Value collectionsKeyValEntriesKeyValTextGroup2(Map<String, Object> symbols, Value m)
   {
-    return collectionsKeyValEntriesKeyValTextGroup(symbols, input0);
+    return collectionsKeyValEntriesKeyValTextGroup(symbols, m);
   }
 
   public static Value collectionsKeyValEntriesKeyValTextListTopicPartition2(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value m)
   {
-    return collectionsKeyValEntriesKeyValTextListTopicPartition(symbols, input0);
+    return collectionsKeyValEntriesKeyValTextListTopicPartition(symbols, m);
   }
 
   public static Value collectionsKeyValFromItemsListEntryTextIntListEntryTextInt3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value es, Value acc)
   {
-    return collectionsKeyValFromItemsListEntryTextIntListEntryTextInt(symbols, input0, input1);
+    return collectionsKeyValFromItemsListEntryTextIntListEntryTextInt(symbols, es, acc);
   }
 
   public static Value collectionsKeyValFromItemsListEntryGroupPartitionIntListEntryGroupPartitionInt2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value es, Value acc)
   {
     return collectionsKeyValFromItemsListEntryGroupPartitionIntListEntryGroupPartitionInt(
-        symbols, input0, input1);
+        symbols, es, acc);
   }
 
   public static Value collectionsKeyValFromItemsListEntryTopicPartitionPartitionLogListEntryTopicPartitionPartitionLog2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value es, Value acc)
   {
     return collectionsKeyValFromItemsListEntryTopicPartitionPartitionLogListEntryTopicPartitionPartitionLog(
-        symbols, input0, input1);
+        symbols, es, acc);
   }
 
   public static Value collectionsKeyValFromItemsListEntryTextListTextListEntryTextListText2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value es, Value acc)
   {
-    return collectionsKeyValFromItemsListEntryTextListTextListEntryTextListText(
-        symbols, input0, input1);
+    return collectionsKeyValFromItemsListEntryTextListTextListEntryTextListText(symbols, es, acc);
   }
 
   public static Value collectionsKeyValFromItemsListEntryTextListTopicPartitionListEntryTextListTopicPartition2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value es, Value acc)
   {
     return collectionsKeyValFromItemsListEntryTextListTopicPartitionListEntryTextListTopicPartition(
-        symbols, input0, input1);
+        symbols, es, acc);
   }
 
   public static Value collectionsKeyValFromItemsListEntryTextIntListEntryTextInt4(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value es, Value acc)
   {
-    return collectionsKeyValFromItemsListEntryTextIntListEntryTextInt2(symbols, input0, input1);
+    return collectionsKeyValFromItemsListEntryTextIntListEntryTextInt2(symbols, es, acc);
   }
 
   public static Value collectionsKeyValFromItemsListEntryIntIntListEntryIntInt2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value es, Value acc)
   {
-    return collectionsKeyValFromItemsListEntryIntIntListEntryIntInt(symbols, input0, input1);
+    return collectionsKeyValFromItemsListEntryIntIntListEntryIntInt(symbols, es, acc);
   }
 
   public static Value collectionsKeyValFromItemsListEntryIntListBatchMetaListEntryIntListBatchMeta2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value es, Value acc)
   {
     return collectionsKeyValFromItemsListEntryIntListBatchMetaListEntryIntListBatchMeta(
-        symbols, input0, input1);
+        symbols, es, acc);
   }
 
   public static Value collectionsKeyValFromItemsListEntryTextGroupListEntryTextGroup2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value es, Value acc)
   {
-    return collectionsKeyValFromItemsListEntryTextGroupListEntryTextGroup(symbols, input0, input1);
+    return collectionsKeyValFromItemsListEntryTextGroupListEntryTextGroup(symbols, es, acc);
   }
 
   public static Value collectionsKeyValFromItemsListEntryIntProducerEntryListEntryIntProducerEntry2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value es, Value acc)
   {
     return collectionsKeyValFromItemsListEntryIntProducerEntryListEntryIntProducerEntry(
-        symbols, input0, input1);
+        symbols, es, acc);
   }
 
   public static Value collectionsKeyValKeysItemsListEntryTextListText2(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value es)
   {
-    return collectionsKeyValKeysItemsListEntryTextListText(symbols, input0);
+    return collectionsKeyValKeysItemsListEntryTextListText(symbols, es);
   }
 
-  public static Value collectionsKeyValKeysKeyValTextListText2(
-      Map<String, Object> symbols, Value input0)
+  public static Value collectionsKeyValKeysKeyValTextListText2(Map<String, Object> symbols, Value m)
   {
-    return collectionsKeyValKeysKeyValTextListText(symbols, input0);
+    return collectionsKeyValKeysKeyValTextListText(symbols, m);
   }
 
   public static Value collectionsKeyValLookupItemsTopicPartitionListEntryTopicPartitionPartitionLog2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
     return collectionsKeyValLookupItemsTopicPartitionListEntryTopicPartitionPartitionLog(
-        symbols, input0, input1);
+        symbols, k, es);
   }
 
   public static Value collectionsKeyValLookupItemsTextListEntryTextListTopicPartition2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
-    return collectionsKeyValLookupItemsTextListEntryTextListTopicPartition(symbols, input0, input1);
+    return collectionsKeyValLookupItemsTextListEntryTextListTopicPartition(symbols, k, es);
   }
 
   public static Value collectionsKeyValLookupItemsTextListEntryTextInt3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
-    return collectionsKeyValLookupItemsTextListEntryTextInt(symbols, input0, input1);
+    return collectionsKeyValLookupItemsTextListEntryTextInt(symbols, k, es);
   }
 
   public static Value collectionsKeyValLookupItemsIntListEntryIntListBatchMeta2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
-    return collectionsKeyValLookupItemsIntListEntryIntListBatchMeta(symbols, input0, input1);
+    return collectionsKeyValLookupItemsIntListEntryIntListBatchMeta(symbols, k, es);
   }
 
   public static Value collectionsKeyValLookupItemsIntListEntryIntProducerEntry2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
-    return collectionsKeyValLookupItemsIntListEntryIntProducerEntry(symbols, input0, input1);
+    return collectionsKeyValLookupItemsIntListEntryIntProducerEntry(symbols, k, es);
   }
 
   public static Value collectionsKeyValLookupItemsTextListEntryTextListText2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
-    return collectionsKeyValLookupItemsTextListEntryTextListText(symbols, input0, input1);
+    return collectionsKeyValLookupItemsTextListEntryTextListText(symbols, k, es);
   }
 
   public static Value collectionsKeyValLookupItemsGroupPartitionListEntryGroupPartitionInt2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
-    return collectionsKeyValLookupItemsGroupPartitionListEntryGroupPartitionInt(
-        symbols, input0, input1);
+    return collectionsKeyValLookupItemsGroupPartitionListEntryGroupPartitionInt(symbols, k, es);
   }
 
   public static Value collectionsKeyValLookupItemsTextListEntryTextGroup2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
-    return collectionsKeyValLookupItemsTextListEntryTextGroup(symbols, input0, input1);
+    return collectionsKeyValLookupItemsTextListEntryTextGroup(symbols, k, es);
   }
 
   public static Value collectionsKeyValLookupItemsIntListEntryIntInt2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
-    return collectionsKeyValLookupItemsIntListEntryIntInt(symbols, input0, input1);
+    return collectionsKeyValLookupItemsIntListEntryIntInt(symbols, k, es);
   }
 
   public static Value collectionsKeyValLookupItemsTextListEntryTextInt4(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
-    return collectionsKeyValLookupItemsTextListEntryTextInt2(symbols, input0, input1);
+    return collectionsKeyValLookupItemsTextListEntryTextInt2(symbols, k, es);
   }
 
   public static Value collectionsKeyValLookupIntKeyValIntListBatchMeta2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
-    return collectionsKeyValLookupIntKeyValIntListBatchMeta(symbols, input0, input1);
+    return collectionsKeyValLookupIntKeyValIntListBatchMeta(symbols, k, m);
   }
 
   public static Value collectionsKeyValLookupTextKeyValTextListTopicPartition2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
-    return collectionsKeyValLookupTextKeyValTextListTopicPartition(symbols, input0, input1);
+    return collectionsKeyValLookupTextKeyValTextListTopicPartition(symbols, k, m);
   }
 
   public static Value collectionsKeyValLookupIntKeyValIntProducerEntry2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
-    return collectionsKeyValLookupIntKeyValIntProducerEntry(symbols, input0, input1);
+    return collectionsKeyValLookupIntKeyValIntProducerEntry(symbols, k, m);
   }
 
   public static Value collectionsKeyValLookupGroupPartitionKeyValGroupPartitionInt2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
-    return collectionsKeyValLookupGroupPartitionKeyValGroupPartitionInt(symbols, input0, input1);
+    return collectionsKeyValLookupGroupPartitionKeyValGroupPartitionInt(symbols, k, m);
   }
 
   public static Value collectionsKeyValLookupIntKeyValIntInt2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
-    return collectionsKeyValLookupIntKeyValIntInt(symbols, input0, input1);
+    return collectionsKeyValLookupIntKeyValIntInt(symbols, k, m);
   }
 
   public static Value collectionsKeyValLookupTextKeyValTextGroup2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
-    return collectionsKeyValLookupTextKeyValTextGroup(symbols, input0, input1);
+    return collectionsKeyValLookupTextKeyValTextGroup(symbols, k, m);
   }
 
   public static Value collectionsKeyValLookupTextKeyValTextInt3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
-    return collectionsKeyValLookupTextKeyValTextInt(symbols, input0, input1);
+    return collectionsKeyValLookupTextKeyValTextInt(symbols, k, m);
   }
 
   public static Value collectionsKeyValLookupTopicPartitionKeyValTopicPartitionPartitionLog2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
-    return collectionsKeyValLookupTopicPartitionKeyValTopicPartitionPartitionLog(
-        symbols, input0, input1);
+    return collectionsKeyValLookupTopicPartitionKeyValTopicPartitionPartitionLog(symbols, k, m);
   }
 
   public static Value collectionsKeyValLookupTextKeyValTextListText2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
-    return collectionsKeyValLookupTextKeyValTextListText(symbols, input0, input1);
+    return collectionsKeyValLookupTextKeyValTextListText(symbols, k, m);
   }
 
   public static Value collectionsKeyValLookupTextKeyValTextInt4(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
-    return collectionsKeyValLookupTextKeyValTextInt2(symbols, input0, input1);
+    return collectionsKeyValLookupTextKeyValTextInt2(symbols, k, m);
   }
 
   public static Value collectionsKeyValOfListEntryTextListTopicPartition2(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value es)
   {
-    return collectionsKeyValOfListEntryTextListTopicPartition(symbols, input0);
+    return collectionsKeyValOfListEntryTextListTopicPartition(symbols, es);
   }
 
-  public static Value collectionsKeyValOfListEntryTextInt3(
-      Map<String, Object> symbols, Value input0)
+  public static Value collectionsKeyValOfListEntryTextInt3(Map<String, Object> symbols, Value es)
   {
-    return collectionsKeyValOfListEntryTextInt(symbols, input0);
+    return collectionsKeyValOfListEntryTextInt(symbols, es);
   }
 
   public static Value collectionsKeyValOfListEntryIntListBatchMeta2(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value es)
   {
-    return collectionsKeyValOfListEntryIntListBatchMeta(symbols, input0);
+    return collectionsKeyValOfListEntryIntListBatchMeta(symbols, es);
   }
 
-  public static Value collectionsKeyValOfListEntryTextGroup2(
-      Map<String, Object> symbols, Value input0)
+  public static Value collectionsKeyValOfListEntryTextGroup2(Map<String, Object> symbols, Value es)
   {
-    return collectionsKeyValOfListEntryTextGroup(symbols, input0);
+    return collectionsKeyValOfListEntryTextGroup(symbols, es);
   }
 
-  public static Value collectionsKeyValOfListEntryTextInt4(
-      Map<String, Object> symbols, Value input0)
+  public static Value collectionsKeyValOfListEntryTextInt4(Map<String, Object> symbols, Value es)
   {
-    return collectionsKeyValOfListEntryTextInt2(symbols, input0);
+    return collectionsKeyValOfListEntryTextInt2(symbols, es);
   }
 
   public static Value collectionsKeyValOfListEntryIntProducerEntry2(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value es)
   {
-    return collectionsKeyValOfListEntryIntProducerEntry(symbols, input0);
+    return collectionsKeyValOfListEntryIntProducerEntry(symbols, es);
   }
 
   public static Value collectionsKeyValOfListEntryTopicPartitionPartitionLog2(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value es)
   {
-    return collectionsKeyValOfListEntryTopicPartitionPartitionLog(symbols, input0);
+    return collectionsKeyValOfListEntryTopicPartitionPartitionLog(symbols, es);
   }
 
   public static Value collectionsKeyValOfListEntryGroupPartitionInt2(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value es)
   {
-    return collectionsKeyValOfListEntryGroupPartitionInt(symbols, input0);
+    return collectionsKeyValOfListEntryGroupPartitionInt(symbols, es);
   }
 
   public static Value collectionsKeyValOfListEntryTextListText2(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value es)
   {
-    return collectionsKeyValOfListEntryTextListText(symbols, input0);
+    return collectionsKeyValOfListEntryTextListText(symbols, es);
   }
 
-  public static Value collectionsKeyValOfListEntryIntInt2(Map<String, Object> symbols, Value input0)
+  public static Value collectionsKeyValOfListEntryIntInt2(Map<String, Object> symbols, Value es)
   {
-    return collectionsKeyValOfListEntryIntInt(symbols, input0);
+    return collectionsKeyValOfListEntryIntInt(symbols, es);
   }
 
   public static Value collectionsKeyValPutItemsTopicPartitionPartitionLogListEntryTopicPartitionPartitionLog2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value es)
   {
     return collectionsKeyValPutItemsTopicPartitionPartitionLogListEntryTopicPartitionPartitionLog(
-        symbols, input0, input1, input2);
+        symbols, k, v, es);
   }
 
   public static Value collectionsKeyValPutItemsGroupPartitionIntListEntryGroupPartitionInt2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value es)
   {
-    return collectionsKeyValPutItemsGroupPartitionIntListEntryGroupPartitionInt(
-        symbols, input0, input1, input2);
+    return collectionsKeyValPutItemsGroupPartitionIntListEntryGroupPartitionInt(symbols, k, v, es);
   }
 
   public static Value collectionsKeyValPutItemsTextGroupListEntryTextGroup2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value es)
   {
-    return collectionsKeyValPutItemsTextGroupListEntryTextGroup(symbols, input0, input1, input2);
+    return collectionsKeyValPutItemsTextGroupListEntryTextGroup(symbols, k, v, es);
   }
 
   public static Value collectionsKeyValPutItemsIntProducerEntryListEntryIntProducerEntry2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value es)
   {
-    return collectionsKeyValPutItemsIntProducerEntryListEntryIntProducerEntry(
-        symbols, input0, input1, input2);
+    return collectionsKeyValPutItemsIntProducerEntryListEntryIntProducerEntry(symbols, k, v, es);
   }
 
   public static Value collectionsKeyValPutItemsTextIntListEntryTextInt3(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value es)
   {
-    return collectionsKeyValPutItemsTextIntListEntryTextInt(symbols, input0, input1, input2);
+    return collectionsKeyValPutItemsTextIntListEntryTextInt(symbols, k, v, es);
   }
 
   public static Value collectionsKeyValPutItemsTextIntListEntryTextInt4(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value es)
   {
-    return collectionsKeyValPutItemsTextIntListEntryTextInt2(symbols, input0, input1, input2);
+    return collectionsKeyValPutItemsTextIntListEntryTextInt2(symbols, k, v, es);
   }
 
   public static Value collectionsKeyValPutItemsTextListTopicPartitionListEntryTextListTopicPartition2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value es)
   {
     return collectionsKeyValPutItemsTextListTopicPartitionListEntryTextListTopicPartition(
-        symbols, input0, input1, input2);
+        symbols, k, v, es);
   }
 
   public static Value collectionsKeyValPutItemsIntListBatchMetaListEntryIntListBatchMeta2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value es)
   {
-    return collectionsKeyValPutItemsIntListBatchMetaListEntryIntListBatchMeta(
-        symbols, input0, input1, input2);
+    return collectionsKeyValPutItemsIntListBatchMetaListEntryIntListBatchMeta(symbols, k, v, es);
   }
 
   public static Value collectionsKeyValPutItemsTextListTextListEntryTextListText2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value es)
   {
-    return collectionsKeyValPutItemsTextListTextListEntryTextListText(
-        symbols, input0, input1, input2);
+    return collectionsKeyValPutItemsTextListTextListEntryTextListText(symbols, k, v, es);
   }
 
   public static Value collectionsKeyValPutItemsIntIntListEntryIntInt2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value es)
   {
-    return collectionsKeyValPutItemsIntIntListEntryIntInt(symbols, input0, input1, input2);
+    return collectionsKeyValPutItemsIntIntListEntryIntInt(symbols, k, v, es);
   }
 
   public static Value collectionsKeyValPutGroupPartitionIntKeyValGroupPartitionInt2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value m)
   {
-    return collectionsKeyValPutGroupPartitionIntKeyValGroupPartitionInt(
-        symbols, input0, input1, input2);
+    return collectionsKeyValPutGroupPartitionIntKeyValGroupPartitionInt(symbols, k, v, m);
   }
 
   public static Value collectionsKeyValPutTextIntKeyValTextInt3(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value m)
   {
-    return collectionsKeyValPutTextIntKeyValTextInt(symbols, input0, input1, input2);
+    return collectionsKeyValPutTextIntKeyValTextInt(symbols, k, v, m);
   }
 
   public static Value collectionsKeyValPutTextListTopicPartitionKeyValTextListTopicPartition2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value m)
   {
-    return collectionsKeyValPutTextListTopicPartitionKeyValTextListTopicPartition(
-        symbols, input0, input1, input2);
+    return collectionsKeyValPutTextListTopicPartitionKeyValTextListTopicPartition(symbols, k, v, m);
   }
 
   public static Value collectionsKeyValPutIntProducerEntryKeyValIntProducerEntry2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value m)
   {
-    return collectionsKeyValPutIntProducerEntryKeyValIntProducerEntry(
-        symbols, input0, input1, input2);
+    return collectionsKeyValPutIntProducerEntryKeyValIntProducerEntry(symbols, k, v, m);
   }
 
   public static Value collectionsKeyValPutIntListBatchMetaKeyValIntListBatchMeta2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value m)
   {
-    return collectionsKeyValPutIntListBatchMetaKeyValIntListBatchMeta(
-        symbols, input0, input1, input2);
+    return collectionsKeyValPutIntListBatchMetaKeyValIntListBatchMeta(symbols, k, v, m);
   }
 
   public static Value collectionsKeyValPutTextGroupKeyValTextGroup2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value m)
   {
-    return collectionsKeyValPutTextGroupKeyValTextGroup(symbols, input0, input1, input2);
+    return collectionsKeyValPutTextGroupKeyValTextGroup(symbols, k, v, m);
   }
 
   public static Value collectionsKeyValPutIntIntKeyValIntInt2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value m)
   {
-    return collectionsKeyValPutIntIntKeyValIntInt(symbols, input0, input1, input2);
+    return collectionsKeyValPutIntIntKeyValIntInt(symbols, k, v, m);
   }
 
   public static Value collectionsKeyValPutTextListTextKeyValTextListText2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value m)
   {
-    return collectionsKeyValPutTextListTextKeyValTextListText(symbols, input0, input1, input2);
+    return collectionsKeyValPutTextListTextKeyValTextListText(symbols, k, v, m);
   }
 
   public static Value collectionsKeyValPutTopicPartitionPartitionLogKeyValTopicPartitionPartitionLog2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value m)
   {
     return collectionsKeyValPutTopicPartitionPartitionLogKeyValTopicPartitionPartitionLog(
-        symbols, input0, input1, input2);
+        symbols, k, v, m);
   }
 
   public static Value collectionsKeyValPutTextIntKeyValTextInt4(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value m)
   {
-    return collectionsKeyValPutTextIntKeyValTextInt2(symbols, input0, input1, input2);
+    return collectionsKeyValPutTextIntKeyValTextInt2(symbols, k, v, m);
   }
 
   public static Value collectionsKeyValValuesItemsListEntryIntInt2(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value es)
   {
-    return collectionsKeyValValuesItemsListEntryIntInt(symbols, input0);
+    return collectionsKeyValValuesItemsListEntryIntInt(symbols, es);
   }
 
-  public static Value collectionsKeyValValuesKeyValIntInt2(
-      Map<String, Object> symbols, Value input0)
+  public static Value collectionsKeyValValuesKeyValIntInt2(Map<String, Object> symbols, Value m)
   {
-    return collectionsKeyValValuesKeyValIntInt(symbols, input0);
+    return collectionsKeyValValuesKeyValIntInt(symbols, m);
   }
 
   public static Value collectionsSetFromItemsListTextListText2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value xs, Value acc)
   {
-    return collectionsSetFromItemsListTextListText(symbols, input0, input1);
+    return collectionsSetFromItemsListTextListText(symbols, xs, acc);
   }
 
   public static Value collectionsSetInsertItemsTextListText2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value x, Value xs)
   {
-    return collectionsSetInsertItemsTextListText(symbols, input0, input1);
+    return collectionsSetInsertItemsTextListText(symbols, x, xs);
   }
 
-  public static Value collectionsSetOfListText2(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSetOfListText2(Map<String, Object> symbols, Value xs)
   {
-    return collectionsSetOfListText(symbols, input0);
+    return collectionsSetOfListText(symbols, xs);
   }
 
   public static Value collectionsSetUnionSetTextSetText2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value s, Value t)
   {
-    return collectionsSetUnionSetTextSetText(symbols, input0, input1);
+    return collectionsSetUnionSetTextSetText(symbols, s, t);
   }
 
-  public static Value leaveGroup(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+  public static Value leaveGroup(Map<String, Object> symbols, Value g, Value member, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_UNIT_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelLeaveGroup(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(g),
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(member),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b)));
   }
 
   public static Value listOffsets(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value tp, Value spec, Value isolation, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_INT64_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelListOffsets(
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_OFFSET_SPEC.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_ISOLATION_LEVEL.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input3)));
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(tp),
+            lawspec.runtime.LawSpecTyped.CODEC_OFFSET_SPEC.decode(spec),
+            lawspec.runtime.LawSpecTyped.CODEC_ISOLATION_LEVEL.decode(isolation),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b)));
   }
 
-  public static Value logOf(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value logOf(Map<String, Object> symbols, Value tp, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PARTITION_LOG.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelLogOf(
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(tp),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b)));
   }
 
-  public static Value max64(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value max64(Map<String, Object> symbols, Value a, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_INT64.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMax64(
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(a),
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(b)));
   }
 
-  public static Value maxPartitions(Map<String, Object> symbols, Value input0)
+  public static Value maxPartitions(Map<String, Object> symbols, Value u)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_INT32.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMaxPartitions(
-            lawspec.runtime.LawSpecTyped.CODEC_UNIT.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_UNIT.decode(u)));
   }
 
-  public static Value memberViews(Map<String, Object> symbols, Value input0)
+  public static Value memberViews(Map<String, Object> symbols, Value a)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_MEMBER_ASSIGNMENT.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMemberViews(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TOPIC_PARTITION.decode(
-                input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TOPIC_PARTITION.decode(a)));
   }
 
-  public static Value metadata(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value metadata(Map<String, Object> symbols, Value name, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_MAYBE_INT32_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMetadata(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(name),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b)));
   }
 
-  public static Value min64(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value min64(Map<String, Object> symbols, Value a, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_INT64.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMin64(
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(a),
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(b)));
   }
 
-  public static Value minOf(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value minOf(Map<String, Object> symbols, Value xs, Value m)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_INT64.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMinOf(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_INT64.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_INT64.decode(xs),
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(m)));
   }
 
-  public static Value newProducer(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value newProducer(Map<String, Object> symbols, Value txid, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_PRODUCER_ID_AND_EPOCH_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelNewProducer(
-            lawspec.runtime.LawSpecTyped.CODEC_MAYBE_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_MAYBE_TEXT.decode(txid),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b)));
   }
 
   public static Value nextFetchOffset(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value from, Value limit, Value taken, Value all)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_INT64.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelNextFetchOffset(
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_FETCHED_RECORD.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_FETCHED_RECORD.decode(input3)));
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(from),
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(limit),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_FETCHED_RECORD.decode(taken),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_FETCHED_RECORD.decode(all)));
   }
 
   public static Value offsetCommit(
-      Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4)
+      Map<String, Object> symbols, Value g, Value member, Value generation, Value offsets, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_UNIT_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelOffsetCommit(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_OFFSET_ENTRY.decode(input3),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input4)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(g),
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(member),
+            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(generation),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_OFFSET_ENTRY.decode(offsets),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b)));
   }
 
-  public static Value offsetFetch(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+  public static Value offsetFetch(Map<String, Object> symbols, Value g, Value tp, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_MAYBE_INT64_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelOffsetFetch(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(g),
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(tp),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b)));
   }
 
-  public static Value offsetPartitions(Map<String, Object> symbols, Value input0)
+  public static Value offsetPartitions(Map<String, Object> symbols, Value offsets)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelOffsetPartitions(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_OFFSET_ENTRY.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_OFFSET_ENTRY.decode(offsets)));
   }
 
-  public static Value partitionCountOf(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value partitionCountOf(Map<String, Object> symbols, Value topic, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_MAYBE_INT32.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPartitionCountOf(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(topic),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b)));
   }
 
-  public static Value partitionsBelow(Map<String, Object> symbols, Value input0)
+  public static Value partitionsBelow(Map<String, Object> symbols, Value n)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_INT32.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPartitionsBelow(
-            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(n)));
   }
 
   public static Value pendingFor(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value groupValue, Value offsets, Value acc)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_PENDING_OFFSET.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPendingFor(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_OFFSET_ENTRY.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_PENDING_OFFSET.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(groupValue),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_OFFSET_ENTRY.decode(offsets),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_PENDING_OFFSET.decode(acc)));
   }
 
   public static Value produce(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value tp, Value tagValue, Value rs, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_INT64_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelProduce(
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_MAYBE_PRODUCER_TAG.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_RECORD.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input3)));
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(tp),
+            lawspec.runtime.LawSpecTyped.CODEC_MAYBE_PRODUCER_TAG.decode(tagValue),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_RECORD.decode(rs),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b)));
   }
 
   public static Value produceTagged(
-      Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4)
+      Map<String, Object> symbols, Value tp, Value t, Value rs, Value l, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_INT64_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelProduceTagged(
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_TAG.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_RECORD.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_PARTITION_LOG.decode(input3),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input4)));
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(tp),
+            lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_TAG.decode(t),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_RECORD.decode(rs),
+            lawspec.runtime.LawSpecTyped.CODEC_PARTITION_LOG.decode(l),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b)));
   }
 
-  public static Value putGroup(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+  public static Value putGroup(Map<String, Object> symbols, Value g, Value groupValue, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPutGroup(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_GROUP.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(g),
+            lawspec.runtime.LawSpecTyped.CODEC_GROUP.decode(groupValue),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b)));
   }
 
-  public static Value putLog(Map<String, Object> symbols, Value input0, Value input1, Value input2)
+  public static Value putLog(Map<String, Object> symbols, Value tp, Value l, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPutLog(
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_PARTITION_LOG.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(tp),
+            lawspec.runtime.LawSpecTyped.CODEC_PARTITION_LOG.decode(l),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b)));
   }
 
-  public static Value putProducer(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+  public static Value putProducer(Map<String, Object> symbols, Value pid, Value entry, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPutProducer(
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_ENTRY.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(pid),
+            lawspec.runtime.LawSpecTyped.CODEC_PRODUCER_ENTRY.decode(entry),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b)));
   }
 
   public static Value readable(
       Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4,
-      Value input5)
+      Value es,
+      Value from,
+      Value limit,
+      Value committedOnly,
+      Value aborted,
+      Value acc)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_FETCHED_RECORD.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelReadable(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_LOG_ENTRY.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_BOOL.decode(input3),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ABORTED_TXN.decode(input4),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_FETCHED_RECORD.decode(input5)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_LOG_ENTRY.decode(es),
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(from),
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(limit),
+            lawspec.runtime.LawSpecTyped.CODEC_BOOL.decode(committedOnly),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ABORTED_TXN.decode(aborted),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_FETCHED_RECORD.decode(acc)));
   }
 
-  public static Value rebalance(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value rebalance(Map<String, Object> symbols, Value groupValue, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_GROUP.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelRebalance(
-            lawspec.runtime.LawSpecTyped.CODEC_GROUP.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_GROUP.decode(groupValue),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b)));
   }
 
   public static Value rebalanceGroups(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value topic, Value gs, Value b, Value acc)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_GROUP.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelRebalanceGroups(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_GROUP.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_GROUP.decode(input3)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(topic),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_GROUP.decode(gs),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b),
+            lawspec.runtime.LawSpecTyped.CODEC_KEY_VAL_TEXT_GROUP.decode(acc)));
   }
 
-  public static Value rebalanceTopic(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value rebalanceTopic(Map<String, Object> symbols, Value topic, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelRebalanceTopic(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(topic),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b)));
   }
 
-  public static Value rememberBatch(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+  public static Value rememberBatch(Map<String, Object> symbols, Value writer, Value meta, Value l)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PARTITION_LOG.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelRememberBatch(
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_BATCH_META.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_PARTITION_LOG.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(writer),
+            lawspec.runtime.LawSpecTyped.CODEC_BATCH_META.decode(meta),
+            lawspec.runtime.LawSpecTyped.CODEC_PARTITION_LOG.decode(l)));
   }
 
-  public static Value reversePending(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value reversePending(Map<String, Object> symbols, Value os, Value acc)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_PENDING_OFFSET.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelReversePending(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_PENDING_OFFSET.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_PENDING_OFFSET.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_PENDING_OFFSET.decode(os),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_PENDING_OFFSET.decode(acc)));
   }
 
-  public static Value subscribedTopics(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value subscribedTopics(Map<String, Object> symbols, Value subs, Value acc)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_SET_TEXT.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelSubscribedTopics(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_SET_TEXT.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TEXT.decode(subs),
+            lawspec.runtime.LawSpecTyped.CODEC_SET_TEXT.decode(acc)));
   }
 
-  public static Value subscribersOf(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value subscribersOf(Map<String, Object> symbols, Value topic, Value subs)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_TEXT.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelSubscribersOf(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TEXT.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(topic),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_ENTRY_TEXT_LIST_TEXT.decode(subs)));
   }
 
-  public static Value subscribesTo(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value subscribesTo(Map<String, Object> symbols, Value topic, Value groupValue)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_BOOL.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelSubscribesTo(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_GROUP.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(topic),
+            lawspec.runtime.LawSpecTyped.CODEC_GROUP.decode(groupValue)));
   }
 
   public static Value syncGroup(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value g, Value member, Value generation, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_LIST_TOPIC_PARTITION_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelSyncGroup(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input3)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(g),
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(member),
+            lawspec.runtime.LawSpecTyped.CODEC_INT32.decode(generation),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b)));
   }
 
-  public static Value topicPartitions(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value topicPartitions(Map<String, Object> symbols, Value topic, Value ps)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.encode(
         lawspec.runtime.LawSpecTyped.topicPartitions(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_INT32.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(topic),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_INT32.decode(ps)));
   }
 
-  public static Value txnHasPartition(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value txnHasPartition(Map<String, Object> symbols, Value tp, Value txn)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_BOOL.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelTxnHasPartition(
-            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_TXN_STATE.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_TOPIC_PARTITION.decode(tp),
+            lawspec.runtime.LawSpecTyped.CODEC_TXN_STATE.decode(txn)));
   }
 
   public static Value txnOffsetCommit(
       Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4,
-      Value input5)
+      Value txid,
+      Value pid,
+      Value epoch,
+      Value groupValue,
+      Value offsets,
+      Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PAIR_UNIT_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelTxnOffsetCommit(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_INT16.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input3),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_OFFSET_ENTRY.decode(input4),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input5)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(txid),
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(pid),
+            lawspec.runtime.LawSpecTyped.CODEC_INT16.decode(epoch),
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(groupValue),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_OFFSET_ENTRY.decode(offsets),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b)));
   }
 
-  public static Value unionPartitions(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value unionPartitions(Map<String, Object> symbols, Value xs, Value ys)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelUnionPartitions(
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(input1)));
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(xs),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(ys)));
   }
 
-  public static Value validTopicName(Map<String, Object> symbols, Value input0)
+  public static Value validTopicName(Map<String, Object> symbols, Value name)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_BOOL.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelValidTopicName(
-            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_TEXT.decode(name)));
   }
 
-  public static Value writeMarker(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+  public static Value writeMarker(Map<String, Object> symbols, Value pid, Value commit, Value l)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_PARTITION_LOG.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelWriteMarker(
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_BOOL.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_PARTITION_LOG.decode(input2)));
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(pid),
+            lawspec.runtime.LawSpecTyped.CODEC_BOOL.decode(commit),
+            lawspec.runtime.LawSpecTyped.CODEC_PARTITION_LOG.decode(l)));
   }
 
   public static Value writeMarkers(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value pid, Value commit, Value tps, Value b)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.encode(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelWriteMarkers(
-            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(input0),
-            lawspec.runtime.LawSpecTyped.CODEC_BOOL.decode(input1),
-            lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(input2),
-            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(input3)));
+            lawspec.runtime.LawSpecTyped.CODEC_INT64.decode(pid),
+            lawspec.runtime.LawSpecTyped.CODEC_BOOL.decode(commit),
+            lawspec.runtime.LawSpecTyped.CODEC_LIST_TOPIC_PARTITION.decode(tps),
+            lawspec.runtime.LawSpecTyped.CODEC_BROKER_STATE.decode(b)));
   }
 
   public static Value clusterAddPartitionsToTxnRequest2(
       Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4)
+      Value state,
+      Value text1,
+      Value int641,
+      Value int161,
+      Value list1)
   {
-    return clusterAddPartitionsToTxnRequest(symbols, input0, input1, input2, input3, input4);
+    return clusterAddPartitionsToTxnRequest(symbols, state, text1, int641, int161, list1);
   }
 
   public static Value clusterCommitOffsets2(
-      Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4)
+      Map<String, Object> symbols, Value state, Value text1, Value text2, Value int321, Value list1)
   {
-    return clusterCommitOffsets(symbols, input0, input1, input2, input3, input4);
+    return clusterCommitOffsets(symbols, state, text1, text2, int321, list1);
   }
 
   public static Value clusterCreatePartitions2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value state, Value text1, Value int321)
   {
-    return clusterCreatePartitions(symbols, input0, input1, input2);
+    return clusterCreatePartitions(symbols, state, text1, int321);
   }
 
   public static Value clusterCreatePartitionsRequest2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value state, Value text1, Value int321)
   {
-    return clusterCreatePartitions(symbols, input0, input1, input2);
+    return clusterCreatePartitions(symbols, state, text1, int321);
   }
 
   public static Value clusterCreateTopic2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value state, Value text1, Value int321)
   {
-    return clusterCreateTopic(symbols, input0, input1, input2);
+    return clusterCreateTopic(symbols, state, text1, int321);
   }
 
   public static Value clusterCreateTopicsRequest2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value state, Value text1, Value int321)
   {
-    return clusterCreateTopic(symbols, input0, input1, input2);
+    return clusterCreateTopic(symbols, state, text1, int321);
   }
 
-  public static Value clusterDescribeGroup2(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value clusterDescribeGroup2(Map<String, Object> symbols, Value state, Value text1)
   {
-    return clusterDescribeGroup(symbols, input0, input1);
+    return clusterDescribeGroup(symbols, state, text1);
   }
 
   public static Value clusterDescribeGroupRequest2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value state, Value text1)
   {
-    return clusterDescribeGroup(symbols, input0, input1);
+    return clusterDescribeGroup(symbols, state, text1);
   }
 
   public static Value clusterEndTxnRequest2(
       Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4)
+      Value state,
+      Value text1,
+      Value int641,
+      Value int161,
+      Value bool1)
   {
-    return clusterEndTxnRequest(symbols, input0, input1, input2, input3, input4);
+    return clusterEndTxnRequest(symbols, state, text1, int641, int161, bool1);
   }
 
   public static Value clusterFetchOffset2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value state, Value text1, Value topicPartition1)
   {
-    return clusterFetchOffset(symbols, input0, input1, input2);
+    return clusterFetchOffset(symbols, state, text1, topicPartition1);
   }
 
   public static Value clusterFetchRequest2(
       Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4)
+      Value state,
+      Value topicPartition1,
+      Value int641,
+      Value int321,
+      Value isolationLevel1)
   {
-    return clusterFetchRequest(symbols, input0, input1, input2, input3, input4);
+    return clusterFetchRequest(symbols, state, topicPartition1, int641, int321, isolationLevel1);
   }
 
   public static Value clusterHeartbeat2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value state, Value text1, Value text2, Value int321)
   {
-    return clusterHeartbeat(symbols, input0, input1, input2, input3);
+    return clusterHeartbeat(symbols, state, text1, text2, int321);
   }
 
   public static Value clusterHeartbeatRequest2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value state, Value text1, Value text2, Value int321)
   {
-    return clusterHeartbeat(symbols, input0, input1, input2, input3);
+    return clusterHeartbeat(symbols, state, text1, text2, int321);
   }
 
   public static Value clusterInitProducerIdRequest2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value state, Value maybe1)
   {
-    return clusterInitProducerIdRequest(symbols, input0, input1);
+    return clusterInitProducerIdRequest(symbols, state, maybe1);
   }
 
   public static Value clusterJoinGroup2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value state, Value text1, Value text2, Value list1)
   {
-    return clusterJoinGroup(symbols, input0, input1, input2, input3);
+    return clusterJoinGroup(symbols, state, text1, text2, list1);
   }
 
   public static Value clusterJoinGroupRequest2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value state, Value text1, Value text2, Value list1)
   {
-    return clusterJoinGroup(symbols, input0, input1, input2, input3);
+    return clusterJoinGroup(symbols, state, text1, text2, list1);
   }
 
   public static Value clusterLeaveGroup2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value state, Value text1, Value text2)
   {
-    return clusterLeaveGroup(symbols, input0, input1, input2);
+    return clusterLeaveGroup(symbols, state, text1, text2);
   }
 
   public static Value clusterLeaveGroupRequest2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value state, Value text1, Value text2)
   {
-    return clusterLeaveGroup(symbols, input0, input1, input2);
+    return clusterLeaveGroup(symbols, state, text1, text2);
   }
 
   public static Value clusterListOffsets2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols,
+      Value state,
+      Value topicPartition1,
+      Value offsetSpec1,
+      Value isolationLevel1)
   {
-    return clusterListOffsets(symbols, input0, input1, input2, input3);
+    return clusterListOffsets(symbols, state, topicPartition1, offsetSpec1, isolationLevel1);
   }
 
   public static Value clusterListOffsetsRequest2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols,
+      Value state,
+      Value topicPartition1,
+      Value offsetSpec1,
+      Value isolationLevel1)
   {
-    return clusterListOffsets(symbols, input0, input1, input2, input3);
+    return clusterListOffsets(symbols, state, topicPartition1, offsetSpec1, isolationLevel1);
   }
 
-  public static Value clusterMetadataRequest2(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value clusterMetadataRequest2(Map<String, Object> symbols, Value state, Value text1)
   {
-    return clusterPartitionsFor(symbols, input0, input1);
+    return clusterPartitionsFor(symbols, state, text1);
   }
 
   public static Value clusterOffsetCommitRequest2(
-      Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4)
+      Map<String, Object> symbols, Value state, Value text1, Value text2, Value int321, Value list1)
   {
-    return clusterCommitOffsets(symbols, input0, input1, input2, input3, input4);
+    return clusterCommitOffsets(symbols, state, text1, text2, int321, list1);
   }
 
   public static Value clusterOffsetFetchRequest2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value state, Value text1, Value topicPartition1)
   {
-    return clusterFetchOffset(symbols, input0, input1, input2);
+    return clusterFetchOffset(symbols, state, text1, topicPartition1);
   }
 
-  public static Value clusterPartitionsFor2(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value clusterPartitionsFor2(Map<String, Object> symbols, Value state, Value text1)
   {
-    return clusterPartitionsFor(symbols, input0, input1);
+    return clusterPartitionsFor(symbols, state, text1);
   }
 
   public static Value clusterProduceRequest2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value state, Value topicPartition1, Value maybe1, Value list1)
   {
-    return clusterProduceRequest(symbols, input0, input1, input2, input3);
+    return clusterProduceRequest(symbols, state, topicPartition1, maybe1, list1);
   }
 
-  public static Value clusterStart2(Map<String, Object> symbols, Value input0)
+  public static Value clusterStart2(Map<String, Object> symbols, Value unitValue)
   {
-    return clusterStart(symbols, input0);
+    return clusterStart(symbols, unitValue);
   }
 
   public static Value clusterSyncGroup2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value state, Value text1, Value text2, Value int321)
   {
-    return clusterSyncGroup(symbols, input0, input1, input2, input3);
+    return clusterSyncGroup(symbols, state, text1, text2, int321);
   }
 
   public static Value clusterSyncGroupRequest2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value state, Value text1, Value text2, Value int321)
   {
-    return clusterSyncGroup(symbols, input0, input1, input2, input3);
+    return clusterSyncGroup(symbols, state, text1, text2, int321);
   }
 
   public static Value clusterTxnOffsetCommitRequest2(
       Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4,
-      Value input5)
+      Value state,
+      Value text1,
+      Value int641,
+      Value int161,
+      Value text2,
+      Value list1)
   {
-    return clusterTxnOffsetCommitRequest(symbols, input0, input1, input2, input3, input4, input5);
+    return clusterTxnOffsetCommitRequest(symbols, state, text1, int641, int161, text2, list1);
   }
 
-  public static Value kafkaConsumerAssign2(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value kafkaConsumerAssign2(
+      Map<String, Object> symbols, Value consumerState, Value list1)
   {
-    return kafkaConsumerAssign(symbols, input0, input1);
+    return kafkaConsumerAssign(symbols, consumerState, list1);
   }
 
-  public static Value kafkaConsumerClose2(Map<String, Object> symbols, Value input0)
+  public static Value kafkaConsumerClose2(Map<String, Object> symbols, Value consumerState)
   {
-    return kafkaConsumerClose(symbols, input0);
+    return kafkaConsumerClose(symbols, consumerState);
   }
 
-  public static Value kafkaConsumerCommitSync2(Map<String, Object> symbols, Value input0)
+  public static Value kafkaConsumerCommitSync2(Map<String, Object> symbols, Value consumerState)
   {
-    return kafkaConsumerCommitSync(symbols, input0);
+    return kafkaConsumerCommitSync(symbols, consumerState);
   }
 
   public static Value kafkaConsumerCommittedOffset2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value consumerState, Value topicPartition1)
   {
-    return kafkaConsumerCommittedOffset(symbols, input0, input1);
+    return kafkaConsumerCommittedOffset(symbols, consumerState, topicPartition1);
   }
 
-  public static Value kafkaConsumerPoll2(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value kafkaConsumerPoll2(
+      Map<String, Object> symbols, Value consumerState, Value int321)
   {
-    return kafkaConsumerPoll(symbols, input0, input1);
+    return kafkaConsumerPoll(symbols, consumerState, int321);
   }
 
   public static Value kafkaConsumerPosition2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value consumerState, Value topicPartition1)
   {
-    return kafkaConsumerPosition(symbols, input0, input1);
+    return kafkaConsumerPosition(symbols, consumerState, topicPartition1);
   }
 
   public static Value kafkaConsumerSeek2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value consumerState, Value topicPartition1, Value int641)
   {
-    return kafkaConsumerSeek(symbols, input0, input1, input2);
+    return kafkaConsumerSeek(symbols, consumerState, topicPartition1, int641);
   }
 
   public static Value kafkaConsumerSetIsolationLevel2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value consumerState, Value isolationLevel1)
   {
-    return kafkaConsumerSetIsolationLevel(symbols, input0, input1);
+    return kafkaConsumerSetIsolationLevel(symbols, consumerState, isolationLevel1);
   }
 
-  public static Value kafkaConsumerStart2(Map<String, Object> symbols, Value input0)
+  public static Value kafkaConsumerStart2(Map<String, Object> symbols, Value unitValue)
   {
-    return kafkaConsumerStart(symbols, input0);
+    return kafkaConsumerStart(symbols, unitValue);
   }
 
   public static Value kafkaConsumerSubscribe2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value consumerState, Value text1, Value text2, Value list1)
   {
-    return kafkaConsumerSubscribe(symbols, input0, input1, input2, input3);
+    return kafkaConsumerSubscribe(symbols, consumerState, text1, text2, list1);
   }
 
-  public static Value kafkaProducerEnableIdempotence2(Map<String, Object> symbols, Value input0)
+  public static Value kafkaProducerEnableIdempotence2(
+      Map<String, Object> symbols, Value producerState)
   {
-    return kafkaProducerEnableIdempotence(symbols, input0);
+    return kafkaProducerEnableIdempotence(symbols, producerState);
   }
 
-  public static Value kafkaProducerFlush2(Map<String, Object> symbols, Value input0)
+  public static Value kafkaProducerFlush2(Map<String, Object> symbols, Value producerState)
   {
-    return kafkaProducerFlush(symbols, input0);
+    return kafkaProducerFlush(symbols, producerState);
   }
 
-  public static Value kafkaProducerProducerIdentity2(Map<String, Object> symbols, Value input0)
+  public static Value kafkaProducerProducerIdentity2(
+      Map<String, Object> symbols, Value producerState)
   {
-    return kafkaProducerProducerIdentity(symbols, input0);
+    return kafkaProducerProducerIdentity(symbols, producerState);
   }
 
-  public static Value kafkaProducerRetryLastSend2(Map<String, Object> symbols, Value input0)
+  public static Value kafkaProducerRetryLastSend2(Map<String, Object> symbols, Value producerState)
   {
-    return kafkaProducerRetryLastSend(symbols, input0);
+    return kafkaProducerRetryLastSend(symbols, producerState);
   }
 
-  public static Value kafkaProducerSend2(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value kafkaProducerSend2(
+      Map<String, Object> symbols, Value producerState, Value producerRecord1)
   {
-    return kafkaProducerSend(symbols, input0, input1);
+    return kafkaProducerSend(symbols, producerState, producerRecord1);
   }
 
-  public static Value kafkaProducerStart2(Map<String, Object> symbols, Value input0)
+  public static Value kafkaProducerStart2(Map<String, Object> symbols, Value unitValue)
   {
-    return kafkaProducerStart(symbols, input0);
+    return kafkaProducerStart(symbols, unitValue);
   }
 
-  public static Value kafkaTransactionsAbortTransaction2(Map<String, Object> symbols, Value input0)
+  public static Value kafkaTransactionsAbortTransaction2(
+      Map<String, Object> symbols, Value txnState)
   {
-    return kafkaTransactionsAbortTransaction(symbols, input0);
+    return kafkaTransactionsAbortTransaction(symbols, txnState);
   }
 
   public static Value kafkaTransactionsAddPartitionsToTransaction2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value txnState, Value list1)
   {
-    return kafkaTransactionsAddPartitionsToTransaction(symbols, input0, input1);
+    return kafkaTransactionsAddPartitionsToTransaction(symbols, txnState, list1);
   }
 
-  public static Value kafkaTransactionsBeginTransaction2(Map<String, Object> symbols, Value input0)
+  public static Value kafkaTransactionsBeginTransaction2(
+      Map<String, Object> symbols, Value txnState)
   {
-    return kafkaTransactionsBeginTransaction(symbols, input0);
+    return kafkaTransactionsBeginTransaction(symbols, txnState);
   }
 
-  public static Value kafkaTransactionsCommitTransaction2(Map<String, Object> symbols, Value input0)
+  public static Value kafkaTransactionsCommitTransaction2(
+      Map<String, Object> symbols, Value txnState)
   {
-    return kafkaTransactionsCommitTransaction(symbols, input0);
+    return kafkaTransactionsCommitTransaction(symbols, txnState);
   }
 
   public static Value kafkaTransactionsInitTransactions2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value txnState, Value text1)
   {
-    return kafkaTransactionsInitTransactions(symbols, input0, input1);
+    return kafkaTransactionsInitTransactions(symbols, txnState, text1);
   }
 
   public static Value kafkaTransactionsSendInTransaction2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value txnState, Value producerRecord1)
   {
-    return kafkaTransactionsSendInTransaction(symbols, input0, input1);
+    return kafkaTransactionsSendInTransaction(symbols, txnState, producerRecord1);
   }
 
   public static Value kafkaTransactionsSendOffsetsToTransaction2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value txnState, Value text1, Value list1)
   {
-    return kafkaTransactionsSendOffsetsToTransaction(symbols, input0, input1, input2);
+    return kafkaTransactionsSendOffsetsToTransaction(symbols, txnState, text1, list1);
   }
 
-  public static Value kafkaTransactionsStart2(Map<String, Object> symbols, Value input0)
+  public static Value kafkaTransactionsStart2(Map<String, Object> symbols, Value unitValue)
   {
-    return kafkaTransactionsStart(symbols, input0);
+    return kafkaTransactionsStart(symbols, unitValue);
   }
 
-  public static Value collectionsBoundedInt9(Map<String, Object> symbols, Value input0)
+  public static Value collectionsBoundedInt9(Map<String, Object> symbols, Value valueValue)
   {
-    return boundedInt16(symbols, input0);
+    return boundedInt16(symbols, valueValue);
   }
 
-  public static Value collectionsBoundedInt10(Map<String, Object> symbols, Value input0)
+  public static Value collectionsBoundedInt10(Map<String, Object> symbols, Value valueValue)
   {
-    return boundedInt32(symbols, input0);
+    return boundedInt32(symbols, valueValue);
   }
 
-  public static Value collectionsBoundedInt11(Map<String, Object> symbols, Value input0)
+  public static Value collectionsBoundedInt11(Map<String, Object> symbols, Value valueValue)
   {
-    return boundedInt64(symbols, input0);
+    return boundedInt64(symbols, valueValue);
   }
 
-  public static Value collectionsBoundedInt12(Map<String, Object> symbols, Value input0)
+  public static Value collectionsBoundedInt12(Map<String, Object> symbols, Value valueValue)
   {
-    return boundedInt8(symbols, input0);
+    return boundedInt8(symbols, valueValue);
   }
 
-  public static Value collectionsBoundedIntSize3(Map<String, Object> symbols, Value input0)
+  public static Value collectionsBoundedIntSize3(Map<String, Object> symbols, Value valueValue)
   {
-    return boundedIntSize(symbols, input0);
+    return boundedIntSize(symbols, valueValue);
   }
 
-  public static Value collectionsBoundedUint9(Map<String, Object> symbols, Value input0)
+  public static Value collectionsBoundedUint9(Map<String, Object> symbols, Value valueValue)
   {
-    return boundedUint16(symbols, input0);
+    return boundedUint16(symbols, valueValue);
   }
 
-  public static Value collectionsBoundedUint10(Map<String, Object> symbols, Value input0)
+  public static Value collectionsBoundedUint10(Map<String, Object> symbols, Value valueValue)
   {
-    return boundedUint32(symbols, input0);
+    return boundedUint32(symbols, valueValue);
   }
 
-  public static Value collectionsBoundedUint11(Map<String, Object> symbols, Value input0)
+  public static Value collectionsBoundedUint11(Map<String, Object> symbols, Value valueValue)
   {
-    return boundedUint64(symbols, input0);
+    return boundedUint64(symbols, valueValue);
   }
 
-  public static Value collectionsBoundedUint12(Map<String, Object> symbols, Value input0)
+  public static Value collectionsBoundedUint12(Map<String, Object> symbols, Value valueValue)
   {
-    return boundedUint8(symbols, input0);
+    return boundedUint8(symbols, valueValue);
   }
 
-  public static Value collectionsBoundedUintPtr3(Map<String, Object> symbols, Value input0)
+  public static Value collectionsBoundedUintPtr3(Map<String, Object> symbols, Value valueValue)
   {
-    return boundedUintPtr(symbols, input0);
+    return boundedUintPtr(symbols, valueValue);
   }
 
-  public static Value collectionsBoundedUintSize3(Map<String, Object> symbols, Value input0)
+  public static Value collectionsBoundedUintSize3(Map<String, Object> symbols, Value valueValue)
   {
-    return boundedUintSize(symbols, input0);
+    return boundedUintSize(symbols, valueValue);
   }
 
-  public static Value collectionsSaturatingInt9(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSaturatingInt9(Map<String, Object> symbols, Value valueValue)
   {
-    return saturatingInt16(symbols, input0);
+    return saturatingInt16(symbols, valueValue);
   }
 
-  public static Value collectionsSaturatingInt10(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSaturatingInt10(Map<String, Object> symbols, Value valueValue)
   {
-    return saturatingInt32(symbols, input0);
+    return saturatingInt32(symbols, valueValue);
   }
 
-  public static Value collectionsSaturatingInt11(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSaturatingInt11(Map<String, Object> symbols, Value valueValue)
   {
-    return saturatingInt64(symbols, input0);
+    return saturatingInt64(symbols, valueValue);
   }
 
-  public static Value collectionsSaturatingInt12(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSaturatingInt12(Map<String, Object> symbols, Value valueValue)
   {
-    return saturatingInt8(symbols, input0);
+    return saturatingInt8(symbols, valueValue);
   }
 
-  public static Value collectionsSaturatingIntSize3(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSaturatingIntSize3(Map<String, Object> symbols, Value valueValue)
   {
-    return saturatingIntSize(symbols, input0);
+    return saturatingIntSize(symbols, valueValue);
   }
 
-  public static Value collectionsSaturatingUint9(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSaturatingUint9(Map<String, Object> symbols, Value valueValue)
   {
-    return saturatingUint16(symbols, input0);
+    return saturatingUint16(symbols, valueValue);
   }
 
-  public static Value collectionsSaturatingUint10(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSaturatingUint10(Map<String, Object> symbols, Value valueValue)
   {
-    return saturatingUint32(symbols, input0);
+    return saturatingUint32(symbols, valueValue);
   }
 
-  public static Value collectionsSaturatingUint11(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSaturatingUint11(Map<String, Object> symbols, Value valueValue)
   {
-    return saturatingUint64(symbols, input0);
+    return saturatingUint64(symbols, valueValue);
   }
 
-  public static Value collectionsSaturatingUint12(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSaturatingUint12(Map<String, Object> symbols, Value valueValue)
   {
-    return saturatingUint8(symbols, input0);
+    return saturatingUint8(symbols, valueValue);
   }
 
-  public static Value collectionsSaturatingUintPtr3(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSaturatingUintPtr3(Map<String, Object> symbols, Value valueValue)
   {
-    return saturatingUintPtr(symbols, input0);
+    return saturatingUintPtr(symbols, valueValue);
   }
 
-  public static Value collectionsSaturatingUintSize3(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSaturatingUintSize3(Map<String, Object> symbols, Value valueValue)
   {
-    return saturatingUintSize(symbols, input0);
+    return saturatingUintSize(symbols, valueValue);
   }
 
-  public static Value collectionsWrappingInt9(Map<String, Object> symbols, Value input0)
+  public static Value collectionsWrappingInt9(Map<String, Object> symbols, Value valueValue)
   {
-    return wrappingInt16(symbols, input0);
+    return wrappingInt16(symbols, valueValue);
   }
 
-  public static Value collectionsWrappingInt10(Map<String, Object> symbols, Value input0)
+  public static Value collectionsWrappingInt10(Map<String, Object> symbols, Value valueValue)
   {
-    return wrappingInt32(symbols, input0);
+    return wrappingInt32(symbols, valueValue);
   }
 
-  public static Value collectionsWrappingInt11(Map<String, Object> symbols, Value input0)
+  public static Value collectionsWrappingInt11(Map<String, Object> symbols, Value valueValue)
   {
-    return wrappingInt64(symbols, input0);
+    return wrappingInt64(symbols, valueValue);
   }
 
-  public static Value collectionsWrappingInt12(Map<String, Object> symbols, Value input0)
+  public static Value collectionsWrappingInt12(Map<String, Object> symbols, Value valueValue)
   {
-    return wrappingInt8(symbols, input0);
+    return wrappingInt8(symbols, valueValue);
   }
 
-  public static Value collectionsWrappingIntSize3(Map<String, Object> symbols, Value input0)
+  public static Value collectionsWrappingIntSize3(Map<String, Object> symbols, Value valueValue)
   {
-    return wrappingIntSize(symbols, input0);
+    return wrappingIntSize(symbols, valueValue);
   }
 
-  public static Value collectionsWrappingUint9(Map<String, Object> symbols, Value input0)
+  public static Value collectionsWrappingUint9(Map<String, Object> symbols, Value valueValue)
   {
-    return wrappingUint16(symbols, input0);
+    return wrappingUint16(symbols, valueValue);
   }
 
-  public static Value collectionsWrappingUint10(Map<String, Object> symbols, Value input0)
+  public static Value collectionsWrappingUint10(Map<String, Object> symbols, Value valueValue)
   {
-    return wrappingUint32(symbols, input0);
+    return wrappingUint32(symbols, valueValue);
   }
 
-  public static Value collectionsWrappingUint11(Map<String, Object> symbols, Value input0)
+  public static Value collectionsWrappingUint11(Map<String, Object> symbols, Value valueValue)
   {
-    return wrappingUint64(symbols, input0);
+    return wrappingUint64(symbols, valueValue);
   }
 
-  public static Value collectionsWrappingUint12(Map<String, Object> symbols, Value input0)
+  public static Value collectionsWrappingUint12(Map<String, Object> symbols, Value valueValue)
   {
-    return wrappingUint8(symbols, input0);
+    return wrappingUint8(symbols, valueValue);
   }
 
-  public static Value collectionsWrappingUintPtr3(Map<String, Object> symbols, Value input0)
+  public static Value collectionsWrappingUintPtr3(Map<String, Object> symbols, Value valueValue)
   {
-    return wrappingUintPtr(symbols, input0);
+    return wrappingUintPtr(symbols, valueValue);
   }
 
-  public static Value collectionsWrappingUintSize3(Map<String, Object> symbols, Value input0)
+  public static Value collectionsWrappingUintSize3(Map<String, Object> symbols, Value valueValue)
   {
-    return wrappingUintSize(symbols, input0);
+    return wrappingUintSize(symbols, valueValue);
   }
 
   public static Value collectionsKeyValDeleteItemsIntListEntryIntInt3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
-    return collectionsKeyValDeleteItemsIntListEntryIntInt(symbols, input0, input1);
+    return collectionsKeyValDeleteItemsIntListEntryIntInt(symbols, k, es);
   }
 
   public static Value collectionsKeyValDeleteItemsTextListEntryTextListText3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
-    return collectionsKeyValDeleteItemsTextListEntryTextListText(symbols, input0, input1);
+    return collectionsKeyValDeleteItemsTextListEntryTextListText(symbols, k, es);
   }
 
   public static Value collectionsKeyValDeleteIntKeyValIntInt3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
-    return collectionsKeyValDeleteIntKeyValIntInt(symbols, input0, input1);
+    return collectionsKeyValDeleteIntKeyValIntInt(symbols, k, m);
   }
 
   public static Value collectionsKeyValDeleteTextKeyValTextListText3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
-    return collectionsKeyValDeleteTextKeyValTextListText(symbols, input0, input1);
+    return collectionsKeyValDeleteTextKeyValTextListText(symbols, k, m);
   }
 
   public static Value collectionsKeyValEntriesKeyValTextListText3(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value m)
   {
-    return collectionsKeyValEntriesKeyValTextListText(symbols, input0);
+    return collectionsKeyValEntriesKeyValTextListText(symbols, m);
   }
 
-  public static Value collectionsKeyValEntriesKeyValTextGroup3(
-      Map<String, Object> symbols, Value input0)
+  public static Value collectionsKeyValEntriesKeyValTextGroup3(Map<String, Object> symbols, Value m)
   {
-    return collectionsKeyValEntriesKeyValTextGroup(symbols, input0);
+    return collectionsKeyValEntriesKeyValTextGroup(symbols, m);
   }
 
   public static Value collectionsKeyValEntriesKeyValTextListTopicPartition3(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value m)
   {
-    return collectionsKeyValEntriesKeyValTextListTopicPartition(symbols, input0);
+    return collectionsKeyValEntriesKeyValTextListTopicPartition(symbols, m);
   }
 
   public static Value collectionsKeyValFromItemsListEntryTextIntListEntryTextInt5(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value es, Value acc)
   {
-    return collectionsKeyValFromItemsListEntryTextIntListEntryTextInt(symbols, input0, input1);
+    return collectionsKeyValFromItemsListEntryTextIntListEntryTextInt(symbols, es, acc);
   }
 
   public static Value collectionsKeyValFromItemsListEntryGroupPartitionIntListEntryGroupPartitionInt3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value es, Value acc)
   {
     return collectionsKeyValFromItemsListEntryGroupPartitionIntListEntryGroupPartitionInt(
-        symbols, input0, input1);
+        symbols, es, acc);
   }
 
   public static Value collectionsKeyValFromItemsListEntryTopicPartitionIntListEntryTopicPartitionInt3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value es, Value acc)
   {
     return collectionsKeyValFromItemsListEntryTopicPartitionIntListEntryTopicPartitionInt(
-        symbols, input0, input1);
+        symbols, es, acc);
   }
 
   public static Value collectionsKeyValFromItemsListEntryTopicPartitionPartitionLogListEntryTopicPartitionPartitionLog3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value es, Value acc)
   {
     return collectionsKeyValFromItemsListEntryTopicPartitionPartitionLogListEntryTopicPartitionPartitionLog(
-        symbols, input0, input1);
+        symbols, es, acc);
   }
 
   public static Value collectionsKeyValFromItemsListEntryTextListTextListEntryTextListText3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value es, Value acc)
   {
-    return collectionsKeyValFromItemsListEntryTextListTextListEntryTextListText(
-        symbols, input0, input1);
+    return collectionsKeyValFromItemsListEntryTextListTextListEntryTextListText(symbols, es, acc);
   }
 
   public static Value collectionsKeyValFromItemsListEntryTextListTopicPartitionListEntryTextListTopicPartition3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value es, Value acc)
   {
     return collectionsKeyValFromItemsListEntryTextListTopicPartitionListEntryTextListTopicPartition(
-        symbols, input0, input1);
+        symbols, es, acc);
   }
 
   public static Value collectionsKeyValFromItemsListEntryTextIntListEntryTextInt6(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value es, Value acc)
   {
-    return collectionsKeyValFromItemsListEntryTextIntListEntryTextInt2(symbols, input0, input1);
+    return collectionsKeyValFromItemsListEntryTextIntListEntryTextInt2(symbols, es, acc);
   }
 
   public static Value collectionsKeyValFromItemsListEntryIntIntListEntryIntInt3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value es, Value acc)
   {
-    return collectionsKeyValFromItemsListEntryIntIntListEntryIntInt(symbols, input0, input1);
+    return collectionsKeyValFromItemsListEntryIntIntListEntryIntInt(symbols, es, acc);
   }
 
   public static Value collectionsKeyValFromItemsListEntryTopicPartitionIntListEntryTopicPartitionInt4(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value es, Value acc)
   {
     return collectionsKeyValFromItemsListEntryTopicPartitionIntListEntryTopicPartitionInt2(
-        symbols, input0, input1);
+        symbols, es, acc);
   }
 
   public static Value collectionsKeyValFromItemsListEntryIntListBatchMetaListEntryIntListBatchMeta3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value es, Value acc)
   {
     return collectionsKeyValFromItemsListEntryIntListBatchMetaListEntryIntListBatchMeta(
-        symbols, input0, input1);
+        symbols, es, acc);
   }
 
   public static Value collectionsKeyValFromItemsListEntryTextGroupListEntryTextGroup3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value es, Value acc)
   {
-    return collectionsKeyValFromItemsListEntryTextGroupListEntryTextGroup(symbols, input0, input1);
+    return collectionsKeyValFromItemsListEntryTextGroupListEntryTextGroup(symbols, es, acc);
   }
 
   public static Value collectionsKeyValFromItemsListEntryIntProducerEntryListEntryIntProducerEntry3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value es, Value acc)
   {
     return collectionsKeyValFromItemsListEntryIntProducerEntryListEntryIntProducerEntry(
-        symbols, input0, input1);
+        symbols, es, acc);
   }
 
   public static Value collectionsKeyValKeysItemsListEntryTextListText3(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value es)
   {
-    return collectionsKeyValKeysItemsListEntryTextListText(symbols, input0);
+    return collectionsKeyValKeysItemsListEntryTextListText(symbols, es);
   }
 
-  public static Value collectionsKeyValKeysKeyValTextListText3(
-      Map<String, Object> symbols, Value input0)
+  public static Value collectionsKeyValKeysKeyValTextListText3(Map<String, Object> symbols, Value m)
   {
-    return collectionsKeyValKeysKeyValTextListText(symbols, input0);
+    return collectionsKeyValKeysKeyValTextListText(symbols, m);
   }
 
   public static Value collectionsKeyValLookupItemsTopicPartitionListEntryTopicPartitionPartitionLog3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
     return collectionsKeyValLookupItemsTopicPartitionListEntryTopicPartitionPartitionLog(
-        symbols, input0, input1);
+        symbols, k, es);
   }
 
   public static Value collectionsKeyValLookupItemsTextListEntryTextListTopicPartition3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
-    return collectionsKeyValLookupItemsTextListEntryTextListTopicPartition(symbols, input0, input1);
+    return collectionsKeyValLookupItemsTextListEntryTextListTopicPartition(symbols, k, es);
   }
 
   public static Value collectionsKeyValLookupItemsTextListEntryTextInt5(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
-    return collectionsKeyValLookupItemsTextListEntryTextInt(symbols, input0, input1);
+    return collectionsKeyValLookupItemsTextListEntryTextInt(symbols, k, es);
   }
 
   public static Value collectionsKeyValLookupItemsIntListEntryIntListBatchMeta3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
-    return collectionsKeyValLookupItemsIntListEntryIntListBatchMeta(symbols, input0, input1);
+    return collectionsKeyValLookupItemsIntListEntryIntListBatchMeta(symbols, k, es);
   }
 
   public static Value collectionsKeyValLookupItemsTopicPartitionListEntryTopicPartitionInt3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
-    return collectionsKeyValLookupItemsTopicPartitionListEntryTopicPartitionInt(
-        symbols, input0, input1);
+    return collectionsKeyValLookupItemsTopicPartitionListEntryTopicPartitionInt(symbols, k, es);
   }
 
   public static Value collectionsKeyValLookupItemsTopicPartitionListEntryTopicPartitionInt4(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
-    return collectionsKeyValLookupItemsTopicPartitionListEntryTopicPartitionInt2(
-        symbols, input0, input1);
+    return collectionsKeyValLookupItemsTopicPartitionListEntryTopicPartitionInt2(symbols, k, es);
   }
 
   public static Value collectionsKeyValLookupItemsIntListEntryIntProducerEntry3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
-    return collectionsKeyValLookupItemsIntListEntryIntProducerEntry(symbols, input0, input1);
+    return collectionsKeyValLookupItemsIntListEntryIntProducerEntry(symbols, k, es);
   }
 
   public static Value collectionsKeyValLookupItemsTextListEntryTextListText3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
-    return collectionsKeyValLookupItemsTextListEntryTextListText(symbols, input0, input1);
+    return collectionsKeyValLookupItemsTextListEntryTextListText(symbols, k, es);
   }
 
   public static Value collectionsKeyValLookupItemsGroupPartitionListEntryGroupPartitionInt3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
-    return collectionsKeyValLookupItemsGroupPartitionListEntryGroupPartitionInt(
-        symbols, input0, input1);
+    return collectionsKeyValLookupItemsGroupPartitionListEntryGroupPartitionInt(symbols, k, es);
   }
 
   public static Value collectionsKeyValLookupItemsTextListEntryTextGroup3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
-    return collectionsKeyValLookupItemsTextListEntryTextGroup(symbols, input0, input1);
+    return collectionsKeyValLookupItemsTextListEntryTextGroup(symbols, k, es);
   }
 
   public static Value collectionsKeyValLookupItemsIntListEntryIntInt3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
-    return collectionsKeyValLookupItemsIntListEntryIntInt(symbols, input0, input1);
+    return collectionsKeyValLookupItemsIntListEntryIntInt(symbols, k, es);
   }
 
   public static Value collectionsKeyValLookupItemsTextListEntryTextInt6(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value es)
   {
-    return collectionsKeyValLookupItemsTextListEntryTextInt2(symbols, input0, input1);
+    return collectionsKeyValLookupItemsTextListEntryTextInt2(symbols, k, es);
   }
 
   public static Value collectionsKeyValLookupTopicPartitionKeyValTopicPartitionInt3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
-    return collectionsKeyValLookupTopicPartitionKeyValTopicPartitionInt(symbols, input0, input1);
+    return collectionsKeyValLookupTopicPartitionKeyValTopicPartitionInt(symbols, k, m);
   }
 
   public static Value collectionsKeyValLookupIntKeyValIntListBatchMeta3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
-    return collectionsKeyValLookupIntKeyValIntListBatchMeta(symbols, input0, input1);
+    return collectionsKeyValLookupIntKeyValIntListBatchMeta(symbols, k, m);
   }
 
   public static Value collectionsKeyValLookupTextKeyValTextListTopicPartition3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
-    return collectionsKeyValLookupTextKeyValTextListTopicPartition(symbols, input0, input1);
+    return collectionsKeyValLookupTextKeyValTextListTopicPartition(symbols, k, m);
   }
 
   public static Value collectionsKeyValLookupIntKeyValIntProducerEntry3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
-    return collectionsKeyValLookupIntKeyValIntProducerEntry(symbols, input0, input1);
+    return collectionsKeyValLookupIntKeyValIntProducerEntry(symbols, k, m);
   }
 
   public static Value collectionsKeyValLookupGroupPartitionKeyValGroupPartitionInt3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
-    return collectionsKeyValLookupGroupPartitionKeyValGroupPartitionInt(symbols, input0, input1);
+    return collectionsKeyValLookupGroupPartitionKeyValGroupPartitionInt(symbols, k, m);
   }
 
   public static Value collectionsKeyValLookupTopicPartitionKeyValTopicPartitionInt4(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
-    return collectionsKeyValLookupTopicPartitionKeyValTopicPartitionInt2(symbols, input0, input1);
+    return collectionsKeyValLookupTopicPartitionKeyValTopicPartitionInt2(symbols, k, m);
   }
 
   public static Value collectionsKeyValLookupIntKeyValIntInt3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
-    return collectionsKeyValLookupIntKeyValIntInt(symbols, input0, input1);
+    return collectionsKeyValLookupIntKeyValIntInt(symbols, k, m);
   }
 
   public static Value collectionsKeyValLookupTextKeyValTextGroup3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
-    return collectionsKeyValLookupTextKeyValTextGroup(symbols, input0, input1);
+    return collectionsKeyValLookupTextKeyValTextGroup(symbols, k, m);
   }
 
   public static Value collectionsKeyValLookupTextKeyValTextInt5(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
-    return collectionsKeyValLookupTextKeyValTextInt(symbols, input0, input1);
+    return collectionsKeyValLookupTextKeyValTextInt(symbols, k, m);
   }
 
   public static Value collectionsKeyValLookupTopicPartitionKeyValTopicPartitionPartitionLog3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
-    return collectionsKeyValLookupTopicPartitionKeyValTopicPartitionPartitionLog(
-        symbols, input0, input1);
+    return collectionsKeyValLookupTopicPartitionKeyValTopicPartitionPartitionLog(symbols, k, m);
   }
 
   public static Value collectionsKeyValLookupTextKeyValTextListText3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
-    return collectionsKeyValLookupTextKeyValTextListText(symbols, input0, input1);
+    return collectionsKeyValLookupTextKeyValTextListText(symbols, k, m);
   }
 
   public static Value collectionsKeyValLookupTextKeyValTextInt6(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value k, Value m)
   {
-    return collectionsKeyValLookupTextKeyValTextInt2(symbols, input0, input1);
+    return collectionsKeyValLookupTextKeyValTextInt2(symbols, k, m);
   }
 
   public static Value collectionsKeyValOfListEntryTextListTopicPartition3(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value es)
   {
-    return collectionsKeyValOfListEntryTextListTopicPartition(symbols, input0);
+    return collectionsKeyValOfListEntryTextListTopicPartition(symbols, es);
   }
 
-  public static Value collectionsKeyValOfListEntryTextInt5(
-      Map<String, Object> symbols, Value input0)
+  public static Value collectionsKeyValOfListEntryTextInt5(Map<String, Object> symbols, Value es)
   {
-    return collectionsKeyValOfListEntryTextInt(symbols, input0);
+    return collectionsKeyValOfListEntryTextInt(symbols, es);
   }
 
   public static Value collectionsKeyValOfListEntryIntListBatchMeta3(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value es)
   {
-    return collectionsKeyValOfListEntryIntListBatchMeta(symbols, input0);
+    return collectionsKeyValOfListEntryIntListBatchMeta(symbols, es);
   }
 
-  public static Value collectionsKeyValOfListEntryTextGroup3(
-      Map<String, Object> symbols, Value input0)
+  public static Value collectionsKeyValOfListEntryTextGroup3(Map<String, Object> symbols, Value es)
   {
-    return collectionsKeyValOfListEntryTextGroup(symbols, input0);
+    return collectionsKeyValOfListEntryTextGroup(symbols, es);
   }
 
-  public static Value collectionsKeyValOfListEntryTextInt6(
-      Map<String, Object> symbols, Value input0)
+  public static Value collectionsKeyValOfListEntryTextInt6(Map<String, Object> symbols, Value es)
   {
-    return collectionsKeyValOfListEntryTextInt2(symbols, input0);
+    return collectionsKeyValOfListEntryTextInt2(symbols, es);
   }
 
   public static Value collectionsKeyValOfListEntryIntProducerEntry3(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value es)
   {
-    return collectionsKeyValOfListEntryIntProducerEntry(symbols, input0);
+    return collectionsKeyValOfListEntryIntProducerEntry(symbols, es);
   }
 
   public static Value collectionsKeyValOfListEntryTopicPartitionPartitionLog3(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value es)
   {
-    return collectionsKeyValOfListEntryTopicPartitionPartitionLog(symbols, input0);
+    return collectionsKeyValOfListEntryTopicPartitionPartitionLog(symbols, es);
   }
 
   public static Value collectionsKeyValOfListEntryTopicPartitionInt3(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value es)
   {
-    return collectionsKeyValOfListEntryTopicPartitionInt(symbols, input0);
+    return collectionsKeyValOfListEntryTopicPartitionInt(symbols, es);
   }
 
   public static Value collectionsKeyValOfListEntryTopicPartitionInt4(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value es)
   {
-    return collectionsKeyValOfListEntryTopicPartitionInt2(symbols, input0);
+    return collectionsKeyValOfListEntryTopicPartitionInt2(symbols, es);
   }
 
   public static Value collectionsKeyValOfListEntryGroupPartitionInt3(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value es)
   {
-    return collectionsKeyValOfListEntryGroupPartitionInt(symbols, input0);
+    return collectionsKeyValOfListEntryGroupPartitionInt(symbols, es);
   }
 
   public static Value collectionsKeyValOfListEntryTextListText3(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value es)
   {
-    return collectionsKeyValOfListEntryTextListText(symbols, input0);
+    return collectionsKeyValOfListEntryTextListText(symbols, es);
   }
 
-  public static Value collectionsKeyValOfListEntryIntInt3(Map<String, Object> symbols, Value input0)
+  public static Value collectionsKeyValOfListEntryIntInt3(Map<String, Object> symbols, Value es)
   {
-    return collectionsKeyValOfListEntryIntInt(symbols, input0);
+    return collectionsKeyValOfListEntryIntInt(symbols, es);
   }
 
   public static Value collectionsKeyValPutItemsTopicPartitionPartitionLogListEntryTopicPartitionPartitionLog3(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value es)
   {
     return collectionsKeyValPutItemsTopicPartitionPartitionLogListEntryTopicPartitionPartitionLog(
-        symbols, input0, input1, input2);
+        symbols, k, v, es);
   }
 
   public static Value collectionsKeyValPutItemsGroupPartitionIntListEntryGroupPartitionInt3(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value es)
   {
-    return collectionsKeyValPutItemsGroupPartitionIntListEntryGroupPartitionInt(
-        symbols, input0, input1, input2);
+    return collectionsKeyValPutItemsGroupPartitionIntListEntryGroupPartitionInt(symbols, k, v, es);
   }
 
   public static Value collectionsKeyValPutItemsTextGroupListEntryTextGroup3(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value es)
   {
-    return collectionsKeyValPutItemsTextGroupListEntryTextGroup(symbols, input0, input1, input2);
+    return collectionsKeyValPutItemsTextGroupListEntryTextGroup(symbols, k, v, es);
   }
 
   public static Value collectionsKeyValPutItemsIntProducerEntryListEntryIntProducerEntry3(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value es)
   {
-    return collectionsKeyValPutItemsIntProducerEntryListEntryIntProducerEntry(
-        symbols, input0, input1, input2);
+    return collectionsKeyValPutItemsIntProducerEntryListEntryIntProducerEntry(symbols, k, v, es);
   }
 
   public static Value collectionsKeyValPutItemsTextIntListEntryTextInt5(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value es)
   {
-    return collectionsKeyValPutItemsTextIntListEntryTextInt(symbols, input0, input1, input2);
+    return collectionsKeyValPutItemsTextIntListEntryTextInt(symbols, k, v, es);
   }
 
   public static Value collectionsKeyValPutItemsTextIntListEntryTextInt6(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value es)
   {
-    return collectionsKeyValPutItemsTextIntListEntryTextInt2(symbols, input0, input1, input2);
+    return collectionsKeyValPutItemsTextIntListEntryTextInt2(symbols, k, v, es);
   }
 
   public static Value collectionsKeyValPutItemsTextListTopicPartitionListEntryTextListTopicPartition3(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value es)
   {
     return collectionsKeyValPutItemsTextListTopicPartitionListEntryTextListTopicPartition(
-        symbols, input0, input1, input2);
+        symbols, k, v, es);
   }
 
   public static Value collectionsKeyValPutItemsIntListBatchMetaListEntryIntListBatchMeta3(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value es)
   {
-    return collectionsKeyValPutItemsIntListBatchMetaListEntryIntListBatchMeta(
-        symbols, input0, input1, input2);
+    return collectionsKeyValPutItemsIntListBatchMetaListEntryIntListBatchMeta(symbols, k, v, es);
   }
 
   public static Value collectionsKeyValPutItemsTextListTextListEntryTextListText3(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value es)
   {
-    return collectionsKeyValPutItemsTextListTextListEntryTextListText(
-        symbols, input0, input1, input2);
+    return collectionsKeyValPutItemsTextListTextListEntryTextListText(symbols, k, v, es);
   }
 
   public static Value collectionsKeyValPutItemsTopicPartitionIntListEntryTopicPartitionInt3(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value es)
   {
-    return collectionsKeyValPutItemsTopicPartitionIntListEntryTopicPartitionInt(
-        symbols, input0, input1, input2);
+    return collectionsKeyValPutItemsTopicPartitionIntListEntryTopicPartitionInt(symbols, k, v, es);
   }
 
   public static Value collectionsKeyValPutItemsTopicPartitionIntListEntryTopicPartitionInt4(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value es)
   {
-    return collectionsKeyValPutItemsTopicPartitionIntListEntryTopicPartitionInt2(
-        symbols, input0, input1, input2);
+    return collectionsKeyValPutItemsTopicPartitionIntListEntryTopicPartitionInt2(symbols, k, v, es);
   }
 
   public static Value collectionsKeyValPutItemsIntIntListEntryIntInt3(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value es)
   {
-    return collectionsKeyValPutItemsIntIntListEntryIntInt(symbols, input0, input1, input2);
+    return collectionsKeyValPutItemsIntIntListEntryIntInt(symbols, k, v, es);
   }
 
   public static Value collectionsKeyValPutGroupPartitionIntKeyValGroupPartitionInt3(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value m)
   {
-    return collectionsKeyValPutGroupPartitionIntKeyValGroupPartitionInt(
-        symbols, input0, input1, input2);
+    return collectionsKeyValPutGroupPartitionIntKeyValGroupPartitionInt(symbols, k, v, m);
   }
 
   public static Value collectionsKeyValPutTextIntKeyValTextInt5(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value m)
   {
-    return collectionsKeyValPutTextIntKeyValTextInt(symbols, input0, input1, input2);
+    return collectionsKeyValPutTextIntKeyValTextInt(symbols, k, v, m);
   }
 
   public static Value collectionsKeyValPutTextListTopicPartitionKeyValTextListTopicPartition3(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value m)
   {
-    return collectionsKeyValPutTextListTopicPartitionKeyValTextListTopicPartition(
-        symbols, input0, input1, input2);
+    return collectionsKeyValPutTextListTopicPartitionKeyValTextListTopicPartition(symbols, k, v, m);
   }
 
   public static Value collectionsKeyValPutTopicPartitionIntKeyValTopicPartitionInt3(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value m)
   {
-    return collectionsKeyValPutTopicPartitionIntKeyValTopicPartitionInt(
-        symbols, input0, input1, input2);
+    return collectionsKeyValPutTopicPartitionIntKeyValTopicPartitionInt(symbols, k, v, m);
   }
 
   public static Value collectionsKeyValPutIntProducerEntryKeyValIntProducerEntry3(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value m)
   {
-    return collectionsKeyValPutIntProducerEntryKeyValIntProducerEntry(
-        symbols, input0, input1, input2);
+    return collectionsKeyValPutIntProducerEntryKeyValIntProducerEntry(symbols, k, v, m);
   }
 
   public static Value collectionsKeyValPutIntListBatchMetaKeyValIntListBatchMeta3(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value m)
   {
-    return collectionsKeyValPutIntListBatchMetaKeyValIntListBatchMeta(
-        symbols, input0, input1, input2);
+    return collectionsKeyValPutIntListBatchMetaKeyValIntListBatchMeta(symbols, k, v, m);
   }
 
   public static Value collectionsKeyValPutTextGroupKeyValTextGroup3(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value m)
   {
-    return collectionsKeyValPutTextGroupKeyValTextGroup(symbols, input0, input1, input2);
+    return collectionsKeyValPutTextGroupKeyValTextGroup(symbols, k, v, m);
   }
 
   public static Value collectionsKeyValPutIntIntKeyValIntInt3(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value m)
   {
-    return collectionsKeyValPutIntIntKeyValIntInt(symbols, input0, input1, input2);
+    return collectionsKeyValPutIntIntKeyValIntInt(symbols, k, v, m);
   }
 
   public static Value collectionsKeyValPutTextListTextKeyValTextListText3(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value m)
   {
-    return collectionsKeyValPutTextListTextKeyValTextListText(symbols, input0, input1, input2);
+    return collectionsKeyValPutTextListTextKeyValTextListText(symbols, k, v, m);
   }
 
   public static Value collectionsKeyValPutTopicPartitionPartitionLogKeyValTopicPartitionPartitionLog3(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value m)
   {
     return collectionsKeyValPutTopicPartitionPartitionLogKeyValTopicPartitionPartitionLog(
-        symbols, input0, input1, input2);
+        symbols, k, v, m);
   }
 
   public static Value collectionsKeyValPutTopicPartitionIntKeyValTopicPartitionInt4(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value m)
   {
-    return collectionsKeyValPutTopicPartitionIntKeyValTopicPartitionInt2(
-        symbols, input0, input1, input2);
+    return collectionsKeyValPutTopicPartitionIntKeyValTopicPartitionInt2(symbols, k, v, m);
   }
 
   public static Value collectionsKeyValPutTextIntKeyValTextInt6(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value k, Value v, Value m)
   {
-    return collectionsKeyValPutTextIntKeyValTextInt2(symbols, input0, input1, input2);
+    return collectionsKeyValPutTextIntKeyValTextInt2(symbols, k, v, m);
   }
 
   public static Value collectionsKeyValValuesItemsListEntryIntInt3(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value es)
   {
-    return collectionsKeyValValuesItemsListEntryIntInt(symbols, input0);
+    return collectionsKeyValValuesItemsListEntryIntInt(symbols, es);
   }
 
-  public static Value collectionsKeyValValuesKeyValIntInt3(
-      Map<String, Object> symbols, Value input0)
+  public static Value collectionsKeyValValuesKeyValIntInt3(Map<String, Object> symbols, Value m)
   {
-    return collectionsKeyValValuesKeyValIntInt(symbols, input0);
+    return collectionsKeyValValuesKeyValIntInt(symbols, m);
   }
 
   public static Value collectionsSetFromItemsListIntListInt3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value xs, Value acc)
   {
-    return collectionsSetFromItemsListIntListInt(symbols, input0, input1);
+    return collectionsSetFromItemsListIntListInt(symbols, xs, acc);
   }
 
   public static Value collectionsSetFromItemsListTextListText3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value xs, Value acc)
   {
-    return collectionsSetFromItemsListTextListText(symbols, input0, input1);
+    return collectionsSetFromItemsListTextListText(symbols, xs, acc);
   }
 
   public static Value collectionsSetInsertItemsIntListInt3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value x, Value xs)
   {
-    return collectionsSetInsertItemsIntListInt(symbols, input0, input1);
+    return collectionsSetInsertItemsIntListInt(symbols, x, xs);
   }
 
   public static Value collectionsSetInsertItemsTextListText3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value x, Value xs)
   {
-    return collectionsSetInsertItemsTextListText(symbols, input0, input1);
+    return collectionsSetInsertItemsTextListText(symbols, x, xs);
   }
 
-  public static Value collectionsSetOfListText3(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSetOfListText3(Map<String, Object> symbols, Value xs)
   {
-    return collectionsSetOfListText(symbols, input0);
+    return collectionsSetOfListText(symbols, xs);
   }
 
-  public static Value collectionsSetOfListInt3(Map<String, Object> symbols, Value input0)
+  public static Value collectionsSetOfListInt3(Map<String, Object> symbols, Value xs)
   {
-    return collectionsSetOfListInt(symbols, input0);
+    return collectionsSetOfListInt(symbols, xs);
   }
 
   public static Value collectionsSetRemoveItemsTextListText2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value x, Value xs)
   {
-    return collectionsSetRemoveItemsTextListText(symbols, input0, input1);
+    return collectionsSetRemoveItemsTextListText(symbols, x, xs);
   }
 
   public static Value collectionsSetRemoveTextSetText2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value x, Value s)
   {
-    return collectionsSetRemoveTextSetText(symbols, input0, input1);
+    return collectionsSetRemoveTextSetText(symbols, x, s);
   }
 
   public static Value collectionsSetUnionSetTextSetText3(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value s, Value t)
   {
-    return collectionsSetUnionSetTextSetText(symbols, input0, input1);
+    return collectionsSetUnionSetTextSetText(symbols, s, t);
   }
 
-  public static Value lawtwinKafkaAllAtLeast(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaAllAtLeast(Map<String, Object> symbols, Value floor, Value xs)
   {
-    return allAtLeast(symbols, input0, input1);
+    return allAtLeast(symbols, floor, xs);
   }
 
-  public static Value lawtwinKafkaAssignmentIn(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaAssignmentIn(Map<String, Object> symbols, Value m, Value ms)
   {
-    return assignmentIn(symbols, input0, input1);
+    return assignmentIn(symbols, m, ms);
   }
 
-  public static Value lawtwinKafkaCommittedFrom(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaCommittedFrom(Map<String, Object> symbols, Value tp, Value offset)
   {
-    return committedFrom(symbols, input0, input1);
+    return committedFrom(symbols, tp, offset);
   }
 
-  public static Value lawtwinKafkaConsumerAssign(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaConsumerAssign(Map<String, Object> symbols, Value tps, Value c)
   {
-    return consumerAssign(symbols, input0, input1);
+    return consumerAssign(symbols, tps, c);
   }
 
-  public static Value lawtwinKafkaConsumerClose(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaConsumerClose(Map<String, Object> symbols, Value c)
   {
-    return consumerClose(symbols, input0);
+    return consumerClose(symbols, c);
   }
 
-  public static Value lawtwinKafkaConsumerCommit(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaConsumerCommit(Map<String, Object> symbols, Value c)
   {
-    return consumerCommit(symbols, input0);
+    return consumerCommit(symbols, c);
   }
 
-  public static Value lawtwinKafkaConsumerCommitted(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaConsumerCommitted(Map<String, Object> symbols, Value tp, Value c)
   {
-    return consumerCommitted(symbols, input0, input1);
+    return consumerCommitted(symbols, tp, c);
   }
 
   public static Value lawtwinKafkaConsumerIsolation(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value level, Value c)
   {
-    return consumerIsolation(symbols, input0, input1);
+    return consumerIsolation(symbols, level, c);
   }
 
   public static Value lawtwinKafkaConsumerJoin(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value g, Value m, Value topics, Value c)
   {
-    return consumerJoin(symbols, input0, input1, input2, input3);
+    return consumerJoin(symbols, g, m, topics, c);
   }
 
-  public static Value lawtwinKafkaConsumerPoll(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaConsumerPoll(Map<String, Object> symbols, Value n, Value c)
   {
-    return consumerPoll(symbols, input0, input1);
+    return consumerPoll(symbols, n, c);
   }
 
-  public static Value lawtwinKafkaConsumerPosition(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaConsumerPosition(Map<String, Object> symbols, Value tp, Value c)
   {
-    return consumerPosition(symbols, input0, input1);
+    return consumerPosition(symbols, tp, c);
   }
 
-  public static Value lawtwinKafkaConsumerPositionOf(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaConsumerPositionOf(Map<String, Object> symbols, Value tp, Value c)
   {
-    return consumerPositionOf(symbols, input0, input1);
+    return consumerPositionOf(symbols, tp, c);
   }
 
-  public static Value lawtwinKafkaConsumerRecords(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaConsumerRecords(Map<String, Object> symbols, Value tp, Value rs)
   {
-    return consumerRecords(symbols, input0, input1);
+    return consumerRecords(symbols, tp, rs);
   }
 
-  public static Value lawtwinKafkaConsumerRefresh(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaConsumerRefresh(Map<String, Object> symbols, Value c)
   {
-    return consumerRefresh(symbols, input0);
+    return consumerRefresh(symbols, c);
   }
 
   public static Value lawtwinKafkaConsumerSeek(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value tp, Value offset, Value c)
   {
-    return consumerSeek(symbols, input0, input1, input2);
+    return consumerSeek(symbols, tp, offset, c);
   }
 
   public static Value lawtwinKafkaCoversOnce(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value t, Value n, Value view)
   {
-    return coversOnce(symbols, input0, input1, input2);
+    return coversOnce(symbols, t, n, view);
   }
 
-  public static Value lawtwinKafkaCreated(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaCreated(Map<String, Object> symbols, Value t, Value n)
   {
-    return created(symbols, input0, input1);
+    return created(symbols, t, n);
   }
 
-  public static Value lawtwinKafkaFencedBy(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaFencedBy(Map<String, Object> symbols, Value old, Value newValue)
   {
-    return fencedBy(symbols, input0, input1);
+    return fencedBy(symbols, old, newValue);
   }
 
   public static Value lawtwinKafkaFollowsBatch(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value a, Value batch, Value b)
   {
-    return followsBatch(symbols, input0, input1, input2);
+    return followsBatch(symbols, a, batch, b);
   }
 
-  public static Value lawtwinKafkaFollowsOne(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaFollowsOne(Map<String, Object> symbols, Value a, Value latest)
   {
-    return followsOne(symbols, input0, input1);
+    return followsOne(symbols, a, latest);
   }
 
-  public static Value lawtwinKafkaFreshConsumer(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaFreshConsumer(Map<String, Object> symbols, Value u)
   {
-    return freshConsumer(symbols, input0);
+    return freshConsumer(symbols, u);
   }
 
-  public static Value lawtwinKafkaFreshProducer(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaFreshProducer(Map<String, Object> symbols, Value u)
   {
-    return freshProducer(symbols, input0);
+    return freshProducer(symbols, u);
   }
 
-  public static Value lawtwinKafkaFreshTransactions(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaFreshTransactions(Map<String, Object> symbols, Value u)
   {
-    return freshTransactions(symbols, input0);
+    return freshTransactions(symbols, u);
   }
 
-  public static Value lawtwinKafkaIdentityOf(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaIdentityOf(Map<String, Object> symbols, Value st)
   {
-    return identityOf(symbols, input0);
+    return identityOf(symbols, st);
   }
 
-  public static Value lawtwinKafkaIncreasing(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaIncreasing(Map<String, Object> symbols, Value xs)
   {
-    return increasing(symbols, input0);
+    return increasing(symbols, xs);
   }
 
   public static Value lawtwinKafkaJoinAll(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value g, Value ms, Value topics)
   {
-    return joinAll(symbols, input0, input1, input2);
+    return joinAll(symbols, g, ms, topics);
   }
 
   public static Value lawtwinKafkaJoinEach(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value g, Value ms, Value topics)
   {
-    return joinEach(symbols, input0, input1, input2);
+    return joinEach(symbols, g, ms, topics);
   }
 
   public static Value lawtwinKafkaKeepPositions(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value tps, Value positions, Value acc)
   {
-    return keepPositions(symbols, input0, input1, input2);
+    return keepPositions(symbols, tps, positions, acc);
   }
 
-  public static Value lawtwinKafkaMemberIds(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaMemberIds(Map<String, Object> symbols, Value ms)
   {
-    return memberIds(symbols, input0);
+    return memberIds(symbols, ms);
   }
 
-  public static Value lawtwinKafkaMissingFrom(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaMissingFrom(Map<String, Object> symbols, Value tps, Value have)
   {
-    return missingFrom(symbols, input0, input1);
+    return missingFrom(symbols, tps, have);
   }
 
   public static Value lawtwinKafkaModelAddPartitionsToTxn2(
-      Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4)
+      Map<String, Object> symbols, Value txid, Value pid, Value epoch, Value tps, Value b)
   {
-    return addPartitionsToTxn(symbols, input0, input1, input2, input3, input4);
+    return addPartitionsToTxn(symbols, txid, pid, epoch, tps, b);
   }
 
-  public static Value lawtwinKafkaModelAllKnown2(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaModelAllKnown2(Map<String, Object> symbols, Value tps, Value b)
   {
-    return allKnown(symbols, input0, input1);
+    return allKnown(symbols, tps, b);
   }
 
   public static Value lawtwinKafkaModelAppendBatch2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value rs, Value writer, Value transactional, Value l)
   {
-    return appendBatch(symbols, input0, input1, input2, input3);
+    return appendBatch(symbols, rs, writer, transactional, l);
   }
 
   public static Value lawtwinKafkaModelAppendRecords2(
       Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4)
+      Value rs,
+      Value offset,
+      Value writer,
+      Value transactional,
+      Value es)
   {
-    return appendRecords(symbols, input0, input1, input2, input3, input4);
+    return appendRecords(symbols, rs, offset, writer, transactional, es);
   }
 
-  public static Value lawtwinKafkaModelApplyOffsets2(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaModelApplyOffsets2(Map<String, Object> symbols, Value os, Value b)
   {
-    return applyOffsets(symbols, input0, input1);
+    return applyOffsets(symbols, os, b);
   }
 
   public static Value lawtwinKafkaModelAssignPartitions2(
-      Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4)
+      Map<String, Object> symbols, Value topic, Value ps, Value owners, Value waiting, Value a)
   {
-    return assignPartitions(symbols, input0, input1, input2, input3, input4);
+    return assignPartitions(symbols, topic, ps, owners, waiting, a);
   }
 
   public static Value lawtwinKafkaModelAssignTo2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value member, Value tp, Value a)
   {
-    return assignTo(symbols, input0, input1, input2);
+    return assignTo(symbols, member, tp, a);
   }
 
   public static Value lawtwinKafkaModelAssignTopics2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value topics, Value subs, Value b, Value a)
   {
-    return assignTopics(symbols, input0, input1, input2, input3);
+    return assignTopics(symbols, topics, subs, b, a);
   }
 
   public static Value lawtwinKafkaModelCheckMember2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value g, Value member, Value generation, Value b)
   {
-    return checkMember(symbols, input0, input1, input2, input3);
+    return checkMember(symbols, g, member, generation, b);
   }
 
   public static Value lawtwinKafkaModelCheckTxnProducer2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value txid, Value pid, Value epoch, Value b)
   {
-    return checkTxnProducer(symbols, input0, input1, input2, input3);
+    return checkTxnProducer(symbols, txid, pid, epoch, b);
   }
 
   public static Value lawtwinKafkaModelCommitAll2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value g, Value offsets, Value b)
   {
-    return commitAll(symbols, input0, input1, input2);
+    return commitAll(symbols, g, offsets, b);
   }
 
   public static Value lawtwinKafkaModelComputeAssignment2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value subscriptions, Value b)
   {
-    return computeAssignment(symbols, input0, input1);
+    return computeAssignment(symbols, subscriptions, b);
   }
 
   public static Value lawtwinKafkaModelCreatePartitions2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value name, Value total, Value b)
   {
-    return createPartitions(symbols, input0, input1, input2);
+    return createPartitions(symbols, name, total, b);
   }
 
   public static Value lawtwinKafkaModelCreateTopic2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value name, Value n, Value b)
   {
-    return createTopic(symbols, input0, input1, input2);
+    return createTopic(symbols, name, n, b);
   }
 
-  public static Value lawtwinKafkaModelDescribeGroup2(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaModelDescribeGroup2(Map<String, Object> symbols, Value g, Value b)
   {
-    return describeGroup(symbols, input0, input1);
+    return describeGroup(symbols, g, b);
   }
 
   public static Value lawtwinKafkaModelEmptyAssignments2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value members, Value a)
   {
-    return emptyAssignments(symbols, input0, input1);
+    return emptyAssignments(symbols, members, a);
   }
 
-  public static Value lawtwinKafkaModelEmptyBroker2(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaModelEmptyBroker2(Map<String, Object> symbols, Value u)
   {
-    return emptyBroker(symbols, input0);
+    return emptyBroker(symbols, u);
   }
 
-  public static Value lawtwinKafkaModelEmptyGroup2(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaModelEmptyGroup2(Map<String, Object> symbols, Value u)
   {
-    return emptyGroup(symbols, input0);
+    return emptyGroup(symbols, u);
   }
 
-  public static Value lawtwinKafkaModelEmptyLog2(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaModelEmptyLog2(Map<String, Object> symbols, Value u)
   {
-    return emptyLog(symbols, input0);
+    return emptyLog(symbols, u);
   }
 
   public static Value lawtwinKafkaModelEndTxn2(
-      Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4)
+      Map<String, Object> symbols, Value txid, Value pid, Value epoch, Value commit, Value b)
   {
-    return endTxn(symbols, input0, input1, input2, input3, input4);
+    return endTxn(symbols, txid, pid, epoch, commit, b);
   }
 
   public static Value lawtwinKafkaModelExpectedSequence2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value epoch, Value ms)
   {
-    return expectedSequence(symbols, input0, input1);
+    return expectedSequence(symbols, epoch, ms);
   }
 
   public static Value lawtwinKafkaModelFetch2(
-      Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4)
+      Map<String, Object> symbols, Value tp, Value from, Value maxRecords, Value isolation, Value b)
   {
-    return fetch(symbols, input0, input1, input2, input3, input4);
+    return fetch(symbols, tp, from, maxRecords, isolation, b);
   }
 
   public static Value lawtwinKafkaModelFindDuplicate2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value epoch, Value first, Value last, Value ms)
   {
-    return findDuplicate(symbols, input0, input1, input2, input3);
+    return findDuplicate(symbols, epoch, first, last, ms);
   }
 
   public static Value lawtwinKafkaModelFinishTxn2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value pid, Value commit, Value txn, Value b)
   {
-    return finishTxn(symbols, input0, input1, input2, input3);
+    return finishTxn(symbols, pid, commit, txn, b);
   }
 
-  public static Value lawtwinKafkaModelGroupOf2(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaModelGroupOf2(Map<String, Object> symbols, Value g, Value b)
   {
-    return groupOf(symbols, input0, input1);
+    return groupOf(symbols, g, b);
   }
 
   public static Value lawtwinKafkaModelHeartbeat2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value g, Value member, Value generation, Value b)
   {
-    return heartbeat(symbols, input0, input1, input2, input3);
+    return heartbeat(symbols, g, member, generation, b);
   }
 
-  public static Value lawtwinKafkaModelHighWatermark2(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaModelHighWatermark2(Map<String, Object> symbols, Value l)
   {
-    return highWatermark(symbols, input0);
+    return highWatermark(symbols, l);
   }
 
   public static Value lawtwinKafkaModelInitProducerId2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value txid, Value b)
   {
-    return initProducerId(symbols, input0, input1);
+    return initProducerId(symbols, txid, b);
   }
 
   public static Value lawtwinKafkaModelIsAborted2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value writer, Value offset, Value aborted)
   {
-    return isAborted(symbols, input0, input1, input2);
+    return isAborted(symbols, writer, offset, aborted);
   }
 
   public static Value lawtwinKafkaModelJoinGroup2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value g, Value member, Value topics, Value b)
   {
-    return joinGroup(symbols, input0, input1, input2, input3);
+    return joinGroup(symbols, g, member, topics, b);
   }
 
   public static Value lawtwinKafkaModelKnownPartition2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value tp, Value b)
   {
-    return knownPartition(symbols, input0, input1);
+    return knownPartition(symbols, tp, b);
   }
 
   public static Value lawtwinKafkaModelLastOffsetOf2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value rs, Value fallbackOffset)
   {
-    return lastOffsetOf(symbols, input0, input1);
+    return lastOffsetOf(symbols, rs, fallbackOffset);
   }
 
-  public static Value lawtwinKafkaModelLastStableOffset2(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaModelLastStableOffset2(Map<String, Object> symbols, Value l)
   {
-    return lastStableOffset(symbols, input0);
+    return lastStableOffset(symbols, l);
   }
 
   public static Value lawtwinKafkaModelLeaveGroup2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value g, Value member, Value b)
   {
-    return leaveGroup(symbols, input0, input1, input2);
+    return leaveGroup(symbols, g, member, b);
   }
 
   public static Value lawtwinKafkaModelListOffsets2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value tp, Value spec, Value isolation, Value b)
   {
-    return listOffsets(symbols, input0, input1, input2, input3);
+    return listOffsets(symbols, tp, spec, isolation, b);
   }
 
-  public static Value lawtwinKafkaModelLogOf2(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaModelLogOf2(Map<String, Object> symbols, Value tp, Value b)
   {
-    return logOf(symbols, input0, input1);
+    return logOf(symbols, tp, b);
   }
 
-  public static Value lawtwinKafkaModelMax642(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaModelMax642(Map<String, Object> symbols, Value a, Value b)
   {
-    return max64(symbols, input0, input1);
+    return max64(symbols, a, b);
   }
 
-  public static Value lawtwinKafkaModelMaxPartitions2(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaModelMaxPartitions2(Map<String, Object> symbols, Value u)
   {
-    return maxPartitions(symbols, input0);
+    return maxPartitions(symbols, u);
   }
 
-  public static Value lawtwinKafkaModelMemberViews2(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaModelMemberViews2(Map<String, Object> symbols, Value a)
   {
-    return memberViews(symbols, input0);
+    return memberViews(symbols, a);
   }
 
-  public static Value lawtwinKafkaModelMetadata2(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaModelMetadata2(Map<String, Object> symbols, Value name, Value b)
   {
-    return metadata(symbols, input0, input1);
+    return metadata(symbols, name, b);
   }
 
-  public static Value lawtwinKafkaModelMin642(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaModelMin642(Map<String, Object> symbols, Value a, Value b)
   {
-    return min64(symbols, input0, input1);
+    return min64(symbols, a, b);
   }
 
-  public static Value lawtwinKafkaModelMinOf2(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaModelMinOf2(Map<String, Object> symbols, Value xs, Value m)
   {
-    return minOf(symbols, input0, input1);
+    return minOf(symbols, xs, m);
   }
 
   public static Value lawtwinKafkaModelNewProducer2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value txid, Value b)
   {
-    return newProducer(symbols, input0, input1);
+    return newProducer(symbols, txid, b);
   }
 
   public static Value lawtwinKafkaModelNextFetchOffset2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value from, Value limit, Value taken, Value all)
   {
-    return nextFetchOffset(symbols, input0, input1, input2, input3);
+    return nextFetchOffset(symbols, from, limit, taken, all);
   }
 
   public static Value lawtwinKafkaModelOffsetCommit2(
-      Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4)
+      Map<String, Object> symbols, Value g, Value member, Value generation, Value offsets, Value b)
   {
-    return offsetCommit(symbols, input0, input1, input2, input3, input4);
+    return offsetCommit(symbols, g, member, generation, offsets, b);
   }
 
   public static Value lawtwinKafkaModelOffsetFetch2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value g, Value tp, Value b)
   {
-    return offsetFetch(symbols, input0, input1, input2);
+    return offsetFetch(symbols, g, tp, b);
   }
 
-  public static Value lawtwinKafkaModelOffsetPartitions2(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaModelOffsetPartitions2(Map<String, Object> symbols, Value offsets)
   {
-    return offsetPartitions(symbols, input0);
+    return offsetPartitions(symbols, offsets);
   }
 
   public static Value lawtwinKafkaModelPartitionCountOf2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value topic, Value b)
   {
-    return partitionCountOf(symbols, input0, input1);
+    return partitionCountOf(symbols, topic, b);
   }
 
-  public static Value lawtwinKafkaModelPartitionsBelow2(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaModelPartitionsBelow2(Map<String, Object> symbols, Value n)
   {
-    return partitionsBelow(symbols, input0);
+    return partitionsBelow(symbols, n);
   }
 
   public static Value lawtwinKafkaModelPendingFor2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value groupValue, Value offsets, Value acc)
   {
-    return pendingFor(symbols, input0, input1, input2);
+    return pendingFor(symbols, groupValue, offsets, acc);
   }
 
   public static Value lawtwinKafkaModelProduce2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value tp, Value tagValue, Value rs, Value b)
   {
-    return produce(symbols, input0, input1, input2, input3);
+    return produce(symbols, tp, tagValue, rs, b);
   }
 
   public static Value lawtwinKafkaModelProduceTagged2(
-      Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4)
+      Map<String, Object> symbols, Value tp, Value t, Value rs, Value l, Value b)
   {
-    return produceTagged(symbols, input0, input1, input2, input3, input4);
+    return produceTagged(symbols, tp, t, rs, l, b);
   }
 
   public static Value lawtwinKafkaModelPutGroup2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value g, Value groupValue, Value b)
   {
-    return putGroup(symbols, input0, input1, input2);
+    return putGroup(symbols, g, groupValue, b);
   }
 
   public static Value lawtwinKafkaModelPutLog2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value tp, Value l, Value b)
   {
-    return putLog(symbols, input0, input1, input2);
+    return putLog(symbols, tp, l, b);
   }
 
   public static Value lawtwinKafkaModelPutProducer2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value pid, Value entry, Value b)
   {
-    return putProducer(symbols, input0, input1, input2);
+    return putProducer(symbols, pid, entry, b);
   }
 
   public static Value lawtwinKafkaModelReadable2(
       Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4,
-      Value input5)
+      Value es,
+      Value from,
+      Value limit,
+      Value committedOnly,
+      Value aborted,
+      Value acc)
   {
-    return readable(symbols, input0, input1, input2, input3, input4, input5);
+    return readable(symbols, es, from, limit, committedOnly, aborted, acc);
   }
 
   public static Value lawtwinKafkaModelRebalance2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value groupValue, Value b)
   {
-    return rebalance(symbols, input0, input1);
+    return rebalance(symbols, groupValue, b);
   }
 
   public static Value lawtwinKafkaModelRebalanceGroups2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value topic, Value gs, Value b, Value acc)
   {
-    return rebalanceGroups(symbols, input0, input1, input2, input3);
+    return rebalanceGroups(symbols, topic, gs, b, acc);
   }
 
   public static Value lawtwinKafkaModelRebalanceTopic2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value topic, Value b)
   {
-    return rebalanceTopic(symbols, input0, input1);
+    return rebalanceTopic(symbols, topic, b);
   }
 
   public static Value lawtwinKafkaModelRememberBatch2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value writer, Value meta, Value l)
   {
-    return rememberBatch(symbols, input0, input1, input2);
+    return rememberBatch(symbols, writer, meta, l);
   }
 
   public static Value lawtwinKafkaModelReversePending2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value os, Value acc)
   {
-    return reversePending(symbols, input0, input1);
+    return reversePending(symbols, os, acc);
   }
 
   public static Value lawtwinKafkaModelSubscribedTopics2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value subs, Value acc)
   {
-    return subscribedTopics(symbols, input0, input1);
+    return subscribedTopics(symbols, subs, acc);
   }
 
   public static Value lawtwinKafkaModelSubscribersOf2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value topic, Value subs)
   {
-    return subscribersOf(symbols, input0, input1);
+    return subscribersOf(symbols, topic, subs);
   }
 
   public static Value lawtwinKafkaModelSubscribesTo2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value topic, Value groupValue)
   {
-    return subscribesTo(symbols, input0, input1);
+    return subscribesTo(symbols, topic, groupValue);
   }
 
   public static Value lawtwinKafkaModelSyncGroup2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value g, Value member, Value generation, Value b)
   {
-    return syncGroup(symbols, input0, input1, input2, input3);
+    return syncGroup(symbols, g, member, generation, b);
   }
 
   public static Value lawtwinKafkaModelTxnHasPartition2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value tp, Value txn)
   {
-    return txnHasPartition(symbols, input0, input1);
+    return txnHasPartition(symbols, tp, txn);
   }
 
   public static Value lawtwinKafkaModelTxnOffsetCommit2(
       Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4,
-      Value input5)
+      Value txid,
+      Value pid,
+      Value epoch,
+      Value groupValue,
+      Value offsets,
+      Value b)
   {
-    return txnOffsetCommit(symbols, input0, input1, input2, input3, input4, input5);
+    return txnOffsetCommit(symbols, txid, pid, epoch, groupValue, offsets, b);
   }
 
   public static Value lawtwinKafkaModelUnionPartitions2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value xs, Value ys)
   {
-    return unionPartitions(symbols, input0, input1);
+    return unionPartitions(symbols, xs, ys);
   }
 
-  public static Value lawtwinKafkaModelValidTopicName2(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaModelValidTopicName2(Map<String, Object> symbols, Value name)
   {
-    return validTopicName(symbols, input0);
+    return validTopicName(symbols, name);
   }
 
   public static Value lawtwinKafkaModelWriteMarker2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value pid, Value commit, Value l)
   {
-    return writeMarker(symbols, input0, input1, input2);
+    return writeMarker(symbols, pid, commit, l);
   }
 
   public static Value lawtwinKafkaModelWriteMarkers2(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value pid, Value commit, Value tps, Value b)
   {
-    return writeMarkers(symbols, input0, input1, input2, input3);
+    return writeMarkers(symbols, pid, commit, tps, b);
   }
 
-  public static Value lawtwinKafkaMul32(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaMul32(Map<String, Object> symbols, Value a, Value b)
   {
-    return mul32(symbols, input0, input1);
+    return mul32(symbols, a, b);
   }
 
-  public static Value lawtwinKafkaMurmur2(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaMurmur2(Map<String, Object> symbols, Value key)
   {
-    return murmur2(symbols, input0);
+    return murmur2(symbols, key);
   }
 
-  public static Value lawtwinKafkaMurmurChunks(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaMurmurChunks(Map<String, Object> symbols, Value octets, Value h)
   {
-    return murmurChunks(symbols, input0, input1);
+    return murmurChunks(symbols, octets, h);
   }
 
-  public static Value lawtwinKafkaMurmurM(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaMurmurM(Map<String, Object> symbols, Value u)
   {
-    return murmurM(symbols, input0);
+    return murmurM(symbols, u);
   }
 
-  public static Value lawtwinKafkaOwnedOf(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaOwnedOf(Map<String, Object> symbols, Value t, Value ms)
   {
-    return ownedOf(symbols, input0, input1);
+    return ownedOf(symbols, t, ms);
   }
 
   public static Value lawtwinKafkaPartitionOf(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value topic, Value choice, Value r)
   {
-    return partitionOf(symbols, input0, input1, input2);
+    return partitionOf(symbols, topic, choice, r);
   }
 
-  public static Value lawtwinKafkaPartitionsOfTopic(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaPartitionsOfTopic(Map<String, Object> symbols, Value t, Value tps)
   {
-    return partitionsOfTopic(symbols, input0, input1);
+    return partitionsOfTopic(symbols, t, tps);
   }
 
   public static Value lawtwinKafkaPollPartitions(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value tps, Value n, Value c, Value acc)
   {
-    return pollPartitions(symbols, input0, input1, input2, input3);
+    return pollPartitions(symbols, tps, n, c, acc);
   }
 
   public static Value lawtwinKafkaPositionsToCommit(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value tps, Value positions)
   {
-    return positionsToCommit(symbols, input0, input1);
+    return positionsToCommit(symbols, tps, positions);
   }
 
-  public static Value lawtwinKafkaProducerFlush(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaProducerFlush(Map<String, Object> symbols, Value st)
   {
-    return producerFlush(symbols, input0);
+    return producerFlush(symbols, st);
   }
 
-  public static Value lawtwinKafkaProducerIdempotent(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaProducerIdempotent(Map<String, Object> symbols, Value st)
   {
-    return producerIdempotent(symbols, input0);
+    return producerIdempotent(symbols, st);
   }
 
-  public static Value lawtwinKafkaProducerRetry(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaProducerRetry(Map<String, Object> symbols, Value st)
   {
-    return producerRetry(symbols, input0);
+    return producerRetry(symbols, st);
   }
 
-  public static Value lawtwinKafkaProducerSend(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaProducerSend(Map<String, Object> symbols, Value pr, Value st)
   {
-    return producerSend(symbols, input0, input1);
+    return producerSend(symbols, pr, st);
   }
 
   public static Value lawtwinKafkaReadFrom(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value tp, Value offset, Value isolation)
   {
-    return readFrom(symbols, input0, input1, input2);
+    return readFrom(symbols, tp, offset, isolation);
   }
 
   public static Value lawtwinKafkaReadInOrder(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value a, Value b, Value first, Value second)
   {
-    return readInOrder(symbols, input0, input1, input2, input3);
+    return readInOrder(symbols, a, b, first, second);
   }
 
-  public static Value lawtwinKafkaReceivedOffsets(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaReceivedOffsets(Map<String, Object> symbols, Value rs)
   {
-    return receivedOffsets(symbols, input0);
+    return receivedOffsets(symbols, rs);
   }
 
-  public static Value lawtwinKafkaReceivedRecords(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaReceivedRecords(Map<String, Object> symbols, Value rs)
   {
-    return receivedRecords(symbols, input0);
+    return receivedRecords(symbols, rs);
   }
 
-  public static Value lawtwinKafkaRecordsOf(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaRecordsOf(Map<String, Object> symbols, Value rs)
   {
-    return recordsOf(symbols, input0);
+    return recordsOf(symbols, rs);
   }
 
   public static Value lawtwinKafkaResumesAtCommitted(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value t, Value g, Value m, Value n)
   {
-    return resumesAtCommitted(symbols, input0, input1, input2, input3);
+    return resumesAtCommitted(symbols, t, g, m, n);
   }
 
-  public static Value lawtwinKafkaSamePartition(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaSamePartition(Map<String, Object> symbols, Value a, Value b)
   {
-    return samePartition(symbols, input0, input1);
+    return samePartition(symbols, a, b);
   }
 
   public static Value lawtwinKafkaSequenceFor(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value tp, Value sequences)
   {
-    return sequenceFor(symbols, input0, input1);
+    return sequenceFor(symbols, tp, sequences);
   }
 
-  public static Value lawtwinKafkaSmallBatch(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaSmallBatch(Map<String, Object> symbols, Value batch)
   {
-    return smallBatch(symbols, input0);
+    return smallBatch(symbols, batch);
   }
 
   public static Value lawtwinKafkaStableBelowHigh(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value t, Value txid, Value batch)
   {
-    return stableBelowHigh(symbols, input0, input1, input2);
+    return stableBelowHigh(symbols, t, txid, batch);
   }
 
-  public static Value lawtwinKafkaTagFor(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaTagFor(
+      Map<String, Object> symbols, Value identity, Value sequence)
   {
-    return tagFor(symbols, input0, input1);
+    return tagFor(symbols, identity, sequence);
   }
 
-  public static Value lawtwinKafkaTagOf(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaTagOf(Map<String, Object> symbols, Value pe, Value sequence)
   {
-    return tagOf(symbols, input0, input1);
+    return tagOf(symbols, pe, sequence);
   }
 
-  public static Value lawtwinKafkaToPositive(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaToPositive(Map<String, Object> symbols, Value h)
   {
-    return toPositive(symbols, input0);
+    return toPositive(symbols, h);
   }
 
   public static Value lawtwinKafkaTransactionThenRead(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value t, Value txid, Value batch, Value commit)
   {
-    return transactionThenRead(symbols, input0, input1, input2, input3);
+    return transactionThenRead(symbols, t, txid, batch, commit);
   }
 
   public static Value lawtwinKafkaTransactionalOffsets(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value t, Value txid, Value g, Value offset)
   {
-    return transactionalOffsets(symbols, input0, input1, input2, input3);
+    return transactionalOffsets(symbols, t, txid, g, offset);
   }
 
-  public static Value lawtwinKafkaTransactionsAbort(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaTransactionsAbort(Map<String, Object> symbols, Value st)
   {
-    return transactionsAbort(symbols, input0);
+    return transactionsAbort(symbols, st);
   }
 
-  public static Value lawtwinKafkaTransactionsAdd(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaTransactionsAdd(Map<String, Object> symbols, Value tps, Value st)
   {
-    return transactionsAdd(symbols, input0, input1);
+    return transactionsAdd(symbols, tps, st);
   }
 
-  public static Value lawtwinKafkaTransactionsBegin(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaTransactionsBegin(Map<String, Object> symbols, Value st)
   {
-    return transactionsBegin(symbols, input0);
+    return transactionsBegin(symbols, st);
   }
 
-  public static Value lawtwinKafkaTransactionsCommit(Map<String, Object> symbols, Value input0)
+  public static Value lawtwinKafkaTransactionsCommit(Map<String, Object> symbols, Value st)
   {
-    return transactionsCommit(symbols, input0);
+    return transactionsCommit(symbols, st);
   }
 
   public static Value lawtwinKafkaTransactionsEnd(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value commit, Value st)
   {
-    return transactionsEnd(symbols, input0, input1);
+    return transactionsEnd(symbols, commit, st);
   }
 
   public static Value lawtwinKafkaTransactionsInit(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value txid, Value st)
   {
-    return transactionsInit(symbols, input0, input1);
+    return transactionsInit(symbols, txid, st);
   }
 
   public static Value lawtwinKafkaTransactionsOffsets(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value g, Value offsets, Value st)
   {
-    return transactionsOffsets(symbols, input0, input1, input2);
+    return transactionsOffsets(symbols, g, offsets, st);
   }
 
-  public static Value lawtwinKafkaTransactionsSend(
-      Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaTransactionsSend(Map<String, Object> symbols, Value pr, Value st)
   {
-    return transactionsSend(symbols, input0, input1);
+    return transactionsSend(symbols, pr, st);
   }
 
   public static Value lawtwinKafkaUncommittedFrom(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value tp, Value offset)
   {
-    return uncommittedFrom(symbols, input0, input1);
+    return uncommittedFrom(symbols, tp, offset);
   }
 
-  public static Value lawtwinKafkaViewOf(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaViewOf(Map<String, Object> symbols, Value m, Value view)
   {
-    return viewOf(symbols, input0, input1);
+    return viewOf(symbols, m, view);
   }
 
   public static Value lawtwinKafkaWithAssignment(
-      Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4,
-      Value input5)
+      Map<String, Object> symbols, Value g, Value m, Value gen, Value topics, Value tps, Value c)
   {
-    return withAssignment(symbols, input0, input1, input2, input3, input4, input5);
+    return withAssignment(symbols, g, m, gen, topics, tps, c);
   }
 
   public static Value lawtwinKafkaWithPosition(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value tp, Value offset, Value c)
   {
-    return withPosition(symbols, input0, input1, input2);
+    return withPosition(symbols, tp, offset, c);
   }
 
   public static Value lawtwinKafkaWriteAborted(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value tp, Value txid, Value r)
   {
-    return writeAborted(symbols, input0, input1, input2);
+    return writeAborted(symbols, tp, txid, r);
   }
 
-  public static Value lawtwinKafkaXor32(Map<String, Object> symbols, Value input0, Value input1)
+  public static Value lawtwinKafkaXor32(Map<String, Object> symbols, Value a, Value b)
   {
-    return xor32(symbols, input0, input1);
+    return xor32(symbols, a, b);
   }
 
-  public static Value lawtwinKafkaXorBits(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+  public static Value lawtwinKafkaXorBits(Map<String, Object> symbols, Value a, Value b, Value bit)
   {
-    return xorBits(symbols, input0, input1, input2);
+    return xorBits(symbols, a, b, bit);
   }
 
   public static Value murmurPartitionerChoosePartition2(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value key, Value n)
   {
-    return murmurPartitionerChoosePartition(symbols, input0, input1);
+    return murmurPartitionerChoosePartition(symbols, key, n);
   }
 
-  public static Value suiteNamesThePackage(Map<String, Object> symbols, Value input0)
+  public static Value suiteNamesThePackage(Map<String, Object> symbols, Value u)
   {
     return lawspec.runtime.LawSpecTyped.CODEC_UNIT.encode(
         lawspec.runtime.LawSpecTyped.suiteNamesThePackage(
-            lawspec.runtime.LawSpecTyped.CODEC_UNIT.decode(input0)));
+            lawspec.runtime.LawSpecTyped.CODEC_UNIT.decode(u)));
   }
 
   public static Value typedPerformLawtwinKafkaAbilityBrokerAddpartitionstotxnrequest(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value text1, Value int64_1, Value int16_1, Value list1)
   {
     return lawspec.runtime.LawSpecKotlinAdapters
         .performLawtwinKafkaAbilityBrokerAddpartitionstotxnrequest(
-            symbols, input0, input1, input2, input3);
+            symbols, text1, int64_1, int16_1, list1);
   }
 
   public static Value typedPerformLawtwinKafkaAbilityBrokerCreatetopicsrequest(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value text1, Value int32_1)
   {
     return lawspec.runtime.LawSpecKotlinAdapters
-        .performLawtwinKafkaAbilityBrokerCreatetopicsrequest(symbols, input0, input1);
+        .performLawtwinKafkaAbilityBrokerCreatetopicsrequest(symbols, text1, int32_1);
   }
 
   public static Value typedPerformLawtwinKafkaAbilityBrokerEndtxnrequest(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value text1, Value int64_1, Value int16_1, Value bool1)
   {
     return lawspec.runtime.LawSpecKotlinAdapters.performLawtwinKafkaAbilityBrokerEndtxnrequest(
-        symbols, input0, input1, input2, input3);
+        symbols, text1, int64_1, int16_1, bool1);
   }
 
   public static Value typedPerformLawtwinKafkaAbilityBrokerFetchrequest(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols,
+      Value topicPartition1,
+      Value int64_1,
+      Value int32_1,
+      Value isolationLevel1)
   {
     return lawspec.runtime.LawSpecKotlinAdapters.performLawtwinKafkaAbilityBrokerFetchrequest(
-        symbols, input0, input1, input2, input3);
+        symbols, topicPartition1, int64_1, int32_1, isolationLevel1);
   }
 
   public static Value typedPerformLawtwinKafkaAbilityBrokerHeartbeatrequest(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value text1, Value text2, Value int32_1)
   {
     return lawspec.runtime.LawSpecKotlinAdapters.performLawtwinKafkaAbilityBrokerHeartbeatrequest(
-        symbols, input0, input1, input2);
+        symbols, text1, text2, int32_1);
   }
 
   public static Value typedPerformLawtwinKafkaAbilityBrokerInitproduceridrequest(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value maybe1)
   {
     return lawspec.runtime.LawSpecKotlinAdapters
-        .performLawtwinKafkaAbilityBrokerInitproduceridrequest(symbols, input0);
+        .performLawtwinKafkaAbilityBrokerInitproduceridrequest(symbols, maybe1);
   }
 
   public static Value typedPerformLawtwinKafkaAbilityBrokerJoingrouprequest(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value text1, Value text2, Value list1)
   {
     return lawspec.runtime.LawSpecKotlinAdapters.performLawtwinKafkaAbilityBrokerJoingrouprequest(
-        symbols, input0, input1, input2);
+        symbols, text1, text2, list1);
   }
 
   public static Value typedPerformLawtwinKafkaAbilityBrokerLeavegrouprequest(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value text1, Value text2)
   {
     return lawspec.runtime.LawSpecKotlinAdapters.performLawtwinKafkaAbilityBrokerLeavegrouprequest(
-        symbols, input0, input1);
+        symbols, text1, text2);
   }
 
   public static Value typedPerformLawtwinKafkaAbilityBrokerMetadatarequest(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value text1)
   {
     return lawspec.runtime.LawSpecKotlinAdapters.performLawtwinKafkaAbilityBrokerMetadatarequest(
-        symbols, input0);
+        symbols, text1);
   }
 
   public static Value typedPerformLawtwinKafkaAbilityBrokerOffsetcommitrequest(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3)
+      Map<String, Object> symbols, Value text1, Value text2, Value int32_1, Value list1)
   {
     return lawspec.runtime.LawSpecKotlinAdapters
-        .performLawtwinKafkaAbilityBrokerOffsetcommitrequest(
-            symbols, input0, input1, input2, input3);
+        .performLawtwinKafkaAbilityBrokerOffsetcommitrequest(symbols, text1, text2, int32_1, list1);
   }
 
   public static Value typedPerformLawtwinKafkaAbilityBrokerOffsetfetchrequest(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value text1, Value topicPartition1)
   {
     return lawspec.runtime.LawSpecKotlinAdapters.performLawtwinKafkaAbilityBrokerOffsetfetchrequest(
-        symbols, input0, input1);
+        symbols, text1, topicPartition1);
   }
 
   public static Value typedPerformLawtwinKafkaAbilityBrokerProducerequest(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value topicPartition1, Value maybe1, Value list1)
   {
     return lawspec.runtime.LawSpecKotlinAdapters.performLawtwinKafkaAbilityBrokerProducerequest(
-        symbols, input0, input1, input2);
+        symbols, topicPartition1, maybe1, list1);
   }
 
   public static Value typedPerformLawtwinKafkaAbilityBrokerSyncgrouprequest(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value text1, Value text2, Value int32_1)
   {
     return lawspec.runtime.LawSpecKotlinAdapters.performLawtwinKafkaAbilityBrokerSyncgrouprequest(
-        symbols, input0, input1, input2);
+        symbols, text1, text2, int32_1);
   }
 
   public static Value typedPerformLawtwinKafkaAbilityBrokerTxnoffsetcommitrequest(
       Map<String, Object> symbols,
-      Value input0,
-      Value input1,
-      Value input2,
-      Value input3,
-      Value input4)
+      Value text1,
+      Value int64_1,
+      Value int16_1,
+      Value text2,
+      Value list1)
   {
     return lawspec.runtime.LawSpecKotlinAdapters
         .performLawtwinKafkaAbilityBrokerTxnoffsetcommitrequest(
-            symbols, input0, input1, input2, input3, input4);
+            symbols, text1, int64_1, int16_1, text2, list1);
   }
 
   public static Value typedPerformLawtwinKafkaAbilityConsumerAssign(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value list1)
   {
     return lawspec.runtime.LawSpecKotlinAdapters.performLawtwinKafkaAbilityConsumerAssign(
-        symbols, input0);
+        symbols, list1);
   }
 
   public static Value typedPerformLawtwinKafkaAbilityConsumerClose(Map<String, Object> symbols)
@@ -6930,51 +6718,51 @@ public final class LawSpecDefinitionBodies
   }
 
   public static Value typedPerformLawtwinKafkaAbilityConsumerCommittedoffset(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value topicPartition1)
   {
     return lawspec.runtime.LawSpecKotlinAdapters.performLawtwinKafkaAbilityConsumerCommittedoffset(
-        symbols, input0);
+        symbols, topicPartition1);
   }
 
   public static Value typedPerformLawtwinKafkaAbilityConsumerPoll(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value int32_1)
   {
     return lawspec.runtime.LawSpecKotlinAdapters.performLawtwinKafkaAbilityConsumerPoll(
-        symbols, input0);
+        symbols, int32_1);
   }
 
   public static Value typedPerformLawtwinKafkaAbilityConsumerPosition(
-      Map<String, Object> symbols, Value input0)
+      Map<String, Object> symbols, Value topicPartition1)
   {
     return lawspec.runtime.LawSpecKotlinAdapters.performLawtwinKafkaAbilityConsumerPosition(
-        symbols, input0);
+        symbols, topicPartition1);
   }
 
   public static Value typedPerformLawtwinKafkaAbilityConsumerSeek(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value topicPartition1, Value int64_1)
   {
     return lawspec.runtime.LawSpecKotlinAdapters.performLawtwinKafkaAbilityConsumerSeek(
-        symbols, input0, input1);
+        symbols, topicPartition1, int64_1);
   }
 
   public static Value typedPerformLawtwinKafkaAbilityConsumerSubscribe(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value text1, Value text2, Value list1)
   {
     return lawspec.runtime.LawSpecKotlinAdapters.performLawtwinKafkaAbilityConsumerSubscribe(
-        symbols, input0, input1, input2);
+        symbols, text1, text2, list1);
   }
 
   public static Value typedPerformLawtwinKafkaAbilityGroupcoordinatorJoingroup(
-      Map<String, Object> symbols, Value input0, Value input1, Value input2)
+      Map<String, Object> symbols, Value text1, Value text2, Value list1)
   {
     return lawspec.runtime.LawSpecKotlinAdapters
-        .performLawtwinKafkaAbilityGroupcoordinatorJoingroup(symbols, input0, input1, input2);
+        .performLawtwinKafkaAbilityGroupcoordinatorJoingroup(symbols, text1, text2, list1);
   }
 
   public static Value typedPerformLawtwinKafkaAbilityPartitionerChoosepartition(
-      Map<String, Object> symbols, Value input0, Value input1)
+      Map<String, Object> symbols, Value maybe1, Value int32_1)
   {
     return lawspec.runtime.LawSpecKotlinAdapters
-        .performLawtwinKafkaAbilityPartitionerChoosepartition(symbols, input0, input1);
+        .performLawtwinKafkaAbilityPartitionerChoosepartition(symbols, maybe1, int32_1);
   }
 }

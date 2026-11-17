@@ -5,12 +5,72 @@ so failures shrink, replay and report as they expect; LawSpec supplies only the
 strategies for its own types. ref:DEC-native-property-frameworks ref:hypothesis
 """
 
+import threading
 from functools import cache, cmp_to_key
 
+from hypothesis import HealthCheck, Phase, find, reject, settings
 from hypothesis import strategies as st
+from hypothesis.errors import NoSuchExample
 
 import lawspec_runtime as ls
 from lawspec_schema import RefinementViolation, witness_instances, witnessed
+
+# A law's inputs may be planned again for every case it draws, and a probe's
+# answer is the same each time: a witness that fits needs no probe. The schema
+# is kept with the answer so that its identity is not given to another.
+_PROBE_ATTEMPTS = 1000
+_PROBES = {}
+# The draws one restricted value may take within a case.
+_FILTER_ATTEMPTS = 100
+
+
+@st.composite
+def _restricted(draw, candidates, accepted):
+    """Draw a candidate its restriction accepts.
+
+    Hypothesis's own filter gives a value three draws and then refuses the
+    whole case, which a restriction met by one draw in five spends in a
+    short list."""
+    for _ in range(_FILTER_ATTEMPTS):
+        value = draw(candidates)
+        if accepted(value):
+            return value
+    reject()
+
+
+def _probe(candidates, accepted):
+    """Return whether a fixed run of draws finds an accepted candidate.
+
+    Hypothesis refuses a search begun inside a running test on the same
+    thread, so the run has a thread of its own. It is derandomized, so a
+    law's values for a seed do not depend on it. A run that fails for
+    another reason decides nothing."""
+    found = []
+
+    def run():
+        try:
+            find(
+                candidates,
+                accepted,
+                settings=settings(
+                    max_examples=_PROBE_ATTEMPTS,
+                    database=None,
+                    derandomize=True,
+                    deadline=None,
+                    phases=[Phase.generate],
+                    suppress_health_check=list(HealthCheck),
+                ),
+            )
+            found.append(True)
+        except NoSuchExample:
+            found.append(False)
+        except Exception:
+            found.append(True)
+
+    thread = threading.Thread(target=run)
+    thread.start()
+    thread.join()
+    return found[0]
 
 
 def strategy(
@@ -87,6 +147,21 @@ def strategy(
             return False
 
     @cache
+    def reservation(ty):
+        """Return the nodes a restricted type reserves.
+
+        That is the size of its smallest witness, which stands for its
+        smallest value: the smallest shape of such a type (an empty list in
+        a wrapper that refuses one) need not be a value. A type with no
+        restriction, or no witness, reserves nothing beyond its shape."""
+        constructors = schema.constructors(ty)
+        if constructors is None or not any(
+            item.predicates for item in constructors
+        ):
+            return 0
+        return min((cost for cost, _ in seeds.get(ty, ())), default=0)
+
+    @cache
     def minimum(ty, limit):
         return next(
             (cost for cost in range(1, limit + 1) if inhabited(ty, cost)), None
@@ -106,15 +181,87 @@ def strategy(
             for index, cost in enumerate(costs)
         )
 
+    proofs = {}
+    proving = set()
+    founds = {}
+
+    def proven(ty):
+        """Return whether a probe that found no value of a type is believed.
+
+        It is when a probe found a value at the law's whole budget, so that
+        it is the smaller budget that has none. A type no probe finds a
+        value of at the whole budget fails the law. A type met again inside
+        its own proof is taken as proven."""
+        if ty in proofs:
+            return proofs[ty]
+        if ty in proving:
+            return True
+        proving.add(ty)
+        inhabited(ty, limit)
+        proving.discard(ty)
+        return proofs.setdefault(ty, True)
+
     @cache
     def inhabited(ty, available):
+        """Return whether a type has a value at this budget.
+
+        A restricted type that no witness fits has one when a probe finds
+        it. A budget that only holds shapes the restriction refuses (an
+        empty list in a wrapper that needs an element) is then no budget for
+        the type, so an enclosing constructor gives it more or is left
+        out."""
+        if not shaped(ty, available):
+            return False
+        constructors = schema.constructors(ty)
+        if (
+            ty.name in native_generators
+            or constructors is None
+            or not any(item.predicates for item in constructors)
+        ):
+            return True
+        found = any(cost <= available for cost, _ in seeds.get(ty, ()))
+        if not found:
+            key = (id(schema), ty, available, bits)
+            if key not in _PROBES:
+                _PROBES[key] = (
+                    schema,
+                    _probe(
+                        candidates(ty, available),
+                        lambda value: valid(ty, value),
+                    ),
+                )
+            found = _PROBES[key][1]
+        founds[ty, available] = found
+        if available == limit:
+            proofs[ty] = found
+            if not found:
+                raise ValueError(
+                    f"LawSpec: no value of {ty} found in {_PROBE_ATTEMPTS}"
+                    " draws, so no case of this law could hold one. Give the"
+                    " law an example whose input holds one, or bind a"
+                    " generator."
+                )
+            return True
+        return found or not proven(ty)
+
+    def within(ty, available):
+        """Return the strategy at the largest budget that has a value."""
+        for cost in range(available, 0, -1):
+            if inhabited(ty, cost):
+                return build(ty, cost)
+        raise ValueError(
+            f"no value of {ty} within structural node budget {available}"
+        )
+
+    @cache
+    def shaped(ty, available):
         if available < 1:
             return False
         if ty.name in native_generators:
             return True
         constructors = schema.constructors(ty)
         if constructors is not None:
-            return any(
+            return available >= reservation(ty) and any(
                 allocation(fields, available - 1) is not None
                 for item in constructors
                 for fields, _ in witness_instances(item)
@@ -134,6 +281,19 @@ def strategy(
 
     @cache
     def build(ty, available):
+        """Return a type's strategy at a budget.
+
+        A restricted type whose values a witness or a probe found draws
+        them through its restriction. One whose values a probe did not find
+        keeps its shape, and the law's own filter refuses a draw."""
+        inhabited(ty, available)
+        if founds.get((ty, available), False):
+            return _restricted(
+                candidates(ty, available), lambda value: valid(ty, value)
+            )
+        return candidates(ty, available)
+
+    def candidates(ty, available):
         if ty.name in native_generators:
 
             def native_child(child):
@@ -173,15 +333,15 @@ def strategy(
             # and shrinks fail; they are never filtered into rejections.
             return generated.map(checked)
         native = build_native(ty, available)
-        candidates = [
+        fitting = [
             value for cost, value in seeds.get(ty, ()) if cost <= available
         ]
-        if candidates:
-            return st.one_of(native, st.sampled_from(candidates))
+        if fitting:
+            return st.one_of(native, st.sampled_from(fitting))
         return native
 
     def build_native(ty, available):
-        if not inhabited(ty, available):
+        if not shaped(ty, available):
             raise ValueError(
                 f"no value of {ty} within structural node budget {available}"
             )
@@ -194,7 +354,7 @@ def strategy(
                     if costs is None:
                         continue
                     children = [
-                        build(field.type, cost)
+                        within(field.type, cost)
                         for field, cost in zip(fields, costs)
                     ]
                     # A field a regex refines also draws the regex's
@@ -249,7 +409,7 @@ def strategy(
                 if length == 0:
                     return st.just([])
                 return st.lists(
-                    build(arguments[0], remaining // length),
+                    within(arguments[0], remaining // length),
                     min_size=length,
                     max_size=length,
                 )
@@ -261,9 +421,9 @@ def strategy(
                 if name == "Maybe"
                 else ls.Presence(name, False)
             )
-            if not inhabited(arguments[0], available - 1):
+            if minimum(arguments[0], available - 1) is None:
                 return st.just(absent)
-            present = build(arguments[0], available - 1).map(
+            present = within(arguments[0], available - 1).map(
                 lambda value: (
                     ls.DataValue("Maybe::Present", (value,))
                     if name == "Maybe"
@@ -285,6 +445,8 @@ def strategy(
             )
         raise ValueError("unsupported generator type: " + name)
 
+    # The root's own witnesses always fit, whatever budget is stated.
+    limit = max(budget, reservation(reference))
     if index is not None:
         target, equations = index
         generated = indexed_strategy(
@@ -298,7 +460,7 @@ def strategy(
             valid,
         )
     else:
-        generated = build(reference, budget)
+        generated = build(reference, limit)
     # Validate complete candidates and shrink results, including nested index
     # guards. Invalid native factory samples still fail in their checked map.
     return generated.filter(lambda value: valid(reference, value))

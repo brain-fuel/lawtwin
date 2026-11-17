@@ -1042,12 +1042,12 @@ def lawtwin_petstore_model_valid_order(symbols, value):
 
 
 # referenceAddPet — ../src/api.lawspec:185
-def reference_add_pet(symbols, state, value0):
+def reference_add_pet(symbols, state, pet_1):
     try:
         return _typed.to_pair_pet_state(
             _typed.reference_add_pet(
                 _typed.from_state(state),
-                _typed.from_pet(value0),
+                _typed.from_pet(pet_1),
             ),
         )
     except (
@@ -1061,12 +1061,12 @@ def reference_add_pet(symbols, state, value0):
 
 
 # referenceCreateUser — ../src/api.lawspec:196
-def reference_create_user(symbols, state, value0):
+def reference_create_user(symbols, state, maybe_1):
     try:
         return _typed.to_pair_user_state(
             _typed.reference_create_user(
                 _typed.from_state(state),
-                _typed.from_maybe_user(value0),
+                _typed.from_maybe_user(maybe_1),
             ),
         )
     except (
@@ -1080,12 +1080,12 @@ def reference_create_user(symbols, state, value0):
 
 
 # referenceCreateUsersWithListInput — ../src/api.lawspec:197
-def reference_create_users_with_list_input(symbols, state, value0):
+def reference_create_users_with_list_input(symbols, state, maybe_1):
     try:
         return _typed.to_pair_user_state(
             _typed.reference_create_users_with_list_input(
                 _typed.from_state(state),
-                _typed.from_maybe_list_user(value0),
+                _typed.from_maybe_list_user(maybe_1),
             ),
         )
     except (
@@ -1100,12 +1100,12 @@ def reference_create_users_with_list_input(symbols, state, value0):
 
 
 # referenceDeleteOrder — ../src/api.lawspec:195
-def reference_delete_order(symbols, state, value0):
+def reference_delete_order(symbols, state, int64_1):
     try:
         return _typed.to_pair_unit_state(
             _typed.reference_delete_order(
                 _typed.from_state(state),
-                _typed.from_int64(value0),
+                _typed.from_int64(int64_1),
             ),
         )
     except (
@@ -1119,13 +1119,13 @@ def reference_delete_order(symbols, state, value0):
 
 
 # referenceDeletePet — ../src/api.lawspec:190
-def reference_delete_pet(symbols, state, value0, value1):
+def reference_delete_pet(symbols, state, int64_1, maybe_1):
     try:
         return _typed.to_pair_unit_state(
             _typed.reference_delete_pet(
                 _typed.from_state(state),
-                _typed.from_int64(value0),
-                _typed.from_maybe_text(value1),
+                _typed.from_int64(int64_1),
+                _typed.from_maybe_text(maybe_1),
             ),
         )
     except (
@@ -1139,12 +1139,12 @@ def reference_delete_pet(symbols, state, value0, value1):
 
 
 # referenceDeleteUser — ../src/api.lawspec:202
-def reference_delete_user(symbols, state, value0):
+def reference_delete_user(symbols, state, text_1):
     try:
         return _typed.to_pair_unit_state(
             _typed.reference_delete_user(
                 _typed.from_state(state),
-                _typed.from_text(value0),
+                _typed.from_text(text_1),
             ),
         )
     except (
@@ -1158,12 +1158,12 @@ def reference_delete_user(symbols, state, value0):
 
 
 # referenceFindPetsByStatus — ../src/api.lawspec:186
-def reference_find_pets_by_status(symbols, state, value0):
+def reference_find_pets_by_status(symbols, state, pet_status_1):
     try:
         return _typed.to_pair_list_pet_state(
             _typed.reference_find_pets_by_status(
                 _typed.from_state(state),
-                _typed.from_pet_status(value0),
+                _typed.from_pet_status(pet_status_1),
             ),
         )
     except (
@@ -1178,12 +1178,12 @@ def reference_find_pets_by_status(symbols, state, value0):
 
 
 # referenceFindPetsByTags — ../src/api.lawspec:187
-def reference_find_pets_by_tags(symbols, state, value0):
+def reference_find_pets_by_tags(symbols, state, list_1):
     try:
         return _typed.to_pair_list_pet_state(
             _typed.reference_find_pets_by_tags(
                 _typed.from_state(state),
-                _typed.from_list_text(value0),
+                _typed.from_list_text(list_1),
             ),
         )
     except (
@@ -1214,12 +1214,12 @@ def reference_get_inventory(symbols, state):
 
 
 # referenceGetOrderById — ../src/api.lawspec:194
-def reference_get_order_by_id(symbols, state, value0):
+def reference_get_order_by_id(symbols, state, int64_1):
     try:
         return _typed.to_pair_order_state(
             _typed.reference_get_order_by_id(
                 _typed.from_state(state),
-                _typed.from_int64(value0),
+                _typed.from_int64(int64_1),
             ),
         )
     except (
@@ -1233,12 +1233,12 @@ def reference_get_order_by_id(symbols, state, value0):
 
 
 # referenceGetPetById — ../src/api.lawspec:188
-def reference_get_pet_by_id(symbols, state, value0):
+def reference_get_pet_by_id(symbols, state, int64_1):
     try:
         return _typed.to_pair_pet_state(
             _typed.reference_get_pet_by_id(
                 _typed.from_state(state),
-                _typed.from_int64(value0),
+                _typed.from_int64(int64_1),
             ),
         )
     except (
@@ -1252,12 +1252,12 @@ def reference_get_pet_by_id(symbols, state, value0):
 
 
 # referenceGetUserByName — ../src/api.lawspec:200
-def reference_get_user_by_name(symbols, state, value0):
+def reference_get_user_by_name(symbols, state, text_1):
     try:
         return _typed.to_pair_user_state(
             _typed.reference_get_user_by_name(
                 _typed.from_state(state),
-                _typed.from_text(value0),
+                _typed.from_text(text_1),
             ),
         )
     except (
@@ -1271,13 +1271,13 @@ def reference_get_user_by_name(symbols, state, value0):
 
 
 # referenceLoginUser — ../src/api.lawspec:198
-def reference_login_user(symbols, state, value0, value1):
+def reference_login_user(symbols, state, maybe_1, maybe_2):
     try:
         return _typed.to_pair_text_state(
             _typed.reference_login_user(
                 _typed.from_state(state),
-                _typed.from_maybe_text(value0),
-                _typed.from_maybe_text(value1),
+                _typed.from_maybe_text(maybe_1),
+                _typed.from_maybe_text(maybe_2),
             ),
         )
     except (
@@ -1307,12 +1307,12 @@ def reference_logout_user(symbols, state):
 
 
 # referencePlaceOrder — ../src/api.lawspec:193
-def reference_place_order(symbols, state, value0):
+def reference_place_order(symbols, state, maybe_1):
     try:
         return _typed.to_pair_order_state(
             _typed.reference_place_order(
                 _typed.from_state(state),
-                _typed.from_maybe_order(value0),
+                _typed.from_maybe_order(maybe_1),
             ),
         )
     except (
@@ -1340,12 +1340,12 @@ def reference_start(symbols, unit):
 
 
 # referenceUpdatePet — ../src/api.lawspec:184
-def reference_update_pet(symbols, state, value0):
+def reference_update_pet(symbols, state, pet_1):
     try:
         return _typed.to_pair_pet_state(
             _typed.reference_update_pet(
                 _typed.from_state(state),
-                _typed.from_pet(value0),
+                _typed.from_pet(pet_1),
             ),
         )
     except (
@@ -1359,14 +1359,14 @@ def reference_update_pet(symbols, state, value0):
 
 
 # referenceUpdatePetWithForm — ../src/api.lawspec:189
-def reference_update_pet_with_form(symbols, state, value0, value1, value2):
+def reference_update_pet_with_form(symbols, state, int64_1, maybe_1, maybe_2):
     try:
         return _typed.to_pair_pet_state(
             _typed.reference_update_pet_with_form(
                 _typed.from_state(state),
-                _typed.from_int64(value0),
-                _typed.from_maybe_text(value1),
-                _typed.from_maybe_text(value2),
+                _typed.from_int64(int64_1),
+                _typed.from_maybe_text(maybe_1),
+                _typed.from_maybe_text(maybe_2),
             ),
         )
     except (
@@ -1381,13 +1381,13 @@ def reference_update_pet_with_form(symbols, state, value0, value1, value2):
 
 
 # referenceUpdateUser — ../src/api.lawspec:201
-def reference_update_user(symbols, state, value0, value1):
+def reference_update_user(symbols, state, text_1, maybe_1):
     try:
         return _typed.to_pair_unit_state(
             _typed.reference_update_user(
                 _typed.from_state(state),
-                _typed.from_text(value0),
-                _typed.from_maybe_user(value1),
+                _typed.from_text(text_1),
+                _typed.from_maybe_user(maybe_1),
             ),
         )
     except (
@@ -1401,14 +1401,14 @@ def reference_update_user(symbols, state, value0, value1):
 
 
 # referenceUploadFile — ../src/api.lawspec:191
-def reference_upload_file(symbols, state, value0, value1, value2):
+def reference_upload_file(symbols, state, int64_1, maybe_1, maybe_2):
     try:
         return _typed.to_pair_api_response_state(
             _typed.reference_upload_file(
                 _typed.from_state(state),
-                _typed.from_int64(value0),
-                _typed.from_maybe_text(value1),
-                _typed.from_maybe_bytes(value2),
+                _typed.from_int64(int64_1),
+                _typed.from_maybe_text(maybe_1),
+                _typed.from_maybe_bytes(maybe_2),
             ),
         )
     except (
@@ -2627,12 +2627,12 @@ def no_hand_written_laws_yet(symbols, u):
 
 
 # referenceAddPet — ../src/api.lawspec:185
-def reference_add_pet_2(symbols, state, value0):
+def reference_add_pet_2(symbols, state, pet_1):
     try:
         return _typed.to_pair_pet_state(
             _typed.reference_add_pet(
                 _typed.from_state(state),
-                _typed.from_pet(value0),
+                _typed.from_pet(pet_1),
             ),
         )
     except (
@@ -2646,12 +2646,12 @@ def reference_add_pet_2(symbols, state, value0):
 
 
 # referenceCreateUser — ../src/api.lawspec:196
-def reference_create_user_2(symbols, state, value0):
+def reference_create_user_2(symbols, state, maybe_1):
     try:
         return _typed.to_pair_user_state(
             _typed.reference_create_user(
                 _typed.from_state(state),
-                _typed.from_maybe_user(value0),
+                _typed.from_maybe_user(maybe_1),
             ),
         )
     except (
@@ -2666,12 +2666,12 @@ def reference_create_user_2(symbols, state, value0):
 
 
 # referenceCreateUsersWithListInput — ../src/api.lawspec:197
-def reference_create_users_with_list_input_2(symbols, state, value0):
+def reference_create_users_with_list_input_2(symbols, state, maybe_1):
     try:
         return _typed.to_pair_user_state(
             _typed.reference_create_users_with_list_input(
                 _typed.from_state(state),
-                _typed.from_maybe_list_user(value0),
+                _typed.from_maybe_list_user(maybe_1),
             ),
         )
     except (
@@ -2686,12 +2686,12 @@ def reference_create_users_with_list_input_2(symbols, state, value0):
 
 
 # referenceDeleteOrder — ../src/api.lawspec:195
-def reference_delete_order_2(symbols, state, value0):
+def reference_delete_order_2(symbols, state, int64_1):
     try:
         return _typed.to_pair_unit_state(
             _typed.reference_delete_order(
                 _typed.from_state(state),
-                _typed.from_int64(value0),
+                _typed.from_int64(int64_1),
             ),
         )
     except (
@@ -2706,13 +2706,13 @@ def reference_delete_order_2(symbols, state, value0):
 
 
 # referenceDeletePet — ../src/api.lawspec:190
-def reference_delete_pet_2(symbols, state, value0, value1):
+def reference_delete_pet_2(symbols, state, int64_1, maybe_1):
     try:
         return _typed.to_pair_unit_state(
             _typed.reference_delete_pet(
                 _typed.from_state(state),
-                _typed.from_int64(value0),
-                _typed.from_maybe_text(value1),
+                _typed.from_int64(int64_1),
+                _typed.from_maybe_text(maybe_1),
             ),
         )
     except (
@@ -2727,12 +2727,12 @@ def reference_delete_pet_2(symbols, state, value0, value1):
 
 
 # referenceDeleteUser — ../src/api.lawspec:202
-def reference_delete_user_2(symbols, state, value0):
+def reference_delete_user_2(symbols, state, text_1):
     try:
         return _typed.to_pair_unit_state(
             _typed.reference_delete_user(
                 _typed.from_state(state),
-                _typed.from_text(value0),
+                _typed.from_text(text_1),
             ),
         )
     except (
@@ -2747,12 +2747,12 @@ def reference_delete_user_2(symbols, state, value0):
 
 
 # referenceFindPetsByStatus — ../src/api.lawspec:186
-def reference_find_pets_by_status_2(symbols, state, value0):
+def reference_find_pets_by_status_2(symbols, state, pet_status_1):
     try:
         return _typed.to_pair_list_pet_state(
             _typed.reference_find_pets_by_status(
                 _typed.from_state(state),
-                _typed.from_pet_status(value0),
+                _typed.from_pet_status(pet_status_1),
             ),
         )
     except (
@@ -2767,12 +2767,12 @@ def reference_find_pets_by_status_2(symbols, state, value0):
 
 
 # referenceFindPetsByTags — ../src/api.lawspec:187
-def reference_find_pets_by_tags_2(symbols, state, value0):
+def reference_find_pets_by_tags_2(symbols, state, list_1):
     try:
         return _typed.to_pair_list_pet_state(
             _typed.reference_find_pets_by_tags(
                 _typed.from_state(state),
-                _typed.from_list_text(value0),
+                _typed.from_list_text(list_1),
             ),
         )
     except (
@@ -2804,12 +2804,12 @@ def reference_get_inventory_2(symbols, state):
 
 
 # referenceGetOrderById — ../src/api.lawspec:194
-def reference_get_order_by_id_2(symbols, state, value0):
+def reference_get_order_by_id_2(symbols, state, int64_1):
     try:
         return _typed.to_pair_order_state(
             _typed.reference_get_order_by_id(
                 _typed.from_state(state),
-                _typed.from_int64(value0),
+                _typed.from_int64(int64_1),
             ),
         )
     except (
@@ -2824,12 +2824,12 @@ def reference_get_order_by_id_2(symbols, state, value0):
 
 
 # referenceGetPetById — ../src/api.lawspec:188
-def reference_get_pet_by_id_2(symbols, state, value0):
+def reference_get_pet_by_id_2(symbols, state, int64_1):
     try:
         return _typed.to_pair_pet_state(
             _typed.reference_get_pet_by_id(
                 _typed.from_state(state),
-                _typed.from_int64(value0),
+                _typed.from_int64(int64_1),
             ),
         )
     except (
@@ -2844,12 +2844,12 @@ def reference_get_pet_by_id_2(symbols, state, value0):
 
 
 # referenceGetUserByName — ../src/api.lawspec:200
-def reference_get_user_by_name_2(symbols, state, value0):
+def reference_get_user_by_name_2(symbols, state, text_1):
     try:
         return _typed.to_pair_user_state(
             _typed.reference_get_user_by_name(
                 _typed.from_state(state),
-                _typed.from_text(value0),
+                _typed.from_text(text_1),
             ),
         )
     except (
@@ -2864,13 +2864,13 @@ def reference_get_user_by_name_2(symbols, state, value0):
 
 
 # referenceLoginUser — ../src/api.lawspec:198
-def reference_login_user_2(symbols, state, value0, value1):
+def reference_login_user_2(symbols, state, maybe_1, maybe_2):
     try:
         return _typed.to_pair_text_state(
             _typed.reference_login_user(
                 _typed.from_state(state),
-                _typed.from_maybe_text(value0),
-                _typed.from_maybe_text(value1),
+                _typed.from_maybe_text(maybe_1),
+                _typed.from_maybe_text(maybe_2),
             ),
         )
     except (
@@ -2902,12 +2902,12 @@ def reference_logout_user_2(symbols, state):
 
 
 # referencePlaceOrder — ../src/api.lawspec:193
-def reference_place_order_2(symbols, state, value0):
+def reference_place_order_2(symbols, state, maybe_1):
     try:
         return _typed.to_pair_order_state(
             _typed.reference_place_order(
                 _typed.from_state(state),
-                _typed.from_maybe_order(value0),
+                _typed.from_maybe_order(maybe_1),
             ),
         )
     except (
@@ -2936,12 +2936,12 @@ def reference_start_2(symbols, unit):
 
 
 # referenceUpdatePet — ../src/api.lawspec:184
-def reference_update_pet_2(symbols, state, value0):
+def reference_update_pet_2(symbols, state, pet_1):
     try:
         return _typed.to_pair_pet_state(
             _typed.reference_update_pet(
                 _typed.from_state(state),
-                _typed.from_pet(value0),
+                _typed.from_pet(pet_1),
             ),
         )
     except (
@@ -2956,14 +2956,14 @@ def reference_update_pet_2(symbols, state, value0):
 
 
 # referenceUpdatePetWithForm — ../src/api.lawspec:189
-def reference_update_pet_with_form_2(symbols, state, value0, value1, value2):
+def reference_update_pet_with_form_2(symbols, state, int64_1, maybe_1, maybe_2):
     try:
         return _typed.to_pair_pet_state(
             _typed.reference_update_pet_with_form(
                 _typed.from_state(state),
-                _typed.from_int64(value0),
-                _typed.from_maybe_text(value1),
-                _typed.from_maybe_text(value2),
+                _typed.from_int64(int64_1),
+                _typed.from_maybe_text(maybe_1),
+                _typed.from_maybe_text(maybe_2),
             ),
         )
     except (
@@ -2978,13 +2978,13 @@ def reference_update_pet_with_form_2(symbols, state, value0, value1, value2):
 
 
 # referenceUpdateUser — ../src/api.lawspec:201
-def reference_update_user_2(symbols, state, value0, value1):
+def reference_update_user_2(symbols, state, text_1, maybe_1):
     try:
         return _typed.to_pair_unit_state(
             _typed.reference_update_user(
                 _typed.from_state(state),
-                _typed.from_text(value0),
-                _typed.from_maybe_user(value1),
+                _typed.from_text(text_1),
+                _typed.from_maybe_user(maybe_1),
             ),
         )
     except (
@@ -2999,14 +2999,14 @@ def reference_update_user_2(symbols, state, value0, value1):
 
 
 # referenceUploadFile — ../src/api.lawspec:191
-def reference_upload_file_2(symbols, state, value0, value1, value2):
+def reference_upload_file_2(symbols, state, int64_1, maybe_1, maybe_2):
     try:
         return _typed.to_pair_api_response_state(
             _typed.reference_upload_file(
                 _typed.from_state(state),
-                _typed.from_int64(value0),
-                _typed.from_maybe_text(value1),
-                _typed.from_maybe_bytes(value2),
+                _typed.from_int64(int64_1),
+                _typed.from_maybe_text(maybe_1),
+                _typed.from_maybe_bytes(maybe_2),
             ),
         )
     except (
@@ -4867,12 +4867,12 @@ def lawtwin_petstore_model_valid_order_3(symbols, value):
 
 
 # referenceAddPet — ../src/api.lawspec:185
-def reference_add_pet_3(symbols, state, value0):
+def reference_add_pet_3(symbols, state, pet_1):
     try:
         return _typed.to_pair_pet_state(
             _typed.reference_add_pet(
                 _typed.from_state(state),
-                _typed.from_pet(value0),
+                _typed.from_pet(pet_1),
             ),
         )
     except (
@@ -4886,12 +4886,12 @@ def reference_add_pet_3(symbols, state, value0):
 
 
 # referenceCreateUser — ../src/api.lawspec:196
-def reference_create_user_3(symbols, state, value0):
+def reference_create_user_3(symbols, state, maybe_1):
     try:
         return _typed.to_pair_user_state(
             _typed.reference_create_user(
                 _typed.from_state(state),
-                _typed.from_maybe_user(value0),
+                _typed.from_maybe_user(maybe_1),
             ),
         )
     except (
@@ -4906,12 +4906,12 @@ def reference_create_user_3(symbols, state, value0):
 
 
 # referenceCreateUsersWithListInput — ../src/api.lawspec:197
-def reference_create_users_with_list_input_3(symbols, state, value0):
+def reference_create_users_with_list_input_3(symbols, state, maybe_1):
     try:
         return _typed.to_pair_user_state(
             _typed.reference_create_users_with_list_input(
                 _typed.from_state(state),
-                _typed.from_maybe_list_user(value0),
+                _typed.from_maybe_list_user(maybe_1),
             ),
         )
     except (
@@ -4926,12 +4926,12 @@ def reference_create_users_with_list_input_3(symbols, state, value0):
 
 
 # referenceDeleteOrder — ../src/api.lawspec:195
-def reference_delete_order_3(symbols, state, value0):
+def reference_delete_order_3(symbols, state, int64_1):
     try:
         return _typed.to_pair_unit_state(
             _typed.reference_delete_order(
                 _typed.from_state(state),
-                _typed.from_int64(value0),
+                _typed.from_int64(int64_1),
             ),
         )
     except (
@@ -4946,13 +4946,13 @@ def reference_delete_order_3(symbols, state, value0):
 
 
 # referenceDeletePet — ../src/api.lawspec:190
-def reference_delete_pet_3(symbols, state, value0, value1):
+def reference_delete_pet_3(symbols, state, int64_1, maybe_1):
     try:
         return _typed.to_pair_unit_state(
             _typed.reference_delete_pet(
                 _typed.from_state(state),
-                _typed.from_int64(value0),
-                _typed.from_maybe_text(value1),
+                _typed.from_int64(int64_1),
+                _typed.from_maybe_text(maybe_1),
             ),
         )
     except (
@@ -4967,12 +4967,12 @@ def reference_delete_pet_3(symbols, state, value0, value1):
 
 
 # referenceDeleteUser — ../src/api.lawspec:202
-def reference_delete_user_3(symbols, state, value0):
+def reference_delete_user_3(symbols, state, text_1):
     try:
         return _typed.to_pair_unit_state(
             _typed.reference_delete_user(
                 _typed.from_state(state),
-                _typed.from_text(value0),
+                _typed.from_text(text_1),
             ),
         )
     except (
@@ -4987,12 +4987,12 @@ def reference_delete_user_3(symbols, state, value0):
 
 
 # referenceFindPetsByStatus — ../src/api.lawspec:186
-def reference_find_pets_by_status_3(symbols, state, value0):
+def reference_find_pets_by_status_3(symbols, state, pet_status_1):
     try:
         return _typed.to_pair_list_pet_state(
             _typed.reference_find_pets_by_status(
                 _typed.from_state(state),
-                _typed.from_pet_status(value0),
+                _typed.from_pet_status(pet_status_1),
             ),
         )
     except (
@@ -5007,12 +5007,12 @@ def reference_find_pets_by_status_3(symbols, state, value0):
 
 
 # referenceFindPetsByTags — ../src/api.lawspec:187
-def reference_find_pets_by_tags_3(symbols, state, value0):
+def reference_find_pets_by_tags_3(symbols, state, list_1):
     try:
         return _typed.to_pair_list_pet_state(
             _typed.reference_find_pets_by_tags(
                 _typed.from_state(state),
-                _typed.from_list_text(value0),
+                _typed.from_list_text(list_1),
             ),
         )
     except (
@@ -5044,12 +5044,12 @@ def reference_get_inventory_3(symbols, state):
 
 
 # referenceGetOrderById — ../src/api.lawspec:194
-def reference_get_order_by_id_3(symbols, state, value0):
+def reference_get_order_by_id_3(symbols, state, int64_1):
     try:
         return _typed.to_pair_order_state(
             _typed.reference_get_order_by_id(
                 _typed.from_state(state),
-                _typed.from_int64(value0),
+                _typed.from_int64(int64_1),
             ),
         )
     except (
@@ -5064,12 +5064,12 @@ def reference_get_order_by_id_3(symbols, state, value0):
 
 
 # referenceGetPetById — ../src/api.lawspec:188
-def reference_get_pet_by_id_3(symbols, state, value0):
+def reference_get_pet_by_id_3(symbols, state, int64_1):
     try:
         return _typed.to_pair_pet_state(
             _typed.reference_get_pet_by_id(
                 _typed.from_state(state),
-                _typed.from_int64(value0),
+                _typed.from_int64(int64_1),
             ),
         )
     except (
@@ -5084,12 +5084,12 @@ def reference_get_pet_by_id_3(symbols, state, value0):
 
 
 # referenceGetUserByName — ../src/api.lawspec:200
-def reference_get_user_by_name_3(symbols, state, value0):
+def reference_get_user_by_name_3(symbols, state, text_1):
     try:
         return _typed.to_pair_user_state(
             _typed.reference_get_user_by_name(
                 _typed.from_state(state),
-                _typed.from_text(value0),
+                _typed.from_text(text_1),
             ),
         )
     except (
@@ -5104,13 +5104,13 @@ def reference_get_user_by_name_3(symbols, state, value0):
 
 
 # referenceLoginUser — ../src/api.lawspec:198
-def reference_login_user_3(symbols, state, value0, value1):
+def reference_login_user_3(symbols, state, maybe_1, maybe_2):
     try:
         return _typed.to_pair_text_state(
             _typed.reference_login_user(
                 _typed.from_state(state),
-                _typed.from_maybe_text(value0),
-                _typed.from_maybe_text(value1),
+                _typed.from_maybe_text(maybe_1),
+                _typed.from_maybe_text(maybe_2),
             ),
         )
     except (
@@ -5142,12 +5142,12 @@ def reference_logout_user_3(symbols, state):
 
 
 # referencePlaceOrder — ../src/api.lawspec:193
-def reference_place_order_3(symbols, state, value0):
+def reference_place_order_3(symbols, state, maybe_1):
     try:
         return _typed.to_pair_order_state(
             _typed.reference_place_order(
                 _typed.from_state(state),
-                _typed.from_maybe_order(value0),
+                _typed.from_maybe_order(maybe_1),
             ),
         )
     except (
@@ -5176,12 +5176,12 @@ def reference_start_3(symbols, unit):
 
 
 # referenceUpdatePet — ../src/api.lawspec:184
-def reference_update_pet_3(symbols, state, value0):
+def reference_update_pet_3(symbols, state, pet_1):
     try:
         return _typed.to_pair_pet_state(
             _typed.reference_update_pet(
                 _typed.from_state(state),
-                _typed.from_pet(value0),
+                _typed.from_pet(pet_1),
             ),
         )
     except (
@@ -5196,14 +5196,14 @@ def reference_update_pet_3(symbols, state, value0):
 
 
 # referenceUpdatePetWithForm — ../src/api.lawspec:189
-def reference_update_pet_with_form_3(symbols, state, value0, value1, value2):
+def reference_update_pet_with_form_3(symbols, state, int64_1, maybe_1, maybe_2):
     try:
         return _typed.to_pair_pet_state(
             _typed.reference_update_pet_with_form(
                 _typed.from_state(state),
-                _typed.from_int64(value0),
-                _typed.from_maybe_text(value1),
-                _typed.from_maybe_text(value2),
+                _typed.from_int64(int64_1),
+                _typed.from_maybe_text(maybe_1),
+                _typed.from_maybe_text(maybe_2),
             ),
         )
     except (
@@ -5218,13 +5218,13 @@ def reference_update_pet_with_form_3(symbols, state, value0, value1, value2):
 
 
 # referenceUpdateUser — ../src/api.lawspec:201
-def reference_update_user_3(symbols, state, value0, value1):
+def reference_update_user_3(symbols, state, text_1, maybe_1):
     try:
         return _typed.to_pair_unit_state(
             _typed.reference_update_user(
                 _typed.from_state(state),
-                _typed.from_text(value0),
-                _typed.from_maybe_user(value1),
+                _typed.from_text(text_1),
+                _typed.from_maybe_user(maybe_1),
             ),
         )
     except (
@@ -5239,14 +5239,14 @@ def reference_update_user_3(symbols, state, value0, value1):
 
 
 # referenceUploadFile — ../src/api.lawspec:191
-def reference_upload_file_3(symbols, state, value0, value1, value2):
+def reference_upload_file_3(symbols, state, int64_1, maybe_1, maybe_2):
     try:
         return _typed.to_pair_api_response_state(
             _typed.reference_upload_file(
                 _typed.from_state(state),
-                _typed.from_int64(value0),
-                _typed.from_maybe_text(value1),
-                _typed.from_maybe_bytes(value2),
+                _typed.from_int64(int64_1),
+                _typed.from_maybe_text(maybe_1),
+                _typed.from_maybe_bytes(maybe_2),
             ),
         )
     except (

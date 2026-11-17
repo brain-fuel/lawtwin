@@ -77,16 +77,16 @@ public final class LawSpecDataCodecs
         bits,
         symbols,
         item -> {
-          var field0 = type0;
-          var field1 = type1;
+          var keyCodec = type0;
+          var valueCodec = type1;
           return schema.construct(
               type,
               "lawspec.collections::type::Entry::Entry",
               List.of(
                   LawSpecSchema.encodeField(
-                      field0, item.key(), "lawspec.collections::type::Entry::Entry.key"),
+                      keyCodec, item.key(), "lawspec.collections::type::Entry::Entry.key"),
                   LawSpecSchema.encodeField(
-                      field1, item.value(), "lawspec.collections::type::Entry::Entry.value")),
+                      valueCodec, item.value(), "lawspec.collections::type::Entry::Entry.value")),
               bits,
               symbols);
         },
@@ -95,10 +95,10 @@ public final class LawSpecDataCodecs
           return switch (data.tag())
           {
             case "lawspec.collections::type::Entry::" + "Entry" -> {
-              var field0 = type0;
-              var field1 = type1;
+              var keyCodec = type0;
+              var valueCodec = type1;
               yield new lawspec.data.Entry<>(
-                  field0.decode(data.fields().get(0)), field1.decode(data.fields().get(1)));
+                  keyCodec.decode(data.fields().get(0)), valueCodec.decode(data.fields().get(1)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };
@@ -124,16 +124,16 @@ public final class LawSpecDataCodecs
         bits,
         symbols,
         item -> {
-          var field0 = type0;
-          var field1 = type1;
+          var firstCodec = type0;
+          var secondCodec = type1;
           return schema.construct(
               type,
               "lawspec.collections::type::Pair::Pair",
               List.of(
                   LawSpecSchema.encodeField(
-                      field0, item.first(), "lawspec.collections::type::Pair::Pair.first"),
+                      firstCodec, item.first(), "lawspec.collections::type::Pair::Pair.first"),
                   LawSpecSchema.encodeField(
-                      field1, item.second(), "lawspec.collections::type::Pair::Pair.second")),
+                      secondCodec, item.second(), "lawspec.collections::type::Pair::Pair.second")),
               bits,
               symbols);
         },
@@ -142,10 +142,11 @@ public final class LawSpecDataCodecs
           return switch (data.tag())
           {
             case "lawspec.collections::type::Pair::" + "Pair" -> {
-              var field0 = type0;
-              var field1 = type1;
+              var firstCodec = type0;
+              var secondCodec = type1;
               yield new lawspec.data.Pair<>(
-                  field0.decode(data.fields().get(0)), field1.decode(data.fields().get(1)));
+                  firstCodec.decode(data.fields().get(0)),
+                  secondCodec.decode(data.fields().get(1)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };
@@ -167,13 +168,15 @@ public final class LawSpecDataCodecs
         bits,
         symbols,
         item -> {
-          var field0 = schema.list(type0, bits, symbols);
+          var valueCodec = schema.list(type0, bits, symbols);
           return schema.construct(
               type,
               "lawspec.collections::type::EqSet::EqSetItems",
               List.of(
                   LawSpecSchema.encodeField(
-                      field0, item.value(), "lawspec.collections::type::EqSet::EqSetItems.value")),
+                      valueCodec,
+                      item.value(),
+                      "lawspec.collections::type::EqSet::EqSetItems.value")),
               bits,
               symbols);
         },
@@ -182,8 +185,8 @@ public final class LawSpecDataCodecs
           return switch (data.tag())
           {
             case "lawspec.collections::type::EqSet::" + "EqSetItems" -> {
-              var field0 = schema.list(type0, bits, symbols);
-              yield new lawspec.data.Set<>(field0.decode(data.fields().get(0)));
+              var valueCodec = schema.list(type0, bits, symbols);
+              yield new lawspec.data.Set<>(valueCodec.decode(data.fields().get(0)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };
@@ -204,13 +207,15 @@ public final class LawSpecDataCodecs
         bits,
         symbols,
         item -> {
-          var field0 = schema.scalar("Text", bits, java.lang.String.class);
+          var patternCodec = schema.scalar("Text", bits, java.lang.String.class);
           return schema.construct(
               type,
               "lawspec.matchers::type::Regex::Regex",
               List.of(
                   LawSpecSchema.encodeField(
-                      field0, item.pattern(), "lawspec.matchers::type::Regex::Regex.pattern")),
+                      patternCodec,
+                      item.pattern(),
+                      "lawspec.matchers::type::Regex::Regex.pattern")),
               bits,
               symbols);
         },
@@ -219,8 +224,8 @@ public final class LawSpecDataCodecs
           return switch (data.tag())
           {
             case "lawspec.matchers::type::Regex::Regex" -> {
-              var field0 = schema.scalar("Text", bits, java.lang.String.class);
-              yield new lawspec.data.Regex(field0.decode(data.fields().get(0)));
+              var patternCodec = schema.scalar("Text", bits, java.lang.String.class);
+              yield new lawspec.data.Regex(patternCodec.decode(data.fields().get(0)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };
@@ -245,13 +250,13 @@ public final class LawSpecDataCodecs
             switch (value)
             {
               case lawspec.data.PartitionChoice.ToPartition item -> {
-                var field0 = schema.scalar("Int32", bits, java.lang.Integer.class);
+                var valueCodec = schema.scalar("Int32", bits, java.lang.Integer.class);
                 yield schema.construct(
                     type,
                     "lawtwin.kafka::type::PartitionChoice::ToPartition",
                     List.of(
                         LawSpecSchema.encodeField(
-                            field0,
+                            valueCodec,
                             item.value(),
                             "lawtwin.kafka::type::PartitionChoice::ToPartition.value")),
                     bits,
@@ -267,9 +272,9 @@ public final class LawSpecDataCodecs
           return switch (data.tag())
           {
             case "lawtwin.kafka::type::" + "PartitionChoice::ToPartition" -> {
-              var field0 = schema.scalar("Int32", bits, java.lang.Integer.class);
+              var valueCodec = schema.scalar("Int32", bits, java.lang.Integer.class);
               yield new lawspec.data.PartitionChoice.ToPartition(
-                  field0.decode(data.fields().get(0)));
+                  valueCodec.decode(data.fields().get(0)));
             }
             case "lawtwin.kafka::type::" + "PartitionChoice::ByKey" -> {
               yield new lawspec.data.PartitionChoice.ByKey();
@@ -294,23 +299,23 @@ public final class LawSpecDataCodecs
         bits,
         symbols,
         item -> {
-          var field0 = schema.scalar("Text", bits, java.lang.String.class);
-          var field1 = partitionChoiceCodec(schema, bits, symbols);
-          var field2 = recordCodec(schema, bits, symbols);
+          var destinationCodec = schema.scalar("Text", bits, java.lang.String.class);
+          var choiceCodec = partitionChoiceCodec(schema, bits, symbols);
+          var payloadCodec = recordCodec(schema, bits, symbols);
           return schema.construct(
               type,
               "lawtwin.kafka::type::ProducerRecord::ProducerRecord",
               List.of(
                   LawSpecSchema.encodeField(
-                      field0,
+                      destinationCodec,
                       item.destination(),
                       "lawtwin.kafka::type::ProducerRecord::ProducerRecord.destination"),
                   LawSpecSchema.encodeField(
-                      field1,
+                      choiceCodec,
                       item.choice(),
                       "lawtwin.kafka::type::ProducerRecord::ProducerRecord.choice"),
                   LawSpecSchema.encodeField(
-                      field2,
+                      payloadCodec,
                       item.payload(),
                       "lawtwin.kafka::type::ProducerRecord::ProducerRecord.payload")),
               bits,
@@ -321,13 +326,13 @@ public final class LawSpecDataCodecs
           return switch (data.tag())
           {
             case "lawtwin.kafka::type::" + "ProducerRecord::ProducerRecord" -> {
-              var field0 = schema.scalar("Text", bits, java.lang.String.class);
-              var field1 = partitionChoiceCodec(schema, bits, symbols);
-              var field2 = recordCodec(schema, bits, symbols);
+              var destinationCodec = schema.scalar("Text", bits, java.lang.String.class);
+              var choiceCodec = partitionChoiceCodec(schema, bits, symbols);
+              var payloadCodec = recordCodec(schema, bits, symbols);
               yield new lawspec.data.ProducerRecord(
-                  field0.decode(data.fields().get(0)),
-                  field1.decode(data.fields().get(1)),
-                  field2.decode(data.fields().get(2)));
+                  destinationCodec.decode(data.fields().get(0)),
+                  choiceCodec.decode(data.fields().get(1)),
+                  payloadCodec.decode(data.fields().get(2)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };
@@ -349,18 +354,18 @@ public final class LawSpecDataCodecs
         bits,
         symbols,
         item -> {
-          var field0 = topicPartitionCodec(schema, bits, symbols);
-          var field1 = schema.scalar("Int64", bits, java.lang.Long.class);
+          var sentToCodec = topicPartitionCodec(schema, bits, symbols);
+          var sentAtCodec = schema.scalar("Int64", bits, java.lang.Long.class);
           return schema.construct(
               type,
               "lawtwin.kafka::type::RecordMetadata::RecordMetadata",
               List.of(
                   LawSpecSchema.encodeField(
-                      field0,
+                      sentToCodec,
                       item.sentTo(),
                       "lawtwin.kafka::type::RecordMetadata::RecordMetadata.sentTo"),
                   LawSpecSchema.encodeField(
-                      field1,
+                      sentAtCodec,
                       item.sentAt(),
                       "lawtwin.kafka::type::RecordMetadata::RecordMetadata.sentAt")),
               bits,
@@ -371,10 +376,11 @@ public final class LawSpecDataCodecs
           return switch (data.tag())
           {
             case "lawtwin.kafka::type::" + "RecordMetadata::RecordMetadata" -> {
-              var field0 = topicPartitionCodec(schema, bits, symbols);
-              var field1 = schema.scalar("Int64", bits, java.lang.Long.class);
+              var sentToCodec = topicPartitionCodec(schema, bits, symbols);
+              var sentAtCodec = schema.scalar("Int64", bits, java.lang.Long.class);
               yield new lawspec.data.RecordMetadata(
-                  field0.decode(data.fields().get(0)), field1.decode(data.fields().get(1)));
+                  sentToCodec.decode(data.fields().get(0)),
+                  sentAtCodec.decode(data.fields().get(1)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };
@@ -396,23 +402,23 @@ public final class LawSpecDataCodecs
         bits,
         symbols,
         item -> {
-          var field0 = topicPartitionCodec(schema, bits, symbols);
-          var field1 = schema.scalar("Int64", bits, java.lang.Long.class);
-          var field2 = recordCodec(schema, bits, symbols);
+          var receivedFromCodec = topicPartitionCodec(schema, bits, symbols);
+          var receivedAtCodec = schema.scalar("Int64", bits, java.lang.Long.class);
+          var receivedCodec = recordCodec(schema, bits, symbols);
           return schema.construct(
               type,
               "lawtwin.kafka::type::ConsumerRecord::ConsumerRecord",
               List.of(
                   LawSpecSchema.encodeField(
-                      field0,
+                      receivedFromCodec,
                       item.receivedFrom(),
                       "lawtwin.kafka::type::ConsumerRecord::ConsumerRecord.receivedFrom"),
                   LawSpecSchema.encodeField(
-                      field1,
+                      receivedAtCodec,
                       item.receivedAt(),
                       "lawtwin.kafka::type::ConsumerRecord::ConsumerRecord.receivedAt"),
                   LawSpecSchema.encodeField(
-                      field2,
+                      receivedCodec,
                       item.received(),
                       "lawtwin.kafka::type::ConsumerRecord::ConsumerRecord.received")),
               bits,
@@ -423,13 +429,13 @@ public final class LawSpecDataCodecs
           return switch (data.tag())
           {
             case "lawtwin.kafka::type::" + "ConsumerRecord::ConsumerRecord" -> {
-              var field0 = topicPartitionCodec(schema, bits, symbols);
-              var field1 = schema.scalar("Int64", bits, java.lang.Long.class);
-              var field2 = recordCodec(schema, bits, symbols);
+              var receivedFromCodec = topicPartitionCodec(schema, bits, symbols);
+              var receivedAtCodec = schema.scalar("Int64", bits, java.lang.Long.class);
+              var receivedCodec = recordCodec(schema, bits, symbols);
               yield new lawspec.data.ConsumerRecord(
-                  field0.decode(data.fields().get(0)),
-                  field1.decode(data.fields().get(1)),
-                  field2.decode(data.fields().get(2)));
+                  receivedFromCodec.decode(data.fields().get(0)),
+                  receivedAtCodec.decode(data.fields().get(1)),
+                  receivedCodec.decode(data.fields().get(2)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };
@@ -450,21 +456,23 @@ public final class LawSpecDataCodecs
         bits,
         symbols,
         item -> {
-          var field0 = topicPartitionCodec(schema, bits, symbols);
-          var field1 = schema.maybe(producerTagCodec(schema, bits, symbols), bits, symbols);
-          var field2 = schema.list(recordCodec(schema, bits, symbols), bits, symbols);
+          var lastPartitionCodec = topicPartitionCodec(schema, bits, symbols);
+          var lastTagCodec = schema.maybe(producerTagCodec(schema, bits, symbols), bits, symbols);
+          var lastRecordsCodec = schema.list(recordCodec(schema, bits, symbols), bits, symbols);
           return schema.construct(
               type,
               "lawtwin.kafka::type::LastSend::LastSend",
               List.of(
                   LawSpecSchema.encodeField(
-                      field0,
+                      lastPartitionCodec,
                       item.lastPartition(),
                       "lawtwin.kafka::type::LastSend::LastSend.lastPartition"),
                   LawSpecSchema.encodeField(
-                      field1, item.lastTag(), "lawtwin.kafka::type::LastSend::LastSend.lastTag"),
+                      lastTagCodec,
+                      item.lastTag(),
+                      "lawtwin.kafka::type::LastSend::LastSend.lastTag"),
                   LawSpecSchema.encodeField(
-                      field2,
+                      lastRecordsCodec,
                       item.lastRecords(),
                       "lawtwin.kafka::type::LastSend::LastSend.lastRecords")),
               bits,
@@ -475,13 +483,14 @@ public final class LawSpecDataCodecs
           return switch (data.tag())
           {
             case "lawtwin.kafka::type::LastSend::" + "LastSend" -> {
-              var field0 = topicPartitionCodec(schema, bits, symbols);
-              var field1 = schema.maybe(producerTagCodec(schema, bits, symbols), bits, symbols);
-              var field2 = schema.list(recordCodec(schema, bits, symbols), bits, symbols);
+              var lastPartitionCodec = topicPartitionCodec(schema, bits, symbols);
+              var lastTagCodec =
+                  schema.maybe(producerTagCodec(schema, bits, symbols), bits, symbols);
+              var lastRecordsCodec = schema.list(recordCodec(schema, bits, symbols), bits, symbols);
               yield new lawspec.data.LastSend(
-                  field0.decode(data.fields().get(0)),
-                  field1.decode(data.fields().get(1)),
-                  field2.decode(data.fields().get(2)));
+                  lastPartitionCodec.decode(data.fields().get(0)),
+                  lastTagCodec.decode(data.fields().get(1)),
+                  lastRecordsCodec.decode(data.fields().get(2)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };
@@ -502,28 +511,29 @@ public final class LawSpecDataCodecs
         bits,
         symbols,
         item -> {
-          var field0 = schema.maybe(producerIdAndEpochCodec(schema, bits, symbols), bits, symbols);
-          var field1 =
+          var identityCodec =
+              schema.maybe(producerIdAndEpochCodec(schema, bits, symbols), bits, symbols);
+          var sequencesCodec =
               schema.keyVal(
                   topicPartitionCodec(schema, bits, symbols),
                   schema.scalar("Int32", bits, java.lang.Integer.class),
                   bits,
                   symbols);
-          var field2 = schema.maybe(lastSendCodec(schema, bits, symbols), bits, symbols);
+          var lastSendCodec = schema.maybe(lastSendCodec(schema, bits, symbols), bits, symbols);
           return schema.construct(
               type,
               "lawtwin.kafka::type::ProducerState::ProducerState",
               List.of(
                   LawSpecSchema.encodeField(
-                      field0,
+                      identityCodec,
                       item.identity(),
                       "lawtwin.kafka::type::ProducerState::ProducerState.identity"),
                   LawSpecSchema.encodeField(
-                      field1,
+                      sequencesCodec,
                       item.sequences(),
                       "lawtwin.kafka::type::ProducerState::ProducerState.sequences"),
                   LawSpecSchema.encodeField(
-                      field2,
+                      lastSendCodec,
                       item.lastSend(),
                       "lawtwin.kafka::type::ProducerState::ProducerState.lastSend")),
               bits,
@@ -534,19 +544,19 @@ public final class LawSpecDataCodecs
           return switch (data.tag())
           {
             case "lawtwin.kafka::type::ProducerState::" + "ProducerState" -> {
-              var field0 =
+              var identityCodec =
                   schema.maybe(producerIdAndEpochCodec(schema, bits, symbols), bits, symbols);
-              var field1 =
+              var sequencesCodec =
                   schema.keyVal(
                       topicPartitionCodec(schema, bits, symbols),
                       schema.scalar("Int32", bits, java.lang.Integer.class),
                       bits,
                       symbols);
-              var field2 = schema.maybe(lastSendCodec(schema, bits, symbols), bits, symbols);
+              var lastSendCodec = schema.maybe(lastSendCodec(schema, bits, symbols), bits, symbols);
               yield new lawspec.data.ProducerState(
-                  field0.decode(data.fields().get(0)),
-                  field1.decode(data.fields().get(1)),
-                  field2.decode(data.fields().get(2)));
+                  identityCodec.decode(data.fields().get(0)),
+                  sequencesCodec.decode(data.fields().get(1)),
+                  lastSendCodec.decode(data.fields().get(2)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };
@@ -567,50 +577,51 @@ public final class LawSpecDataCodecs
         bits,
         symbols,
         item -> {
-          var field0 =
+          var groupCodec =
               schema.maybe(schema.scalar("Text", bits, java.lang.String.class), bits, symbols);
-          var field1 = schema.scalar("Text", bits, java.lang.String.class);
-          var field2 = schema.scalar("Int32", bits, java.lang.Integer.class);
-          var field3 =
+          var memberCodec = schema.scalar("Text", bits, java.lang.String.class);
+          var generationCodec = schema.scalar("Int32", bits, java.lang.Integer.class);
+          var subscriptionCodec =
               schema.list(schema.scalar("Text", bits, java.lang.String.class), bits, symbols);
-          var field4 = schema.list(topicPartitionCodec(schema, bits, symbols), bits, symbols);
-          var field5 =
+          var assignedCodec =
+              schema.list(topicPartitionCodec(schema, bits, symbols), bits, symbols);
+          var positionsCodec =
               schema.keyVal(
                   topicPartitionCodec(schema, bits, symbols),
                   schema.scalar("Int64", bits, java.lang.Long.class),
                   bits,
                   symbols);
-          var field6 = isolationLevelCodec(schema, bits, symbols);
+          var isolationCodec = isolationLevelCodec(schema, bits, symbols);
           return schema.construct(
               type,
               "lawtwin.kafka::type::ConsumerState::ConsumerState",
               List.of(
                   LawSpecSchema.encodeField(
-                      field0,
+                      groupCodec,
                       item.group(),
                       "lawtwin.kafka::type::ConsumerState::ConsumerState.group"),
                   LawSpecSchema.encodeField(
-                      field1,
+                      memberCodec,
                       item.member(),
                       "lawtwin.kafka::type::ConsumerState::ConsumerState.member"),
                   LawSpecSchema.encodeField(
-                      field2,
+                      generationCodec,
                       item.generation(),
                       "lawtwin.kafka::type::ConsumerState::ConsumerState.generation"),
                   LawSpecSchema.encodeField(
-                      field3,
+                      subscriptionCodec,
                       item.subscription(),
                       "lawtwin.kafka::type::ConsumerState::ConsumerState.subscription"),
                   LawSpecSchema.encodeField(
-                      field4,
+                      assignedCodec,
                       item.assigned(),
                       "lawtwin.kafka::type::ConsumerState::ConsumerState.assigned"),
                   LawSpecSchema.encodeField(
-                      field5,
+                      positionsCodec,
                       item.positions(),
                       "lawtwin.kafka::type::ConsumerState::ConsumerState.positions"),
                   LawSpecSchema.encodeField(
-                      field6,
+                      isolationCodec,
                       item.isolation(),
                       "lawtwin.kafka::type::ConsumerState::ConsumerState.isolation")),
               bits,
@@ -621,28 +632,29 @@ public final class LawSpecDataCodecs
           return switch (data.tag())
           {
             case "lawtwin.kafka::type::ConsumerState::" + "ConsumerState" -> {
-              var field0 =
+              var groupCodec =
                   schema.maybe(schema.scalar("Text", bits, java.lang.String.class), bits, symbols);
-              var field1 = schema.scalar("Text", bits, java.lang.String.class);
-              var field2 = schema.scalar("Int32", bits, java.lang.Integer.class);
-              var field3 =
+              var memberCodec = schema.scalar("Text", bits, java.lang.String.class);
+              var generationCodec = schema.scalar("Int32", bits, java.lang.Integer.class);
+              var subscriptionCodec =
                   schema.list(schema.scalar("Text", bits, java.lang.String.class), bits, symbols);
-              var field4 = schema.list(topicPartitionCodec(schema, bits, symbols), bits, symbols);
-              var field5 =
+              var assignedCodec =
+                  schema.list(topicPartitionCodec(schema, bits, symbols), bits, symbols);
+              var positionsCodec =
                   schema.keyVal(
                       topicPartitionCodec(schema, bits, symbols),
                       schema.scalar("Int64", bits, java.lang.Long.class),
                       bits,
                       symbols);
-              var field6 = isolationLevelCodec(schema, bits, symbols);
+              var isolationCodec = isolationLevelCodec(schema, bits, symbols);
               yield new lawspec.data.ConsumerState(
-                  field0.decode(data.fields().get(0)),
-                  field1.decode(data.fields().get(1)),
-                  field2.decode(data.fields().get(2)),
-                  field3.decode(data.fields().get(3)),
-                  field4.decode(data.fields().get(4)),
-                  field5.decode(data.fields().get(5)),
-                  field6.decode(data.fields().get(6)));
+                  groupCodec.decode(data.fields().get(0)),
+                  memberCodec.decode(data.fields().get(1)),
+                  generationCodec.decode(data.fields().get(2)),
+                  subscriptionCodec.decode(data.fields().get(3)),
+                  assignedCodec.decode(data.fields().get(4)),
+                  positionsCodec.decode(data.fields().get(5)),
+                  isolationCodec.decode(data.fields().get(6)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };
@@ -664,43 +676,44 @@ public final class LawSpecDataCodecs
         bits,
         symbols,
         item -> {
-          var field0 = schema.scalar("Text", bits, java.lang.String.class);
-          var field1 = schema.maybe(producerIdAndEpochCodec(schema, bits, symbols), bits, symbols);
-          var field2 =
+          var transactionalIdCodec = schema.scalar("Text", bits, java.lang.String.class);
+          var producerCodec =
+              schema.maybe(producerIdAndEpochCodec(schema, bits, symbols), bits, symbols);
+          var txnSequencesCodec =
               schema.keyVal(
                   topicPartitionCodec(schema, bits, symbols),
                   schema.scalar("Int32", bits, java.lang.Integer.class),
                   bits,
                   symbols);
-          var field3 = schema.scalar("Bool", bits, java.lang.Boolean.class);
-          var field4 = schema.list(topicPartitionCodec(schema, bits, symbols), bits, symbols);
-          var field5 = schema.scalar("Bool", bits, java.lang.Boolean.class);
+          var inTransactionCodec = schema.scalar("Bool", bits, java.lang.Boolean.class);
+          var addedCodec = schema.list(topicPartitionCodec(schema, bits, symbols), bits, symbols);
+          var offsetsSentCodec = schema.scalar("Bool", bits, java.lang.Boolean.class);
           return schema.construct(
               type,
               "lawtwin.kafka::type::TransactionState::TransactionState",
               List.of(
                   LawSpecSchema.encodeField(
-                      field0,
+                      transactionalIdCodec,
                       item.transactionalId(),
                       "lawtwin.kafka::type::TransactionState::TransactionState.transactionalId"),
                   LawSpecSchema.encodeField(
-                      field1,
+                      producerCodec,
                       item.producer(),
                       "lawtwin.kafka::type::TransactionState::TransactionState.producer"),
                   LawSpecSchema.encodeField(
-                      field2,
+                      txnSequencesCodec,
                       item.txnSequences(),
                       "lawtwin.kafka::type::TransactionState::TransactionState.txnSequences"),
                   LawSpecSchema.encodeField(
-                      field3,
+                      inTransactionCodec,
                       item.inTransaction(),
                       "lawtwin.kafka::type::TransactionState::TransactionState.inTransaction"),
                   LawSpecSchema.encodeField(
-                      field4,
+                      addedCodec,
                       item.added(),
                       "lawtwin.kafka::type::TransactionState::TransactionState.added"),
                   LawSpecSchema.encodeField(
-                      field5,
+                      offsetsSentCodec,
                       item.offsetsSent(),
                       "lawtwin.kafka::type::TransactionState::TransactionState.offsetsSent")),
               bits,
@@ -711,25 +724,26 @@ public final class LawSpecDataCodecs
           return switch (data.tag())
           {
             case "lawtwin.kafka::type::" + "TransactionState::TransactionState" -> {
-              var field0 = schema.scalar("Text", bits, java.lang.String.class);
-              var field1 =
+              var transactionalIdCodec = schema.scalar("Text", bits, java.lang.String.class);
+              var producerCodec =
                   schema.maybe(producerIdAndEpochCodec(schema, bits, symbols), bits, symbols);
-              var field2 =
+              var txnSequencesCodec =
                   schema.keyVal(
                       topicPartitionCodec(schema, bits, symbols),
                       schema.scalar("Int32", bits, java.lang.Integer.class),
                       bits,
                       symbols);
-              var field3 = schema.scalar("Bool", bits, java.lang.Boolean.class);
-              var field4 = schema.list(topicPartitionCodec(schema, bits, symbols), bits, symbols);
-              var field5 = schema.scalar("Bool", bits, java.lang.Boolean.class);
+              var inTransactionCodec = schema.scalar("Bool", bits, java.lang.Boolean.class);
+              var addedCodec =
+                  schema.list(topicPartitionCodec(schema, bits, symbols), bits, symbols);
+              var offsetsSentCodec = schema.scalar("Bool", bits, java.lang.Boolean.class);
               yield new lawspec.data.TransactionState(
-                  field0.decode(data.fields().get(0)),
-                  field1.decode(data.fields().get(1)),
-                  field2.decode(data.fields().get(2)),
-                  field3.decode(data.fields().get(3)),
-                  field4.decode(data.fields().get(4)),
-                  field5.decode(data.fields().get(5)));
+                  transactionalIdCodec.decode(data.fields().get(0)),
+                  producerCodec.decode(data.fields().get(1)),
+                  txnSequencesCodec.decode(data.fields().get(2)),
+                  inTransactionCodec.decode(data.fields().get(3)),
+                  addedCodec.decode(data.fields().get(4)),
+                  offsetsSentCodec.decode(data.fields().get(5)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };
@@ -768,18 +782,18 @@ public final class LawSpecDataCodecs
         bits,
         symbols,
         item -> {
-          var field0 = schema.scalar("Text", bits, java.lang.String.class);
-          var field1 = schema.scalar("Int32", bits, java.lang.Integer.class);
+          var topicCodec = schema.scalar("Text", bits, java.lang.String.class);
+          var partitionCodec = schema.scalar("Int32", bits, java.lang.Integer.class);
           return schema.construct(
               type,
               "lawtwin.kafka.model::type::TopicPartition::TopicPartition",
               List.of(
                   LawSpecSchema.encodeField(
-                      field0,
+                      topicCodec,
                       item.topic(),
                       "lawtwin.kafka.model::type::TopicPartition::TopicPartition.topic"),
                   LawSpecSchema.encodeField(
-                      field1,
+                      partitionCodec,
                       item.partition(),
                       "lawtwin.kafka.model::type::TopicPartition::TopicPartition.partition")),
               bits,
@@ -790,10 +804,11 @@ public final class LawSpecDataCodecs
           return switch (data.tag())
           {
             case "lawtwin.kafka.model::type::" + "TopicPartition::TopicPartition" -> {
-              var field0 = schema.scalar("Text", bits, java.lang.String.class);
-              var field1 = schema.scalar("Int32", bits, java.lang.Integer.class);
+              var topicCodec = schema.scalar("Text", bits, java.lang.String.class);
+              var partitionCodec = schema.scalar("Int32", bits, java.lang.Integer.class);
               yield new lawspec.data.TopicPartition(
-                  field0.decode(data.fields().get(0)), field1.decode(data.fields().get(1)));
+                  topicCodec.decode(data.fields().get(0)),
+                  partitionCodec.decode(data.fields().get(1)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };
@@ -1124,16 +1139,19 @@ public final class LawSpecDataCodecs
         bits,
         symbols,
         item -> {
-          var field0 = schema.scalar("Text", bits, java.lang.String.class);
-          var field1 = schema.maybe(schema.scalar("Bytes", bits, byte[].class), bits, symbols);
+          var nameCodec = schema.scalar("Text", bits, java.lang.String.class);
+          var contentCodec =
+              schema.maybe(schema.scalar("Bytes", bits, byte[].class), bits, symbols);
           return schema.construct(
               type,
               "lawtwin.kafka.model::type::Header::Header",
               List.of(
                   LawSpecSchema.encodeField(
-                      field0, item.name(), "lawtwin.kafka.model::type::Header::Header.name"),
+                      nameCodec, item.name(), "lawtwin.kafka.model::type::Header::Header.name"),
                   LawSpecSchema.encodeField(
-                      field1, item.content(), "lawtwin.kafka.model::type::Header::Header.content")),
+                      contentCodec,
+                      item.content(),
+                      "lawtwin.kafka.model::type::Header::Header.content")),
               bits,
               symbols);
         },
@@ -1142,10 +1160,12 @@ public final class LawSpecDataCodecs
           return switch (data.tag())
           {
             case "lawtwin.kafka.model::type::Header::" + "Header" -> {
-              var field0 = schema.scalar("Text", bits, java.lang.String.class);
-              var field1 = schema.maybe(schema.scalar("Bytes", bits, byte[].class), bits, symbols);
+              var nameCodec = schema.scalar("Text", bits, java.lang.String.class);
+              var contentCodec =
+                  schema.maybe(schema.scalar("Bytes", bits, byte[].class), bits, symbols);
               yield new lawspec.data.Header(
-                  field0.decode(data.fields().get(0)), field1.decode(data.fields().get(1)));
+                  nameCodec.decode(data.fields().get(0)),
+                  contentCodec.decode(data.fields().get(1)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };
@@ -1166,19 +1186,21 @@ public final class LawSpecDataCodecs
         bits,
         symbols,
         item -> {
-          var field0 = schema.maybe(schema.scalar("Bytes", bits, byte[].class), bits, symbols);
-          var field1 = schema.maybe(schema.scalar("Bytes", bits, byte[].class), bits, symbols);
-          var field2 = schema.list(headerCodec(schema, bits, symbols), bits, symbols);
+          var keyCodec = schema.maybe(schema.scalar("Bytes", bits, byte[].class), bits, symbols);
+          var valueCodec = schema.maybe(schema.scalar("Bytes", bits, byte[].class), bits, symbols);
+          var headersCodec = schema.list(headerCodec(schema, bits, symbols), bits, symbols);
           return schema.construct(
               type,
               "lawtwin.kafka.model::type::Record::Record",
               List.of(
                   LawSpecSchema.encodeField(
-                      field0, item.key(), "lawtwin.kafka.model::type::Record::Record.key"),
+                      keyCodec, item.key(), "lawtwin.kafka.model::type::Record::Record.key"),
                   LawSpecSchema.encodeField(
-                      field1, item.value(), "lawtwin.kafka.model::type::Record::Record.value"),
+                      valueCodec, item.value(), "lawtwin.kafka.model::type::Record::Record.value"),
                   LawSpecSchema.encodeField(
-                      field2, item.headers(), "lawtwin.kafka.model::type::Record::Record.headers")),
+                      headersCodec,
+                      item.headers(),
+                      "lawtwin.kafka.model::type::Record::Record.headers")),
               bits,
               symbols);
         },
@@ -1187,13 +1209,15 @@ public final class LawSpecDataCodecs
           return switch (data.tag())
           {
             case "lawtwin.kafka.model::type::Record::" + "Record" -> {
-              var field0 = schema.maybe(schema.scalar("Bytes", bits, byte[].class), bits, symbols);
-              var field1 = schema.maybe(schema.scalar("Bytes", bits, byte[].class), bits, symbols);
-              var field2 = schema.list(headerCodec(schema, bits, symbols), bits, symbols);
+              var keyCodec =
+                  schema.maybe(schema.scalar("Bytes", bits, byte[].class), bits, symbols);
+              var valueCodec =
+                  schema.maybe(schema.scalar("Bytes", bits, byte[].class), bits, symbols);
+              var headersCodec = schema.list(headerCodec(schema, bits, symbols), bits, symbols);
               yield new lawspec.data.Record(
-                  field0.decode(data.fields().get(0)),
-                  field1.decode(data.fields().get(1)),
-                  field2.decode(data.fields().get(2)));
+                  keyCodec.decode(data.fields().get(0)),
+                  valueCodec.decode(data.fields().get(1)),
+                  headersCodec.decode(data.fields().get(2)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };
@@ -1214,23 +1238,23 @@ public final class LawSpecDataCodecs
         bits,
         symbols,
         item -> {
-          var field0 = schema.scalar("Int64", bits, java.lang.Long.class);
-          var field1 = schema.scalar("Int16", bits, java.lang.Short.class);
-          var field2 = schema.scalar("Int32", bits, java.lang.Integer.class);
+          var producerIdCodec = schema.scalar("Int64", bits, java.lang.Long.class);
+          var producerEpochCodec = schema.scalar("Int16", bits, java.lang.Short.class);
+          var baseSequenceCodec = schema.scalar("Int32", bits, java.lang.Integer.class);
           return schema.construct(
               type,
               "lawtwin.kafka.model::type::ProducerTag::ProducerTag",
               List.of(
                   LawSpecSchema.encodeField(
-                      field0,
+                      producerIdCodec,
                       item.producerId(),
                       "lawtwin.kafka.model::type::ProducerTag::ProducerTag.producerId"),
                   LawSpecSchema.encodeField(
-                      field1,
+                      producerEpochCodec,
                       item.producerEpoch(),
                       "lawtwin.kafka.model::type::ProducerTag::ProducerTag.producerEpoch"),
                   LawSpecSchema.encodeField(
-                      field2,
+                      baseSequenceCodec,
                       item.baseSequence(),
                       "lawtwin.kafka.model::type::ProducerTag::ProducerTag.baseSequence")),
               bits,
@@ -1241,13 +1265,13 @@ public final class LawSpecDataCodecs
           return switch (data.tag())
           {
             case "lawtwin.kafka.model::type::" + "ProducerTag::ProducerTag" -> {
-              var field0 = schema.scalar("Int64", bits, java.lang.Long.class);
-              var field1 = schema.scalar("Int16", bits, java.lang.Short.class);
-              var field2 = schema.scalar("Int32", bits, java.lang.Integer.class);
+              var producerIdCodec = schema.scalar("Int64", bits, java.lang.Long.class);
+              var producerEpochCodec = schema.scalar("Int16", bits, java.lang.Short.class);
+              var baseSequenceCodec = schema.scalar("Int32", bits, java.lang.Integer.class);
               yield new lawspec.data.ProducerTag(
-                  field0.decode(data.fields().get(0)),
-                  field1.decode(data.fields().get(1)),
-                  field2.decode(data.fields().get(2)));
+                  producerIdCodec.decode(data.fields().get(0)),
+                  producerEpochCodec.decode(data.fields().get(1)),
+                  baseSequenceCodec.decode(data.fields().get(2)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };
@@ -1269,18 +1293,18 @@ public final class LawSpecDataCodecs
         bits,
         symbols,
         item -> {
-          var field0 = schema.scalar("Int64", bits, java.lang.Long.class);
-          var field1 = schema.scalar("Int16", bits, java.lang.Short.class);
+          var producerIdCodec = schema.scalar("Int64", bits, java.lang.Long.class);
+          var producerEpochCodec = schema.scalar("Int16", bits, java.lang.Short.class);
           return schema.construct(
               type,
               "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch",
               List.of(
                   LawSpecSchema.encodeField(
-                      field0,
+                      producerIdCodec,
                       item.producerId(),
                       "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch.producerId"),
                   LawSpecSchema.encodeField(
-                      field1,
+                      producerEpochCodec,
                       item.producerEpoch(),
                       "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch.producerEpoch")),
               bits,
@@ -1291,10 +1315,11 @@ public final class LawSpecDataCodecs
           return switch (data.tag())
           {
             case "lawtwin.kafka.model::type::" + "ProducerIdAndEpoch::" + "ProducerIdAndEpoch" -> {
-              var field0 = schema.scalar("Int64", bits, java.lang.Long.class);
-              var field1 = schema.scalar("Int16", bits, java.lang.Short.class);
+              var producerIdCodec = schema.scalar("Int64", bits, java.lang.Long.class);
+              var producerEpochCodec = schema.scalar("Int16", bits, java.lang.Short.class);
               yield new lawspec.data.ProducerIdAndEpoch(
-                  field0.decode(data.fields().get(0)), field1.decode(data.fields().get(1)));
+                  producerIdCodec.decode(data.fields().get(0)),
+                  producerEpochCodec.decode(data.fields().get(1)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };
@@ -1315,18 +1340,18 @@ public final class LawSpecDataCodecs
         bits,
         symbols,
         item -> {
-          var field0 = schema.scalar("Int64", bits, java.lang.Long.class);
-          var field1 = recordCodec(schema, bits, symbols);
+          var offsetCodec = schema.scalar("Int64", bits, java.lang.Long.class);
+          var entryCodec = recordCodec(schema, bits, symbols);
           return schema.construct(
               type,
               "lawtwin.kafka.model::type::FetchedRecord::FetchedRecord",
               List.of(
                   LawSpecSchema.encodeField(
-                      field0,
+                      offsetCodec,
                       item.offset(),
                       "lawtwin.kafka.model::type::FetchedRecord::FetchedRecord.offset"),
                   LawSpecSchema.encodeField(
-                      field1,
+                      entryCodec,
                       item.entry(),
                       "lawtwin.kafka.model::type::FetchedRecord::FetchedRecord.entry")),
               bits,
@@ -1337,10 +1362,11 @@ public final class LawSpecDataCodecs
           return switch (data.tag())
           {
             case "lawtwin.kafka.model::type::" + "FetchedRecord::FetchedRecord" -> {
-              var field0 = schema.scalar("Int64", bits, java.lang.Long.class);
-              var field1 = recordCodec(schema, bits, symbols);
+              var offsetCodec = schema.scalar("Int64", bits, java.lang.Long.class);
+              var entryCodec = recordCodec(schema, bits, symbols);
               yield new lawspec.data.FetchedRecord(
-                  field0.decode(data.fields().get(0)), field1.decode(data.fields().get(1)));
+                  offsetCodec.decode(data.fields().get(0)),
+                  entryCodec.decode(data.fields().get(1)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };
@@ -1361,28 +1387,28 @@ public final class LawSpecDataCodecs
         bits,
         symbols,
         item -> {
-          var field0 = schema.list(fetchedRecordCodec(schema, bits, symbols), bits, symbols);
-          var field1 = schema.scalar("Int64", bits, java.lang.Long.class);
-          var field2 = schema.scalar("Int64", bits, java.lang.Long.class);
-          var field3 = schema.scalar("Int64", bits, java.lang.Long.class);
+          var recordsCodec = schema.list(fetchedRecordCodec(schema, bits, symbols), bits, symbols);
+          var nextOffsetCodec = schema.scalar("Int64", bits, java.lang.Long.class);
+          var highWatermarkCodec = schema.scalar("Int64", bits, java.lang.Long.class);
+          var lastStableOffsetCodec = schema.scalar("Int64", bits, java.lang.Long.class);
           return schema.construct(
               type,
               "lawtwin.kafka.model::type::FetchResult::FetchResult",
               List.of(
                   LawSpecSchema.encodeField(
-                      field0,
+                      recordsCodec,
                       item.records(),
                       "lawtwin.kafka.model::type::FetchResult::FetchResult.records"),
                   LawSpecSchema.encodeField(
-                      field1,
+                      nextOffsetCodec,
                       item.nextOffset(),
                       "lawtwin.kafka.model::type::FetchResult::FetchResult.nextOffset"),
                   LawSpecSchema.encodeField(
-                      field2,
+                      highWatermarkCodec,
                       item.highWatermark(),
                       "lawtwin.kafka.model::type::FetchResult::FetchResult.highWatermark"),
                   LawSpecSchema.encodeField(
-                      field3,
+                      lastStableOffsetCodec,
                       item.lastStableOffset(),
                       "lawtwin.kafka.model::type::FetchResult::FetchResult.lastStableOffset")),
               bits,
@@ -1393,15 +1419,16 @@ public final class LawSpecDataCodecs
           return switch (data.tag())
           {
             case "lawtwin.kafka.model::type::" + "FetchResult::FetchResult" -> {
-              var field0 = schema.list(fetchedRecordCodec(schema, bits, symbols), bits, symbols);
-              var field1 = schema.scalar("Int64", bits, java.lang.Long.class);
-              var field2 = schema.scalar("Int64", bits, java.lang.Long.class);
-              var field3 = schema.scalar("Int64", bits, java.lang.Long.class);
+              var recordsCodec =
+                  schema.list(fetchedRecordCodec(schema, bits, symbols), bits, symbols);
+              var nextOffsetCodec = schema.scalar("Int64", bits, java.lang.Long.class);
+              var highWatermarkCodec = schema.scalar("Int64", bits, java.lang.Long.class);
+              var lastStableOffsetCodec = schema.scalar("Int64", bits, java.lang.Long.class);
               yield new lawspec.data.FetchResult(
-                  field0.decode(data.fields().get(0)),
-                  field1.decode(data.fields().get(1)),
-                  field2.decode(data.fields().get(2)),
-                  field3.decode(data.fields().get(3)));
+                  recordsCodec.decode(data.fields().get(0)),
+                  nextOffsetCodec.decode(data.fields().get(1)),
+                  highWatermarkCodec.decode(data.fields().get(2)),
+                  lastStableOffsetCodec.decode(data.fields().get(3)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };
@@ -1422,18 +1449,18 @@ public final class LawSpecDataCodecs
         bits,
         symbols,
         item -> {
-          var field0 = topicPartitionCodec(schema, bits, symbols);
-          var field1 = schema.scalar("Int64", bits, java.lang.Long.class);
+          var topicPartitionCodec = topicPartitionCodec(schema, bits, symbols);
+          var offsetCodec = schema.scalar("Int64", bits, java.lang.Long.class);
           return schema.construct(
               type,
               "lawtwin.kafka.model::type::OffsetEntry::OffsetEntry",
               List.of(
                   LawSpecSchema.encodeField(
-                      field0,
+                      topicPartitionCodec,
                       item.topicPartition(),
                       "lawtwin.kafka.model::type::OffsetEntry::OffsetEntry.topicPartition"),
                   LawSpecSchema.encodeField(
-                      field1,
+                      offsetCodec,
                       item.offset(),
                       "lawtwin.kafka.model::type::OffsetEntry::OffsetEntry.offset")),
               bits,
@@ -1444,10 +1471,11 @@ public final class LawSpecDataCodecs
           return switch (data.tag())
           {
             case "lawtwin.kafka.model::type::" + "OffsetEntry::OffsetEntry" -> {
-              var field0 = topicPartitionCodec(schema, bits, symbols);
-              var field1 = schema.scalar("Int64", bits, java.lang.Long.class);
+              var topicPartitionCodec = topicPartitionCodec(schema, bits, symbols);
+              var offsetCodec = schema.scalar("Int64", bits, java.lang.Long.class);
               yield new lawspec.data.OffsetEntry(
-                  field0.decode(data.fields().get(0)), field1.decode(data.fields().get(1)));
+                  topicPartitionCodec.decode(data.fields().get(0)),
+                  offsetCodec.decode(data.fields().get(1)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };
@@ -1469,18 +1497,19 @@ public final class LawSpecDataCodecs
         bits,
         symbols,
         item -> {
-          var field0 = schema.scalar("Text", bits, java.lang.String.class);
-          var field1 = schema.list(topicPartitionCodec(schema, bits, symbols), bits, symbols);
+          var memberIdCodec = schema.scalar("Text", bits, java.lang.String.class);
+          var assignedCodec =
+              schema.list(topicPartitionCodec(schema, bits, symbols), bits, symbols);
           return schema.construct(
               type,
               "lawtwin.kafka.model::type::MemberAssignment::MemberAssignment",
               List.of(
                   LawSpecSchema.encodeField(
-                      field0,
+                      memberIdCodec,
                       item.memberId(),
                       "lawtwin.kafka.model::type::MemberAssignment::MemberAssignment.memberId"),
                   LawSpecSchema.encodeField(
-                      field1,
+                      assignedCodec,
                       item.assigned(),
                       "lawtwin.kafka.model::type::MemberAssignment::MemberAssignment.assigned")),
               bits,
@@ -1491,10 +1520,12 @@ public final class LawSpecDataCodecs
           return switch (data.tag())
           {
             case "lawtwin.kafka.model::type::" + "MemberAssignment::MemberAssignment" -> {
-              var field0 = schema.scalar("Text", bits, java.lang.String.class);
-              var field1 = schema.list(topicPartitionCodec(schema, bits, symbols), bits, symbols);
+              var memberIdCodec = schema.scalar("Text", bits, java.lang.String.class);
+              var assignedCodec =
+                  schema.list(topicPartitionCodec(schema, bits, symbols), bits, symbols);
               yield new lawspec.data.MemberAssignment(
-                  field0.decode(data.fields().get(0)), field1.decode(data.fields().get(1)));
+                  memberIdCodec.decode(data.fields().get(0)),
+                  assignedCodec.decode(data.fields().get(1)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };
@@ -1515,18 +1546,19 @@ public final class LawSpecDataCodecs
         bits,
         symbols,
         item -> {
-          var field0 = schema.scalar("Int32", bits, java.lang.Integer.class);
-          var field1 = schema.list(memberAssignmentCodec(schema, bits, symbols), bits, symbols);
+          var generationCodec = schema.scalar("Int32", bits, java.lang.Integer.class);
+          var membersCodec =
+              schema.list(memberAssignmentCodec(schema, bits, symbols), bits, symbols);
           return schema.construct(
               type,
               "lawtwin.kafka.model::type::GroupView::GroupView",
               List.of(
                   LawSpecSchema.encodeField(
-                      field0,
+                      generationCodec,
                       item.generation(),
                       "lawtwin.kafka.model::type::GroupView::GroupView.generation"),
                   LawSpecSchema.encodeField(
-                      field1,
+                      membersCodec,
                       item.members(),
                       "lawtwin.kafka.model::type::GroupView::GroupView.members")),
               bits,
@@ -1537,10 +1569,12 @@ public final class LawSpecDataCodecs
           return switch (data.tag())
           {
             case "lawtwin.kafka.model::type::" + "GroupView::GroupView" -> {
-              var field0 = schema.scalar("Int32", bits, java.lang.Integer.class);
-              var field1 = schema.list(memberAssignmentCodec(schema, bits, symbols), bits, symbols);
+              var generationCodec = schema.scalar("Int32", bits, java.lang.Integer.class);
+              var membersCodec =
+                  schema.list(memberAssignmentCodec(schema, bits, symbols), bits, symbols);
               yield new lawspec.data.GroupView(
-                  field0.decode(data.fields().get(0)), field1.decode(data.fields().get(1)));
+                  generationCodec.decode(data.fields().get(0)),
+                  membersCodec.decode(data.fields().get(1)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };
@@ -1564,26 +1598,26 @@ public final class LawSpecDataCodecs
             switch (value)
             {
               case lawspec.data.LogEntry.DataEntry item -> {
-                var field0 = dataEntryDetailsCodec(schema, bits, symbols);
+                var valueCodec = dataEntryDetailsCodec(schema, bits, symbols);
                 yield schema.construct(
                     type,
                     "lawtwin.kafka.model::type::LogEntry::DataEntry",
                     List.of(
                         LawSpecSchema.encodeField(
-                            field0,
+                            valueCodec,
                             item.value(),
                             "lawtwin.kafka.model::type::LogEntry::DataEntry.value")),
                     bits,
                     symbols);
               }
               case lawspec.data.LogEntry.ControlEntry item -> {
-                var field0 = controlEntryDetailsCodec(schema, bits, symbols);
+                var valueCodec = controlEntryDetailsCodec(schema, bits, symbols);
                 yield schema.construct(
                     type,
                     "lawtwin.kafka.model::type::LogEntry::ControlEntry",
                     List.of(
                         LawSpecSchema.encodeField(
-                            field0,
+                            valueCodec,
                             item.value(),
                             "lawtwin.kafka.model::type::LogEntry::ControlEntry.value")),
                     bits,
@@ -1595,12 +1629,12 @@ public final class LawSpecDataCodecs
           return switch (data.tag())
           {
             case "lawtwin.kafka.model::type::" + "LogEntry::DataEntry" -> {
-              var field0 = dataEntryDetailsCodec(schema, bits, symbols);
-              yield new lawspec.data.LogEntry.DataEntry(field0.decode(data.fields().get(0)));
+              var valueCodec = dataEntryDetailsCodec(schema, bits, symbols);
+              yield new lawspec.data.LogEntry.DataEntry(valueCodec.decode(data.fields().get(0)));
             }
             case "lawtwin.kafka.model::type::" + "LogEntry::ControlEntry" -> {
-              var field0 = controlEntryDetailsCodec(schema, bits, symbols);
-              yield new lawspec.data.LogEntry.ControlEntry(field0.decode(data.fields().get(0)));
+              var valueCodec = controlEntryDetailsCodec(schema, bits, symbols);
+              yield new lawspec.data.LogEntry.ControlEntry(valueCodec.decode(data.fields().get(0)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };
@@ -1621,23 +1655,23 @@ public final class LawSpecDataCodecs
         bits,
         symbols,
         item -> {
-          var field0 = schema.scalar("Int64", bits, java.lang.Long.class);
-          var field1 = schema.scalar("Int64", bits, java.lang.Long.class);
-          var field2 = schema.scalar("Int64", bits, java.lang.Long.class);
+          var abortedWriterCodec = schema.scalar("Int64", bits, java.lang.Long.class);
+          var firstOffsetCodec = schema.scalar("Int64", bits, java.lang.Long.class);
+          var lastOffsetCodec = schema.scalar("Int64", bits, java.lang.Long.class);
           return schema.construct(
               type,
               "lawtwin.kafka.model::type::AbortedTxn::AbortedTxn",
               List.of(
                   LawSpecSchema.encodeField(
-                      field0,
+                      abortedWriterCodec,
                       item.abortedWriter(),
                       "lawtwin.kafka.model::type::AbortedTxn::AbortedTxn.abortedWriter"),
                   LawSpecSchema.encodeField(
-                      field1,
+                      firstOffsetCodec,
                       item.firstOffset(),
                       "lawtwin.kafka.model::type::AbortedTxn::AbortedTxn.firstOffset"),
                   LawSpecSchema.encodeField(
-                      field2,
+                      lastOffsetCodec,
                       item.lastOffset(),
                       "lawtwin.kafka.model::type::AbortedTxn::AbortedTxn.lastOffset")),
               bits,
@@ -1648,13 +1682,13 @@ public final class LawSpecDataCodecs
           return switch (data.tag())
           {
             case "lawtwin.kafka.model::type::" + "AbortedTxn::AbortedTxn" -> {
-              var field0 = schema.scalar("Int64", bits, java.lang.Long.class);
-              var field1 = schema.scalar("Int64", bits, java.lang.Long.class);
-              var field2 = schema.scalar("Int64", bits, java.lang.Long.class);
+              var abortedWriterCodec = schema.scalar("Int64", bits, java.lang.Long.class);
+              var firstOffsetCodec = schema.scalar("Int64", bits, java.lang.Long.class);
+              var lastOffsetCodec = schema.scalar("Int64", bits, java.lang.Long.class);
               yield new lawspec.data.AbortedTxn(
-                  field0.decode(data.fields().get(0)),
-                  field1.decode(data.fields().get(1)),
-                  field2.decode(data.fields().get(2)));
+                  abortedWriterCodec.decode(data.fields().get(0)),
+                  firstOffsetCodec.decode(data.fields().get(1)),
+                  lastOffsetCodec.decode(data.fields().get(2)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };
@@ -1675,28 +1709,28 @@ public final class LawSpecDataCodecs
         bits,
         symbols,
         item -> {
-          var field0 = schema.scalar("Int16", bits, java.lang.Short.class);
-          var field1 = schema.scalar("Int32", bits, java.lang.Integer.class);
-          var field2 = schema.scalar("Int32", bits, java.lang.Integer.class);
-          var field3 = schema.scalar("Int64", bits, java.lang.Long.class);
+          var batchEpochCodec = schema.scalar("Int16", bits, java.lang.Short.class);
+          var firstSequenceCodec = schema.scalar("Int32", bits, java.lang.Integer.class);
+          var lastSequenceCodec = schema.scalar("Int32", bits, java.lang.Integer.class);
+          var batchOffsetCodec = schema.scalar("Int64", bits, java.lang.Long.class);
           return schema.construct(
               type,
               "lawtwin.kafka.model::type::BatchMeta::BatchMeta",
               List.of(
                   LawSpecSchema.encodeField(
-                      field0,
+                      batchEpochCodec,
                       item.batchEpoch(),
                       "lawtwin.kafka.model::type::BatchMeta::BatchMeta.batchEpoch"),
                   LawSpecSchema.encodeField(
-                      field1,
+                      firstSequenceCodec,
                       item.firstSequence(),
                       "lawtwin.kafka.model::type::BatchMeta::BatchMeta.firstSequence"),
                   LawSpecSchema.encodeField(
-                      field2,
+                      lastSequenceCodec,
                       item.lastSequence(),
                       "lawtwin.kafka.model::type::BatchMeta::BatchMeta.lastSequence"),
                   LawSpecSchema.encodeField(
-                      field3,
+                      batchOffsetCodec,
                       item.batchOffset(),
                       "lawtwin.kafka.model::type::BatchMeta::BatchMeta.batchOffset")),
               bits,
@@ -1707,15 +1741,15 @@ public final class LawSpecDataCodecs
           return switch (data.tag())
           {
             case "lawtwin.kafka.model::type::" + "BatchMeta::BatchMeta" -> {
-              var field0 = schema.scalar("Int16", bits, java.lang.Short.class);
-              var field1 = schema.scalar("Int32", bits, java.lang.Integer.class);
-              var field2 = schema.scalar("Int32", bits, java.lang.Integer.class);
-              var field3 = schema.scalar("Int64", bits, java.lang.Long.class);
+              var batchEpochCodec = schema.scalar("Int16", bits, java.lang.Short.class);
+              var firstSequenceCodec = schema.scalar("Int32", bits, java.lang.Integer.class);
+              var lastSequenceCodec = schema.scalar("Int32", bits, java.lang.Integer.class);
+              var batchOffsetCodec = schema.scalar("Int64", bits, java.lang.Long.class);
               yield new lawspec.data.BatchMeta(
-                  field0.decode(data.fields().get(0)),
-                  field1.decode(data.fields().get(1)),
-                  field2.decode(data.fields().get(2)),
-                  field3.decode(data.fields().get(3)));
+                  batchEpochCodec.decode(data.fields().get(0)),
+                  firstSequenceCodec.decode(data.fields().get(1)),
+                  lastSequenceCodec.decode(data.fields().get(2)),
+                  batchOffsetCodec.decode(data.fields().get(3)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };
@@ -1736,16 +1770,16 @@ public final class LawSpecDataCodecs
         bits,
         symbols,
         item -> {
-          var field0 = schema.list(logEntryCodec(schema, bits, symbols), bits, symbols);
-          var field1 = schema.scalar("Int64", bits, java.lang.Long.class);
-          var field2 =
+          var entriesCodec = schema.list(logEntryCodec(schema, bits, symbols), bits, symbols);
+          var logEndOffsetCodec = schema.scalar("Int64", bits, java.lang.Long.class);
+          var openTxnsCodec =
               schema.keyVal(
                   schema.scalar("Int64", bits, java.lang.Long.class),
                   schema.scalar("Int64", bits, java.lang.Long.class),
                   bits,
                   symbols);
-          var field3 = schema.list(abortedTxnCodec(schema, bits, symbols), bits, symbols);
-          var field4 =
+          var abortedTxnsCodec = schema.list(abortedTxnCodec(schema, bits, symbols), bits, symbols);
+          var batchesCodec =
               schema.keyVal(
                   schema.scalar("Int64", bits, java.lang.Long.class),
                   schema.list(batchMetaCodec(schema, bits, symbols), bits, symbols),
@@ -1756,23 +1790,23 @@ public final class LawSpecDataCodecs
               "lawtwin.kafka.model::type::PartitionLog::PartitionLog",
               List.of(
                   LawSpecSchema.encodeField(
-                      field0,
+                      entriesCodec,
                       item.entries(),
                       "lawtwin.kafka.model::type::PartitionLog::PartitionLog.entries"),
                   LawSpecSchema.encodeField(
-                      field1,
+                      logEndOffsetCodec,
                       item.logEndOffset(),
                       "lawtwin.kafka.model::type::PartitionLog::PartitionLog.logEndOffset"),
                   LawSpecSchema.encodeField(
-                      field2,
+                      openTxnsCodec,
                       item.openTxns(),
                       "lawtwin.kafka.model::type::PartitionLog::PartitionLog.openTxns"),
                   LawSpecSchema.encodeField(
-                      field3,
+                      abortedTxnsCodec,
                       item.abortedTxns(),
                       "lawtwin.kafka.model::type::PartitionLog::PartitionLog.abortedTxns"),
                   LawSpecSchema.encodeField(
-                      field4,
+                      batchesCodec,
                       item.batches(),
                       "lawtwin.kafka.model::type::PartitionLog::PartitionLog.batches")),
               bits,
@@ -1783,27 +1817,28 @@ public final class LawSpecDataCodecs
           return switch (data.tag())
           {
             case "lawtwin.kafka.model::type::" + "PartitionLog::PartitionLog" -> {
-              var field0 = schema.list(logEntryCodec(schema, bits, symbols), bits, symbols);
-              var field1 = schema.scalar("Int64", bits, java.lang.Long.class);
-              var field2 =
+              var entriesCodec = schema.list(logEntryCodec(schema, bits, symbols), bits, symbols);
+              var logEndOffsetCodec = schema.scalar("Int64", bits, java.lang.Long.class);
+              var openTxnsCodec =
                   schema.keyVal(
                       schema.scalar("Int64", bits, java.lang.Long.class),
                       schema.scalar("Int64", bits, java.lang.Long.class),
                       bits,
                       symbols);
-              var field3 = schema.list(abortedTxnCodec(schema, bits, symbols), bits, symbols);
-              var field4 =
+              var abortedTxnsCodec =
+                  schema.list(abortedTxnCodec(schema, bits, symbols), bits, symbols);
+              var batchesCodec =
                   schema.keyVal(
                       schema.scalar("Int64", bits, java.lang.Long.class),
                       schema.list(batchMetaCodec(schema, bits, symbols), bits, symbols),
                       bits,
                       symbols);
               yield new lawspec.data.PartitionLog(
-                  field0.decode(data.fields().get(0)),
-                  field1.decode(data.fields().get(1)),
-                  field2.decode(data.fields().get(2)),
-                  field3.decode(data.fields().get(3)),
-                  field4.decode(data.fields().get(4)));
+                  entriesCodec.decode(data.fields().get(0)),
+                  logEndOffsetCodec.decode(data.fields().get(1)),
+                  openTxnsCodec.decode(data.fields().get(2)),
+                  abortedTxnsCodec.decode(data.fields().get(3)),
+                  batchesCodec.decode(data.fields().get(4)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };
@@ -1824,18 +1859,18 @@ public final class LawSpecDataCodecs
         bits,
         symbols,
         item -> {
-          var field0 = schema.scalar("Text", bits, java.lang.String.class);
-          var field1 = offsetEntryCodec(schema, bits, symbols);
+          var pendingGroupCodec = schema.scalar("Text", bits, java.lang.String.class);
+          var pendingEntryCodec = offsetEntryCodec(schema, bits, symbols);
           return schema.construct(
               type,
               "lawtwin.kafka.model::type::PendingOffset::PendingOffset",
               List.of(
                   LawSpecSchema.encodeField(
-                      field0,
+                      pendingGroupCodec,
                       item.pendingGroup(),
                       "lawtwin.kafka.model::type::PendingOffset::PendingOffset.pendingGroup"),
                   LawSpecSchema.encodeField(
-                      field1,
+                      pendingEntryCodec,
                       item.pendingEntry(),
                       "lawtwin.kafka.model::type::PendingOffset::PendingOffset.pendingEntry")),
               bits,
@@ -1846,10 +1881,11 @@ public final class LawSpecDataCodecs
           return switch (data.tag())
           {
             case "lawtwin.kafka.model::type::" + "PendingOffset::PendingOffset" -> {
-              var field0 = schema.scalar("Text", bits, java.lang.String.class);
-              var field1 = offsetEntryCodec(schema, bits, symbols);
+              var pendingGroupCodec = schema.scalar("Text", bits, java.lang.String.class);
+              var pendingEntryCodec = offsetEntryCodec(schema, bits, symbols);
               yield new lawspec.data.PendingOffset(
-                  field0.decode(data.fields().get(0)), field1.decode(data.fields().get(1)));
+                  pendingGroupCodec.decode(data.fields().get(0)),
+                  pendingEntryCodec.decode(data.fields().get(1)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };
@@ -1877,13 +1913,13 @@ public final class LawSpecDataCodecs
                     type, "lawtwin.kafka.model::type::TxnState::NoTxn", List.of(), bits, symbols);
               }
               case lawspec.data.TxnState.Ongoing item -> {
-                var field0 = ongoingDetailsCodec(schema, bits, symbols);
+                var valueCodec = ongoingDetailsCodec(schema, bits, symbols);
                 yield schema.construct(
                     type,
                     "lawtwin.kafka.model::type::TxnState::Ongoing",
                     List.of(
                         LawSpecSchema.encodeField(
-                            field0,
+                            valueCodec,
                             item.value(),
                             "lawtwin.kafka.model::type::TxnState::Ongoing.value")),
                     bits,
@@ -1898,8 +1934,8 @@ public final class LawSpecDataCodecs
               yield new lawspec.data.TxnState.NoTxn();
             }
             case "lawtwin.kafka.model::type::" + "TxnState::Ongoing" -> {
-              var field0 = ongoingDetailsCodec(schema, bits, symbols);
-              yield new lawspec.data.TxnState.Ongoing(field0.decode(data.fields().get(0)));
+              var valueCodec = ongoingDetailsCodec(schema, bits, symbols);
+              yield new lawspec.data.TxnState.Ongoing(valueCodec.decode(data.fields().get(0)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };
@@ -1920,24 +1956,24 @@ public final class LawSpecDataCodecs
         bits,
         symbols,
         item -> {
-          var field0 = schema.scalar("Int16", bits, java.lang.Short.class);
-          var field1 =
+          var epochCodec = schema.scalar("Int16", bits, java.lang.Short.class);
+          var transactionalIdCodec =
               schema.maybe(schema.scalar("Text", bits, java.lang.String.class), bits, symbols);
-          var field2 = txnStateCodec(schema, bits, symbols);
+          var txnCodec = txnStateCodec(schema, bits, symbols);
           return schema.construct(
               type,
               "lawtwin.kafka.model::type::ProducerEntry::ProducerEntry",
               List.of(
                   LawSpecSchema.encodeField(
-                      field0,
+                      epochCodec,
                       item.epoch(),
                       "lawtwin.kafka.model::type::ProducerEntry::ProducerEntry.epoch"),
                   LawSpecSchema.encodeField(
-                      field1,
+                      transactionalIdCodec,
                       item.transactionalId(),
                       "lawtwin.kafka.model::type::ProducerEntry::ProducerEntry.transactionalId"),
                   LawSpecSchema.encodeField(
-                      field2,
+                      txnCodec,
                       item.txn(),
                       "lawtwin.kafka.model::type::ProducerEntry::ProducerEntry.txn")),
               bits,
@@ -1948,14 +1984,14 @@ public final class LawSpecDataCodecs
           return switch (data.tag())
           {
             case "lawtwin.kafka.model::type::" + "ProducerEntry::ProducerEntry" -> {
-              var field0 = schema.scalar("Int16", bits, java.lang.Short.class);
-              var field1 =
+              var epochCodec = schema.scalar("Int16", bits, java.lang.Short.class);
+              var transactionalIdCodec =
                   schema.maybe(schema.scalar("Text", bits, java.lang.String.class), bits, symbols);
-              var field2 = txnStateCodec(schema, bits, symbols);
+              var txnCodec = txnStateCodec(schema, bits, symbols);
               yield new lawspec.data.ProducerEntry(
-                  field0.decode(data.fields().get(0)),
-                  field1.decode(data.fields().get(1)),
-                  field2.decode(data.fields().get(2)));
+                  epochCodec.decode(data.fields().get(0)),
+                  transactionalIdCodec.decode(data.fields().get(1)),
+                  txnCodec.decode(data.fields().get(2)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };
@@ -1976,14 +2012,14 @@ public final class LawSpecDataCodecs
         bits,
         symbols,
         item -> {
-          var field0 = schema.scalar("Int32", bits, java.lang.Integer.class);
-          var field1 =
+          var groupGenerationCodec = schema.scalar("Int32", bits, java.lang.Integer.class);
+          var subscriptionsCodec =
               schema.keyVal(
                   schema.scalar("Text", bits, java.lang.String.class),
                   schema.list(schema.scalar("Text", bits, java.lang.String.class), bits, symbols),
                   bits,
                   symbols);
-          var field2 =
+          var assignmentCodec =
               schema.keyVal(
                   schema.scalar("Text", bits, java.lang.String.class),
                   schema.list(topicPartitionCodec(schema, bits, symbols), bits, symbols),
@@ -1994,15 +2030,15 @@ public final class LawSpecDataCodecs
               "lawtwin.kafka.model::type::Group::Group",
               List.of(
                   LawSpecSchema.encodeField(
-                      field0,
+                      groupGenerationCodec,
                       item.groupGeneration(),
                       "lawtwin.kafka.model::type::Group::Group.groupGeneration"),
                   LawSpecSchema.encodeField(
-                      field1,
+                      subscriptionsCodec,
                       item.subscriptions(),
                       "lawtwin.kafka.model::type::Group::Group.subscriptions"),
                   LawSpecSchema.encodeField(
-                      field2,
+                      assignmentCodec,
                       item.assignment(),
                       "lawtwin.kafka.model::type::Group::Group.assignment")),
               bits,
@@ -2013,24 +2049,24 @@ public final class LawSpecDataCodecs
           return switch (data.tag())
           {
             case "lawtwin.kafka.model::type::Group::" + "Group" -> {
-              var field0 = schema.scalar("Int32", bits, java.lang.Integer.class);
-              var field1 =
+              var groupGenerationCodec = schema.scalar("Int32", bits, java.lang.Integer.class);
+              var subscriptionsCodec =
                   schema.keyVal(
                       schema.scalar("Text", bits, java.lang.String.class),
                       schema.list(
                           schema.scalar("Text", bits, java.lang.String.class), bits, symbols),
                       bits,
                       symbols);
-              var field2 =
+              var assignmentCodec =
                   schema.keyVal(
                       schema.scalar("Text", bits, java.lang.String.class),
                       schema.list(topicPartitionCodec(schema, bits, symbols), bits, symbols),
                       bits,
                       symbols);
               yield new lawspec.data.Group(
-                  field0.decode(data.fields().get(0)),
-                  field1.decode(data.fields().get(1)),
-                  field2.decode(data.fields().get(2)));
+                  groupGenerationCodec.decode(data.fields().get(0)),
+                  subscriptionsCodec.decode(data.fields().get(1)),
+                  assignmentCodec.decode(data.fields().get(2)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };
@@ -2052,18 +2088,18 @@ public final class LawSpecDataCodecs
         bits,
         symbols,
         item -> {
-          var field0 = schema.scalar("Text", bits, java.lang.String.class);
-          var field1 = topicPartitionCodec(schema, bits, symbols);
+          var groupIdCodec = schema.scalar("Text", bits, java.lang.String.class);
+          var groupPartitionCodec = topicPartitionCodec(schema, bits, symbols);
           return schema.construct(
               type,
               "lawtwin.kafka.model::type::GroupPartition::GroupPartition",
               List.of(
                   LawSpecSchema.encodeField(
-                      field0,
+                      groupIdCodec,
                       item.groupId(),
                       "lawtwin.kafka.model::type::GroupPartition::GroupPartition.groupId"),
                   LawSpecSchema.encodeField(
-                      field1,
+                      groupPartitionCodec,
                       item.groupPartition(),
                       "lawtwin.kafka.model::type::GroupPartition::GroupPartition.groupPartition")),
               bits,
@@ -2074,10 +2110,11 @@ public final class LawSpecDataCodecs
           return switch (data.tag())
           {
             case "lawtwin.kafka.model::type::" + "GroupPartition::GroupPartition" -> {
-              var field0 = schema.scalar("Text", bits, java.lang.String.class);
-              var field1 = topicPartitionCodec(schema, bits, symbols);
+              var groupIdCodec = schema.scalar("Text", bits, java.lang.String.class);
+              var groupPartitionCodec = topicPartitionCodec(schema, bits, symbols);
               yield new lawspec.data.GroupPartition(
-                  field0.decode(data.fields().get(0)), field1.decode(data.fields().get(1)));
+                  groupIdCodec.decode(data.fields().get(0)),
+                  groupPartitionCodec.decode(data.fields().get(1)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };
@@ -2098,38 +2135,38 @@ public final class LawSpecDataCodecs
         bits,
         symbols,
         item -> {
-          var field0 =
+          var topicsCodec =
               schema.keyVal(
                   schema.scalar("Text", bits, java.lang.String.class),
                   schema.scalar("Int32", bits, java.lang.Integer.class),
                   bits,
                   symbols);
-          var field1 =
+          var logsCodec =
               schema.keyVal(
                   topicPartitionCodec(schema, bits, symbols),
                   partitionLogCodec(schema, bits, symbols),
                   bits,
                   symbols);
-          var field2 =
+          var producersCodec =
               schema.keyVal(
                   schema.scalar("Int64", bits, java.lang.Long.class),
                   producerEntryCodec(schema, bits, symbols),
                   bits,
                   symbols);
-          var field3 =
+          var transactionalIdsCodec =
               schema.keyVal(
                   schema.scalar("Text", bits, java.lang.String.class),
                   schema.scalar("Int64", bits, java.lang.Long.class),
                   bits,
                   symbols);
-          var field4 = schema.scalar("Int64", bits, java.lang.Long.class);
-          var field5 =
+          var nextProducerIdCodec = schema.scalar("Int64", bits, java.lang.Long.class);
+          var groupsCodec =
               schema.keyVal(
                   schema.scalar("Text", bits, java.lang.String.class),
                   groupCodec(schema, bits, symbols),
                   bits,
                   symbols);
-          var field6 =
+          var committedCodec =
               schema.keyVal(
                   groupPartitionCodec(schema, bits, symbols),
                   schema.scalar("Int64", bits, java.lang.Long.class),
@@ -2140,31 +2177,31 @@ public final class LawSpecDataCodecs
               "lawtwin.kafka.model::type::BrokerState::BrokerState",
               List.of(
                   LawSpecSchema.encodeField(
-                      field0,
+                      topicsCodec,
                       item.topics(),
                       "lawtwin.kafka.model::type::BrokerState::BrokerState.topics"),
                   LawSpecSchema.encodeField(
-                      field1,
+                      logsCodec,
                       item.logs(),
                       "lawtwin.kafka.model::type::BrokerState::BrokerState.logs"),
                   LawSpecSchema.encodeField(
-                      field2,
+                      producersCodec,
                       item.producers(),
                       "lawtwin.kafka.model::type::BrokerState::BrokerState.producers"),
                   LawSpecSchema.encodeField(
-                      field3,
+                      transactionalIdsCodec,
                       item.transactionalIds(),
                       "lawtwin.kafka.model::type::BrokerState::BrokerState.transactionalIds"),
                   LawSpecSchema.encodeField(
-                      field4,
+                      nextProducerIdCodec,
                       item.nextProducerId(),
                       "lawtwin.kafka.model::type::BrokerState::BrokerState.nextProducerId"),
                   LawSpecSchema.encodeField(
-                      field5,
+                      groupsCodec,
                       item.groups(),
                       "lawtwin.kafka.model::type::BrokerState::BrokerState.groups"),
                   LawSpecSchema.encodeField(
-                      field6,
+                      committedCodec,
                       item.committed(),
                       "lawtwin.kafka.model::type::BrokerState::BrokerState.committed")),
               bits,
@@ -2175,51 +2212,51 @@ public final class LawSpecDataCodecs
           return switch (data.tag())
           {
             case "lawtwin.kafka.model::type::" + "BrokerState::BrokerState" -> {
-              var field0 =
+              var topicsCodec =
                   schema.keyVal(
                       schema.scalar("Text", bits, java.lang.String.class),
                       schema.scalar("Int32", bits, java.lang.Integer.class),
                       bits,
                       symbols);
-              var field1 =
+              var logsCodec =
                   schema.keyVal(
                       topicPartitionCodec(schema, bits, symbols),
                       partitionLogCodec(schema, bits, symbols),
                       bits,
                       symbols);
-              var field2 =
+              var producersCodec =
                   schema.keyVal(
                       schema.scalar("Int64", bits, java.lang.Long.class),
                       producerEntryCodec(schema, bits, symbols),
                       bits,
                       symbols);
-              var field3 =
+              var transactionalIdsCodec =
                   schema.keyVal(
                       schema.scalar("Text", bits, java.lang.String.class),
                       schema.scalar("Int64", bits, java.lang.Long.class),
                       bits,
                       symbols);
-              var field4 = schema.scalar("Int64", bits, java.lang.Long.class);
-              var field5 =
+              var nextProducerIdCodec = schema.scalar("Int64", bits, java.lang.Long.class);
+              var groupsCodec =
                   schema.keyVal(
                       schema.scalar("Text", bits, java.lang.String.class),
                       groupCodec(schema, bits, symbols),
                       bits,
                       symbols);
-              var field6 =
+              var committedCodec =
                   schema.keyVal(
                       groupPartitionCodec(schema, bits, symbols),
                       schema.scalar("Int64", bits, java.lang.Long.class),
                       bits,
                       symbols);
               yield new lawspec.data.BrokerState(
-                  field0.decode(data.fields().get(0)),
-                  field1.decode(data.fields().get(1)),
-                  field2.decode(data.fields().get(2)),
-                  field3.decode(data.fields().get(3)),
-                  field4.decode(data.fields().get(4)),
-                  field5.decode(data.fields().get(5)),
-                  field6.decode(data.fields().get(6)));
+                  topicsCodec.decode(data.fields().get(0)),
+                  logsCodec.decode(data.fields().get(1)),
+                  producersCodec.decode(data.fields().get(2)),
+                  transactionalIdsCodec.decode(data.fields().get(3)),
+                  nextProducerIdCodec.decode(data.fields().get(4)),
+                  groupsCodec.decode(data.fields().get(5)),
+                  committedCodec.decode(data.fields().get(6)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };
@@ -2242,28 +2279,28 @@ public final class LawSpecDataCodecs
         bits,
         symbols,
         item -> {
-          var field0 = schema.scalar("Int64", bits, java.lang.Long.class);
-          var field1 = recordCodec(schema, bits, symbols);
-          var field2 = schema.scalar("Bool", bits, java.lang.Boolean.class);
-          var field3 = schema.scalar("Int64", bits, java.lang.Long.class);
+          var entryOffsetCodec = schema.scalar("Int64", bits, java.lang.Long.class);
+          var entryRecordCodec = recordCodec(schema, bits, symbols);
+          var transactionalCodec = schema.scalar("Bool", bits, java.lang.Boolean.class);
+          var writerCodec = schema.scalar("Int64", bits, java.lang.Long.class);
           return schema.construct(
               type,
               "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be::Record",
               List.of(
                   LawSpecSchema.encodeField(
-                      field0,
+                      entryOffsetCodec,
                       item.entryOffset(),
                       "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be::Record.entryOffset"),
                   LawSpecSchema.encodeField(
-                      field1,
+                      entryRecordCodec,
                       item.entryRecord(),
                       "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be::Record.entryRecord"),
                   LawSpecSchema.encodeField(
-                      field2,
+                      transactionalCodec,
                       item.transactional(),
                       "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be::Record.transactional"),
                   LawSpecSchema.encodeField(
-                      field3,
+                      writerCodec,
                       item.writer(),
                       "lawspec::structural::record::71ddc692ac9521d9d1f5404c57337ef3fb4c795693ec774d5443d945ea34e0be::Record.writer")),
               bits,
@@ -2277,15 +2314,15 @@ public final class LawSpecDataCodecs
                 + "71ddc692ac9521d9d1f5404c57337ef3"
                 + "fb4c795693ec774d5443d945ea34e0be::"
                 + "Record" -> {
-              var field0 = schema.scalar("Int64", bits, java.lang.Long.class);
-              var field1 = recordCodec(schema, bits, symbols);
-              var field2 = schema.scalar("Bool", bits, java.lang.Boolean.class);
-              var field3 = schema.scalar("Int64", bits, java.lang.Long.class);
+              var entryOffsetCodec = schema.scalar("Int64", bits, java.lang.Long.class);
+              var entryRecordCodec = recordCodec(schema, bits, symbols);
+              var transactionalCodec = schema.scalar("Bool", bits, java.lang.Boolean.class);
+              var writerCodec = schema.scalar("Int64", bits, java.lang.Long.class);
               yield new lawspec.data.DataEntryDetails(
-                  field0.decode(data.fields().get(0)),
-                  field1.decode(data.fields().get(1)),
-                  field2.decode(data.fields().get(2)),
-                  field3.decode(data.fields().get(3)));
+                  entryOffsetCodec.decode(data.fields().get(0)),
+                  entryRecordCodec.decode(data.fields().get(1)),
+                  transactionalCodec.decode(data.fields().get(2)),
+                  writerCodec.decode(data.fields().get(3)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };
@@ -2308,23 +2345,23 @@ public final class LawSpecDataCodecs
         bits,
         symbols,
         item -> {
-          var field0 = schema.scalar("Bool", bits, java.lang.Boolean.class);
-          var field1 = schema.scalar("Int64", bits, java.lang.Long.class);
-          var field2 = schema.scalar("Int64", bits, java.lang.Long.class);
+          var commitsCodec = schema.scalar("Bool", bits, java.lang.Boolean.class);
+          var markerOffsetCodec = schema.scalar("Int64", bits, java.lang.Long.class);
+          var markerWriterCodec = schema.scalar("Int64", bits, java.lang.Long.class);
           return schema.construct(
               type,
               "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3::Record",
               List.of(
                   LawSpecSchema.encodeField(
-                      field0,
+                      commitsCodec,
                       item.commits(),
                       "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3::Record.commits"),
                   LawSpecSchema.encodeField(
-                      field1,
+                      markerOffsetCodec,
                       item.markerOffset(),
                       "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3::Record.markerOffset"),
                   LawSpecSchema.encodeField(
-                      field2,
+                      markerWriterCodec,
                       item.markerWriter(),
                       "lawspec::structural::record::25c3f950e3431c91ceedb89b1adb06da7d2d7d20322b03e1f64f63418e45d7e3::Record.markerWriter")),
               bits,
@@ -2338,13 +2375,13 @@ public final class LawSpecDataCodecs
                 + "25c3f950e3431c91ceedb89b1adb06da"
                 + "7d2d7d20322b03e1f64f63418e45d7e3::"
                 + "Record" -> {
-              var field0 = schema.scalar("Bool", bits, java.lang.Boolean.class);
-              var field1 = schema.scalar("Int64", bits, java.lang.Long.class);
-              var field2 = schema.scalar("Int64", bits, java.lang.Long.class);
+              var commitsCodec = schema.scalar("Bool", bits, java.lang.Boolean.class);
+              var markerOffsetCodec = schema.scalar("Int64", bits, java.lang.Long.class);
+              var markerWriterCodec = schema.scalar("Int64", bits, java.lang.Long.class);
               yield new lawspec.data.ControlEntryDetails(
-                  field0.decode(data.fields().get(0)),
-                  field1.decode(data.fields().get(1)),
-                  field2.decode(data.fields().get(2)));
+                  commitsCodec.decode(data.fields().get(0)),
+                  markerOffsetCodec.decode(data.fields().get(1)),
+                  markerWriterCodec.decode(data.fields().get(2)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };
@@ -2367,18 +2404,20 @@ public final class LawSpecDataCodecs
         bits,
         symbols,
         item -> {
-          var field0 = schema.list(pendingOffsetCodec(schema, bits, symbols), bits, symbols);
-          var field1 = schema.list(topicPartitionCodec(schema, bits, symbols), bits, symbols);
+          var txnOffsetsCodec =
+              schema.list(pendingOffsetCodec(schema, bits, symbols), bits, symbols);
+          var txnPartitionsCodec =
+              schema.list(topicPartitionCodec(schema, bits, symbols), bits, symbols);
           return schema.construct(
               type,
               "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee::Record",
               List.of(
                   LawSpecSchema.encodeField(
-                      field0,
+                      txnOffsetsCodec,
                       item.txnOffsets(),
                       "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee::Record.txnOffsets"),
                   LawSpecSchema.encodeField(
-                      field1,
+                      txnPartitionsCodec,
                       item.txnPartitions(),
                       "lawspec::structural::record::d325eb28450b9e09a627168741fb2db9ff08256d9154032ca57f8e97660258ee::Record.txnPartitions")),
               bits,
@@ -2392,10 +2431,13 @@ public final class LawSpecDataCodecs
                 + "d325eb28450b9e09a627168741fb2db9"
                 + "ff08256d9154032ca57f8e97660258ee::"
                 + "Record" -> {
-              var field0 = schema.list(pendingOffsetCodec(schema, bits, symbols), bits, symbols);
-              var field1 = schema.list(topicPartitionCodec(schema, bits, symbols), bits, symbols);
+              var txnOffsetsCodec =
+                  schema.list(pendingOffsetCodec(schema, bits, symbols), bits, symbols);
+              var txnPartitionsCodec =
+                  schema.list(topicPartitionCodec(schema, bits, symbols), bits, symbols);
               yield new lawspec.data.OngoingDetails(
-                  field0.decode(data.fields().get(0)), field1.decode(data.fields().get(1)));
+                  txnOffsetsCodec.decode(data.fields().get(0)),
+                  txnPartitionsCodec.decode(data.fields().get(1)));
             }
             default -> throw new IllegalArgumentException("uninhabited or invalid native data");
           };

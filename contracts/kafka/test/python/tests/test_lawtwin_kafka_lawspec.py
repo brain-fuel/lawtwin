@@ -736,8 +736,14 @@ def _assert_broker_offsets_in_a_partition_are_dense_and(
     first,
     second,
     with_cluster,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Broker: |offsets in a partition are dense and increasing| [native]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:75",
             lambda: (
@@ -1126,6 +1132,7 @@ def _check_broker_offsets_in_a_partition_are_dense_and(
             first,
             second,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -1300,6 +1307,7 @@ def test_broker_offsets_in_a_partition_are_dense_and__property(_case):
             first,
             second,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -1329,8 +1337,14 @@ def _assert_broker_offsets_in_a_partition_are_dense_and_2(
     t,
     first,
     second,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Broker: |offsets in a partition are dense and increasing| [cluster]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:75",
             lambda: (
@@ -1693,6 +1707,7 @@ def _check_broker_offsets_in_a_partition_are_dense_and_2(
         t,
         first,
         second,
+        True,
     )
 
 
@@ -1821,6 +1836,7 @@ def test_broker_offsets_in_a_partition_are_dense_and_2__property(_case):
         t,
         first,
         second,
+        True,
     )
 
 
@@ -1830,8 +1846,14 @@ def _assert_broker_a_batch_reads_back_whole_and_in_order(
     t,
     batch,
     with_cluster,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Broker: |a batch reads back whole and in order| [native]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:92",
             lambda: (
@@ -2099,6 +2121,7 @@ def _check_broker_a_batch_reads_back_whole_and_in_order(
             t,
             batch,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -2244,6 +2267,7 @@ def test_broker_a_batch_reads_back_whole_and_in_order__property(_case):
             t,
             batch,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -2272,8 +2296,14 @@ def _assert_broker_a_batch_reads_back_whole_and_in_order_2(
     symbols,
     t,
     batch,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Broker: |a batch reads back whole and in order| [cluster]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:92",
             lambda: (
@@ -2515,6 +2545,7 @@ def _check_broker_a_batch_reads_back_whole_and_in_order_2(
         symbols,
         t,
         batch,
+        True,
     )
 
 
@@ -2614,6 +2645,7 @@ def test_broker_a_batch_reads_back_whole_and_in_order_2__property(_case):
         symbols,
         t,
         batch,
+        True,
     )
 
 
@@ -2623,8 +2655,14 @@ def _assert_broker_an_idempotent_retry_is_written_once(
     t,
     batch,
     with_cluster,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Broker: |an idempotent retry is written once| [native]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:106",
             lambda: (
@@ -3350,6 +3388,7 @@ def _check_broker_an_idempotent_retry_is_written_once(
             t,
             batch,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -3495,6 +3534,7 @@ def test_broker_an_idempotent_retry_is_written_once__property(_case):
             t,
             batch,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -3523,8 +3563,14 @@ def _assert_broker_an_idempotent_retry_is_written_once_2(
     symbols,
     t,
     batch,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Broker: |an idempotent retry is written once| [cluster]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:106",
             lambda: (
@@ -4224,6 +4270,7 @@ def _check_broker_an_idempotent_retry_is_written_once_2(
         symbols,
         t,
         batch,
+        True,
     )
 
 
@@ -4323,6 +4370,7 @@ def test_broker_an_idempotent_retry_is_written_once_2__property(_case):
         symbols,
         t,
         batch,
+        True,
     )
 
 
@@ -4332,8 +4380,14 @@ def _assert_broker_a_gap_in_sequence_numbers_is_refused(
     t,
     batch,
     with_cluster,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Broker: |a gap in sequence numbers is refused| [native]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:132",
             lambda: (
@@ -4824,6 +4878,7 @@ def _check_broker_a_gap_in_sequence_numbers_is_refused(
             t,
             batch,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -4969,6 +5024,7 @@ def test_broker_a_gap_in_sequence_numbers_is_refused__property(_case):
             t,
             batch,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -4997,8 +5053,14 @@ def _assert_broker_a_gap_in_sequence_numbers_is_refused_2(
     symbols,
     t,
     batch,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Broker: |a gap in sequence numbers is refused| [cluster]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:132",
             lambda: (
@@ -5463,6 +5525,7 @@ def _check_broker_a_gap_in_sequence_numbers_is_refused_2(
         symbols,
         t,
         batch,
+        True,
     )
 
 
@@ -5562,6 +5625,7 @@ def test_broker_a_gap_in_sequence_numbers_is_refused_2__property(_case):
         symbols,
         t,
         batch,
+        True,
     )
 
 
@@ -5572,8 +5636,14 @@ def _assert_broker_a_new_epoch_fences_the_older_producer(
     txid,
     batch,
     with_cluster,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Broker: |a new epoch fences the older producer| [native]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:148",
             lambda: (
@@ -6642,6 +6712,7 @@ def _check_broker_a_new_epoch_fences_the_older_producer(
             txid,
             batch,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -6811,6 +6882,7 @@ def test_broker_a_new_epoch_fences_the_older_producer__property(_case):
             txid,
             batch,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -6840,8 +6912,14 @@ def _assert_broker_a_new_epoch_fences_the_older_producer_2(
     t,
     txid,
     batch,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Broker: |a new epoch fences the older producer| [cluster]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:148",
             lambda: (
@@ -7884,6 +7962,7 @@ def _check_broker_a_new_epoch_fences_the_older_producer_2(
         t,
         txid,
         batch,
+        True,
     )
 
 
@@ -8007,6 +8086,7 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__property(_case):
         t,
         txid,
         batch,
+        True,
     )
 
 
@@ -8017,8 +8097,14 @@ def _assert_broker_read_committed_fetches_never_see_open_or(
     txid,
     batch,
     with_cluster,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Broker: |read-committed fetches never see open or aborted transactions| [native]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:178",
             lambda: _definitions.transaction_then_read(
@@ -8091,6 +8177,7 @@ def _check_broker_read_committed_fetches_never_see_open_or(
             txid,
             batch,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -8260,6 +8347,7 @@ def test_broker_read_committed_fetches_never_see_open_or__property(_case):
             txid,
             batch,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -8289,8 +8377,14 @@ def _assert_broker_read_committed_fetches_never_see_open_or_2(
     t,
     txid,
     batch,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Broker: |read-committed fetches never see open or aborted transactions| [cluster]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:178",
             lambda: _definitions.transaction_then_read(
@@ -8337,6 +8431,7 @@ def _check_broker_read_committed_fetches_never_see_open_or_2(
         t,
         txid,
         batch,
+        True,
     )
 
 
@@ -8460,6 +8555,7 @@ def test_broker_read_committed_fetches_never_see_open_or_2__property(_case):
         t,
         txid,
         batch,
+        True,
     )
 
 
@@ -8470,8 +8566,14 @@ def _assert_broker_a_committed_transaction_is_read_whole_and(
     txid,
     batch,
     with_cluster,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Broker: |a committed transaction is read whole and in order| [native]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:195",
             lambda: _definitions.transaction_then_read(
@@ -8540,6 +8642,7 @@ def _check_broker_a_committed_transaction_is_read_whole_and(
             txid,
             batch,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -8709,6 +8812,7 @@ def test_broker_a_committed_transaction_is_read_whole_and__property(_case):
             txid,
             batch,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -8738,8 +8842,14 @@ def _assert_broker_a_committed_transaction_is_read_whole_and_2(
     t,
     txid,
     batch,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Broker: |a committed transaction is read whole and in order| [cluster]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:195",
             lambda: _definitions.transaction_then_read(
@@ -8782,6 +8892,7 @@ def _check_broker_a_committed_transaction_is_read_whole_and_2(
         t,
         txid,
         batch,
+        True,
     )
 
 
@@ -8905,6 +9016,7 @@ def test_broker_a_committed_transaction_is_read_whole_and_2__property(_case):
         t,
         txid,
         batch,
+        True,
     )
 
 
@@ -8916,8 +9028,14 @@ def _assert_broker_offsets_sent_in_a_transaction_are(
     g,
     offset,
     with_cluster,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Broker: |offsets sent in a transaction are committed only with it| [native]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:206",
             lambda: _definitions.transactional_offsets(
@@ -8997,6 +9115,7 @@ def _lawspec_case_broker_offsets_sent_in_a_transaction_are(_values):
             g,
             offset,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -9078,6 +9197,7 @@ def _check_broker_offsets_sent_in_a_transaction_are(
             g,
             offset,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -9191,6 +9311,7 @@ def test_broker_offsets_sent_in_a_transaction_are__property(_seed):
                     g,
                     offset,
                     with_cluster,
+                    True,
                 )
             finally:
                 ls.validate(
@@ -9363,8 +9484,14 @@ def _assert_broker_offsets_sent_in_a_transaction_are_2(
     txid,
     g,
     offset,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Broker: |offsets sent in a transaction are committed only with it| [cluster]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:206",
             lambda: _definitions.transactional_offsets(
@@ -9418,6 +9545,7 @@ def _lawspec_case_broker_offsets_sent_in_a_transaction_are_2(_values):
         txid,
         g,
         offset,
+        True,
     )
     return 0
 
@@ -9453,6 +9581,7 @@ def _check_broker_offsets_sent_in_a_transaction_are_2(
         txid,
         g,
         offset,
+        True,
     )
 
 
@@ -9520,6 +9649,7 @@ def test_broker_offsets_sent_in_a_transaction_are_2__property(_seed):
                 txid,
                 g,
                 offset,
+                True,
             )
         except Exception:
             ls.search_remember(
@@ -9671,8 +9801,14 @@ def _assert_broker_the_coordinator_assigns_every_partition(
     g,
     ids,
     with_cluster,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, n):
+    if ls.reach(
+        "lawtwin.kafka::Broker: |the coordinator assigns every partition exactly once| [native]",
+        0,
+        _definitions.created(symbols, t, n),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:219",
             lambda: (
@@ -9798,6 +9934,7 @@ def _lawspec_case_broker_the_coordinator_assigns_every_partition(_values):
             g,
             ids,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -9944,6 +10081,7 @@ def test_broker_the_coordinator_assigns_every_partition__property(_case):
                 g,
                 ids,
                 with_cluster,
+                True,
             )
         finally:
             ls.validate(
@@ -9981,8 +10119,14 @@ def _assert_broker_the_coordinator_assigns_every_partition_2(
     n,
     g,
     ids,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, n):
+    if ls.reach(
+        "lawtwin.kafka::Broker: |the coordinator assigns every partition exactly once| [cluster]",
+        0,
+        _definitions.created(symbols, t, n),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:219",
             lambda: (
@@ -10082,6 +10226,7 @@ def _lawspec_case_broker_the_coordinator_assigns_every_partition_2(_values):
         n,
         g,
         ids,
+        True,
     )
     return 0
 
@@ -10182,6 +10327,7 @@ def test_broker_the_coordinator_assigns_every_partition_2__property(_case):
             n,
             g,
             ids,
+            True,
         )
     except Exception:
         ls.search_remember(
@@ -10200,8 +10346,14 @@ def _assert_broker_a_member_of_an_older_generation_cannot(
     one,
     other,
     with_cluster,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Broker: |a member of an older generation cannot commit| [native]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:237",
             lambda: (
@@ -11173,6 +11325,7 @@ def _lawspec_case_broker_a_member_of_an_older_generation_cannot(_values):
             one,
             other,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -11257,6 +11410,7 @@ def test_broker_a_member_of_an_older_generation_cannot__property(_seed):
                     one,
                     other,
                     with_cluster,
+                    True,
                 )
             finally:
                 ls.validate(
@@ -11437,8 +11591,14 @@ def _assert_broker_a_member_of_an_older_generation_cannot_2(
     g,
     one,
     other,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Broker: |a member of an older generation cannot commit| [cluster]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:237",
             lambda: (
@@ -12384,6 +12544,7 @@ def _lawspec_case_broker_a_member_of_an_older_generation_cannot_2(_values):
         g,
         one,
         other,
+        True,
     )
     return 0
 
@@ -12422,6 +12583,7 @@ def test_broker_a_member_of_an_older_generation_cannot_2__property(_seed):
                 g,
                 one,
                 other,
+                True,
             )
         except Exception:
             ls.search_remember(
@@ -12580,8 +12742,14 @@ def _assert_broker_the_stable_offset_never_passes_the_high(
     txid,
     batch,
     with_cluster,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Broker: |the stable offset never passes the high watermark| [native]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:265",
             lambda: _definitions.stable_below_high(symbols, t, txid, batch),
@@ -12643,6 +12811,7 @@ def _check_broker_the_stable_offset_never_passes_the_high(
             txid,
             batch,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -12812,6 +12981,7 @@ def test_broker_the_stable_offset_never_passes_the_high__property(_case):
             txid,
             batch,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -12841,8 +13011,14 @@ def _assert_broker_the_stable_offset_never_passes_the_high_2(
     t,
     txid,
     batch,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Broker: |the stable offset never passes the high watermark| [cluster]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:265",
             lambda: _definitions.stable_below_high(symbols, t, txid, batch),
@@ -12878,6 +13054,7 @@ def _check_broker_the_stable_offset_never_passes_the_high_2(
         t,
         txid,
         batch,
+        True,
     )
 
 
@@ -13001,6 +13178,7 @@ def test_broker_the_stable_offset_never_passes_the_high_2__property(_case):
         t,
         txid,
         batch,
+        True,
     )
 
 
@@ -13010,80 +13188,92 @@ def _assert_admin_a_new_topic_has_the_partitions_asked_for(
     t,
     n,
     with_cluster,
+    _generated_case,
 ):
-    if _lawspec_schema.match(
-        _schema.Named(
-            "Either",
-            [
-                _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                _schema.Named("Unit"),
-            ],
-        ),
-        ls.attempt(
-            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
-            lambda: ls.native_failures(
-                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
-                lambda _failure: _lawspec_schema.from_native(
-                    _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                    _failure,
-                    MACHINE_BITS,
-                    symbols,
-                ),
-                lambda: ls.validate(
-                    ls.unit_result(
-                        ls.handler(
-                            symbols,
-                            "lawtwin.kafka::ability::Admin",
-                        ).createTopic(
-                            ls.convert(t, "Text", MACHINE_BITS),
-                            ls.convert(n, "Int32", MACHINE_BITS),
-                        ),
-                    ),
-                    "Unit",
-                    MACHINE_BITS,
-                ),
-                (),
-            ),
-            lambda _value: _lawspec_schema.construct(
-                _schema.Named(
-                    "Either",
-                    [
-                        _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                        _schema.Named("Unit"),
-                    ],
-                ),
-                "Either::Right",
-                [ls.convert(_value, "Unit", MACHINE_BITS)],
-                MACHINE_BITS,
-                symbols,
-            ),
-            lambda _value: _lawspec_schema.construct(
-                _schema.Named(
-                    "Either",
-                    [
-                        _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                        _schema.Named("Unit"),
-                    ],
-                ),
-                "Either::Left",
+    if ls.reach(
+        "lawtwin.kafka::Admin: |a new topic has the partitions asked for| [native]",
+        0,
+        _lawspec_schema.match(
+            _schema.Named(
+                "Either",
                 [
-                    _lawspec_schema.validate(
+                    _schema.Named("lawtwin.kafka.model::type::KafkaError"),
+                    _schema.Named("Unit"),
+                ],
+            ),
+            ls.attempt(
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
+                lambda: ls.native_failures(
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
+                    lambda _failure: _lawspec_schema.from_native(
                         _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                        _value,
+                        _failure,
                         MACHINE_BITS,
                         symbols,
                     ),
-                ],
-                MACHINE_BITS,
-                symbols,
+                    lambda: ls.validate(
+                        ls.unit_result(
+                            ls.handler(
+                                symbols,
+                                "lawtwin.kafka::ability::Admin",
+                            ).createTopic(
+                                ls.convert(t, "Text", MACHINE_BITS),
+                                ls.convert(n, "Int32", MACHINE_BITS),
+                            ),
+                        ),
+                        "Unit",
+                        MACHINE_BITS,
+                    ),
+                    (),
+                ),
+                lambda _value: _lawspec_schema.construct(
+                    _schema.Named(
+                        "Either",
+                        [
+                            _schema.Named(
+                                "lawtwin.kafka.model::type::KafkaError",
+                            ),
+                            _schema.Named("Unit"),
+                        ],
+                    ),
+                    "Either::Right",
+                    [ls.convert(_value, "Unit", MACHINE_BITS)],
+                    MACHINE_BITS,
+                    symbols,
+                ),
+                lambda _value: _lawspec_schema.construct(
+                    _schema.Named(
+                        "Either",
+                        [
+                            _schema.Named(
+                                "lawtwin.kafka.model::type::KafkaError",
+                            ),
+                            _schema.Named("Unit"),
+                        ],
+                    ),
+                    "Either::Left",
+                    [
+                        _lawspec_schema.validate(
+                            _schema.Named(
+                                "lawtwin.kafka.model::type::KafkaError",
+                            ),
+                            _value,
+                            MACHINE_BITS,
+                            symbols,
+                        ),
+                    ],
+                    MACHINE_BITS,
+                    symbols,
+                ),
             ),
+            [
+                ["Either::Left", lambda railway_error0: False],
+                ["Either::Right", lambda railway_value1: True],
+            ],
+            MACHINE_BITS,
+            symbols,
         ),
-        [
-            ["Either::Left", lambda railway_error0: False],
-            ["Either::Right", lambda railway_value1: True],
-        ],
-        MACHINE_BITS,
-        symbols,
+        _generated_case,
     ):
         _lawspec_data_assert(
             _case_context + " — ../src/contract.lawspec:973",
@@ -13167,6 +13357,7 @@ def _lawspec_case_admin_a_new_topic_has_the_partitions_asked_for(_values):
             t,
             n,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -13247,6 +13438,7 @@ def test_admin_a_new_topic_has_the_partitions_asked_for__property(_seed):
                     t,
                     n,
                     with_cluster,
+                    True,
                 )
             finally:
                 ls.validate(
@@ -13366,80 +13558,92 @@ def _assert_admin_a_new_topic_has_the_partitions_asked_for_2(
     symbols,
     t,
     n,
+    _generated_case,
 ):
-    if _lawspec_schema.match(
-        _schema.Named(
-            "Either",
-            [
-                _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                _schema.Named("Unit"),
-            ],
-        ),
-        ls.attempt(
-            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
-            lambda: ls.native_failures(
-                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
-                lambda _failure: _lawspec_schema.from_native(
-                    _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                    _failure,
-                    MACHINE_BITS,
-                    symbols,
-                ),
-                lambda: ls.validate(
-                    ls.unit_result(
-                        ls.handler(
-                            symbols,
-                            "lawtwin.kafka::ability::Admin",
-                        ).createTopic(
-                            ls.convert(t, "Text", MACHINE_BITS),
-                            ls.convert(n, "Int32", MACHINE_BITS),
-                        ),
-                    ),
-                    "Unit",
-                    MACHINE_BITS,
-                ),
-                (),
-            ),
-            lambda _value: _lawspec_schema.construct(
-                _schema.Named(
-                    "Either",
-                    [
-                        _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                        _schema.Named("Unit"),
-                    ],
-                ),
-                "Either::Right",
-                [ls.convert(_value, "Unit", MACHINE_BITS)],
-                MACHINE_BITS,
-                symbols,
-            ),
-            lambda _value: _lawspec_schema.construct(
-                _schema.Named(
-                    "Either",
-                    [
-                        _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                        _schema.Named("Unit"),
-                    ],
-                ),
-                "Either::Left",
+    if ls.reach(
+        "lawtwin.kafka::Admin: |a new topic has the partitions asked for| [cluster]",
+        0,
+        _lawspec_schema.match(
+            _schema.Named(
+                "Either",
                 [
-                    _lawspec_schema.validate(
+                    _schema.Named("lawtwin.kafka.model::type::KafkaError"),
+                    _schema.Named("Unit"),
+                ],
+            ),
+            ls.attempt(
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
+                lambda: ls.native_failures(
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
+                    lambda _failure: _lawspec_schema.from_native(
                         _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                        _value,
+                        _failure,
                         MACHINE_BITS,
                         symbols,
                     ),
-                ],
-                MACHINE_BITS,
-                symbols,
+                    lambda: ls.validate(
+                        ls.unit_result(
+                            ls.handler(
+                                symbols,
+                                "lawtwin.kafka::ability::Admin",
+                            ).createTopic(
+                                ls.convert(t, "Text", MACHINE_BITS),
+                                ls.convert(n, "Int32", MACHINE_BITS),
+                            ),
+                        ),
+                        "Unit",
+                        MACHINE_BITS,
+                    ),
+                    (),
+                ),
+                lambda _value: _lawspec_schema.construct(
+                    _schema.Named(
+                        "Either",
+                        [
+                            _schema.Named(
+                                "lawtwin.kafka.model::type::KafkaError",
+                            ),
+                            _schema.Named("Unit"),
+                        ],
+                    ),
+                    "Either::Right",
+                    [ls.convert(_value, "Unit", MACHINE_BITS)],
+                    MACHINE_BITS,
+                    symbols,
+                ),
+                lambda _value: _lawspec_schema.construct(
+                    _schema.Named(
+                        "Either",
+                        [
+                            _schema.Named(
+                                "lawtwin.kafka.model::type::KafkaError",
+                            ),
+                            _schema.Named("Unit"),
+                        ],
+                    ),
+                    "Either::Left",
+                    [
+                        _lawspec_schema.validate(
+                            _schema.Named(
+                                "lawtwin.kafka.model::type::KafkaError",
+                            ),
+                            _value,
+                            MACHINE_BITS,
+                            symbols,
+                        ),
+                    ],
+                    MACHINE_BITS,
+                    symbols,
+                ),
             ),
+            [
+                ["Either::Left", lambda railway_error0: False],
+                ["Either::Right", lambda railway_value1: True],
+            ],
+            MACHINE_BITS,
+            symbols,
         ),
-        [
-            ["Either::Left", lambda railway_error0: False],
-            ["Either::Right", lambda railway_value1: True],
-        ],
-        MACHINE_BITS,
-        symbols,
+        _generated_case,
     ):
         _lawspec_data_assert(
             _case_context + " — ../src/contract.lawspec:973",
@@ -13497,6 +13701,7 @@ def _lawspec_case_admin_a_new_topic_has_the_partitions_asked_for_2(_values):
         symbols,
         t,
         n,
+        True,
     )
     return 0
 
@@ -13531,6 +13736,7 @@ def test_admin_a_new_topic_has_the_partitions_asked_for_2__property(_seed):
                 symbols,
                 t,
                 n,
+                True,
             )
         except Exception:
             ls.search_remember(
@@ -14567,80 +14773,92 @@ def _assert_admin_a_topic_s_partitions_only_grow_native(
     t,
     n,
     with_cluster,
+    _generated_case,
 ):
-    if _lawspec_schema.match(
-        _schema.Named(
-            "Either",
-            [
-                _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                _schema.Named("Unit"),
-            ],
-        ),
-        ls.attempt(
-            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
-            lambda: ls.native_failures(
-                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
-                lambda _failure: _lawspec_schema.from_native(
-                    _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                    _failure,
-                    MACHINE_BITS,
-                    symbols,
-                ),
-                lambda: ls.validate(
-                    ls.unit_result(
-                        ls.handler(
-                            symbols,
-                            "lawtwin.kafka::ability::Admin",
-                        ).createTopic(
-                            ls.convert(t, "Text", MACHINE_BITS),
-                            ls.convert(n, "Int32", MACHINE_BITS),
-                        ),
-                    ),
-                    "Unit",
-                    MACHINE_BITS,
-                ),
-                (),
-            ),
-            lambda _value: _lawspec_schema.construct(
-                _schema.Named(
-                    "Either",
-                    [
-                        _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                        _schema.Named("Unit"),
-                    ],
-                ),
-                "Either::Right",
-                [ls.convert(_value, "Unit", MACHINE_BITS)],
-                MACHINE_BITS,
-                symbols,
-            ),
-            lambda _value: _lawspec_schema.construct(
-                _schema.Named(
-                    "Either",
-                    [
-                        _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                        _schema.Named("Unit"),
-                    ],
-                ),
-                "Either::Left",
+    if ls.reach(
+        "lawtwin.kafka::Admin: |a topic's partitions only grow| [native]",
+        0,
+        _lawspec_schema.match(
+            _schema.Named(
+                "Either",
                 [
-                    _lawspec_schema.validate(
+                    _schema.Named("lawtwin.kafka.model::type::KafkaError"),
+                    _schema.Named("Unit"),
+                ],
+            ),
+            ls.attempt(
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
+                lambda: ls.native_failures(
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
+                    lambda _failure: _lawspec_schema.from_native(
                         _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                        _value,
+                        _failure,
                         MACHINE_BITS,
                         symbols,
                     ),
-                ],
-                MACHINE_BITS,
-                symbols,
+                    lambda: ls.validate(
+                        ls.unit_result(
+                            ls.handler(
+                                symbols,
+                                "lawtwin.kafka::ability::Admin",
+                            ).createTopic(
+                                ls.convert(t, "Text", MACHINE_BITS),
+                                ls.convert(n, "Int32", MACHINE_BITS),
+                            ),
+                        ),
+                        "Unit",
+                        MACHINE_BITS,
+                    ),
+                    (),
+                ),
+                lambda _value: _lawspec_schema.construct(
+                    _schema.Named(
+                        "Either",
+                        [
+                            _schema.Named(
+                                "lawtwin.kafka.model::type::KafkaError",
+                            ),
+                            _schema.Named("Unit"),
+                        ],
+                    ),
+                    "Either::Right",
+                    [ls.convert(_value, "Unit", MACHINE_BITS)],
+                    MACHINE_BITS,
+                    symbols,
+                ),
+                lambda _value: _lawspec_schema.construct(
+                    _schema.Named(
+                        "Either",
+                        [
+                            _schema.Named(
+                                "lawtwin.kafka.model::type::KafkaError",
+                            ),
+                            _schema.Named("Unit"),
+                        ],
+                    ),
+                    "Either::Left",
+                    [
+                        _lawspec_schema.validate(
+                            _schema.Named(
+                                "lawtwin.kafka.model::type::KafkaError",
+                            ),
+                            _value,
+                            MACHINE_BITS,
+                            symbols,
+                        ),
+                    ],
+                    MACHINE_BITS,
+                    symbols,
+                ),
             ),
+            [
+                ["Either::Left", lambda railway_error0: False],
+                ["Either::Right", lambda railway_value1: True],
+            ],
+            MACHINE_BITS,
+            symbols,
         ),
-        [
-            ["Either::Left", lambda railway_error0: False],
-            ["Either::Right", lambda railway_value1: True],
-        ],
-        MACHINE_BITS,
-        symbols,
+        _generated_case,
     ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:991",
@@ -15027,6 +15245,7 @@ def _lawspec_case_admin_a_topic_s_partitions_only_grow_native(_values):
             t,
             n,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -15107,6 +15326,7 @@ def test_admin_a_topic_s_partitions_only_grow_native__property(_seed):
                     t,
                     n,
                     with_cluster,
+                    True,
                 )
             finally:
                 ls.validate(
@@ -15226,80 +15446,92 @@ def _assert_admin_a_topic_s_partitions_only_grow_cluster(
     symbols,
     t,
     n,
+    _generated_case,
 ):
-    if _lawspec_schema.match(
-        _schema.Named(
-            "Either",
-            [
-                _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                _schema.Named("Unit"),
-            ],
-        ),
-        ls.attempt(
-            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
-            lambda: ls.native_failures(
-                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
-                lambda _failure: _lawspec_schema.from_native(
-                    _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                    _failure,
-                    MACHINE_BITS,
-                    symbols,
-                ),
-                lambda: ls.validate(
-                    ls.unit_result(
-                        ls.handler(
-                            symbols,
-                            "lawtwin.kafka::ability::Admin",
-                        ).createTopic(
-                            ls.convert(t, "Text", MACHINE_BITS),
-                            ls.convert(n, "Int32", MACHINE_BITS),
-                        ),
-                    ),
-                    "Unit",
-                    MACHINE_BITS,
-                ),
-                (),
-            ),
-            lambda _value: _lawspec_schema.construct(
-                _schema.Named(
-                    "Either",
-                    [
-                        _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                        _schema.Named("Unit"),
-                    ],
-                ),
-                "Either::Right",
-                [ls.convert(_value, "Unit", MACHINE_BITS)],
-                MACHINE_BITS,
-                symbols,
-            ),
-            lambda _value: _lawspec_schema.construct(
-                _schema.Named(
-                    "Either",
-                    [
-                        _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                        _schema.Named("Unit"),
-                    ],
-                ),
-                "Either::Left",
+    if ls.reach(
+        "lawtwin.kafka::Admin: |a topic's partitions only grow| [cluster]",
+        0,
+        _lawspec_schema.match(
+            _schema.Named(
+                "Either",
                 [
-                    _lawspec_schema.validate(
+                    _schema.Named("lawtwin.kafka.model::type::KafkaError"),
+                    _schema.Named("Unit"),
+                ],
+            ),
+            ls.attempt(
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
+                lambda: ls.native_failures(
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
+                    lambda _failure: _lawspec_schema.from_native(
                         _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                        _value,
+                        _failure,
                         MACHINE_BITS,
                         symbols,
                     ),
-                ],
-                MACHINE_BITS,
-                symbols,
+                    lambda: ls.validate(
+                        ls.unit_result(
+                            ls.handler(
+                                symbols,
+                                "lawtwin.kafka::ability::Admin",
+                            ).createTopic(
+                                ls.convert(t, "Text", MACHINE_BITS),
+                                ls.convert(n, "Int32", MACHINE_BITS),
+                            ),
+                        ),
+                        "Unit",
+                        MACHINE_BITS,
+                    ),
+                    (),
+                ),
+                lambda _value: _lawspec_schema.construct(
+                    _schema.Named(
+                        "Either",
+                        [
+                            _schema.Named(
+                                "lawtwin.kafka.model::type::KafkaError",
+                            ),
+                            _schema.Named("Unit"),
+                        ],
+                    ),
+                    "Either::Right",
+                    [ls.convert(_value, "Unit", MACHINE_BITS)],
+                    MACHINE_BITS,
+                    symbols,
+                ),
+                lambda _value: _lawspec_schema.construct(
+                    _schema.Named(
+                        "Either",
+                        [
+                            _schema.Named(
+                                "lawtwin.kafka.model::type::KafkaError",
+                            ),
+                            _schema.Named("Unit"),
+                        ],
+                    ),
+                    "Either::Left",
+                    [
+                        _lawspec_schema.validate(
+                            _schema.Named(
+                                "lawtwin.kafka.model::type::KafkaError",
+                            ),
+                            _value,
+                            MACHINE_BITS,
+                            symbols,
+                        ),
+                    ],
+                    MACHINE_BITS,
+                    symbols,
+                ),
             ),
+            [
+                ["Either::Left", lambda railway_error0: False],
+                ["Either::Right", lambda railway_value1: True],
+            ],
+            MACHINE_BITS,
+            symbols,
         ),
-        [
-            ["Either::Left", lambda railway_error0: False],
-            ["Either::Right", lambda railway_value1: True],
-        ],
-        MACHINE_BITS,
-        symbols,
+        _generated_case,
     ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:991",
@@ -15661,6 +15893,7 @@ def _lawspec_case_admin_a_topic_s_partitions_only_grow_cluster(_values):
         symbols,
         t,
         n,
+        True,
     )
     return 0
 
@@ -15695,6 +15928,7 @@ def test_admin_a_topic_s_partitions_only_grow_cluster__property(_seed):
                 symbols,
                 t,
                 n,
+                True,
             )
         except Exception:
             ls.search_remember(
@@ -15793,80 +16027,92 @@ def _assert_admin_a_new_topic_starts_at_offset_zero_native(
     t,
     n,
     with_cluster,
+    _generated_case,
 ):
-    if _lawspec_schema.match(
-        _schema.Named(
-            "Either",
-            [
-                _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                _schema.Named("Unit"),
-            ],
-        ),
-        ls.attempt(
-            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
-            lambda: ls.native_failures(
-                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
-                lambda _failure: _lawspec_schema.from_native(
-                    _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                    _failure,
-                    MACHINE_BITS,
-                    symbols,
-                ),
-                lambda: ls.validate(
-                    ls.unit_result(
-                        ls.handler(
-                            symbols,
-                            "lawtwin.kafka::ability::Admin",
-                        ).createTopic(
-                            ls.convert(t, "Text", MACHINE_BITS),
-                            ls.convert(n, "Int32", MACHINE_BITS),
-                        ),
-                    ),
-                    "Unit",
-                    MACHINE_BITS,
-                ),
-                (),
-            ),
-            lambda _value: _lawspec_schema.construct(
-                _schema.Named(
-                    "Either",
-                    [
-                        _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                        _schema.Named("Unit"),
-                    ],
-                ),
-                "Either::Right",
-                [ls.convert(_value, "Unit", MACHINE_BITS)],
-                MACHINE_BITS,
-                symbols,
-            ),
-            lambda _value: _lawspec_schema.construct(
-                _schema.Named(
-                    "Either",
-                    [
-                        _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                        _schema.Named("Unit"),
-                    ],
-                ),
-                "Either::Left",
+    if ls.reach(
+        "lawtwin.kafka::Admin: |a new topic starts at offset zero| [native]",
+        0,
+        _lawspec_schema.match(
+            _schema.Named(
+                "Either",
                 [
-                    _lawspec_schema.validate(
+                    _schema.Named("lawtwin.kafka.model::type::KafkaError"),
+                    _schema.Named("Unit"),
+                ],
+            ),
+            ls.attempt(
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
+                lambda: ls.native_failures(
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
+                    lambda _failure: _lawspec_schema.from_native(
                         _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                        _value,
+                        _failure,
                         MACHINE_BITS,
                         symbols,
                     ),
-                ],
-                MACHINE_BITS,
-                symbols,
+                    lambda: ls.validate(
+                        ls.unit_result(
+                            ls.handler(
+                                symbols,
+                                "lawtwin.kafka::ability::Admin",
+                            ).createTopic(
+                                ls.convert(t, "Text", MACHINE_BITS),
+                                ls.convert(n, "Int32", MACHINE_BITS),
+                            ),
+                        ),
+                        "Unit",
+                        MACHINE_BITS,
+                    ),
+                    (),
+                ),
+                lambda _value: _lawspec_schema.construct(
+                    _schema.Named(
+                        "Either",
+                        [
+                            _schema.Named(
+                                "lawtwin.kafka.model::type::KafkaError",
+                            ),
+                            _schema.Named("Unit"),
+                        ],
+                    ),
+                    "Either::Right",
+                    [ls.convert(_value, "Unit", MACHINE_BITS)],
+                    MACHINE_BITS,
+                    symbols,
+                ),
+                lambda _value: _lawspec_schema.construct(
+                    _schema.Named(
+                        "Either",
+                        [
+                            _schema.Named(
+                                "lawtwin.kafka.model::type::KafkaError",
+                            ),
+                            _schema.Named("Unit"),
+                        ],
+                    ),
+                    "Either::Left",
+                    [
+                        _lawspec_schema.validate(
+                            _schema.Named(
+                                "lawtwin.kafka.model::type::KafkaError",
+                            ),
+                            _value,
+                            MACHINE_BITS,
+                            symbols,
+                        ),
+                    ],
+                    MACHINE_BITS,
+                    symbols,
+                ),
             ),
+            [
+                ["Either::Left", lambda railway_error0: False],
+                ["Either::Right", lambda railway_value1: True],
+            ],
+            MACHINE_BITS,
+            symbols,
         ),
-        [
-            ["Either::Left", lambda railway_error0: False],
-            ["Either::Right", lambda railway_value1: True],
-        ],
-        MACHINE_BITS,
-        symbols,
+        _generated_case,
     ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:1004",
@@ -16297,6 +16543,7 @@ def _lawspec_case_admin_a_new_topic_starts_at_offset_zero_native(_values):
             t,
             n,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -16377,6 +16624,7 @@ def test_admin_a_new_topic_starts_at_offset_zero_native__property(_seed):
                     t,
                     n,
                     with_cluster,
+                    True,
                 )
             finally:
                 ls.validate(
@@ -16496,80 +16744,92 @@ def _assert_admin_a_new_topic_starts_at_offset_zero_cluster(
     symbols,
     t,
     n,
+    _generated_case,
 ):
-    if _lawspec_schema.match(
-        _schema.Named(
-            "Either",
-            [
-                _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                _schema.Named("Unit"),
-            ],
-        ),
-        ls.attempt(
-            "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
-            lambda: ls.native_failures(
-                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
-                lambda _failure: _lawspec_schema.from_native(
-                    _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                    _failure,
-                    MACHINE_BITS,
-                    symbols,
-                ),
-                lambda: ls.validate(
-                    ls.unit_result(
-                        ls.handler(
-                            symbols,
-                            "lawtwin.kafka::ability::Admin",
-                        ).createTopic(
-                            ls.convert(t, "Text", MACHINE_BITS),
-                            ls.convert(n, "Int32", MACHINE_BITS),
-                        ),
-                    ),
-                    "Unit",
-                    MACHINE_BITS,
-                ),
-                (),
-            ),
-            lambda _value: _lawspec_schema.construct(
-                _schema.Named(
-                    "Either",
-                    [
-                        _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                        _schema.Named("Unit"),
-                    ],
-                ),
-                "Either::Right",
-                [ls.convert(_value, "Unit", MACHINE_BITS)],
-                MACHINE_BITS,
-                symbols,
-            ),
-            lambda _value: _lawspec_schema.construct(
-                _schema.Named(
-                    "Either",
-                    [
-                        _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                        _schema.Named("Unit"),
-                    ],
-                ),
-                "Either::Left",
+    if ls.reach(
+        "lawtwin.kafka::Admin: |a new topic starts at offset zero| [cluster]",
+        0,
+        _lawspec_schema.match(
+            _schema.Named(
+                "Either",
                 [
-                    _lawspec_schema.validate(
+                    _schema.Named("lawtwin.kafka.model::type::KafkaError"),
+                    _schema.Named("Unit"),
+                ],
+            ),
+            ls.attempt(
+                "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
+                lambda: ls.native_failures(
+                    "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
+                    lambda _failure: _lawspec_schema.from_native(
                         _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                        _value,
+                        _failure,
                         MACHINE_BITS,
                         symbols,
                     ),
-                ],
-                MACHINE_BITS,
-                symbols,
+                    lambda: ls.validate(
+                        ls.unit_result(
+                            ls.handler(
+                                symbols,
+                                "lawtwin.kafka::ability::Admin",
+                            ).createTopic(
+                                ls.convert(t, "Text", MACHINE_BITS),
+                                ls.convert(n, "Int32", MACHINE_BITS),
+                            ),
+                        ),
+                        "Unit",
+                        MACHINE_BITS,
+                    ),
+                    (),
+                ),
+                lambda _value: _lawspec_schema.construct(
+                    _schema.Named(
+                        "Either",
+                        [
+                            _schema.Named(
+                                "lawtwin.kafka.model::type::KafkaError",
+                            ),
+                            _schema.Named("Unit"),
+                        ],
+                    ),
+                    "Either::Right",
+                    [ls.convert(_value, "Unit", MACHINE_BITS)],
+                    MACHINE_BITS,
+                    symbols,
+                ),
+                lambda _value: _lawspec_schema.construct(
+                    _schema.Named(
+                        "Either",
+                        [
+                            _schema.Named(
+                                "lawtwin.kafka.model::type::KafkaError",
+                            ),
+                            _schema.Named("Unit"),
+                        ],
+                    ),
+                    "Either::Left",
+                    [
+                        _lawspec_schema.validate(
+                            _schema.Named(
+                                "lawtwin.kafka.model::type::KafkaError",
+                            ),
+                            _value,
+                            MACHINE_BITS,
+                            symbols,
+                        ),
+                    ],
+                    MACHINE_BITS,
+                    symbols,
+                ),
             ),
+            [
+                ["Either::Left", lambda railway_error0: False],
+                ["Either::Right", lambda railway_value1: True],
+            ],
+            MACHINE_BITS,
+            symbols,
         ),
-        [
-            ["Either::Left", lambda railway_error0: False],
-            ["Either::Right", lambda railway_value1: True],
-        ],
-        MACHINE_BITS,
-        symbols,
+        _generated_case,
     ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:1004",
@@ -16974,6 +17234,7 @@ def _lawspec_case_admin_a_new_topic_starts_at_offset_zero_cluster(_values):
         symbols,
         t,
         n,
+        True,
     )
     return 0
 
@@ -17008,6 +17269,7 @@ def test_admin_a_new_topic_starts_at_offset_zero_cluster__property(_seed):
                 symbols,
                 t,
                 n,
+                True,
             )
         except Exception:
             ls.search_remember(
@@ -18518,8 +18780,14 @@ def _assert_producer_records_sent_to_one_partition_are_read(
     first,
     second,
     with_cluster,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Producer: |records sent to one partition are read in the order sent| [native]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:1147",
             lambda: (
@@ -18752,6 +19020,7 @@ def _check_producer_records_sent_to_one_partition_are_read(
             first,
             second,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -18970,6 +19239,7 @@ def test_producer_records_sent_to_one_partition_are_read__property(_case):
             first,
             second,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -18999,8 +19269,14 @@ def _assert_producer_a_flushed_record_is_in_the_log_native(
     t,
     r,
     with_cluster,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Producer: |a flushed record is in the log| [native]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:1164",
             lambda: (
@@ -19395,6 +19671,7 @@ def _check_producer_a_flushed_record_is_in_the_log_native(
             t,
             r,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -19562,6 +19839,7 @@ def test_producer_a_flushed_record_is_in_the_log_native__property(_case):
             t,
             r,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -19591,8 +19869,14 @@ def _assert_producer_an_idempotent_producer_s_retried_send(
     t,
     r,
     with_cluster,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Producer: |an idempotent producer's retried send is written once| [native]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:1183",
             lambda: (
@@ -20086,6 +20370,7 @@ def _check_producer_an_idempotent_producer_s_retried_send(
             t,
             r,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -20251,6 +20536,7 @@ def test_producer_an_idempotent_producer_s_retried_send__property(_case):
             t,
             r,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -20283,8 +20569,14 @@ def _assert_producer_records_with_one_key_go_to_one(
     first,
     second,
     with_cluster,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, n):
+    if ls.reach(
+        "lawtwin.kafka::Producer: |records with one key go to one partition| [native]",
+        0,
+        _definitions.created(symbols, t, n),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:1204",
             lambda: (
@@ -20642,6 +20934,7 @@ def test_producer_records_with_one_key_go_to_one__property(_case):
             first,
             second,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -20672,8 +20965,14 @@ def _assert_producer_a_send_to_a_partition_the_topic_lacks(
     n,
     r,
     with_cluster,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, n):
+    if ls.reach(
+        "lawtwin.kafka::Producer: |a send to a partition the topic lacks is refused| [native]",
+        0,
+        _definitions.created(symbols, t, n),
+        _generated_case,
+    ):
         _lawspec_data_assert(
             _case_context + " — ../src/contract.lawspec:1219",
             lambda: ls.handler_schema(_lawspec_schema).from_native(
@@ -20881,6 +21180,7 @@ def test_producer_a_send_to_a_partition_the_topic_lacks__property(_case):
             n,
             r,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -20913,8 +21213,14 @@ def _assert_consumer_a_restarted_consumer_resumes_at_its(
     batch,
     n,
     with_cluster,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Consumer: |a restarted consumer resumes at its committed offset| [native]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:1306",
             lambda: (
@@ -21239,6 +21545,7 @@ def test_consumer_a_restarted_consumer_resumes_at_its__property(_case):
             batch,
             n,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -21268,8 +21575,14 @@ def _assert_consumer_a_poll_reads_each_partition_in_offset(
     t,
     batch,
     with_cluster,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Consumer: |a poll reads each partition in offset order| [native]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:1322",
             lambda: (
@@ -21642,6 +21955,7 @@ def _check_consumer_a_poll_reads_each_partition_in_offset(
             t,
             batch,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -21795,6 +22109,7 @@ def test_consumer_a_poll_reads_each_partition_in_offset__property(_case):
             t,
             batch,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -21824,8 +22139,14 @@ def _assert_consumer_seek_sets_the_position_native(
     t,
     offset,
     with_cluster,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Consumer: |seek sets the position| [native]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_data_assert(
             _case_context + " — ../src/contract.lawspec:1337",
             lambda: (
@@ -22058,6 +22379,7 @@ def _lawspec_case_consumer_seek_sets_the_position_native(_values):
             t,
             offset,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -22140,6 +22462,7 @@ def _check_consumer_seek_sets_the_position_native(_case_values, _case_context):
             t,
             offset,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -22234,6 +22557,7 @@ def test_consumer_seek_sets_the_position_native__property(_seed):
                     t,
                     offset,
                     with_cluster,
+                    True,
                 )
             finally:
                 ls.validate(
@@ -22869,8 +23193,14 @@ def _assert_consumer_a_read_committed_consumer_never_sees(
     aborted,
     plain,
     with_cluster,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Consumer: |a read-committed consumer never sees aborted records| [native]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:1359",
             lambda: (
@@ -23383,6 +23713,7 @@ def _check_consumer_a_read_committed_consumer_never_sees(
             aborted,
             plain,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -23681,6 +24012,7 @@ def test_consumer_a_read_committed_consumer_never_sees__property(_case):
             aborted,
             plain,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -23712,8 +24044,14 @@ def _assert_groupcoordinator_every_partition_has_exactly_one(
     g,
     ids,
     with_cluster,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, n):
+    if ls.reach(
+        "lawtwin.kafka::GroupCoordinator: |every partition has exactly one owner in a generation| [native]",
+        0,
+        _definitions.created(symbols, t, n),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:1494",
             lambda: (
@@ -23842,6 +24180,7 @@ def _lawspec_case_groupcoordinator_every_partition_has_exactly_one(_values):
             g,
             ids,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -23996,6 +24335,7 @@ def test_groupcoordinator_every_partition_has_exactly_one__property(_case):
                 g,
                 ids,
                 with_cluster,
+                True,
             )
         finally:
             ls.validate(
@@ -24033,8 +24373,14 @@ def _assert_groupcoordinator_every_partition_has_exactly_one_2(
     n,
     g,
     ids,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, n):
+    if ls.reach(
+        "lawtwin.kafka::GroupCoordinator: |every partition has exactly one owner in a generation| [cluster]",
+        0,
+        _definitions.created(symbols, t, n),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:1494",
             lambda: (
@@ -24132,6 +24478,7 @@ def _lawspec_case_groupcoordinator_every_partition_has_exactly_one_2(_values):
         n,
         g,
         ids,
+        True,
     )
     return 0
 
@@ -24235,6 +24582,7 @@ def test_groupcoordinator_every_partition_has_exactly_one_2__property(_case):
             n,
             g,
             ids,
+            True,
         )
     except Exception:
         ls.search_remember(
@@ -24253,8 +24601,14 @@ def _assert_groupcoordinator_a_sync_gives_a_member_the(
     g,
     m,
     with_cluster,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, n):
+    if ls.reach(
+        "lawtwin.kafka::GroupCoordinator: |a sync gives a member the partitions the group view shows| [native]",
+        0,
+        _definitions.created(symbols, t, n),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:1506",
             lambda: (
@@ -24688,6 +25042,7 @@ def _lawspec_case_groupcoordinator_a_sync_gives_a_member_the(_values):
             g,
             m,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -24780,6 +25135,7 @@ def test_groupcoordinator_a_sync_gives_a_member_the__property(_seed):
                     g,
                     m,
                     with_cluster,
+                    True,
                 )
             finally:
                 ls.validate(
@@ -24949,8 +25305,14 @@ def _assert_groupcoordinator_a_sync_gives_a_member_the_2(
     n,
     g,
     m,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, n):
+    if ls.reach(
+        "lawtwin.kafka::GroupCoordinator: |a sync gives a member the partitions the group view shows| [cluster]",
+        0,
+        _definitions.created(symbols, t, n),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:1506",
             lambda: (
@@ -25353,6 +25715,7 @@ def _lawspec_case_groupcoordinator_a_sync_gives_a_member_the_2(_values):
         n,
         g,
         m,
+        True,
     )
     return 0
 
@@ -25394,6 +25757,7 @@ def test_groupcoordinator_a_sync_gives_a_member_the_2__property(_seed):
                 n,
                 g,
                 m,
+                True,
             )
         except Exception:
             ls.search_remember(
@@ -25542,8 +25906,14 @@ def _assert_groupcoordinator_a_commit_from_an_older(
     one,
     other,
     with_cluster,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::GroupCoordinator: |a commit from an older generation is refused| [native]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:1525",
             lambda: (
@@ -26469,6 +26839,7 @@ def _lawspec_case_groupcoordinator_a_commit_from_an_older(_values):
             one,
             other,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -26561,6 +26932,7 @@ def test_groupcoordinator_a_commit_from_an_older__property(_seed):
                     one,
                     other,
                     with_cluster,
+                    True,
                 )
             finally:
                 ls.validate(
@@ -26741,8 +27113,14 @@ def _assert_groupcoordinator_a_commit_from_an_older_2(
     g,
     one,
     other,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::GroupCoordinator: |a commit from an older generation is refused| [cluster]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:1525",
             lambda: (
@@ -27637,6 +28015,7 @@ def _lawspec_case_groupcoordinator_a_commit_from_an_older_2(_values):
         g,
         one,
         other,
+        True,
     )
     return 0
 
@@ -27678,6 +28057,7 @@ def test_groupcoordinator_a_commit_from_an_older_2__property(_seed):
                 g,
                 one,
                 other,
+                True,
             )
         except Exception:
             ls.search_remember(
@@ -27837,8 +28217,14 @@ def _assert_groupcoordinator_a_heartbeat_from_an_older(
     one,
     other,
     with_cluster,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::GroupCoordinator: |a heartbeat from an older generation asks the member to rejoin| [native]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:1551",
             lambda: (
@@ -28744,6 +29130,7 @@ def _lawspec_case_groupcoordinator_a_heartbeat_from_an_older(_values):
             one,
             other,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -28836,6 +29223,7 @@ def test_groupcoordinator_a_heartbeat_from_an_older__property(_seed):
                     one,
                     other,
                     with_cluster,
+                    True,
                 )
             finally:
                 ls.validate(
@@ -29016,8 +29404,14 @@ def _assert_groupcoordinator_a_heartbeat_from_an_older_2(
     g,
     one,
     other,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::GroupCoordinator: |a heartbeat from an older generation asks the member to rejoin| [cluster]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:1551",
             lambda: (
@@ -29892,6 +30286,7 @@ def _lawspec_case_groupcoordinator_a_heartbeat_from_an_older_2(_values):
         g,
         one,
         other,
+        True,
     )
     return 0
 
@@ -29933,6 +30328,7 @@ def test_groupcoordinator_a_heartbeat_from_an_older_2__property(_seed):
                 g,
                 one,
                 other,
+                True,
             )
         except Exception:
             ls.search_remember(
@@ -30091,8 +30487,14 @@ def _assert_groupcoordinator_leaving_starts_a_new_generation(
     g,
     m,
     with_cluster,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::GroupCoordinator: |leaving starts a new generation| [native]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:1577",
             lambda: (
@@ -30658,6 +31060,7 @@ def _lawspec_case_groupcoordinator_leaving_starts_a_new_generation(_values):
             g,
             m,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -30745,6 +31148,7 @@ def _check_groupcoordinator_leaving_starts_a_new_generation(
             g,
             m,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -30867,6 +31271,7 @@ def test_groupcoordinator_leaving_starts_a_new_generation__property(_seed):
                     g,
                     m,
                     with_cluster,
+                    True,
                 )
             finally:
                 ls.validate(
@@ -31018,8 +31423,14 @@ def _assert_groupcoordinator_leaving_starts_a_new_generation_2(
     t,
     g,
     m,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::GroupCoordinator: |leaving starts a new generation| [cluster]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:1577",
             lambda: (
@@ -31554,6 +31965,7 @@ def _lawspec_case_groupcoordinator_leaving_starts_a_new_generation_2(_values):
         t,
         g,
         m,
+        True,
     )
     return 0
 
@@ -31590,6 +32002,7 @@ def _check_groupcoordinator_leaving_starts_a_new_generation_2(
         t,
         g,
         m,
+        True,
     )
 
 
@@ -31661,6 +32074,7 @@ def test_groupcoordinator_leaving_starts_a_new_generation_2__property(_seed):
                 t,
                 g,
                 m,
+                True,
             )
         except Exception:
             ls.search_remember(
@@ -31792,8 +32206,14 @@ def _assert_groupcoordinator_a_committed_offset_can_be(
     m,
     offset,
     with_cluster,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::GroupCoordinator: |a committed offset can be fetched| [native]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:1592",
             lambda: (
@@ -32273,6 +32693,7 @@ def _lawspec_case_groupcoordinator_a_committed_offset_can_be(_values):
             m,
             offset,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -32362,6 +32783,7 @@ def _check_groupcoordinator_a_committed_offset_can_be(
             m,
             offset,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -32483,6 +32905,7 @@ def test_groupcoordinator_a_committed_offset_can_be__property(_seed):
                     m,
                     offset,
                     with_cluster,
+                    True,
                 )
             finally:
                 ls.validate(
@@ -32655,8 +33078,14 @@ def _assert_groupcoordinator_a_committed_offset_can_be_2(
     g,
     m,
     offset,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::GroupCoordinator: |a committed offset can be fetched| [cluster]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:1592",
             lambda: (
@@ -33105,6 +33534,7 @@ def _lawspec_case_groupcoordinator_a_committed_offset_can_be_2(_values):
         g,
         m,
         offset,
+        True,
     )
     return 0
 
@@ -33143,6 +33573,7 @@ def _check_groupcoordinator_a_committed_offset_can_be_2(
         g,
         m,
         offset,
+        True,
     )
 
 
@@ -33213,6 +33644,7 @@ def test_groupcoordinator_a_committed_offset_can_be_2__property(_seed):
                 g,
                 m,
                 offset,
+                True,
             )
         except Exception:
             ls.search_remember(
@@ -33363,8 +33795,14 @@ def _assert_transactions_a_newer_instance_fences_a_zombie(
     txid,
     r,
     with_cluster,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Transactions: |a newer instance fences a zombie| [native]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:1645",
             lambda: (
@@ -33778,6 +34216,7 @@ def _check_transactions_a_newer_instance_fences_a_zombie(
             txid,
             r,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -33969,6 +34408,7 @@ def test_transactions_a_newer_instance_fences_a_zombie__property(_case):
             txid,
             r,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -33999,8 +34439,14 @@ def _assert_transactions_aborted_records_are_never_read(
     txid,
     r,
     with_cluster,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Transactions: |aborted records are never read committed| [native]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:1665",
             lambda: (
@@ -34376,6 +34822,7 @@ def _check_transactions_aborted_records_are_never_read(
             txid,
             r,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -34567,6 +35014,7 @@ def test_transactions_aborted_records_are_never_read__property(_case):
             txid,
             r,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -34598,8 +35046,14 @@ def _assert_transactions_committed_records_are_read(
     first,
     second,
     with_cluster,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Transactions: |committed records are read committed together and in order| [native]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:1683",
             lambda: (
@@ -35162,6 +35616,7 @@ def _check_transactions_committed_records_are_read(_case_values, _case_context):
             first,
             second,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -35460,6 +35915,7 @@ def test_transactions_committed_records_are_read__property(_case):
             first,
             second,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -35491,8 +35947,14 @@ def _assert_transactions_offsets_sent_in_an_aborted(
     g,
     offset,
     with_cluster,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Transactions: |offsets sent in an aborted transaction are not committed| [native]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:1707",
             lambda: (
@@ -35956,6 +36418,7 @@ def _lawspec_case_transactions_offsets_sent_in_an_aborted(_values):
             g,
             offset,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -36042,6 +36505,7 @@ def _check_transactions_offsets_sent_in_an_aborted(_case_values, _case_context):
             g,
             offset,
             with_cluster,
+            True,
         )
     finally:
         ls.validate(
@@ -36163,6 +36627,7 @@ def test_transactions_offsets_sent_in_an_aborted__property(_seed):
                     g,
                     offset,
                     with_cluster,
+                    True,
                 )
             finally:
                 ls.validate(
@@ -36691,8 +37156,14 @@ def _assert_producer_records_sent_to_one_partition_are_read_2(
     t,
     first,
     second,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Producer: |records sent to one partition are read in the order sent| [reference]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:1147",
             lambda: (
@@ -36894,6 +37365,7 @@ def _check_producer_records_sent_to_one_partition_are_read_2(
         t,
         first,
         second,
+        True,
     )
 
 
@@ -37061,6 +37533,7 @@ def test_producer_records_sent_to_one_partition_are_read_2__property(_case):
         t,
         first,
         second,
+        True,
     )
 
 
@@ -37069,8 +37542,14 @@ def _assert_producer_a_flushed_record_is_in_the_log(
     symbols,
     t,
     r,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Producer: |a flushed record is in the log| [reference]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:1164",
             lambda: (
@@ -37436,6 +37915,7 @@ def _check_producer_a_flushed_record_is_in_the_log(_case_values, _case_context):
         symbols,
         t,
         r,
+        True,
     )
 
 
@@ -37555,6 +38035,7 @@ def test_producer_a_flushed_record_is_in_the_log__property(_case):
         symbols,
         t,
         r,
+        True,
     )
 
 
@@ -37563,8 +38044,14 @@ def _assert_producer_an_idempotent_producer_s_retried_send_2(
     symbols,
     t,
     r,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Producer: |an idempotent producer's retried send is written once| [reference]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:1183",
             lambda: (
@@ -38032,6 +38519,7 @@ def _check_producer_an_idempotent_producer_s_retried_send_2(
         symbols,
         t,
         r,
+        True,
     )
 
 
@@ -38151,6 +38639,7 @@ def test_producer_an_idempotent_producer_s_retried_send_2__property(_case):
         symbols,
         t,
         r,
+        True,
     )
 
 
@@ -38162,8 +38651,14 @@ def _assert_producer_records_with_one_key_go_to_one_2(
     key,
     first,
     second,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, n):
+    if ls.reach(
+        "lawtwin.kafka::Producer: |records with one key go to one partition| [reference]",
+        0,
+        _definitions.created(symbols, t, n),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:1204",
             lambda: (
@@ -38495,6 +38990,7 @@ def test_producer_records_with_one_key_go_to_one_2__property(_case):
         key,
         first,
         second,
+        True,
     )
 
 
@@ -38504,8 +39000,14 @@ def _assert_producer_a_send_to_a_partition_the_topic_lacks_2(
     t,
     n,
     r,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, n):
+    if ls.reach(
+        "lawtwin.kafka::Producer: |a send to a partition the topic lacks is refused| [reference]",
+        0,
+        _definitions.created(symbols, t, n),
+        _generated_case,
+    ):
         _lawspec_data_assert(
             _case_context + " — ../src/contract.lawspec:1219",
             lambda: ls.handler_schema(_lawspec_schema).from_native(
@@ -38687,6 +39189,7 @@ def test_producer_a_send_to_a_partition_the_topic_lacks_2__property(_case):
         t,
         n,
         r,
+        True,
     )
 
 
@@ -38698,8 +39201,14 @@ def _assert_consumer_a_restarted_consumer_resumes_at_its_2(
     m,
     batch,
     n,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Consumer: |a restarted consumer resumes at its committed offset| [reference]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:1306",
             lambda: (
@@ -38995,6 +39504,7 @@ def test_consumer_a_restarted_consumer_resumes_at_its_2__property(_case):
         m,
         batch,
         n,
+        True,
     )
 
 
@@ -39003,8 +39513,14 @@ def _assert_consumer_a_poll_reads_each_partition_in_offset_2(
     symbols,
     t,
     batch,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Consumer: |a poll reads each partition in offset order| [reference]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:1322",
             lambda: (
@@ -39348,6 +39864,7 @@ def _check_consumer_a_poll_reads_each_partition_in_offset_2(
         symbols,
         t,
         batch,
+        True,
     )
 
 
@@ -39452,6 +39969,7 @@ def test_consumer_a_poll_reads_each_partition_in_offset_2__property(_case):
         symbols,
         t,
         batch,
+        True,
     )
 
 
@@ -39460,8 +39978,14 @@ def _assert_consumer_seek_sets_the_position_reference(
     symbols,
     t,
     offset,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Consumer: |seek sets the position| [reference]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_data_assert(
             _case_context + " — ../src/contract.lawspec:1337",
             lambda: (
@@ -39665,6 +40189,7 @@ def _lawspec_case_consumer_seek_sets_the_position_reference(_values):
         symbols,
         t,
         offset,
+        True,
     )
     return 0
 
@@ -39701,6 +40226,7 @@ def _check_consumer_seek_sets_the_position_reference(
         symbols,
         t,
         offset,
+        True,
     )
 
 
@@ -39746,6 +40272,7 @@ def test_consumer_seek_sets_the_position_reference__property(_seed):
                 symbols,
                 t,
                 offset,
+                True,
             )
         except Exception:
             ls.search_remember(
@@ -40235,8 +40762,14 @@ def _assert_consumer_a_read_committed_consumer_never_sees_2(
     txid,
     aborted,
     plain,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Consumer: |a read-committed consumer never sees aborted records| [reference]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:1359",
             lambda: (
@@ -40720,6 +41253,7 @@ def _check_consumer_a_read_committed_consumer_never_sees_2(
         txid,
         aborted,
         plain,
+        True,
     )
 
 
@@ -40969,6 +41503,7 @@ def test_consumer_a_read_committed_consumer_never_sees_2__property(_case):
         txid,
         aborted,
         plain,
+        True,
     )
 
 
@@ -40978,8 +41513,14 @@ def _assert_transactions_a_newer_instance_fences_a_zombie_2(
     t,
     txid,
     r,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Transactions: |a newer instance fences a zombie| [reference]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:1645",
             lambda: (
@@ -41367,6 +41908,7 @@ def _check_transactions_a_newer_instance_fences_a_zombie_2(
         t,
         txid,
         r,
+        True,
     )
 
 
@@ -41512,6 +42054,7 @@ def test_transactions_a_newer_instance_fences_a_zombie_2__property(_case):
         t,
         txid,
         r,
+        True,
     )
 
 
@@ -41521,8 +42064,14 @@ def _assert_transactions_aborted_records_are_never_read_2(
     t,
     txid,
     r,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Transactions: |aborted records are never read committed| [reference]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:1665",
             lambda: (
@@ -41872,6 +42421,7 @@ def _check_transactions_aborted_records_are_never_read_2(
         t,
         txid,
         r,
+        True,
     )
 
 
@@ -42017,6 +42567,7 @@ def test_transactions_aborted_records_are_never_read_2__property(_case):
         t,
         txid,
         r,
+        True,
     )
 
 
@@ -42027,8 +42578,14 @@ def _assert_transactions_committed_records_are_read_2(
     txid,
     first,
     second,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Transactions: |committed records are read committed together and in order| [reference]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:1683",
             lambda: (
@@ -42568,6 +43125,7 @@ def _check_transactions_committed_records_are_read_2(
         txid,
         first,
         second,
+        True,
     )
 
 
@@ -42820,6 +43378,7 @@ def test_transactions_committed_records_are_read_2__property(_case):
         txid,
         first,
         second,
+        True,
     )
 
 
@@ -42830,8 +43389,14 @@ def _assert_transactions_offsets_sent_in_an_aborted_2(
     txid,
     g,
     offset,
+    _generated_case,
 ):
-    if _definitions.created(symbols, t, 1):
+    if ls.reach(
+        "lawtwin.kafka::Transactions: |offsets sent in an aborted transaction are not committed| [reference]",
+        0,
+        _definitions.created(symbols, t, 1),
+        _generated_case,
+    ):
         _lawspec_assert(
             _case_context + " — ../src/contract.lawspec:1707",
             lambda: (
@@ -43269,6 +43834,7 @@ def _lawspec_case_transactions_offsets_sent_in_an_aborted_2(_values):
         txid,
         g,
         offset,
+        True,
     )
     return 0
 
@@ -43312,6 +43878,7 @@ def _check_transactions_offsets_sent_in_an_aborted_2(
         txid,
         g,
         offset,
+        True,
     )
 
 
@@ -43387,6 +43954,7 @@ def test_transactions_offsets_sent_in_an_aborted_2__property(_seed):
                 txid,
                 g,
                 offset,
+                True,
             )
         except Exception:
             ls.search_remember(

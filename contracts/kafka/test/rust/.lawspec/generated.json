@@ -3,16 +3,16 @@
   "files": {
     "tests/lawspec_collections_lawspec.rs": "b2c5cf1b90a0474f8a6ea0cec031d5d94609457a60371dc4601ff29976d4f127",
     "tests/lawspec_matchers_lawspec.rs": "436efcb255bd761daf719ddd279321c99d17508803696441c9cbdc6f92e2bd6e",
-    "tests/lawtwin_kafka_lawspec.rs": "79d5f575fcd0cd837326e844494d423aaaabc7a909a0f9c2dc7cf013280eaffb",
+    "tests/lawtwin_kafka_lawspec.rs": "cf1480b4221189449a1bc50a625d0a030d1cd95e00e24c6a2e12d3bfded27ee1",
     "tests/lawtwin_kafka_model_lawspec.rs": "69473c991d986776e6f55f58aa973df4fd26f0a5c0ec4207b25424aa3005017c",
     "tests/contracttest_kafka_lawspec.rs": "25d80ee22e9636b229c9b7d570bd85d4f3dc8c79bdc86205b56d30db62ee9722",
     "src/lawspec_data.rs": "c283774423f9cc8caa1b0e1c41255b459af13286be0c7b59142c870379ab6e97",
     "src/lawspec_schema.rs": "bacffa5064862893696e7bea8882584c6ecc3f67978f516520d0db051d30257d",
-    "src/lawspec_definitions.rs": "1f48d5eba3267a4809f6b91abb28cd9d2be3550b5e93c94a095cded6a4e9952f",
-    "src/lawspec_abilities.rs": "43e5b34e9c3e1b5381df875732477574143aa2879eaaa58b6d3941aac416de57",
-    "src/lawspec_runtime.rs": "589ebfb1da0ca20bb77f945a751b9830c0a565be3ef7af25d989f1de34d32c01",
+    "src/lawspec_definitions.rs": "4aade8fd13e3fb5107778f49d1918635a4c1b525d93fbb083b8592d53472cd3f",
+    "src/lawspec_abilities.rs": "63d12306291fcd77761729d31108ec6b4753446c79bf09f89ce2bc769b8706ce",
+    "src/lawspec_runtime.rs": "8b97a164c9ed6d9a0d54cb86a19cf7bc6f34a4c345f7866237d826861f8c2dcf",
     "src/lawspec_modules.rs": "91dfe5cfa584cdf77778f3be99836567aaa8335de84ea69fd3b12310f8fb7eb5",
-    "tests/support/lawspec_strategies.rs": "625bdd707e7f1768e6642b14b9733a48a985b250703c64e946abec87b6a26269",
+    "tests/support/lawspec_strategies.rs": "3e57e6cbbd8edd3c828367383a181d055ebba8d24c3c2cf9248cfda0b839644b",
     "src/lawspec_remote.rs": "83d2f7dede666dd2b377977e64aeed97b421dbc3eee210525ea5f1f2b9c10a30"
   },
   "adapters": {

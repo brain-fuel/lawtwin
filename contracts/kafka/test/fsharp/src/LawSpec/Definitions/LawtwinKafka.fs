@@ -33,10 +33,10 @@ let assignmentIn (m: string) (ms: LawSpec.Data.MemberAssignment list) : LawSpec.
 /// clusterAddPartitionsToTxnRequest — ../src/contract.lawspec:283
 let clusterAddPartitionsToTxnRequest
     (state: LawSpec.Data.BrokerState)
-    (value0: string)
-    (value1: int64)
-    (value2: int16)
-    (value3: LawSpec.Data.TopicPartition list)
+    (text1: string)
+    (int641: int64)
+    (int161: int16)
+    (list1: LawSpec.Data.TopicPartition list)
     : Result<LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -51,18 +51,18 @@ let clusterAddPartitionsToTxnRequest
                     schema
                     symbols
                     (Codec.fromNative (LawSpec.Data.Codecs.brokerState ()) state)
-                    (Codec.text.FromNative value0)
-                    (Codec.int64.FromNative value1)
-                    (Codec.int16.FromNative value2)
-                    (Codec.fromNative (Codec.list (LawSpec.Data.Codecs.topicPartition ())) value3)))
+                    (Codec.text.FromNative text1)
+                    (Codec.int64.FromNative int641)
+                    (Codec.int16.FromNative int161)
+                    (Codec.fromNative (Codec.list (LawSpec.Data.Codecs.topicPartition ())) list1)))
 
 /// clusterCommitOffsets — ../src/contract.lawspec:302
 let clusterCommitOffsets
     (state: LawSpec.Data.BrokerState)
-    (value0: string)
-    (value1: string)
-    (value2: int)
-    (value3: LawSpec.Data.OffsetEntry list)
+    (text1: string)
+    (text2: string)
+    (int321: int)
+    (list1: LawSpec.Data.OffsetEntry list)
     : Result<LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -77,16 +77,16 @@ let clusterCommitOffsets
                     schema
                     symbols
                     (Codec.fromNative (LawSpec.Data.Codecs.brokerState ()) state)
-                    (Codec.text.FromNative value0)
-                    (Codec.text.FromNative value1)
-                    (Codec.int32.FromNative value2)
-                    (Codec.fromNative (Codec.list (LawSpec.Data.Codecs.offsetEntry ())) value3)))
+                    (Codec.text.FromNative text1)
+                    (Codec.text.FromNative text2)
+                    (Codec.int32.FromNative int321)
+                    (Codec.fromNative (Codec.list (LawSpec.Data.Codecs.offsetEntry ())) list1)))
 
 /// clusterCreatePartitions — ../src/contract.lawspec:294
 let clusterCreatePartitions
     (state: LawSpec.Data.BrokerState)
-    (value0: string)
-    (value1: int)
+    (text1: string)
+    (int321: int)
     : Result<LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -101,14 +101,14 @@ let clusterCreatePartitions
                     schema
                     symbols
                     (Codec.fromNative (LawSpec.Data.Codecs.brokerState ()) state)
-                    (Codec.text.FromNative value0)
-                    (Codec.int32.FromNative value1)))
+                    (Codec.text.FromNative text1)
+                    (Codec.int32.FromNative int321)))
 
 /// clusterCreatePartitionsRequest — ../src/contract.lawspec:277
 let clusterCreatePartitionsRequest
     (state: LawSpec.Data.BrokerState)
-    (value0: string)
-    (value1: int)
+    (text1: string)
+    (int321: int)
     : Result<LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -123,14 +123,14 @@ let clusterCreatePartitionsRequest
                     schema
                     symbols
                     (Codec.fromNative (LawSpec.Data.Codecs.brokerState ()) state)
-                    (Codec.text.FromNative value0)
-                    (Codec.int32.FromNative value1)))
+                    (Codec.text.FromNative text1)
+                    (Codec.int32.FromNative int321)))
 
 /// clusterCreateTopic — ../src/contract.lawspec:293
 let clusterCreateTopic
     (state: LawSpec.Data.BrokerState)
-    (value0: string)
-    (value1: int)
+    (text1: string)
+    (int321: int)
     : Result<LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -145,14 +145,14 @@ let clusterCreateTopic
                     schema
                     symbols
                     (Codec.fromNative (LawSpec.Data.Codecs.brokerState ()) state)
-                    (Codec.text.FromNative value0)
-                    (Codec.int32.FromNative value1)))
+                    (Codec.text.FromNative text1)
+                    (Codec.int32.FromNative int321)))
 
 /// clusterCreateTopicsRequest — ../src/contract.lawspec:276
 let clusterCreateTopicsRequest
     (state: LawSpec.Data.BrokerState)
-    (value0: string)
-    (value1: int)
+    (text1: string)
+    (int321: int)
     : Result<LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -167,13 +167,13 @@ let clusterCreateTopicsRequest
                     schema
                     symbols
                     (Codec.fromNative (LawSpec.Data.Codecs.brokerState ()) state)
-                    (Codec.text.FromNative value0)
-                    (Codec.int32.FromNative value1)))
+                    (Codec.text.FromNative text1)
+                    (Codec.int32.FromNative int321)))
 
 /// clusterDescribeGroup — ../src/contract.lawspec:301
 let clusterDescribeGroup
     (state: LawSpec.Data.BrokerState)
-    (value0: string)
+    (text1: string)
     : LawSpec.Data.Pair<LawSpec.Data.GroupView, LawSpec.Data.BrokerState> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -184,12 +184,12 @@ let clusterDescribeGroup
             schema
             symbols
             (Codec.fromNative (LawSpec.Data.Codecs.brokerState ()) state)
-            (Codec.text.FromNative value0))
+            (Codec.text.FromNative text1))
 
 /// clusterDescribeGroupRequest — ../src/contract.lawspec:290
 let clusterDescribeGroupRequest
     (state: LawSpec.Data.BrokerState)
-    (value0: string)
+    (text1: string)
     : LawSpec.Data.Pair<LawSpec.Data.GroupView, LawSpec.Data.BrokerState> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -200,15 +200,15 @@ let clusterDescribeGroupRequest
             schema
             symbols
             (Codec.fromNative (LawSpec.Data.Codecs.brokerState ()) state)
-            (Codec.text.FromNative value0))
+            (Codec.text.FromNative text1))
 
 /// clusterEndTxnRequest — ../src/contract.lawspec:285
 let clusterEndTxnRequest
     (state: LawSpec.Data.BrokerState)
-    (value0: string)
-    (value1: int64)
-    (value2: int16)
-    (value3: bool)
+    (text1: string)
+    (int641: int64)
+    (int161: int16)
+    (bool1: bool)
     : Result<LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -223,16 +223,16 @@ let clusterEndTxnRequest
                     schema
                     symbols
                     (Codec.fromNative (LawSpec.Data.Codecs.brokerState ()) state)
-                    (Codec.text.FromNative value0)
-                    (Codec.int64.FromNative value1)
-                    (Codec.int16.FromNative value2)
-                    (Codec.bool.FromNative value3)))
+                    (Codec.text.FromNative text1)
+                    (Codec.int64.FromNative int641)
+                    (Codec.int16.FromNative int161)
+                    (Codec.bool.FromNative bool1)))
 
 /// clusterFetchOffset — ../src/contract.lawspec:303
 let clusterFetchOffset
     (state: LawSpec.Data.BrokerState)
-    (value0: string)
-    (value1: LawSpec.Data.TopicPartition)
+    (text1: string)
+    (topicPartition1: LawSpec.Data.TopicPartition)
     : LawSpec.Data.Pair<int64 option, LawSpec.Data.BrokerState> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -243,16 +243,16 @@ let clusterFetchOffset
             schema
             symbols
             (Codec.fromNative (LawSpec.Data.Codecs.brokerState ()) state)
-            (Codec.text.FromNative value0)
-            (Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) value1))
+            (Codec.text.FromNative text1)
+            (Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) topicPartition1))
 
 /// clusterFetchRequest — ../src/contract.lawspec:280
 let clusterFetchRequest
     (state: LawSpec.Data.BrokerState)
-    (value0: LawSpec.Data.TopicPartition)
-    (value1: int64)
-    (value2: int)
-    (value3: LawSpec.Data.IsolationLevel)
+    (topicPartition1: LawSpec.Data.TopicPartition)
+    (int641: int64)
+    (int321: int)
+    (isolationLevel1: LawSpec.Data.IsolationLevel)
     : Result<LawSpec.Data.Pair<LawSpec.Data.FetchResult, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -267,17 +267,17 @@ let clusterFetchRequest
                     schema
                     symbols
                     (Codec.fromNative (LawSpec.Data.Codecs.brokerState ()) state)
-                    (Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) value0)
-                    (Codec.int64.FromNative value1)
-                    (Codec.int32.FromNative value2)
-                    (Codec.fromNative (LawSpec.Data.Codecs.isolationLevel ()) value3)))
+                    (Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) topicPartition1)
+                    (Codec.int64.FromNative int641)
+                    (Codec.int32.FromNative int321)
+                    (Codec.fromNative (LawSpec.Data.Codecs.isolationLevel ()) isolationLevel1)))
 
 /// clusterHeartbeat — ../src/contract.lawspec:299
 let clusterHeartbeat
     (state: LawSpec.Data.BrokerState)
-    (value0: string)
-    (value1: string)
-    (value2: int)
+    (text1: string)
+    (text2: string)
+    (int321: int)
     : Result<LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -292,16 +292,16 @@ let clusterHeartbeat
                     schema
                     symbols
                     (Codec.fromNative (LawSpec.Data.Codecs.brokerState ()) state)
-                    (Codec.text.FromNative value0)
-                    (Codec.text.FromNative value1)
-                    (Codec.int32.FromNative value2)))
+                    (Codec.text.FromNative text1)
+                    (Codec.text.FromNative text2)
+                    (Codec.int32.FromNative int321)))
 
 /// clusterHeartbeatRequest — ../src/contract.lawspec:288
 let clusterHeartbeatRequest
     (state: LawSpec.Data.BrokerState)
-    (value0: string)
-    (value1: string)
-    (value2: int)
+    (text1: string)
+    (text2: string)
+    (int321: int)
     : Result<LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -316,14 +316,14 @@ let clusterHeartbeatRequest
                     schema
                     symbols
                     (Codec.fromNative (LawSpec.Data.Codecs.brokerState ()) state)
-                    (Codec.text.FromNative value0)
-                    (Codec.text.FromNative value1)
-                    (Codec.int32.FromNative value2)))
+                    (Codec.text.FromNative text1)
+                    (Codec.text.FromNative text2)
+                    (Codec.int32.FromNative int321)))
 
 /// clusterInitProducerIdRequest — ../src/contract.lawspec:282
 let clusterInitProducerIdRequest
     (state: LawSpec.Data.BrokerState)
-    (value0: string option)
+    (maybe1: string option)
     : Result<LawSpec.Data.Pair<LawSpec.Data.ProducerIdAndEpoch, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -338,14 +338,14 @@ let clusterInitProducerIdRequest
                     schema
                     symbols
                     (Codec.fromNative (LawSpec.Data.Codecs.brokerState ()) state)
-                    (Codec.fromNative (Codec.option Codec.text) value0)))
+                    (Codec.fromNative (Codec.option Codec.text) maybe1)))
 
 /// clusterJoinGroup — ../src/contract.lawspec:297
 let clusterJoinGroup
     (state: LawSpec.Data.BrokerState)
-    (value0: string)
-    (value1: string)
-    (value2: string list)
+    (text1: string)
+    (text2: string)
+    (list1: string list)
     : Result<LawSpec.Data.Pair<int, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -360,16 +360,16 @@ let clusterJoinGroup
                     schema
                     symbols
                     (Codec.fromNative (LawSpec.Data.Codecs.brokerState ()) state)
-                    (Codec.text.FromNative value0)
-                    (Codec.text.FromNative value1)
-                    (Codec.fromNative (Codec.list Codec.text) value2)))
+                    (Codec.text.FromNative text1)
+                    (Codec.text.FromNative text2)
+                    (Codec.fromNative (Codec.list Codec.text) list1)))
 
 /// clusterJoinGroupRequest — ../src/contract.lawspec:286
 let clusterJoinGroupRequest
     (state: LawSpec.Data.BrokerState)
-    (value0: string)
-    (value1: string)
-    (value2: string list)
+    (text1: string)
+    (text2: string)
+    (list1: string list)
     : Result<LawSpec.Data.Pair<int, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -384,15 +384,15 @@ let clusterJoinGroupRequest
                     schema
                     symbols
                     (Codec.fromNative (LawSpec.Data.Codecs.brokerState ()) state)
-                    (Codec.text.FromNative value0)
-                    (Codec.text.FromNative value1)
-                    (Codec.fromNative (Codec.list Codec.text) value2)))
+                    (Codec.text.FromNative text1)
+                    (Codec.text.FromNative text2)
+                    (Codec.fromNative (Codec.list Codec.text) list1)))
 
 /// clusterLeaveGroup — ../src/contract.lawspec:300
 let clusterLeaveGroup
     (state: LawSpec.Data.BrokerState)
-    (value0: string)
-    (value1: string)
+    (text1: string)
+    (text2: string)
     : Result<LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -407,14 +407,14 @@ let clusterLeaveGroup
                     schema
                     symbols
                     (Codec.fromNative (LawSpec.Data.Codecs.brokerState ()) state)
-                    (Codec.text.FromNative value0)
-                    (Codec.text.FromNative value1)))
+                    (Codec.text.FromNative text1)
+                    (Codec.text.FromNative text2)))
 
 /// clusterLeaveGroupRequest — ../src/contract.lawspec:289
 let clusterLeaveGroupRequest
     (state: LawSpec.Data.BrokerState)
-    (value0: string)
-    (value1: string)
+    (text1: string)
+    (text2: string)
     : Result<LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -429,15 +429,15 @@ let clusterLeaveGroupRequest
                     schema
                     symbols
                     (Codec.fromNative (LawSpec.Data.Codecs.brokerState ()) state)
-                    (Codec.text.FromNative value0)
-                    (Codec.text.FromNative value1)))
+                    (Codec.text.FromNative text1)
+                    (Codec.text.FromNative text2)))
 
 /// clusterListOffsets — ../src/contract.lawspec:296
 let clusterListOffsets
     (state: LawSpec.Data.BrokerState)
-    (value0: LawSpec.Data.TopicPartition)
-    (value1: LawSpec.Data.OffsetSpec)
-    (value2: LawSpec.Data.IsolationLevel)
+    (topicPartition1: LawSpec.Data.TopicPartition)
+    (offsetSpec1: LawSpec.Data.OffsetSpec)
+    (isolationLevel1: LawSpec.Data.IsolationLevel)
     : Result<LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -452,16 +452,16 @@ let clusterListOffsets
                     schema
                     symbols
                     (Codec.fromNative (LawSpec.Data.Codecs.brokerState ()) state)
-                    (Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) value0)
-                    (Codec.fromNative (LawSpec.Data.Codecs.offsetSpec ()) value1)
-                    (Codec.fromNative (LawSpec.Data.Codecs.isolationLevel ()) value2)))
+                    (Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) topicPartition1)
+                    (Codec.fromNative (LawSpec.Data.Codecs.offsetSpec ()) offsetSpec1)
+                    (Codec.fromNative (LawSpec.Data.Codecs.isolationLevel ()) isolationLevel1)))
 
 /// clusterListOffsetsRequest — ../src/contract.lawspec:281
 let clusterListOffsetsRequest
     (state: LawSpec.Data.BrokerState)
-    (value0: LawSpec.Data.TopicPartition)
-    (value1: LawSpec.Data.OffsetSpec)
-    (value2: LawSpec.Data.IsolationLevel)
+    (topicPartition1: LawSpec.Data.TopicPartition)
+    (offsetSpec1: LawSpec.Data.OffsetSpec)
+    (isolationLevel1: LawSpec.Data.IsolationLevel)
     : Result<LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -476,14 +476,14 @@ let clusterListOffsetsRequest
                     schema
                     symbols
                     (Codec.fromNative (LawSpec.Data.Codecs.brokerState ()) state)
-                    (Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) value0)
-                    (Codec.fromNative (LawSpec.Data.Codecs.offsetSpec ()) value1)
-                    (Codec.fromNative (LawSpec.Data.Codecs.isolationLevel ()) value2)))
+                    (Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) topicPartition1)
+                    (Codec.fromNative (LawSpec.Data.Codecs.offsetSpec ()) offsetSpec1)
+                    (Codec.fromNative (LawSpec.Data.Codecs.isolationLevel ()) isolationLevel1)))
 
 /// clusterMetadataRequest — ../src/contract.lawspec:278
 let clusterMetadataRequest
     (state: LawSpec.Data.BrokerState)
-    (value0: string)
+    (text1: string)
     : LawSpec.Data.Pair<int option, LawSpec.Data.BrokerState> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -494,15 +494,15 @@ let clusterMetadataRequest
             schema
             symbols
             (Codec.fromNative (LawSpec.Data.Codecs.brokerState ()) state)
-            (Codec.text.FromNative value0))
+            (Codec.text.FromNative text1))
 
 /// clusterOffsetCommitRequest — ../src/contract.lawspec:291
 let clusterOffsetCommitRequest
     (state: LawSpec.Data.BrokerState)
-    (value0: string)
-    (value1: string)
-    (value2: int)
-    (value3: LawSpec.Data.OffsetEntry list)
+    (text1: string)
+    (text2: string)
+    (int321: int)
+    (list1: LawSpec.Data.OffsetEntry list)
     : Result<LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -517,16 +517,16 @@ let clusterOffsetCommitRequest
                     schema
                     symbols
                     (Codec.fromNative (LawSpec.Data.Codecs.brokerState ()) state)
-                    (Codec.text.FromNative value0)
-                    (Codec.text.FromNative value1)
-                    (Codec.int32.FromNative value2)
-                    (Codec.fromNative (Codec.list (LawSpec.Data.Codecs.offsetEntry ())) value3)))
+                    (Codec.text.FromNative text1)
+                    (Codec.text.FromNative text2)
+                    (Codec.int32.FromNative int321)
+                    (Codec.fromNative (Codec.list (LawSpec.Data.Codecs.offsetEntry ())) list1)))
 
 /// clusterOffsetFetchRequest — ../src/contract.lawspec:292
 let clusterOffsetFetchRequest
     (state: LawSpec.Data.BrokerState)
-    (value0: string)
-    (value1: LawSpec.Data.TopicPartition)
+    (text1: string)
+    (topicPartition1: LawSpec.Data.TopicPartition)
     : LawSpec.Data.Pair<int64 option, LawSpec.Data.BrokerState> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -537,13 +537,13 @@ let clusterOffsetFetchRequest
             schema
             symbols
             (Codec.fromNative (LawSpec.Data.Codecs.brokerState ()) state)
-            (Codec.text.FromNative value0)
-            (Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) value1))
+            (Codec.text.FromNative text1)
+            (Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) topicPartition1))
 
 /// clusterPartitionsFor — ../src/contract.lawspec:295
 let clusterPartitionsFor
     (state: LawSpec.Data.BrokerState)
-    (value0: string)
+    (text1: string)
     : LawSpec.Data.Pair<int option, LawSpec.Data.BrokerState> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -554,14 +554,14 @@ let clusterPartitionsFor
             schema
             symbols
             (Codec.fromNative (LawSpec.Data.Codecs.brokerState ()) state)
-            (Codec.text.FromNative value0))
+            (Codec.text.FromNative text1))
 
 /// clusterProduceRequest — ../src/contract.lawspec:279
 let clusterProduceRequest
     (state: LawSpec.Data.BrokerState)
-    (value0: LawSpec.Data.TopicPartition)
-    (value1: LawSpec.Data.ProducerTag option)
-    (value2: LawSpec.Data.Record list)
+    (topicPartition1: LawSpec.Data.TopicPartition)
+    (maybe1: LawSpec.Data.ProducerTag option)
+    (list1: LawSpec.Data.Record list)
     : Result<LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -576,9 +576,9 @@ let clusterProduceRequest
                     schema
                     symbols
                     (Codec.fromNative (LawSpec.Data.Codecs.brokerState ()) state)
-                    (Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) value0)
-                    (Codec.fromNative (Codec.option (LawSpec.Data.Codecs.producerTag ())) value1)
-                    (Codec.fromNative (Codec.list (LawSpec.Data.Codecs.record ())) value2)))
+                    (Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) topicPartition1)
+                    (Codec.fromNative (Codec.option (LawSpec.Data.Codecs.producerTag ())) maybe1)
+                    (Codec.fromNative (Codec.list (LawSpec.Data.Codecs.record ())) list1)))
 
 /// clusterStart — ../src/contract.lawspec:274
 let clusterStart (lawspecUnit: unit) : LawSpec.Data.BrokerState =
@@ -592,9 +592,9 @@ let clusterStart (lawspecUnit: unit) : LawSpec.Data.BrokerState =
 /// clusterSyncGroup — ../src/contract.lawspec:298
 let clusterSyncGroup
     (state: LawSpec.Data.BrokerState)
-    (value0: string)
-    (value1: string)
-    (value2: int)
+    (text1: string)
+    (text2: string)
+    (int321: int)
     : Result<LawSpec.Data.Pair<LawSpec.Data.TopicPartition list, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -609,16 +609,16 @@ let clusterSyncGroup
                     schema
                     symbols
                     (Codec.fromNative (LawSpec.Data.Codecs.brokerState ()) state)
-                    (Codec.text.FromNative value0)
-                    (Codec.text.FromNative value1)
-                    (Codec.int32.FromNative value2)))
+                    (Codec.text.FromNative text1)
+                    (Codec.text.FromNative text2)
+                    (Codec.int32.FromNative int321)))
 
 /// clusterSyncGroupRequest — ../src/contract.lawspec:287
 let clusterSyncGroupRequest
     (state: LawSpec.Data.BrokerState)
-    (value0: string)
-    (value1: string)
-    (value2: int)
+    (text1: string)
+    (text2: string)
+    (int321: int)
     : Result<LawSpec.Data.Pair<LawSpec.Data.TopicPartition list, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -633,18 +633,18 @@ let clusterSyncGroupRequest
                     schema
                     symbols
                     (Codec.fromNative (LawSpec.Data.Codecs.brokerState ()) state)
-                    (Codec.text.FromNative value0)
-                    (Codec.text.FromNative value1)
-                    (Codec.int32.FromNative value2)))
+                    (Codec.text.FromNative text1)
+                    (Codec.text.FromNative text2)
+                    (Codec.int32.FromNative int321)))
 
 /// clusterTxnOffsetCommitRequest — ../src/contract.lawspec:284
 let clusterTxnOffsetCommitRequest
     (state: LawSpec.Data.BrokerState)
-    (value0: string)
-    (value1: int64)
-    (value2: int16)
-    (value3: string)
-    (value4: LawSpec.Data.OffsetEntry list)
+    (text1: string)
+    (int641: int64)
+    (int161: int16)
+    (text2: string)
+    (list1: LawSpec.Data.OffsetEntry list)
     : Result<LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState>, LawSpec.Data.KafkaError> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -659,11 +659,11 @@ let clusterTxnOffsetCommitRequest
                     schema
                     symbols
                     (Codec.fromNative (LawSpec.Data.Codecs.brokerState ()) state)
-                    (Codec.text.FromNative value0)
-                    (Codec.int64.FromNative value1)
-                    (Codec.int16.FromNative value2)
-                    (Codec.text.FromNative value3)
-                    (Codec.fromNative (Codec.list (LawSpec.Data.Codecs.offsetEntry ())) value4)))
+                    (Codec.text.FromNative text1)
+                    (Codec.int64.FromNative int641)
+                    (Codec.int16.FromNative int161)
+                    (Codec.text.FromNative text2)
+                    (Codec.fromNative (Codec.list (LawSpec.Data.Codecs.offsetEntry ())) list1)))
 
 /// committedFrom — ../src/contract.lawspec:377
 let committedFrom
@@ -1133,7 +1133,7 @@ let joinEach
 /// kafkaConsumerAssign — ../src/contract.lawspec:1382
 let kafkaConsumerAssign
     (consumerState: LawSpec.Data.ConsumerState)
-    (value0: LawSpec.Data.TopicPartition list)
+    (list1: LawSpec.Data.TopicPartition list)
     : LawSpec.Data.Pair<unit, LawSpec.Data.ConsumerState> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -1144,7 +1144,7 @@ let kafkaConsumerAssign
             schema
             symbols
             (Codec.fromNative (LawSpec.Data.Codecs.consumerState ()) consumerState)
-            (Codec.fromNative (Codec.list (LawSpec.Data.Codecs.topicPartition ())) value0))
+            (Codec.fromNative (Codec.list (LawSpec.Data.Codecs.topicPartition ())) list1))
 
 /// kafkaConsumerClose — ../src/contract.lawspec:1390
 let kafkaConsumerClose
@@ -1194,7 +1194,7 @@ let kafkaConsumerCommitSync
 let kafkaConsumerCommittedOffset
     (broker: LawSpec.Abilities.LawtwinKafka.IBroker)
     (consumerState: LawSpec.Data.ConsumerState)
-    (value0: LawSpec.Data.TopicPartition)
+    (topicPartition1: LawSpec.Data.TopicPartition)
     : LawSpec.Data.Pair<int64 option, LawSpec.Data.ConsumerState> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -1212,13 +1212,13 @@ let kafkaConsumerCommittedOffset
                     schema
                     symbols
                     (Codec.fromNative (LawSpec.Data.Codecs.consumerState ()) consumerState)
-                    (Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) value0)))
+                    (Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) topicPartition1)))
 
 /// kafkaConsumerPoll — ../src/contract.lawspec:1384
 let kafkaConsumerPoll
     (broker: LawSpec.Abilities.LawtwinKafka.IBroker)
     (consumerState: LawSpec.Data.ConsumerState)
-    (value0: int)
+    (int321: int)
     : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ConsumerRecord list>, LawSpec.Data.ConsumerState> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -1236,13 +1236,13 @@ let kafkaConsumerPoll
                     schema
                     symbols
                     (Codec.fromNative (LawSpec.Data.Codecs.consumerState ()) consumerState)
-                    (Codec.int32.FromNative value0)))
+                    (Codec.int32.FromNative int321)))
 
 /// kafkaConsumerPosition — ../src/contract.lawspec:1387
 let kafkaConsumerPosition
     (broker: LawSpec.Abilities.LawtwinKafka.IBroker)
     (consumerState: LawSpec.Data.ConsumerState)
-    (value0: LawSpec.Data.TopicPartition)
+    (topicPartition1: LawSpec.Data.TopicPartition)
     : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, int64>, LawSpec.Data.ConsumerState> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -1260,13 +1260,13 @@ let kafkaConsumerPosition
                     schema
                     symbols
                     (Codec.fromNative (LawSpec.Data.Codecs.consumerState ()) consumerState)
-                    (Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) value0)))
+                    (Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) topicPartition1)))
 
 /// kafkaConsumerSeek — ../src/contract.lawspec:1386
 let kafkaConsumerSeek
     (consumerState: LawSpec.Data.ConsumerState)
-    (value0: LawSpec.Data.TopicPartition)
-    (value1: int64)
+    (topicPartition1: LawSpec.Data.TopicPartition)
+    (int641: int64)
     : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.ConsumerState> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -1277,13 +1277,13 @@ let kafkaConsumerSeek
             schema
             symbols
             (Codec.fromNative (LawSpec.Data.Codecs.consumerState ()) consumerState)
-            (Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) value0)
-            (Codec.int64.FromNative value1))
+            (Codec.fromNative (LawSpec.Data.Codecs.topicPartition ()) topicPartition1)
+            (Codec.int64.FromNative int641))
 
 /// kafkaConsumerSetIsolationLevel — ../src/contract.lawspec:1389
 let kafkaConsumerSetIsolationLevel
     (consumerState: LawSpec.Data.ConsumerState)
-    (value0: LawSpec.Data.IsolationLevel)
+    (isolationLevel1: LawSpec.Data.IsolationLevel)
     : LawSpec.Data.Pair<unit, LawSpec.Data.ConsumerState> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -1294,7 +1294,7 @@ let kafkaConsumerSetIsolationLevel
             schema
             symbols
             (Codec.fromNative (LawSpec.Data.Codecs.consumerState ()) consumerState)
-            (Codec.fromNative (LawSpec.Data.Codecs.isolationLevel ()) value0))
+            (Codec.fromNative (LawSpec.Data.Codecs.isolationLevel ()) isolationLevel1))
 
 /// kafkaConsumerStart — ../src/contract.lawspec:1380
 let kafkaConsumerStart (lawspecUnit: unit) : LawSpec.Data.ConsumerState =
@@ -1309,9 +1309,9 @@ let kafkaConsumerStart (lawspecUnit: unit) : LawSpec.Data.ConsumerState =
 let kafkaConsumerSubscribe
     (broker: LawSpec.Abilities.LawtwinKafka.IBroker)
     (consumerState: LawSpec.Data.ConsumerState)
-    (value0: string)
-    (value1: string)
-    (value2: string list)
+    (text1: string)
+    (text2: string)
+    (list1: string list)
     : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.TopicPartition list>, LawSpec.Data.ConsumerState> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -1329,9 +1329,9 @@ let kafkaConsumerSubscribe
                     schema
                     symbols
                     (Codec.fromNative (LawSpec.Data.Codecs.consumerState ()) consumerState)
-                    (Codec.text.FromNative value0)
-                    (Codec.text.FromNative value1)
-                    (Codec.fromNative (Codec.list Codec.text) value2)))
+                    (Codec.text.FromNative text1)
+                    (Codec.text.FromNative text2)
+                    (Codec.fromNative (Codec.list Codec.text) list1)))
 
 /// kafkaProducerEnableIdempotence — ../src/contract.lawspec:1230
 let kafkaProducerEnableIdempotence
@@ -1410,7 +1410,7 @@ let kafkaProducerSend
     (broker: LawSpec.Abilities.LawtwinKafka.IBroker)
     (partitioner: LawSpec.Abilities.LawtwinKafka.IPartitioner)
     (producerState: LawSpec.Data.ProducerState)
-    (value0: LawSpec.Data.ProducerRecord)
+    (producerRecord1: LawSpec.Data.ProducerRecord)
     : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.ProducerState> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -1430,7 +1430,7 @@ let kafkaProducerSend
                     schema
                     symbols
                     (Codec.fromNative (LawSpec.Data.Codecs.producerState ()) producerState)
-                    (Codec.fromNative (LawSpec.Data.Codecs.producerRecord ()) value0)))
+                    (Codec.fromNative (LawSpec.Data.Codecs.producerRecord ()) producerRecord1)))
 
 /// kafkaProducerStart — ../src/contract.lawspec:1226
 let kafkaProducerStart (lawspecUnit: unit) : LawSpec.Data.ProducerState =
@@ -1467,7 +1467,7 @@ let kafkaTransactionsAbortTransaction
 let kafkaTransactionsAddPartitionsToTransaction
     (broker: LawSpec.Abilities.LawtwinKafka.IBroker)
     (txnState: LawSpec.Data.TransactionState)
-    (value0: LawSpec.Data.TopicPartition list)
+    (list1: LawSpec.Data.TopicPartition list)
     : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -1485,7 +1485,7 @@ let kafkaTransactionsAddPartitionsToTransaction
                     schema
                     symbols
                     (Codec.fromNative (LawSpec.Data.Codecs.transactionState ()) txnState)
-                    (Codec.fromNative (Codec.list (LawSpec.Data.Codecs.topicPartition ())) value0)))
+                    (Codec.fromNative (Codec.list (LawSpec.Data.Codecs.topicPartition ())) list1)))
 
 /// kafkaTransactionsBeginTransaction — ../src/contract.lawspec:1733
 let kafkaTransactionsBeginTransaction
@@ -1527,7 +1527,7 @@ let kafkaTransactionsCommitTransaction
 let kafkaTransactionsInitTransactions
     (broker: LawSpec.Abilities.LawtwinKafka.IBroker)
     (txnState: LawSpec.Data.TransactionState)
-    (value0: string)
+    (text1: string)
     : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ProducerIdAndEpoch>, LawSpec.Data.TransactionState> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -1545,14 +1545,14 @@ let kafkaTransactionsInitTransactions
                     schema
                     symbols
                     (Codec.fromNative (LawSpec.Data.Codecs.transactionState ()) txnState)
-                    (Codec.text.FromNative value0)))
+                    (Codec.text.FromNative text1)))
 
 /// kafkaTransactionsSendInTransaction — ../src/contract.lawspec:1735
 let kafkaTransactionsSendInTransaction
     (broker: LawSpec.Abilities.LawtwinKafka.IBroker)
     (partitioner: LawSpec.Abilities.LawtwinKafka.IPartitioner)
     (txnState: LawSpec.Data.TransactionState)
-    (value0: LawSpec.Data.ProducerRecord)
+    (producerRecord1: LawSpec.Data.ProducerRecord)
     : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.TransactionState> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -1572,14 +1572,14 @@ let kafkaTransactionsSendInTransaction
                     schema
                     symbols
                     (Codec.fromNative (LawSpec.Data.Codecs.transactionState ()) txnState)
-                    (Codec.fromNative (LawSpec.Data.Codecs.producerRecord ()) value0)))
+                    (Codec.fromNative (LawSpec.Data.Codecs.producerRecord ()) producerRecord1)))
 
 /// kafkaTransactionsSendOffsetsToTransaction — ../src/contract.lawspec:1736
 let kafkaTransactionsSendOffsetsToTransaction
     (broker: LawSpec.Abilities.LawtwinKafka.IBroker)
     (txnState: LawSpec.Data.TransactionState)
-    (value0: string)
-    (value1: LawSpec.Data.OffsetEntry list)
+    (text1: string)
+    (list1: LawSpec.Data.OffsetEntry list)
     : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
     let schema = LawSpec.Generated.Program.schema
     let symbols = Scalar.SymbolContext()
@@ -1597,8 +1597,8 @@ let kafkaTransactionsSendOffsetsToTransaction
                     schema
                     symbols
                     (Codec.fromNative (LawSpec.Data.Codecs.transactionState ()) txnState)
-                    (Codec.text.FromNative value0)
-                    (Codec.fromNative (Codec.list (LawSpec.Data.Codecs.offsetEntry ())) value1)))
+                    (Codec.text.FromNative text1)
+                    (Codec.fromNative (Codec.list (LawSpec.Data.Codecs.offsetEntry ())) list1)))
 
 /// kafkaTransactionsStart — ../src/contract.lawspec:1730
 let kafkaTransactionsStart (lawspecUnit: unit) : LawSpec.Data.TransactionState =

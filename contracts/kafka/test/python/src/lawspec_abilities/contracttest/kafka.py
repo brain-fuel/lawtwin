@@ -31,493 +31,532 @@ class Cluster:
 
     def createTopicsRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
+        text_1: _builtins.str,
+        int32_1: _builtins.int,
     ) -> None:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_int32(value1, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_int32_1 = _typed.nin_int32(int32_1, symbols)
         with self._lock:
             pair = _typed.cluster_create_topic(
                 self._state,
-                argument0,
-                argument1,
+                typed_text_1,
+                typed_int32_1,
             )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
     def createPartitionsRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
+        text_1: _builtins.str,
+        int32_1: _builtins.int,
     ) -> None:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_int32(value1, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_int32_1 = _typed.nin_int32(int32_1, symbols)
         with self._lock:
             pair = _typed.cluster_create_partitions(
                 self._state,
-                argument0,
-                argument1,
+                typed_text_1,
+                typed_int32_1,
             )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
     def metadataRequest(
         self,
-        value0: _builtins.str,
+        text_1: _builtins.str,
     ) -> _schema.Maybe[_builtins.int]:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
         with self._lock:
-            pair = _typed.cluster_metadata_request(self._state, argument0)
+            pair = _typed.cluster_metadata_request(self._state, typed_text_1)
             self._state = pair[1]
         return _typed.nout_maybe_int32(pair[0], symbols)
 
     def produceRequest(
         self,
-        value0: data.TopicPartition,
-        value1: _schema.Maybe[data.ProducerTag],
-        value2: _builtins.list[data.Record],
+        topic_partition_1: data.TopicPartition,
+        maybe_1: _schema.Maybe[data.ProducerTag],
+        list_1: _builtins.list[data.Record],
     ) -> _builtins.int:
         symbols = self._symbols
-        argument0 = _typed.nin_topic_partition(value0, symbols)
-        argument1 = _typed.nin_maybe_producer_tag(value1, symbols)
-        argument2 = _typed.nin_list_record(value2, symbols)
+        typed_topic_partition_1 = _typed.nin_topic_partition(
+            topic_partition_1,
+            symbols,
+        )
+        typed_maybe_1 = _typed.nin_maybe_producer_tag(maybe_1, symbols)
+        typed_list_1 = _typed.nin_list_record(list_1, symbols)
         with self._lock:
             pair = _typed.cluster_produce_request(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
+                typed_topic_partition_1,
+                typed_maybe_1,
+                typed_list_1,
             )
             self._state = pair[1]
         return _typed.nout_int64(pair[0], symbols)
 
     def fetchRequest(
         self,
-        value0: data.TopicPartition,
-        value1: _builtins.int,
-        value2: _builtins.int,
-        value3: data.IsolationLevel,
+        topic_partition_1: data.TopicPartition,
+        int64_1: _builtins.int,
+        int32_1: _builtins.int,
+        isolation_level_1: data.IsolationLevel,
     ) -> data.FetchResult:
         symbols = self._symbols
-        argument0 = _typed.nin_topic_partition(value0, symbols)
-        argument1 = _typed.nin_int64(value1, symbols)
-        argument2 = _typed.nin_int32(value2, symbols)
-        argument3 = _typed.nin_isolation_level(value3, symbols)
+        typed_topic_partition_1 = _typed.nin_topic_partition(
+            topic_partition_1,
+            symbols,
+        )
+        typed_int64_1 = _typed.nin_int64(int64_1, symbols)
+        typed_int32_1 = _typed.nin_int32(int32_1, symbols)
+        typed_isolation_level_1 = _typed.nin_isolation_level(
+            isolation_level_1,
+            symbols,
+        )
         with self._lock:
             pair = _typed.cluster_fetch_request(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
-                argument3,
+                typed_topic_partition_1,
+                typed_int64_1,
+                typed_int32_1,
+                typed_isolation_level_1,
             )
             self._state = pair[1]
         return _typed.nout_fetch_result(pair[0], symbols)
 
     def listOffsetsRequest(
         self,
-        value0: data.TopicPartition,
-        value1: data.OffsetSpec,
-        value2: data.IsolationLevel,
+        topic_partition_1: data.TopicPartition,
+        offset_spec_1: data.OffsetSpec,
+        isolation_level_1: data.IsolationLevel,
     ) -> _builtins.int:
         symbols = self._symbols
-        argument0 = _typed.nin_topic_partition(value0, symbols)
-        argument1 = _typed.nin_offset_spec(value1, symbols)
-        argument2 = _typed.nin_isolation_level(value2, symbols)
+        typed_topic_partition_1 = _typed.nin_topic_partition(
+            topic_partition_1,
+            symbols,
+        )
+        typed_offset_spec_1 = _typed.nin_offset_spec(offset_spec_1, symbols)
+        typed_isolation_level_1 = _typed.nin_isolation_level(
+            isolation_level_1,
+            symbols,
+        )
         with self._lock:
             pair = _typed.cluster_list_offsets(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
+                typed_topic_partition_1,
+                typed_offset_spec_1,
+                typed_isolation_level_1,
             )
             self._state = pair[1]
         return _typed.nout_int64(pair[0], symbols)
 
     def initProducerIdRequest(
         self,
-        value0: _schema.Maybe[_builtins.str],
+        maybe_1: _schema.Maybe[_builtins.str],
     ) -> data.ProducerIdAndEpoch:
         symbols = self._symbols
-        argument0 = _typed.nin_maybe_text(value0, symbols)
+        typed_maybe_1 = _typed.nin_maybe_text(maybe_1, symbols)
         with self._lock:
             pair = _typed.cluster_init_producer_id_request(
                 self._state,
-                argument0,
+                typed_maybe_1,
             )
             self._state = pair[1]
         return _typed.nout_producer_id_and_epoch(pair[0], symbols)
 
     def addPartitionsToTxnRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
-        value2: _builtins.int,
-        value3: _builtins.list[data.TopicPartition],
+        text_1: _builtins.str,
+        int64_1: _builtins.int,
+        int16_1: _builtins.int,
+        list_1: _builtins.list[data.TopicPartition],
     ) -> None:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_int64(value1, symbols)
-        argument2 = _typed.nin_int16(value2, symbols)
-        argument3 = _typed.nin_list_topic_partition(value3, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_int64_1 = _typed.nin_int64(int64_1, symbols)
+        typed_int16_1 = _typed.nin_int16(int16_1, symbols)
+        typed_list_1 = _typed.nin_list_topic_partition(list_1, symbols)
         with self._lock:
             pair = _typed.cluster_add_partitions_to_txn_request(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
-                argument3,
+                typed_text_1,
+                typed_int64_1,
+                typed_int16_1,
+                typed_list_1,
             )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
     def txnOffsetCommitRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
-        value2: _builtins.int,
-        value3: _builtins.str,
-        value4: _builtins.list[data.OffsetEntry],
+        text_1: _builtins.str,
+        int64_1: _builtins.int,
+        int16_1: _builtins.int,
+        text_2: _builtins.str,
+        list_1: _builtins.list[data.OffsetEntry],
     ) -> None:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_int64(value1, symbols)
-        argument2 = _typed.nin_int16(value2, symbols)
-        argument3 = _typed.nin_text(value3, symbols)
-        argument4 = _typed.nin_list_offset_entry(value4, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_int64_1 = _typed.nin_int64(int64_1, symbols)
+        typed_int16_1 = _typed.nin_int16(int16_1, symbols)
+        typed_text_2 = _typed.nin_text(text_2, symbols)
+        typed_list_1 = _typed.nin_list_offset_entry(list_1, symbols)
         with self._lock:
             pair = _typed.cluster_txn_offset_commit_request(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
-                argument3,
-                argument4,
+                typed_text_1,
+                typed_int64_1,
+                typed_int16_1,
+                typed_text_2,
+                typed_list_1,
             )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
     def endTxnRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
-        value2: _builtins.int,
-        value3: _builtins.bool,
+        text_1: _builtins.str,
+        int64_1: _builtins.int,
+        int16_1: _builtins.int,
+        bool_1: _builtins.bool,
     ) -> None:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_int64(value1, symbols)
-        argument2 = _typed.nin_int16(value2, symbols)
-        argument3 = _typed.nin_bool(value3, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_int64_1 = _typed.nin_int64(int64_1, symbols)
+        typed_int16_1 = _typed.nin_int16(int16_1, symbols)
+        typed_bool_1 = _typed.nin_bool(bool_1, symbols)
         with self._lock:
             pair = _typed.cluster_end_txn_request(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
-                argument3,
+                typed_text_1,
+                typed_int64_1,
+                typed_int16_1,
+                typed_bool_1,
             )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
     def joinGroupRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.list[_builtins.str],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        list_1: _builtins.list[_builtins.str],
     ) -> _builtins.int:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_text(value1, symbols)
-        argument2 = _typed.nin_list_text(value2, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_text_2 = _typed.nin_text(text_2, symbols)
+        typed_list_1 = _typed.nin_list_text(list_1, symbols)
         with self._lock:
             pair = _typed.cluster_join_group(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
+                typed_text_1,
+                typed_text_2,
+                typed_list_1,
             )
             self._state = pair[1]
         return _typed.nout_int32(pair[0], symbols)
 
     def syncGroupRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int32_1: _builtins.int,
     ) -> _builtins.list[data.TopicPartition]:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_text(value1, symbols)
-        argument2 = _typed.nin_int32(value2, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_text_2 = _typed.nin_text(text_2, symbols)
+        typed_int32_1 = _typed.nin_int32(int32_1, symbols)
         with self._lock:
             pair = _typed.cluster_sync_group(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
+                typed_text_1,
+                typed_text_2,
+                typed_int32_1,
             )
             self._state = pair[1]
         return _typed.nout_list_topic_partition(pair[0], symbols)
 
     def heartbeatRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int32_1: _builtins.int,
     ) -> None:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_text(value1, symbols)
-        argument2 = _typed.nin_int32(value2, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_text_2 = _typed.nin_text(text_2, symbols)
+        typed_int32_1 = _typed.nin_int32(int32_1, symbols)
         with self._lock:
             pair = _typed.cluster_heartbeat(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
+                typed_text_1,
+                typed_text_2,
+                typed_int32_1,
             )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
     def leaveGroupRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
     ) -> None:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_text(value1, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_text_2 = _typed.nin_text(text_2, symbols)
         with self._lock:
-            pair = _typed.cluster_leave_group(self._state, argument0, argument1)
+            pair = _typed.cluster_leave_group(
+                self._state,
+                typed_text_1,
+                typed_text_2,
+            )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
-    def describeGroupRequest(self, value0: _builtins.str) -> data.GroupView:
+    def describeGroupRequest(self, text_1: _builtins.str) -> data.GroupView:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
         with self._lock:
-            pair = _typed.cluster_describe_group(self._state, argument0)
+            pair = _typed.cluster_describe_group(self._state, typed_text_1)
             self._state = pair[1]
         return _typed.nout_group_view(pair[0], symbols)
 
     def offsetCommitRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
-        value3: _builtins.list[data.OffsetEntry],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int32_1: _builtins.int,
+        list_1: _builtins.list[data.OffsetEntry],
     ) -> None:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_text(value1, symbols)
-        argument2 = _typed.nin_int32(value2, symbols)
-        argument3 = _typed.nin_list_offset_entry(value3, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_text_2 = _typed.nin_text(text_2, symbols)
+        typed_int32_1 = _typed.nin_int32(int32_1, symbols)
+        typed_list_1 = _typed.nin_list_offset_entry(list_1, symbols)
         with self._lock:
             pair = _typed.cluster_commit_offsets(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
-                argument3,
+                typed_text_1,
+                typed_text_2,
+                typed_int32_1,
+                typed_list_1,
             )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
     def offsetFetchRequest(
         self,
-        value0: _builtins.str,
-        value1: data.TopicPartition,
+        text_1: _builtins.str,
+        topic_partition_1: data.TopicPartition,
     ) -> _schema.Maybe[_builtins.int]:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_topic_partition(value1, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_topic_partition_1 = _typed.nin_topic_partition(
+            topic_partition_1,
+            symbols,
+        )
         with self._lock:
             pair = _typed.cluster_fetch_offset(
                 self._state,
-                argument0,
-                argument1,
+                typed_text_1,
+                typed_topic_partition_1,
             )
             self._state = pair[1]
         return _typed.nout_maybe_int64(pair[0], symbols)
 
-    def createTopic(self, value0: _builtins.str, value1: _builtins.int) -> None:
+    def createTopic(
+        self,
+        text_1: _builtins.str,
+        int32_1: _builtins.int,
+    ) -> None:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_int32(value1, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_int32_1 = _typed.nin_int32(int32_1, symbols)
         with self._lock:
             pair = _typed.cluster_create_topic(
                 self._state,
-                argument0,
-                argument1,
+                typed_text_1,
+                typed_int32_1,
             )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
     def createPartitions(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
+        text_1: _builtins.str,
+        int32_1: _builtins.int,
     ) -> None:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_int32(value1, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_int32_1 = _typed.nin_int32(int32_1, symbols)
         with self._lock:
             pair = _typed.cluster_create_partitions(
                 self._state,
-                argument0,
-                argument1,
+                typed_text_1,
+                typed_int32_1,
             )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
     def partitionsFor(
         self,
-        value0: _builtins.str,
+        text_1: _builtins.str,
     ) -> _schema.Maybe[_builtins.int]:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
         with self._lock:
-            pair = _typed.cluster_metadata_request(self._state, argument0)
+            pair = _typed.cluster_metadata_request(self._state, typed_text_1)
             self._state = pair[1]
         return _typed.nout_maybe_int32(pair[0], symbols)
 
     def listOffsets(
         self,
-        value0: data.TopicPartition,
-        value1: data.OffsetSpec,
-        value2: data.IsolationLevel,
+        topic_partition_1: data.TopicPartition,
+        offset_spec_1: data.OffsetSpec,
+        isolation_level_1: data.IsolationLevel,
     ) -> _builtins.int:
         symbols = self._symbols
-        argument0 = _typed.nin_topic_partition(value0, symbols)
-        argument1 = _typed.nin_offset_spec(value1, symbols)
-        argument2 = _typed.nin_isolation_level(value2, symbols)
+        typed_topic_partition_1 = _typed.nin_topic_partition(
+            topic_partition_1,
+            symbols,
+        )
+        typed_offset_spec_1 = _typed.nin_offset_spec(offset_spec_1, symbols)
+        typed_isolation_level_1 = _typed.nin_isolation_level(
+            isolation_level_1,
+            symbols,
+        )
         with self._lock:
             pair = _typed.cluster_list_offsets(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
+                typed_topic_partition_1,
+                typed_offset_spec_1,
+                typed_isolation_level_1,
             )
             self._state = pair[1]
         return _typed.nout_int64(pair[0], symbols)
 
     def joinGroup(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.list[_builtins.str],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        list_1: _builtins.list[_builtins.str],
     ) -> _builtins.int:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_text(value1, symbols)
-        argument2 = _typed.nin_list_text(value2, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_text_2 = _typed.nin_text(text_2, symbols)
+        typed_list_1 = _typed.nin_list_text(list_1, symbols)
         with self._lock:
             pair = _typed.cluster_join_group(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
+                typed_text_1,
+                typed_text_2,
+                typed_list_1,
             )
             self._state = pair[1]
         return _typed.nout_int32(pair[0], symbols)
 
     def syncGroup(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int32_1: _builtins.int,
     ) -> _builtins.list[data.TopicPartition]:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_text(value1, symbols)
-        argument2 = _typed.nin_int32(value2, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_text_2 = _typed.nin_text(text_2, symbols)
+        typed_int32_1 = _typed.nin_int32(int32_1, symbols)
         with self._lock:
             pair = _typed.cluster_sync_group(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
+                typed_text_1,
+                typed_text_2,
+                typed_int32_1,
             )
             self._state = pair[1]
         return _typed.nout_list_topic_partition(pair[0], symbols)
 
     def heartbeat(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int32_1: _builtins.int,
     ) -> None:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_text(value1, symbols)
-        argument2 = _typed.nin_int32(value2, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_text_2 = _typed.nin_text(text_2, symbols)
+        typed_int32_1 = _typed.nin_int32(int32_1, symbols)
         with self._lock:
             pair = _typed.cluster_heartbeat(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
+                typed_text_1,
+                typed_text_2,
+                typed_int32_1,
             )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
-    def leaveGroup(self, value0: _builtins.str, value1: _builtins.str) -> None:
+    def leaveGroup(self, text_1: _builtins.str, text_2: _builtins.str) -> None:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_text(value1, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_text_2 = _typed.nin_text(text_2, symbols)
         with self._lock:
-            pair = _typed.cluster_leave_group(self._state, argument0, argument1)
+            pair = _typed.cluster_leave_group(
+                self._state,
+                typed_text_1,
+                typed_text_2,
+            )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
-    def describeGroup(self, value0: _builtins.str) -> data.GroupView:
+    def describeGroup(self, text_1: _builtins.str) -> data.GroupView:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
         with self._lock:
-            pair = _typed.cluster_describe_group(self._state, argument0)
+            pair = _typed.cluster_describe_group(self._state, typed_text_1)
             self._state = pair[1]
         return _typed.nout_group_view(pair[0], symbols)
 
     def commitOffsets(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
-        value3: _builtins.list[data.OffsetEntry],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int32_1: _builtins.int,
+        list_1: _builtins.list[data.OffsetEntry],
     ) -> None:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_text(value1, symbols)
-        argument2 = _typed.nin_int32(value2, symbols)
-        argument3 = _typed.nin_list_offset_entry(value3, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_text_2 = _typed.nin_text(text_2, symbols)
+        typed_int32_1 = _typed.nin_int32(int32_1, symbols)
+        typed_list_1 = _typed.nin_list_offset_entry(list_1, symbols)
         with self._lock:
             pair = _typed.cluster_commit_offsets(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
-                argument3,
+                typed_text_1,
+                typed_text_2,
+                typed_int32_1,
+                typed_list_1,
             )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
     def fetchOffset(
         self,
-        value0: _builtins.str,
-        value1: data.TopicPartition,
+        text_1: _builtins.str,
+        topic_partition_1: data.TopicPartition,
     ) -> _schema.Maybe[_builtins.int]:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_topic_partition(value1, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_topic_partition_1 = _typed.nin_topic_partition(
+            topic_partition_1,
+            symbols,
+        )
         with self._lock:
             pair = _typed.cluster_fetch_offset(
                 self._state,
-                argument0,
-                argument1,
+                typed_text_1,
+                typed_topic_partition_1,
             )
             self._state = pair[1]
         return _typed.nout_maybe_int64(pair[0], symbols)
@@ -544,12 +583,12 @@ class Cluster:
 
     def try_createTopicsRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
+        text_1: _builtins.str,
+        int32_1: _builtins.int,
     ) -> _schema.Either[data.KafkaError, None]:
         """createTopicsRequest, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.createTopicsRequest(value0, value1))
+            return _schema.Right(self.createTopicsRequest(text_1, int32_1))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -567,12 +606,12 @@ class Cluster:
 
     def try_createPartitionsRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
+        text_1: _builtins.str,
+        int32_1: _builtins.int,
     ) -> _schema.Either[data.KafkaError, None]:
         """createPartitionsRequest, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.createPartitionsRequest(value0, value1))
+            return _schema.Right(self.createPartitionsRequest(text_1, int32_1))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -590,13 +629,17 @@ class Cluster:
 
     def try_produceRequest(
         self,
-        value0: data.TopicPartition,
-        value1: _schema.Maybe[data.ProducerTag],
-        value2: _builtins.list[data.Record],
+        topic_partition_1: data.TopicPartition,
+        maybe_1: _schema.Maybe[data.ProducerTag],
+        list_1: _builtins.list[data.Record],
     ) -> _schema.Either[data.KafkaError, _builtins.int]:
         """produceRequest, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.produceRequest(value0, value1, value2))
+            return _schema.Right(self.produceRequest(
+                topic_partition_1,
+                maybe_1,
+                list_1,
+            ))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -614,18 +657,18 @@ class Cluster:
 
     def try_fetchRequest(
         self,
-        value0: data.TopicPartition,
-        value1: _builtins.int,
-        value2: _builtins.int,
-        value3: data.IsolationLevel,
+        topic_partition_1: data.TopicPartition,
+        int64_1: _builtins.int,
+        int32_1: _builtins.int,
+        isolation_level_1: data.IsolationLevel,
     ) -> _schema.Either[data.KafkaError, data.FetchResult]:
         """fetchRequest, with the failure it raises as Left rather than an exception."""
         try:
             return _schema.Right(self.fetchRequest(
-                value0,
-                value1,
-                value2,
-                value3,
+                topic_partition_1,
+                int64_1,
+                int32_1,
+                isolation_level_1,
             ))
         except ls.Failure as failure:
             if (
@@ -644,16 +687,16 @@ class Cluster:
 
     def try_listOffsetsRequest(
         self,
-        value0: data.TopicPartition,
-        value1: data.OffsetSpec,
-        value2: data.IsolationLevel,
+        topic_partition_1: data.TopicPartition,
+        offset_spec_1: data.OffsetSpec,
+        isolation_level_1: data.IsolationLevel,
     ) -> _schema.Either[data.KafkaError, _builtins.int]:
         """listOffsetsRequest, with the failure it raises as Left rather than an exception."""
         try:
             return _schema.Right(self.listOffsetsRequest(
-                value0,
-                value1,
-                value2,
+                topic_partition_1,
+                offset_spec_1,
+                isolation_level_1,
             ))
         except ls.Failure as failure:
             if (
@@ -672,11 +715,11 @@ class Cluster:
 
     def try_initProducerIdRequest(
         self,
-        value0: _schema.Maybe[_builtins.str],
+        maybe_1: _schema.Maybe[_builtins.str],
     ) -> _schema.Either[data.KafkaError, data.ProducerIdAndEpoch]:
         """initProducerIdRequest, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.initProducerIdRequest(value0))
+            return _schema.Right(self.initProducerIdRequest(maybe_1))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -694,18 +737,18 @@ class Cluster:
 
     def try_addPartitionsToTxnRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
-        value2: _builtins.int,
-        value3: _builtins.list[data.TopicPartition],
+        text_1: _builtins.str,
+        int64_1: _builtins.int,
+        int16_1: _builtins.int,
+        list_1: _builtins.list[data.TopicPartition],
     ) -> _schema.Either[data.KafkaError, None]:
         """addPartitionsToTxnRequest, with the failure it raises as Left rather than an exception."""
         try:
             return _schema.Right(self.addPartitionsToTxnRequest(
-                value0,
-                value1,
-                value2,
-                value3,
+                text_1,
+                int64_1,
+                int16_1,
+                list_1,
             ))
         except ls.Failure as failure:
             if (
@@ -724,20 +767,20 @@ class Cluster:
 
     def try_txnOffsetCommitRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
-        value2: _builtins.int,
-        value3: _builtins.str,
-        value4: _builtins.list[data.OffsetEntry],
+        text_1: _builtins.str,
+        int64_1: _builtins.int,
+        int16_1: _builtins.int,
+        text_2: _builtins.str,
+        list_1: _builtins.list[data.OffsetEntry],
     ) -> _schema.Either[data.KafkaError, None]:
         """txnOffsetCommitRequest, with the failure it raises as Left rather than an exception."""
         try:
             return _schema.Right(self.txnOffsetCommitRequest(
-                value0,
-                value1,
-                value2,
-                value3,
-                value4,
+                text_1,
+                int64_1,
+                int16_1,
+                text_2,
+                list_1,
             ))
         except ls.Failure as failure:
             if (
@@ -756,18 +799,18 @@ class Cluster:
 
     def try_endTxnRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
-        value2: _builtins.int,
-        value3: _builtins.bool,
+        text_1: _builtins.str,
+        int64_1: _builtins.int,
+        int16_1: _builtins.int,
+        bool_1: _builtins.bool,
     ) -> _schema.Either[data.KafkaError, None]:
         """endTxnRequest, with the failure it raises as Left rather than an exception."""
         try:
             return _schema.Right(self.endTxnRequest(
-                value0,
-                value1,
-                value2,
-                value3,
+                text_1,
+                int64_1,
+                int16_1,
+                bool_1,
             ))
         except ls.Failure as failure:
             if (
@@ -786,13 +829,13 @@ class Cluster:
 
     def try_joinGroupRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.list[_builtins.str],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        list_1: _builtins.list[_builtins.str],
     ) -> _schema.Either[data.KafkaError, _builtins.int]:
         """joinGroupRequest, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.joinGroupRequest(value0, value1, value2))
+            return _schema.Right(self.joinGroupRequest(text_1, text_2, list_1))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -810,13 +853,13 @@ class Cluster:
 
     def try_syncGroupRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int32_1: _builtins.int,
     ) -> _schema.Either[data.KafkaError, _builtins.list[data.TopicPartition]]:
         """syncGroupRequest, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.syncGroupRequest(value0, value1, value2))
+            return _schema.Right(self.syncGroupRequest(text_1, text_2, int32_1))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -834,13 +877,13 @@ class Cluster:
 
     def try_heartbeatRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int32_1: _builtins.int,
     ) -> _schema.Either[data.KafkaError, None]:
         """heartbeatRequest, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.heartbeatRequest(value0, value1, value2))
+            return _schema.Right(self.heartbeatRequest(text_1, text_2, int32_1))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -858,12 +901,12 @@ class Cluster:
 
     def try_leaveGroupRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
     ) -> _schema.Either[data.KafkaError, None]:
         """leaveGroupRequest, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.leaveGroupRequest(value0, value1))
+            return _schema.Right(self.leaveGroupRequest(text_1, text_2))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -881,18 +924,18 @@ class Cluster:
 
     def try_offsetCommitRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
-        value3: _builtins.list[data.OffsetEntry],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int32_1: _builtins.int,
+        list_1: _builtins.list[data.OffsetEntry],
     ) -> _schema.Either[data.KafkaError, None]:
         """offsetCommitRequest, with the failure it raises as Left rather than an exception."""
         try:
             return _schema.Right(self.offsetCommitRequest(
-                value0,
-                value1,
-                value2,
-                value3,
+                text_1,
+                text_2,
+                int32_1,
+                list_1,
             ))
         except ls.Failure as failure:
             if (
@@ -911,12 +954,12 @@ class Cluster:
 
     def try_createTopic(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
+        text_1: _builtins.str,
+        int32_1: _builtins.int,
     ) -> _schema.Either[data.KafkaError, None]:
         """createTopic, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.createTopic(value0, value1))
+            return _schema.Right(self.createTopic(text_1, int32_1))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -934,12 +977,12 @@ class Cluster:
 
     def try_createPartitions(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
+        text_1: _builtins.str,
+        int32_1: _builtins.int,
     ) -> _schema.Either[data.KafkaError, None]:
         """createPartitions, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.createPartitions(value0, value1))
+            return _schema.Right(self.createPartitions(text_1, int32_1))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -957,13 +1000,17 @@ class Cluster:
 
     def try_listOffsets(
         self,
-        value0: data.TopicPartition,
-        value1: data.OffsetSpec,
-        value2: data.IsolationLevel,
+        topic_partition_1: data.TopicPartition,
+        offset_spec_1: data.OffsetSpec,
+        isolation_level_1: data.IsolationLevel,
     ) -> _schema.Either[data.KafkaError, _builtins.int]:
         """listOffsets, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.listOffsets(value0, value1, value2))
+            return _schema.Right(self.listOffsets(
+                topic_partition_1,
+                offset_spec_1,
+                isolation_level_1,
+            ))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -981,13 +1028,13 @@ class Cluster:
 
     def try_joinGroup(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.list[_builtins.str],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        list_1: _builtins.list[_builtins.str],
     ) -> _schema.Either[data.KafkaError, _builtins.int]:
         """joinGroup, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.joinGroup(value0, value1, value2))
+            return _schema.Right(self.joinGroup(text_1, text_2, list_1))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -1005,13 +1052,13 @@ class Cluster:
 
     def try_syncGroup(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int32_1: _builtins.int,
     ) -> _schema.Either[data.KafkaError, _builtins.list[data.TopicPartition]]:
         """syncGroup, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.syncGroup(value0, value1, value2))
+            return _schema.Right(self.syncGroup(text_1, text_2, int32_1))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -1029,13 +1076,13 @@ class Cluster:
 
     def try_heartbeat(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int32_1: _builtins.int,
     ) -> _schema.Either[data.KafkaError, None]:
         """heartbeat, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.heartbeat(value0, value1, value2))
+            return _schema.Right(self.heartbeat(text_1, text_2, int32_1))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -1053,12 +1100,12 @@ class Cluster:
 
     def try_leaveGroup(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
     ) -> _schema.Either[data.KafkaError, None]:
         """leaveGroup, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.leaveGroup(value0, value1))
+            return _schema.Right(self.leaveGroup(text_1, text_2))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -1076,18 +1123,18 @@ class Cluster:
 
     def try_commitOffsets(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
-        value3: _builtins.list[data.OffsetEntry],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int32_1: _builtins.int,
+        list_1: _builtins.list[data.OffsetEntry],
     ) -> _schema.Either[data.KafkaError, None]:
         """commitOffsets, with the failure it raises as Left rather than an exception."""
         try:
             return _schema.Right(self.commitOffsets(
-                value0,
-                value1,
-                value2,
-                value3,
+                text_1,
+                text_2,
+                int32_1,
+                list_1,
             ))
         except ls.Failure as failure:
             if (
@@ -1115,14 +1162,17 @@ class MurmurPartitioner:
 
     def choosePartition(
         self,
-        value0: _schema.Maybe[_builtins.bytes],
-        value1: _builtins.int,
+        maybe_1: _schema.Maybe[_builtins.bytes],
+        int32_1: _builtins.int,
     ) -> _builtins.int:
         symbols = self._symbols
-        argument0 = _typed.nin_maybe_bytes(value0, symbols)
-        argument1 = _typed.nin_int32(value1, symbols)
+        typed_maybe_1 = _typed.nin_maybe_bytes(maybe_1, symbols)
+        typed_int32_1 = _typed.nin_int32(int32_1, symbols)
         return _typed.nout_int32(
-            _typed.murmur_partitioner_choose_partition(argument0, argument1),
+            _typed.murmur_partitioner_choose_partition(
+                typed_maybe_1,
+                typed_int32_1,
+            ),
             symbols,
         )
 
@@ -1139,12 +1189,19 @@ class KafkaProducer:
 
     def send(
         self,
-        value0: data.ProducerRecord,
+        producer_record_1: data.ProducerRecord,
     ) -> _schema.Either[data.KafkaError, data.RecordMetadata]:
         symbols = self._symbols
-        argument0 = _typed.nin_producer_record(value0, symbols)
+        typed_producer_record_1 = _typed.nin_producer_record(
+            producer_record_1,
+            symbols,
+        )
         with self._lock:
-            pair = _typed.kafka_producer_send(symbols, self._state, argument0)
+            pair = _typed.kafka_producer_send(
+                symbols,
+                self._state,
+                typed_producer_record_1,
+            )
             self._state = pair[1]
         return _typed.nout_either_kafka_error_record_metadata(pair[0], symbols)
 
@@ -1217,31 +1274,31 @@ class KafkaConsumer:
         self._lock = _threading.Lock()
         self._state = _typed.start_kafka_consumer_2(self._symbols)
 
-    def assign(self, value0: _builtins.list[data.TopicPartition]) -> None:
+    def assign(self, list_1: _builtins.list[data.TopicPartition]) -> None:
         symbols = self._symbols
-        argument0 = _typed.nin_list_topic_partition(value0, symbols)
+        typed_list_1 = _typed.nin_list_topic_partition(list_1, symbols)
         with self._lock:
-            pair = _typed.kafka_consumer_assign(self._state, argument0)
+            pair = _typed.kafka_consumer_assign(self._state, typed_list_1)
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
     def subscribe(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.list[_builtins.str],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        list_1: _builtins.list[_builtins.str],
     ) -> _schema.Either[data.KafkaError, _builtins.list[data.TopicPartition]]:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_text(value1, symbols)
-        argument2 = _typed.nin_list_text(value2, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_text_2 = _typed.nin_text(text_2, symbols)
+        typed_list_1 = _typed.nin_list_text(list_1, symbols)
         with self._lock:
             pair = _typed.kafka_consumer_subscribe(
                 symbols,
                 self._state,
-                argument0,
-                argument1,
-                argument2,
+                typed_text_1,
+                typed_text_2,
+                typed_list_1,
             )
             self._state = pair[1]
         return _typed.nout_either_kafka_error_list_topic_partition(
@@ -1251,12 +1308,16 @@ class KafkaConsumer:
 
     def poll(
         self,
-        value0: _builtins.int,
+        int32_1: _builtins.int,
     ) -> _schema.Either[data.KafkaError, _builtins.list[data.ConsumerRecord]]:
         symbols = self._symbols
-        argument0 = _typed.nin_int32(value0, symbols)
+        typed_int32_1 = _typed.nin_int32(int32_1, symbols)
         with self._lock:
-            pair = _typed.kafka_consumer_poll(symbols, self._state, argument0)
+            pair = _typed.kafka_consumer_poll(
+                symbols,
+                self._state,
+                typed_int32_1,
+            )
             self._state = pair[1]
         return _typed.nout_either_kafka_error_list_consumer_record(
             pair[0],
@@ -1272,54 +1333,70 @@ class KafkaConsumer:
 
     def seek(
         self,
-        value0: data.TopicPartition,
-        value1: _builtins.int,
+        topic_partition_1: data.TopicPartition,
+        int64_1: _builtins.int,
     ) -> _schema.Either[data.KafkaError, ls.Absence]:
         symbols = self._symbols
-        argument0 = _typed.nin_topic_partition(value0, symbols)
-        argument1 = _typed.nin_int64(value1, symbols)
+        typed_topic_partition_1 = _typed.nin_topic_partition(
+            topic_partition_1,
+            symbols,
+        )
+        typed_int64_1 = _typed.nin_int64(int64_1, symbols)
         with self._lock:
-            pair = _typed.kafka_consumer_seek(self._state, argument0, argument1)
+            pair = _typed.kafka_consumer_seek(
+                self._state,
+                typed_topic_partition_1,
+                typed_int64_1,
+            )
             self._state = pair[1]
         return _typed.nout_either_kafka_error_unit(pair[0], symbols)
 
     def position(
         self,
-        value0: data.TopicPartition,
+        topic_partition_1: data.TopicPartition,
     ) -> _schema.Either[data.KafkaError, _builtins.int]:
         symbols = self._symbols
-        argument0 = _typed.nin_topic_partition(value0, symbols)
+        typed_topic_partition_1 = _typed.nin_topic_partition(
+            topic_partition_1,
+            symbols,
+        )
         with self._lock:
             pair = _typed.kafka_consumer_position(
                 symbols,
                 self._state,
-                argument0,
+                typed_topic_partition_1,
             )
             self._state = pair[1]
         return _typed.nout_either_kafka_error_int64(pair[0], symbols)
 
     def committedOffset(
         self,
-        value0: data.TopicPartition,
+        topic_partition_1: data.TopicPartition,
     ) -> _schema.Maybe[_builtins.int]:
         symbols = self._symbols
-        argument0 = _typed.nin_topic_partition(value0, symbols)
+        typed_topic_partition_1 = _typed.nin_topic_partition(
+            topic_partition_1,
+            symbols,
+        )
         with self._lock:
             pair = _typed.kafka_consumer_committed_offset(
                 symbols,
                 self._state,
-                argument0,
+                typed_topic_partition_1,
             )
             self._state = pair[1]
         return _typed.nout_maybe_int64(pair[0], symbols)
 
-    def setIsolationLevel(self, value0: data.IsolationLevel) -> None:
+    def setIsolationLevel(self, isolation_level_1: data.IsolationLevel) -> None:
         symbols = self._symbols
-        argument0 = _typed.nin_isolation_level(value0, symbols)
+        typed_isolation_level_1 = _typed.nin_isolation_level(
+            isolation_level_1,
+            symbols,
+        )
         with self._lock:
             pair = _typed.kafka_consumer_set_isolation_level(
                 self._state,
-                argument0,
+                typed_isolation_level_1,
             )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
@@ -1364,15 +1441,15 @@ class KafkaTransactions:
 
     def initTransactions(
         self,
-        value0: _builtins.str,
+        text_1: _builtins.str,
     ) -> _schema.Either[data.KafkaError, data.ProducerIdAndEpoch]:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
         with self._lock:
             pair = _typed.kafka_transactions_init_transactions(
                 symbols,
                 self._state,
-                argument0,
+                typed_text_1,
             )
             self._state = pair[1]
         return _typed.nout_either_kafka_error_producer_id_and_epoch(
@@ -1389,48 +1466,51 @@ class KafkaTransactions:
 
     def addPartitionsToTransaction(
         self,
-        value0: _builtins.list[data.TopicPartition],
+        list_1: _builtins.list[data.TopicPartition],
     ) -> _schema.Either[data.KafkaError, ls.Absence]:
         symbols = self._symbols
-        argument0 = _typed.nin_list_topic_partition(value0, symbols)
+        typed_list_1 = _typed.nin_list_topic_partition(list_1, symbols)
         with self._lock:
             pair = _typed.kafka_transactions_add_partitions_to_transaction(
                 symbols,
                 self._state,
-                argument0,
+                typed_list_1,
             )
             self._state = pair[1]
         return _typed.nout_either_kafka_error_unit(pair[0], symbols)
 
     def sendInTransaction(
         self,
-        value0: data.ProducerRecord,
+        producer_record_1: data.ProducerRecord,
     ) -> _schema.Either[data.KafkaError, data.RecordMetadata]:
         symbols = self._symbols
-        argument0 = _typed.nin_producer_record(value0, symbols)
+        typed_producer_record_1 = _typed.nin_producer_record(
+            producer_record_1,
+            symbols,
+        )
         with self._lock:
             pair = _typed.kafka_transactions_send_in_transaction(
                 symbols,
                 self._state,
-                argument0,
+                typed_producer_record_1,
             )
             self._state = pair[1]
         return _typed.nout_either_kafka_error_record_metadata(pair[0], symbols)
 
     def sendOffsetsToTransaction(
         self,
-        value0: _builtins.str,
-        value1: _builtins.list[data.OffsetEntry],
+        text_1: _builtins.str,
+        list_1: _builtins.list[data.OffsetEntry],
     ) -> _schema.Either[data.KafkaError, ls.Absence]:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_list_offset_entry(value1, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_list_1 = _typed.nin_list_offset_entry(list_1, symbols)
         with self._lock:
             pair = _typed.kafka_transactions_send_offsets_to_transaction(
                 symbols,
                 self._state,
-                argument0,
-                argument1,
+                typed_text_1,
+                typed_list_1,
             )
             self._state = pair[1]
         return _typed.nout_either_kafka_error_unit(pair[0], symbols)

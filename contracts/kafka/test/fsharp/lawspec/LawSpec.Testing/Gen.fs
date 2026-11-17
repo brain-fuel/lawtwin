@@ -316,6 +316,15 @@ module Gen =
     let constrain (limit: int) (predicate: 'a -> bool) (g: Gen<'a>) =
         retry predicate limit (fun () -> None) g
 
+    /// As constrain, for a domain some accepted values are known of: when no
+    /// draw is accepted within a hundred, the value is the first of them. A
+    /// restriction no draw meets then still has the value its witness showed.
+    [<CompiledName("ConstrainOr")>]
+    let constrainOr (limit: int) (predicate: 'a -> bool) (known: 'a list) (g: Gen<'a>) =
+        match known with
+        | [] -> constrain limit predicate g
+        | first :: _ -> retry predicate (min limit 100) (fun () -> Some(Tree.leaf first)) g
+
     /// A dependent input's domain: an impossible value discards the tuple, so
     /// an earlier input is redrawn rather than retried in vain.
     [<CompiledName("Refine")>]

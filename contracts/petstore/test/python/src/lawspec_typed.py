@@ -977,46 +977,46 @@ def lawtwin_petstore_model_valid_order(value):
 
 
 # referenceAddPet — ../src/api.lawspec:185
-def reference_add_pet(state, value0):
-    return lawtwin_petstore_model_model_add_pet(value0, state)
+def reference_add_pet(state, pet_1):
+    return lawtwin_petstore_model_model_add_pet(pet_1, state)
 
 
 # referenceCreateUser — ../src/api.lawspec:196
-def reference_create_user(state, value0):
-    return lawtwin_petstore_model_model_create_user(value0, state)
+def reference_create_user(state, maybe_1):
+    return lawtwin_petstore_model_model_create_user(maybe_1, state)
 
 
 # referenceCreateUsersWithListInput — ../src/api.lawspec:197
-def reference_create_users_with_list_input(state, value0):
+def reference_create_users_with_list_input(state, maybe_1):
     return lawtwin_petstore_handwritten_create_users_with_list_input(
-        value0,
+        maybe_1,
         state,
     )
 
 
 # referenceDeleteOrder — ../src/api.lawspec:195
-def reference_delete_order(state, value0):
-    return lawtwin_petstore_model_model_delete_order(value0, state)
+def reference_delete_order(state, int64_1):
+    return lawtwin_petstore_model_model_delete_order(int64_1, state)
 
 
 # referenceDeletePet — ../src/api.lawspec:190
-def reference_delete_pet(state, value0, value1):
-    return lawtwin_petstore_model_model_delete_pet(value0, value1, state)
+def reference_delete_pet(state, int64_1, maybe_1):
+    return lawtwin_petstore_model_model_delete_pet(int64_1, maybe_1, state)
 
 
 # referenceDeleteUser — ../src/api.lawspec:202
-def reference_delete_user(state, value0):
-    return lawtwin_petstore_model_model_delete_user(value0, state)
+def reference_delete_user(state, text_1):
+    return lawtwin_petstore_model_model_delete_user(text_1, state)
 
 
 # referenceFindPetsByStatus — ../src/api.lawspec:186
-def reference_find_pets_by_status(state, value0):
-    return lawtwin_petstore_handwritten_find_pets_by_status(value0, state)
+def reference_find_pets_by_status(state, pet_status_1):
+    return lawtwin_petstore_handwritten_find_pets_by_status(pet_status_1, state)
 
 
 # referenceFindPetsByTags — ../src/api.lawspec:187
-def reference_find_pets_by_tags(state, value0):
-    return lawtwin_petstore_handwritten_find_pets_by_tags(value0, state)
+def reference_find_pets_by_tags(state, list_1):
+    return lawtwin_petstore_handwritten_find_pets_by_tags(list_1, state)
 
 
 # referenceGetInventory — ../src/api.lawspec:192
@@ -1025,23 +1025,23 @@ def reference_get_inventory(state):
 
 
 # referenceGetOrderById — ../src/api.lawspec:194
-def reference_get_order_by_id(state, value0):
-    return lawtwin_petstore_model_model_get_order_by_id(value0, state)
+def reference_get_order_by_id(state, int64_1):
+    return lawtwin_petstore_model_model_get_order_by_id(int64_1, state)
 
 
 # referenceGetPetById — ../src/api.lawspec:188
-def reference_get_pet_by_id(state, value0):
-    return lawtwin_petstore_model_model_get_pet_by_id(value0, state)
+def reference_get_pet_by_id(state, int64_1):
+    return lawtwin_petstore_model_model_get_pet_by_id(int64_1, state)
 
 
 # referenceGetUserByName — ../src/api.lawspec:200
-def reference_get_user_by_name(state, value0):
-    return lawtwin_petstore_model_model_get_user_by_name(value0, state)
+def reference_get_user_by_name(state, text_1):
+    return lawtwin_petstore_model_model_get_user_by_name(text_1, state)
 
 
 # referenceLoginUser — ../src/api.lawspec:198
-def reference_login_user(state, value0, value1):
-    return lawtwin_petstore_handwritten_login_user(value0, value1, state)
+def reference_login_user(state, maybe_1, maybe_2):
+    return lawtwin_petstore_handwritten_login_user(maybe_1, maybe_2, state)
 
 
 # referenceLogoutUser — ../src/api.lawspec:199
@@ -1050,8 +1050,8 @@ def reference_logout_user(state):
 
 
 # referencePlaceOrder — ../src/api.lawspec:193
-def reference_place_order(state, value0):
-    return lawtwin_petstore_model_model_place_order(value0, state)
+def reference_place_order(state, maybe_1):
+    return lawtwin_petstore_model_model_place_order(maybe_1, state)
 
 
 # referenceStart — ../src/api.lawspec:183
@@ -1060,31 +1060,31 @@ def reference_start(unit):
 
 
 # referenceUpdatePet — ../src/api.lawspec:184
-def reference_update_pet(state, value0):
-    return lawtwin_petstore_model_model_update_pet(value0, state)
+def reference_update_pet(state, pet_1):
+    return lawtwin_petstore_model_model_update_pet(pet_1, state)
 
 
 # referenceUpdatePetWithForm — ../src/api.lawspec:189
-def reference_update_pet_with_form(state, value0, value1, value2):
+def reference_update_pet_with_form(state, int64_1, maybe_1, maybe_2):
     return lawtwin_petstore_handwritten_update_pet_with_form(
-        value0,
-        value1,
-        value2,
+        int64_1,
+        maybe_1,
+        maybe_2,
         state,
     )
 
 
 # referenceUpdateUser — ../src/api.lawspec:201
-def reference_update_user(state, value0, value1):
-    return lawtwin_petstore_model_model_update_user(value0, value1, state)
+def reference_update_user(state, text_1, maybe_1):
+    return lawtwin_petstore_model_model_update_user(text_1, maybe_1, state)
 
 
 # referenceUploadFile — ../src/api.lawspec:191
-def reference_upload_file(state, value0, value1, value2):
+def reference_upload_file(state, int64_1, maybe_1, maybe_2):
     return lawtwin_petstore_handwritten_upload_file(
-        value0,
-        value1,
-        value2,
+        int64_1,
+        maybe_1,
+        maybe_2,
         state,
     )
 

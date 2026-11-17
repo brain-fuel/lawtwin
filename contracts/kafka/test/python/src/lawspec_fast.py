@@ -227,6 +227,21 @@ def trim(text):
     return text[start:end]
 
 
+def is_unicode_whitespace(text):
+    """Whether every code point is Unicode White_Space; the empty text is."""
+    return all(_is_space(character) for character in text)
+
+
+def trim_ascii_control(text):
+    """The text without the code points up to U+0020 at its two ends."""
+    start, end = 0, len(text)
+    while start < end and ord(text[start]) <= 0x20:
+        start += 1
+    while end > start and ord(text[end - 1]) <= 0x20:
+        end -= 1
+    return text[start:end]
+
+
 def words(text):
     out, word = [], []
     for character in text:

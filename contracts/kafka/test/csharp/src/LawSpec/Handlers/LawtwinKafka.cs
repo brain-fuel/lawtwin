@@ -39,13 +39,13 @@ public sealed class Cluster : LawSpec.Abilities.LawtwinKafka.IBroker, LawSpec.Ab
     set { lock (gate) state = value; }
   }
 
-  public FSharpResult<Unit, LawSpec.Data.KafkaError> CreateTopicsRequest(string value0, int value1)
+  public FSharpResult<Unit, LawSpec.Data.KafkaError> CreateTopicsRequest(string text1, int int32_1)
   {
     lock (gate)
     {
       try
       {
-        var pair = LawSpec.TypedProgram.ClusterCreateTopic(state, value0, value1);
+        var pair = LawSpec.TypedProgram.ClusterCreateTopic(state, text1, int32_1);
         state = pair.Second;
         return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
       }
@@ -56,13 +56,13 @@ public sealed class Cluster : LawSpec.Abilities.LawtwinKafka.IBroker, LawSpec.Ab
     }
   }
 
-  public FSharpResult<Unit, LawSpec.Data.KafkaError> CreatePartitionsRequest(string value0, int value1)
+  public FSharpResult<Unit, LawSpec.Data.KafkaError> CreatePartitionsRequest(string text1, int int32_1)
   {
     lock (gate)
     {
       try
       {
-        var pair = LawSpec.TypedProgram.ClusterCreatePartitions(state, value0, value1);
+        var pair = LawSpec.TypedProgram.ClusterCreatePartitions(state, text1, int32_1);
         state = pair.Second;
         return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
       }
@@ -73,23 +73,23 @@ public sealed class Cluster : LawSpec.Abilities.LawtwinKafka.IBroker, LawSpec.Ab
     }
   }
 
-  public FSharpOption<int> MetadataRequest(string value0)
+  public FSharpOption<int> MetadataRequest(string text1)
   {
     lock (gate)
     {
-      var pair = LawSpec.TypedProgram.ClusterMetadataRequest(state, value0);
+      var pair = LawSpec.TypedProgram.ClusterMetadataRequest(state, text1);
       state = pair.Second;
       return pair.First;
     }
   }
 
-  public FSharpResult<long, LawSpec.Data.KafkaError> ProduceRequest(LawSpec.Data.TopicPartition value0, FSharpOption<LawSpec.Data.ProducerTag> value1, FSharpList<LawSpec.Data.Record> value2)
+  public FSharpResult<long, LawSpec.Data.KafkaError> ProduceRequest(LawSpec.Data.TopicPartition topicPartition1, FSharpOption<LawSpec.Data.ProducerTag> maybe1, FSharpList<LawSpec.Data.Record> list1)
   {
     lock (gate)
     {
       try
       {
-        var pair = LawSpec.TypedProgram.ClusterProduceRequest(state, value0, value1, value2);
+        var pair = LawSpec.TypedProgram.ClusterProduceRequest(state, topicPartition1, maybe1, list1);
         state = pair.Second;
         return FSharpResult<long, LawSpec.Data.KafkaError>.NewOk(pair.First);
       }
@@ -100,13 +100,13 @@ public sealed class Cluster : LawSpec.Abilities.LawtwinKafka.IBroker, LawSpec.Ab
     }
   }
 
-  public FSharpResult<LawSpec.Data.FetchResult, LawSpec.Data.KafkaError> FetchRequest(LawSpec.Data.TopicPartition value0, long value1, int value2, LawSpec.Data.IsolationLevel value3)
+  public FSharpResult<LawSpec.Data.FetchResult, LawSpec.Data.KafkaError> FetchRequest(LawSpec.Data.TopicPartition topicPartition1, long int64_1, int int32_1, LawSpec.Data.IsolationLevel isolationLevel1)
   {
     lock (gate)
     {
       try
       {
-        var pair = LawSpec.TypedProgram.ClusterFetchRequest(state, value0, value1, value2, value3);
+        var pair = LawSpec.TypedProgram.ClusterFetchRequest(state, topicPartition1, int64_1, int32_1, isolationLevel1);
         state = pair.Second;
         return FSharpResult<LawSpec.Data.FetchResult, LawSpec.Data.KafkaError>.NewOk(pair.First);
       }
@@ -117,13 +117,13 @@ public sealed class Cluster : LawSpec.Abilities.LawtwinKafka.IBroker, LawSpec.Ab
     }
   }
 
-  public FSharpResult<long, LawSpec.Data.KafkaError> ListOffsetsRequest(LawSpec.Data.TopicPartition value0, LawSpec.Data.OffsetSpec value1, LawSpec.Data.IsolationLevel value2)
+  public FSharpResult<long, LawSpec.Data.KafkaError> ListOffsetsRequest(LawSpec.Data.TopicPartition topicPartition1, LawSpec.Data.OffsetSpec offsetSpec1, LawSpec.Data.IsolationLevel isolationLevel1)
   {
     lock (gate)
     {
       try
       {
-        var pair = LawSpec.TypedProgram.ClusterListOffsets(state, value0, value1, value2);
+        var pair = LawSpec.TypedProgram.ClusterListOffsets(state, topicPartition1, offsetSpec1, isolationLevel1);
         state = pair.Second;
         return FSharpResult<long, LawSpec.Data.KafkaError>.NewOk(pair.First);
       }
@@ -134,13 +134,13 @@ public sealed class Cluster : LawSpec.Abilities.LawtwinKafka.IBroker, LawSpec.Ab
     }
   }
 
-  public FSharpResult<LawSpec.Data.ProducerIdAndEpoch, LawSpec.Data.KafkaError> InitProducerIdRequest(FSharpOption<string> value0)
+  public FSharpResult<LawSpec.Data.ProducerIdAndEpoch, LawSpec.Data.KafkaError> InitProducerIdRequest(FSharpOption<string> maybe1)
   {
     lock (gate)
     {
       try
       {
-        var pair = LawSpec.TypedProgram.ClusterInitProducerIdRequest(state, value0);
+        var pair = LawSpec.TypedProgram.ClusterInitProducerIdRequest(state, maybe1);
         state = pair.Second;
         return FSharpResult<LawSpec.Data.ProducerIdAndEpoch, LawSpec.Data.KafkaError>.NewOk(pair.First);
       }
@@ -151,13 +151,13 @@ public sealed class Cluster : LawSpec.Abilities.LawtwinKafka.IBroker, LawSpec.Ab
     }
   }
 
-  public FSharpResult<Unit, LawSpec.Data.KafkaError> AddPartitionsToTxnRequest(string value0, long value1, short value2, FSharpList<LawSpec.Data.TopicPartition> value3)
+  public FSharpResult<Unit, LawSpec.Data.KafkaError> AddPartitionsToTxnRequest(string text1, long int64_1, short int16_1, FSharpList<LawSpec.Data.TopicPartition> list1)
   {
     lock (gate)
     {
       try
       {
-        var pair = LawSpec.TypedProgram.ClusterAddPartitionsToTxnRequest(state, value0, value1, value2, value3);
+        var pair = LawSpec.TypedProgram.ClusterAddPartitionsToTxnRequest(state, text1, int64_1, int16_1, list1);
         state = pair.Second;
         return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
       }
@@ -168,13 +168,13 @@ public sealed class Cluster : LawSpec.Abilities.LawtwinKafka.IBroker, LawSpec.Ab
     }
   }
 
-  public FSharpResult<Unit, LawSpec.Data.KafkaError> TxnOffsetCommitRequest(string value0, long value1, short value2, string value3, FSharpList<LawSpec.Data.OffsetEntry> value4)
+  public FSharpResult<Unit, LawSpec.Data.KafkaError> TxnOffsetCommitRequest(string text1, long int64_1, short int16_1, string text2, FSharpList<LawSpec.Data.OffsetEntry> list1)
   {
     lock (gate)
     {
       try
       {
-        var pair = LawSpec.TypedProgram.ClusterTxnOffsetCommitRequest(state, value0, value1, value2, value3, value4);
+        var pair = LawSpec.TypedProgram.ClusterTxnOffsetCommitRequest(state, text1, int64_1, int16_1, text2, list1);
         state = pair.Second;
         return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
       }
@@ -185,13 +185,13 @@ public sealed class Cluster : LawSpec.Abilities.LawtwinKafka.IBroker, LawSpec.Ab
     }
   }
 
-  public FSharpResult<Unit, LawSpec.Data.KafkaError> EndTxnRequest(string value0, long value1, short value2, bool value3)
+  public FSharpResult<Unit, LawSpec.Data.KafkaError> EndTxnRequest(string text1, long int64_1, short int16_1, bool bool1)
   {
     lock (gate)
     {
       try
       {
-        var pair = LawSpec.TypedProgram.ClusterEndTxnRequest(state, value0, value1, value2, value3);
+        var pair = LawSpec.TypedProgram.ClusterEndTxnRequest(state, text1, int64_1, int16_1, bool1);
         state = pair.Second;
         return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
       }
@@ -202,13 +202,13 @@ public sealed class Cluster : LawSpec.Abilities.LawtwinKafka.IBroker, LawSpec.Ab
     }
   }
 
-  public FSharpResult<int, LawSpec.Data.KafkaError> JoinGroupRequest(string value0, string value1, FSharpList<string> value2)
+  public FSharpResult<int, LawSpec.Data.KafkaError> JoinGroupRequest(string text1, string text2, FSharpList<string> list1)
   {
     lock (gate)
     {
       try
       {
-        var pair = LawSpec.TypedProgram.ClusterJoinGroup(state, value0, value1, value2);
+        var pair = LawSpec.TypedProgram.ClusterJoinGroup(state, text1, text2, list1);
         state = pair.Second;
         return FSharpResult<int, LawSpec.Data.KafkaError>.NewOk(pair.First);
       }
@@ -219,13 +219,13 @@ public sealed class Cluster : LawSpec.Abilities.LawtwinKafka.IBroker, LawSpec.Ab
     }
   }
 
-  public FSharpResult<FSharpList<LawSpec.Data.TopicPartition>, LawSpec.Data.KafkaError> SyncGroupRequest(string value0, string value1, int value2)
+  public FSharpResult<FSharpList<LawSpec.Data.TopicPartition>, LawSpec.Data.KafkaError> SyncGroupRequest(string text1, string text2, int int32_1)
   {
     lock (gate)
     {
       try
       {
-        var pair = LawSpec.TypedProgram.ClusterSyncGroup(state, value0, value1, value2);
+        var pair = LawSpec.TypedProgram.ClusterSyncGroup(state, text1, text2, int32_1);
         state = pair.Second;
         return FSharpResult<FSharpList<LawSpec.Data.TopicPartition>, LawSpec.Data.KafkaError>.NewOk(pair.First);
       }
@@ -236,13 +236,13 @@ public sealed class Cluster : LawSpec.Abilities.LawtwinKafka.IBroker, LawSpec.Ab
     }
   }
 
-  public FSharpResult<Unit, LawSpec.Data.KafkaError> HeartbeatRequest(string value0, string value1, int value2)
+  public FSharpResult<Unit, LawSpec.Data.KafkaError> HeartbeatRequest(string text1, string text2, int int32_1)
   {
     lock (gate)
     {
       try
       {
-        var pair = LawSpec.TypedProgram.ClusterHeartbeat(state, value0, value1, value2);
+        var pair = LawSpec.TypedProgram.ClusterHeartbeat(state, text1, text2, int32_1);
         state = pair.Second;
         return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
       }
@@ -253,13 +253,13 @@ public sealed class Cluster : LawSpec.Abilities.LawtwinKafka.IBroker, LawSpec.Ab
     }
   }
 
-  public FSharpResult<Unit, LawSpec.Data.KafkaError> LeaveGroupRequest(string value0, string value1)
+  public FSharpResult<Unit, LawSpec.Data.KafkaError> LeaveGroupRequest(string text1, string text2)
   {
     lock (gate)
     {
       try
       {
-        var pair = LawSpec.TypedProgram.ClusterLeaveGroup(state, value0, value1);
+        var pair = LawSpec.TypedProgram.ClusterLeaveGroup(state, text1, text2);
         state = pair.Second;
         return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
       }
@@ -270,23 +270,23 @@ public sealed class Cluster : LawSpec.Abilities.LawtwinKafka.IBroker, LawSpec.Ab
     }
   }
 
-  public LawSpec.Data.GroupView DescribeGroupRequest(string value0)
+  public LawSpec.Data.GroupView DescribeGroupRequest(string text1)
   {
     lock (gate)
     {
-      var pair = LawSpec.TypedProgram.ClusterDescribeGroup(state, value0);
+      var pair = LawSpec.TypedProgram.ClusterDescribeGroup(state, text1);
       state = pair.Second;
       return pair.First;
     }
   }
 
-  public FSharpResult<Unit, LawSpec.Data.KafkaError> OffsetCommitRequest(string value0, string value1, int value2, FSharpList<LawSpec.Data.OffsetEntry> value3)
+  public FSharpResult<Unit, LawSpec.Data.KafkaError> OffsetCommitRequest(string text1, string text2, int int32_1, FSharpList<LawSpec.Data.OffsetEntry> list1)
   {
     lock (gate)
     {
       try
       {
-        var pair = LawSpec.TypedProgram.ClusterCommitOffsets(state, value0, value1, value2, value3);
+        var pair = LawSpec.TypedProgram.ClusterCommitOffsets(state, text1, text2, int32_1, list1);
         state = pair.Second;
         return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
       }
@@ -297,23 +297,23 @@ public sealed class Cluster : LawSpec.Abilities.LawtwinKafka.IBroker, LawSpec.Ab
     }
   }
 
-  public FSharpOption<long> OffsetFetchRequest(string value0, LawSpec.Data.TopicPartition value1)
+  public FSharpOption<long> OffsetFetchRequest(string text1, LawSpec.Data.TopicPartition topicPartition1)
   {
     lock (gate)
     {
-      var pair = LawSpec.TypedProgram.ClusterFetchOffset(state, value0, value1);
+      var pair = LawSpec.TypedProgram.ClusterFetchOffset(state, text1, topicPartition1);
       state = pair.Second;
       return pair.First;
     }
   }
 
-  public FSharpResult<Unit, LawSpec.Data.KafkaError> CreateTopic(string value0, int value1)
+  public FSharpResult<Unit, LawSpec.Data.KafkaError> CreateTopic(string text1, int int32_1)
   {
     lock (gate)
     {
       try
       {
-        var pair = LawSpec.TypedProgram.ClusterCreateTopic(state, value0, value1);
+        var pair = LawSpec.TypedProgram.ClusterCreateTopic(state, text1, int32_1);
         state = pair.Second;
         return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
       }
@@ -324,13 +324,13 @@ public sealed class Cluster : LawSpec.Abilities.LawtwinKafka.IBroker, LawSpec.Ab
     }
   }
 
-  public FSharpResult<Unit, LawSpec.Data.KafkaError> CreatePartitions(string value0, int value1)
+  public FSharpResult<Unit, LawSpec.Data.KafkaError> CreatePartitions(string text1, int int32_1)
   {
     lock (gate)
     {
       try
       {
-        var pair = LawSpec.TypedProgram.ClusterCreatePartitions(state, value0, value1);
+        var pair = LawSpec.TypedProgram.ClusterCreatePartitions(state, text1, int32_1);
         state = pair.Second;
         return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
       }
@@ -341,23 +341,23 @@ public sealed class Cluster : LawSpec.Abilities.LawtwinKafka.IBroker, LawSpec.Ab
     }
   }
 
-  public FSharpOption<int> PartitionsFor(string value0)
+  public FSharpOption<int> PartitionsFor(string text1)
   {
     lock (gate)
     {
-      var pair = LawSpec.TypedProgram.ClusterMetadataRequest(state, value0);
+      var pair = LawSpec.TypedProgram.ClusterMetadataRequest(state, text1);
       state = pair.Second;
       return pair.First;
     }
   }
 
-  public FSharpResult<long, LawSpec.Data.KafkaError> ListOffsets(LawSpec.Data.TopicPartition value0, LawSpec.Data.OffsetSpec value1, LawSpec.Data.IsolationLevel value2)
+  public FSharpResult<long, LawSpec.Data.KafkaError> ListOffsets(LawSpec.Data.TopicPartition topicPartition1, LawSpec.Data.OffsetSpec offsetSpec1, LawSpec.Data.IsolationLevel isolationLevel1)
   {
     lock (gate)
     {
       try
       {
-        var pair = LawSpec.TypedProgram.ClusterListOffsets(state, value0, value1, value2);
+        var pair = LawSpec.TypedProgram.ClusterListOffsets(state, topicPartition1, offsetSpec1, isolationLevel1);
         state = pair.Second;
         return FSharpResult<long, LawSpec.Data.KafkaError>.NewOk(pair.First);
       }
@@ -368,13 +368,13 @@ public sealed class Cluster : LawSpec.Abilities.LawtwinKafka.IBroker, LawSpec.Ab
     }
   }
 
-  public FSharpResult<int, LawSpec.Data.KafkaError> JoinGroup(string value0, string value1, FSharpList<string> value2)
+  public FSharpResult<int, LawSpec.Data.KafkaError> JoinGroup(string text1, string text2, FSharpList<string> list1)
   {
     lock (gate)
     {
       try
       {
-        var pair = LawSpec.TypedProgram.ClusterJoinGroup(state, value0, value1, value2);
+        var pair = LawSpec.TypedProgram.ClusterJoinGroup(state, text1, text2, list1);
         state = pair.Second;
         return FSharpResult<int, LawSpec.Data.KafkaError>.NewOk(pair.First);
       }
@@ -385,13 +385,13 @@ public sealed class Cluster : LawSpec.Abilities.LawtwinKafka.IBroker, LawSpec.Ab
     }
   }
 
-  public FSharpResult<FSharpList<LawSpec.Data.TopicPartition>, LawSpec.Data.KafkaError> SyncGroup(string value0, string value1, int value2)
+  public FSharpResult<FSharpList<LawSpec.Data.TopicPartition>, LawSpec.Data.KafkaError> SyncGroup(string text1, string text2, int int32_1)
   {
     lock (gate)
     {
       try
       {
-        var pair = LawSpec.TypedProgram.ClusterSyncGroup(state, value0, value1, value2);
+        var pair = LawSpec.TypedProgram.ClusterSyncGroup(state, text1, text2, int32_1);
         state = pair.Second;
         return FSharpResult<FSharpList<LawSpec.Data.TopicPartition>, LawSpec.Data.KafkaError>.NewOk(pair.First);
       }
@@ -402,13 +402,13 @@ public sealed class Cluster : LawSpec.Abilities.LawtwinKafka.IBroker, LawSpec.Ab
     }
   }
 
-  public FSharpResult<Unit, LawSpec.Data.KafkaError> Heartbeat(string value0, string value1, int value2)
+  public FSharpResult<Unit, LawSpec.Data.KafkaError> Heartbeat(string text1, string text2, int int32_1)
   {
     lock (gate)
     {
       try
       {
-        var pair = LawSpec.TypedProgram.ClusterHeartbeat(state, value0, value1, value2);
+        var pair = LawSpec.TypedProgram.ClusterHeartbeat(state, text1, text2, int32_1);
         state = pair.Second;
         return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
       }
@@ -419,13 +419,13 @@ public sealed class Cluster : LawSpec.Abilities.LawtwinKafka.IBroker, LawSpec.Ab
     }
   }
 
-  public FSharpResult<Unit, LawSpec.Data.KafkaError> LeaveGroup(string value0, string value1)
+  public FSharpResult<Unit, LawSpec.Data.KafkaError> LeaveGroup(string text1, string text2)
   {
     lock (gate)
     {
       try
       {
-        var pair = LawSpec.TypedProgram.ClusterLeaveGroup(state, value0, value1);
+        var pair = LawSpec.TypedProgram.ClusterLeaveGroup(state, text1, text2);
         state = pair.Second;
         return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
       }
@@ -436,23 +436,23 @@ public sealed class Cluster : LawSpec.Abilities.LawtwinKafka.IBroker, LawSpec.Ab
     }
   }
 
-  public LawSpec.Data.GroupView DescribeGroup(string value0)
+  public LawSpec.Data.GroupView DescribeGroup(string text1)
   {
     lock (gate)
     {
-      var pair = LawSpec.TypedProgram.ClusterDescribeGroup(state, value0);
+      var pair = LawSpec.TypedProgram.ClusterDescribeGroup(state, text1);
       state = pair.Second;
       return pair.First;
     }
   }
 
-  public FSharpResult<Unit, LawSpec.Data.KafkaError> CommitOffsets(string value0, string value1, int value2, FSharpList<LawSpec.Data.OffsetEntry> value3)
+  public FSharpResult<Unit, LawSpec.Data.KafkaError> CommitOffsets(string text1, string text2, int int32_1, FSharpList<LawSpec.Data.OffsetEntry> list1)
   {
     lock (gate)
     {
       try
       {
-        var pair = LawSpec.TypedProgram.ClusterCommitOffsets(state, value0, value1, value2, value3);
+        var pair = LawSpec.TypedProgram.ClusterCommitOffsets(state, text1, text2, int32_1, list1);
         state = pair.Second;
         return FSharpResult<Unit, LawSpec.Data.KafkaError>.NewOk(pair.First);
       }
@@ -463,11 +463,11 @@ public sealed class Cluster : LawSpec.Abilities.LawtwinKafka.IBroker, LawSpec.Ab
     }
   }
 
-  public FSharpOption<long> FetchOffset(string value0, LawSpec.Data.TopicPartition value1)
+  public FSharpOption<long> FetchOffset(string text1, LawSpec.Data.TopicPartition topicPartition1)
   {
     lock (gate)
     {
-      var pair = LawSpec.TypedProgram.ClusterFetchOffset(state, value0, value1);
+      var pair = LawSpec.TypedProgram.ClusterFetchOffset(state, text1, topicPartition1);
       state = pair.Second;
       return pair.First;
     }
@@ -490,11 +490,11 @@ public sealed class MurmurPartitioner : LawSpec.Abilities.LawtwinKafka.IPartitio
     this.symbols = symbols;
   }
 
-  public int ChoosePartition(FSharpOption<byte[]> value0, int value1)
+  public int ChoosePartition(FSharpOption<byte[]> maybe1, int int32_1)
   {
     lock (gate)
     {
-      return LawSpec.TypedProgram.MurmurPartitionerChoosePartition(value0, value1);
+      return LawSpec.TypedProgram.MurmurPartitionerChoosePartition(maybe1, int32_1);
     }
   }
 }
@@ -525,11 +525,11 @@ public sealed class KafkaProducer : LawSpec.Abilities.LawtwinKafka.IProducer
     set { lock (gate) state = value; }
   }
 
-  public LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata> Send(LawSpec.Data.ProducerRecord value0)
+  public LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata> Send(LawSpec.Data.ProducerRecord producerRecord1)
   {
     lock (gate)
     {
-      var pair = LawSpec.TypedProgram.KafkaProducerSend(schema, symbols, state, value0);
+      var pair = LawSpec.TypedProgram.KafkaProducerSend(schema, symbols, state, producerRecord1);
       state = pair.Second;
       return pair.First;
     }
@@ -601,30 +601,30 @@ public sealed class KafkaConsumer : LawSpec.Abilities.LawtwinKafka.IConsumer
     set { lock (gate) state = value; }
   }
 
-  public void Assign(FSharpList<LawSpec.Data.TopicPartition> value0)
+  public void Assign(FSharpList<LawSpec.Data.TopicPartition> list1)
   {
     lock (gate)
     {
-      var pair = LawSpec.TypedProgram.KafkaConsumerAssign(state, value0);
+      var pair = LawSpec.TypedProgram.KafkaConsumerAssign(state, list1);
       state = pair.Second;
     }
   }
 
-  public LawSpec.Either<LawSpec.Data.KafkaError, FSharpList<LawSpec.Data.TopicPartition>> Subscribe(string value0, string value1, FSharpList<string> value2)
+  public LawSpec.Either<LawSpec.Data.KafkaError, FSharpList<LawSpec.Data.TopicPartition>> Subscribe(string text1, string text2, FSharpList<string> list1)
   {
     lock (gate)
     {
-      var pair = LawSpec.TypedProgram.KafkaConsumerSubscribe(schema, symbols, state, value0, value1, value2);
+      var pair = LawSpec.TypedProgram.KafkaConsumerSubscribe(schema, symbols, state, text1, text2, list1);
       state = pair.Second;
       return pair.First;
     }
   }
 
-  public LawSpec.Either<LawSpec.Data.KafkaError, FSharpList<LawSpec.Data.ConsumerRecord>> Poll(int value0)
+  public LawSpec.Either<LawSpec.Data.KafkaError, FSharpList<LawSpec.Data.ConsumerRecord>> Poll(int int32_1)
   {
     lock (gate)
     {
-      var pair = LawSpec.TypedProgram.KafkaConsumerPoll(schema, symbols, state, value0);
+      var pair = LawSpec.TypedProgram.KafkaConsumerPoll(schema, symbols, state, int32_1);
       state = pair.Second;
       return pair.First;
     }
@@ -640,41 +640,41 @@ public sealed class KafkaConsumer : LawSpec.Abilities.LawtwinKafka.IConsumer
     }
   }
 
-  public LawSpec.Either<LawSpec.Data.KafkaError, Unit> Seek(LawSpec.Data.TopicPartition value0, long value1)
+  public LawSpec.Either<LawSpec.Data.KafkaError, Unit> Seek(LawSpec.Data.TopicPartition topicPartition1, long int64_1)
   {
     lock (gate)
     {
-      var pair = LawSpec.TypedProgram.KafkaConsumerSeek(state, value0, value1);
+      var pair = LawSpec.TypedProgram.KafkaConsumerSeek(state, topicPartition1, int64_1);
       state = pair.Second;
       return pair.First;
     }
   }
 
-  public LawSpec.Either<LawSpec.Data.KafkaError, long> Position(LawSpec.Data.TopicPartition value0)
+  public LawSpec.Either<LawSpec.Data.KafkaError, long> Position(LawSpec.Data.TopicPartition topicPartition1)
   {
     lock (gate)
     {
-      var pair = LawSpec.TypedProgram.KafkaConsumerPosition(schema, symbols, state, value0);
+      var pair = LawSpec.TypedProgram.KafkaConsumerPosition(schema, symbols, state, topicPartition1);
       state = pair.Second;
       return pair.First;
     }
   }
 
-  public FSharpOption<long> CommittedOffset(LawSpec.Data.TopicPartition value0)
+  public FSharpOption<long> CommittedOffset(LawSpec.Data.TopicPartition topicPartition1)
   {
     lock (gate)
     {
-      var pair = LawSpec.TypedProgram.KafkaConsumerCommittedOffset(schema, symbols, state, value0);
+      var pair = LawSpec.TypedProgram.KafkaConsumerCommittedOffset(schema, symbols, state, topicPartition1);
       state = pair.Second;
       return pair.First;
     }
   }
 
-  public void SetIsolationLevel(LawSpec.Data.IsolationLevel value0)
+  public void SetIsolationLevel(LawSpec.Data.IsolationLevel isolationLevel1)
   {
     lock (gate)
     {
-      var pair = LawSpec.TypedProgram.KafkaConsumerSetIsolationLevel(state, value0);
+      var pair = LawSpec.TypedProgram.KafkaConsumerSetIsolationLevel(state, isolationLevel1);
       state = pair.Second;
     }
   }
@@ -715,11 +715,11 @@ public sealed class KafkaTransactions : LawSpec.Abilities.LawtwinKafka.ITransact
     set { lock (gate) state = value; }
   }
 
-  public LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ProducerIdAndEpoch> InitTransactions(string value0)
+  public LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ProducerIdAndEpoch> InitTransactions(string text1)
   {
     lock (gate)
     {
-      var pair = LawSpec.TypedProgram.KafkaTransactionsInitTransactions(schema, symbols, state, value0);
+      var pair = LawSpec.TypedProgram.KafkaTransactionsInitTransactions(schema, symbols, state, text1);
       state = pair.Second;
       return pair.First;
     }
@@ -735,31 +735,31 @@ public sealed class KafkaTransactions : LawSpec.Abilities.LawtwinKafka.ITransact
     }
   }
 
-  public LawSpec.Either<LawSpec.Data.KafkaError, Unit> AddPartitionsToTransaction(FSharpList<LawSpec.Data.TopicPartition> value0)
+  public LawSpec.Either<LawSpec.Data.KafkaError, Unit> AddPartitionsToTransaction(FSharpList<LawSpec.Data.TopicPartition> list1)
   {
     lock (gate)
     {
-      var pair = LawSpec.TypedProgram.KafkaTransactionsAddPartitionsToTransaction(schema, symbols, state, value0);
+      var pair = LawSpec.TypedProgram.KafkaTransactionsAddPartitionsToTransaction(schema, symbols, state, list1);
       state = pair.Second;
       return pair.First;
     }
   }
 
-  public LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata> SendInTransaction(LawSpec.Data.ProducerRecord value0)
+  public LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata> SendInTransaction(LawSpec.Data.ProducerRecord producerRecord1)
   {
     lock (gate)
     {
-      var pair = LawSpec.TypedProgram.KafkaTransactionsSendInTransaction(schema, symbols, state, value0);
+      var pair = LawSpec.TypedProgram.KafkaTransactionsSendInTransaction(schema, symbols, state, producerRecord1);
       state = pair.Second;
       return pair.First;
     }
   }
 
-  public LawSpec.Either<LawSpec.Data.KafkaError, Unit> SendOffsetsToTransaction(string value0, FSharpList<LawSpec.Data.OffsetEntry> value1)
+  public LawSpec.Either<LawSpec.Data.KafkaError, Unit> SendOffsetsToTransaction(string text1, FSharpList<LawSpec.Data.OffsetEntry> list1)
   {
     lock (gate)
     {
-      var pair = LawSpec.TypedProgram.KafkaTransactionsSendOffsetsToTransaction(schema, symbols, state, value0, value1);
+      var pair = LawSpec.TypedProgram.KafkaTransactionsSendOffsetsToTransaction(schema, symbols, state, text1, list1);
       state = pair.Second;
       return pair.First;
     }

@@ -435,18 +435,18 @@ pub mod lawtwin_github
     pub fn referenceIssuesCreateLabel(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::State,
-        value0: std::string::String,
-        value1: std::string::String,
-        value2: crate::lawspec_data::IssuesCreateLabelBody,
+        text_1: std::string::String,
+        text_2: std::string::String,
+        issues_create_label_body_1: crate::lawspec_data::IssuesCreateLabelBody,
     ) -> ls::Result<
         crate::lawspec_data::Pair<crate::lawspec_data::Label, crate::lawspec_data::State>,
     >
     {
         ls::fast::direct4(
             state,
-            value0,
-            value1,
-            value2,
+            text_1,
+            text_2,
+            issues_create_label_body_1,
             crate::lawspec_definitions::typed::reference_issues_create_label,
         )
     }
@@ -455,18 +455,18 @@ pub mod lawtwin_github
     pub fn referenceIssuesCreateMilestone(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::State,
-        value0: std::string::String,
-        value1: std::string::String,
-        value2: crate::lawspec_data::IssuesCreateMilestoneBody,
+        text_1: std::string::String,
+        text_2: std::string::String,
+        issues_create_milestone_body_1: crate::lawspec_data::IssuesCreateMilestoneBody,
     ) -> ls::Result<
         crate::lawspec_data::Pair<crate::lawspec_data::Milestone, crate::lawspec_data::State>,
     >
     {
         ls::fast::direct4(
             state,
-            value0,
-            value1,
-            value2,
+            text_1,
+            text_2,
+            issues_create_milestone_body_1,
             crate::lawspec_definitions::typed::reference_issues_create_milestone,
         )
     }
@@ -475,16 +475,16 @@ pub mod lawtwin_github
     pub fn referenceIssuesDeleteLabel(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::State,
-        value0: std::string::String,
-        value1: std::string::String,
-        value2: std::string::String,
+        text_1: std::string::String,
+        text_2: std::string::String,
+        text_3: std::string::String,
     ) -> ls::Result<crate::lawspec_data::Pair<(), crate::lawspec_data::State>>
     {
         ls::fast::direct4(
             state,
-            value0,
-            value1,
-            value2,
+            text_1,
+            text_2,
+            text_3,
             crate::lawspec_definitions::typed::reference_issues_delete_label,
         )
     }
@@ -493,16 +493,16 @@ pub mod lawtwin_github
     pub fn referenceIssuesDeleteMilestone(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::State,
-        value0: std::string::String,
-        value1: std::string::String,
-        value2: i64,
+        text_1: std::string::String,
+        text_2: std::string::String,
+        int64_1: i64,
     ) -> ls::Result<crate::lawspec_data::Pair<(), crate::lawspec_data::State>>
     {
         ls::fast::direct4(
             state,
-            value0,
-            value1,
-            value2,
+            text_1,
+            text_2,
+            int64_1,
             crate::lawspec_definitions::typed::reference_issues_delete_milestone,
         )
     }
@@ -511,18 +511,18 @@ pub mod lawtwin_github
     pub fn referenceIssuesGetLabel(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::State,
-        value0: std::string::String,
-        value1: std::string::String,
-        value2: std::string::String,
+        text_1: std::string::String,
+        text_2: std::string::String,
+        text_3: std::string::String,
     ) -> ls::Result<
         crate::lawspec_data::Pair<crate::lawspec_data::Label, crate::lawspec_data::State>,
     >
     {
         ls::fast::direct4(
             state,
-            value0,
-            value1,
-            value2,
+            text_1,
+            text_2,
+            text_3,
             crate::lawspec_definitions::typed::reference_issues_get_label,
         )
     }
@@ -531,18 +531,18 @@ pub mod lawtwin_github
     pub fn referenceIssuesGetMilestone(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::State,
-        value0: std::string::String,
-        value1: std::string::String,
-        value2: i64,
+        text_1: std::string::String,
+        text_2: std::string::String,
+        int64_1: i64,
     ) -> ls::Result<
         crate::lawspec_data::Pair<crate::lawspec_data::Milestone, crate::lawspec_data::State>,
     >
     {
         ls::fast::direct4(
             state,
-            value0,
-            value1,
-            value2,
+            text_1,
+            text_2,
+            int64_1,
             crate::lawspec_definitions::typed::reference_issues_get_milestone,
         )
     }
@@ -551,10 +551,10 @@ pub mod lawtwin_github
     pub fn referenceIssuesListLabelsForRepo(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::State,
-        value0: std::string::String,
-        value1: std::string::String,
-        value2: std::option::Option<i64>,
-        value3: std::option::Option<i64>,
+        text_1: std::string::String,
+        text_2: std::string::String,
+        maybe_1: std::option::Option<i64>,
+        maybe_2: std::option::Option<i64>,
     ) -> ls::Result<
         crate::lawspec_data::Pair<
             std::vec::Vec<crate::lawspec_data::Label>,
@@ -564,10 +564,10 @@ pub mod lawtwin_github
     {
         ls::fast::direct5(
             state,
-            value0,
-            value1,
-            value2,
-            value3,
+            text_1,
+            text_2,
+            maybe_1,
+            maybe_2,
             crate::lawspec_definitions::typed::reference_issues_list_labels_for_repo,
         )
     }
@@ -576,13 +576,13 @@ pub mod lawtwin_github
     pub fn referenceIssuesListMilestones(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::State,
-        value0: std::string::String,
-        value1: std::string::String,
-        value2: std::option::Option<crate::lawspec_data::IssuesListMilestonesState>,
-        value3: std::option::Option<crate::lawspec_data::IssuesListMilestonesSort>,
-        value4: std::option::Option<crate::lawspec_data::IssuesListMilestonesDirection>,
-        value5: std::option::Option<i64>,
-        value6: std::option::Option<i64>,
+        text_1: std::string::String,
+        text_2: std::string::String,
+        maybe_1: std::option::Option<crate::lawspec_data::IssuesListMilestonesState>,
+        maybe_2: std::option::Option<crate::lawspec_data::IssuesListMilestonesSort>,
+        maybe_3: std::option::Option<crate::lawspec_data::IssuesListMilestonesDirection>,
+        maybe_4: std::option::Option<i64>,
+        maybe_5: std::option::Option<i64>,
     ) -> ls::Result<
         crate::lawspec_data::Pair<
             std::vec::Vec<crate::lawspec_data::Milestone>,
@@ -592,13 +592,13 @@ pub mod lawtwin_github
     {
         ls::fast::direct8(
             state,
-            value0,
-            value1,
-            value2,
-            value3,
-            value4,
-            value5,
-            value6,
+            text_1,
+            text_2,
+            maybe_1,
+            maybe_2,
+            maybe_3,
+            maybe_4,
+            maybe_5,
             crate::lawspec_definitions::typed::reference_issues_list_milestones,
         )
     }
@@ -607,20 +607,20 @@ pub mod lawtwin_github
     pub fn referenceIssuesUpdateLabel(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::State,
-        value0: std::string::String,
-        value1: std::string::String,
-        value2: std::string::String,
-        value3: std::option::Option<crate::lawspec_data::IssuesUpdateLabelBody>,
+        text_1: std::string::String,
+        text_2: std::string::String,
+        text_3: std::string::String,
+        maybe_1: std::option::Option<crate::lawspec_data::IssuesUpdateLabelBody>,
     ) -> ls::Result<
         crate::lawspec_data::Pair<crate::lawspec_data::Label, crate::lawspec_data::State>,
     >
     {
         ls::fast::direct5(
             state,
-            value0,
-            value1,
-            value2,
-            value3,
+            text_1,
+            text_2,
+            text_3,
+            maybe_1,
             crate::lawspec_definitions::typed::reference_issues_update_label,
         )
     }
@@ -629,20 +629,20 @@ pub mod lawtwin_github
     pub fn referenceIssuesUpdateMilestone(
         _ctx: &mut ls::Context,
         state: crate::lawspec_data::State,
-        value0: std::string::String,
-        value1: std::string::String,
-        value2: i64,
-        value3: std::option::Option<crate::lawspec_data::IssuesUpdateMilestoneBody>,
+        text_1: std::string::String,
+        text_2: std::string::String,
+        int64_1: i64,
+        maybe_1: std::option::Option<crate::lawspec_data::IssuesUpdateMilestoneBody>,
     ) -> ls::Result<
         crate::lawspec_data::Pair<crate::lawspec_data::Milestone, crate::lawspec_data::State>,
     >
     {
         ls::fast::direct5(
             state,
-            value0,
-            value1,
-            value2,
-            value3,
+            text_1,
+            text_2,
+            int64_1,
+            maybe_1,
             crate::lawspec_definitions::typed::reference_issues_update_milestone,
         )
     }
@@ -2691,11 +2691,14 @@ pub mod typed
         {
             match &*self.0
             {
-                IssuesUpdateLabelBodyNode::IssuesUpdateLabelBody(f0, f1, f2, f3) => ls::Value::Data(
-                    "lawtwin.github.model::type::IssuesUpdateLabelBody::IssuesUpdateLabelBody"
-                        .into(),
-                    vec![f0.to_dyn(), f1.to_dyn(), f2.to_dyn(), f3.to_dyn()],
-                ),
+                IssuesUpdateLabelBodyNode::IssuesUpdateLabelBody(f0, f1, f2, f3) =>
+                {
+                    ls::Value::Data(
+                        "lawtwin.github.model::type::IssuesUpdateLabelBody::IssuesUpdateLabelBody"
+                            .into(),
+                        vec![f0.to_dyn(), f1.to_dyn(), f2.to_dyn(), f3.to_dyn()],
+                    )
+                }
             }
         }
         fn from_dyn(value: ls::Value) -> ls::Result<Self>
@@ -3786,17 +3789,20 @@ pub mod typed
         {
             match &*self.0
             {
-                LabelNode::Label(f0, f1, f2, f3, f4, f5, f6, f7, f8) => crate::lawspec_data::Label {
-                    id: f0.to_native(),
-                    nodeId: f1.to_native(),
-                    url: f2.to_native(),
-                    name: f3.to_native(),
-                    description_: f4.to_native(),
-                    color: f5.to_native(),
-                    default_: f6.to_native(),
-                    archivedAt: f7.to_native(),
-                    archivedBy: f8.to_native(),
-                },
+                LabelNode::Label(f0, f1, f2, f3, f4, f5, f6, f7, f8) =>
+                {
+                    crate::lawspec_data::Label {
+                        id: f0.to_native(),
+                        nodeId: f1.to_native(),
+                        url: f2.to_native(),
+                        name: f3.to_native(),
+                        description_: f4.to_native(),
+                        color: f5.to_native(),
+                        default_: f6.to_native(),
+                        archivedAt: f7.to_native(),
+                        archivedBy: f8.to_native(),
+                    }
+                }
             }
         }
         fn from_native(native: Self::Native) -> Self
@@ -6760,15 +6766,15 @@ pub mod typed
     /// referenceIssuesCreateLabel — ../src/api.lawspec:207
     pub fn reference_issues_create_label(
         state: State,
-        value0: ls::fast::Text,
-        value1: ls::fast::Text,
-        value2: IssuesCreateLabelBody,
+        text_1: ls::fast::Text,
+        text_2: ls::fast::Text,
+        issues_create_label_body_1: IssuesCreateLabelBody,
     ) -> ls::Result<Pair<Label, State>>
     {
         Ok(lawtwin_github_model_model_issues_create_label(
-            value0.clone(),
-            value1.clone(),
-            value2.clone(),
+            text_1.clone(),
+            text_2.clone(),
+            issues_create_label_body_1.clone(),
             state.clone(),
         )?)
     }
@@ -6776,15 +6782,15 @@ pub mod typed
     /// referenceIssuesCreateMilestone — ../src/api.lawspec:212
     pub fn reference_issues_create_milestone(
         state: State,
-        value0: ls::fast::Text,
-        value1: ls::fast::Text,
-        value2: IssuesCreateMilestoneBody,
+        text_1: ls::fast::Text,
+        text_2: ls::fast::Text,
+        issues_create_milestone_body_1: IssuesCreateMilestoneBody,
     ) -> ls::Result<Pair<Milestone, State>>
     {
         Ok(lawtwin_github_model_model_issues_create_milestone(
-            value0.clone(),
-            value1.clone(),
-            value2.clone(),
+            text_1.clone(),
+            text_2.clone(),
+            issues_create_milestone_body_1.clone(),
             state.clone(),
         )?)
     }
@@ -6792,15 +6798,15 @@ pub mod typed
     /// referenceIssuesDeleteLabel — ../src/api.lawspec:209
     pub fn reference_issues_delete_label(
         state: State,
-        value0: ls::fast::Text,
-        value1: ls::fast::Text,
-        value2: ls::fast::Text,
+        text_1: ls::fast::Text,
+        text_2: ls::fast::Text,
+        text_3: ls::fast::Text,
     ) -> ls::Result<Pair<(), State>>
     {
         Ok(lawtwin_github_model_model_issues_delete_label(
-            value0.clone(),
-            value1.clone(),
-            value2.clone(),
+            text_1.clone(),
+            text_2.clone(),
+            text_3.clone(),
             state.clone(),
         )?)
     }
@@ -6808,15 +6814,15 @@ pub mod typed
     /// referenceIssuesDeleteMilestone — ../src/api.lawspec:214
     pub fn reference_issues_delete_milestone(
         state: State,
-        value0: ls::fast::Text,
-        value1: ls::fast::Text,
-        value2: i64,
+        text_1: ls::fast::Text,
+        text_2: ls::fast::Text,
+        int64_1: i64,
     ) -> ls::Result<Pair<(), State>>
     {
         Ok(lawtwin_github_model_model_issues_delete_milestone(
-            value0.clone(),
-            value1.clone(),
-            value2,
+            text_1.clone(),
+            text_2.clone(),
+            int64_1,
             state.clone(),
         )?)
     }
@@ -6824,15 +6830,15 @@ pub mod typed
     /// referenceIssuesGetLabel — ../src/api.lawspec:208
     pub fn reference_issues_get_label(
         state: State,
-        value0: ls::fast::Text,
-        value1: ls::fast::Text,
-        value2: ls::fast::Text,
+        text_1: ls::fast::Text,
+        text_2: ls::fast::Text,
+        text_3: ls::fast::Text,
     ) -> ls::Result<Pair<Label, State>>
     {
         Ok(lawtwin_github_model_model_issues_get_label(
-            value0.clone(),
-            value1.clone(),
-            value2.clone(),
+            text_1.clone(),
+            text_2.clone(),
+            text_3.clone(),
             state.clone(),
         )?)
     }
@@ -6840,15 +6846,15 @@ pub mod typed
     /// referenceIssuesGetMilestone — ../src/api.lawspec:213
     pub fn reference_issues_get_milestone(
         state: State,
-        value0: ls::fast::Text,
-        value1: ls::fast::Text,
-        value2: i64,
+        text_1: ls::fast::Text,
+        text_2: ls::fast::Text,
+        int64_1: i64,
     ) -> ls::Result<Pair<Milestone, State>>
     {
         Ok(lawtwin_github_model_model_issues_get_milestone(
-            value0.clone(),
-            value1.clone(),
-            value2,
+            text_1.clone(),
+            text_2.clone(),
+            int64_1,
             state.clone(),
         )?)
     }
@@ -6856,17 +6862,17 @@ pub mod typed
     /// referenceIssuesListLabelsForRepo — ../src/api.lawspec:206
     pub fn reference_issues_list_labels_for_repo(
         state: State,
-        value0: ls::fast::Text,
-        value1: ls::fast::Text,
-        value2: Option<i64>,
-        value3: Option<i64>,
+        text_1: ls::fast::Text,
+        text_2: ls::fast::Text,
+        maybe_1: Option<i64>,
+        maybe_2: Option<i64>,
     ) -> ls::Result<Pair<ls::fast::List<Label>, State>>
     {
         Ok(lawtwin_github_model_model_issues_list_labels_for_repo(
-            value0.clone(),
-            value1.clone(),
-            value2.clone(),
-            value3.clone(),
+            text_1.clone(),
+            text_2.clone(),
+            maybe_1.clone(),
+            maybe_2.clone(),
             state.clone(),
         )?)
     }
@@ -6874,23 +6880,23 @@ pub mod typed
     /// referenceIssuesListMilestones — ../src/api.lawspec:211
     pub fn reference_issues_list_milestones(
         state: State,
-        value0: ls::fast::Text,
-        value1: ls::fast::Text,
-        value2: Option<IssuesListMilestonesState>,
-        value3: Option<IssuesListMilestonesSort>,
-        value4: Option<IssuesListMilestonesDirection>,
-        value5: Option<i64>,
-        value6: Option<i64>,
+        text_1: ls::fast::Text,
+        text_2: ls::fast::Text,
+        maybe_1: Option<IssuesListMilestonesState>,
+        maybe_2: Option<IssuesListMilestonesSort>,
+        maybe_3: Option<IssuesListMilestonesDirection>,
+        maybe_4: Option<i64>,
+        maybe_5: Option<i64>,
     ) -> ls::Result<Pair<ls::fast::List<Milestone>, State>>
     {
         Ok(lawtwin_github_model_model_issues_list_milestones(
-            value0.clone(),
-            value1.clone(),
-            value2.clone(),
-            value3.clone(),
-            value4.clone(),
-            value5.clone(),
-            value6.clone(),
+            text_1.clone(),
+            text_2.clone(),
+            maybe_1.clone(),
+            maybe_2.clone(),
+            maybe_3.clone(),
+            maybe_4.clone(),
+            maybe_5.clone(),
             state.clone(),
         )?)
     }
@@ -6898,17 +6904,17 @@ pub mod typed
     /// referenceIssuesUpdateLabel — ../src/api.lawspec:210
     pub fn reference_issues_update_label(
         state: State,
-        value0: ls::fast::Text,
-        value1: ls::fast::Text,
-        value2: ls::fast::Text,
-        value3: Option<IssuesUpdateLabelBody>,
+        text_1: ls::fast::Text,
+        text_2: ls::fast::Text,
+        text_3: ls::fast::Text,
+        maybe_1: Option<IssuesUpdateLabelBody>,
     ) -> ls::Result<Pair<Label, State>>
     {
         Ok(lawtwin_github_model_model_issues_update_label(
-            value0.clone(),
-            value1.clone(),
-            value2.clone(),
-            value3.clone(),
+            text_1.clone(),
+            text_2.clone(),
+            text_3.clone(),
+            maybe_1.clone(),
             state.clone(),
         )?)
     }
@@ -6916,17 +6922,17 @@ pub mod typed
     /// referenceIssuesUpdateMilestone — ../src/api.lawspec:215
     pub fn reference_issues_update_milestone(
         state: State,
-        value0: ls::fast::Text,
-        value1: ls::fast::Text,
-        value2: i64,
-        value3: Option<IssuesUpdateMilestoneBody>,
+        text_1: ls::fast::Text,
+        text_2: ls::fast::Text,
+        int64_1: i64,
+        maybe_1: Option<IssuesUpdateMilestoneBody>,
     ) -> ls::Result<Pair<Milestone, State>>
     {
         Ok(lawtwin_github_model_model_issues_update_milestone(
-            value0.clone(),
-            value1.clone(),
-            value2,
-            value3.clone(),
+            text_1.clone(),
+            text_2.clone(),
+            int64_1,
+            maybe_1.clone(),
             state.clone(),
         )?)
     }

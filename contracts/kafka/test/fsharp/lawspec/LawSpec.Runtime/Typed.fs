@@ -235,6 +235,12 @@ let split (separator: string) (text: string) = Scalar.textSplit separator text
 [<CompiledName("Trim")>]
 let trim (text: string) = Scalar.textTrim text
 
+[<CompiledName("IsUnicodeWhitespace")>]
+let isUnicodeWhitespace (text: string) = Scalar.textIsUnicodeWhitespace text
+
+[<CompiledName("TrimAsciiControl")>]
+let trimAsciiControl (text: string) = Scalar.textTrimAsciiControl text
+
 [<CompiledName("Words")>]
 let words (text: string) = Scalar.textWords text
 

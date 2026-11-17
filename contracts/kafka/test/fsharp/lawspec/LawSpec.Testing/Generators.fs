@@ -29,6 +29,9 @@ type Context =
         Symbols: Scalar.SymbolContext
         Factories: Map<string, Factory>
         Attempts: int
+        /// The data values inside the law's witnesses: a restricted type whose
+        /// draws are all refused takes one of its own from here.
+        Seeds: Value list
     }
 
 let private minimums =
@@ -383,9 +386,22 @@ and private buildNative (context: Context) (t: TypeRef) (budget: int) (bounds: B
                             | None -> ()
                 ]
 
+            let tags = raw |> List.collect witnessInstances |> List.map (fun c -> c.Tag)
+
+            let seeds =
+                context.Seeds
+                |> List.filter (fun v ->
+                    match v with
+                    | Data(tag, _) when List.contains tag tags ->
+                        (try
+                            accepted v t context.Schema
+                         with _ ->
+                             false)
+                    | _ -> false)
+
             Gen.oneof choices
             |> Gen.map (canonical t)
-            |> Gen.constrain context.Attempts (fun v -> accepted v t context.Schema)
+            |> Gen.constrainOr context.Attempts (fun v -> accepted v t context.Schema) seeds
 
 and private constructorGen (context: Context) (c: Constructor) (shares: int list) =
     let rec fields (remaining: ((string * TypeRef) * int) list) (values: Value list) =
@@ -701,6 +717,13 @@ let index (target: Value) (tags: string list) (terms: string list list) =
     | Int n -> Some(n, Map.ofList (List.zip tags terms))
     | _ -> Fail.raiseWith "IntegerRequired" "index target"
 
+let rec private parts (value: Value) =
+    match value with
+    | Data(_, fields) -> value :: List.collect parts fields
+    | List items -> List.collect parts items
+    | Presence(_, Some inner) -> parts inner
+    | _ -> []
+
 /// The generator of an input of a type: native factories first, then the
 /// type's structure within a budget that grows with the size.
 [<CompiledName("Generator")>]
@@ -711,6 +734,11 @@ let generator
     (witnesses: Value list)
     (index: (BigInteger * Map<string, string list>) option)
     =
+    let context =
+        { context with
+            Seeds = List.collect parts witnesses
+        }
+
     Gen.sized (fun size ->
         match factory context t with
         | Some f -> custom context t (size + 1) bounds f

@@ -383,6 +383,103 @@ pub fn seeded(strategy: BoxedStrategy<Value>, seeds: Vec<Value>) -> BoxedStrateg
     }
 }
 
+/// The draws a probe makes, and the draws a restricted value may take.
+const PROBE_ATTEMPTS: usize = 1000;
+const FILTER_ATTEMPTS: usize = 10_000;
+
+type Accept = std::sync::Arc<dyn Fn(&Value) -> bool + Send + Sync>;
+
+/// A restricted type's values: draws of its shape that its restriction
+/// accepts, each within a number of attempts of its own. proptest's filter
+/// counts every refusal of a run against one total, which a restriction met
+/// by one draw in twenty would spend in a few lists.
+#[derive(Clone)]
+struct Restricted
+{
+    source: BoxedStrategy<Value>,
+    accept: Accept,
+    name: String,
+}
+
+impl std::fmt::Debug for Restricted
+{
+    fn fmt(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result
+    {
+        write!(formatter, "Restricted({})", self.name)
+    }
+}
+
+struct RestrictedTree
+{
+    tree: Box<dyn proptest::strategy::ValueTree<Value = Value>>,
+    accept: Accept,
+}
+
+impl Strategy for Restricted
+{
+    type Tree = RestrictedTree;
+    type Value = Value;
+
+    fn new_tree(
+        &self,
+        runner: &mut proptest::test_runner::TestRunner,
+    ) -> proptest::strategy::NewTree<Self>
+    {
+        for _ in 0..FILTER_ATTEMPTS
+        {
+            let tree = self.source.new_tree(runner)?;
+            if (self.accept)(&tree.current())
+            {
+                return Ok(RestrictedTree {
+                    tree,
+                    accept: self.accept.clone(),
+                });
+            }
+        }
+        Err(format!(
+            "constructor generation exhausted {FILTER_ATTEMPTS} attempts for {}",
+            self.name
+        )
+        .into())
+    }
+}
+
+impl RestrictedTree
+{
+    // A shrink step the restriction refuses is undone until it accepts.
+    fn settle(&mut self) -> bool
+    {
+        while !(self.accept)(&self.tree.current())
+        {
+            if !self.tree.complicate()
+            {
+                return false;
+            }
+        }
+        true
+    }
+}
+
+impl proptest::strategy::ValueTree for RestrictedTree
+{
+    type Value = Value;
+
+    fn current(&self) -> Value
+    {
+        self.tree.current()
+    }
+
+    fn simplify(&mut self) -> bool
+    {
+        self.tree.simplify() && self.settle()
+    }
+
+    fn complicate(&mut self) -> bool
+    {
+        self.tree.complicate() && self.settle()
+    }
+}
+
 /// Compose native proptest generators from instantiated Core data schemas.
 /// The structural budget limits samples, not the mathematical input domain.
 /// Memoization shares strategies for repeated fields in recursive products.
@@ -532,8 +629,7 @@ pub fn checked_schema_strategy_with_generators(
         }
         collect_witnesses(schema, ty, &value, &mut seeds)?;
     }
-    let strategy =
-        shape_strategy_with_generators(schema, ty, bits, budget, seeds, context, native)?;
+    let strategy = shape_strategy_planned(schema, ty, bits, budget, seeds, context, native, true)?;
     Ok(check_strategy(schema, ty, bits, context, strategy))
 }
 
@@ -589,6 +685,23 @@ fn shape_strategy_with_generators(
     native: &NativeGenerators,
 ) -> ls::Result<BoxedStrategy<Value>>
 {
+    shape_strategy_planned(schema, ty, bits, budget, witnesses, context, native, false)
+}
+
+/// A checked plan knows which budgets hold a value of a restricted type, and
+/// draws that type's values through its restriction.
+#[allow(clippy::too_many_arguments)]
+fn shape_strategy_planned(
+    schema: &ls::Schema,
+    ty: &ls::TypeRef,
+    bits: u32,
+    budget: usize,
+    witnesses: Witnesses,
+    context: &ls::Context,
+    native: &NativeGenerators,
+    checked: bool,
+) -> ls::Result<BoxedStrategy<Value>>
+{
     type Request = (ls::TypeRef, usize);
     struct Builder<'a>
     {
@@ -599,6 +712,11 @@ fn shape_strategy_with_generators(
         witnesses: Witnesses,
         inhabited: std::collections::HashMap<Request, bool>,
         generators: std::collections::HashMap<Request, BoxedStrategy<Value>>,
+        checked: bool,
+        limit: usize,
+        found: std::collections::HashMap<Request, bool>,
+        proofs: std::collections::HashMap<ls::TypeRef, bool>,
+        proving: std::collections::HashSet<ls::TypeRef>,
     }
 
     impl Builder<'_>
@@ -631,6 +749,36 @@ fn shape_strategy_with_generators(
                         }
                     }
                 }
+                if found && self.checked && self.schema.restricted(ty)?
+                {
+                    // A witness that fits is a value, and needs no probe.
+                    let mut valued = self
+                        .witnesses
+                        .get(ty)
+                        .into_iter()
+                        .flatten()
+                        .any(|value| value_cost(value) <= budget);
+                    if !valued
+                    {
+                        let candidates = self.candidates(ty, budget)?;
+                        valued = self.satisfiable(ty, &candidates);
+                    }
+                    self.found.insert(key.clone(), valued);
+                    if budget == self.limit
+                    {
+                        self.proofs.insert(ty.clone(), valued);
+                        if !valued
+                        {
+                            return Err(format!(
+                                "LawSpec: no value of {ty:?} found in {PROBE_ATTEMPTS} draws, so no case of this law could hold one. Give the law an example whose input holds one, or bind a generator."
+                            ));
+                        }
+                    }
+                    else if !valued && self.proven(ty)?
+                    {
+                        found = false;
+                    }
+                }
                 found
             }
             else
@@ -654,6 +802,80 @@ fn shape_strategy_with_generators(
             };
             self.inhabited.insert(key, result);
             Ok(result)
+        }
+
+        /// Whether a restricted type has a value at a budget: one of a fixed
+        /// run of draws of its shape passes its restriction. A budget that
+        /// only holds shapes the restriction refuses (an empty list in a
+        /// wrapper that needs an element) is then no budget for the type, so
+        /// an enclosing constructor gives it more or is left out. The run has
+        /// its own source, so a law's values for a seed do not depend on it.
+        /// A draw that fails for another reason decides nothing.
+        fn satisfiable(&self, ty: &ls::TypeRef, candidates: &BoxedStrategy<Value>) -> bool
+        {
+            use proptest::strategy::ValueTree;
+            use proptest::test_runner::{Config, RngAlgorithm, TestRng, TestRunner};
+            let mut runner = TestRunner::new_with_rng(
+                Config {
+                    failure_persistence: None,
+                    ..Config::default()
+                },
+                TestRng::deterministic_rng(RngAlgorithm::ChaCha),
+            );
+            for _ in 0..PROBE_ATTEMPTS
+            {
+                let Ok(tree) = candidates.new_tree(&mut runner)
+                else
+                {
+                    return true;
+                };
+                if !matches!(
+                    self.schema.check_with_context(
+                        tree.current(),
+                        ty,
+                        self.bits,
+                        &mut self.context.clone()
+                    ),
+                    Ok(ls::ValueCheck::Rejected(_))
+                )
+                {
+                    return true;
+                }
+            }
+            false
+        }
+
+        /// Whether a probe that found no value of a type at some budget is to
+        /// be believed: one found a value at the law's whole budget, so it is
+        /// the smaller budget that has none. A type no probe finds a value of
+        /// at the whole budget fails the law. A type met again inside its own
+        /// proof is taken as proven.
+        fn proven(&mut self, ty: &ls::TypeRef) -> ls::Result<bool>
+        {
+            if let Some(known) = self.proofs.get(ty)
+            {
+                return Ok(*known);
+            }
+            if !self.proving.insert(ty.clone())
+            {
+                return Ok(true);
+            }
+            let limit = self.limit;
+            self.can_generate(ty, limit)?;
+            self.proving.remove(ty);
+            Ok(*self.proofs.entry(ty.clone()).or_insert(true))
+        }
+
+        /// The strategy at the largest budget, at most the one given, that
+        /// has a value.
+        fn within(&mut self, ty: &ls::TypeRef, budget: usize) -> ls::Result<BoxedStrategy<Value>>
+        {
+            let mut available = budget;
+            while available > 1 && !self.can_generate(ty, available)?
+            {
+                available -= 1;
+            }
+            self.generate(ty, available)
         }
 
         fn minimum(&mut self, ty: &ls::TypeRef, limit: usize) -> ls::Result<Option<usize>>
@@ -710,6 +932,48 @@ fn shape_strategy_with_generators(
             {
                 return Ok(cached.clone());
             }
+            let candidates = self.candidates(ty, budget)?;
+            // A type whose values a probe did not find keeps its shape: the
+            // law's own filter then refuses a draw without ending the run.
+            let result = if self.found.get(&key).copied().unwrap_or(false)
+            {
+                let schema = self.schema.clone();
+                let checked = ty.clone();
+                let bits = self.bits;
+                let context = self.context.clone();
+                Restricted {
+                    source: candidates,
+                    accept: std::sync::Arc::new(move |value: &Value| {
+                        !matches!(
+                            schema.check_with_context(
+                                value.clone(),
+                                &checked,
+                                bits,
+                                &mut context.clone()
+                            ),
+                            Ok(ls::ValueCheck::Rejected(_))
+                        )
+                    }),
+                    name: format!("{ty:?}"),
+                }
+                .boxed()
+            }
+            else
+            {
+                candidates
+            };
+            self.generators.insert(key, result.clone());
+            Ok(result)
+        }
+
+        /// A type's shapes at a budget, with the witnesses that fit, before
+        /// its restriction.
+        fn candidates(
+            &mut self,
+            ty: &ls::TypeRef,
+            budget: usize,
+        ) -> ls::Result<BoxedStrategy<Value>>
+        {
             let result = if let Some(factory) = self.native.factory(ty)
             {
                 let ls::TypeRef::Named(_, arguments) = ty
@@ -767,7 +1031,7 @@ fn shape_strategy_with_generators(
                         let mut fields = Just(Vec::<Value>::new()).boxed();
                         for (field, cost) in declared.iter().zip(costs)
                         {
-                            let next = self.generate(field, cost)?;
+                            let next = self.within(field, cost)?;
                             fields = (fields, next)
                                 .prop_map(|(mut values, value)| {
                                     values.push(value);
@@ -843,7 +1107,7 @@ fn shape_strategy_with_generators(
                         let mut lengths = vec![Just(Value::List(vec![])).boxed()];
                         for length in 1..=maximum
                         {
-                            let elements = self.generate(element, remaining / length)?;
+                            let elements = self.within(element, remaining / length)?;
                             lengths.push(
                                 proptest::collection::vec(elements, length..=length)
                                     .prop_map(Value::List)
@@ -858,9 +1122,9 @@ fn shape_strategy_with_generators(
                     }
                     ("Maybe" | "Nullable" | "Optional", [element]) =>
                     {
-                        let values = if self.can_generate(element, budget - 1)?
+                        let values = if self.minimum(element, budget - 1)?.is_some()
                         {
-                            proptest::option::of(self.generate(element, budget - 1)?).boxed()
+                            proptest::option::of(self.within(element, budget - 1)?).boxed()
                         }
                         else
                         {
@@ -909,16 +1173,16 @@ fn shape_strategy_with_generators(
                 .filter(|value| value_cost(value) <= budget)
                 .cloned()
                 .collect();
-            let result = if self.native.factory(ty).is_some()
-            {
-                result
-            }
-            else
-            {
-                seeded(result, seeds)
-            };
-            self.generators.insert(key, result.clone());
-            Ok(result)
+            Ok(
+                if self.native.factory(ty).is_some()
+                {
+                    result
+                }
+                else
+                {
+                    seeded(result, seeds)
+                },
+            )
         }
     }
 
@@ -934,6 +1198,11 @@ fn shape_strategy_with_generators(
         witnesses,
         inhabited: Default::default(),
         generators: Default::default(),
+        checked,
+        limit: budget,
+        found: Default::default(),
+        proofs: Default::default(),
+        proving: Default::default(),
     }
     .generate(ty, budget)
 }

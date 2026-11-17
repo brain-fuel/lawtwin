@@ -8,102 +8,102 @@ pub mod lawtwin_kafka
     /// The Broker ability: a handler answers each of its operations.
     pub trait Broker: Send + Sync
     {
-        fn createTopicsRequest(&self, value0: std::string::String, value1: i32) -> ();
-        fn createPartitionsRequest(&self, value0: std::string::String, value1: i32) -> ();
-        fn metadataRequest(&self, value0: std::string::String) -> std::option::Option<i32>;
+        fn createTopicsRequest(&self, text_1: std::string::String, int32_1: i32) -> ();
+        fn createPartitionsRequest(&self, text_1: std::string::String, int32_1: i32) -> ();
+        fn metadataRequest(&self, text_1: std::string::String) -> std::option::Option<i32>;
         fn produceRequest(
             &self,
-            value0: crate::lawspec_data::TopicPartition,
-            value1: std::option::Option<crate::lawspec_data::ProducerTag>,
-            value2: std::vec::Vec<crate::lawspec_data::Record>,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
+            maybe_1: std::option::Option<crate::lawspec_data::ProducerTag>,
+            list_1: std::vec::Vec<crate::lawspec_data::Record>,
         ) -> i64;
         fn fetchRequest(
             &self,
-            value0: crate::lawspec_data::TopicPartition,
-            value1: i64,
-            value2: i32,
-            value3: crate::lawspec_data::IsolationLevel,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
+            int64_1: i64,
+            int32_1: i32,
+            isolation_level_1: crate::lawspec_data::IsolationLevel,
         ) -> crate::lawspec_data::FetchResult;
         fn listOffsetsRequest(
             &self,
-            value0: crate::lawspec_data::TopicPartition,
-            value1: crate::lawspec_data::OffsetSpec,
-            value2: crate::lawspec_data::IsolationLevel,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
+            offset_spec_1: crate::lawspec_data::OffsetSpec,
+            isolation_level_1: crate::lawspec_data::IsolationLevel,
         ) -> i64;
         fn initProducerIdRequest(
             &self,
-            value0: std::option::Option<std::string::String>,
+            maybe_1: std::option::Option<std::string::String>,
         ) -> crate::lawspec_data::ProducerIdAndEpoch;
         fn addPartitionsToTxnRequest(
             &self,
-            value0: std::string::String,
-            value1: i64,
-            value2: i16,
-            value3: std::vec::Vec<crate::lawspec_data::TopicPartition>,
+            text_1: std::string::String,
+            int64_1: i64,
+            int16_1: i16,
+            list_1: std::vec::Vec<crate::lawspec_data::TopicPartition>,
         ) -> ();
         fn txnOffsetCommitRequest(
             &self,
-            value0: std::string::String,
-            value1: i64,
-            value2: i16,
-            value3: std::string::String,
-            value4: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
+            text_1: std::string::String,
+            int64_1: i64,
+            int16_1: i16,
+            text_2: std::string::String,
+            list_1: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
         ) -> ();
         fn endTxnRequest(
             &self,
-            value0: std::string::String,
-            value1: i64,
-            value2: i16,
-            value3: bool,
+            text_1: std::string::String,
+            int64_1: i64,
+            int16_1: i16,
+            bool_1: bool,
         ) -> ();
         fn joinGroupRequest(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::vec::Vec<std::string::String>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            list_1: std::vec::Vec<std::string::String>,
         ) -> i32;
         fn syncGroupRequest(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i32,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int32_1: i32,
         ) -> std::vec::Vec<crate::lawspec_data::TopicPartition>;
         fn heartbeatRequest(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i32,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int32_1: i32,
         ) -> ();
-        fn leaveGroupRequest(&self, value0: std::string::String, value1: std::string::String) -> ();
+        fn leaveGroupRequest(&self, text_1: std::string::String, text_2: std::string::String) -> ();
         fn describeGroupRequest(
             &self,
-            value0: std::string::String,
+            text_1: std::string::String,
         ) -> crate::lawspec_data::GroupView;
         fn offsetCommitRequest(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i32,
-            value3: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int32_1: i32,
+            list_1: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
         ) -> ();
         fn offsetFetchRequest(
             &self,
-            value0: std::string::String,
-            value1: crate::lawspec_data::TopicPartition,
+            text_1: std::string::String,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
         ) -> std::option::Option<i64>;
     }
 
     /// The Admin ability: a handler answers each of its operations.
     pub trait Admin: Send + Sync
     {
-        fn createTopic(&self, value0: std::string::String, value1: i32) -> ();
-        fn createPartitions(&self, value0: std::string::String, value1: i32) -> ();
-        fn partitionsFor(&self, value0: std::string::String) -> std::option::Option<i32>;
+        fn createTopic(&self, text_1: std::string::String, int32_1: i32) -> ();
+        fn createPartitions(&self, text_1: std::string::String, int32_1: i32) -> ();
+        fn partitionsFor(&self, text_1: std::string::String) -> std::option::Option<i32>;
         fn listOffsets(
             &self,
-            value0: crate::lawspec_data::TopicPartition,
-            value1: crate::lawspec_data::OffsetSpec,
-            value2: crate::lawspec_data::IsolationLevel,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
+            offset_spec_1: crate::lawspec_data::OffsetSpec,
+            isolation_level_1: crate::lawspec_data::IsolationLevel,
         ) -> i64;
     }
 
@@ -112,8 +112,8 @@ pub mod lawtwin_kafka
     {
         fn choosePartition(
             &self,
-            value0: std::option::Option<std::vec::Vec<u8>>,
-            value1: i32,
+            maybe_1: std::option::Option<std::vec::Vec<u8>>,
+            int32_1: i32,
         ) -> i32;
     }
 
@@ -122,7 +122,7 @@ pub mod lawtwin_kafka
     {
         fn send(
             &self,
-            value0: crate::lawspec_data::ProducerRecord,
+            producer_record_1: crate::lawspec_data::ProducerRecord,
         ) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::RecordMetadata>;
         fn flush(&self) -> ();
         fn enableIdempotence(
@@ -137,19 +137,19 @@ pub mod lawtwin_kafka
     /// The Consumer ability: a handler answers each of its operations.
     pub trait Consumer: Send + Sync
     {
-        fn assign(&self, value0: std::vec::Vec<crate::lawspec_data::TopicPartition>) -> ();
+        fn assign(&self, list_1: std::vec::Vec<crate::lawspec_data::TopicPartition>) -> ();
         fn subscribe(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::vec::Vec<std::string::String>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            list_1: std::vec::Vec<std::string::String>,
         ) -> ls::Either<
             crate::lawspec_data::KafkaError,
             std::vec::Vec<crate::lawspec_data::TopicPartition>,
         >;
         fn poll(
             &self,
-            value0: i32,
+            int32_1: i32,
         ) -> ls::Either<
             crate::lawspec_data::KafkaError,
             std::vec::Vec<crate::lawspec_data::ConsumerRecord>,
@@ -157,18 +157,18 @@ pub mod lawtwin_kafka
         fn commitSync(&self) -> ls::Either<crate::lawspec_data::KafkaError, ()>;
         fn seek(
             &self,
-            value0: crate::lawspec_data::TopicPartition,
-            value1: i64,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
+            int64_1: i64,
         ) -> ls::Either<crate::lawspec_data::KafkaError, ()>;
         fn position(
             &self,
-            value0: crate::lawspec_data::TopicPartition,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
         ) -> ls::Either<crate::lawspec_data::KafkaError, i64>;
         fn committedOffset(
             &self,
-            value0: crate::lawspec_data::TopicPartition,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
         ) -> std::option::Option<i64>;
-        fn setIsolationLevel(&self, value0: crate::lawspec_data::IsolationLevel) -> ();
+        fn setIsolationLevel(&self, isolation_level_1: crate::lawspec_data::IsolationLevel) -> ();
         fn close(&self) -> ();
     }
 
@@ -177,35 +177,35 @@ pub mod lawtwin_kafka
     {
         fn joinGroup(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::vec::Vec<std::string::String>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            list_1: std::vec::Vec<std::string::String>,
         ) -> i32;
         fn syncGroup(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i32,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int32_1: i32,
         ) -> std::vec::Vec<crate::lawspec_data::TopicPartition>;
         fn heartbeat(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i32,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int32_1: i32,
         ) -> ();
-        fn leaveGroup(&self, value0: std::string::String, value1: std::string::String) -> ();
-        fn describeGroup(&self, value0: std::string::String) -> crate::lawspec_data::GroupView;
+        fn leaveGroup(&self, text_1: std::string::String, text_2: std::string::String) -> ();
+        fn describeGroup(&self, text_1: std::string::String) -> crate::lawspec_data::GroupView;
         fn commitOffsets(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i32,
-            value3: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int32_1: i32,
+            list_1: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
         ) -> ();
         fn fetchOffset(
             &self,
-            value0: std::string::String,
-            value1: crate::lawspec_data::TopicPartition,
+            text_1: std::string::String,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
         ) -> std::option::Option<i64>;
     }
 
@@ -214,21 +214,21 @@ pub mod lawtwin_kafka
     {
         fn initTransactions(
             &self,
-            value0: std::string::String,
+            text_1: std::string::String,
         ) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::ProducerIdAndEpoch>;
         fn beginTransaction(&self) -> ls::Either<crate::lawspec_data::KafkaError, ()>;
         fn addPartitionsToTransaction(
             &self,
-            value0: std::vec::Vec<crate::lawspec_data::TopicPartition>,
+            list_1: std::vec::Vec<crate::lawspec_data::TopicPartition>,
         ) -> ls::Either<crate::lawspec_data::KafkaError, ()>;
         fn sendInTransaction(
             &self,
-            value0: crate::lawspec_data::ProducerRecord,
+            producer_record_1: crate::lawspec_data::ProducerRecord,
         ) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::RecordMetadata>;
         fn sendOffsetsToTransaction(
             &self,
-            value0: std::string::String,
-            value1: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
+            text_1: std::string::String,
+            list_1: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
         ) -> ls::Either<crate::lawspec_data::KafkaError, ()>;
         fn commitTransaction(&self) -> ls::Either<crate::lawspec_data::KafkaError, ()>;
         fn abortTransaction(&self) -> ls::Either<crate::lawspec_data::KafkaError, ()>;
@@ -295,15 +295,15 @@ pub mod lawtwin_kafka
         /// createTopicsRequest, with the failure it raises as Err rather than a panic.
         pub fn try_createTopicsRequest(
             &self,
-            value0: std::string::String,
-            value1: i32,
+            text_1: std::string::String,
+            int32_1: i32,
         ) -> std::result::Result<(), crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                 || {
                     Ok(<Self as super::lawtwin_kafka::Broker>::createTopicsRequest(
-                        self, value0, value1,
+                        self, text_1, int32_1,
                     ))
                 },
             )
@@ -331,8 +331,8 @@ pub mod lawtwin_kafka
         /// createPartitionsRequest, with the failure it raises as Err rather than a panic.
         pub fn try_createPartitionsRequest(
             &self,
-            value0: std::string::String,
-            value1: i32,
+            text_1: std::string::String,
+            int32_1: i32,
         ) -> std::result::Result<(), crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
@@ -340,7 +340,7 @@ pub mod lawtwin_kafka
                 || {
                     Ok(
                         <Self as super::lawtwin_kafka::Broker>::createPartitionsRequest(
-                            self, value0, value1,
+                            self, text_1, int32_1,
                         ),
                     )
                 },
@@ -369,16 +369,19 @@ pub mod lawtwin_kafka
         /// produceRequest, with the failure it raises as Err rather than a panic.
         pub fn try_produceRequest(
             &self,
-            value0: crate::lawspec_data::TopicPartition,
-            value1: std::option::Option<crate::lawspec_data::ProducerTag>,
-            value2: std::vec::Vec<crate::lawspec_data::Record>,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
+            maybe_1: std::option::Option<crate::lawspec_data::ProducerTag>,
+            list_1: std::vec::Vec<crate::lawspec_data::Record>,
         ) -> std::result::Result<i64, crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                 || {
                     Ok(<Self as super::lawtwin_kafka::Broker>::produceRequest(
-                        self, value0, value1, value2,
+                        self,
+                        topic_partition_1,
+                        maybe_1,
+                        list_1,
                     ))
                 },
             )
@@ -406,17 +409,21 @@ pub mod lawtwin_kafka
         /// fetchRequest, with the failure it raises as Err rather than a panic.
         pub fn try_fetchRequest(
             &self,
-            value0: crate::lawspec_data::TopicPartition,
-            value1: i64,
-            value2: i32,
-            value3: crate::lawspec_data::IsolationLevel,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
+            int64_1: i64,
+            int32_1: i32,
+            isolation_level_1: crate::lawspec_data::IsolationLevel,
         ) -> std::result::Result<crate::lawspec_data::FetchResult, crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                 || {
                     Ok(<Self as super::lawtwin_kafka::Broker>::fetchRequest(
-                        self, value0, value1, value2, value3,
+                        self,
+                        topic_partition_1,
+                        int64_1,
+                        int32_1,
+                        isolation_level_1,
                     ))
                 },
             )
@@ -444,16 +451,19 @@ pub mod lawtwin_kafka
         /// listOffsetsRequest, with the failure it raises as Err rather than a panic.
         pub fn try_listOffsetsRequest(
             &self,
-            value0: crate::lawspec_data::TopicPartition,
-            value1: crate::lawspec_data::OffsetSpec,
-            value2: crate::lawspec_data::IsolationLevel,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
+            offset_spec_1: crate::lawspec_data::OffsetSpec,
+            isolation_level_1: crate::lawspec_data::IsolationLevel,
         ) -> std::result::Result<i64, crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                 || {
                     Ok(<Self as super::lawtwin_kafka::Broker>::listOffsetsRequest(
-                        self, value0, value1, value2,
+                        self,
+                        topic_partition_1,
+                        offset_spec_1,
+                        isolation_level_1,
                     ))
                 },
             )
@@ -481,7 +491,7 @@ pub mod lawtwin_kafka
         /// initProducerIdRequest, with the failure it raises as Err rather than a panic.
         pub fn try_initProducerIdRequest(
             &self,
-            value0: std::option::Option<std::string::String>,
+            maybe_1: std::option::Option<std::string::String>,
         ) -> std::result::Result<
             crate::lawspec_data::ProducerIdAndEpoch,
             crate::lawspec_data::KafkaError,
@@ -490,7 +500,7 @@ pub mod lawtwin_kafka
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                 || {
-                    Ok(<Self as super::lawtwin_kafka::Broker>::initProducerIdRequest(self, value0))
+                    Ok(<Self as super::lawtwin_kafka::Broker>::initProducerIdRequest(self, maybe_1))
                 },
             )
             {
@@ -517,10 +527,10 @@ pub mod lawtwin_kafka
         /// addPartitionsToTxnRequest, with the failure it raises as Err rather than a panic.
         pub fn try_addPartitionsToTxnRequest(
             &self,
-            value0: std::string::String,
-            value1: i64,
-            value2: i16,
-            value3: std::vec::Vec<crate::lawspec_data::TopicPartition>,
+            text_1: std::string::String,
+            int64_1: i64,
+            int16_1: i16,
+            list_1: std::vec::Vec<crate::lawspec_data::TopicPartition>,
         ) -> std::result::Result<(), crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
@@ -528,7 +538,7 @@ pub mod lawtwin_kafka
                 || {
                     Ok(
                         <Self as super::lawtwin_kafka::Broker>::addPartitionsToTxnRequest(
-                            self, value0, value1, value2, value3,
+                            self, text_1, int64_1, int16_1, list_1,
                         ),
                     )
                 },
@@ -557,11 +567,11 @@ pub mod lawtwin_kafka
         /// txnOffsetCommitRequest, with the failure it raises as Err rather than a panic.
         pub fn try_txnOffsetCommitRequest(
             &self,
-            value0: std::string::String,
-            value1: i64,
-            value2: i16,
-            value3: std::string::String,
-            value4: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
+            text_1: std::string::String,
+            int64_1: i64,
+            int16_1: i16,
+            text_2: std::string::String,
+            list_1: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
         ) -> std::result::Result<(), crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
@@ -569,7 +579,7 @@ pub mod lawtwin_kafka
                 || {
                     Ok(
                         <Self as super::lawtwin_kafka::Broker>::txnOffsetCommitRequest(
-                            self, value0, value1, value2, value3, value4,
+                            self, text_1, int64_1, int16_1, text_2, list_1,
                         ),
                     )
                 },
@@ -598,17 +608,17 @@ pub mod lawtwin_kafka
         /// endTxnRequest, with the failure it raises as Err rather than a panic.
         pub fn try_endTxnRequest(
             &self,
-            value0: std::string::String,
-            value1: i64,
-            value2: i16,
-            value3: bool,
+            text_1: std::string::String,
+            int64_1: i64,
+            int16_1: i16,
+            bool_1: bool,
         ) -> std::result::Result<(), crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                 || {
                     Ok(<Self as super::lawtwin_kafka::Broker>::endTxnRequest(
-                        self, value0, value1, value2, value3,
+                        self, text_1, int64_1, int16_1, bool_1,
                     ))
                 },
             )
@@ -636,16 +646,16 @@ pub mod lawtwin_kafka
         /// joinGroupRequest, with the failure it raises as Err rather than a panic.
         pub fn try_joinGroupRequest(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::vec::Vec<std::string::String>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            list_1: std::vec::Vec<std::string::String>,
         ) -> std::result::Result<i32, crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                 || {
                     Ok(<Self as super::lawtwin_kafka::Broker>::joinGroupRequest(
-                        self, value0, value1, value2,
+                        self, text_1, text_2, list_1,
                     ))
                 },
             )
@@ -673,9 +683,9 @@ pub mod lawtwin_kafka
         /// syncGroupRequest, with the failure it raises as Err rather than a panic.
         pub fn try_syncGroupRequest(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i32,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int32_1: i32,
         ) -> std::result::Result<
             std::vec::Vec<crate::lawspec_data::TopicPartition>,
             crate::lawspec_data::KafkaError,
@@ -685,7 +695,7 @@ pub mod lawtwin_kafka
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                 || {
                     Ok(<Self as super::lawtwin_kafka::Broker>::syncGroupRequest(
-                        self, value0, value1, value2,
+                        self, text_1, text_2, int32_1,
                     ))
                 },
             )
@@ -713,16 +723,16 @@ pub mod lawtwin_kafka
         /// heartbeatRequest, with the failure it raises as Err rather than a panic.
         pub fn try_heartbeatRequest(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i32,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int32_1: i32,
         ) -> std::result::Result<(), crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                 || {
                     Ok(<Self as super::lawtwin_kafka::Broker>::heartbeatRequest(
-                        self, value0, value1, value2,
+                        self, text_1, text_2, int32_1,
                     ))
                 },
             )
@@ -750,15 +760,15 @@ pub mod lawtwin_kafka
         /// leaveGroupRequest, with the failure it raises as Err rather than a panic.
         pub fn try_leaveGroupRequest(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
+            text_1: std::string::String,
+            text_2: std::string::String,
         ) -> std::result::Result<(), crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                 || {
                     Ok(<Self as super::lawtwin_kafka::Broker>::leaveGroupRequest(
-                        self, value0, value1,
+                        self, text_1, text_2,
                     ))
                 },
             )
@@ -786,17 +796,17 @@ pub mod lawtwin_kafka
         /// offsetCommitRequest, with the failure it raises as Err rather than a panic.
         pub fn try_offsetCommitRequest(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i32,
-            value3: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int32_1: i32,
+            list_1: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
         ) -> std::result::Result<(), crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                 || {
                     Ok(<Self as super::lawtwin_kafka::Broker>::offsetCommitRequest(
-                        self, value0, value1, value2, value3,
+                        self, text_1, text_2, int32_1, list_1,
                     ))
                 },
             )
@@ -824,15 +834,15 @@ pub mod lawtwin_kafka
         /// createTopic, with the failure it raises as Err rather than a panic.
         pub fn try_createTopic(
             &self,
-            value0: std::string::String,
-            value1: i32,
+            text_1: std::string::String,
+            int32_1: i32,
         ) -> std::result::Result<(), crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                 || {
                     Ok(<Self as super::lawtwin_kafka::Admin>::createTopic(
-                        self, value0, value1,
+                        self, text_1, int32_1,
                     ))
                 },
             )
@@ -860,15 +870,15 @@ pub mod lawtwin_kafka
         /// createPartitions, with the failure it raises as Err rather than a panic.
         pub fn try_createPartitions(
             &self,
-            value0: std::string::String,
-            value1: i32,
+            text_1: std::string::String,
+            int32_1: i32,
         ) -> std::result::Result<(), crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                 || {
                     Ok(<Self as super::lawtwin_kafka::Admin>::createPartitions(
-                        self, value0, value1,
+                        self, text_1, int32_1,
                     ))
                 },
             )
@@ -896,16 +906,19 @@ pub mod lawtwin_kafka
         /// listOffsets, with the failure it raises as Err rather than a panic.
         pub fn try_listOffsets(
             &self,
-            value0: crate::lawspec_data::TopicPartition,
-            value1: crate::lawspec_data::OffsetSpec,
-            value2: crate::lawspec_data::IsolationLevel,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
+            offset_spec_1: crate::lawspec_data::OffsetSpec,
+            isolation_level_1: crate::lawspec_data::IsolationLevel,
         ) -> std::result::Result<i64, crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                 || {
                     Ok(<Self as super::lawtwin_kafka::Admin>::listOffsets(
-                        self, value0, value1, value2,
+                        self,
+                        topic_partition_1,
+                        offset_spec_1,
+                        isolation_level_1,
                     ))
                 },
             )
@@ -933,16 +946,16 @@ pub mod lawtwin_kafka
         /// joinGroup, with the failure it raises as Err rather than a panic.
         pub fn try_joinGroup(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::vec::Vec<std::string::String>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            list_1: std::vec::Vec<std::string::String>,
         ) -> std::result::Result<i32, crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                 || {
                     Ok(<Self as super::lawtwin_kafka::GroupCoordinator>::joinGroup(
-                        self, value0, value1, value2,
+                        self, text_1, text_2, list_1,
                     ))
                 },
             )
@@ -970,9 +983,9 @@ pub mod lawtwin_kafka
         /// syncGroup, with the failure it raises as Err rather than a panic.
         pub fn try_syncGroup(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i32,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int32_1: i32,
         ) -> std::result::Result<
             std::vec::Vec<crate::lawspec_data::TopicPartition>,
             crate::lawspec_data::KafkaError,
@@ -982,7 +995,7 @@ pub mod lawtwin_kafka
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                 || {
                     Ok(<Self as super::lawtwin_kafka::GroupCoordinator>::syncGroup(
-                        self, value0, value1, value2,
+                        self, text_1, text_2, int32_1,
                     ))
                 },
             )
@@ -1010,16 +1023,16 @@ pub mod lawtwin_kafka
         /// heartbeat, with the failure it raises as Err rather than a panic.
         pub fn try_heartbeat(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i32,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int32_1: i32,
         ) -> std::result::Result<(), crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                 || {
                     Ok(<Self as super::lawtwin_kafka::GroupCoordinator>::heartbeat(
-                        self, value0, value1, value2,
+                        self, text_1, text_2, int32_1,
                     ))
                 },
             )
@@ -1047,8 +1060,8 @@ pub mod lawtwin_kafka
         /// leaveGroup, with the failure it raises as Err rather than a panic.
         pub fn try_leaveGroup(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
+            text_1: std::string::String,
+            text_2: std::string::String,
         ) -> std::result::Result<(), crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
@@ -1056,7 +1069,7 @@ pub mod lawtwin_kafka
                 || {
                     Ok(
                         <Self as super::lawtwin_kafka::GroupCoordinator>::leaveGroup(
-                            self, value0, value1,
+                            self, text_1, text_2,
                         ),
                     )
                 },
@@ -1085,10 +1098,10 @@ pub mod lawtwin_kafka
         /// commitOffsets, with the failure it raises as Err rather than a panic.
         pub fn try_commitOffsets(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i32,
-            value3: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int32_1: i32,
+            list_1: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
         ) -> std::result::Result<(), crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
@@ -1096,7 +1109,7 @@ pub mod lawtwin_kafka
                 || {
                     Ok(
                         <Self as super::lawtwin_kafka::GroupCoordinator>::commitOffsets(
-                            self, value0, value1, value2, value3,
+                            self, text_1, text_2, int32_1, list_1,
                         ),
                     )
                 },
@@ -1125,13 +1138,13 @@ pub mod lawtwin_kafka
 
     impl super::lawtwin_kafka::Broker for Cluster
     {
-        fn createTopicsRequest(&self, value0: std::string::String, value1: i32) -> ()
+        fn createTopicsRequest(&self, text_1: std::string::String, int32_1: i32) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_create_topic(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                <i32 as ls::fast::Public>::from_native(value1),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                <i32 as ls::fast::Public>::from_native(int32_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -1139,14 +1152,14 @@ pub mod lawtwin_kafka
             ls::fast::Public::to_native(&result)
         }
 
-        fn createPartitionsRequest(&self, value0: std::string::String, value1: i32) -> ()
+        fn createPartitionsRequest(&self, text_1: std::string::String, int32_1: i32) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::cluster_create_partitions(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <i32 as ls::fast::Public>::from_native(value1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <i32 as ls::fast::Public>::from_native(int32_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -1155,12 +1168,12 @@ pub mod lawtwin_kafka
             ls::fast::Public::to_native(&result)
         }
 
-        fn metadataRequest(&self, value0: std::string::String) -> std::option::Option<i32>
+        fn metadataRequest(&self, text_1: std::string::String) -> std::option::Option<i32>
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_metadata_request(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -1170,23 +1183,23 @@ pub mod lawtwin_kafka
 
         fn produceRequest(
             &self,
-            value0: crate::lawspec_data::TopicPartition,
-            value1: std::option::Option<crate::lawspec_data::ProducerTag>,
-            value2: std::vec::Vec<crate::lawspec_data::Record>,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
+            maybe_1: std::option::Option<crate::lawspec_data::ProducerTag>,
+            list_1: std::vec::Vec<crate::lawspec_data::Record>,
         ) -> i64
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_produce_request(
                 state.clone(),
                 <crate::lawspec_definitions::typed::TopicPartition as ls::fast::Public>::from_native(
-                    value0,
+                    topic_partition_1,
                 ),
                 <Option<
                     crate::lawspec_definitions::typed::ProducerTag,
-                > as ls::fast::Public>::from_native(value1),
+                > as ls::fast::Public>::from_native(maybe_1),
                 <ls::fast::List<
                     crate::lawspec_definitions::typed::Record,
-                > as ls::fast::Public>::from_native(value2),
+                > as ls::fast::Public>::from_native(list_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -1196,22 +1209,22 @@ pub mod lawtwin_kafka
 
         fn fetchRequest(
             &self,
-            value0: crate::lawspec_data::TopicPartition,
-            value1: i64,
-            value2: i32,
-            value3: crate::lawspec_data::IsolationLevel,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
+            int64_1: i64,
+            int32_1: i32,
+            isolation_level_1: crate::lawspec_data::IsolationLevel,
         ) -> crate::lawspec_data::FetchResult
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_fetch_request(
                 state.clone(),
                 <crate::lawspec_definitions::typed::TopicPartition as ls::fast::Public>::from_native(
-                    value0,
+                    topic_partition_1,
                 ),
-                <i64 as ls::fast::Public>::from_native(value1),
-                <i32 as ls::fast::Public>::from_native(value2),
+                <i64 as ls::fast::Public>::from_native(int64_1),
+                <i32 as ls::fast::Public>::from_native(int32_1),
                 <crate::lawspec_definitions::typed::IsolationLevel as ls::fast::Public>::from_native(
-                    value3,
+                    isolation_level_1,
                 ),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -1222,22 +1235,22 @@ pub mod lawtwin_kafka
 
         fn listOffsetsRequest(
             &self,
-            value0: crate::lawspec_data::TopicPartition,
-            value1: crate::lawspec_data::OffsetSpec,
-            value2: crate::lawspec_data::IsolationLevel,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
+            offset_spec_1: crate::lawspec_data::OffsetSpec,
+            isolation_level_1: crate::lawspec_data::IsolationLevel,
         ) -> i64
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_list_offsets(
                 state.clone(),
                 <crate::lawspec_definitions::typed::TopicPartition as ls::fast::Public>::from_native(
-                    value0,
+                    topic_partition_1,
                 ),
                 <crate::lawspec_definitions::typed::OffsetSpec as ls::fast::Public>::from_native(
-                    value1,
+                    offset_spec_1,
                 ),
                 <crate::lawspec_definitions::typed::IsolationLevel as ls::fast::Public>::from_native(
-                    value2,
+                    isolation_level_1,
                 ),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -1248,14 +1261,14 @@ pub mod lawtwin_kafka
 
         fn initProducerIdRequest(
             &self,
-            value0: std::option::Option<std::string::String>,
+            maybe_1: std::option::Option<std::string::String>,
         ) -> crate::lawspec_data::ProducerIdAndEpoch
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::cluster_init_producer_id_request(
                     state.clone(),
-                    <Option<ls::fast::Text> as ls::fast::Public>::from_native(value0),
+                    <Option<ls::fast::Text> as ls::fast::Public>::from_native(maybe_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -1266,22 +1279,22 @@ pub mod lawtwin_kafka
 
         fn addPartitionsToTxnRequest(
             &self,
-            value0: std::string::String,
-            value1: i64,
-            value2: i16,
-            value3: std::vec::Vec<crate::lawspec_data::TopicPartition>,
+            text_1: std::string::String,
+            int64_1: i64,
+            int16_1: i16,
+            list_1: std::vec::Vec<crate::lawspec_data::TopicPartition>,
         ) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::cluster_add_partitions_to_txn_request(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <i64 as ls::fast::Public>::from_native(value1),
-                    <i16 as ls::fast::Public>::from_native(value2),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <i64 as ls::fast::Public>::from_native(int64_1),
+                    <i16 as ls::fast::Public>::from_native(int16_1),
                     <ls::fast::List<
                         crate::lawspec_definitions::typed::TopicPartition,
-                    > as ls::fast::Public>::from_native(value3),
+                    > as ls::fast::Public>::from_native(list_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -1292,24 +1305,24 @@ pub mod lawtwin_kafka
 
         fn txnOffsetCommitRequest(
             &self,
-            value0: std::string::String,
-            value1: i64,
-            value2: i16,
-            value3: std::string::String,
-            value4: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
+            text_1: std::string::String,
+            int64_1: i64,
+            int16_1: i16,
+            text_2: std::string::String,
+            list_1: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
         ) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::cluster_txn_offset_commit_request(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <i64 as ls::fast::Public>::from_native(value1),
-                    <i16 as ls::fast::Public>::from_native(value2),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value3),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <i64 as ls::fast::Public>::from_native(int64_1),
+                    <i16 as ls::fast::Public>::from_native(int16_1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_2),
                     <ls::fast::List<
                         crate::lawspec_definitions::typed::OffsetEntry,
-                    > as ls::fast::Public>::from_native(value4),
+                    > as ls::fast::Public>::from_native(list_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -1320,19 +1333,19 @@ pub mod lawtwin_kafka
 
         fn endTxnRequest(
             &self,
-            value0: std::string::String,
-            value1: i64,
-            value2: i16,
-            value3: bool,
+            text_1: std::string::String,
+            int64_1: i64,
+            int16_1: i16,
+            bool_1: bool,
         ) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_end_txn_request(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                <i64 as ls::fast::Public>::from_native(value1),
-                <i16 as ls::fast::Public>::from_native(value2),
-                <bool as ls::fast::Public>::from_native(value3),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                <i64 as ls::fast::Public>::from_native(int64_1),
+                <i16 as ls::fast::Public>::from_native(int16_1),
+                <bool as ls::fast::Public>::from_native(bool_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -1342,17 +1355,17 @@ pub mod lawtwin_kafka
 
         fn joinGroupRequest(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::vec::Vec<std::string::String>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            list_1: std::vec::Vec<std::string::String>,
         ) -> i32
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_join_group(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                <ls::fast::List<ls::fast::Text> as ls::fast::Public>::from_native(value2),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                <ls::fast::List<ls::fast::Text> as ls::fast::Public>::from_native(list_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -1362,17 +1375,17 @@ pub mod lawtwin_kafka
 
         fn syncGroupRequest(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i32,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int32_1: i32,
         ) -> std::vec::Vec<crate::lawspec_data::TopicPartition>
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_sync_group(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                <i32 as ls::fast::Public>::from_native(value2),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                <i32 as ls::fast::Public>::from_native(int32_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -1382,17 +1395,17 @@ pub mod lawtwin_kafka
 
         fn heartbeatRequest(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i32,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int32_1: i32,
         ) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_heartbeat(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                <i32 as ls::fast::Public>::from_native(value2),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                <i32 as ls::fast::Public>::from_native(int32_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -1400,14 +1413,14 @@ pub mod lawtwin_kafka
             ls::fast::Public::to_native(&result)
         }
 
-        fn leaveGroupRequest(&self, value0: std::string::String, value1: std::string::String)
+        fn leaveGroupRequest(&self, text_1: std::string::String, text_2: std::string::String)
         -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_leave_group(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                <ls::fast::Text as ls::fast::Public>::from_native(value1),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_2),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -1417,13 +1430,13 @@ pub mod lawtwin_kafka
 
         fn describeGroupRequest(
             &self,
-            value0: std::string::String,
+            text_1: std::string::String,
         ) -> crate::lawspec_data::GroupView
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_describe_group(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -1433,21 +1446,21 @@ pub mod lawtwin_kafka
 
         fn offsetCommitRequest(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i32,
-            value3: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int32_1: i32,
+            list_1: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
         ) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_commit_offsets(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                <i32 as ls::fast::Public>::from_native(value2),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                <i32 as ls::fast::Public>::from_native(int32_1),
                 <ls::fast::List<
                     crate::lawspec_definitions::typed::OffsetEntry,
-                > as ls::fast::Public>::from_native(value3),
+                > as ls::fast::Public>::from_native(list_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -1457,16 +1470,16 @@ pub mod lawtwin_kafka
 
         fn offsetFetchRequest(
             &self,
-            value0: std::string::String,
-            value1: crate::lawspec_data::TopicPartition,
+            text_1: std::string::String,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
         ) -> std::option::Option<i64>
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_fetch_offset(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
                 <crate::lawspec_definitions::typed::TopicPartition as ls::fast::Public>::from_native(
-                    value1,
+                    topic_partition_1,
                 ),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -1478,13 +1491,13 @@ pub mod lawtwin_kafka
 
     impl super::lawtwin_kafka::Admin for Cluster
     {
-        fn createTopic(&self, value0: std::string::String, value1: i32) -> ()
+        fn createTopic(&self, text_1: std::string::String, int32_1: i32) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_create_topic(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                <i32 as ls::fast::Public>::from_native(value1),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                <i32 as ls::fast::Public>::from_native(int32_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -1492,14 +1505,14 @@ pub mod lawtwin_kafka
             ls::fast::Public::to_native(&result)
         }
 
-        fn createPartitions(&self, value0: std::string::String, value1: i32) -> ()
+        fn createPartitions(&self, text_1: std::string::String, int32_1: i32) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::cluster_create_partitions(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <i32 as ls::fast::Public>::from_native(value1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <i32 as ls::fast::Public>::from_native(int32_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -1508,12 +1521,12 @@ pub mod lawtwin_kafka
             ls::fast::Public::to_native(&result)
         }
 
-        fn partitionsFor(&self, value0: std::string::String) -> std::option::Option<i32>
+        fn partitionsFor(&self, text_1: std::string::String) -> std::option::Option<i32>
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_metadata_request(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -1523,22 +1536,22 @@ pub mod lawtwin_kafka
 
         fn listOffsets(
             &self,
-            value0: crate::lawspec_data::TopicPartition,
-            value1: crate::lawspec_data::OffsetSpec,
-            value2: crate::lawspec_data::IsolationLevel,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
+            offset_spec_1: crate::lawspec_data::OffsetSpec,
+            isolation_level_1: crate::lawspec_data::IsolationLevel,
         ) -> i64
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_list_offsets(
                 state.clone(),
                 <crate::lawspec_definitions::typed::TopicPartition as ls::fast::Public>::from_native(
-                    value0,
+                    topic_partition_1,
                 ),
                 <crate::lawspec_definitions::typed::OffsetSpec as ls::fast::Public>::from_native(
-                    value1,
+                    offset_spec_1,
                 ),
                 <crate::lawspec_definitions::typed::IsolationLevel as ls::fast::Public>::from_native(
-                    value2,
+                    isolation_level_1,
                 ),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -1552,17 +1565,17 @@ pub mod lawtwin_kafka
     {
         fn joinGroup(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::vec::Vec<std::string::String>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            list_1: std::vec::Vec<std::string::String>,
         ) -> i32
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_join_group(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                <ls::fast::List<ls::fast::Text> as ls::fast::Public>::from_native(value2),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                <ls::fast::List<ls::fast::Text> as ls::fast::Public>::from_native(list_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -1572,17 +1585,17 @@ pub mod lawtwin_kafka
 
         fn syncGroup(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i32,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int32_1: i32,
         ) -> std::vec::Vec<crate::lawspec_data::TopicPartition>
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_sync_group(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                <i32 as ls::fast::Public>::from_native(value2),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                <i32 as ls::fast::Public>::from_native(int32_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -1592,17 +1605,17 @@ pub mod lawtwin_kafka
 
         fn heartbeat(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i32,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int32_1: i32,
         ) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_heartbeat(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                <i32 as ls::fast::Public>::from_native(value2),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                <i32 as ls::fast::Public>::from_native(int32_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -1610,13 +1623,13 @@ pub mod lawtwin_kafka
             ls::fast::Public::to_native(&result)
         }
 
-        fn leaveGroup(&self, value0: std::string::String, value1: std::string::String) -> ()
+        fn leaveGroup(&self, text_1: std::string::String, text_2: std::string::String) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_leave_group(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                <ls::fast::Text as ls::fast::Public>::from_native(value1),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_2),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -1624,12 +1637,12 @@ pub mod lawtwin_kafka
             ls::fast::Public::to_native(&result)
         }
 
-        fn describeGroup(&self, value0: std::string::String) -> crate::lawspec_data::GroupView
+        fn describeGroup(&self, text_1: std::string::String) -> crate::lawspec_data::GroupView
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_describe_group(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -1639,21 +1652,21 @@ pub mod lawtwin_kafka
 
         fn commitOffsets(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i32,
-            value3: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int32_1: i32,
+            list_1: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
         ) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_commit_offsets(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                <i32 as ls::fast::Public>::from_native(value2),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                <i32 as ls::fast::Public>::from_native(int32_1),
                 <ls::fast::List<
                     crate::lawspec_definitions::typed::OffsetEntry,
-                > as ls::fast::Public>::from_native(value3),
+                > as ls::fast::Public>::from_native(list_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -1663,16 +1676,16 @@ pub mod lawtwin_kafka
 
         fn fetchOffset(
             &self,
-            value0: std::string::String,
-            value1: crate::lawspec_data::TopicPartition,
+            text_1: std::string::String,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
         ) -> std::option::Option<i64>
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_fetch_offset(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
                 <crate::lawspec_definitions::typed::TopicPartition as ls::fast::Public>::from_native(
-                    value1,
+                    topic_partition_1,
                 ),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -1704,14 +1717,14 @@ pub mod lawtwin_kafka
     {
         fn choosePartition(
             &self,
-            value0: std::option::Option<std::vec::Vec<u8>>,
-            value1: i32,
+            maybe_1: std::option::Option<std::vec::Vec<u8>>,
+            int32_1: i32,
         ) -> i32
         {
             let result = ls::answered(
                 crate::lawspec_definitions::typed::murmur_partitioner_choose_partition(
-                    <Option<ls::fast::Bytes> as ls::fast::Public>::from_native(value0),
-                    <i32 as ls::fast::Public>::from_native(value1),
+                    <Option<ls::fast::Bytes> as ls::fast::Public>::from_native(maybe_1),
+                    <i32 as ls::fast::Public>::from_native(int32_1),
                 ),
             );
             ls::fast::Public::to_native(&result)
@@ -1781,7 +1794,7 @@ pub mod lawtwin_kafka
     {
         fn send(
             &self,
-            value0: crate::lawspec_data::ProducerRecord,
+            producer_record_1: crate::lawspec_data::ProducerRecord,
         ) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::RecordMetadata>
         {
             let mut ctx = ls::locked(&self.ctx);
@@ -1790,7 +1803,7 @@ pub mod lawtwin_kafka
                 &mut *ctx,
                 state.clone(),
                 <crate::lawspec_definitions::typed::ProducerRecord as ls::fast::Public>::from_native(
-                    value0,
+                    producer_record_1,
                 ),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -1921,14 +1934,14 @@ pub mod lawtwin_kafka
 
     impl super::lawtwin_kafka::Consumer for KafkaConsumer
     {
-        fn assign(&self, value0: std::vec::Vec<crate::lawspec_data::TopicPartition>) -> ()
+        fn assign(&self, list_1: std::vec::Vec<crate::lawspec_data::TopicPartition>) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::kafka_consumer_assign(
                 state.clone(),
                 <ls::fast::List<
                     crate::lawspec_definitions::typed::TopicPartition,
-                > as ls::fast::Public>::from_native(value0),
+                > as ls::fast::Public>::from_native(list_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -1938,9 +1951,9 @@ pub mod lawtwin_kafka
 
         fn subscribe(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::vec::Vec<std::string::String>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            list_1: std::vec::Vec<std::string::String>,
         ) -> ls::Either<
             crate::lawspec_data::KafkaError,
             std::vec::Vec<crate::lawspec_data::TopicPartition>,
@@ -1951,9 +1964,9 @@ pub mod lawtwin_kafka
             let pair = ls::answered(crate::lawspec_definitions::typed::kafka_consumer_subscribe(
                 &mut *ctx,
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                <ls::fast::List<ls::fast::Text> as ls::fast::Public>::from_native(value2),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                <ls::fast::List<ls::fast::Text> as ls::fast::Public>::from_native(list_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -1963,7 +1976,7 @@ pub mod lawtwin_kafka
 
         fn poll(
             &self,
-            value0: i32,
+            int32_1: i32,
         ) -> ls::Either<
             crate::lawspec_data::KafkaError,
             std::vec::Vec<crate::lawspec_data::ConsumerRecord>,
@@ -1974,7 +1987,7 @@ pub mod lawtwin_kafka
             let pair = ls::answered(crate::lawspec_definitions::typed::kafka_consumer_poll(
                 &mut *ctx,
                 state.clone(),
-                <i32 as ls::fast::Public>::from_native(value0),
+                <i32 as ls::fast::Public>::from_native(int32_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -2000,17 +2013,17 @@ pub mod lawtwin_kafka
 
         fn seek(
             &self,
-            value0: crate::lawspec_data::TopicPartition,
-            value1: i64,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
+            int64_1: i64,
         ) -> ls::Either<crate::lawspec_data::KafkaError, ()>
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::kafka_consumer_seek(
                 state.clone(),
                 <crate::lawspec_definitions::typed::TopicPartition as ls::fast::Public>::from_native(
-                    value0,
+                    topic_partition_1,
                 ),
-                <i64 as ls::fast::Public>::from_native(value1),
+                <i64 as ls::fast::Public>::from_native(int64_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -2020,7 +2033,7 @@ pub mod lawtwin_kafka
 
         fn position(
             &self,
-            value0: crate::lawspec_data::TopicPartition,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
         ) -> ls::Either<crate::lawspec_data::KafkaError, i64>
         {
             let mut ctx = ls::locked(&self.ctx);
@@ -2029,7 +2042,7 @@ pub mod lawtwin_kafka
                 &mut *ctx,
                 state.clone(),
                 <crate::lawspec_definitions::typed::TopicPartition as ls::fast::Public>::from_native(
-                    value0,
+                    topic_partition_1,
                 ),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -2040,7 +2053,7 @@ pub mod lawtwin_kafka
 
         fn committedOffset(
             &self,
-            value0: crate::lawspec_data::TopicPartition,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
         ) -> std::option::Option<i64>
         {
             let mut ctx = ls::locked(&self.ctx);
@@ -2050,7 +2063,7 @@ pub mod lawtwin_kafka
                     &mut *ctx,
                     state.clone(),
                     <crate::lawspec_definitions::typed::TopicPartition as ls::fast::Public>::from_native(
-                        value0,
+                        topic_partition_1,
                     ),
                 ),
             );
@@ -2060,14 +2073,14 @@ pub mod lawtwin_kafka
             ls::fast::Public::to_native(&result)
         }
 
-        fn setIsolationLevel(&self, value0: crate::lawspec_data::IsolationLevel) -> ()
+        fn setIsolationLevel(&self, isolation_level_1: crate::lawspec_data::IsolationLevel) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::kafka_consumer_set_isolation_level(
                     state.clone(),
                     <crate::lawspec_definitions::typed::IsolationLevel as ls::fast::Public>::from_native(
-                        value0,
+                        isolation_level_1,
                     ),
                 ),
             );
@@ -2156,7 +2169,7 @@ pub mod lawtwin_kafka
     {
         fn initTransactions(
             &self,
-            value0: std::string::String,
+            text_1: std::string::String,
         ) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::ProducerIdAndEpoch>
         {
             let mut ctx = ls::locked(&self.ctx);
@@ -2165,7 +2178,7 @@ pub mod lawtwin_kafka
                 crate::lawspec_definitions::typed::kafka_transactions_init_transactions(
                     &mut *ctx,
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -2190,7 +2203,7 @@ pub mod lawtwin_kafka
 
         fn addPartitionsToTransaction(
             &self,
-            value0: std::vec::Vec<crate::lawspec_data::TopicPartition>,
+            list_1: std::vec::Vec<crate::lawspec_data::TopicPartition>,
         ) -> ls::Either<crate::lawspec_data::KafkaError, ()>
         {
             let mut ctx = ls::locked(&self.ctx);
@@ -2201,7 +2214,7 @@ pub mod lawtwin_kafka
                     state.clone(),
                     <ls::fast::List<
                         crate::lawspec_definitions::typed::TopicPartition,
-                    > as ls::fast::Public>::from_native(value0),
+                    > as ls::fast::Public>::from_native(list_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -2212,7 +2225,7 @@ pub mod lawtwin_kafka
 
         fn sendInTransaction(
             &self,
-            value0: crate::lawspec_data::ProducerRecord,
+            producer_record_1: crate::lawspec_data::ProducerRecord,
         ) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::RecordMetadata>
         {
             let mut ctx = ls::locked(&self.ctx);
@@ -2222,7 +2235,7 @@ pub mod lawtwin_kafka
                     &mut *ctx,
                     state.clone(),
                     <crate::lawspec_definitions::typed::ProducerRecord as ls::fast::Public>::from_native(
-                        value0,
+                        producer_record_1,
                     ),
                 ),
             );
@@ -2234,8 +2247,8 @@ pub mod lawtwin_kafka
 
         fn sendOffsetsToTransaction(
             &self,
-            value0: std::string::String,
-            value1: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
+            text_1: std::string::String,
+            list_1: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
         ) -> ls::Either<crate::lawspec_data::KafkaError, ()>
         {
             let mut ctx = ls::locked(&self.ctx);
@@ -2244,10 +2257,10 @@ pub mod lawtwin_kafka
                 crate::lawspec_definitions::typed::kafka_transactions_send_offsets_to_transaction(
                     &mut *ctx,
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
                     <ls::fast::List<
                         crate::lawspec_definitions::typed::OffsetEntry,
-                    > as ls::fast::Public>::from_native(value1),
+                    > as ls::fast::Public>::from_native(list_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -2309,285 +2322,288 @@ pub mod lawtwin_kafka
 
     impl Broker for BrokerRecording
     {
-        fn createTopicsRequest(&self, value0: std::string::String, value1: i32) -> ()
+        fn createTopicsRequest(&self, text_1: std::string::String, int32_1: i32) -> ()
         {
             self.calls.record(
                 "createTopicsRequest",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
+                    ls::IntoValue::into_value(text_1.clone()),
+                    ls::IntoValue::into_value(int32_1.clone()),
                 ],
             );
-            self.inner.createTopicsRequest(value0, value1)
+            self.inner.createTopicsRequest(text_1, int32_1)
         }
 
-        fn createPartitionsRequest(&self, value0: std::string::String, value1: i32) -> ()
+        fn createPartitionsRequest(&self, text_1: std::string::String, int32_1: i32) -> ()
         {
             self.calls.record(
                 "createPartitionsRequest",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
+                    ls::IntoValue::into_value(text_1.clone()),
+                    ls::IntoValue::into_value(int32_1.clone()),
                 ],
             );
-            self.inner.createPartitionsRequest(value0, value1)
+            self.inner.createPartitionsRequest(text_1, int32_1)
         }
 
-        fn metadataRequest(&self, value0: std::string::String) -> std::option::Option<i32>
+        fn metadataRequest(&self, text_1: std::string::String) -> std::option::Option<i32>
         {
             self.calls.record(
                 "metadataRequest",
-                vec![ls::IntoValue::into_value(value0.clone())],
+                vec![ls::IntoValue::into_value(text_1.clone())],
             );
-            self.inner.metadataRequest(value0)
+            self.inner.metadataRequest(text_1)
         }
 
         fn produceRequest(
             &self,
-            value0: crate::lawspec_data::TopicPartition,
-            value1: std::option::Option<crate::lawspec_data::ProducerTag>,
-            value2: std::vec::Vec<crate::lawspec_data::Record>,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
+            maybe_1: std::option::Option<crate::lawspec_data::ProducerTag>,
+            list_1: std::vec::Vec<crate::lawspec_data::Record>,
         ) -> i64
         {
             self.calls.record(
                 "produceRequest",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
-                    ls::IntoValue::into_value(value2.clone()),
+                    ls::IntoValue::into_value(topic_partition_1.clone()),
+                    ls::IntoValue::into_value(maybe_1.clone()),
+                    ls::IntoValue::into_value(list_1.clone()),
                 ],
             );
-            self.inner.produceRequest(value0, value1, value2)
+            self.inner
+                .produceRequest(topic_partition_1, maybe_1, list_1)
         }
 
         fn fetchRequest(
             &self,
-            value0: crate::lawspec_data::TopicPartition,
-            value1: i64,
-            value2: i32,
-            value3: crate::lawspec_data::IsolationLevel,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
+            int64_1: i64,
+            int32_1: i32,
+            isolation_level_1: crate::lawspec_data::IsolationLevel,
         ) -> crate::lawspec_data::FetchResult
         {
             self.calls.record(
                 "fetchRequest",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
-                    ls::IntoValue::into_value(value2.clone()),
-                    ls::IntoValue::into_value(value3.clone()),
+                    ls::IntoValue::into_value(topic_partition_1.clone()),
+                    ls::IntoValue::into_value(int64_1.clone()),
+                    ls::IntoValue::into_value(int32_1.clone()),
+                    ls::IntoValue::into_value(isolation_level_1.clone()),
                 ],
             );
-            self.inner.fetchRequest(value0, value1, value2, value3)
+            self.inner
+                .fetchRequest(topic_partition_1, int64_1, int32_1, isolation_level_1)
         }
 
         fn listOffsetsRequest(
             &self,
-            value0: crate::lawspec_data::TopicPartition,
-            value1: crate::lawspec_data::OffsetSpec,
-            value2: crate::lawspec_data::IsolationLevel,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
+            offset_spec_1: crate::lawspec_data::OffsetSpec,
+            isolation_level_1: crate::lawspec_data::IsolationLevel,
         ) -> i64
         {
             self.calls.record(
                 "listOffsetsRequest",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
-                    ls::IntoValue::into_value(value2.clone()),
+                    ls::IntoValue::into_value(topic_partition_1.clone()),
+                    ls::IntoValue::into_value(offset_spec_1.clone()),
+                    ls::IntoValue::into_value(isolation_level_1.clone()),
                 ],
             );
-            self.inner.listOffsetsRequest(value0, value1, value2)
+            self.inner
+                .listOffsetsRequest(topic_partition_1, offset_spec_1, isolation_level_1)
         }
 
         fn initProducerIdRequest(
             &self,
-            value0: std::option::Option<std::string::String>,
+            maybe_1: std::option::Option<std::string::String>,
         ) -> crate::lawspec_data::ProducerIdAndEpoch
         {
             self.calls.record(
                 "initProducerIdRequest",
-                vec![ls::IntoValue::into_value(value0.clone())],
+                vec![ls::IntoValue::into_value(maybe_1.clone())],
             );
-            self.inner.initProducerIdRequest(value0)
+            self.inner.initProducerIdRequest(maybe_1)
         }
 
         fn addPartitionsToTxnRequest(
             &self,
-            value0: std::string::String,
-            value1: i64,
-            value2: i16,
-            value3: std::vec::Vec<crate::lawspec_data::TopicPartition>,
+            text_1: std::string::String,
+            int64_1: i64,
+            int16_1: i16,
+            list_1: std::vec::Vec<crate::lawspec_data::TopicPartition>,
         ) -> ()
         {
             self.calls.record(
                 "addPartitionsToTxnRequest",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
-                    ls::IntoValue::into_value(value2.clone()),
-                    ls::IntoValue::into_value(value3.clone()),
+                    ls::IntoValue::into_value(text_1.clone()),
+                    ls::IntoValue::into_value(int64_1.clone()),
+                    ls::IntoValue::into_value(int16_1.clone()),
+                    ls::IntoValue::into_value(list_1.clone()),
                 ],
             );
             self.inner
-                .addPartitionsToTxnRequest(value0, value1, value2, value3)
+                .addPartitionsToTxnRequest(text_1, int64_1, int16_1, list_1)
         }
 
         fn txnOffsetCommitRequest(
             &self,
-            value0: std::string::String,
-            value1: i64,
-            value2: i16,
-            value3: std::string::String,
-            value4: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
+            text_1: std::string::String,
+            int64_1: i64,
+            int16_1: i16,
+            text_2: std::string::String,
+            list_1: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
         ) -> ()
         {
             self.calls.record(
                 "txnOffsetCommitRequest",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
-                    ls::IntoValue::into_value(value2.clone()),
-                    ls::IntoValue::into_value(value3.clone()),
-                    ls::IntoValue::into_value(value4.clone()),
+                    ls::IntoValue::into_value(text_1.clone()),
+                    ls::IntoValue::into_value(int64_1.clone()),
+                    ls::IntoValue::into_value(int16_1.clone()),
+                    ls::IntoValue::into_value(text_2.clone()),
+                    ls::IntoValue::into_value(list_1.clone()),
                 ],
             );
             self.inner
-                .txnOffsetCommitRequest(value0, value1, value2, value3, value4)
+                .txnOffsetCommitRequest(text_1, int64_1, int16_1, text_2, list_1)
         }
 
         fn endTxnRequest(
             &self,
-            value0: std::string::String,
-            value1: i64,
-            value2: i16,
-            value3: bool,
+            text_1: std::string::String,
+            int64_1: i64,
+            int16_1: i16,
+            bool_1: bool,
         ) -> ()
         {
             self.calls.record(
                 "endTxnRequest",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
-                    ls::IntoValue::into_value(value2.clone()),
-                    ls::IntoValue::into_value(value3.clone()),
+                    ls::IntoValue::into_value(text_1.clone()),
+                    ls::IntoValue::into_value(int64_1.clone()),
+                    ls::IntoValue::into_value(int16_1.clone()),
+                    ls::IntoValue::into_value(bool_1.clone()),
                 ],
             );
-            self.inner.endTxnRequest(value0, value1, value2, value3)
+            self.inner.endTxnRequest(text_1, int64_1, int16_1, bool_1)
         }
 
         fn joinGroupRequest(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::vec::Vec<std::string::String>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            list_1: std::vec::Vec<std::string::String>,
         ) -> i32
         {
             self.calls.record(
                 "joinGroupRequest",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
-                    ls::IntoValue::into_value(value2.clone()),
+                    ls::IntoValue::into_value(text_1.clone()),
+                    ls::IntoValue::into_value(text_2.clone()),
+                    ls::IntoValue::into_value(list_1.clone()),
                 ],
             );
-            self.inner.joinGroupRequest(value0, value1, value2)
+            self.inner.joinGroupRequest(text_1, text_2, list_1)
         }
 
         fn syncGroupRequest(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i32,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int32_1: i32,
         ) -> std::vec::Vec<crate::lawspec_data::TopicPartition>
         {
             self.calls.record(
                 "syncGroupRequest",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
-                    ls::IntoValue::into_value(value2.clone()),
+                    ls::IntoValue::into_value(text_1.clone()),
+                    ls::IntoValue::into_value(text_2.clone()),
+                    ls::IntoValue::into_value(int32_1.clone()),
                 ],
             );
-            self.inner.syncGroupRequest(value0, value1, value2)
+            self.inner.syncGroupRequest(text_1, text_2, int32_1)
         }
 
         fn heartbeatRequest(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i32,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int32_1: i32,
         ) -> ()
         {
             self.calls.record(
                 "heartbeatRequest",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
-                    ls::IntoValue::into_value(value2.clone()),
+                    ls::IntoValue::into_value(text_1.clone()),
+                    ls::IntoValue::into_value(text_2.clone()),
+                    ls::IntoValue::into_value(int32_1.clone()),
                 ],
             );
-            self.inner.heartbeatRequest(value0, value1, value2)
+            self.inner.heartbeatRequest(text_1, text_2, int32_1)
         }
 
-        fn leaveGroupRequest(&self, value0: std::string::String, value1: std::string::String)
+        fn leaveGroupRequest(&self, text_1: std::string::String, text_2: std::string::String)
         -> ()
         {
             self.calls.record(
                 "leaveGroupRequest",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
+                    ls::IntoValue::into_value(text_1.clone()),
+                    ls::IntoValue::into_value(text_2.clone()),
                 ],
             );
-            self.inner.leaveGroupRequest(value0, value1)
+            self.inner.leaveGroupRequest(text_1, text_2)
         }
 
         fn describeGroupRequest(
             &self,
-            value0: std::string::String,
+            text_1: std::string::String,
         ) -> crate::lawspec_data::GroupView
         {
             self.calls.record(
                 "describeGroupRequest",
-                vec![ls::IntoValue::into_value(value0.clone())],
+                vec![ls::IntoValue::into_value(text_1.clone())],
             );
-            self.inner.describeGroupRequest(value0)
+            self.inner.describeGroupRequest(text_1)
         }
 
         fn offsetCommitRequest(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i32,
-            value3: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int32_1: i32,
+            list_1: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
         ) -> ()
         {
             self.calls.record(
                 "offsetCommitRequest",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
-                    ls::IntoValue::into_value(value2.clone()),
-                    ls::IntoValue::into_value(value3.clone()),
+                    ls::IntoValue::into_value(text_1.clone()),
+                    ls::IntoValue::into_value(text_2.clone()),
+                    ls::IntoValue::into_value(int32_1.clone()),
+                    ls::IntoValue::into_value(list_1.clone()),
                 ],
             );
             self.inner
-                .offsetCommitRequest(value0, value1, value2, value3)
+                .offsetCommitRequest(text_1, text_2, int32_1, list_1)
         }
 
         fn offsetFetchRequest(
             &self,
-            value0: std::string::String,
-            value1: crate::lawspec_data::TopicPartition,
+            text_1: std::string::String,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
         ) -> std::option::Option<i64>
         {
             self.calls.record(
                 "offsetFetchRequest",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
+                    ls::IntoValue::into_value(text_1.clone()),
+                    ls::IntoValue::into_value(topic_partition_1.clone()),
                 ],
             );
-            self.inner.offsetFetchRequest(value0, value1)
+            self.inner.offsetFetchRequest(text_1, topic_partition_1)
         }
     }
 
@@ -2611,55 +2627,56 @@ pub mod lawtwin_kafka
 
     impl Admin for AdminRecording
     {
-        fn createTopic(&self, value0: std::string::String, value1: i32) -> ()
+        fn createTopic(&self, text_1: std::string::String, int32_1: i32) -> ()
         {
             self.calls.record(
                 "createTopic",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
+                    ls::IntoValue::into_value(text_1.clone()),
+                    ls::IntoValue::into_value(int32_1.clone()),
                 ],
             );
-            self.inner.createTopic(value0, value1)
+            self.inner.createTopic(text_1, int32_1)
         }
 
-        fn createPartitions(&self, value0: std::string::String, value1: i32) -> ()
+        fn createPartitions(&self, text_1: std::string::String, int32_1: i32) -> ()
         {
             self.calls.record(
                 "createPartitions",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
+                    ls::IntoValue::into_value(text_1.clone()),
+                    ls::IntoValue::into_value(int32_1.clone()),
                 ],
             );
-            self.inner.createPartitions(value0, value1)
+            self.inner.createPartitions(text_1, int32_1)
         }
 
-        fn partitionsFor(&self, value0: std::string::String) -> std::option::Option<i32>
+        fn partitionsFor(&self, text_1: std::string::String) -> std::option::Option<i32>
         {
             self.calls.record(
                 "partitionsFor",
-                vec![ls::IntoValue::into_value(value0.clone())],
+                vec![ls::IntoValue::into_value(text_1.clone())],
             );
-            self.inner.partitionsFor(value0)
+            self.inner.partitionsFor(text_1)
         }
 
         fn listOffsets(
             &self,
-            value0: crate::lawspec_data::TopicPartition,
-            value1: crate::lawspec_data::OffsetSpec,
-            value2: crate::lawspec_data::IsolationLevel,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
+            offset_spec_1: crate::lawspec_data::OffsetSpec,
+            isolation_level_1: crate::lawspec_data::IsolationLevel,
         ) -> i64
         {
             self.calls.record(
                 "listOffsets",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
-                    ls::IntoValue::into_value(value2.clone()),
+                    ls::IntoValue::into_value(topic_partition_1.clone()),
+                    ls::IntoValue::into_value(offset_spec_1.clone()),
+                    ls::IntoValue::into_value(isolation_level_1.clone()),
                 ],
             );
-            self.inner.listOffsets(value0, value1, value2)
+            self.inner
+                .listOffsets(topic_partition_1, offset_spec_1, isolation_level_1)
         }
     }
 
@@ -2685,18 +2702,18 @@ pub mod lawtwin_kafka
     {
         fn choosePartition(
             &self,
-            value0: std::option::Option<std::vec::Vec<u8>>,
-            value1: i32,
+            maybe_1: std::option::Option<std::vec::Vec<u8>>,
+            int32_1: i32,
         ) -> i32
         {
             self.calls.record(
                 "choosePartition",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
+                    ls::IntoValue::into_value(maybe_1.clone()),
+                    ls::IntoValue::into_value(int32_1.clone()),
                 ],
             );
-            self.inner.choosePartition(value0, value1)
+            self.inner.choosePartition(maybe_1, int32_1)
         }
     }
 
@@ -2722,12 +2739,14 @@ pub mod lawtwin_kafka
     {
         fn send(
             &self,
-            value0: crate::lawspec_data::ProducerRecord,
+            producer_record_1: crate::lawspec_data::ProducerRecord,
         ) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::RecordMetadata>
         {
-            self.calls
-                .record("send", vec![ls::IntoValue::into_value(value0.clone())]);
-            self.inner.send(value0)
+            self.calls.record(
+                "send",
+                vec![ls::IntoValue::into_value(producer_record_1.clone())],
+            );
+            self.inner.send(producer_record_1)
         }
 
         fn flush(&self) -> ()
@@ -2779,18 +2798,18 @@ pub mod lawtwin_kafka
 
     impl Consumer for ConsumerRecording
     {
-        fn assign(&self, value0: std::vec::Vec<crate::lawspec_data::TopicPartition>) -> ()
+        fn assign(&self, list_1: std::vec::Vec<crate::lawspec_data::TopicPartition>) -> ()
         {
             self.calls
-                .record("assign", vec![ls::IntoValue::into_value(value0.clone())]);
-            self.inner.assign(value0)
+                .record("assign", vec![ls::IntoValue::into_value(list_1.clone())]);
+            self.inner.assign(list_1)
         }
 
         fn subscribe(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::vec::Vec<std::string::String>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            list_1: std::vec::Vec<std::string::String>,
         ) -> ls::Either<
             crate::lawspec_data::KafkaError,
             std::vec::Vec<crate::lawspec_data::TopicPartition>,
@@ -2799,25 +2818,25 @@ pub mod lawtwin_kafka
             self.calls.record(
                 "subscribe",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
-                    ls::IntoValue::into_value(value2.clone()),
+                    ls::IntoValue::into_value(text_1.clone()),
+                    ls::IntoValue::into_value(text_2.clone()),
+                    ls::IntoValue::into_value(list_1.clone()),
                 ],
             );
-            self.inner.subscribe(value0, value1, value2)
+            self.inner.subscribe(text_1, text_2, list_1)
         }
 
         fn poll(
             &self,
-            value0: i32,
+            int32_1: i32,
         ) -> ls::Either<
             crate::lawspec_data::KafkaError,
             std::vec::Vec<crate::lawspec_data::ConsumerRecord>,
         >
         {
             self.calls
-                .record("poll", vec![ls::IntoValue::into_value(value0.clone())]);
-            self.inner.poll(value0)
+                .record("poll", vec![ls::IntoValue::into_value(int32_1.clone())]);
+            self.inner.poll(int32_1)
         }
 
         fn commitSync(&self) -> ls::Either<crate::lawspec_data::KafkaError, ()>
@@ -2828,49 +2847,51 @@ pub mod lawtwin_kafka
 
         fn seek(
             &self,
-            value0: crate::lawspec_data::TopicPartition,
-            value1: i64,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
+            int64_1: i64,
         ) -> ls::Either<crate::lawspec_data::KafkaError, ()>
         {
             self.calls.record(
                 "seek",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
+                    ls::IntoValue::into_value(topic_partition_1.clone()),
+                    ls::IntoValue::into_value(int64_1.clone()),
                 ],
             );
-            self.inner.seek(value0, value1)
+            self.inner.seek(topic_partition_1, int64_1)
         }
 
         fn position(
             &self,
-            value0: crate::lawspec_data::TopicPartition,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
         ) -> ls::Either<crate::lawspec_data::KafkaError, i64>
         {
-            self.calls
-                .record("position", vec![ls::IntoValue::into_value(value0.clone())]);
-            self.inner.position(value0)
+            self.calls.record(
+                "position",
+                vec![ls::IntoValue::into_value(topic_partition_1.clone())],
+            );
+            self.inner.position(topic_partition_1)
         }
 
         fn committedOffset(
             &self,
-            value0: crate::lawspec_data::TopicPartition,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
         ) -> std::option::Option<i64>
         {
             self.calls.record(
                 "committedOffset",
-                vec![ls::IntoValue::into_value(value0.clone())],
+                vec![ls::IntoValue::into_value(topic_partition_1.clone())],
             );
-            self.inner.committedOffset(value0)
+            self.inner.committedOffset(topic_partition_1)
         }
 
-        fn setIsolationLevel(&self, value0: crate::lawspec_data::IsolationLevel) -> ()
+        fn setIsolationLevel(&self, isolation_level_1: crate::lawspec_data::IsolationLevel) -> ()
         {
             self.calls.record(
                 "setIsolationLevel",
-                vec![ls::IntoValue::into_value(value0.clone())],
+                vec![ls::IntoValue::into_value(isolation_level_1.clone())],
             );
-            self.inner.setIsolationLevel(value0)
+            self.inner.setIsolationLevel(isolation_level_1)
         }
 
         fn close(&self) -> ()
@@ -2902,113 +2923,113 @@ pub mod lawtwin_kafka
     {
         fn joinGroup(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::vec::Vec<std::string::String>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            list_1: std::vec::Vec<std::string::String>,
         ) -> i32
         {
             self.calls.record(
                 "joinGroup",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
-                    ls::IntoValue::into_value(value2.clone()),
+                    ls::IntoValue::into_value(text_1.clone()),
+                    ls::IntoValue::into_value(text_2.clone()),
+                    ls::IntoValue::into_value(list_1.clone()),
                 ],
             );
-            self.inner.joinGroup(value0, value1, value2)
+            self.inner.joinGroup(text_1, text_2, list_1)
         }
 
         fn syncGroup(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i32,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int32_1: i32,
         ) -> std::vec::Vec<crate::lawspec_data::TopicPartition>
         {
             self.calls.record(
                 "syncGroup",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
-                    ls::IntoValue::into_value(value2.clone()),
+                    ls::IntoValue::into_value(text_1.clone()),
+                    ls::IntoValue::into_value(text_2.clone()),
+                    ls::IntoValue::into_value(int32_1.clone()),
                 ],
             );
-            self.inner.syncGroup(value0, value1, value2)
+            self.inner.syncGroup(text_1, text_2, int32_1)
         }
 
         fn heartbeat(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i32,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int32_1: i32,
         ) -> ()
         {
             self.calls.record(
                 "heartbeat",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
-                    ls::IntoValue::into_value(value2.clone()),
+                    ls::IntoValue::into_value(text_1.clone()),
+                    ls::IntoValue::into_value(text_2.clone()),
+                    ls::IntoValue::into_value(int32_1.clone()),
                 ],
             );
-            self.inner.heartbeat(value0, value1, value2)
+            self.inner.heartbeat(text_1, text_2, int32_1)
         }
 
-        fn leaveGroup(&self, value0: std::string::String, value1: std::string::String) -> ()
+        fn leaveGroup(&self, text_1: std::string::String, text_2: std::string::String) -> ()
         {
             self.calls.record(
                 "leaveGroup",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
+                    ls::IntoValue::into_value(text_1.clone()),
+                    ls::IntoValue::into_value(text_2.clone()),
                 ],
             );
-            self.inner.leaveGroup(value0, value1)
+            self.inner.leaveGroup(text_1, text_2)
         }
 
-        fn describeGroup(&self, value0: std::string::String) -> crate::lawspec_data::GroupView
+        fn describeGroup(&self, text_1: std::string::String) -> crate::lawspec_data::GroupView
         {
             self.calls.record(
                 "describeGroup",
-                vec![ls::IntoValue::into_value(value0.clone())],
+                vec![ls::IntoValue::into_value(text_1.clone())],
             );
-            self.inner.describeGroup(value0)
+            self.inner.describeGroup(text_1)
         }
 
         fn commitOffsets(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i32,
-            value3: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int32_1: i32,
+            list_1: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
         ) -> ()
         {
             self.calls.record(
                 "commitOffsets",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
-                    ls::IntoValue::into_value(value2.clone()),
-                    ls::IntoValue::into_value(value3.clone()),
+                    ls::IntoValue::into_value(text_1.clone()),
+                    ls::IntoValue::into_value(text_2.clone()),
+                    ls::IntoValue::into_value(int32_1.clone()),
+                    ls::IntoValue::into_value(list_1.clone()),
                 ],
             );
-            self.inner.commitOffsets(value0, value1, value2, value3)
+            self.inner.commitOffsets(text_1, text_2, int32_1, list_1)
         }
 
         fn fetchOffset(
             &self,
-            value0: std::string::String,
-            value1: crate::lawspec_data::TopicPartition,
+            text_1: std::string::String,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
         ) -> std::option::Option<i64>
         {
             self.calls.record(
                 "fetchOffset",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
+                    ls::IntoValue::into_value(text_1.clone()),
+                    ls::IntoValue::into_value(topic_partition_1.clone()),
                 ],
             );
-            self.inner.fetchOffset(value0, value1)
+            self.inner.fetchOffset(text_1, topic_partition_1)
         }
     }
 
@@ -3034,14 +3055,14 @@ pub mod lawtwin_kafka
     {
         fn initTransactions(
             &self,
-            value0: std::string::String,
+            text_1: std::string::String,
         ) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::ProducerIdAndEpoch>
         {
             self.calls.record(
                 "initTransactions",
-                vec![ls::IntoValue::into_value(value0.clone())],
+                vec![ls::IntoValue::into_value(text_1.clone())],
             );
-            self.inner.initTransactions(value0)
+            self.inner.initTransactions(text_1)
         }
 
         fn beginTransaction(&self) -> ls::Either<crate::lawspec_data::KafkaError, ()>
@@ -3052,42 +3073,42 @@ pub mod lawtwin_kafka
 
         fn addPartitionsToTransaction(
             &self,
-            value0: std::vec::Vec<crate::lawspec_data::TopicPartition>,
+            list_1: std::vec::Vec<crate::lawspec_data::TopicPartition>,
         ) -> ls::Either<crate::lawspec_data::KafkaError, ()>
         {
             self.calls.record(
                 "addPartitionsToTransaction",
-                vec![ls::IntoValue::into_value(value0.clone())],
+                vec![ls::IntoValue::into_value(list_1.clone())],
             );
-            self.inner.addPartitionsToTransaction(value0)
+            self.inner.addPartitionsToTransaction(list_1)
         }
 
         fn sendInTransaction(
             &self,
-            value0: crate::lawspec_data::ProducerRecord,
+            producer_record_1: crate::lawspec_data::ProducerRecord,
         ) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::RecordMetadata>
         {
             self.calls.record(
                 "sendInTransaction",
-                vec![ls::IntoValue::into_value(value0.clone())],
+                vec![ls::IntoValue::into_value(producer_record_1.clone())],
             );
-            self.inner.sendInTransaction(value0)
+            self.inner.sendInTransaction(producer_record_1)
         }
 
         fn sendOffsetsToTransaction(
             &self,
-            value0: std::string::String,
-            value1: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
+            text_1: std::string::String,
+            list_1: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
         ) -> ls::Either<crate::lawspec_data::KafkaError, ()>
         {
             self.calls.record(
                 "sendOffsetsToTransaction",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
+                    ls::IntoValue::into_value(text_1.clone()),
+                    ls::IntoValue::into_value(list_1.clone()),
                 ],
             );
-            self.inner.sendOffsetsToTransaction(value0, value1)
+            self.inner.sendOffsetsToTransaction(text_1, list_1)
         }
 
         fn commitTransaction(&self) -> ls::Either<crate::lawspec_data::KafkaError, ()>
@@ -3117,18 +3138,18 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("Int32", vec![]),
             64,
             ctx,
         )?;
-        let native_1 = <i32 as ls::FromValue>::from_value(value)?;
+        let int32_1 = <i32 as ls::FromValue>::from_value(value)?;
         ls::native_failures::<crate::lawspec_data::KafkaError, _>(
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.createTopicsRequest(native_0, native_1),
+            || handler.createTopicsRequest(text_1, int32_1),
             vec![],
         );
         Ok(ls::Value::Unit)
@@ -3148,18 +3169,18 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("Int32", vec![]),
             64,
             ctx,
         )?;
-        let native_1 = <i32 as ls::FromValue>::from_value(value)?;
+        let int32_1 = <i32 as ls::FromValue>::from_value(value)?;
         ls::native_failures::<crate::lawspec_data::KafkaError, _>(
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.createPartitionsRequest(native_0, native_1),
+            || handler.createPartitionsRequest(text_1, int32_1),
             vec![],
         );
         Ok(ls::Value::Unit)
@@ -3179,8 +3200,8 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
-        let native_result = handler.metadataRequest(native_0);
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let native_result = handler.metadataRequest(text_1);
         schema.validate_with_context(
             ls::IntoValue::into_value(native_result),
             &ls::TypeRef::named("Maybe", vec![ls::TypeRef::named("Int32", vec![])]),
@@ -3203,7 +3224,8 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <crate::lawspec_data::TopicPartition as ls::FromValue>::from_value(value)?;
+        let topic_partition_1 =
+            <crate::lawspec_data::TopicPartition as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named(
@@ -3216,7 +3238,7 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_1 = <std::option::Option<
+        let maybe_1 = <std::option::Option<
             crate::lawspec_data::ProducerTag,
         > as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
@@ -3231,12 +3253,12 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_2 =
+        let list_1 =
             <std::vec::Vec<crate::lawspec_data::Record> as ls::FromValue>::from_value(value)?;
         let native_result = ls::native_failures::<crate::lawspec_data::KafkaError, _>(
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.produceRequest(native_0, native_1, native_2),
+            || handler.produceRequest(topic_partition_1, maybe_1, list_1),
             vec![],
         );
         schema.validate_with_context(
@@ -3261,32 +3283,34 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <crate::lawspec_data::TopicPartition as ls::FromValue>::from_value(value)?;
+        let topic_partition_1 =
+            <crate::lawspec_data::TopicPartition as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("Int64", vec![]),
             64,
             ctx,
         )?;
-        let native_1 = <i64 as ls::FromValue>::from_value(value)?;
+        let int64_1 = <i64 as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[2].clone(),
             &ls::TypeRef::named("Int32", vec![]),
             64,
             ctx,
         )?;
-        let native_2 = <i32 as ls::FromValue>::from_value(value)?;
+        let int32_1 = <i32 as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[3].clone(),
             &ls::TypeRef::named("lawtwin.kafka.model::type::IsolationLevel", vec![]),
             64,
             ctx,
         )?;
-        let native_3 = <crate::lawspec_data::IsolationLevel as ls::FromValue>::from_value(value)?;
+        let isolation_level_1 =
+            <crate::lawspec_data::IsolationLevel as ls::FromValue>::from_value(value)?;
         let native_result = ls::native_failures::<crate::lawspec_data::KafkaError, _>(
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.fetchRequest(native_0, native_1, native_2, native_3),
+            || handler.fetchRequest(topic_partition_1, int64_1, int32_1, isolation_level_1),
             vec![],
         );
         schema.validate_with_context(
@@ -3311,25 +3335,27 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <crate::lawspec_data::TopicPartition as ls::FromValue>::from_value(value)?;
+        let topic_partition_1 =
+            <crate::lawspec_data::TopicPartition as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("lawtwin.kafka.model::type::OffsetSpec", vec![]),
             64,
             ctx,
         )?;
-        let native_1 = <crate::lawspec_data::OffsetSpec as ls::FromValue>::from_value(value)?;
+        let offset_spec_1 = <crate::lawspec_data::OffsetSpec as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[2].clone(),
             &ls::TypeRef::named("lawtwin.kafka.model::type::IsolationLevel", vec![]),
             64,
             ctx,
         )?;
-        let native_2 = <crate::lawspec_data::IsolationLevel as ls::FromValue>::from_value(value)?;
+        let isolation_level_1 =
+            <crate::lawspec_data::IsolationLevel as ls::FromValue>::from_value(value)?;
         let native_result = ls::native_failures::<crate::lawspec_data::KafkaError, _>(
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.listOffsetsRequest(native_0, native_1, native_2),
+            || handler.listOffsetsRequest(topic_partition_1, offset_spec_1, isolation_level_1),
             vec![],
         );
         schema.validate_with_context(
@@ -3354,12 +3380,12 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 =
+        let maybe_1 =
             <std::option::Option<std::string::String> as ls::FromValue>::from_value(value)?;
         let native_result = ls::native_failures::<crate::lawspec_data::KafkaError, _>(
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.initProducerIdRequest(native_0),
+            || handler.initProducerIdRequest(maybe_1),
             vec![],
         );
         schema.validate_with_context(
@@ -3384,21 +3410,21 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("Int64", vec![]),
             64,
             ctx,
         )?;
-        let native_1 = <i64 as ls::FromValue>::from_value(value)?;
+        let int64_1 = <i64 as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[2].clone(),
             &ls::TypeRef::named("Int16", vec![]),
             64,
             ctx,
         )?;
-        let native_2 = <i16 as ls::FromValue>::from_value(value)?;
+        let int16_1 = <i16 as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[3].clone(),
             &ls::TypeRef::named(
@@ -3411,13 +3437,13 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_3 = <std::vec::Vec<
+        let list_1 = <std::vec::Vec<
             crate::lawspec_data::TopicPartition,
         > as ls::FromValue>::from_value(value)?;
         ls::native_failures::<crate::lawspec_data::KafkaError, _>(
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.addPartitionsToTxnRequest(native_0, native_1, native_2, native_3),
+            || handler.addPartitionsToTxnRequest(text_1, int64_1, int16_1, list_1),
             vec![],
         );
         Ok(ls::Value::Unit)
@@ -3437,28 +3463,28 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("Int64", vec![]),
             64,
             ctx,
         )?;
-        let native_1 = <i64 as ls::FromValue>::from_value(value)?;
+        let int64_1 = <i64 as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[2].clone(),
             &ls::TypeRef::named("Int16", vec![]),
             64,
             ctx,
         )?;
-        let native_2 = <i16 as ls::FromValue>::from_value(value)?;
+        let int16_1 = <i16 as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[3].clone(),
             &ls::TypeRef::named("Text", vec![]),
             64,
             ctx,
         )?;
-        let native_3 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_2 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[4].clone(),
             &ls::TypeRef::named(
@@ -3471,12 +3497,12 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_4 =
+        let list_1 =
             <std::vec::Vec<crate::lawspec_data::OffsetEntry> as ls::FromValue>::from_value(value)?;
         ls::native_failures::<crate::lawspec_data::KafkaError, _>(
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.txnOffsetCommitRequest(native_0, native_1, native_2, native_3, native_4),
+            || handler.txnOffsetCommitRequest(text_1, int64_1, int16_1, text_2, list_1),
             vec![],
         );
         Ok(ls::Value::Unit)
@@ -3496,32 +3522,32 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("Int64", vec![]),
             64,
             ctx,
         )?;
-        let native_1 = <i64 as ls::FromValue>::from_value(value)?;
+        let int64_1 = <i64 as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[2].clone(),
             &ls::TypeRef::named("Int16", vec![]),
             64,
             ctx,
         )?;
-        let native_2 = <i16 as ls::FromValue>::from_value(value)?;
+        let int16_1 = <i16 as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[3].clone(),
             &ls::TypeRef::named("Bool", vec![]),
             64,
             ctx,
         )?;
-        let native_3 = <bool as ls::FromValue>::from_value(value)?;
+        let bool_1 = <bool as ls::FromValue>::from_value(value)?;
         ls::native_failures::<crate::lawspec_data::KafkaError, _>(
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.endTxnRequest(native_0, native_1, native_2, native_3),
+            || handler.endTxnRequest(text_1, int64_1, int16_1, bool_1),
             vec![],
         );
         Ok(ls::Value::Unit)
@@ -3541,25 +3567,25 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("Text", vec![]),
             64,
             ctx,
         )?;
-        let native_1 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_2 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[2].clone(),
             &ls::TypeRef::named("List", vec![ls::TypeRef::named("Text", vec![])]),
             64,
             ctx,
         )?;
-        let native_2 = <std::vec::Vec<std::string::String> as ls::FromValue>::from_value(value)?;
+        let list_1 = <std::vec::Vec<std::string::String> as ls::FromValue>::from_value(value)?;
         let native_result = ls::native_failures::<crate::lawspec_data::KafkaError, _>(
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.joinGroupRequest(native_0, native_1, native_2),
+            || handler.joinGroupRequest(text_1, text_2, list_1),
             vec![],
         );
         schema.validate_with_context(
@@ -3584,25 +3610,25 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("Text", vec![]),
             64,
             ctx,
         )?;
-        let native_1 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_2 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[2].clone(),
             &ls::TypeRef::named("Int32", vec![]),
             64,
             ctx,
         )?;
-        let native_2 = <i32 as ls::FromValue>::from_value(value)?;
+        let int32_1 = <i32 as ls::FromValue>::from_value(value)?;
         let native_result = ls::native_failures::<crate::lawspec_data::KafkaError, _>(
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.syncGroupRequest(native_0, native_1, native_2),
+            || handler.syncGroupRequest(text_1, text_2, int32_1),
             vec![],
         );
         schema.validate_with_context(
@@ -3633,25 +3659,25 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("Text", vec![]),
             64,
             ctx,
         )?;
-        let native_1 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_2 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[2].clone(),
             &ls::TypeRef::named("Int32", vec![]),
             64,
             ctx,
         )?;
-        let native_2 = <i32 as ls::FromValue>::from_value(value)?;
+        let int32_1 = <i32 as ls::FromValue>::from_value(value)?;
         ls::native_failures::<crate::lawspec_data::KafkaError, _>(
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.heartbeatRequest(native_0, native_1, native_2),
+            || handler.heartbeatRequest(text_1, text_2, int32_1),
             vec![],
         );
         Ok(ls::Value::Unit)
@@ -3671,18 +3697,18 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("Text", vec![]),
             64,
             ctx,
         )?;
-        let native_1 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_2 = <std::string::String as ls::FromValue>::from_value(value)?;
         ls::native_failures::<crate::lawspec_data::KafkaError, _>(
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.leaveGroupRequest(native_0, native_1),
+            || handler.leaveGroupRequest(text_1, text_2),
             vec![],
         );
         Ok(ls::Value::Unit)
@@ -3702,8 +3728,8 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
-        let native_result = handler.describeGroupRequest(native_0);
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let native_result = handler.describeGroupRequest(text_1);
         schema.validate_with_context(
             ls::IntoValue::into_value(native_result),
             &ls::TypeRef::named("lawtwin.kafka.model::type::GroupView", vec![]),
@@ -3726,21 +3752,21 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("Text", vec![]),
             64,
             ctx,
         )?;
-        let native_1 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_2 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[2].clone(),
             &ls::TypeRef::named("Int32", vec![]),
             64,
             ctx,
         )?;
-        let native_2 = <i32 as ls::FromValue>::from_value(value)?;
+        let int32_1 = <i32 as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[3].clone(),
             &ls::TypeRef::named(
@@ -3753,12 +3779,12 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_3 =
+        let list_1 =
             <std::vec::Vec<crate::lawspec_data::OffsetEntry> as ls::FromValue>::from_value(value)?;
         ls::native_failures::<crate::lawspec_data::KafkaError, _>(
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.offsetCommitRequest(native_0, native_1, native_2, native_3),
+            || handler.offsetCommitRequest(text_1, text_2, int32_1, list_1),
             vec![],
         );
         Ok(ls::Value::Unit)
@@ -3778,15 +3804,16 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("lawtwin.kafka.model::type::TopicPartition", vec![]),
             64,
             ctx,
         )?;
-        let native_1 = <crate::lawspec_data::TopicPartition as ls::FromValue>::from_value(value)?;
-        let native_result = handler.offsetFetchRequest(native_0, native_1);
+        let topic_partition_1 =
+            <crate::lawspec_data::TopicPartition as ls::FromValue>::from_value(value)?;
+        let native_result = handler.offsetFetchRequest(text_1, topic_partition_1);
         schema.validate_with_context(
             ls::IntoValue::into_value(native_result),
             &ls::TypeRef::named("Maybe", vec![ls::TypeRef::named("Int64", vec![])]),
@@ -3809,18 +3836,18 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("Int32", vec![]),
             64,
             ctx,
         )?;
-        let native_1 = <i32 as ls::FromValue>::from_value(value)?;
+        let int32_1 = <i32 as ls::FromValue>::from_value(value)?;
         ls::native_failures::<crate::lawspec_data::KafkaError, _>(
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.createTopic(native_0, native_1),
+            || handler.createTopic(text_1, int32_1),
             vec![],
         );
         Ok(ls::Value::Unit)
@@ -3840,18 +3867,18 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("Int32", vec![]),
             64,
             ctx,
         )?;
-        let native_1 = <i32 as ls::FromValue>::from_value(value)?;
+        let int32_1 = <i32 as ls::FromValue>::from_value(value)?;
         ls::native_failures::<crate::lawspec_data::KafkaError, _>(
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.createPartitions(native_0, native_1),
+            || handler.createPartitions(text_1, int32_1),
             vec![],
         );
         Ok(ls::Value::Unit)
@@ -3871,8 +3898,8 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
-        let native_result = handler.partitionsFor(native_0);
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let native_result = handler.partitionsFor(text_1);
         schema.validate_with_context(
             ls::IntoValue::into_value(native_result),
             &ls::TypeRef::named("Maybe", vec![ls::TypeRef::named("Int32", vec![])]),
@@ -3895,25 +3922,27 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <crate::lawspec_data::TopicPartition as ls::FromValue>::from_value(value)?;
+        let topic_partition_1 =
+            <crate::lawspec_data::TopicPartition as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("lawtwin.kafka.model::type::OffsetSpec", vec![]),
             64,
             ctx,
         )?;
-        let native_1 = <crate::lawspec_data::OffsetSpec as ls::FromValue>::from_value(value)?;
+        let offset_spec_1 = <crate::lawspec_data::OffsetSpec as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[2].clone(),
             &ls::TypeRef::named("lawtwin.kafka.model::type::IsolationLevel", vec![]),
             64,
             ctx,
         )?;
-        let native_2 = <crate::lawspec_data::IsolationLevel as ls::FromValue>::from_value(value)?;
+        let isolation_level_1 =
+            <crate::lawspec_data::IsolationLevel as ls::FromValue>::from_value(value)?;
         let native_result = ls::native_failures::<crate::lawspec_data::KafkaError, _>(
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.listOffsets(native_0, native_1, native_2),
+            || handler.listOffsets(topic_partition_1, offset_spec_1, isolation_level_1),
             vec![],
         );
         schema.validate_with_context(
@@ -3939,16 +3968,15 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 =
-            <std::option::Option<std::vec::Vec<u8>> as ls::FromValue>::from_value(value)?;
+        let maybe_1 = <std::option::Option<std::vec::Vec<u8>> as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("Int32", vec![]),
             64,
             ctx,
         )?;
-        let native_1 = <i32 as ls::FromValue>::from_value(value)?;
-        let native_result = handler.choosePartition(native_0, native_1);
+        let int32_1 = <i32 as ls::FromValue>::from_value(value)?;
+        let native_result = handler.choosePartition(maybe_1, int32_1);
         schema.validate_with_context(
             ls::IntoValue::into_value(native_result),
             &ls::TypeRef::named("Int32", vec![]),
@@ -3969,8 +3997,9 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <crate::lawspec_data::ProducerRecord as ls::FromValue>::from_value(value)?;
-        let native_result = handler.send(native_0);
+        let producer_record_1 =
+            <crate::lawspec_data::ProducerRecord as ls::FromValue>::from_value(value)?;
+        let native_result = handler.send(producer_record_1);
         schema.validate_with_context(
             ls::IntoValue::into_value(native_result),
             &ls::TypeRef::named(
@@ -4086,10 +4115,10 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <std::vec::Vec<
+        let list_1 = <std::vec::Vec<
             crate::lawspec_data::TopicPartition,
         > as ls::FromValue>::from_value(value)?;
-        handler.assign(native_0);
+        handler.assign(list_1);
         Ok(ls::Value::Unit)
     }
 
@@ -4108,22 +4137,22 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("Text", vec![]),
             64,
             ctx,
         )?;
-        let native_1 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_2 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[2].clone(),
             &ls::TypeRef::named("List", vec![ls::TypeRef::named("Text", vec![])]),
             64,
             ctx,
         )?;
-        let native_2 = <std::vec::Vec<std::string::String> as ls::FromValue>::from_value(value)?;
-        let native_result = handler.subscribe(native_0, native_1, native_2);
+        let list_1 = <std::vec::Vec<std::string::String> as ls::FromValue>::from_value(value)?;
+        let native_result = handler.subscribe(text_1, text_2, list_1);
         schema.validate_with_context(
             ls::IntoValue::into_value(native_result),
             &ls::TypeRef::named(
@@ -4156,8 +4185,8 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <i32 as ls::FromValue>::from_value(value)?;
-        let native_result = handler.poll(native_0);
+        let int32_1 = <i32 as ls::FromValue>::from_value(value)?;
+        let native_result = handler.poll(int32_1);
         schema.validate_with_context(
             ls::IntoValue::into_value(native_result),
             &ls::TypeRef::named(
@@ -4214,15 +4243,16 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <crate::lawspec_data::TopicPartition as ls::FromValue>::from_value(value)?;
+        let topic_partition_1 =
+            <crate::lawspec_data::TopicPartition as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("Int64", vec![]),
             64,
             ctx,
         )?;
-        let native_1 = <i64 as ls::FromValue>::from_value(value)?;
-        let native_result = handler.seek(native_0, native_1);
+        let int64_1 = <i64 as ls::FromValue>::from_value(value)?;
+        let native_result = handler.seek(topic_partition_1, int64_1);
         schema.validate_with_context(
             ls::IntoValue::into_value(native_result),
             &ls::TypeRef::named(
@@ -4252,8 +4282,9 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <crate::lawspec_data::TopicPartition as ls::FromValue>::from_value(value)?;
-        let native_result = handler.position(native_0);
+        let topic_partition_1 =
+            <crate::lawspec_data::TopicPartition as ls::FromValue>::from_value(value)?;
+        let native_result = handler.position(topic_partition_1);
         schema.validate_with_context(
             ls::IntoValue::into_value(native_result),
             &ls::TypeRef::named(
@@ -4283,8 +4314,9 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <crate::lawspec_data::TopicPartition as ls::FromValue>::from_value(value)?;
-        let native_result = handler.committedOffset(native_0);
+        let topic_partition_1 =
+            <crate::lawspec_data::TopicPartition as ls::FromValue>::from_value(value)?;
+        let native_result = handler.committedOffset(topic_partition_1);
         schema.validate_with_context(
             ls::IntoValue::into_value(native_result),
             &ls::TypeRef::named("Maybe", vec![ls::TypeRef::named("Int64", vec![])]),
@@ -4308,8 +4340,9 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <crate::lawspec_data::IsolationLevel as ls::FromValue>::from_value(value)?;
-        handler.setIsolationLevel(native_0);
+        let isolation_level_1 =
+            <crate::lawspec_data::IsolationLevel as ls::FromValue>::from_value(value)?;
+        handler.setIsolationLevel(isolation_level_1);
         Ok(ls::Value::Unit)
     }
 
@@ -4338,25 +4371,25 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("Text", vec![]),
             64,
             ctx,
         )?;
-        let native_1 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_2 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[2].clone(),
             &ls::TypeRef::named("List", vec![ls::TypeRef::named("Text", vec![])]),
             64,
             ctx,
         )?;
-        let native_2 = <std::vec::Vec<std::string::String> as ls::FromValue>::from_value(value)?;
+        let list_1 = <std::vec::Vec<std::string::String> as ls::FromValue>::from_value(value)?;
         let native_result = ls::native_failures::<crate::lawspec_data::KafkaError, _>(
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.joinGroup(native_0, native_1, native_2),
+            || handler.joinGroup(text_1, text_2, list_1),
             vec![],
         );
         schema.validate_with_context(
@@ -4382,25 +4415,25 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("Text", vec![]),
             64,
             ctx,
         )?;
-        let native_1 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_2 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[2].clone(),
             &ls::TypeRef::named("Int32", vec![]),
             64,
             ctx,
         )?;
-        let native_2 = <i32 as ls::FromValue>::from_value(value)?;
+        let int32_1 = <i32 as ls::FromValue>::from_value(value)?;
         let native_result = ls::native_failures::<crate::lawspec_data::KafkaError, _>(
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.syncGroup(native_0, native_1, native_2),
+            || handler.syncGroup(text_1, text_2, int32_1),
             vec![],
         );
         schema.validate_with_context(
@@ -4432,25 +4465,25 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("Text", vec![]),
             64,
             ctx,
         )?;
-        let native_1 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_2 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[2].clone(),
             &ls::TypeRef::named("Int32", vec![]),
             64,
             ctx,
         )?;
-        let native_2 = <i32 as ls::FromValue>::from_value(value)?;
+        let int32_1 = <i32 as ls::FromValue>::from_value(value)?;
         ls::native_failures::<crate::lawspec_data::KafkaError, _>(
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.heartbeat(native_0, native_1, native_2),
+            || handler.heartbeat(text_1, text_2, int32_1),
             vec![],
         );
         Ok(ls::Value::Unit)
@@ -4471,18 +4504,18 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("Text", vec![]),
             64,
             ctx,
         )?;
-        let native_1 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_2 = <std::string::String as ls::FromValue>::from_value(value)?;
         ls::native_failures::<crate::lawspec_data::KafkaError, _>(
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.leaveGroup(native_0, native_1),
+            || handler.leaveGroup(text_1, text_2),
             vec![],
         );
         Ok(ls::Value::Unit)
@@ -4503,8 +4536,8 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
-        let native_result = handler.describeGroup(native_0);
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let native_result = handler.describeGroup(text_1);
         schema.validate_with_context(
             ls::IntoValue::into_value(native_result),
             &ls::TypeRef::named("lawtwin.kafka.model::type::GroupView", vec![]),
@@ -4528,21 +4561,21 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("Text", vec![]),
             64,
             ctx,
         )?;
-        let native_1 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_2 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[2].clone(),
             &ls::TypeRef::named("Int32", vec![]),
             64,
             ctx,
         )?;
-        let native_2 = <i32 as ls::FromValue>::from_value(value)?;
+        let int32_1 = <i32 as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[3].clone(),
             &ls::TypeRef::named(
@@ -4555,12 +4588,12 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_3 =
+        let list_1 =
             <std::vec::Vec<crate::lawspec_data::OffsetEntry> as ls::FromValue>::from_value(value)?;
         ls::native_failures::<crate::lawspec_data::KafkaError, _>(
             "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.commitOffsets(native_0, native_1, native_2, native_3),
+            || handler.commitOffsets(text_1, text_2, int32_1, list_1),
             vec![],
         );
         Ok(ls::Value::Unit)
@@ -4581,15 +4614,16 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("lawtwin.kafka.model::type::TopicPartition", vec![]),
             64,
             ctx,
         )?;
-        let native_1 = <crate::lawspec_data::TopicPartition as ls::FromValue>::from_value(value)?;
-        let native_result = handler.fetchOffset(native_0, native_1);
+        let topic_partition_1 =
+            <crate::lawspec_data::TopicPartition as ls::FromValue>::from_value(value)?;
+        let native_result = handler.fetchOffset(text_1, topic_partition_1);
         schema.validate_with_context(
             ls::IntoValue::into_value(native_result),
             &ls::TypeRef::named("Maybe", vec![ls::TypeRef::named("Int64", vec![])]),
@@ -4613,8 +4647,8 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
-        let native_result = handler.initTransactions(native_0);
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let native_result = handler.initTransactions(text_1);
         schema.validate_with_context(
             ls::IntoValue::into_value(native_result),
             &ls::TypeRef::named(
@@ -4674,10 +4708,10 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <std::vec::Vec<
+        let list_1 = <std::vec::Vec<
             crate::lawspec_data::TopicPartition,
         > as ls::FromValue>::from_value(value)?;
-        let native_result = handler.addPartitionsToTransaction(native_0);
+        let native_result = handler.addPartitionsToTransaction(list_1);
         schema.validate_with_context(
             ls::IntoValue::into_value(native_result),
             &ls::TypeRef::named(
@@ -4707,8 +4741,9 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <crate::lawspec_data::ProducerRecord as ls::FromValue>::from_value(value)?;
-        let native_result = handler.sendInTransaction(native_0);
+        let producer_record_1 =
+            <crate::lawspec_data::ProducerRecord as ls::FromValue>::from_value(value)?;
+        let native_result = handler.sendInTransaction(producer_record_1);
         schema.validate_with_context(
             ls::IntoValue::into_value(native_result),
             &ls::TypeRef::named(
@@ -4738,7 +4773,7 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named(
@@ -4751,9 +4786,9 @@ pub mod lawtwin_kafka
             64,
             ctx,
         )?;
-        let native_1 =
+        let list_1 =
             <std::vec::Vec<crate::lawspec_data::OffsetEntry> as ls::FromValue>::from_value(value)?;
-        let native_result = handler.sendOffsetsToTransaction(native_0, native_1);
+        let native_result = handler.sendOffsetsToTransaction(text_1, list_1);
         schema.validate_with_context(
             ls::IntoValue::into_value(native_result),
             &ls::TypeRef::named(
@@ -4882,15 +4917,15 @@ pub mod contracttest_kafka
         /// createTopicsRequest, with the failure it raises as Err rather than a panic.
         pub fn try_createTopicsRequest(
             &self,
-            value0: std::string::String,
-            value1: i32,
+            text_1: std::string::String,
+            int32_1: i32,
         ) -> std::result::Result<(), crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                 || {
                     Ok(<Self as super::lawtwin_kafka::Broker>::createTopicsRequest(
-                        self, value0, value1,
+                        self, text_1, int32_1,
                     ))
                 },
             )
@@ -4918,8 +4953,8 @@ pub mod contracttest_kafka
         /// createPartitionsRequest, with the failure it raises as Err rather than a panic.
         pub fn try_createPartitionsRequest(
             &self,
-            value0: std::string::String,
-            value1: i32,
+            text_1: std::string::String,
+            int32_1: i32,
         ) -> std::result::Result<(), crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
@@ -4927,7 +4962,7 @@ pub mod contracttest_kafka
                 || {
                     Ok(
                         <Self as super::lawtwin_kafka::Broker>::createPartitionsRequest(
-                            self, value0, value1,
+                            self, text_1, int32_1,
                         ),
                     )
                 },
@@ -4956,16 +4991,19 @@ pub mod contracttest_kafka
         /// produceRequest, with the failure it raises as Err rather than a panic.
         pub fn try_produceRequest(
             &self,
-            value0: crate::lawspec_data::TopicPartition,
-            value1: std::option::Option<crate::lawspec_data::ProducerTag>,
-            value2: std::vec::Vec<crate::lawspec_data::Record>,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
+            maybe_1: std::option::Option<crate::lawspec_data::ProducerTag>,
+            list_1: std::vec::Vec<crate::lawspec_data::Record>,
         ) -> std::result::Result<i64, crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                 || {
                     Ok(<Self as super::lawtwin_kafka::Broker>::produceRequest(
-                        self, value0, value1, value2,
+                        self,
+                        topic_partition_1,
+                        maybe_1,
+                        list_1,
                     ))
                 },
             )
@@ -4993,17 +5031,21 @@ pub mod contracttest_kafka
         /// fetchRequest, with the failure it raises as Err rather than a panic.
         pub fn try_fetchRequest(
             &self,
-            value0: crate::lawspec_data::TopicPartition,
-            value1: i64,
-            value2: i32,
-            value3: crate::lawspec_data::IsolationLevel,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
+            int64_1: i64,
+            int32_1: i32,
+            isolation_level_1: crate::lawspec_data::IsolationLevel,
         ) -> std::result::Result<crate::lawspec_data::FetchResult, crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                 || {
                     Ok(<Self as super::lawtwin_kafka::Broker>::fetchRequest(
-                        self, value0, value1, value2, value3,
+                        self,
+                        topic_partition_1,
+                        int64_1,
+                        int32_1,
+                        isolation_level_1,
                     ))
                 },
             )
@@ -5031,16 +5073,19 @@ pub mod contracttest_kafka
         /// listOffsetsRequest, with the failure it raises as Err rather than a panic.
         pub fn try_listOffsetsRequest(
             &self,
-            value0: crate::lawspec_data::TopicPartition,
-            value1: crate::lawspec_data::OffsetSpec,
-            value2: crate::lawspec_data::IsolationLevel,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
+            offset_spec_1: crate::lawspec_data::OffsetSpec,
+            isolation_level_1: crate::lawspec_data::IsolationLevel,
         ) -> std::result::Result<i64, crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                 || {
                     Ok(<Self as super::lawtwin_kafka::Broker>::listOffsetsRequest(
-                        self, value0, value1, value2,
+                        self,
+                        topic_partition_1,
+                        offset_spec_1,
+                        isolation_level_1,
                     ))
                 },
             )
@@ -5068,7 +5113,7 @@ pub mod contracttest_kafka
         /// initProducerIdRequest, with the failure it raises as Err rather than a panic.
         pub fn try_initProducerIdRequest(
             &self,
-            value0: std::option::Option<std::string::String>,
+            maybe_1: std::option::Option<std::string::String>,
         ) -> std::result::Result<
             crate::lawspec_data::ProducerIdAndEpoch,
             crate::lawspec_data::KafkaError,
@@ -5077,7 +5122,7 @@ pub mod contracttest_kafka
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                 || {
-                    Ok(<Self as super::lawtwin_kafka::Broker>::initProducerIdRequest(self, value0))
+                    Ok(<Self as super::lawtwin_kafka::Broker>::initProducerIdRequest(self, maybe_1))
                 },
             )
             {
@@ -5104,10 +5149,10 @@ pub mod contracttest_kafka
         /// addPartitionsToTxnRequest, with the failure it raises as Err rather than a panic.
         pub fn try_addPartitionsToTxnRequest(
             &self,
-            value0: std::string::String,
-            value1: i64,
-            value2: i16,
-            value3: std::vec::Vec<crate::lawspec_data::TopicPartition>,
+            text_1: std::string::String,
+            int64_1: i64,
+            int16_1: i16,
+            list_1: std::vec::Vec<crate::lawspec_data::TopicPartition>,
         ) -> std::result::Result<(), crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
@@ -5115,7 +5160,7 @@ pub mod contracttest_kafka
                 || {
                     Ok(
                         <Self as super::lawtwin_kafka::Broker>::addPartitionsToTxnRequest(
-                            self, value0, value1, value2, value3,
+                            self, text_1, int64_1, int16_1, list_1,
                         ),
                     )
                 },
@@ -5144,11 +5189,11 @@ pub mod contracttest_kafka
         /// txnOffsetCommitRequest, with the failure it raises as Err rather than a panic.
         pub fn try_txnOffsetCommitRequest(
             &self,
-            value0: std::string::String,
-            value1: i64,
-            value2: i16,
-            value3: std::string::String,
-            value4: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
+            text_1: std::string::String,
+            int64_1: i64,
+            int16_1: i16,
+            text_2: std::string::String,
+            list_1: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
         ) -> std::result::Result<(), crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
@@ -5156,7 +5201,7 @@ pub mod contracttest_kafka
                 || {
                     Ok(
                         <Self as super::lawtwin_kafka::Broker>::txnOffsetCommitRequest(
-                            self, value0, value1, value2, value3, value4,
+                            self, text_1, int64_1, int16_1, text_2, list_1,
                         ),
                     )
                 },
@@ -5185,17 +5230,17 @@ pub mod contracttest_kafka
         /// endTxnRequest, with the failure it raises as Err rather than a panic.
         pub fn try_endTxnRequest(
             &self,
-            value0: std::string::String,
-            value1: i64,
-            value2: i16,
-            value3: bool,
+            text_1: std::string::String,
+            int64_1: i64,
+            int16_1: i16,
+            bool_1: bool,
         ) -> std::result::Result<(), crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                 || {
                     Ok(<Self as super::lawtwin_kafka::Broker>::endTxnRequest(
-                        self, value0, value1, value2, value3,
+                        self, text_1, int64_1, int16_1, bool_1,
                     ))
                 },
             )
@@ -5223,16 +5268,16 @@ pub mod contracttest_kafka
         /// joinGroupRequest, with the failure it raises as Err rather than a panic.
         pub fn try_joinGroupRequest(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::vec::Vec<std::string::String>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            list_1: std::vec::Vec<std::string::String>,
         ) -> std::result::Result<i32, crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                 || {
                     Ok(<Self as super::lawtwin_kafka::Broker>::joinGroupRequest(
-                        self, value0, value1, value2,
+                        self, text_1, text_2, list_1,
                     ))
                 },
             )
@@ -5260,9 +5305,9 @@ pub mod contracttest_kafka
         /// syncGroupRequest, with the failure it raises as Err rather than a panic.
         pub fn try_syncGroupRequest(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i32,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int32_1: i32,
         ) -> std::result::Result<
             std::vec::Vec<crate::lawspec_data::TopicPartition>,
             crate::lawspec_data::KafkaError,
@@ -5272,7 +5317,7 @@ pub mod contracttest_kafka
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                 || {
                     Ok(<Self as super::lawtwin_kafka::Broker>::syncGroupRequest(
-                        self, value0, value1, value2,
+                        self, text_1, text_2, int32_1,
                     ))
                 },
             )
@@ -5300,16 +5345,16 @@ pub mod contracttest_kafka
         /// heartbeatRequest, with the failure it raises as Err rather than a panic.
         pub fn try_heartbeatRequest(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i32,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int32_1: i32,
         ) -> std::result::Result<(), crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                 || {
                     Ok(<Self as super::lawtwin_kafka::Broker>::heartbeatRequest(
-                        self, value0, value1, value2,
+                        self, text_1, text_2, int32_1,
                     ))
                 },
             )
@@ -5337,15 +5382,15 @@ pub mod contracttest_kafka
         /// leaveGroupRequest, with the failure it raises as Err rather than a panic.
         pub fn try_leaveGroupRequest(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
+            text_1: std::string::String,
+            text_2: std::string::String,
         ) -> std::result::Result<(), crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                 || {
                     Ok(<Self as super::lawtwin_kafka::Broker>::leaveGroupRequest(
-                        self, value0, value1,
+                        self, text_1, text_2,
                     ))
                 },
             )
@@ -5373,17 +5418,17 @@ pub mod contracttest_kafka
         /// offsetCommitRequest, with the failure it raises as Err rather than a panic.
         pub fn try_offsetCommitRequest(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i32,
-            value3: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int32_1: i32,
+            list_1: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
         ) -> std::result::Result<(), crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                 || {
                     Ok(<Self as super::lawtwin_kafka::Broker>::offsetCommitRequest(
-                        self, value0, value1, value2, value3,
+                        self, text_1, text_2, int32_1, list_1,
                     ))
                 },
             )
@@ -5411,15 +5456,15 @@ pub mod contracttest_kafka
         /// createTopic, with the failure it raises as Err rather than a panic.
         pub fn try_createTopic(
             &self,
-            value0: std::string::String,
-            value1: i32,
+            text_1: std::string::String,
+            int32_1: i32,
         ) -> std::result::Result<(), crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                 || {
                     Ok(<Self as super::lawtwin_kafka::Admin>::createTopic(
-                        self, value0, value1,
+                        self, text_1, int32_1,
                     ))
                 },
             )
@@ -5447,15 +5492,15 @@ pub mod contracttest_kafka
         /// createPartitions, with the failure it raises as Err rather than a panic.
         pub fn try_createPartitions(
             &self,
-            value0: std::string::String,
-            value1: i32,
+            text_1: std::string::String,
+            int32_1: i32,
         ) -> std::result::Result<(), crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                 || {
                     Ok(<Self as super::lawtwin_kafka::Admin>::createPartitions(
-                        self, value0, value1,
+                        self, text_1, int32_1,
                     ))
                 },
             )
@@ -5483,16 +5528,19 @@ pub mod contracttest_kafka
         /// listOffsets, with the failure it raises as Err rather than a panic.
         pub fn try_listOffsets(
             &self,
-            value0: crate::lawspec_data::TopicPartition,
-            value1: crate::lawspec_data::OffsetSpec,
-            value2: crate::lawspec_data::IsolationLevel,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
+            offset_spec_1: crate::lawspec_data::OffsetSpec,
+            isolation_level_1: crate::lawspec_data::IsolationLevel,
         ) -> std::result::Result<i64, crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                 || {
                     Ok(<Self as super::lawtwin_kafka::Admin>::listOffsets(
-                        self, value0, value1, value2,
+                        self,
+                        topic_partition_1,
+                        offset_spec_1,
+                        isolation_level_1,
                     ))
                 },
             )
@@ -5520,16 +5568,16 @@ pub mod contracttest_kafka
         /// joinGroup, with the failure it raises as Err rather than a panic.
         pub fn try_joinGroup(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::vec::Vec<std::string::String>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            list_1: std::vec::Vec<std::string::String>,
         ) -> std::result::Result<i32, crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                 || {
                     Ok(<Self as super::lawtwin_kafka::GroupCoordinator>::joinGroup(
-                        self, value0, value1, value2,
+                        self, text_1, text_2, list_1,
                     ))
                 },
             )
@@ -5557,9 +5605,9 @@ pub mod contracttest_kafka
         /// syncGroup, with the failure it raises as Err rather than a panic.
         pub fn try_syncGroup(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i32,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int32_1: i32,
         ) -> std::result::Result<
             std::vec::Vec<crate::lawspec_data::TopicPartition>,
             crate::lawspec_data::KafkaError,
@@ -5569,7 +5617,7 @@ pub mod contracttest_kafka
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                 || {
                     Ok(<Self as super::lawtwin_kafka::GroupCoordinator>::syncGroup(
-                        self, value0, value1, value2,
+                        self, text_1, text_2, int32_1,
                     ))
                 },
             )
@@ -5597,16 +5645,16 @@ pub mod contracttest_kafka
         /// heartbeat, with the failure it raises as Err rather than a panic.
         pub fn try_heartbeat(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i32,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int32_1: i32,
         ) -> std::result::Result<(), crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)",
                 || {
                     Ok(<Self as super::lawtwin_kafka::GroupCoordinator>::heartbeat(
-                        self, value0, value1, value2,
+                        self, text_1, text_2, int32_1,
                     ))
                 },
             )
@@ -5634,8 +5682,8 @@ pub mod contracttest_kafka
         /// leaveGroup, with the failure it raises as Err rather than a panic.
         pub fn try_leaveGroup(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
+            text_1: std::string::String,
+            text_2: std::string::String,
         ) -> std::result::Result<(), crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
@@ -5643,7 +5691,7 @@ pub mod contracttest_kafka
                 || {
                     Ok(
                         <Self as super::lawtwin_kafka::GroupCoordinator>::leaveGroup(
-                            self, value0, value1,
+                            self, text_1, text_2,
                         ),
                     )
                 },
@@ -5672,10 +5720,10 @@ pub mod contracttest_kafka
         /// commitOffsets, with the failure it raises as Err rather than a panic.
         pub fn try_commitOffsets(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i32,
-            value3: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int32_1: i32,
+            list_1: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
         ) -> std::result::Result<(), crate::lawspec_data::KafkaError>
         {
             match ls::fast::attempt(
@@ -5683,7 +5731,7 @@ pub mod contracttest_kafka
                 || {
                     Ok(
                         <Self as super::lawtwin_kafka::GroupCoordinator>::commitOffsets(
-                            self, value0, value1, value2, value3,
+                            self, text_1, text_2, int32_1, list_1,
                         ),
                     )
                 },
@@ -5712,13 +5760,13 @@ pub mod contracttest_kafka
 
     impl super::lawtwin_kafka::Broker for Cluster
     {
-        fn createTopicsRequest(&self, value0: std::string::String, value1: i32) -> ()
+        fn createTopicsRequest(&self, text_1: std::string::String, int32_1: i32) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_create_topic(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                <i32 as ls::fast::Public>::from_native(value1),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                <i32 as ls::fast::Public>::from_native(int32_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -5726,14 +5774,14 @@ pub mod contracttest_kafka
             ls::fast::Public::to_native(&result)
         }
 
-        fn createPartitionsRequest(&self, value0: std::string::String, value1: i32) -> ()
+        fn createPartitionsRequest(&self, text_1: std::string::String, int32_1: i32) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::cluster_create_partitions(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <i32 as ls::fast::Public>::from_native(value1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <i32 as ls::fast::Public>::from_native(int32_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -5742,12 +5790,12 @@ pub mod contracttest_kafka
             ls::fast::Public::to_native(&result)
         }
 
-        fn metadataRequest(&self, value0: std::string::String) -> std::option::Option<i32>
+        fn metadataRequest(&self, text_1: std::string::String) -> std::option::Option<i32>
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_metadata_request(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -5757,23 +5805,23 @@ pub mod contracttest_kafka
 
         fn produceRequest(
             &self,
-            value0: crate::lawspec_data::TopicPartition,
-            value1: std::option::Option<crate::lawspec_data::ProducerTag>,
-            value2: std::vec::Vec<crate::lawspec_data::Record>,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
+            maybe_1: std::option::Option<crate::lawspec_data::ProducerTag>,
+            list_1: std::vec::Vec<crate::lawspec_data::Record>,
         ) -> i64
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_produce_request(
                 state.clone(),
                 <crate::lawspec_definitions::typed::TopicPartition as ls::fast::Public>::from_native(
-                    value0,
+                    topic_partition_1,
                 ),
                 <Option<
                     crate::lawspec_definitions::typed::ProducerTag,
-                > as ls::fast::Public>::from_native(value1),
+                > as ls::fast::Public>::from_native(maybe_1),
                 <ls::fast::List<
                     crate::lawspec_definitions::typed::Record,
-                > as ls::fast::Public>::from_native(value2),
+                > as ls::fast::Public>::from_native(list_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -5783,22 +5831,22 @@ pub mod contracttest_kafka
 
         fn fetchRequest(
             &self,
-            value0: crate::lawspec_data::TopicPartition,
-            value1: i64,
-            value2: i32,
-            value3: crate::lawspec_data::IsolationLevel,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
+            int64_1: i64,
+            int32_1: i32,
+            isolation_level_1: crate::lawspec_data::IsolationLevel,
         ) -> crate::lawspec_data::FetchResult
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_fetch_request(
                 state.clone(),
                 <crate::lawspec_definitions::typed::TopicPartition as ls::fast::Public>::from_native(
-                    value0,
+                    topic_partition_1,
                 ),
-                <i64 as ls::fast::Public>::from_native(value1),
-                <i32 as ls::fast::Public>::from_native(value2),
+                <i64 as ls::fast::Public>::from_native(int64_1),
+                <i32 as ls::fast::Public>::from_native(int32_1),
                 <crate::lawspec_definitions::typed::IsolationLevel as ls::fast::Public>::from_native(
-                    value3,
+                    isolation_level_1,
                 ),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -5809,22 +5857,22 @@ pub mod contracttest_kafka
 
         fn listOffsetsRequest(
             &self,
-            value0: crate::lawspec_data::TopicPartition,
-            value1: crate::lawspec_data::OffsetSpec,
-            value2: crate::lawspec_data::IsolationLevel,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
+            offset_spec_1: crate::lawspec_data::OffsetSpec,
+            isolation_level_1: crate::lawspec_data::IsolationLevel,
         ) -> i64
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_list_offsets(
                 state.clone(),
                 <crate::lawspec_definitions::typed::TopicPartition as ls::fast::Public>::from_native(
-                    value0,
+                    topic_partition_1,
                 ),
                 <crate::lawspec_definitions::typed::OffsetSpec as ls::fast::Public>::from_native(
-                    value1,
+                    offset_spec_1,
                 ),
                 <crate::lawspec_definitions::typed::IsolationLevel as ls::fast::Public>::from_native(
-                    value2,
+                    isolation_level_1,
                 ),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -5835,14 +5883,14 @@ pub mod contracttest_kafka
 
         fn initProducerIdRequest(
             &self,
-            value0: std::option::Option<std::string::String>,
+            maybe_1: std::option::Option<std::string::String>,
         ) -> crate::lawspec_data::ProducerIdAndEpoch
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::cluster_init_producer_id_request(
                     state.clone(),
-                    <Option<ls::fast::Text> as ls::fast::Public>::from_native(value0),
+                    <Option<ls::fast::Text> as ls::fast::Public>::from_native(maybe_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -5853,22 +5901,22 @@ pub mod contracttest_kafka
 
         fn addPartitionsToTxnRequest(
             &self,
-            value0: std::string::String,
-            value1: i64,
-            value2: i16,
-            value3: std::vec::Vec<crate::lawspec_data::TopicPartition>,
+            text_1: std::string::String,
+            int64_1: i64,
+            int16_1: i16,
+            list_1: std::vec::Vec<crate::lawspec_data::TopicPartition>,
         ) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::cluster_add_partitions_to_txn_request(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <i64 as ls::fast::Public>::from_native(value1),
-                    <i16 as ls::fast::Public>::from_native(value2),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <i64 as ls::fast::Public>::from_native(int64_1),
+                    <i16 as ls::fast::Public>::from_native(int16_1),
                     <ls::fast::List<
                         crate::lawspec_definitions::typed::TopicPartition,
-                    > as ls::fast::Public>::from_native(value3),
+                    > as ls::fast::Public>::from_native(list_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -5879,24 +5927,24 @@ pub mod contracttest_kafka
 
         fn txnOffsetCommitRequest(
             &self,
-            value0: std::string::String,
-            value1: i64,
-            value2: i16,
-            value3: std::string::String,
-            value4: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
+            text_1: std::string::String,
+            int64_1: i64,
+            int16_1: i16,
+            text_2: std::string::String,
+            list_1: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
         ) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::cluster_txn_offset_commit_request(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <i64 as ls::fast::Public>::from_native(value1),
-                    <i16 as ls::fast::Public>::from_native(value2),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value3),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <i64 as ls::fast::Public>::from_native(int64_1),
+                    <i16 as ls::fast::Public>::from_native(int16_1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_2),
                     <ls::fast::List<
                         crate::lawspec_definitions::typed::OffsetEntry,
-                    > as ls::fast::Public>::from_native(value4),
+                    > as ls::fast::Public>::from_native(list_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -5907,19 +5955,19 @@ pub mod contracttest_kafka
 
         fn endTxnRequest(
             &self,
-            value0: std::string::String,
-            value1: i64,
-            value2: i16,
-            value3: bool,
+            text_1: std::string::String,
+            int64_1: i64,
+            int16_1: i16,
+            bool_1: bool,
         ) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_end_txn_request(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                <i64 as ls::fast::Public>::from_native(value1),
-                <i16 as ls::fast::Public>::from_native(value2),
-                <bool as ls::fast::Public>::from_native(value3),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                <i64 as ls::fast::Public>::from_native(int64_1),
+                <i16 as ls::fast::Public>::from_native(int16_1),
+                <bool as ls::fast::Public>::from_native(bool_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -5929,17 +5977,17 @@ pub mod contracttest_kafka
 
         fn joinGroupRequest(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::vec::Vec<std::string::String>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            list_1: std::vec::Vec<std::string::String>,
         ) -> i32
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_join_group(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                <ls::fast::List<ls::fast::Text> as ls::fast::Public>::from_native(value2),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                <ls::fast::List<ls::fast::Text> as ls::fast::Public>::from_native(list_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -5949,17 +5997,17 @@ pub mod contracttest_kafka
 
         fn syncGroupRequest(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i32,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int32_1: i32,
         ) -> std::vec::Vec<crate::lawspec_data::TopicPartition>
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_sync_group(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                <i32 as ls::fast::Public>::from_native(value2),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                <i32 as ls::fast::Public>::from_native(int32_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -5969,17 +6017,17 @@ pub mod contracttest_kafka
 
         fn heartbeatRequest(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i32,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int32_1: i32,
         ) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_heartbeat(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                <i32 as ls::fast::Public>::from_native(value2),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                <i32 as ls::fast::Public>::from_native(int32_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -5987,14 +6035,14 @@ pub mod contracttest_kafka
             ls::fast::Public::to_native(&result)
         }
 
-        fn leaveGroupRequest(&self, value0: std::string::String, value1: std::string::String)
+        fn leaveGroupRequest(&self, text_1: std::string::String, text_2: std::string::String)
         -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_leave_group(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                <ls::fast::Text as ls::fast::Public>::from_native(value1),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_2),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -6004,13 +6052,13 @@ pub mod contracttest_kafka
 
         fn describeGroupRequest(
             &self,
-            value0: std::string::String,
+            text_1: std::string::String,
         ) -> crate::lawspec_data::GroupView
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_describe_group(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -6020,21 +6068,21 @@ pub mod contracttest_kafka
 
         fn offsetCommitRequest(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i32,
-            value3: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int32_1: i32,
+            list_1: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
         ) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_commit_offsets(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                <i32 as ls::fast::Public>::from_native(value2),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                <i32 as ls::fast::Public>::from_native(int32_1),
                 <ls::fast::List<
                     crate::lawspec_definitions::typed::OffsetEntry,
-                > as ls::fast::Public>::from_native(value3),
+                > as ls::fast::Public>::from_native(list_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -6044,16 +6092,16 @@ pub mod contracttest_kafka
 
         fn offsetFetchRequest(
             &self,
-            value0: std::string::String,
-            value1: crate::lawspec_data::TopicPartition,
+            text_1: std::string::String,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
         ) -> std::option::Option<i64>
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_fetch_offset(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
                 <crate::lawspec_definitions::typed::TopicPartition as ls::fast::Public>::from_native(
-                    value1,
+                    topic_partition_1,
                 ),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -6065,13 +6113,13 @@ pub mod contracttest_kafka
 
     impl super::lawtwin_kafka::Admin for Cluster
     {
-        fn createTopic(&self, value0: std::string::String, value1: i32) -> ()
+        fn createTopic(&self, text_1: std::string::String, int32_1: i32) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_create_topic(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                <i32 as ls::fast::Public>::from_native(value1),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                <i32 as ls::fast::Public>::from_native(int32_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -6079,14 +6127,14 @@ pub mod contracttest_kafka
             ls::fast::Public::to_native(&result)
         }
 
-        fn createPartitions(&self, value0: std::string::String, value1: i32) -> ()
+        fn createPartitions(&self, text_1: std::string::String, int32_1: i32) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::cluster_create_partitions(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                    <i32 as ls::fast::Public>::from_native(value1),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                    <i32 as ls::fast::Public>::from_native(int32_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -6095,12 +6143,12 @@ pub mod contracttest_kafka
             ls::fast::Public::to_native(&result)
         }
 
-        fn partitionsFor(&self, value0: std::string::String) -> std::option::Option<i32>
+        fn partitionsFor(&self, text_1: std::string::String) -> std::option::Option<i32>
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_metadata_request(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -6110,22 +6158,22 @@ pub mod contracttest_kafka
 
         fn listOffsets(
             &self,
-            value0: crate::lawspec_data::TopicPartition,
-            value1: crate::lawspec_data::OffsetSpec,
-            value2: crate::lawspec_data::IsolationLevel,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
+            offset_spec_1: crate::lawspec_data::OffsetSpec,
+            isolation_level_1: crate::lawspec_data::IsolationLevel,
         ) -> i64
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_list_offsets(
                 state.clone(),
                 <crate::lawspec_definitions::typed::TopicPartition as ls::fast::Public>::from_native(
-                    value0,
+                    topic_partition_1,
                 ),
                 <crate::lawspec_definitions::typed::OffsetSpec as ls::fast::Public>::from_native(
-                    value1,
+                    offset_spec_1,
                 ),
                 <crate::lawspec_definitions::typed::IsolationLevel as ls::fast::Public>::from_native(
-                    value2,
+                    isolation_level_1,
                 ),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -6139,17 +6187,17 @@ pub mod contracttest_kafka
     {
         fn joinGroup(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::vec::Vec<std::string::String>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            list_1: std::vec::Vec<std::string::String>,
         ) -> i32
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_join_group(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                <ls::fast::List<ls::fast::Text> as ls::fast::Public>::from_native(value2),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                <ls::fast::List<ls::fast::Text> as ls::fast::Public>::from_native(list_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -6159,17 +6207,17 @@ pub mod contracttest_kafka
 
         fn syncGroup(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i32,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int32_1: i32,
         ) -> std::vec::Vec<crate::lawspec_data::TopicPartition>
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_sync_group(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                <i32 as ls::fast::Public>::from_native(value2),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                <i32 as ls::fast::Public>::from_native(int32_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -6179,17 +6227,17 @@ pub mod contracttest_kafka
 
         fn heartbeat(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i32,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int32_1: i32,
         ) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_heartbeat(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                <i32 as ls::fast::Public>::from_native(value2),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                <i32 as ls::fast::Public>::from_native(int32_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -6197,13 +6245,13 @@ pub mod contracttest_kafka
             ls::fast::Public::to_native(&result)
         }
 
-        fn leaveGroup(&self, value0: std::string::String, value1: std::string::String) -> ()
+        fn leaveGroup(&self, text_1: std::string::String, text_2: std::string::String) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_leave_group(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                <ls::fast::Text as ls::fast::Public>::from_native(value1),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_2),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -6211,12 +6259,12 @@ pub mod contracttest_kafka
             ls::fast::Public::to_native(&result)
         }
 
-        fn describeGroup(&self, value0: std::string::String) -> crate::lawspec_data::GroupView
+        fn describeGroup(&self, text_1: std::string::String) -> crate::lawspec_data::GroupView
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_describe_group(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -6226,21 +6274,21 @@ pub mod contracttest_kafka
 
         fn commitOffsets(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: i32,
-            value3: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            int32_1: i32,
+            list_1: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
         ) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_commit_offsets(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                <i32 as ls::fast::Public>::from_native(value2),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                <i32 as ls::fast::Public>::from_native(int32_1),
                 <ls::fast::List<
                     crate::lawspec_definitions::typed::OffsetEntry,
-                > as ls::fast::Public>::from_native(value3),
+                > as ls::fast::Public>::from_native(list_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -6250,16 +6298,16 @@ pub mod contracttest_kafka
 
         fn fetchOffset(
             &self,
-            value0: std::string::String,
-            value1: crate::lawspec_data::TopicPartition,
+            text_1: std::string::String,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
         ) -> std::option::Option<i64>
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::cluster_fetch_offset(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
                 <crate::lawspec_definitions::typed::TopicPartition as ls::fast::Public>::from_native(
-                    value1,
+                    topic_partition_1,
                 ),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -6291,14 +6339,14 @@ pub mod contracttest_kafka
     {
         fn choosePartition(
             &self,
-            value0: std::option::Option<std::vec::Vec<u8>>,
-            value1: i32,
+            maybe_1: std::option::Option<std::vec::Vec<u8>>,
+            int32_1: i32,
         ) -> i32
         {
             let result = ls::answered(
                 crate::lawspec_definitions::typed::murmur_partitioner_choose_partition(
-                    <Option<ls::fast::Bytes> as ls::fast::Public>::from_native(value0),
-                    <i32 as ls::fast::Public>::from_native(value1),
+                    <Option<ls::fast::Bytes> as ls::fast::Public>::from_native(maybe_1),
+                    <i32 as ls::fast::Public>::from_native(int32_1),
                 ),
             );
             ls::fast::Public::to_native(&result)
@@ -6368,7 +6416,7 @@ pub mod contracttest_kafka
     {
         fn send(
             &self,
-            value0: crate::lawspec_data::ProducerRecord,
+            producer_record_1: crate::lawspec_data::ProducerRecord,
         ) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::RecordMetadata>
         {
             let mut ctx = ls::locked(&self.ctx);
@@ -6377,7 +6425,7 @@ pub mod contracttest_kafka
                 &mut *ctx,
                 state.clone(),
                 <crate::lawspec_definitions::typed::ProducerRecord as ls::fast::Public>::from_native(
-                    value0,
+                    producer_record_1,
                 ),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -6508,14 +6556,14 @@ pub mod contracttest_kafka
 
     impl super::lawtwin_kafka::Consumer for KafkaConsumer
     {
-        fn assign(&self, value0: std::vec::Vec<crate::lawspec_data::TopicPartition>) -> ()
+        fn assign(&self, list_1: std::vec::Vec<crate::lawspec_data::TopicPartition>) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::kafka_consumer_assign(
                 state.clone(),
                 <ls::fast::List<
                     crate::lawspec_definitions::typed::TopicPartition,
-                > as ls::fast::Public>::from_native(value0),
+                > as ls::fast::Public>::from_native(list_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -6525,9 +6573,9 @@ pub mod contracttest_kafka
 
         fn subscribe(
             &self,
-            value0: std::string::String,
-            value1: std::string::String,
-            value2: std::vec::Vec<std::string::String>,
+            text_1: std::string::String,
+            text_2: std::string::String,
+            list_1: std::vec::Vec<std::string::String>,
         ) -> ls::Either<
             crate::lawspec_data::KafkaError,
             std::vec::Vec<crate::lawspec_data::TopicPartition>,
@@ -6538,9 +6586,9 @@ pub mod contracttest_kafka
             let pair = ls::answered(crate::lawspec_definitions::typed::kafka_consumer_subscribe(
                 &mut *ctx,
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
-                <ls::fast::Text as ls::fast::Public>::from_native(value1),
-                <ls::fast::List<ls::fast::Text> as ls::fast::Public>::from_native(value2),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_2),
+                <ls::fast::List<ls::fast::Text> as ls::fast::Public>::from_native(list_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -6550,7 +6598,7 @@ pub mod contracttest_kafka
 
         fn poll(
             &self,
-            value0: i32,
+            int32_1: i32,
         ) -> ls::Either<
             crate::lawspec_data::KafkaError,
             std::vec::Vec<crate::lawspec_data::ConsumerRecord>,
@@ -6561,7 +6609,7 @@ pub mod contracttest_kafka
             let pair = ls::answered(crate::lawspec_definitions::typed::kafka_consumer_poll(
                 &mut *ctx,
                 state.clone(),
-                <i32 as ls::fast::Public>::from_native(value0),
+                <i32 as ls::fast::Public>::from_native(int32_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -6587,17 +6635,17 @@ pub mod contracttest_kafka
 
         fn seek(
             &self,
-            value0: crate::lawspec_data::TopicPartition,
-            value1: i64,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
+            int64_1: i64,
         ) -> ls::Either<crate::lawspec_data::KafkaError, ()>
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::kafka_consumer_seek(
                 state.clone(),
                 <crate::lawspec_definitions::typed::TopicPartition as ls::fast::Public>::from_native(
-                    value0,
+                    topic_partition_1,
                 ),
-                <i64 as ls::fast::Public>::from_native(value1),
+                <i64 as ls::fast::Public>::from_native(int64_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -6607,7 +6655,7 @@ pub mod contracttest_kafka
 
         fn position(
             &self,
-            value0: crate::lawspec_data::TopicPartition,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
         ) -> ls::Either<crate::lawspec_data::KafkaError, i64>
         {
             let mut ctx = ls::locked(&self.ctx);
@@ -6616,7 +6664,7 @@ pub mod contracttest_kafka
                 &mut *ctx,
                 state.clone(),
                 <crate::lawspec_definitions::typed::TopicPartition as ls::fast::Public>::from_native(
-                    value0,
+                    topic_partition_1,
                 ),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -6627,7 +6675,7 @@ pub mod contracttest_kafka
 
         fn committedOffset(
             &self,
-            value0: crate::lawspec_data::TopicPartition,
+            topic_partition_1: crate::lawspec_data::TopicPartition,
         ) -> std::option::Option<i64>
         {
             let mut ctx = ls::locked(&self.ctx);
@@ -6637,7 +6685,7 @@ pub mod contracttest_kafka
                     &mut *ctx,
                     state.clone(),
                     <crate::lawspec_definitions::typed::TopicPartition as ls::fast::Public>::from_native(
-                        value0,
+                        topic_partition_1,
                     ),
                 ),
             );
@@ -6647,14 +6695,14 @@ pub mod contracttest_kafka
             ls::fast::Public::to_native(&result)
         }
 
-        fn setIsolationLevel(&self, value0: crate::lawspec_data::IsolationLevel) -> ()
+        fn setIsolationLevel(&self, isolation_level_1: crate::lawspec_data::IsolationLevel) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::kafka_consumer_set_isolation_level(
                     state.clone(),
                     <crate::lawspec_definitions::typed::IsolationLevel as ls::fast::Public>::from_native(
-                        value0,
+                        isolation_level_1,
                     ),
                 ),
             );
@@ -6743,7 +6791,7 @@ pub mod contracttest_kafka
     {
         fn initTransactions(
             &self,
-            value0: std::string::String,
+            text_1: std::string::String,
         ) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::ProducerIdAndEpoch>
         {
             let mut ctx = ls::locked(&self.ctx);
@@ -6752,7 +6800,7 @@ pub mod contracttest_kafka
                 crate::lawspec_definitions::typed::kafka_transactions_init_transactions(
                     &mut *ctx,
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -6777,7 +6825,7 @@ pub mod contracttest_kafka
 
         fn addPartitionsToTransaction(
             &self,
-            value0: std::vec::Vec<crate::lawspec_data::TopicPartition>,
+            list_1: std::vec::Vec<crate::lawspec_data::TopicPartition>,
         ) -> ls::Either<crate::lawspec_data::KafkaError, ()>
         {
             let mut ctx = ls::locked(&self.ctx);
@@ -6788,7 +6836,7 @@ pub mod contracttest_kafka
                     state.clone(),
                     <ls::fast::List<
                         crate::lawspec_definitions::typed::TopicPartition,
-                    > as ls::fast::Public>::from_native(value0),
+                    > as ls::fast::Public>::from_native(list_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -6799,7 +6847,7 @@ pub mod contracttest_kafka
 
         fn sendInTransaction(
             &self,
-            value0: crate::lawspec_data::ProducerRecord,
+            producer_record_1: crate::lawspec_data::ProducerRecord,
         ) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::RecordMetadata>
         {
             let mut ctx = ls::locked(&self.ctx);
@@ -6809,7 +6857,7 @@ pub mod contracttest_kafka
                     &mut *ctx,
                     state.clone(),
                     <crate::lawspec_definitions::typed::ProducerRecord as ls::fast::Public>::from_native(
-                        value0,
+                        producer_record_1,
                     ),
                 ),
             );
@@ -6821,8 +6869,8 @@ pub mod contracttest_kafka
 
         fn sendOffsetsToTransaction(
             &self,
-            value0: std::string::String,
-            value1: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
+            text_1: std::string::String,
+            list_1: std::vec::Vec<crate::lawspec_data::OffsetEntry>,
         ) -> ls::Either<crate::lawspec_data::KafkaError, ()>
         {
             let mut ctx = ls::locked(&self.ctx);
@@ -6831,10 +6879,10 @@ pub mod contracttest_kafka
                 crate::lawspec_definitions::typed::kafka_transactions_send_offsets_to_transaction(
                     &mut *ctx,
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
                     <ls::fast::List<
                         crate::lawspec_definitions::typed::OffsetEntry,
-                    > as ls::fast::Public>::from_native(value1),
+                    > as ls::fast::Public>::from_native(list_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);

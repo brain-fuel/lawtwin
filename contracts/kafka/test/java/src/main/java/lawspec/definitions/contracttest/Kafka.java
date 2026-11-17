@@ -16,460 +16,462 @@ public final class Kafka
   public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState>
       clusterAddPartitionsToTxnRequest(
           Map<String, Object> symbols,
-          lawspec.data.BrokerState value0,
-          java.lang.String value1,
-          java.lang.Long value2,
-          java.lang.Short value3,
-          java.util.List<lawspec.data.TopicPartition> value4)
+          lawspec.data.BrokerState state,
+          java.lang.String text1,
+          java.lang.Long int641,
+          java.lang.Short int161,
+          java.util.List<lawspec.data.TopicPartition> list1)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairUnitBrokerState(
         lawspec.runtime.LawSpecTyped.clusterAddPartitionsToTxnRequest(
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeInt16(value3),
-            lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(value4)));
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(state),
+            lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(int641),
+            lawspec.runtime.LawSpecTyped.fromNativeInt16(int161),
+            lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(list1)));
   }
 
   public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState>
       clusterCommitOffsets(
           Map<String, Object> symbols,
-          lawspec.data.BrokerState value0,
-          java.lang.String value1,
-          java.lang.String value2,
-          java.lang.Integer value3,
-          java.util.List<lawspec.data.OffsetEntry> value4)
+          lawspec.data.BrokerState state,
+          java.lang.String text1,
+          java.lang.String text2,
+          java.lang.Integer int321,
+          java.util.List<lawspec.data.OffsetEntry> list1)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairUnitBrokerState(
         lawspec.runtime.LawSpecTyped.clusterCommitOffsets(
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeInt32(value3),
-            lawspec.runtime.LawSpecTyped.fromNativeListOffsetEntry(value4)));
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(state),
+            lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+            lawspec.runtime.LawSpecTyped.fromNativeText(text2),
+            lawspec.runtime.LawSpecTyped.fromNativeInt32(int321),
+            lawspec.runtime.LawSpecTyped.fromNativeListOffsetEntry(list1)));
   }
 
   public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState>
       clusterCreatePartitions(
           Map<String, Object> symbols,
-          lawspec.data.BrokerState value0,
-          java.lang.String value1,
-          java.lang.Integer value2)
+          lawspec.data.BrokerState state,
+          java.lang.String text1,
+          java.lang.Integer int321)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairUnitBrokerState(
         lawspec.runtime.LawSpecTyped.clusterCreatePartitions(
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeInt32(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(state),
+            lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+            lawspec.runtime.LawSpecTyped.fromNativeInt32(int321)));
   }
 
   public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState>
       clusterCreatePartitionsRequest(
           Map<String, Object> symbols,
-          lawspec.data.BrokerState value0,
-          java.lang.String value1,
-          java.lang.Integer value2)
+          lawspec.data.BrokerState state,
+          java.lang.String text1,
+          java.lang.Integer int321)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairUnitBrokerState(
         lawspec.runtime.LawSpecTyped.clusterCreatePartitions(
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeInt32(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(state),
+            lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+            lawspec.runtime.LawSpecTyped.fromNativeInt32(int321)));
   }
 
   public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState>
       clusterCreateTopic(
           Map<String, Object> symbols,
-          lawspec.data.BrokerState value0,
-          java.lang.String value1,
-          java.lang.Integer value2)
+          lawspec.data.BrokerState state,
+          java.lang.String text1,
+          java.lang.Integer int321)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairUnitBrokerState(
         lawspec.runtime.LawSpecTyped.clusterCreateTopic(
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeInt32(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(state),
+            lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+            lawspec.runtime.LawSpecTyped.fromNativeInt32(int321)));
   }
 
   public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState>
       clusterCreateTopicsRequest(
           Map<String, Object> symbols,
-          lawspec.data.BrokerState value0,
-          java.lang.String value1,
-          java.lang.Integer value2)
+          lawspec.data.BrokerState state,
+          java.lang.String text1,
+          java.lang.Integer int321)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairUnitBrokerState(
         lawspec.runtime.LawSpecTyped.clusterCreateTopic(
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeInt32(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(state),
+            lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+            lawspec.runtime.LawSpecTyped.fromNativeInt32(int321)));
   }
 
   public static lawspec.data.Pair<lawspec.data.GroupView, lawspec.data.BrokerState>
       clusterDescribeGroup(
-          Map<String, Object> symbols, lawspec.data.BrokerState value0, java.lang.String value1)
+          Map<String, Object> symbols, lawspec.data.BrokerState state, java.lang.String text1)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairGroupViewBrokerState(
         lawspec.runtime.LawSpecTyped.clusterDescribeGroup(
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(state),
+            lawspec.runtime.LawSpecTyped.fromNativeText(text1)));
   }
 
   public static lawspec.data.Pair<lawspec.data.GroupView, lawspec.data.BrokerState>
       clusterDescribeGroupRequest(
-          Map<String, Object> symbols, lawspec.data.BrokerState value0, java.lang.String value1)
+          Map<String, Object> symbols, lawspec.data.BrokerState state, java.lang.String text1)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairGroupViewBrokerState(
         lawspec.runtime.LawSpecTyped.clusterDescribeGroup(
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(state),
+            lawspec.runtime.LawSpecTyped.fromNativeText(text1)));
   }
 
   public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState>
       clusterEndTxnRequest(
           Map<String, Object> symbols,
-          lawspec.data.BrokerState value0,
-          java.lang.String value1,
-          java.lang.Long value2,
-          java.lang.Short value3,
-          java.lang.Boolean value4)
+          lawspec.data.BrokerState state,
+          java.lang.String text1,
+          java.lang.Long int641,
+          java.lang.Short int161,
+          java.lang.Boolean bool1)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairUnitBrokerState(
         lawspec.runtime.LawSpecTyped.clusterEndTxnRequest(
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeInt16(value3),
-            lawspec.runtime.LawSpecTyped.fromNativeBool(value4)));
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(state),
+            lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(int641),
+            lawspec.runtime.LawSpecTyped.fromNativeInt16(int161),
+            lawspec.runtime.LawSpecTyped.fromNativeBool(bool1)));
   }
 
   public static lawspec.data.Pair<
           lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Long>, lawspec.data.BrokerState>
       clusterFetchOffset(
           Map<String, Object> symbols,
-          lawspec.data.BrokerState value0,
-          java.lang.String value1,
-          lawspec.data.TopicPartition value2)
+          lawspec.data.BrokerState state,
+          java.lang.String text1,
+          lawspec.data.TopicPartition topicPartition1)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairMaybeInt64BrokerState(
         lawspec.runtime.LawSpecTyped.clusterFetchOffset(
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(state),
+            lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(topicPartition1)));
   }
 
   public static lawspec.data.Pair<lawspec.data.FetchResult, lawspec.data.BrokerState>
       clusterFetchRequest(
           Map<String, Object> symbols,
-          lawspec.data.BrokerState value0,
-          lawspec.data.TopicPartition value1,
-          java.lang.Long value2,
-          java.lang.Integer value3,
-          lawspec.data.IsolationLevel value4)
+          lawspec.data.BrokerState state,
+          lawspec.data.TopicPartition topicPartition1,
+          java.lang.Long int641,
+          java.lang.Integer int321,
+          lawspec.data.IsolationLevel isolationLevel1)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairFetchResultBrokerState(
         lawspec.runtime.LawSpecTyped.clusterFetchRequest(
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeInt32(value3),
-            lawspec.runtime.LawSpecTyped.fromNativeIsolationLevel(value4)));
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(state),
+            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(topicPartition1),
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(int641),
+            lawspec.runtime.LawSpecTyped.fromNativeInt32(int321),
+            lawspec.runtime.LawSpecTyped.fromNativeIsolationLevel(isolationLevel1)));
   }
 
   public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState>
       clusterHeartbeat(
           Map<String, Object> symbols,
-          lawspec.data.BrokerState value0,
-          java.lang.String value1,
-          java.lang.String value2,
-          java.lang.Integer value3)
+          lawspec.data.BrokerState state,
+          java.lang.String text1,
+          java.lang.String text2,
+          java.lang.Integer int321)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairUnitBrokerState(
         lawspec.runtime.LawSpecTyped.clusterHeartbeat(
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeInt32(value3)));
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(state),
+            lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+            lawspec.runtime.LawSpecTyped.fromNativeText(text2),
+            lawspec.runtime.LawSpecTyped.fromNativeInt32(int321)));
   }
 
   public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState>
       clusterHeartbeatRequest(
           Map<String, Object> symbols,
-          lawspec.data.BrokerState value0,
-          java.lang.String value1,
-          java.lang.String value2,
-          java.lang.Integer value3)
+          lawspec.data.BrokerState state,
+          java.lang.String text1,
+          java.lang.String text2,
+          java.lang.Integer int321)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairUnitBrokerState(
         lawspec.runtime.LawSpecTyped.clusterHeartbeat(
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeInt32(value3)));
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(state),
+            lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+            lawspec.runtime.LawSpecTyped.fromNativeText(text2),
+            lawspec.runtime.LawSpecTyped.fromNativeInt32(int321)));
   }
 
   public static lawspec.data.Pair<lawspec.data.ProducerIdAndEpoch, lawspec.data.BrokerState>
       clusterInitProducerIdRequest(
           Map<String, Object> symbols,
-          lawspec.data.BrokerState value0,
-          lawspec.runtime.LawSpecRuntime.Maybe<java.lang.String> value1)
+          lawspec.data.BrokerState state,
+          lawspec.runtime.LawSpecRuntime.Maybe<java.lang.String> maybe1)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairProducerIdAndEpochBrokerState(
         lawspec.runtime.LawSpecTyped.clusterInitProducerIdRequest(
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeMaybeText(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(state),
+            lawspec.runtime.LawSpecTyped.fromNativeMaybeText(maybe1)));
   }
 
   public static lawspec.data.Pair<java.lang.Integer, lawspec.data.BrokerState>
       clusterJoinGroup(
           Map<String, Object> symbols,
-          lawspec.data.BrokerState value0,
-          java.lang.String value1,
-          java.lang.String value2,
-          java.util.List<java.lang.String> value3)
+          lawspec.data.BrokerState state,
+          java.lang.String text1,
+          java.lang.String text2,
+          java.util.List<java.lang.String> list1)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairInt32BrokerState(
         lawspec.runtime.LawSpecTyped.clusterJoinGroup(
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeListText(value3)));
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(state),
+            lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+            lawspec.runtime.LawSpecTyped.fromNativeText(text2),
+            lawspec.runtime.LawSpecTyped.fromNativeListText(list1)));
   }
 
   public static lawspec.data.Pair<java.lang.Integer, lawspec.data.BrokerState>
       clusterJoinGroupRequest(
           Map<String, Object> symbols,
-          lawspec.data.BrokerState value0,
-          java.lang.String value1,
-          java.lang.String value2,
-          java.util.List<java.lang.String> value3)
+          lawspec.data.BrokerState state,
+          java.lang.String text1,
+          java.lang.String text2,
+          java.util.List<java.lang.String> list1)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairInt32BrokerState(
         lawspec.runtime.LawSpecTyped.clusterJoinGroup(
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeListText(value3)));
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(state),
+            lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+            lawspec.runtime.LawSpecTyped.fromNativeText(text2),
+            lawspec.runtime.LawSpecTyped.fromNativeListText(list1)));
   }
 
   public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState>
       clusterLeaveGroup(
           Map<String, Object> symbols,
-          lawspec.data.BrokerState value0,
-          java.lang.String value1,
-          java.lang.String value2)
+          lawspec.data.BrokerState state,
+          java.lang.String text1,
+          java.lang.String text2)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairUnitBrokerState(
         lawspec.runtime.LawSpecTyped.clusterLeaveGroup(
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(state),
+            lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+            lawspec.runtime.LawSpecTyped.fromNativeText(text2)));
   }
 
   public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState>
       clusterLeaveGroupRequest(
           Map<String, Object> symbols,
-          lawspec.data.BrokerState value0,
-          java.lang.String value1,
-          java.lang.String value2)
+          lawspec.data.BrokerState state,
+          java.lang.String text1,
+          java.lang.String text2)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairUnitBrokerState(
         lawspec.runtime.LawSpecTyped.clusterLeaveGroup(
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(state),
+            lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+            lawspec.runtime.LawSpecTyped.fromNativeText(text2)));
   }
 
   public static lawspec.data.Pair<java.lang.Long, lawspec.data.BrokerState>
       clusterListOffsets(
           Map<String, Object> symbols,
-          lawspec.data.BrokerState value0,
-          lawspec.data.TopicPartition value1,
-          lawspec.data.OffsetSpec value2,
-          lawspec.data.IsolationLevel value3)
+          lawspec.data.BrokerState state,
+          lawspec.data.TopicPartition topicPartition1,
+          lawspec.data.OffsetSpec offsetSpec1,
+          lawspec.data.IsolationLevel isolationLevel1)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairInt64BrokerState(
         lawspec.runtime.LawSpecTyped.clusterListOffsets(
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeOffsetSpec(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeIsolationLevel(value3)));
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(state),
+            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(topicPartition1),
+            lawspec.runtime.LawSpecTyped.fromNativeOffsetSpec(offsetSpec1),
+            lawspec.runtime.LawSpecTyped.fromNativeIsolationLevel(isolationLevel1)));
   }
 
   public static lawspec.data.Pair<java.lang.Long, lawspec.data.BrokerState>
       clusterListOffsetsRequest(
           Map<String, Object> symbols,
-          lawspec.data.BrokerState value0,
-          lawspec.data.TopicPartition value1,
-          lawspec.data.OffsetSpec value2,
-          lawspec.data.IsolationLevel value3)
+          lawspec.data.BrokerState state,
+          lawspec.data.TopicPartition topicPartition1,
+          lawspec.data.OffsetSpec offsetSpec1,
+          lawspec.data.IsolationLevel isolationLevel1)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairInt64BrokerState(
         lawspec.runtime.LawSpecTyped.clusterListOffsets(
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeOffsetSpec(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeIsolationLevel(value3)));
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(state),
+            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(topicPartition1),
+            lawspec.runtime.LawSpecTyped.fromNativeOffsetSpec(offsetSpec1),
+            lawspec.runtime.LawSpecTyped.fromNativeIsolationLevel(isolationLevel1)));
   }
 
   public static lawspec.data.Pair<
           lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Integer>, lawspec.data.BrokerState>
       clusterMetadataRequest(
-          Map<String, Object> symbols, lawspec.data.BrokerState value0, java.lang.String value1)
+          Map<String, Object> symbols, lawspec.data.BrokerState state, java.lang.String text1)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairMaybeInt32BrokerState(
         lawspec.runtime.LawSpecTyped.clusterMetadataRequest(
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(state),
+            lawspec.runtime.LawSpecTyped.fromNativeText(text1)));
   }
 
   public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState>
       clusterOffsetCommitRequest(
           Map<String, Object> symbols,
-          lawspec.data.BrokerState value0,
-          java.lang.String value1,
-          java.lang.String value2,
-          java.lang.Integer value3,
-          java.util.List<lawspec.data.OffsetEntry> value4)
+          lawspec.data.BrokerState state,
+          java.lang.String text1,
+          java.lang.String text2,
+          java.lang.Integer int321,
+          java.util.List<lawspec.data.OffsetEntry> list1)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairUnitBrokerState(
         lawspec.runtime.LawSpecTyped.clusterCommitOffsets(
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeInt32(value3),
-            lawspec.runtime.LawSpecTyped.fromNativeListOffsetEntry(value4)));
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(state),
+            lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+            lawspec.runtime.LawSpecTyped.fromNativeText(text2),
+            lawspec.runtime.LawSpecTyped.fromNativeInt32(int321),
+            lawspec.runtime.LawSpecTyped.fromNativeListOffsetEntry(list1)));
   }
 
   public static lawspec.data.Pair<
           lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Long>, lawspec.data.BrokerState>
       clusterOffsetFetchRequest(
           Map<String, Object> symbols,
-          lawspec.data.BrokerState value0,
-          java.lang.String value1,
-          lawspec.data.TopicPartition value2)
+          lawspec.data.BrokerState state,
+          java.lang.String text1,
+          lawspec.data.TopicPartition topicPartition1)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairMaybeInt64BrokerState(
         lawspec.runtime.LawSpecTyped.clusterFetchOffset(
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(state),
+            lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(topicPartition1)));
   }
 
   public static lawspec.data.Pair<
           lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Integer>, lawspec.data.BrokerState>
       clusterPartitionsFor(
-          Map<String, Object> symbols, lawspec.data.BrokerState value0, java.lang.String value1)
+          Map<String, Object> symbols, lawspec.data.BrokerState state, java.lang.String text1)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairMaybeInt32BrokerState(
         lawspec.runtime.LawSpecTyped.clusterMetadataRequest(
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(state),
+            lawspec.runtime.LawSpecTyped.fromNativeText(text1)));
   }
 
   public static lawspec.data.Pair<java.lang.Long, lawspec.data.BrokerState>
       clusterProduceRequest(
           Map<String, Object> symbols,
-          lawspec.data.BrokerState value0,
-          lawspec.data.TopicPartition value1,
-          lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerTag> value2,
-          java.util.List<lawspec.data.Record> value3)
+          lawspec.data.BrokerState state,
+          lawspec.data.TopicPartition topicPartition1,
+          lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerTag> maybe1,
+          java.util.List<lawspec.data.Record> list1)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairInt64BrokerState(
         lawspec.runtime.LawSpecTyped.clusterProduceRequest(
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeMaybeProducerTag(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeListRecord(value3)));
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(state),
+            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(topicPartition1),
+            lawspec.runtime.LawSpecTyped.fromNativeMaybeProducerTag(maybe1),
+            lawspec.runtime.LawSpecTyped.fromNativeListRecord(list1)));
   }
 
   public static lawspec.data.BrokerState
-      clusterStart(Map<String, Object> symbols, lawspec.runtime.LawSpecRuntime.Value value0)
+      clusterStart(Map<String, Object> symbols, lawspec.runtime.LawSpecRuntime.Value lawspecUnit)
   {
     return lawspec.runtime.LawSpecTyped.toNativeBrokerState(
         lawspec.runtime.LawSpecTyped.clusterStart(
-            lawspec.runtime.LawSpecTyped.fromNativeUnit(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeUnit(lawspecUnit)));
   }
 
   public static lawspec.data.Pair<
           java.util.List<lawspec.data.TopicPartition>, lawspec.data.BrokerState>
       clusterSyncGroup(
           Map<String, Object> symbols,
-          lawspec.data.BrokerState value0,
-          java.lang.String value1,
-          java.lang.String value2,
-          java.lang.Integer value3)
+          lawspec.data.BrokerState state,
+          java.lang.String text1,
+          java.lang.String text2,
+          java.lang.Integer int321)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairListTopicPartitionBrokerState(
         lawspec.runtime.LawSpecTyped.clusterSyncGroup(
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeInt32(value3)));
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(state),
+            lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+            lawspec.runtime.LawSpecTyped.fromNativeText(text2),
+            lawspec.runtime.LawSpecTyped.fromNativeInt32(int321)));
   }
 
   public static lawspec.data.Pair<
           java.util.List<lawspec.data.TopicPartition>, lawspec.data.BrokerState>
       clusterSyncGroupRequest(
           Map<String, Object> symbols,
-          lawspec.data.BrokerState value0,
-          java.lang.String value1,
-          java.lang.String value2,
-          java.lang.Integer value3)
+          lawspec.data.BrokerState state,
+          java.lang.String text1,
+          java.lang.String text2,
+          java.lang.Integer int321)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairListTopicPartitionBrokerState(
         lawspec.runtime.LawSpecTyped.clusterSyncGroup(
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeInt32(value3)));
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(state),
+            lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+            lawspec.runtime.LawSpecTyped.fromNativeText(text2),
+            lawspec.runtime.LawSpecTyped.fromNativeInt32(int321)));
   }
 
   public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState>
       clusterTxnOffsetCommitRequest(
           Map<String, Object> symbols,
-          lawspec.data.BrokerState value0,
-          java.lang.String value1,
-          java.lang.Long value2,
-          java.lang.Short value3,
-          java.lang.String value4,
-          java.util.List<lawspec.data.OffsetEntry> value5)
+          lawspec.data.BrokerState state,
+          java.lang.String text1,
+          java.lang.Long int641,
+          java.lang.Short int161,
+          java.lang.String text2,
+          java.util.List<lawspec.data.OffsetEntry> list1)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairUnitBrokerState(
         lawspec.runtime.LawSpecTyped.clusterTxnOffsetCommitRequest(
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeInt16(value3),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value4),
-            lawspec.runtime.LawSpecTyped.fromNativeListOffsetEntry(value5)));
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(state),
+            lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(int641),
+            lawspec.runtime.LawSpecTyped.fromNativeInt16(int161),
+            lawspec.runtime.LawSpecTyped.fromNativeText(text2),
+            lawspec.runtime.LawSpecTyped.fromNativeListOffsetEntry(list1)));
   }
 
   public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.ConsumerState>
       kafkaConsumerAssign(
           Map<String, Object> symbols,
-          lawspec.data.ConsumerState value0,
-          java.util.List<lawspec.data.TopicPartition> value1)
+          lawspec.data.ConsumerState consumerState,
+          java.util.List<lawspec.data.TopicPartition> list1)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairUnitConsumerState(
         lawspec.runtime.LawSpecTyped.kafkaConsumerAssign(
-            lawspec.runtime.LawSpecTyped.fromNativeConsumerState(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeConsumerState(consumerState),
+            lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(list1)));
   }
 
   public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.ConsumerState>
       kafkaConsumerClose(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          lawspec.data.ConsumerState value0)
+          lawspec.data.ConsumerState consumerState)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(SCHEMA, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.kafkaConsumerClose2(symbols, argument0);
+      var consumerStateCodec =
+          lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(SCHEMA, 64, symbols);
+      var consumerStateValue = consumerStateCodec.encode(consumerState);
+      var result =
+          lawspec.runtime.LawSpecDefinitionBodies.kafkaConsumerClose2(symbols, consumerStateValue);
       var resultCodec =
           lawspec.runtime.LawSpecDataCodecs.pairCodec(
               SCHEMA,
@@ -497,16 +499,18 @@ public final class Kafka
       kafkaConsumerCommitSync(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          lawspec.data.ConsumerState value0)
+          lawspec.data.ConsumerState consumerState)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(SCHEMA, 64, symbols);
-      var argument0 = codec0.encode(value0);
+      var consumerStateCodec =
+          lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(SCHEMA, 64, symbols);
+      var consumerStateValue = consumerStateCodec.encode(consumerState);
       var result =
-          lawspec.runtime.LawSpecDefinitionBodies.kafkaConsumerCommitSync2(symbols, argument0);
+          lawspec.runtime.LawSpecDefinitionBodies.kafkaConsumerCommitSync2(
+              symbols, consumerStateValue);
       var resultCodec =
           lawspec.runtime.LawSpecDataCodecs.pairCodec(
               SCHEMA,
@@ -536,20 +540,22 @@ public final class Kafka
       kafkaConsumerCommittedOffset(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          lawspec.data.ConsumerState value0,
-          lawspec.data.TopicPartition value1)
+          lawspec.data.ConsumerState consumerState,
+          lawspec.data.TopicPartition topicPartition1)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(SCHEMA, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(SCHEMA, 64, symbols);
-      var argument1 = codec1.encode(value1);
+      var consumerStateCodec =
+          lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(SCHEMA, 64, symbols);
+      var consumerStateValue = consumerStateCodec.encode(consumerState);
+      var topicPartition1Codec =
+          lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(SCHEMA, 64, symbols);
+      var topicPartition1Value = topicPartition1Codec.encode(topicPartition1);
       var result =
           lawspec.runtime.LawSpecDefinitionBodies.kafkaConsumerCommittedOffset2(
-              symbols, argument0, argument1);
+              symbols, consumerStateValue, topicPartition1Value);
       var resultCodec =
           lawspec.runtime.LawSpecDataCodecs.pairCodec(
               SCHEMA,
@@ -577,19 +583,21 @@ public final class Kafka
       kafkaConsumerPoll(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          lawspec.data.ConsumerState value0,
-          java.lang.Integer value1)
+          lawspec.data.ConsumerState consumerState,
+          java.lang.Integer int321)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(SCHEMA, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = SCHEMA.scalar("Int32", 64, java.lang.Integer.class);
-      var argument1 = codec1.encode(value1);
+      var consumerStateCodec =
+          lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(SCHEMA, 64, symbols);
+      var consumerStateValue = consumerStateCodec.encode(consumerState);
+      var int321Codec = SCHEMA.scalar("Int32", 64, java.lang.Integer.class);
+      var int321Value = int321Codec.encode(int321);
       var result =
-          lawspec.runtime.LawSpecDefinitionBodies.kafkaConsumerPoll2(symbols, argument0, argument1);
+          lawspec.runtime.LawSpecDefinitionBodies.kafkaConsumerPoll2(
+              symbols, consumerStateValue, int321Value);
       var resultCodec =
           lawspec.runtime.LawSpecDataCodecs.pairCodec(
               SCHEMA,
@@ -623,20 +631,22 @@ public final class Kafka
       kafkaConsumerPosition(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          lawspec.data.ConsumerState value0,
-          lawspec.data.TopicPartition value1)
+          lawspec.data.ConsumerState consumerState,
+          lawspec.data.TopicPartition topicPartition1)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(SCHEMA, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(SCHEMA, 64, symbols);
-      var argument1 = codec1.encode(value1);
+      var consumerStateCodec =
+          lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(SCHEMA, 64, symbols);
+      var consumerStateValue = consumerStateCodec.encode(consumerState);
+      var topicPartition1Codec =
+          lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(SCHEMA, 64, symbols);
+      var topicPartition1Value = topicPartition1Codec.encode(topicPartition1);
       var result =
           lawspec.runtime.LawSpecDefinitionBodies.kafkaConsumerPosition2(
-              symbols, argument0, argument1);
+              symbols, consumerStateValue, topicPartition1Value);
       var resultCodec =
           lawspec.runtime.LawSpecDataCodecs.pairCodec(
               SCHEMA,
@@ -667,35 +677,36 @@ public final class Kafka
           lawspec.data.ConsumerState>
       kafkaConsumerSeek(
           Map<String, Object> symbols,
-          lawspec.data.ConsumerState value0,
-          lawspec.data.TopicPartition value1,
-          java.lang.Long value2)
+          lawspec.data.ConsumerState consumerState,
+          lawspec.data.TopicPartition topicPartition1,
+          java.lang.Long int641)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairEitherKafkaErrorUnitConsumerState(
         lawspec.runtime.LawSpecTyped.kafkaConsumerSeek(
-            lawspec.runtime.LawSpecTyped.fromNativeConsumerState(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeConsumerState(consumerState),
+            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(topicPartition1),
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(int641)));
   }
 
   public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.ConsumerState>
       kafkaConsumerSetIsolationLevel(
           Map<String, Object> symbols,
-          lawspec.data.ConsumerState value0,
-          lawspec.data.IsolationLevel value1)
+          lawspec.data.ConsumerState consumerState,
+          lawspec.data.IsolationLevel isolationLevel1)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairUnitConsumerState(
         lawspec.runtime.LawSpecTyped.kafkaConsumerSetIsolationLevel(
-            lawspec.runtime.LawSpecTyped.fromNativeConsumerState(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeIsolationLevel(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeConsumerState(consumerState),
+            lawspec.runtime.LawSpecTyped.fromNativeIsolationLevel(isolationLevel1)));
   }
 
   public static lawspec.data.ConsumerState
-      kafkaConsumerStart(Map<String, Object> symbols, lawspec.runtime.LawSpecRuntime.Value value0)
+      kafkaConsumerStart(
+          Map<String, Object> symbols, lawspec.runtime.LawSpecRuntime.Value lawspecUnit)
   {
     return lawspec.runtime.LawSpecTyped.toNativeConsumerState(
         lawspec.runtime.LawSpecTyped.kafkaConsumerStart(
-            lawspec.runtime.LawSpecTyped.fromNativeUnit(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeUnit(lawspecUnit)));
   }
 
   public static lawspec.data.Pair<
@@ -705,26 +716,27 @@ public final class Kafka
       kafkaConsumerSubscribe(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          lawspec.data.ConsumerState value0,
-          java.lang.String value1,
-          java.lang.String value2,
-          java.util.List<java.lang.String> value3)
+          lawspec.data.ConsumerState consumerState,
+          java.lang.String text1,
+          java.lang.String text2,
+          java.util.List<java.lang.String> list1)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(SCHEMA, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = SCHEMA.scalar("Text", 64, java.lang.String.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 = SCHEMA.scalar("Text", 64, java.lang.String.class);
-      var argument2 = codec2.encode(value2);
-      var codec3 = SCHEMA.list(SCHEMA.scalar("Text", 64, java.lang.String.class), 64, symbols);
-      var argument3 = codec3.encode(value3);
+      var consumerStateCodec =
+          lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(SCHEMA, 64, symbols);
+      var consumerStateValue = consumerStateCodec.encode(consumerState);
+      var text1Codec = SCHEMA.scalar("Text", 64, java.lang.String.class);
+      var text1Value = text1Codec.encode(text1);
+      var text2Codec = SCHEMA.scalar("Text", 64, java.lang.String.class);
+      var text2Value = text2Codec.encode(text2);
+      var list1Codec = SCHEMA.list(SCHEMA.scalar("Text", 64, java.lang.String.class), 64, symbols);
+      var list1Value = list1Codec.encode(list1);
       var result =
           lawspec.runtime.LawSpecDefinitionBodies.kafkaConsumerSubscribe2(
-              symbols, argument0, argument1, argument2, argument3);
+              symbols, consumerStateValue, text1Value, text2Value, list1Value);
       var resultCodec =
           lawspec.runtime.LawSpecDataCodecs.pairCodec(
               SCHEMA,
@@ -759,17 +771,18 @@ public final class Kafka
       kafkaProducerEnableIdempotence(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          lawspec.data.ProducerState value0)
+          lawspec.data.ProducerState producerState)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.producerStateCodec(SCHEMA, 64, symbols);
-      var argument0 = codec0.encode(value0);
+      var producerStateCodec =
+          lawspec.runtime.LawSpecDataCodecs.producerStateCodec(SCHEMA, 64, symbols);
+      var producerStateValue = producerStateCodec.encode(producerState);
       var result =
           lawspec.runtime.LawSpecDefinitionBodies.kafkaProducerEnableIdempotence2(
-              symbols, argument0);
+              symbols, producerStateValue);
       var resultCodec =
           lawspec.runtime.LawSpecDataCodecs.pairCodec(
               SCHEMA,
@@ -795,21 +808,22 @@ public final class Kafka
   }
 
   public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.ProducerState>
-      kafkaProducerFlush(Map<String, Object> symbols, lawspec.data.ProducerState value0)
+      kafkaProducerFlush(Map<String, Object> symbols, lawspec.data.ProducerState producerState)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairUnitProducerState(
         lawspec.runtime.LawSpecTyped.kafkaProducerFlush(
-            lawspec.runtime.LawSpecTyped.fromNativeProducerState(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeProducerState(producerState)));
   }
 
   public static lawspec.data.Pair<
           lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerIdAndEpoch>,
           lawspec.data.ProducerState>
-      kafkaProducerProducerIdentity(Map<String, Object> symbols, lawspec.data.ProducerState value0)
+      kafkaProducerProducerIdentity(
+          Map<String, Object> symbols, lawspec.data.ProducerState producerState)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairMaybeProducerIdAndEpochProducerState(
         lawspec.runtime.LawSpecTyped.kafkaProducerProducerIdentity(
-            lawspec.runtime.LawSpecTyped.fromNativeProducerState(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeProducerState(producerState)));
   }
 
   public static lawspec.data.Pair<
@@ -819,16 +833,18 @@ public final class Kafka
       kafkaProducerRetryLastSend(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          lawspec.data.ProducerState value0)
+          lawspec.data.ProducerState producerState)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.producerStateCodec(SCHEMA, 64, symbols);
-      var argument0 = codec0.encode(value0);
+      var producerStateCodec =
+          lawspec.runtime.LawSpecDataCodecs.producerStateCodec(SCHEMA, 64, symbols);
+      var producerStateValue = producerStateCodec.encode(producerState);
       var result =
-          lawspec.runtime.LawSpecDefinitionBodies.kafkaProducerRetryLastSend2(symbols, argument0);
+          lawspec.runtime.LawSpecDefinitionBodies.kafkaProducerRetryLastSend2(
+              symbols, producerStateValue);
       var resultCodec =
           lawspec.runtime.LawSpecDataCodecs.pairCodec(
               SCHEMA,
@@ -861,8 +877,8 @@ public final class Kafka
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
           lawspec.abilities.lawtwin.Kafka.Partitioner partitioner,
-          lawspec.data.ProducerState value0,
-          lawspec.data.ProducerRecord value1)
+          lawspec.data.ProducerState producerState,
+          lawspec.data.ProducerRecord producerRecord1)
   {
     try
     {
@@ -873,12 +889,15 @@ public final class Kafka
               broker,
               "lawtwin.kafka::ability::Partitioner",
               partitioner));
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.producerStateCodec(SCHEMA, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.producerRecordCodec(SCHEMA, 64, symbols);
-      var argument1 = codec1.encode(value1);
+      var producerStateCodec =
+          lawspec.runtime.LawSpecDataCodecs.producerStateCodec(SCHEMA, 64, symbols);
+      var producerStateValue = producerStateCodec.encode(producerState);
+      var producerRecord1Codec =
+          lawspec.runtime.LawSpecDataCodecs.producerRecordCodec(SCHEMA, 64, symbols);
+      var producerRecord1Value = producerRecord1Codec.encode(producerRecord1);
       var result =
-          lawspec.runtime.LawSpecDefinitionBodies.kafkaProducerSend2(symbols, argument0, argument1);
+          lawspec.runtime.LawSpecDefinitionBodies.kafkaProducerSend2(
+              symbols, producerStateValue, producerRecord1Value);
       var resultCodec =
           lawspec.runtime.LawSpecDataCodecs.pairCodec(
               SCHEMA,
@@ -904,11 +923,12 @@ public final class Kafka
   }
 
   public static lawspec.data.ProducerState
-      kafkaProducerStart(Map<String, Object> symbols, lawspec.runtime.LawSpecRuntime.Value value0)
+      kafkaProducerStart(
+          Map<String, Object> symbols, lawspec.runtime.LawSpecRuntime.Value lawspecUnit)
   {
     return lawspec.runtime.LawSpecTyped.toNativeProducerState(
         lawspec.runtime.LawSpecTyped.kafkaProducerStart(
-            lawspec.runtime.LawSpecTyped.fromNativeUnit(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeUnit(lawspecUnit)));
   }
 
   public static lawspec.data.Pair<
@@ -918,17 +938,18 @@ public final class Kafka
       kafkaTransactionsAbortTransaction(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          lawspec.data.TransactionState value0)
+          lawspec.data.TransactionState txnState)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.transactionStateCodec(SCHEMA, 64, symbols);
-      var argument0 = codec0.encode(value0);
+      var txnStateCodec =
+          lawspec.runtime.LawSpecDataCodecs.transactionStateCodec(SCHEMA, 64, symbols);
+      var txnStateValue = txnStateCodec.encode(txnState);
       var result =
           lawspec.runtime.LawSpecDefinitionBodies.kafkaTransactionsAbortTransaction2(
-              symbols, argument0);
+              symbols, txnStateValue);
       var resultCodec =
           lawspec.runtime.LawSpecDataCodecs.pairCodec(
               SCHEMA,
@@ -960,24 +981,25 @@ public final class Kafka
       kafkaTransactionsAddPartitionsToTransaction(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          lawspec.data.TransactionState value0,
-          java.util.List<lawspec.data.TopicPartition> value1)
+          lawspec.data.TransactionState txnState,
+          java.util.List<lawspec.data.TopicPartition> list1)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.transactionStateCodec(SCHEMA, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
+      var txnStateCodec =
+          lawspec.runtime.LawSpecDataCodecs.transactionStateCodec(SCHEMA, 64, symbols);
+      var txnStateValue = txnStateCodec.encode(txnState);
+      var list1Codec =
           SCHEMA.list(
               lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(SCHEMA, 64, symbols),
               64,
               symbols);
-      var argument1 = codec1.encode(value1);
+      var list1Value = list1Codec.encode(list1);
       var result =
           lawspec.runtime.LawSpecDefinitionBodies.kafkaTransactionsAddPartitionsToTransaction2(
-              symbols, argument0, argument1);
+              symbols, txnStateValue, list1Value);
       var resultCodec =
           lawspec.runtime.LawSpecDataCodecs.pairCodec(
               SCHEMA,
@@ -1007,11 +1029,11 @@ public final class Kafka
                   lawspec.data.KafkaError, lawspec.runtime.LawSpecRuntime.Value>,
           lawspec.data.TransactionState>
       kafkaTransactionsBeginTransaction(
-          Map<String, Object> symbols, lawspec.data.TransactionState value0)
+          Map<String, Object> symbols, lawspec.data.TransactionState txnState)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairEitherKafkaErrorUnitTransactionState(
         lawspec.runtime.LawSpecTyped.kafkaTransactionsBeginTransaction(
-            lawspec.runtime.LawSpecTyped.fromNativeTransactionState(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeTransactionState(txnState)));
   }
 
   public static lawspec.data.Pair<
@@ -1021,17 +1043,18 @@ public final class Kafka
       kafkaTransactionsCommitTransaction(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          lawspec.data.TransactionState value0)
+          lawspec.data.TransactionState txnState)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.transactionStateCodec(SCHEMA, 64, symbols);
-      var argument0 = codec0.encode(value0);
+      var txnStateCodec =
+          lawspec.runtime.LawSpecDataCodecs.transactionStateCodec(SCHEMA, 64, symbols);
+      var txnStateValue = txnStateCodec.encode(txnState);
       var result =
           lawspec.runtime.LawSpecDefinitionBodies.kafkaTransactionsCommitTransaction2(
-              symbols, argument0);
+              symbols, txnStateValue);
       var resultCodec =
           lawspec.runtime.LawSpecDataCodecs.pairCodec(
               SCHEMA,
@@ -1063,20 +1086,21 @@ public final class Kafka
       kafkaTransactionsInitTransactions(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          lawspec.data.TransactionState value0,
-          java.lang.String value1)
+          lawspec.data.TransactionState txnState,
+          java.lang.String text1)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.transactionStateCodec(SCHEMA, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = SCHEMA.scalar("Text", 64, java.lang.String.class);
-      var argument1 = codec1.encode(value1);
+      var txnStateCodec =
+          lawspec.runtime.LawSpecDataCodecs.transactionStateCodec(SCHEMA, 64, symbols);
+      var txnStateValue = txnStateCodec.encode(txnState);
+      var text1Codec = SCHEMA.scalar("Text", 64, java.lang.String.class);
+      var text1Value = text1Codec.encode(text1);
       var result =
           lawspec.runtime.LawSpecDefinitionBodies.kafkaTransactionsInitTransactions2(
-              symbols, argument0, argument1);
+              symbols, txnStateValue, text1Value);
       var resultCodec =
           lawspec.runtime.LawSpecDataCodecs.pairCodec(
               SCHEMA,
@@ -1109,8 +1133,8 @@ public final class Kafka
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
           lawspec.abilities.lawtwin.Kafka.Partitioner partitioner,
-          lawspec.data.TransactionState value0,
-          lawspec.data.ProducerRecord value1)
+          lawspec.data.TransactionState txnState,
+          lawspec.data.ProducerRecord producerRecord1)
   {
     try
     {
@@ -1121,13 +1145,15 @@ public final class Kafka
               broker,
               "lawtwin.kafka::ability::Partitioner",
               partitioner));
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.transactionStateCodec(SCHEMA, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.producerRecordCodec(SCHEMA, 64, symbols);
-      var argument1 = codec1.encode(value1);
+      var txnStateCodec =
+          lawspec.runtime.LawSpecDataCodecs.transactionStateCodec(SCHEMA, 64, symbols);
+      var txnStateValue = txnStateCodec.encode(txnState);
+      var producerRecord1Codec =
+          lawspec.runtime.LawSpecDataCodecs.producerRecordCodec(SCHEMA, 64, symbols);
+      var producerRecord1Value = producerRecord1Codec.encode(producerRecord1);
       var result =
           lawspec.runtime.LawSpecDefinitionBodies.kafkaTransactionsSendInTransaction2(
-              symbols, argument0, argument1);
+              symbols, txnStateValue, producerRecord1Value);
       var resultCodec =
           lawspec.runtime.LawSpecDataCodecs.pairCodec(
               SCHEMA,
@@ -1159,25 +1185,26 @@ public final class Kafka
       kafkaTransactionsSendOffsetsToTransaction(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          lawspec.data.TransactionState value0,
-          java.lang.String value1,
-          java.util.List<lawspec.data.OffsetEntry> value2)
+          lawspec.data.TransactionState txnState,
+          java.lang.String text1,
+          java.util.List<lawspec.data.OffsetEntry> list1)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.transactionStateCodec(SCHEMA, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = SCHEMA.scalar("Text", 64, java.lang.String.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 =
+      var txnStateCodec =
+          lawspec.runtime.LawSpecDataCodecs.transactionStateCodec(SCHEMA, 64, symbols);
+      var txnStateValue = txnStateCodec.encode(txnState);
+      var text1Codec = SCHEMA.scalar("Text", 64, java.lang.String.class);
+      var text1Value = text1Codec.encode(text1);
+      var list1Codec =
           SCHEMA.list(
               lawspec.runtime.LawSpecDataCodecs.offsetEntryCodec(SCHEMA, 64, symbols), 64, symbols);
-      var argument2 = codec2.encode(value2);
+      var list1Value = list1Codec.encode(list1);
       var result =
           lawspec.runtime.LawSpecDefinitionBodies.kafkaTransactionsSendOffsetsToTransaction2(
-              symbols, argument0, argument1, argument2);
+              symbols, txnStateValue, text1Value, list1Value);
       var resultCodec =
           lawspec.runtime.LawSpecDataCodecs.pairCodec(
               SCHEMA,
@@ -1204,54 +1231,54 @@ public final class Kafka
 
   public static lawspec.data.TransactionState
       kafkaTransactionsStart(
-          Map<String, Object> symbols, lawspec.runtime.LawSpecRuntime.Value value0)
+          Map<String, Object> symbols, lawspec.runtime.LawSpecRuntime.Value lawspecUnit)
   {
     return lawspec.runtime.LawSpecTyped.toNativeTransactionState(
         lawspec.runtime.LawSpecTyped.kafkaTransactionsStart(
-            lawspec.runtime.LawSpecTyped.fromNativeUnit(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeUnit(lawspecUnit)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Short>
-      lawspecCollectionsBoundedInt16(Map<String, Object> symbols, java.lang.Number value0)
+      lawspecCollectionsBoundedInt16(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeInt16(
         lawspec.runtime.LawSpecTyped.boundedInt16(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Integer>
-      lawspecCollectionsBoundedInt32(Map<String, Object> symbols, java.lang.Number value0)
+      lawspecCollectionsBoundedInt32(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeInt32(
         lawspec.runtime.LawSpecTyped.boundedInt32(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Long>
-      lawspecCollectionsBoundedInt64(Map<String, Object> symbols, java.lang.Number value0)
+      lawspecCollectionsBoundedInt64(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeInt64(
         lawspec.runtime.LawSpecTyped.boundedInt64(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Byte>
-      lawspecCollectionsBoundedInt8(Map<String, Object> symbols, java.lang.Number value0)
+      lawspecCollectionsBoundedInt8(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeInt8(
         lawspec.runtime.LawSpecTyped.boundedInt8(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<lawspec.runtime.LawSpecRuntime.Value>
-      collectionsBoundedIntSize(Map<String, Object> symbols, java.lang.Number value0)
+      collectionsBoundedIntSize(Map<String, Object> symbols, java.lang.Number value)
   {
     try
     {
-      var codec0 = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
+      var valueCodec = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
+      var valueValue = valueCodec.encode(value);
       var result =
-          lawspec.runtime.LawSpecDefinitionBodies.collectionsBoundedIntSize3(symbols, argument0);
+          lawspec.runtime.LawSpecDefinitionBodies.collectionsBoundedIntSize3(symbols, valueValue);
       var resultCodec =
           SCHEMA.maybe(
               SCHEMA.supported(new lawspec.runtime.LawSpecSchema.Named("IntSize"), 64, symbols),
@@ -1271,30 +1298,30 @@ public final class Kafka
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Integer>
-      lawspecCollectionsBoundedUint16(Map<String, Object> symbols, java.lang.Number value0)
+      lawspecCollectionsBoundedUint16(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeUint16(
         lawspec.runtime.LawSpecTyped.boundedUint16(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Long>
-      lawspecCollectionsBoundedUint32(Map<String, Object> symbols, java.lang.Number value0)
+      lawspecCollectionsBoundedUint32(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeUint32(
         lawspec.runtime.LawSpecTyped.boundedUint32(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.math.BigInteger>
-      lawspecCollectionsBoundedUint64(Map<String, Object> symbols, java.lang.Number value0)
+      lawspecCollectionsBoundedUint64(Map<String, Object> symbols, java.lang.Number value)
   {
     try
     {
-      var codec0 = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
+      var valueCodec = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
+      var valueValue = valueCodec.encode(value);
       var result =
-          lawspec.runtime.LawSpecDefinitionBodies.collectionsBoundedUint11(symbols, argument0);
+          lawspec.runtime.LawSpecDefinitionBodies.collectionsBoundedUint11(symbols, valueValue);
       var resultCodec =
           SCHEMA.maybe(SCHEMA.scalar("UInt64", 64, java.math.BigInteger.class), 64, symbols);
       return resultCodec.decode(result);
@@ -1311,22 +1338,22 @@ public final class Kafka
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Short>
-      lawspecCollectionsBoundedUint8(Map<String, Object> symbols, java.lang.Number value0)
+      lawspecCollectionsBoundedUint8(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeUint8(
         lawspec.runtime.LawSpecTyped.boundedUint8(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<lawspec.runtime.LawSpecRuntime.Value>
-      collectionsBoundedUintPtr(Map<String, Object> symbols, java.lang.Number value0)
+      collectionsBoundedUintPtr(Map<String, Object> symbols, java.lang.Number value)
   {
     try
     {
-      var codec0 = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
+      var valueCodec = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
+      var valueValue = valueCodec.encode(value);
       var result =
-          lawspec.runtime.LawSpecDefinitionBodies.collectionsBoundedUintPtr3(symbols, argument0);
+          lawspec.runtime.LawSpecDefinitionBodies.collectionsBoundedUintPtr3(symbols, valueValue);
       var resultCodec =
           SCHEMA.maybe(
               SCHEMA.supported(new lawspec.runtime.LawSpecSchema.Named("UIntPtr"), 64, symbols),
@@ -1346,14 +1373,14 @@ public final class Kafka
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<lawspec.runtime.LawSpecRuntime.Value>
-      collectionsBoundedUintSize(Map<String, Object> symbols, java.lang.Number value0)
+      collectionsBoundedUintSize(Map<String, Object> symbols, java.lang.Number value)
   {
     try
     {
-      var codec0 = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
+      var valueCodec = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
+      var valueValue = valueCodec.encode(value);
       var result =
-          lawspec.runtime.LawSpecDefinitionBodies.collectionsBoundedUintSize3(symbols, argument0);
+          lawspec.runtime.LawSpecDefinitionBodies.collectionsBoundedUintSize3(symbols, valueValue);
       var resultCodec =
           SCHEMA.maybe(
               SCHEMA.supported(new lawspec.runtime.LawSpecSchema.Named("UIntSize"), 64, symbols),
@@ -1373,46 +1400,47 @@ public final class Kafka
   }
 
   public static java.lang.Short
-      lawspecCollectionsSaturatingInt16(Map<String, Object> symbols, java.lang.Number value0)
+      lawspecCollectionsSaturatingInt16(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeInt16(
         lawspec.runtime.LawSpecTyped.saturatingInt16(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
   public static java.lang.Integer
-      lawspecCollectionsSaturatingInt32(Map<String, Object> symbols, java.lang.Number value0)
+      lawspecCollectionsSaturatingInt32(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeInt32(
         lawspec.runtime.LawSpecTyped.saturatingInt32(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
   public static java.lang.Long
-      lawspecCollectionsSaturatingInt64(Map<String, Object> symbols, java.lang.Number value0)
+      lawspecCollectionsSaturatingInt64(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeInt64(
         lawspec.runtime.LawSpecTyped.saturatingInt64(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
   public static java.lang.Byte
-      lawspecCollectionsSaturatingInt8(Map<String, Object> symbols, java.lang.Number value0)
+      lawspecCollectionsSaturatingInt8(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeInt8(
         lawspec.runtime.LawSpecTyped.saturatingInt8(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Value
-      collectionsSaturatingIntSize(Map<String, Object> symbols, java.lang.Number value0)
+      collectionsSaturatingIntSize(Map<String, Object> symbols, java.lang.Number value)
   {
     try
     {
-      var codec0 = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
+      var valueCodec = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
+      var valueValue = valueCodec.encode(value);
       var result =
-          lawspec.runtime.LawSpecDefinitionBodies.collectionsSaturatingIntSize3(symbols, argument0);
+          lawspec.runtime.LawSpecDefinitionBodies.collectionsSaturatingIntSize3(
+              symbols, valueValue);
       var resultCodec =
           SCHEMA.supported(new lawspec.runtime.LawSpecSchema.Named("IntSize"), 64, symbols);
       return resultCodec.decode(result);
@@ -1429,30 +1457,30 @@ public final class Kafka
   }
 
   public static java.lang.Integer
-      lawspecCollectionsSaturatingUint16(Map<String, Object> symbols, java.lang.Number value0)
+      lawspecCollectionsSaturatingUint16(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeUint16(
         lawspec.runtime.LawSpecTyped.saturatingUint16(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
   public static java.lang.Long
-      lawspecCollectionsSaturatingUint32(Map<String, Object> symbols, java.lang.Number value0)
+      lawspecCollectionsSaturatingUint32(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeUint32(
         lawspec.runtime.LawSpecTyped.saturatingUint32(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
   public static java.math.BigInteger
-      lawspecCollectionsSaturatingUint64(Map<String, Object> symbols, java.lang.Number value0)
+      lawspecCollectionsSaturatingUint64(Map<String, Object> symbols, java.lang.Number value)
   {
     try
     {
-      var codec0 = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
+      var valueCodec = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
+      var valueValue = valueCodec.encode(value);
       var result =
-          lawspec.runtime.LawSpecDefinitionBodies.collectionsSaturatingUint11(symbols, argument0);
+          lawspec.runtime.LawSpecDefinitionBodies.collectionsSaturatingUint11(symbols, valueValue);
       var resultCodec = SCHEMA.scalar("UInt64", 64, java.math.BigInteger.class);
       return resultCodec.decode(result);
     }
@@ -1468,22 +1496,23 @@ public final class Kafka
   }
 
   public static java.lang.Short
-      lawspecCollectionsSaturatingUint8(Map<String, Object> symbols, java.lang.Number value0)
+      lawspecCollectionsSaturatingUint8(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeUint8(
         lawspec.runtime.LawSpecTyped.saturatingUint8(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Value
-      collectionsSaturatingUintPtr(Map<String, Object> symbols, java.lang.Number value0)
+      collectionsSaturatingUintPtr(Map<String, Object> symbols, java.lang.Number value)
   {
     try
     {
-      var codec0 = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
+      var valueCodec = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
+      var valueValue = valueCodec.encode(value);
       var result =
-          lawspec.runtime.LawSpecDefinitionBodies.collectionsSaturatingUintPtr3(symbols, argument0);
+          lawspec.runtime.LawSpecDefinitionBodies.collectionsSaturatingUintPtr3(
+              symbols, valueValue);
       var resultCodec =
           SCHEMA.supported(new lawspec.runtime.LawSpecSchema.Named("UIntPtr"), 64, symbols);
       return resultCodec.decode(result);
@@ -1500,15 +1529,15 @@ public final class Kafka
   }
 
   public static lawspec.runtime.LawSpecRuntime.Value
-      collectionsSaturatingUintSize(Map<String, Object> symbols, java.lang.Number value0)
+      collectionsSaturatingUintSize(Map<String, Object> symbols, java.lang.Number value)
   {
     try
     {
-      var codec0 = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
+      var valueCodec = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
+      var valueValue = valueCodec.encode(value);
       var result =
           lawspec.runtime.LawSpecDefinitionBodies.collectionsSaturatingUintSize3(
-              symbols, argument0);
+              symbols, valueValue);
       var resultCodec =
           SCHEMA.supported(new lawspec.runtime.LawSpecSchema.Named("UIntSize"), 64, symbols);
       return resultCodec.decode(result);
@@ -1525,46 +1554,46 @@ public final class Kafka
   }
 
   public static java.lang.Short
-      lawspecCollectionsWrappingInt16(Map<String, Object> symbols, java.lang.Number value0)
+      lawspecCollectionsWrappingInt16(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeInt16(
         lawspec.runtime.LawSpecTyped.wrappingInt16(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
   public static java.lang.Integer
-      lawspecCollectionsWrappingInt32(Map<String, Object> symbols, java.lang.Number value0)
+      lawspecCollectionsWrappingInt32(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeInt32(
         lawspec.runtime.LawSpecTyped.wrappingInt32(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
   public static java.lang.Long
-      lawspecCollectionsWrappingInt64(Map<String, Object> symbols, java.lang.Number value0)
+      lawspecCollectionsWrappingInt64(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeInt64(
         lawspec.runtime.LawSpecTyped.wrappingInt64(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
   public static java.lang.Byte
-      lawspecCollectionsWrappingInt8(Map<String, Object> symbols, java.lang.Number value0)
+      lawspecCollectionsWrappingInt8(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeInt8(
         lawspec.runtime.LawSpecTyped.wrappingInt8(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Value
-      collectionsWrappingIntSize(Map<String, Object> symbols, java.lang.Number value0)
+      collectionsWrappingIntSize(Map<String, Object> symbols, java.lang.Number value)
   {
     try
     {
-      var codec0 = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
+      var valueCodec = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
+      var valueValue = valueCodec.encode(value);
       var result =
-          lawspec.runtime.LawSpecDefinitionBodies.collectionsWrappingIntSize3(symbols, argument0);
+          lawspec.runtime.LawSpecDefinitionBodies.collectionsWrappingIntSize3(symbols, valueValue);
       var resultCodec =
           SCHEMA.supported(new lawspec.runtime.LawSpecSchema.Named("IntSize"), 64, symbols);
       return resultCodec.decode(result);
@@ -1581,30 +1610,30 @@ public final class Kafka
   }
 
   public static java.lang.Integer
-      lawspecCollectionsWrappingUint16(Map<String, Object> symbols, java.lang.Number value0)
+      lawspecCollectionsWrappingUint16(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeUint16(
         lawspec.runtime.LawSpecTyped.wrappingUint16(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
   public static java.lang.Long
-      lawspecCollectionsWrappingUint32(Map<String, Object> symbols, java.lang.Number value0)
+      lawspecCollectionsWrappingUint32(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeUint32(
         lawspec.runtime.LawSpecTyped.wrappingUint32(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
   public static java.math.BigInteger
-      lawspecCollectionsWrappingUint64(Map<String, Object> symbols, java.lang.Number value0)
+      lawspecCollectionsWrappingUint64(Map<String, Object> symbols, java.lang.Number value)
   {
     try
     {
-      var codec0 = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
+      var valueCodec = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
+      var valueValue = valueCodec.encode(value);
       var result =
-          lawspec.runtime.LawSpecDefinitionBodies.collectionsWrappingUint11(symbols, argument0);
+          lawspec.runtime.LawSpecDefinitionBodies.collectionsWrappingUint11(symbols, valueValue);
       var resultCodec = SCHEMA.scalar("UInt64", 64, java.math.BigInteger.class);
       return resultCodec.decode(result);
     }
@@ -1620,22 +1649,22 @@ public final class Kafka
   }
 
   public static java.lang.Short
-      lawspecCollectionsWrappingUint8(Map<String, Object> symbols, java.lang.Number value0)
+      lawspecCollectionsWrappingUint8(Map<String, Object> symbols, java.lang.Number value)
   {
     return lawspec.runtime.LawSpecTyped.toNativeUint8(
         lawspec.runtime.LawSpecTyped.wrappingUint8(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(value)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Value
-      collectionsWrappingUintPtr(Map<String, Object> symbols, java.lang.Number value0)
+      collectionsWrappingUintPtr(Map<String, Object> symbols, java.lang.Number value)
   {
     try
     {
-      var codec0 = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
+      var valueCodec = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
+      var valueValue = valueCodec.encode(value);
       var result =
-          lawspec.runtime.LawSpecDefinitionBodies.collectionsWrappingUintPtr3(symbols, argument0);
+          lawspec.runtime.LawSpecDefinitionBodies.collectionsWrappingUintPtr3(symbols, valueValue);
       var resultCodec =
           SCHEMA.supported(new lawspec.runtime.LawSpecSchema.Named("UIntPtr"), 64, symbols);
       return resultCodec.decode(result);
@@ -1652,14 +1681,14 @@ public final class Kafka
   }
 
   public static lawspec.runtime.LawSpecRuntime.Value
-      collectionsWrappingUintSize(Map<String, Object> symbols, java.lang.Number value0)
+      collectionsWrappingUintSize(Map<String, Object> symbols, java.lang.Number value)
   {
     try
     {
-      var codec0 = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
+      var valueCodec = SCHEMA.scalar("Integer", 64, java.lang.Number.class);
+      var valueValue = valueCodec.encode(value);
       var result =
-          lawspec.runtime.LawSpecDefinitionBodies.collectionsWrappingUintSize3(symbols, argument0);
+          lawspec.runtime.LawSpecDefinitionBodies.collectionsWrappingUintSize3(symbols, valueValue);
       var resultCodec =
           SCHEMA.supported(new lawspec.runtime.LawSpecSchema.Named("UIntSize"), 64, symbols);
       return resultCodec.decode(result);
@@ -1678,118 +1707,117 @@ public final class Kafka
   public static java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>>
       lawspeccollectionskeyvaldeleteitemsint64listentryint64int64(
           Map<String, Object> symbols,
-          java.lang.Long value0,
-          java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>> value1)
+          java.lang.Long k,
+          java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListEntryInt64Int64(
         lawspec.runtime.LawSpecTyped.collectionsKeyValDeleteItems(
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryInt64Int64(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(k),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryInt64Int64(es)));
   }
 
   public static java.util.List<
           lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>>
       collectionsKeyValDeleteItemsTextListEntryTextListText(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.List<
-                  lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value1)
+          java.lang.String k,
+          java.util.List<lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListEntryTextListText(
         lawspec.runtime.LawSpecTyped.collectionsKeyValDeleteItems2(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextListText(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(k),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextListText(es)));
   }
 
   public static java.util.Map<java.lang.Long, java.lang.Long>
       lawspeccollectionskeyvaldeleteint64keyvalint64int64(
           Map<String, Object> symbols,
-          java.lang.Long value0,
-          java.util.Map<java.lang.Long, java.lang.Long> value1)
+          java.lang.Long k,
+          java.util.Map<java.lang.Long, java.lang.Long> m)
   {
     return lawspec.runtime.LawSpecTyped.toNativeKeyValInt64Int64(
         lawspec.runtime.LawSpecTyped.collectionsKeyValDelete(
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValInt64Int64(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(k),
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValInt64Int64(m)));
   }
 
   public static java.util.Map<java.lang.String, java.util.List<java.lang.String>>
       collectionsKeyValDeleteTextKeyValTextListText(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.Map<java.lang.String, java.util.List<java.lang.String>> value1)
+          java.lang.String k,
+          java.util.Map<java.lang.String, java.util.List<java.lang.String>> m)
   {
     return lawspec.runtime.LawSpecTyped.toNativeKeyValTextListText(
         lawspec.runtime.LawSpecTyped.collectionsKeyValDelete2(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextListText(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(k),
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextListText(m)));
   }
 
   public static java.util.List<
           lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>>
       collectionsKeyValEntriesKeyValTextListText(
           Map<String, Object> symbols,
-          java.util.Map<java.lang.String, java.util.List<java.lang.String>> value0)
+          java.util.Map<java.lang.String, java.util.List<java.lang.String>> m)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListEntryTextListText(
         lawspec.runtime.LawSpecTyped.collectionsKeyValEntries(
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextListText(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextListText(m)));
   }
 
   public static java.util.List<lawspec.data.Entry<java.lang.String, lawspec.data.Group>>
       collectionsKeyValEntriesKeyValTextGroup(
-          Map<String, Object> symbols, java.util.Map<java.lang.String, lawspec.data.Group> value0)
+          Map<String, Object> symbols, java.util.Map<java.lang.String, lawspec.data.Group> m)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListEntryTextGroup(
         lawspec.runtime.LawSpecTyped.collectionsKeyValEntries2(
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextGroup(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextGroup(m)));
   }
 
   public static java.util.List<
           lawspec.data.Entry<java.lang.String, java.util.List<lawspec.data.TopicPartition>>>
       collectionsKeyValEntriesKeyValTextListTopicPartition(
           Map<String, Object> symbols,
-          java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>> value0)
+          java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>> m)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListEntryTextListTopicPartition(
         lawspec.runtime.LawSpecTyped.collectionsKeyValEntries3(
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextListTopicPartition(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextListTopicPartition(m)));
   }
 
   public static java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Long>>
       lawspeccollectionskeyvalfromitemslistentrytextint64listentrytextint64(
           Map<String, Object> symbols,
-          java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Long>> value0,
-          java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Long>> value1)
+          java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Long>> es,
+          java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Long>> acc)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListEntryTextInt64(
         lawspec.runtime.LawSpecTyped.collectionsKeyValFromItems(
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextInt64(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextInt64(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextInt64(es),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextInt64(acc)));
   }
 
   public static java.util.List<lawspec.data.Entry<lawspec.data.GroupPartition, java.lang.Long>>
       lawspeccollectionskeyvalfromitemslistentrygrouppartitionint64listentrygrouppartitionint64(
           Map<String, Object> symbols,
-          java.util.List<lawspec.data.Entry<lawspec.data.GroupPartition, java.lang.Long>> value0,
-          java.util.List<lawspec.data.Entry<lawspec.data.GroupPartition, java.lang.Long>> value1)
+          java.util.List<lawspec.data.Entry<lawspec.data.GroupPartition, java.lang.Long>> es,
+          java.util.List<lawspec.data.Entry<lawspec.data.GroupPartition, java.lang.Long>> acc)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListEntryGroupPartitionInt64(
         lawspec.runtime.LawSpecTyped.collectionsKeyValFromItems2(
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryGroupPartitionInt64(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryGroupPartitionInt64(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryGroupPartitionInt64(es),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryGroupPartitionInt64(acc)));
   }
 
   public static java.util.List<lawspec.data.Entry<lawspec.data.TopicPartition, java.lang.Integer>>
       lawspeccollectionskeyvalfromitemslistentrytopicpartitionint32listentrytopicpartitionint32(
           Map<String, Object> symbols,
-          java.util.List<lawspec.data.Entry<lawspec.data.TopicPartition, java.lang.Integer>> value0,
-          java.util.List<lawspec.data.Entry<lawspec.data.TopicPartition, java.lang.Integer>> value1)
+          java.util.List<lawspec.data.Entry<lawspec.data.TopicPartition, java.lang.Integer>> es,
+          java.util.List<lawspec.data.Entry<lawspec.data.TopicPartition, java.lang.Integer>> acc)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListEntryTopicPartitionInt32(
         lawspec.runtime.LawSpecTyped.collectionsKeyValFromItems3(
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTopicPartitionInt32(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTopicPartitionInt32(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTopicPartitionInt32(es),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTopicPartitionInt32(acc)));
   }
 
   public static java.util.List<
@@ -1797,31 +1825,28 @@ public final class Kafka
       collectionsKeyValFromItemsListEntryTopicPartitionPartitionLogListEntryTopicPartitionPartitionLog(
           Map<String, Object> symbols,
           java.util.List<
-                  lawspec.data.Entry<
-                          lawspec.data.TopicPartition, lawspec.data.PartitionLog>> value0,
+                  lawspec.data.Entry<lawspec.data.TopicPartition, lawspec.data.PartitionLog>> es,
           java.util.List<
-                  lawspec.data.Entry<
-                          lawspec.data.TopicPartition, lawspec.data.PartitionLog>> value1)
+                  lawspec.data.Entry<lawspec.data.TopicPartition, lawspec.data.PartitionLog>> acc)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListEntryTopicPartitionPartitionLog(
         lawspec.runtime.LawSpecTyped.collectionsKeyValFromItems4(
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTopicPartitionPartitionLog(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTopicPartitionPartitionLog(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTopicPartitionPartitionLog(es),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTopicPartitionPartitionLog(acc)));
   }
 
   public static java.util.List<
           lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>>
       collectionsKeyValFromItemsListEntryTextListTextListEntryTextListText(
           Map<String, Object> symbols,
+          java.util.List<lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> es,
           java.util.List<
-                  lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value0,
-          java.util.List<
-                  lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value1)
+                  lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> acc)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListEntryTextListText(
         lawspec.runtime.LawSpecTyped.collectionsKeyValFromItems5(
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextListText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextListText(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextListText(es),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextListText(acc)));
   }
 
   public static java.util.List<
@@ -1830,51 +1855,51 @@ public final class Kafka
           Map<String, Object> symbols,
           java.util.List<
                   lawspec.data.Entry<
-                          java.lang.String, java.util.List<lawspec.data.TopicPartition>>> value0,
+                          java.lang.String, java.util.List<lawspec.data.TopicPartition>>> es,
           java.util.List<
                   lawspec.data.Entry<
-                          java.lang.String, java.util.List<lawspec.data.TopicPartition>>> value1)
+                          java.lang.String, java.util.List<lawspec.data.TopicPartition>>> acc)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListEntryTextListTopicPartition(
         lawspec.runtime.LawSpecTyped.collectionsKeyValFromItems6(
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextListTopicPartition(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextListTopicPartition(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextListTopicPartition(es),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextListTopicPartition(acc)));
   }
 
   public static java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Integer>>
       lawspeccollectionskeyvalfromitemslistentrytextint32listentrytextint32(
           Map<String, Object> symbols,
-          java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Integer>> value0,
-          java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Integer>> value1)
+          java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Integer>> es,
+          java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Integer>> acc)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListEntryTextInt32(
         lawspec.runtime.LawSpecTyped.collectionsKeyValFromItems7(
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextInt32(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextInt32(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextInt32(es),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextInt32(acc)));
   }
 
   public static java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>>
       lawspeccollectionskeyvalfromitemslistentryint64int64listentryint64int64(
           Map<String, Object> symbols,
-          java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>> value0,
-          java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>> value1)
+          java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>> es,
+          java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>> acc)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListEntryInt64Int64(
         lawspec.runtime.LawSpecTyped.collectionsKeyValFromItems8(
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryInt64Int64(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryInt64Int64(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryInt64Int64(es),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryInt64Int64(acc)));
   }
 
   public static java.util.List<lawspec.data.Entry<lawspec.data.TopicPartition, java.lang.Long>>
       lawspeccollectionskeyvalfromitemslistentrytopicpartitionint64listentrytopicpartitionint64(
           Map<String, Object> symbols,
-          java.util.List<lawspec.data.Entry<lawspec.data.TopicPartition, java.lang.Long>> value0,
-          java.util.List<lawspec.data.Entry<lawspec.data.TopicPartition, java.lang.Long>> value1)
+          java.util.List<lawspec.data.Entry<lawspec.data.TopicPartition, java.lang.Long>> es,
+          java.util.List<lawspec.data.Entry<lawspec.data.TopicPartition, java.lang.Long>> acc)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListEntryTopicPartitionInt64(
         lawspec.runtime.LawSpecTyped.collectionsKeyValFromItems9(
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTopicPartitionInt64(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTopicPartitionInt64(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTopicPartitionInt64(es),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTopicPartitionInt64(acc)));
   }
 
   public static java.util.List<
@@ -1882,356 +1907,350 @@ public final class Kafka
       lawspeccollectionskeyvalfromitemslistentryint64listbatchmetalistentryint64listbatchmeta(
           Map<String, Object> symbols,
           java.util.List<
-                  lawspec.data.Entry<
-                          java.lang.Long, java.util.List<lawspec.data.BatchMeta>>> value0,
+                  lawspec.data.Entry<java.lang.Long, java.util.List<lawspec.data.BatchMeta>>> es,
           java.util.List<
-                  lawspec.data.Entry<
-                          java.lang.Long, java.util.List<lawspec.data.BatchMeta>>> value1)
+                  lawspec.data.Entry<java.lang.Long, java.util.List<lawspec.data.BatchMeta>>> acc)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListEntryInt64ListBatchMeta(
         lawspec.runtime.LawSpecTyped.collectionsKeyValFromItems10(
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryInt64ListBatchMeta(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryInt64ListBatchMeta(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryInt64ListBatchMeta(es),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryInt64ListBatchMeta(acc)));
   }
 
   public static java.util.List<lawspec.data.Entry<java.lang.String, lawspec.data.Group>>
       collectionsKeyValFromItemsListEntryTextGroupListEntryTextGroup(
           Map<String, Object> symbols,
-          java.util.List<lawspec.data.Entry<java.lang.String, lawspec.data.Group>> value0,
-          java.util.List<lawspec.data.Entry<java.lang.String, lawspec.data.Group>> value1)
+          java.util.List<lawspec.data.Entry<java.lang.String, lawspec.data.Group>> es,
+          java.util.List<lawspec.data.Entry<java.lang.String, lawspec.data.Group>> acc)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListEntryTextGroup(
         lawspec.runtime.LawSpecTyped.collectionsKeyValFromItems11(
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextGroup(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextGroup(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextGroup(es),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextGroup(acc)));
   }
 
   public static java.util.List<lawspec.data.Entry<java.lang.Long, lawspec.data.ProducerEntry>>
       lawspeccollectionskeyvalfromitemslistentryint64producerentrylistentryint64producerentry(
           Map<String, Object> symbols,
-          java.util.List<lawspec.data.Entry<java.lang.Long, lawspec.data.ProducerEntry>> value0,
-          java.util.List<lawspec.data.Entry<java.lang.Long, lawspec.data.ProducerEntry>> value1)
+          java.util.List<lawspec.data.Entry<java.lang.Long, lawspec.data.ProducerEntry>> es,
+          java.util.List<lawspec.data.Entry<java.lang.Long, lawspec.data.ProducerEntry>> acc)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListEntryInt64ProducerEntry(
         lawspec.runtime.LawSpecTyped.collectionsKeyValFromItems12(
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryInt64ProducerEntry(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryInt64ProducerEntry(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryInt64ProducerEntry(es),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryInt64ProducerEntry(acc)));
   }
 
   public static java.util.List<java.lang.String>
       collectionsKeyValKeysItemsListEntryTextListText(
           Map<String, Object> symbols,
-          java.util.List<
-                  lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value0)
+          java.util.List<lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListText(
         lawspec.runtime.LawSpecTyped.collectionsKeyValKeysItems(
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextListText(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextListText(es)));
   }
 
   public static java.util.List<java.lang.String>
       collectionsKeyValKeysKeyValTextListText(
           Map<String, Object> symbols,
-          java.util.Map<java.lang.String, java.util.List<java.lang.String>> value0)
+          java.util.Map<java.lang.String, java.util.List<java.lang.String>> m)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListText(
         lawspec.runtime.LawSpecTyped.collectionsKeyValKeys(
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextListText(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextListText(m)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.PartitionLog>
       collectionsKeyValLookupItemsTopicPartitionListEntryTopicPartitionPartitionLog(
           Map<String, Object> symbols,
-          lawspec.data.TopicPartition value0,
+          lawspec.data.TopicPartition k,
           java.util.List<
-                  lawspec.data.Entry<
-                          lawspec.data.TopicPartition, lawspec.data.PartitionLog>> value1)
+                  lawspec.data.Entry<lawspec.data.TopicPartition, lawspec.data.PartitionLog>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybePartitionLog(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookupItems(
-            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTopicPartitionPartitionLog(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(k),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTopicPartitionPartitionLog(es)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.util.List<lawspec.data.TopicPartition>>
       collectionsKeyValLookupItemsTextListEntryTextListTopicPartition(
           Map<String, Object> symbols,
-          java.lang.String value0,
+          java.lang.String k,
           java.util.List<
                   lawspec.data.Entry<
-                          java.lang.String, java.util.List<lawspec.data.TopicPartition>>> value1)
+                          java.lang.String, java.util.List<lawspec.data.TopicPartition>>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeListTopicPartition(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookupItems2(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextListTopicPartition(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(k),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextListTopicPartition(es)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Integer>
       lawspeccollectionskeyvallookupitemstextlistentrytextint32(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Integer>> value1)
+          java.lang.String k,
+          java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Integer>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeInt32(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookupItems3(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextInt32(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(k),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextInt32(es)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.util.List<lawspec.data.BatchMeta>>
       lawspeccollectionskeyvallookupitemsint64listentryint64listbatchmeta(
           Map<String, Object> symbols,
-          java.lang.Long value0,
+          java.lang.Long k,
           java.util.List<
-                  lawspec.data.Entry<
-                          java.lang.Long, java.util.List<lawspec.data.BatchMeta>>> value1)
+                  lawspec.data.Entry<java.lang.Long, java.util.List<lawspec.data.BatchMeta>>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeListBatchMeta(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookupItems4(
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryInt64ListBatchMeta(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(k),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryInt64ListBatchMeta(es)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Integer>
       lawspeccollectionskeyvallookupitemstopicpartitionlistentrytopicpartitionint32(
           Map<String, Object> symbols,
-          lawspec.data.TopicPartition value0,
-          java.util.List<lawspec.data.Entry<lawspec.data.TopicPartition, java.lang.Integer>> value1)
+          lawspec.data.TopicPartition k,
+          java.util.List<lawspec.data.Entry<lawspec.data.TopicPartition, java.lang.Integer>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeInt32(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookupItems5(
-            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTopicPartitionInt32(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(k),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTopicPartitionInt32(es)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Long>
       lawspeccollectionskeyvallookupitemstopicpartitionlistentrytopicpartitionint64(
           Map<String, Object> symbols,
-          lawspec.data.TopicPartition value0,
-          java.util.List<lawspec.data.Entry<lawspec.data.TopicPartition, java.lang.Long>> value1)
+          lawspec.data.TopicPartition k,
+          java.util.List<lawspec.data.Entry<lawspec.data.TopicPartition, java.lang.Long>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeInt64(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookupItems6(
-            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTopicPartitionInt64(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(k),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTopicPartitionInt64(es)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerEntry>
       lawspeccollectionskeyvallookupitemsint64listentryint64producerentry(
           Map<String, Object> symbols,
-          java.lang.Long value0,
-          java.util.List<lawspec.data.Entry<java.lang.Long, lawspec.data.ProducerEntry>> value1)
+          java.lang.Long k,
+          java.util.List<lawspec.data.Entry<java.lang.Long, lawspec.data.ProducerEntry>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeProducerEntry(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookupItems7(
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryInt64ProducerEntry(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(k),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryInt64ProducerEntry(es)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.util.List<java.lang.String>>
       collectionsKeyValLookupItemsTextListEntryTextListText(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.List<
-                  lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value1)
+          java.lang.String k,
+          java.util.List<lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeListText(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookupItems8(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextListText(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(k),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextListText(es)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Long>
       lawspeccollectionskeyvallookupitemsgrouppartitionlistentrygrouppartitionint64(
           Map<String, Object> symbols,
-          lawspec.data.GroupPartition value0,
-          java.util.List<lawspec.data.Entry<lawspec.data.GroupPartition, java.lang.Long>> value1)
+          lawspec.data.GroupPartition k,
+          java.util.List<lawspec.data.Entry<lawspec.data.GroupPartition, java.lang.Long>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeInt64(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookupItems9(
-            lawspec.runtime.LawSpecTyped.fromNativeGroupPartition(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryGroupPartitionInt64(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeGroupPartition(k),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryGroupPartitionInt64(es)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.Group>
       collectionsKeyValLookupItemsTextListEntryTextGroup(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.List<lawspec.data.Entry<java.lang.String, lawspec.data.Group>> value1)
+          java.lang.String k,
+          java.util.List<lawspec.data.Entry<java.lang.String, lawspec.data.Group>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeGroup(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookupItems10(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextGroup(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(k),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextGroup(es)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Long>
       lawspeccollectionskeyvallookupitemsint64listentryint64int64(
           Map<String, Object> symbols,
-          java.lang.Long value0,
-          java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>> value1)
+          java.lang.Long k,
+          java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeInt64(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookupItems11(
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryInt64Int64(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(k),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryInt64Int64(es)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Long>
       lawspeccollectionskeyvallookupitemstextlistentrytextint64(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Long>> value1)
+          java.lang.String k,
+          java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Long>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeInt64(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookupItems12(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextInt64(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(k),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextInt64(es)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Long>
       lawspeccollectionskeyvallookuptopicpartitionkeyvaltopicpartitionint64(
           Map<String, Object> symbols,
-          lawspec.data.TopicPartition value0,
-          java.util.Map<lawspec.data.TopicPartition, java.lang.Long> value1)
+          lawspec.data.TopicPartition k,
+          java.util.Map<lawspec.data.TopicPartition, java.lang.Long> m)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeInt64(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookup(
-            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValTopicPartitionInt64(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(k),
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValTopicPartitionInt64(m)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.util.List<lawspec.data.BatchMeta>>
       lawspeccollectionskeyvallookupint64keyvalint64listbatchmeta(
           Map<String, Object> symbols,
-          java.lang.Long value0,
-          java.util.Map<java.lang.Long, java.util.List<lawspec.data.BatchMeta>> value1)
+          java.lang.Long k,
+          java.util.Map<java.lang.Long, java.util.List<lawspec.data.BatchMeta>> m)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeListBatchMeta(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookup2(
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValInt64ListBatchMeta(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(k),
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValInt64ListBatchMeta(m)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.util.List<lawspec.data.TopicPartition>>
       collectionsKeyValLookupTextKeyValTextListTopicPartition(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>> value1)
+          java.lang.String k,
+          java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>> m)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeListTopicPartition(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookup3(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextListTopicPartition(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(k),
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextListTopicPartition(m)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerEntry>
       lawspeccollectionskeyvallookupint64keyvalint64producerentry(
           Map<String, Object> symbols,
-          java.lang.Long value0,
-          java.util.Map<java.lang.Long, lawspec.data.ProducerEntry> value1)
+          java.lang.Long k,
+          java.util.Map<java.lang.Long, lawspec.data.ProducerEntry> m)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeProducerEntry(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookup4(
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValInt64ProducerEntry(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(k),
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValInt64ProducerEntry(m)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Long>
       lawspeccollectionskeyvallookupgrouppartitionkeyvalgrouppartitionint64(
           Map<String, Object> symbols,
-          lawspec.data.GroupPartition value0,
-          java.util.Map<lawspec.data.GroupPartition, java.lang.Long> value1)
+          lawspec.data.GroupPartition k,
+          java.util.Map<lawspec.data.GroupPartition, java.lang.Long> m)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeInt64(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookup5(
-            lawspec.runtime.LawSpecTyped.fromNativeGroupPartition(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValGroupPartitionInt64(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeGroupPartition(k),
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValGroupPartitionInt64(m)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Integer>
       lawspeccollectionskeyvallookuptopicpartitionkeyvaltopicpartitionint32(
           Map<String, Object> symbols,
-          lawspec.data.TopicPartition value0,
-          java.util.Map<lawspec.data.TopicPartition, java.lang.Integer> value1)
+          lawspec.data.TopicPartition k,
+          java.util.Map<lawspec.data.TopicPartition, java.lang.Integer> m)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeInt32(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookup6(
-            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValTopicPartitionInt32(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(k),
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValTopicPartitionInt32(m)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Long>
       lawspeccollectionskeyvallookupint64keyvalint64int64(
           Map<String, Object> symbols,
-          java.lang.Long value0,
-          java.util.Map<java.lang.Long, java.lang.Long> value1)
+          java.lang.Long k,
+          java.util.Map<java.lang.Long, java.lang.Long> m)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeInt64(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookup7(
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValInt64Int64(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(k),
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValInt64Int64(m)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.Group>
       collectionsKeyValLookupTextKeyValTextGroup(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.Map<java.lang.String, lawspec.data.Group> value1)
+          java.lang.String k,
+          java.util.Map<java.lang.String, lawspec.data.Group> m)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeGroup(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookup8(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextGroup(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(k),
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextGroup(m)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Integer>
       lawspeccollectionskeyvallookuptextkeyvaltextint32(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.Map<java.lang.String, java.lang.Integer> value1)
+          java.lang.String k,
+          java.util.Map<java.lang.String, java.lang.Integer> m)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeInt32(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookup9(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextInt32(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(k),
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextInt32(m)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.PartitionLog>
       collectionsKeyValLookupTopicPartitionKeyValTopicPartitionPartitionLog(
           Map<String, Object> symbols,
-          lawspec.data.TopicPartition value0,
-          java.util.Map<lawspec.data.TopicPartition, lawspec.data.PartitionLog> value1)
+          lawspec.data.TopicPartition k,
+          java.util.Map<lawspec.data.TopicPartition, lawspec.data.PartitionLog> m)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybePartitionLog(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookup10(
-            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValTopicPartitionPartitionLog(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(k),
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValTopicPartitionPartitionLog(m)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.util.List<java.lang.String>>
       collectionsKeyValLookupTextKeyValTextListText(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.Map<java.lang.String, java.util.List<java.lang.String>> value1)
+          java.lang.String k,
+          java.util.Map<java.lang.String, java.util.List<java.lang.String>> m)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeListText(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookup11(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextListText(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(k),
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextListText(m)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Long>
       lawspeccollectionskeyvallookuptextkeyvaltextint64(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.Map<java.lang.String, java.lang.Long> value1)
+          java.lang.String k,
+          java.util.Map<java.lang.String, java.lang.Long> m)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeInt64(
         lawspec.runtime.LawSpecTyped.collectionsKeyValLookup12(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextInt64(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(k),
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextInt64(m)));
   }
 
   public static java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>>
@@ -2239,635 +2258,621 @@ public final class Kafka
           Map<String, Object> symbols,
           java.util.List<
                   lawspec.data.Entry<
-                          java.lang.String, java.util.List<lawspec.data.TopicPartition>>> value0)
+                          java.lang.String, java.util.List<lawspec.data.TopicPartition>>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeKeyValTextListTopicPartition(
         lawspec.runtime.LawSpecTyped.collectionsKeyValOf(
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextListTopicPartition(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextListTopicPartition(es)));
   }
 
   public static java.util.Map<java.lang.String, java.lang.Long>
       lawspeccollectionskeyvaloflistentrytextint64(
           Map<String, Object> symbols,
-          java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Long>> value0)
+          java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Long>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeKeyValTextInt64(
         lawspec.runtime.LawSpecTyped.collectionsKeyValOf2(
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextInt64(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextInt64(es)));
   }
 
   public static java.util.Map<java.lang.Long, java.util.List<lawspec.data.BatchMeta>>
       lawspeccollectionskeyvaloflistentryint64listbatchmeta(
           Map<String, Object> symbols,
           java.util.List<
-                  lawspec.data.Entry<
-                          java.lang.Long, java.util.List<lawspec.data.BatchMeta>>> value0)
+                  lawspec.data.Entry<java.lang.Long, java.util.List<lawspec.data.BatchMeta>>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeKeyValInt64ListBatchMeta(
         lawspec.runtime.LawSpecTyped.collectionsKeyValOf3(
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryInt64ListBatchMeta(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryInt64ListBatchMeta(es)));
   }
 
   public static java.util.Map<java.lang.String, lawspec.data.Group>
       collectionsKeyValOfListEntryTextGroup(
           Map<String, Object> symbols,
-          java.util.List<lawspec.data.Entry<java.lang.String, lawspec.data.Group>> value0)
+          java.util.List<lawspec.data.Entry<java.lang.String, lawspec.data.Group>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeKeyValTextGroup(
         lawspec.runtime.LawSpecTyped.collectionsKeyValOf4(
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextGroup(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextGroup(es)));
   }
 
   public static java.util.Map<java.lang.String, java.lang.Integer>
       lawspeccollectionskeyvaloflistentrytextint32(
           Map<String, Object> symbols,
-          java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Integer>> value0)
+          java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Integer>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeKeyValTextInt32(
         lawspec.runtime.LawSpecTyped.collectionsKeyValOf5(
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextInt32(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextInt32(es)));
   }
 
   public static java.util.Map<java.lang.Long, lawspec.data.ProducerEntry>
       lawspeccollectionskeyvaloflistentryint64producerentry(
           Map<String, Object> symbols,
-          java.util.List<lawspec.data.Entry<java.lang.Long, lawspec.data.ProducerEntry>> value0)
+          java.util.List<lawspec.data.Entry<java.lang.Long, lawspec.data.ProducerEntry>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeKeyValInt64ProducerEntry(
         lawspec.runtime.LawSpecTyped.collectionsKeyValOf6(
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryInt64ProducerEntry(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryInt64ProducerEntry(es)));
   }
 
   public static java.util.Map<lawspec.data.TopicPartition, lawspec.data.PartitionLog>
       collectionsKeyValOfListEntryTopicPartitionPartitionLog(
           Map<String, Object> symbols,
           java.util.List<
-                  lawspec.data.Entry<
-                          lawspec.data.TopicPartition, lawspec.data.PartitionLog>> value0)
+                  lawspec.data.Entry<lawspec.data.TopicPartition, lawspec.data.PartitionLog>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeKeyValTopicPartitionPartitionLog(
         lawspec.runtime.LawSpecTyped.collectionsKeyValOf7(
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTopicPartitionPartitionLog(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTopicPartitionPartitionLog(es)));
   }
 
   public static java.util.Map<lawspec.data.TopicPartition, java.lang.Integer>
       lawspeccollectionskeyvaloflistentrytopicpartitionint32(
           Map<String, Object> symbols,
-          java.util.List<lawspec.data.Entry<lawspec.data.TopicPartition, java.lang.Integer>> value0)
+          java.util.List<lawspec.data.Entry<lawspec.data.TopicPartition, java.lang.Integer>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeKeyValTopicPartitionInt32(
         lawspec.runtime.LawSpecTyped.collectionsKeyValOf8(
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTopicPartitionInt32(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTopicPartitionInt32(es)));
   }
 
   public static java.util.Map<lawspec.data.TopicPartition, java.lang.Long>
       lawspeccollectionskeyvaloflistentrytopicpartitionint64(
           Map<String, Object> symbols,
-          java.util.List<lawspec.data.Entry<lawspec.data.TopicPartition, java.lang.Long>> value0)
+          java.util.List<lawspec.data.Entry<lawspec.data.TopicPartition, java.lang.Long>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeKeyValTopicPartitionInt64(
         lawspec.runtime.LawSpecTyped.collectionsKeyValOf9(
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTopicPartitionInt64(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTopicPartitionInt64(es)));
   }
 
   public static java.util.Map<lawspec.data.GroupPartition, java.lang.Long>
       lawspeccollectionskeyvaloflistentrygrouppartitionint64(
           Map<String, Object> symbols,
-          java.util.List<lawspec.data.Entry<lawspec.data.GroupPartition, java.lang.Long>> value0)
+          java.util.List<lawspec.data.Entry<lawspec.data.GroupPartition, java.lang.Long>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeKeyValGroupPartitionInt64(
         lawspec.runtime.LawSpecTyped.collectionsKeyValOf10(
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryGroupPartitionInt64(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryGroupPartitionInt64(es)));
   }
 
   public static java.util.Map<java.lang.String, java.util.List<java.lang.String>>
       collectionsKeyValOfListEntryTextListText(
           Map<String, Object> symbols,
-          java.util.List<
-                  lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value0)
+          java.util.List<lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeKeyValTextListText(
         lawspec.runtime.LawSpecTyped.collectionsKeyValOf11(
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextListText(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextListText(es)));
   }
 
   public static java.util.Map<java.lang.Long, java.lang.Long>
       lawspeccollectionskeyvaloflistentryint64int64(
           Map<String, Object> symbols,
-          java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>> value0)
+          java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeKeyValInt64Int64(
         lawspec.runtime.LawSpecTyped.collectionsKeyValOf12(
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryInt64Int64(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryInt64Int64(es)));
   }
 
   public static java.util.List<
           lawspec.data.Entry<lawspec.data.TopicPartition, lawspec.data.PartitionLog>>
       collectionsKeyValPutItemsTopicPartitionPartitionLogListEntryTopicPartitionPartitionLog(
           Map<String, Object> symbols,
-          lawspec.data.TopicPartition value0,
-          lawspec.data.PartitionLog value1,
+          lawspec.data.TopicPartition k,
+          lawspec.data.PartitionLog v,
           java.util.List<
-                  lawspec.data.Entry<
-                          lawspec.data.TopicPartition, lawspec.data.PartitionLog>> value2)
+                  lawspec.data.Entry<lawspec.data.TopicPartition, lawspec.data.PartitionLog>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListEntryTopicPartitionPartitionLog(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPutItems(
-            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0),
-            lawspec.runtime.LawSpecTyped.fromNativePartitionLog(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTopicPartitionPartitionLog(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(k),
+            lawspec.runtime.LawSpecTyped.fromNativePartitionLog(v),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTopicPartitionPartitionLog(es)));
   }
 
   public static java.util.List<lawspec.data.Entry<lawspec.data.GroupPartition, java.lang.Long>>
       lawspeccollectionskeyvalputitemsgrouppartitionint64listentrygrouppartitionint64(
           Map<String, Object> symbols,
-          lawspec.data.GroupPartition value0,
-          java.lang.Long value1,
-          java.util.List<lawspec.data.Entry<lawspec.data.GroupPartition, java.lang.Long>> value2)
+          lawspec.data.GroupPartition k,
+          java.lang.Long v,
+          java.util.List<lawspec.data.Entry<lawspec.data.GroupPartition, java.lang.Long>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListEntryGroupPartitionInt64(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPutItems2(
-            lawspec.runtime.LawSpecTyped.fromNativeGroupPartition(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryGroupPartitionInt64(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeGroupPartition(k),
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(v),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryGroupPartitionInt64(es)));
   }
 
   public static java.util.List<lawspec.data.Entry<java.lang.String, lawspec.data.Group>>
       collectionsKeyValPutItemsTextGroupListEntryTextGroup(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          lawspec.data.Group value1,
-          java.util.List<lawspec.data.Entry<java.lang.String, lawspec.data.Group>> value2)
+          java.lang.String k,
+          lawspec.data.Group v,
+          java.util.List<lawspec.data.Entry<java.lang.String, lawspec.data.Group>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListEntryTextGroup(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPutItems3(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeGroup(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextGroup(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(k),
+            lawspec.runtime.LawSpecTyped.fromNativeGroup(v),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextGroup(es)));
   }
 
   public static java.util.List<lawspec.data.Entry<java.lang.Long, lawspec.data.ProducerEntry>>
       lawspeccollectionskeyvalputitemsint64producerentrylistentryint64producerentry(
           Map<String, Object> symbols,
-          java.lang.Long value0,
-          lawspec.data.ProducerEntry value1,
-          java.util.List<lawspec.data.Entry<java.lang.Long, lawspec.data.ProducerEntry>> value2)
+          java.lang.Long k,
+          lawspec.data.ProducerEntry v,
+          java.util.List<lawspec.data.Entry<java.lang.Long, lawspec.data.ProducerEntry>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListEntryInt64ProducerEntry(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPutItems4(
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeProducerEntry(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryInt64ProducerEntry(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(k),
+            lawspec.runtime.LawSpecTyped.fromNativeProducerEntry(v),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryInt64ProducerEntry(es)));
   }
 
   public static java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Integer>>
       lawspeccollectionskeyvalputitemstextint32listentrytextint32(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.lang.Integer value1,
-          java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Integer>> value2)
+          java.lang.String k,
+          java.lang.Integer v,
+          java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Integer>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListEntryTextInt32(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPutItems5(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeInt32(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextInt32(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(k),
+            lawspec.runtime.LawSpecTyped.fromNativeInt32(v),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextInt32(es)));
   }
 
   public static java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Long>>
       lawspeccollectionskeyvalputitemstextint64listentrytextint64(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.lang.Long value1,
-          java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Long>> value2)
+          java.lang.String k,
+          java.lang.Long v,
+          java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Long>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListEntryTextInt64(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPutItems6(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextInt64(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(k),
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(v),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextInt64(es)));
   }
 
   public static java.util.List<
           lawspec.data.Entry<java.lang.String, java.util.List<lawspec.data.TopicPartition>>>
       collectionsKeyValPutItemsTextListTopicPartitionListEntryTextListTopicPartition(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.List<lawspec.data.TopicPartition> value1,
+          java.lang.String k,
+          java.util.List<lawspec.data.TopicPartition> v,
           java.util.List<
                   lawspec.data.Entry<
-                          java.lang.String, java.util.List<lawspec.data.TopicPartition>>> value2)
+                          java.lang.String, java.util.List<lawspec.data.TopicPartition>>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListEntryTextListTopicPartition(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPutItems7(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextListTopicPartition(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(k),
+            lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(v),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextListTopicPartition(es)));
   }
 
   public static java.util.List<
           lawspec.data.Entry<java.lang.Long, java.util.List<lawspec.data.BatchMeta>>>
       lawspeccollectionskeyvalputitemsint64listbatchmetalistentryint64listbatchmeta(
           Map<String, Object> symbols,
-          java.lang.Long value0,
-          java.util.List<lawspec.data.BatchMeta> value1,
+          java.lang.Long k,
+          java.util.List<lawspec.data.BatchMeta> v,
           java.util.List<
-                  lawspec.data.Entry<
-                          java.lang.Long, java.util.List<lawspec.data.BatchMeta>>> value2)
+                  lawspec.data.Entry<java.lang.Long, java.util.List<lawspec.data.BatchMeta>>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListEntryInt64ListBatchMeta(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPutItems8(
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListBatchMeta(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryInt64ListBatchMeta(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(k),
+            lawspec.runtime.LawSpecTyped.fromNativeListBatchMeta(v),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryInt64ListBatchMeta(es)));
   }
 
   public static java.util.List<
           lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>>
       collectionsKeyValPutItemsTextListTextListEntryTextListText(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.List<java.lang.String> value1,
-          java.util.List<
-                  lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value2)
+          java.lang.String k,
+          java.util.List<java.lang.String> v,
+          java.util.List<lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListEntryTextListText(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPutItems9(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListText(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextListText(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(k),
+            lawspec.runtime.LawSpecTyped.fromNativeListText(v),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextListText(es)));
   }
 
   public static java.util.List<lawspec.data.Entry<lawspec.data.TopicPartition, java.lang.Long>>
       lawspeccollectionskeyvalputitemstopicpartitionint64listentrytopicpartitionint64(
           Map<String, Object> symbols,
-          lawspec.data.TopicPartition value0,
-          java.lang.Long value1,
-          java.util.List<lawspec.data.Entry<lawspec.data.TopicPartition, java.lang.Long>> value2)
+          lawspec.data.TopicPartition k,
+          java.lang.Long v,
+          java.util.List<lawspec.data.Entry<lawspec.data.TopicPartition, java.lang.Long>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListEntryTopicPartitionInt64(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPutItems10(
-            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTopicPartitionInt64(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(k),
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(v),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTopicPartitionInt64(es)));
   }
 
   public static java.util.List<lawspec.data.Entry<lawspec.data.TopicPartition, java.lang.Integer>>
       lawspeccollectionskeyvalputitemstopicpartitionint32listentrytopicpartitionint32(
           Map<String, Object> symbols,
-          lawspec.data.TopicPartition value0,
-          java.lang.Integer value1,
-          java.util.List<lawspec.data.Entry<lawspec.data.TopicPartition, java.lang.Integer>> value2)
+          lawspec.data.TopicPartition k,
+          java.lang.Integer v,
+          java.util.List<lawspec.data.Entry<lawspec.data.TopicPartition, java.lang.Integer>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListEntryTopicPartitionInt32(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPutItems11(
-            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeInt32(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTopicPartitionInt32(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(k),
+            lawspec.runtime.LawSpecTyped.fromNativeInt32(v),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTopicPartitionInt32(es)));
   }
 
   public static java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>>
       lawspeccollectionskeyvalputitemsint64int64listentryint64int64(
           Map<String, Object> symbols,
-          java.lang.Long value0,
-          java.lang.Long value1,
-          java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>> value2)
+          java.lang.Long k,
+          java.lang.Long v,
+          java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListEntryInt64Int64(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPutItems12(
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryInt64Int64(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(k),
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(v),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryInt64Int64(es)));
   }
 
   public static java.util.Map<lawspec.data.GroupPartition, java.lang.Long>
       lawspeccollectionskeyvalputgrouppartitionint64keyvalgrouppartitionint64(
           Map<String, Object> symbols,
-          lawspec.data.GroupPartition value0,
-          java.lang.Long value1,
-          java.util.Map<lawspec.data.GroupPartition, java.lang.Long> value2)
+          lawspec.data.GroupPartition k,
+          java.lang.Long v,
+          java.util.Map<lawspec.data.GroupPartition, java.lang.Long> m)
   {
     return lawspec.runtime.LawSpecTyped.toNativeKeyValGroupPartitionInt64(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPut(
-            lawspec.runtime.LawSpecTyped.fromNativeGroupPartition(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValGroupPartitionInt64(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeGroupPartition(k),
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(v),
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValGroupPartitionInt64(m)));
   }
 
   public static java.util.Map<java.lang.String, java.lang.Integer>
       lawspeccollectionskeyvalputtextint32keyvaltextint32(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.lang.Integer value1,
-          java.util.Map<java.lang.String, java.lang.Integer> value2)
+          java.lang.String k,
+          java.lang.Integer v,
+          java.util.Map<java.lang.String, java.lang.Integer> m)
   {
     return lawspec.runtime.LawSpecTyped.toNativeKeyValTextInt32(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPut2(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeInt32(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextInt32(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(k),
+            lawspec.runtime.LawSpecTyped.fromNativeInt32(v),
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextInt32(m)));
   }
 
   public static java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>>
       collectionsKeyValPutTextListTopicPartitionKeyValTextListTopicPartition(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.List<lawspec.data.TopicPartition> value1,
-          java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>> value2)
+          java.lang.String k,
+          java.util.List<lawspec.data.TopicPartition> v,
+          java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>> m)
   {
     return lawspec.runtime.LawSpecTyped.toNativeKeyValTextListTopicPartition(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPut3(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextListTopicPartition(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(k),
+            lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(v),
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextListTopicPartition(m)));
   }
 
   public static java.util.Map<lawspec.data.TopicPartition, java.lang.Long>
       lawspeccollectionskeyvalputtopicpartitionint64keyvaltopicpartitionint64(
           Map<String, Object> symbols,
-          lawspec.data.TopicPartition value0,
-          java.lang.Long value1,
-          java.util.Map<lawspec.data.TopicPartition, java.lang.Long> value2)
+          lawspec.data.TopicPartition k,
+          java.lang.Long v,
+          java.util.Map<lawspec.data.TopicPartition, java.lang.Long> m)
   {
     return lawspec.runtime.LawSpecTyped.toNativeKeyValTopicPartitionInt64(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPut4(
-            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValTopicPartitionInt64(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(k),
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(v),
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValTopicPartitionInt64(m)));
   }
 
   public static java.util.Map<java.lang.Long, lawspec.data.ProducerEntry>
       lawspeccollectionskeyvalputint64producerentrykeyvalint64producerentry(
           Map<String, Object> symbols,
-          java.lang.Long value0,
-          lawspec.data.ProducerEntry value1,
-          java.util.Map<java.lang.Long, lawspec.data.ProducerEntry> value2)
+          java.lang.Long k,
+          lawspec.data.ProducerEntry v,
+          java.util.Map<java.lang.Long, lawspec.data.ProducerEntry> m)
   {
     return lawspec.runtime.LawSpecTyped.toNativeKeyValInt64ProducerEntry(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPut5(
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeProducerEntry(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValInt64ProducerEntry(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(k),
+            lawspec.runtime.LawSpecTyped.fromNativeProducerEntry(v),
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValInt64ProducerEntry(m)));
   }
 
   public static java.util.Map<java.lang.Long, java.util.List<lawspec.data.BatchMeta>>
       lawspeccollectionskeyvalputint64listbatchmetakeyvalint64listbatchmeta(
           Map<String, Object> symbols,
-          java.lang.Long value0,
-          java.util.List<lawspec.data.BatchMeta> value1,
-          java.util.Map<java.lang.Long, java.util.List<lawspec.data.BatchMeta>> value2)
+          java.lang.Long k,
+          java.util.List<lawspec.data.BatchMeta> v,
+          java.util.Map<java.lang.Long, java.util.List<lawspec.data.BatchMeta>> m)
   {
     return lawspec.runtime.LawSpecTyped.toNativeKeyValInt64ListBatchMeta(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPut6(
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListBatchMeta(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValInt64ListBatchMeta(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(k),
+            lawspec.runtime.LawSpecTyped.fromNativeListBatchMeta(v),
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValInt64ListBatchMeta(m)));
   }
 
   public static java.util.Map<java.lang.String, lawspec.data.Group>
       collectionsKeyValPutTextGroupKeyValTextGroup(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          lawspec.data.Group value1,
-          java.util.Map<java.lang.String, lawspec.data.Group> value2)
+          java.lang.String k,
+          lawspec.data.Group v,
+          java.util.Map<java.lang.String, lawspec.data.Group> m)
   {
     return lawspec.runtime.LawSpecTyped.toNativeKeyValTextGroup(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPut7(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeGroup(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextGroup(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(k),
+            lawspec.runtime.LawSpecTyped.fromNativeGroup(v),
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextGroup(m)));
   }
 
   public static java.util.Map<java.lang.Long, java.lang.Long>
       lawspeccollectionskeyvalputint64int64keyvalint64int64(
           Map<String, Object> symbols,
-          java.lang.Long value0,
-          java.lang.Long value1,
-          java.util.Map<java.lang.Long, java.lang.Long> value2)
+          java.lang.Long k,
+          java.lang.Long v,
+          java.util.Map<java.lang.Long, java.lang.Long> m)
   {
     return lawspec.runtime.LawSpecTyped.toNativeKeyValInt64Int64(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPut8(
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValInt64Int64(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(k),
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(v),
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValInt64Int64(m)));
   }
 
   public static java.util.Map<java.lang.String, java.util.List<java.lang.String>>
       collectionsKeyValPutTextListTextKeyValTextListText(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.List<java.lang.String> value1,
-          java.util.Map<java.lang.String, java.util.List<java.lang.String>> value2)
+          java.lang.String k,
+          java.util.List<java.lang.String> v,
+          java.util.Map<java.lang.String, java.util.List<java.lang.String>> m)
   {
     return lawspec.runtime.LawSpecTyped.toNativeKeyValTextListText(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPut9(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListText(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextListText(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(k),
+            lawspec.runtime.LawSpecTyped.fromNativeListText(v),
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextListText(m)));
   }
 
   public static java.util.Map<lawspec.data.TopicPartition, lawspec.data.PartitionLog>
       collectionsKeyValPutTopicPartitionPartitionLogKeyValTopicPartitionPartitionLog(
           Map<String, Object> symbols,
-          lawspec.data.TopicPartition value0,
-          lawspec.data.PartitionLog value1,
-          java.util.Map<lawspec.data.TopicPartition, lawspec.data.PartitionLog> value2)
+          lawspec.data.TopicPartition k,
+          lawspec.data.PartitionLog v,
+          java.util.Map<lawspec.data.TopicPartition, lawspec.data.PartitionLog> m)
   {
     return lawspec.runtime.LawSpecTyped.toNativeKeyValTopicPartitionPartitionLog(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPut10(
-            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0),
-            lawspec.runtime.LawSpecTyped.fromNativePartitionLog(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValTopicPartitionPartitionLog(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(k),
+            lawspec.runtime.LawSpecTyped.fromNativePartitionLog(v),
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValTopicPartitionPartitionLog(m)));
   }
 
   public static java.util.Map<lawspec.data.TopicPartition, java.lang.Integer>
       lawspeccollectionskeyvalputtopicpartitionint32keyvaltopicpartitionint32(
           Map<String, Object> symbols,
-          lawspec.data.TopicPartition value0,
-          java.lang.Integer value1,
-          java.util.Map<lawspec.data.TopicPartition, java.lang.Integer> value2)
+          lawspec.data.TopicPartition k,
+          java.lang.Integer v,
+          java.util.Map<lawspec.data.TopicPartition, java.lang.Integer> m)
   {
     return lawspec.runtime.LawSpecTyped.toNativeKeyValTopicPartitionInt32(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPut11(
-            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeInt32(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValTopicPartitionInt32(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(k),
+            lawspec.runtime.LawSpecTyped.fromNativeInt32(v),
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValTopicPartitionInt32(m)));
   }
 
   public static java.util.Map<java.lang.String, java.lang.Long>
       lawspeccollectionskeyvalputtextint64keyvaltextint64(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.lang.Long value1,
-          java.util.Map<java.lang.String, java.lang.Long> value2)
+          java.lang.String k,
+          java.lang.Long v,
+          java.util.Map<java.lang.String, java.lang.Long> m)
   {
     return lawspec.runtime.LawSpecTyped.toNativeKeyValTextInt64(
         lawspec.runtime.LawSpecTyped.collectionsKeyValPut12(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextInt64(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(k),
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(v),
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextInt64(m)));
   }
 
   public static java.util.List<java.lang.Long>
       lawspeccollectionskeyvalvaluesitemslistentryint64int64(
           Map<String, Object> symbols,
-          java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>> value0)
+          java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListInt64(
         lawspec.runtime.LawSpecTyped.collectionsKeyValValuesItems(
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryInt64Int64(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryInt64Int64(es)));
   }
 
   public static java.util.List<java.lang.Long>
       lawspeccollectionskeyvalvalueskeyvalint64int64(
-          Map<String, Object> symbols, java.util.Map<java.lang.Long, java.lang.Long> value0)
+          Map<String, Object> symbols, java.util.Map<java.lang.Long, java.lang.Long> m)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListInt64(
         lawspec.runtime.LawSpecTyped.collectionsKeyValValues(
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValInt64Int64(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValInt64Int64(m)));
   }
 
   public static java.util.List<java.lang.Integer>
       lawspeccollectionssetfromitemslistint32listint32(
           Map<String, Object> symbols,
-          java.util.List<java.lang.Integer> value0,
-          java.util.List<java.lang.Integer> value1)
+          java.util.List<java.lang.Integer> xs,
+          java.util.List<java.lang.Integer> acc)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListInt32(
         lawspec.runtime.LawSpecTyped.collectionsSetFromItems(
-            lawspec.runtime.LawSpecTyped.fromNativeListInt32(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListInt32(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeListInt32(xs),
+            lawspec.runtime.LawSpecTyped.fromNativeListInt32(acc)));
   }
 
   public static java.util.List<java.lang.String>
       collectionsSetFromItemsListTextListText(
           Map<String, Object> symbols,
-          java.util.List<java.lang.String> value0,
-          java.util.List<java.lang.String> value1)
+          java.util.List<java.lang.String> xs,
+          java.util.List<java.lang.String> acc)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListText(
         lawspec.runtime.LawSpecTyped.collectionsSetFromItems3(
-            lawspec.runtime.LawSpecTyped.fromNativeListText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListText(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeListText(xs),
+            lawspec.runtime.LawSpecTyped.fromNativeListText(acc)));
   }
 
   public static java.util.List<java.lang.Integer>
       lawspeccollectionssetinsertitemsint32listint32(
-          Map<String, Object> symbols,
-          java.lang.Integer value0,
-          java.util.List<java.lang.Integer> value1)
+          Map<String, Object> symbols, java.lang.Integer x, java.util.List<java.lang.Integer> xs)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListInt32(
         lawspec.runtime.LawSpecTyped.collectionsSetInsertItems(
-            lawspec.runtime.LawSpecTyped.fromNativeInt32(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListInt32(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeInt32(x),
+            lawspec.runtime.LawSpecTyped.fromNativeListInt32(xs)));
   }
 
   public static java.util.List<java.lang.String>
       collectionsSetInsertItemsTextListText(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.List<java.lang.String> value1)
+          Map<String, Object> symbols, java.lang.String x, java.util.List<java.lang.String> xs)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListText(
         lawspec.runtime.LawSpecTyped.collectionsSetInsertItems3(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListText(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(x),
+            lawspec.runtime.LawSpecTyped.fromNativeListText(xs)));
   }
 
   public static java.util.Set<java.lang.String>
-      collectionsSetOfListText(Map<String, Object> symbols, java.util.List<java.lang.String> value0)
+      collectionsSetOfListText(Map<String, Object> symbols, java.util.List<java.lang.String> xs)
   {
     return lawspec.runtime.LawSpecTyped.toNativeSetText(
         lawspec.runtime.LawSpecTyped.collectionsSetOf(
-            lawspec.runtime.LawSpecTyped.fromNativeListText(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeListText(xs)));
   }
 
   public static java.util.Set<java.lang.Integer>
       lawspeccollectionssetoflistint32(
-          Map<String, Object> symbols, java.util.List<java.lang.Integer> value0)
+          Map<String, Object> symbols, java.util.List<java.lang.Integer> xs)
   {
     return lawspec.runtime.LawSpecTyped.toNativeSetInt32(
         lawspec.runtime.LawSpecTyped.collectionsSetOf2(
-            lawspec.runtime.LawSpecTyped.fromNativeListInt32(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeListInt32(xs)));
   }
 
   public static java.util.List<java.lang.String>
       collectionsSetRemoveItemsTextListText(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.List<java.lang.String> value1)
+          Map<String, Object> symbols, java.lang.String x, java.util.List<java.lang.String> xs)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListText(
         lawspec.runtime.LawSpecTyped.collectionsSetRemoveItems(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListText(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(x),
+            lawspec.runtime.LawSpecTyped.fromNativeListText(xs)));
   }
 
   public static java.util.Set<java.lang.String>
       collectionsSetRemoveTextSetText(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.Set<java.lang.String> value1)
+          Map<String, Object> symbols, java.lang.String x, java.util.Set<java.lang.String> s)
   {
     return lawspec.runtime.LawSpecTyped.toNativeSetText(
         lawspec.runtime.LawSpecTyped.collectionsSetRemove(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeSetText(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(x),
+            lawspec.runtime.LawSpecTyped.fromNativeSetText(s)));
   }
 
   public static java.util.Set<java.lang.String>
       collectionsSetUnionSetTextSetText(
           Map<String, Object> symbols,
-          java.util.Set<java.lang.String> value0,
-          java.util.Set<java.lang.String> value1)
+          java.util.Set<java.lang.String> s,
+          java.util.Set<java.lang.String> t)
   {
     return lawspec.runtime.LawSpecTyped.toNativeSetText(
         lawspec.runtime.LawSpecTyped.collectionsSetUnion(
-            lawspec.runtime.LawSpecTyped.fromNativeSetText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeSetText(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeSetText(s),
+            lawspec.runtime.LawSpecTyped.fromNativeSetText(t)));
   }
 
   public static java.lang.Boolean
       lawtwinKafkaAllAtLeast(
-          Map<String, Object> symbols, java.lang.Long value0, java.util.List<java.lang.Long> value1)
+          Map<String, Object> symbols, java.lang.Long floor, java.util.List<java.lang.Long> xs)
   {
     return lawspec.runtime.LawSpecTyped.toNativeBool(
         lawspec.runtime.LawSpecTyped.allAtLeast(
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListInt64(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(floor),
+            lawspec.runtime.LawSpecTyped.fromNativeListInt64(xs)));
   }
 
   public static java.util.List<lawspec.data.TopicPartition>
       lawtwinKafkaAssignmentIn(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.List<lawspec.data.MemberAssignment> value1)
+          java.lang.String m,
+          java.util.List<lawspec.data.MemberAssignment> ms)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListTopicPartition(
         lawspec.runtime.LawSpecTyped.assignmentIn(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListMemberAssignment(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(m),
+            lawspec.runtime.LawSpecTyped.fromNativeListMemberAssignment(ms)));
   }
 
   public static java.util.List<lawspec.data.Record>
       lawtwinKafkaCommittedFrom(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          lawspec.data.TopicPartition value0,
-          java.lang.Long value1)
+          lawspec.data.TopicPartition tp,
+          java.lang.Long offset)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(SCHEMA, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = SCHEMA.scalar("Int64", 64, java.lang.Long.class);
-      var argument1 = codec1.encode(value1);
+      var tpCodec = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(SCHEMA, 64, symbols);
+      var tpValue = tpCodec.encode(tp);
+      var offsetCodec = SCHEMA.scalar("Int64", 64, java.lang.Long.class);
+      var offsetValue = offsetCodec.encode(offset);
       var result =
           lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaCommittedFrom(
-              symbols, argument0, argument1);
+              symbols, tpValue, offsetValue);
       var resultCodec =
           SCHEMA.list(
               lawspec.runtime.LawSpecDataCodecs.recordCodec(SCHEMA, 64, symbols), 64, symbols);
@@ -2887,29 +2892,29 @@ public final class Kafka
   public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.ConsumerState>
       lawtwinKafkaConsumerAssign(
           Map<String, Object> symbols,
-          java.util.List<lawspec.data.TopicPartition> value0,
-          lawspec.data.ConsumerState value1)
+          java.util.List<lawspec.data.TopicPartition> tps,
+          lawspec.data.ConsumerState c)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairUnitConsumerState(
         lawspec.runtime.LawSpecTyped.consumerAssign(
-            lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeConsumerState(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(tps),
+            lawspec.runtime.LawSpecTyped.fromNativeConsumerState(c)));
   }
 
   public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.ConsumerState>
       lawtwinKafkaConsumerClose(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          lawspec.data.ConsumerState value0)
+          lawspec.data.ConsumerState c)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(SCHEMA, 64, symbols);
-      var argument0 = codec0.encode(value0);
+      var codecC = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(SCHEMA, 64, symbols);
+      var valueC = codecC.encode(c);
       var result =
-          lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaConsumerClose(symbols, argument0);
+          lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaConsumerClose(symbols, valueC);
       var resultCodec =
           lawspec.runtime.LawSpecDataCodecs.pairCodec(
               SCHEMA,
@@ -2937,16 +2942,16 @@ public final class Kafka
       lawtwinKafkaConsumerCommit(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          lawspec.data.ConsumerState value0)
+          lawspec.data.ConsumerState c)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(SCHEMA, 64, symbols);
-      var argument0 = codec0.encode(value0);
+      var codecC = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(SCHEMA, 64, symbols);
+      var valueC = codecC.encode(c);
       var result =
-          lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaConsumerCommit(symbols, argument0);
+          lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaConsumerCommit(symbols, valueC);
       var resultCodec =
           lawspec.runtime.LawSpecDataCodecs.pairCodec(
               SCHEMA,
@@ -2976,20 +2981,20 @@ public final class Kafka
       lawtwinKafkaConsumerCommitted(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          lawspec.data.TopicPartition value0,
-          lawspec.data.ConsumerState value1)
+          lawspec.data.TopicPartition tp,
+          lawspec.data.ConsumerState c)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(SCHEMA, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(SCHEMA, 64, symbols);
-      var argument1 = codec1.encode(value1);
+      var tpCodec = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(SCHEMA, 64, symbols);
+      var tpValue = tpCodec.encode(tp);
+      var codecC = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(SCHEMA, 64, symbols);
+      var valueC = codecC.encode(c);
       var result =
           lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaConsumerCommitted(
-              symbols, argument0, argument1);
+              symbols, tpValue, valueC);
       var resultCodec =
           lawspec.runtime.LawSpecDataCodecs.pairCodec(
               SCHEMA,
@@ -3013,13 +3018,13 @@ public final class Kafka
   public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.ConsumerState>
       lawtwinKafkaConsumerIsolation(
           Map<String, Object> symbols,
-          lawspec.data.IsolationLevel value0,
-          lawspec.data.ConsumerState value1)
+          lawspec.data.IsolationLevel level,
+          lawspec.data.ConsumerState c)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairUnitConsumerState(
         lawspec.runtime.LawSpecTyped.consumerIsolation(
-            lawspec.runtime.LawSpecTyped.fromNativeIsolationLevel(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeConsumerState(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeIsolationLevel(level),
+            lawspec.runtime.LawSpecTyped.fromNativeConsumerState(c)));
   }
 
   public static lawspec.data.Pair<
@@ -3029,26 +3034,26 @@ public final class Kafka
       lawtwinKafkaConsumerJoin(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          java.lang.String value0,
-          java.lang.String value1,
-          java.util.List<java.lang.String> value2,
-          lawspec.data.ConsumerState value3)
+          java.lang.String g,
+          java.lang.String m,
+          java.util.List<java.lang.String> topics,
+          lawspec.data.ConsumerState c)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = SCHEMA.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = SCHEMA.scalar("Text", 64, java.lang.String.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 = SCHEMA.list(SCHEMA.scalar("Text", 64, java.lang.String.class), 64, symbols);
-      var argument2 = codec2.encode(value2);
-      var codec3 = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(SCHEMA, 64, symbols);
-      var argument3 = codec3.encode(value3);
+      var codecG = SCHEMA.scalar("Text", 64, java.lang.String.class);
+      var valueG = codecG.encode(g);
+      var codecM = SCHEMA.scalar("Text", 64, java.lang.String.class);
+      var valueM = codecM.encode(m);
+      var topicsCodec = SCHEMA.list(SCHEMA.scalar("Text", 64, java.lang.String.class), 64, symbols);
+      var topicsValue = topicsCodec.encode(topics);
+      var codecC = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(SCHEMA, 64, symbols);
+      var valueC = codecC.encode(c);
       var result =
           lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaConsumerJoin(
-              symbols, argument0, argument1, argument2, argument3);
+              symbols, valueG, valueM, topicsValue, valueC);
       var resultCodec =
           lawspec.runtime.LawSpecDataCodecs.pairCodec(
               SCHEMA,
@@ -3083,20 +3088,19 @@ public final class Kafka
       lawtwinKafkaConsumerPoll(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          java.lang.Integer value0,
-          lawspec.data.ConsumerState value1)
+          java.lang.Integer n,
+          lawspec.data.ConsumerState c)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = SCHEMA.scalar("Int32", 64, java.lang.Integer.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(SCHEMA, 64, symbols);
-      var argument1 = codec1.encode(value1);
+      var codecN = SCHEMA.scalar("Int32", 64, java.lang.Integer.class);
+      var valueN = codecN.encode(n);
+      var codecC = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(SCHEMA, 64, symbols);
+      var valueC = codecC.encode(c);
       var result =
-          lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaConsumerPoll(
-              symbols, argument0, argument1);
+          lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaConsumerPoll(symbols, valueN, valueC);
       var resultCodec =
           lawspec.runtime.LawSpecDataCodecs.pairCodec(
               SCHEMA,
@@ -3128,20 +3132,20 @@ public final class Kafka
       lawtwinKafkaConsumerPosition(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          lawspec.data.TopicPartition value0,
-          lawspec.data.ConsumerState value1)
+          lawspec.data.TopicPartition tp,
+          lawspec.data.ConsumerState c)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(SCHEMA, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(SCHEMA, 64, symbols);
-      var argument1 = codec1.encode(value1);
+      var tpCodec = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(SCHEMA, 64, symbols);
+      var tpValue = tpCodec.encode(tp);
+      var codecC = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(SCHEMA, 64, symbols);
+      var valueC = codecC.encode(c);
       var result =
           lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaConsumerPosition(
-              symbols, argument0, argument1);
+              symbols, tpValue, valueC);
       var resultCodec =
           lawspec.runtime.LawSpecDataCodecs.pairCodec(
               SCHEMA,
@@ -3168,20 +3172,20 @@ public final class Kafka
       lawtwinKafkaConsumerPositionOf(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          lawspec.data.TopicPartition value0,
-          lawspec.data.ConsumerState value1)
+          lawspec.data.TopicPartition tp,
+          lawspec.data.ConsumerState c)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(SCHEMA, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(SCHEMA, 64, symbols);
-      var argument1 = codec1.encode(value1);
+      var tpCodec = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(SCHEMA, 64, symbols);
+      var tpValue = tpCodec.encode(tp);
+      var codecC = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(SCHEMA, 64, symbols);
+      var valueC = codecC.encode(c);
       var result =
           lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaConsumerPositionOf(
-              symbols, argument0, argument1);
+              symbols, tpValue, valueC);
       var resultCodec =
           lawspec.runtime.LawSpecDataCodecs.pairCodec(
               SCHEMA,
@@ -3209,13 +3213,13 @@ public final class Kafka
   public static java.util.List<lawspec.data.ConsumerRecord>
       lawtwinKafkaConsumerRecords(
           Map<String, Object> symbols,
-          lawspec.data.TopicPartition value0,
-          java.util.List<lawspec.data.FetchedRecord> value1)
+          lawspec.data.TopicPartition tp,
+          java.util.List<lawspec.data.FetchedRecord> rs)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListConsumerRecord(
         lawspec.runtime.LawSpecTyped.consumerRecords(
-            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListFetchedRecord(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(tp),
+            lawspec.runtime.LawSpecTyped.fromNativeListFetchedRecord(rs)));
   }
 
   public static lawspec.data.Pair<
@@ -3225,16 +3229,16 @@ public final class Kafka
       lawtwinKafkaConsumerRefresh(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          lawspec.data.ConsumerState value0)
+          lawspec.data.ConsumerState c)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(SCHEMA, 64, symbols);
-      var argument0 = codec0.encode(value0);
+      var codecC = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(SCHEMA, 64, symbols);
+      var valueC = codecC.encode(c);
       var result =
-          lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaConsumerRefresh(symbols, argument0);
+          lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaConsumerRefresh(symbols, valueC);
       var resultCodec =
           lawspec.runtime.LawSpecDataCodecs.pairCodec(
               SCHEMA,
@@ -3265,49 +3269,48 @@ public final class Kafka
           lawspec.data.ConsumerState>
       lawtwinKafkaConsumerSeek(
           Map<String, Object> symbols,
-          lawspec.data.TopicPartition value0,
-          java.lang.Long value1,
-          lawspec.data.ConsumerState value2)
+          lawspec.data.TopicPartition tp,
+          java.lang.Long offset,
+          lawspec.data.ConsumerState c)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairEitherKafkaErrorUnitConsumerState(
         lawspec.runtime.LawSpecTyped.consumerSeek(
-            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeConsumerState(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(tp),
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(offset),
+            lawspec.runtime.LawSpecTyped.fromNativeConsumerState(c)));
   }
 
   public static java.lang.Boolean
       lawtwinKafkaCoversOnce(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.lang.Integer value1,
-          lawspec.data.GroupView value2)
+          java.lang.String t,
+          java.lang.Integer n,
+          lawspec.data.GroupView view)
   {
     return lawspec.runtime.LawSpecTyped.toNativeBool(
         lawspec.runtime.LawSpecTyped.coversOnce(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeInt32(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeGroupView(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(t),
+            lawspec.runtime.LawSpecTyped.fromNativeInt32(n),
+            lawspec.runtime.LawSpecTyped.fromNativeGroupView(view)));
   }
 
   public static java.lang.Boolean
       lawtwinKafkaCreated(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          java.lang.String value0,
-          java.lang.Integer value1)
+          java.lang.String t,
+          java.lang.Integer n)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = SCHEMA.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = SCHEMA.scalar("Int32", 64, java.lang.Integer.class);
-      var argument1 = codec1.encode(value1);
+      var codecT = SCHEMA.scalar("Text", 64, java.lang.String.class);
+      var valueT = codecT.encode(t);
+      var codecN = SCHEMA.scalar("Int32", 64, java.lang.Integer.class);
+      var valueN = codecN.encode(n);
       var result =
-          lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaCreated(
-              symbols, argument0, argument1);
+          lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaCreated(symbols, valueT, valueN);
       var resultCodec = SCHEMA.scalar("Bool", 64, java.lang.Boolean.class);
       return resultCodec.decode(result);
     }
@@ -3325,108 +3328,104 @@ public final class Kafka
   public static java.lang.Boolean
       lawtwinKafkaFencedBy(
           Map<String, Object> symbols,
-          lawspec.data.ProducerIdAndEpoch value0,
-          lawspec.data.ProducerIdAndEpoch value1)
+          lawspec.data.ProducerIdAndEpoch old,
+          lawspec.data.ProducerIdAndEpoch new_)
   {
     return lawspec.runtime.LawSpecTyped.toNativeBool(
         lawspec.runtime.LawSpecTyped.fencedBy(
-            lawspec.runtime.LawSpecTyped.fromNativeProducerIdAndEpoch(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeProducerIdAndEpoch(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeProducerIdAndEpoch(old),
+            lawspec.runtime.LawSpecTyped.fromNativeProducerIdAndEpoch(new_)));
   }
 
   public static java.lang.Boolean
       lawtwinKafkaFollowsBatch(
           Map<String, Object> symbols,
-          lawspec.runtime.LawSpecRuntime.Either<lawspec.data.KafkaError, java.lang.Long> value0,
-          java.util.List<lawspec.data.Record> value1,
-          lawspec.runtime.LawSpecRuntime.Either<lawspec.data.KafkaError, java.lang.Long> value2)
+          lawspec.runtime.LawSpecRuntime.Either<lawspec.data.KafkaError, java.lang.Long> a,
+          java.util.List<lawspec.data.Record> batch,
+          lawspec.runtime.LawSpecRuntime.Either<lawspec.data.KafkaError, java.lang.Long> b)
   {
     return lawspec.runtime.LawSpecTyped.toNativeBool(
         lawspec.runtime.LawSpecTyped.followsBatch(
-            lawspec.runtime.LawSpecTyped.fromNativeEitherKafkaErrorInt64(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListRecord(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeEitherKafkaErrorInt64(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeEitherKafkaErrorInt64(a),
+            lawspec.runtime.LawSpecTyped.fromNativeListRecord(batch),
+            lawspec.runtime.LawSpecTyped.fromNativeEitherKafkaErrorInt64(b)));
   }
 
   public static java.lang.Boolean
       lawtwinKafkaFollowsOne(
           Map<String, Object> symbols,
           lawspec.runtime.LawSpecRuntime.Either<
-                  lawspec.data.KafkaError, lawspec.data.RecordMetadata> value0,
-          lawspec.runtime.LawSpecRuntime.Either<lawspec.data.KafkaError, java.lang.Long> value1)
+                  lawspec.data.KafkaError, lawspec.data.RecordMetadata> a,
+          lawspec.runtime.LawSpecRuntime.Either<lawspec.data.KafkaError, java.lang.Long> latest)
   {
     return lawspec.runtime.LawSpecTyped.toNativeBool(
         lawspec.runtime.LawSpecTyped.followsOne(
-            lawspec.runtime.LawSpecTyped.fromNativeEitherKafkaErrorRecordMetadata(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeEitherKafkaErrorInt64(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeEitherKafkaErrorRecordMetadata(a),
+            lawspec.runtime.LawSpecTyped.fromNativeEitherKafkaErrorInt64(latest)));
   }
 
   public static lawspec.data.ConsumerState
-      lawtwinKafkaFreshConsumer(
-          Map<String, Object> symbols, lawspec.runtime.LawSpecRuntime.Value value0)
+      lawtwinKafkaFreshConsumer(Map<String, Object> symbols, lawspec.runtime.LawSpecRuntime.Value u)
   {
     return lawspec.runtime.LawSpecTyped.toNativeConsumerState(
-        lawspec.runtime.LawSpecTyped.freshConsumer(
-            lawspec.runtime.LawSpecTyped.fromNativeUnit(value0)));
+        lawspec.runtime.LawSpecTyped.freshConsumer(lawspec.runtime.LawSpecTyped.fromNativeUnit(u)));
   }
 
   public static lawspec.data.ProducerState
-      lawtwinKafkaFreshProducer(
-          Map<String, Object> symbols, lawspec.runtime.LawSpecRuntime.Value value0)
+      lawtwinKafkaFreshProducer(Map<String, Object> symbols, lawspec.runtime.LawSpecRuntime.Value u)
   {
     return lawspec.runtime.LawSpecTyped.toNativeProducerState(
-        lawspec.runtime.LawSpecTyped.freshProducer(
-            lawspec.runtime.LawSpecTyped.fromNativeUnit(value0)));
+        lawspec.runtime.LawSpecTyped.freshProducer(lawspec.runtime.LawSpecTyped.fromNativeUnit(u)));
   }
 
   public static lawspec.data.TransactionState
       lawtwinKafkaFreshTransactions(
-          Map<String, Object> symbols, lawspec.runtime.LawSpecRuntime.Value value0)
+          Map<String, Object> symbols, lawspec.runtime.LawSpecRuntime.Value u)
   {
     return lawspec.runtime.LawSpecTyped.toNativeTransactionState(
         lawspec.runtime.LawSpecTyped.freshTransactions(
-            lawspec.runtime.LawSpecTyped.fromNativeUnit(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeUnit(u)));
   }
 
   public static lawspec.data.Pair<
           lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerIdAndEpoch>,
           lawspec.data.ProducerState>
-      lawtwinKafkaIdentityOf(Map<String, Object> symbols, lawspec.data.ProducerState value0)
+      lawtwinKafkaIdentityOf(Map<String, Object> symbols, lawspec.data.ProducerState st)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairMaybeProducerIdAndEpochProducerState(
         lawspec.runtime.LawSpecTyped.identityOf(
-            lawspec.runtime.LawSpecTyped.fromNativeProducerState(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeProducerState(st)));
   }
 
   public static java.lang.Boolean
-      lawtwinKafkaIncreasing(Map<String, Object> symbols, java.util.List<java.lang.Long> value0)
+      lawtwinKafkaIncreasing(Map<String, Object> symbols, java.util.List<java.lang.Long> xs)
   {
     return lawspec.runtime.LawSpecTyped.toNativeBool(
         lawspec.runtime.LawSpecTyped.increasing(
-            lawspec.runtime.LawSpecTyped.fromNativeListInt64(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeListInt64(xs)));
   }
 
   public static java.lang.Boolean
       lawtwinKafkaJoinAll(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          java.lang.String value0,
-          java.util.List<java.lang.String> value1,
-          java.util.List<java.lang.String> value2)
+          java.lang.String g,
+          java.util.List<java.lang.String> ms,
+          java.util.List<java.lang.String> topics)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = SCHEMA.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = SCHEMA.list(SCHEMA.scalar("Text", 64, java.lang.String.class), 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var codec2 = SCHEMA.list(SCHEMA.scalar("Text", 64, java.lang.String.class), 64, symbols);
-      var argument2 = codec2.encode(value2);
+      var codecG = SCHEMA.scalar("Text", 64, java.lang.String.class);
+      var valueG = codecG.encode(g);
+      var msCodec = SCHEMA.list(SCHEMA.scalar("Text", 64, java.lang.String.class), 64, symbols);
+      var msValue = msCodec.encode(ms);
+      var topicsCodec = SCHEMA.list(SCHEMA.scalar("Text", 64, java.lang.String.class), 64, symbols);
+      var topicsValue = topicsCodec.encode(topics);
       var result =
           lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaJoinAll(
-              symbols, argument0, argument1, argument2);
+              symbols, valueG, msValue, topicsValue);
       var resultCodec = SCHEMA.scalar("Bool", 64, java.lang.Boolean.class);
       return resultCodec.decode(result);
     }
@@ -3445,9 +3444,9 @@ public final class Kafka
       lawtwinKafkaJoinEach(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.GroupCoordinator groupCoordinator,
-          java.lang.String value0,
-          java.util.List<java.lang.String> value1,
-          java.util.List<java.lang.String> value2)
+          java.lang.String g,
+          java.util.List<java.lang.String> ms,
+          java.util.List<java.lang.String> topics)
   {
     try
     {
@@ -3455,15 +3454,15 @@ public final class Kafka
           symbols,
           java.util.Map.<String, Object>of(
               "lawtwin.kafka::ability::" + "GroupCoordinator", groupCoordinator));
-      var codec0 = SCHEMA.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = SCHEMA.list(SCHEMA.scalar("Text", 64, java.lang.String.class), 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var codec2 = SCHEMA.list(SCHEMA.scalar("Text", 64, java.lang.String.class), 64, symbols);
-      var argument2 = codec2.encode(value2);
+      var codecG = SCHEMA.scalar("Text", 64, java.lang.String.class);
+      var valueG = codecG.encode(g);
+      var msCodec = SCHEMA.list(SCHEMA.scalar("Text", 64, java.lang.String.class), 64, symbols);
+      var msValue = msCodec.encode(ms);
+      var topicsCodec = SCHEMA.list(SCHEMA.scalar("Text", 64, java.lang.String.class), 64, symbols);
+      var topicsValue = topicsCodec.encode(topics);
       var result =
           lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaJoinEach(
-              symbols, argument0, argument1, argument2);
+              symbols, valueG, msValue, topicsValue);
       var resultCodec = SCHEMA.scalar("Bool", 64, java.lang.Boolean.class);
       return resultCodec.decode(result);
     }
@@ -3481,545 +3480,538 @@ public final class Kafka
   public static java.util.Map<lawspec.data.TopicPartition, java.lang.Long>
       lawtwinKafkaKeepPositions(
           Map<String, Object> symbols,
-          java.util.List<lawspec.data.TopicPartition> value0,
-          java.util.Map<lawspec.data.TopicPartition, java.lang.Long> value1,
-          java.util.Map<lawspec.data.TopicPartition, java.lang.Long> value2)
+          java.util.List<lawspec.data.TopicPartition> tps,
+          java.util.Map<lawspec.data.TopicPartition, java.lang.Long> positions,
+          java.util.Map<lawspec.data.TopicPartition, java.lang.Long> acc)
   {
     return lawspec.runtime.LawSpecTyped.toNativeKeyValTopicPartitionInt64(
         lawspec.runtime.LawSpecTyped.keepPositions(
-            lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValTopicPartitionInt64(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValTopicPartitionInt64(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(tps),
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValTopicPartitionInt64(positions),
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValTopicPartitionInt64(acc)));
   }
 
   public static java.util.List<java.lang.String>
-      lawtwinKafkaMemberIds(Map<String, Object> symbols, java.util.List<java.lang.String> value0)
+      lawtwinKafkaMemberIds(Map<String, Object> symbols, java.util.List<java.lang.String> ms)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListText(
         lawspec.runtime.LawSpecTyped.memberIds(
-            lawspec.runtime.LawSpecTyped.fromNativeListText(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeListText(ms)));
   }
 
   public static java.util.List<lawspec.data.TopicPartition>
       lawtwinKafkaMissingFrom(
           Map<String, Object> symbols,
-          java.util.List<lawspec.data.TopicPartition> value0,
-          java.util.List<lawspec.data.TopicPartition> value1)
+          java.util.List<lawspec.data.TopicPartition> tps,
+          java.util.List<lawspec.data.TopicPartition> have)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListTopicPartition(
         lawspec.runtime.LawSpecTyped.missingFrom(
-            lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(tps),
+            lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(have)));
   }
 
   public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState>
       lawtwinKafkaModelAddPartitionsToTxn(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.lang.Long value1,
-          java.lang.Short value2,
-          java.util.List<lawspec.data.TopicPartition> value3,
-          lawspec.data.BrokerState value4)
+          java.lang.String txid,
+          java.lang.Long pid,
+          java.lang.Short epoch,
+          java.util.List<lawspec.data.TopicPartition> tps,
+          lawspec.data.BrokerState b)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairUnitBrokerState(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAddPartitionsToTxn(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeInt16(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(value3),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value4)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(txid),
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(pid),
+            lawspec.runtime.LawSpecTyped.fromNativeInt16(epoch),
+            lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(tps),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b)));
   }
 
   public static java.lang.Boolean
       lawtwinKafkaModelAllKnown(
           Map<String, Object> symbols,
-          java.util.List<lawspec.data.TopicPartition> value0,
-          lawspec.data.BrokerState value1)
+          java.util.List<lawspec.data.TopicPartition> tps,
+          lawspec.data.BrokerState b)
   {
     return lawspec.runtime.LawSpecTyped.toNativeBool(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAllKnown(
-            lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(tps),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b)));
   }
 
   public static lawspec.data.PartitionLog
       lawtwinKafkaModelAppendBatch(
           Map<String, Object> symbols,
-          java.util.List<lawspec.data.Record> value0,
-          java.lang.Long value1,
-          java.lang.Boolean value2,
-          lawspec.data.PartitionLog value3)
+          java.util.List<lawspec.data.Record> rs,
+          java.lang.Long writer,
+          java.lang.Boolean transactional,
+          lawspec.data.PartitionLog l)
   {
     return lawspec.runtime.LawSpecTyped.toNativePartitionLog(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAppendBatch(
-            lawspec.runtime.LawSpecTyped.fromNativeListRecord(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeBool(value2),
-            lawspec.runtime.LawSpecTyped.fromNativePartitionLog(value3)));
+            lawspec.runtime.LawSpecTyped.fromNativeListRecord(rs),
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(writer),
+            lawspec.runtime.LawSpecTyped.fromNativeBool(transactional),
+            lawspec.runtime.LawSpecTyped.fromNativePartitionLog(l)));
   }
 
   public static lawspec.data.Pair<java.lang.Long, java.util.List<lawspec.data.LogEntry>>
       lawtwinKafkaModelAppendRecords(
           Map<String, Object> symbols,
-          java.util.List<lawspec.data.Record> value0,
-          java.lang.Long value1,
-          java.lang.Long value2,
-          java.lang.Boolean value3,
-          java.util.List<lawspec.data.LogEntry> value4)
+          java.util.List<lawspec.data.Record> rs,
+          java.lang.Long offset,
+          java.lang.Long writer,
+          java.lang.Boolean transactional,
+          java.util.List<lawspec.data.LogEntry> es)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairInt64ListLogEntry(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAppendRecords(
-            lawspec.runtime.LawSpecTyped.fromNativeListRecord(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeBool(value3),
-            lawspec.runtime.LawSpecTyped.fromNativeListLogEntry(value4)));
+            lawspec.runtime.LawSpecTyped.fromNativeListRecord(rs),
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(offset),
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(writer),
+            lawspec.runtime.LawSpecTyped.fromNativeBool(transactional),
+            lawspec.runtime.LawSpecTyped.fromNativeListLogEntry(es)));
   }
 
   public static lawspec.data.BrokerState
       lawtwinKafkaModelApplyOffsets(
           Map<String, Object> symbols,
-          java.util.List<lawspec.data.PendingOffset> value0,
-          lawspec.data.BrokerState value1)
+          java.util.List<lawspec.data.PendingOffset> os,
+          lawspec.data.BrokerState b)
   {
     return lawspec.runtime.LawSpecTyped.toNativeBrokerState(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelApplyOffsets(
-            lawspec.runtime.LawSpecTyped.fromNativeListPendingOffset(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeListPendingOffset(os),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b)));
   }
 
   public static java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>>
       lawtwinKafkaModelAssignPartitions(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.List<java.lang.Integer> value1,
-          java.util.List<java.lang.String> value2,
-          java.util.List<java.lang.String> value3,
-          java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>> value4)
+          java.lang.String topic,
+          java.util.List<java.lang.Integer> ps,
+          java.util.List<java.lang.String> owners,
+          java.util.List<java.lang.String> waiting,
+          java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>> a)
   {
     return lawspec.runtime.LawSpecTyped.toNativeKeyValTextListTopicPartition(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAssignPartitions(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListInt32(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeListText(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeListText(value3),
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextListTopicPartition(value4)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(topic),
+            lawspec.runtime.LawSpecTyped.fromNativeListInt32(ps),
+            lawspec.runtime.LawSpecTyped.fromNativeListText(owners),
+            lawspec.runtime.LawSpecTyped.fromNativeListText(waiting),
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextListTopicPartition(a)));
   }
 
   public static java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>>
       lawtwinKafkaModelAssignTo(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          lawspec.data.TopicPartition value1,
-          java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>> value2)
+          java.lang.String member,
+          lawspec.data.TopicPartition tp,
+          java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>> a)
   {
     return lawspec.runtime.LawSpecTyped.toNativeKeyValTextListTopicPartition(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAssignTo(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextListTopicPartition(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(member),
+            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(tp),
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextListTopicPartition(a)));
   }
 
   public static java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>>
       lawtwinKafkaModelAssignTopics(
           Map<String, Object> symbols,
-          java.util.List<java.lang.String> value0,
+          java.util.List<java.lang.String> topics,
           java.util.List<
-                  lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value1,
-          lawspec.data.BrokerState value2,
-          java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>> value3)
+                  lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> subs,
+          lawspec.data.BrokerState b,
+          java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>> a)
   {
     return lawspec.runtime.LawSpecTyped.toNativeKeyValTextListTopicPartition(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAssignTopics(
-            lawspec.runtime.LawSpecTyped.fromNativeListText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextListText(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextListTopicPartition(value3)));
+            lawspec.runtime.LawSpecTyped.fromNativeListText(topics),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextListText(subs),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b),
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextListTopicPartition(a)));
   }
 
   public static lawspec.data.Group
       lawtwinKafkaModelCheckMember(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.lang.String value1,
-          java.lang.Integer value2,
-          lawspec.data.BrokerState value3)
+          java.lang.String g,
+          java.lang.String member,
+          java.lang.Integer generation,
+          lawspec.data.BrokerState b)
   {
     return lawspec.runtime.LawSpecTyped.toNativeGroup(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCheckMember(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeInt32(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value3)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(g),
+            lawspec.runtime.LawSpecTyped.fromNativeText(member),
+            lawspec.runtime.LawSpecTyped.fromNativeInt32(generation),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b)));
   }
 
   public static lawspec.data.ProducerEntry
       lawtwinKafkaModelCheckTxnProducer(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.lang.Long value1,
-          java.lang.Short value2,
-          lawspec.data.BrokerState value3)
+          java.lang.String txid,
+          java.lang.Long pid,
+          java.lang.Short epoch,
+          lawspec.data.BrokerState b)
   {
     return lawspec.runtime.LawSpecTyped.toNativeProducerEntry(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCheckTxnProducer(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeInt16(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value3)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(txid),
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(pid),
+            lawspec.runtime.LawSpecTyped.fromNativeInt16(epoch),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b)));
   }
 
   public static lawspec.data.BrokerState
       lawtwinKafkaModelCommitAll(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.List<lawspec.data.OffsetEntry> value1,
-          lawspec.data.BrokerState value2)
+          java.lang.String g,
+          java.util.List<lawspec.data.OffsetEntry> offsets,
+          lawspec.data.BrokerState b)
   {
     return lawspec.runtime.LawSpecTyped.toNativeBrokerState(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCommitAll(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListOffsetEntry(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(g),
+            lawspec.runtime.LawSpecTyped.fromNativeListOffsetEntry(offsets),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b)));
   }
 
   public static java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>>
       lawtwinKafkaModelComputeAssignment(
           Map<String, Object> symbols,
-          java.util.Map<java.lang.String, java.util.List<java.lang.String>> value0,
-          lawspec.data.BrokerState value1)
+          java.util.Map<java.lang.String, java.util.List<java.lang.String>> subscriptions,
+          lawspec.data.BrokerState b)
   {
     return lawspec.runtime.LawSpecTyped.toNativeKeyValTextListTopicPartition(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelComputeAssignment(
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextListText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextListText(subscriptions),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b)));
   }
 
   public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState>
       lawtwinKafkaModelCreatePartitions(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.lang.Integer value1,
-          lawspec.data.BrokerState value2)
+          java.lang.String name,
+          java.lang.Integer total,
+          lawspec.data.BrokerState b)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairUnitBrokerState(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCreatePartitions(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeInt32(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(name),
+            lawspec.runtime.LawSpecTyped.fromNativeInt32(total),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b)));
   }
 
   public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState>
       lawtwinKafkaModelCreateTopic(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.lang.Integer value1,
-          lawspec.data.BrokerState value2)
+          java.lang.String name,
+          java.lang.Integer n,
+          lawspec.data.BrokerState b)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairUnitBrokerState(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCreateTopic(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeInt32(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(name),
+            lawspec.runtime.LawSpecTyped.fromNativeInt32(n),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b)));
   }
 
   public static lawspec.data.Pair<lawspec.data.GroupView, lawspec.data.BrokerState>
       lawtwinKafkaModelDescribeGroup(
-          Map<String, Object> symbols, java.lang.String value0, lawspec.data.BrokerState value1)
+          Map<String, Object> symbols, java.lang.String g, lawspec.data.BrokerState b)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairGroupViewBrokerState(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelDescribeGroup(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(g),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b)));
   }
 
   public static java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>>
       lawtwinKafkaModelEmptyAssignments(
           Map<String, Object> symbols,
-          java.util.List<java.lang.String> value0,
-          java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>> value1)
+          java.util.List<java.lang.String> members,
+          java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>> a)
   {
     return lawspec.runtime.LawSpecTyped.toNativeKeyValTextListTopicPartition(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEmptyAssignments(
-            lawspec.runtime.LawSpecTyped.fromNativeListText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextListTopicPartition(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeListText(members),
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextListTopicPartition(a)));
   }
 
   public static lawspec.data.BrokerState
       lawtwinKafkaModelEmptyBroker(
-          Map<String, Object> symbols, lawspec.runtime.LawSpecRuntime.Value value0)
+          Map<String, Object> symbols, lawspec.runtime.LawSpecRuntime.Value u)
   {
     return lawspec.runtime.LawSpecTyped.toNativeBrokerState(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEmptyBroker(
-            lawspec.runtime.LawSpecTyped.fromNativeUnit(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeUnit(u)));
   }
 
   public static lawspec.data.Group
       lawtwinKafkaModelEmptyGroup(
-          Map<String, Object> symbols, lawspec.runtime.LawSpecRuntime.Value value0)
+          Map<String, Object> symbols, lawspec.runtime.LawSpecRuntime.Value u)
   {
     return lawspec.runtime.LawSpecTyped.toNativeGroup(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEmptyGroup(
-            lawspec.runtime.LawSpecTyped.fromNativeUnit(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeUnit(u)));
   }
 
   public static lawspec.data.PartitionLog
-      lawtwinKafkaModelEmptyLog(
-          Map<String, Object> symbols, lawspec.runtime.LawSpecRuntime.Value value0)
+      lawtwinKafkaModelEmptyLog(Map<String, Object> symbols, lawspec.runtime.LawSpecRuntime.Value u)
   {
     return lawspec.runtime.LawSpecTyped.toNativePartitionLog(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEmptyLog(
-            lawspec.runtime.LawSpecTyped.fromNativeUnit(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeUnit(u)));
   }
 
   public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState>
       lawtwinKafkaModelEndTxn(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.lang.Long value1,
-          java.lang.Short value2,
-          java.lang.Boolean value3,
-          lawspec.data.BrokerState value4)
+          java.lang.String txid,
+          java.lang.Long pid,
+          java.lang.Short epoch,
+          java.lang.Boolean commit,
+          lawspec.data.BrokerState b)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairUnitBrokerState(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEndTxn(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeInt16(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeBool(value3),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value4)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(txid),
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(pid),
+            lawspec.runtime.LawSpecTyped.fromNativeInt16(epoch),
+            lawspec.runtime.LawSpecTyped.fromNativeBool(commit),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b)));
   }
 
   public static java.lang.Integer
       lawtwinKafkaModelExpectedSequence(
           Map<String, Object> symbols,
-          java.lang.Short value0,
-          java.util.List<lawspec.data.BatchMeta> value1)
+          java.lang.Short epoch,
+          java.util.List<lawspec.data.BatchMeta> ms)
   {
     return lawspec.runtime.LawSpecTyped.toNativeInt32(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelExpectedSequence(
-            lawspec.runtime.LawSpecTyped.fromNativeInt16(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListBatchMeta(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeInt16(epoch),
+            lawspec.runtime.LawSpecTyped.fromNativeListBatchMeta(ms)));
   }
 
   public static lawspec.data.Pair<lawspec.data.FetchResult, lawspec.data.BrokerState>
       lawtwinKafkaModelFetch(
           Map<String, Object> symbols,
-          lawspec.data.TopicPartition value0,
-          java.lang.Long value1,
-          java.lang.Integer value2,
-          lawspec.data.IsolationLevel value3,
-          lawspec.data.BrokerState value4)
+          lawspec.data.TopicPartition tp,
+          java.lang.Long from,
+          java.lang.Integer maxRecords,
+          lawspec.data.IsolationLevel isolation,
+          lawspec.data.BrokerState b)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairFetchResultBrokerState(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelFetch(
-            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeInt32(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeIsolationLevel(value3),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value4)));
+            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(tp),
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(from),
+            lawspec.runtime.LawSpecTyped.fromNativeInt32(maxRecords),
+            lawspec.runtime.LawSpecTyped.fromNativeIsolationLevel(isolation),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Long>
       lawtwinKafkaModelFindDuplicate(
           Map<String, Object> symbols,
-          java.lang.Short value0,
-          java.lang.Integer value1,
-          java.lang.Integer value2,
-          java.util.List<lawspec.data.BatchMeta> value3)
+          java.lang.Short epoch,
+          java.lang.Integer first,
+          java.lang.Integer last,
+          java.util.List<lawspec.data.BatchMeta> ms)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeInt64(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelFindDuplicate(
-            lawspec.runtime.LawSpecTyped.fromNativeInt16(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeInt32(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeInt32(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeListBatchMeta(value3)));
+            lawspec.runtime.LawSpecTyped.fromNativeInt16(epoch),
+            lawspec.runtime.LawSpecTyped.fromNativeInt32(first),
+            lawspec.runtime.LawSpecTyped.fromNativeInt32(last),
+            lawspec.runtime.LawSpecTyped.fromNativeListBatchMeta(ms)));
   }
 
   public static lawspec.data.BrokerState
       lawtwinKafkaModelFinishTxn(
           Map<String, Object> symbols,
-          java.lang.Long value0,
-          java.lang.Boolean value1,
-          lawspec.data.TxnState value2,
-          lawspec.data.BrokerState value3)
+          java.lang.Long pid,
+          java.lang.Boolean commit,
+          lawspec.data.TxnState txn,
+          lawspec.data.BrokerState b)
   {
     return lawspec.runtime.LawSpecTyped.toNativeBrokerState(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelFinishTxn(
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeBool(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeTxnState(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value3)));
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(pid),
+            lawspec.runtime.LawSpecTyped.fromNativeBool(commit),
+            lawspec.runtime.LawSpecTyped.fromNativeTxnState(txn),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b)));
   }
 
   public static lawspec.data.Group
       lawtwinKafkaModelGroupOf(
-          Map<String, Object> symbols, java.lang.String value0, lawspec.data.BrokerState value1)
+          Map<String, Object> symbols, java.lang.String g, lawspec.data.BrokerState b)
   {
     return lawspec.runtime.LawSpecTyped.toNativeGroup(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelGroupOf(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(g),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b)));
   }
 
   public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState>
       lawtwinKafkaModelHeartbeat(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.lang.String value1,
-          java.lang.Integer value2,
-          lawspec.data.BrokerState value3)
+          java.lang.String g,
+          java.lang.String member,
+          java.lang.Integer generation,
+          lawspec.data.BrokerState b)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairUnitBrokerState(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelHeartbeat(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeInt32(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value3)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(g),
+            lawspec.runtime.LawSpecTyped.fromNativeText(member),
+            lawspec.runtime.LawSpecTyped.fromNativeInt32(generation),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b)));
   }
 
   public static java.lang.Long
-      lawtwinKafkaModelHighWatermark(Map<String, Object> symbols, lawspec.data.PartitionLog value0)
+      lawtwinKafkaModelHighWatermark(Map<String, Object> symbols, lawspec.data.PartitionLog l)
   {
     return lawspec.runtime.LawSpecTyped.toNativeInt64(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelHighWatermark(
-            lawspec.runtime.LawSpecTyped.fromNativePartitionLog(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativePartitionLog(l)));
   }
 
   public static lawspec.data.Pair<lawspec.data.ProducerIdAndEpoch, lawspec.data.BrokerState>
       lawtwinKafkaModelInitProducerId(
           Map<String, Object> symbols,
-          lawspec.runtime.LawSpecRuntime.Maybe<java.lang.String> value0,
-          lawspec.data.BrokerState value1)
+          lawspec.runtime.LawSpecRuntime.Maybe<java.lang.String> txid,
+          lawspec.data.BrokerState b)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairProducerIdAndEpochBrokerState(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelInitProducerId(
-            lawspec.runtime.LawSpecTyped.fromNativeMaybeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeMaybeText(txid),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b)));
   }
 
   public static java.lang.Boolean
       lawtwinKafkaModelIsAborted(
           Map<String, Object> symbols,
-          java.lang.Long value0,
-          java.lang.Long value1,
-          java.util.List<lawspec.data.AbortedTxn> value2)
+          java.lang.Long writer,
+          java.lang.Long offset,
+          java.util.List<lawspec.data.AbortedTxn> aborted)
   {
     return lawspec.runtime.LawSpecTyped.toNativeBool(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelIsAborted(
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeListAbortedTxn(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(writer),
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(offset),
+            lawspec.runtime.LawSpecTyped.fromNativeListAbortedTxn(aborted)));
   }
 
   public static lawspec.data.Pair<java.lang.Integer, lawspec.data.BrokerState>
       lawtwinKafkaModelJoinGroup(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.lang.String value1,
-          java.util.List<java.lang.String> value2,
-          lawspec.data.BrokerState value3)
+          java.lang.String g,
+          java.lang.String member,
+          java.util.List<java.lang.String> topics,
+          lawspec.data.BrokerState b)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairInt32BrokerState(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelJoinGroup(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeListText(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value3)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(g),
+            lawspec.runtime.LawSpecTyped.fromNativeText(member),
+            lawspec.runtime.LawSpecTyped.fromNativeListText(topics),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b)));
   }
 
   public static java.lang.Boolean
       lawtwinKafkaModelKnownPartition(
-          Map<String, Object> symbols,
-          lawspec.data.TopicPartition value0,
-          lawspec.data.BrokerState value1)
+          Map<String, Object> symbols, lawspec.data.TopicPartition tp, lawspec.data.BrokerState b)
   {
     return lawspec.runtime.LawSpecTyped.toNativeBool(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelKnownPartition(
-            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(tp),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b)));
   }
 
   public static java.lang.Long
       lawtwinKafkaModelLastOffsetOf(
           Map<String, Object> symbols,
-          java.util.List<lawspec.data.FetchedRecord> value0,
-          java.lang.Long value1)
+          java.util.List<lawspec.data.FetchedRecord> rs,
+          java.lang.Long fallbackOffset)
   {
     return lawspec.runtime.LawSpecTyped.toNativeInt64(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelLastOffsetOf(
-            lawspec.runtime.LawSpecTyped.fromNativeListFetchedRecord(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeListFetchedRecord(rs),
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(fallbackOffset)));
   }
 
   public static java.lang.Long
-      lawtwinKafkaModelLastStableOffset(
-          Map<String, Object> symbols, lawspec.data.PartitionLog value0)
+      lawtwinKafkaModelLastStableOffset(Map<String, Object> symbols, lawspec.data.PartitionLog l)
   {
     return lawspec.runtime.LawSpecTyped.toNativeInt64(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelLastStableOffset(
-            lawspec.runtime.LawSpecTyped.fromNativePartitionLog(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativePartitionLog(l)));
   }
 
   public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState>
       lawtwinKafkaModelLeaveGroup(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.lang.String value1,
-          lawspec.data.BrokerState value2)
+          java.lang.String g,
+          java.lang.String member,
+          lawspec.data.BrokerState b)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairUnitBrokerState(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelLeaveGroup(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(g),
+            lawspec.runtime.LawSpecTyped.fromNativeText(member),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b)));
   }
 
   public static lawspec.data.Pair<java.lang.Long, lawspec.data.BrokerState>
       lawtwinKafkaModelListOffsets(
           Map<String, Object> symbols,
-          lawspec.data.TopicPartition value0,
-          lawspec.data.OffsetSpec value1,
-          lawspec.data.IsolationLevel value2,
-          lawspec.data.BrokerState value3)
+          lawspec.data.TopicPartition tp,
+          lawspec.data.OffsetSpec spec,
+          lawspec.data.IsolationLevel isolation,
+          lawspec.data.BrokerState b)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairInt64BrokerState(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelListOffsets(
-            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeOffsetSpec(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeIsolationLevel(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value3)));
+            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(tp),
+            lawspec.runtime.LawSpecTyped.fromNativeOffsetSpec(spec),
+            lawspec.runtime.LawSpecTyped.fromNativeIsolationLevel(isolation),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b)));
   }
 
   public static lawspec.data.PartitionLog
       lawtwinKafkaModelLogOf(
-          Map<String, Object> symbols,
-          lawspec.data.TopicPartition value0,
-          lawspec.data.BrokerState value1)
+          Map<String, Object> symbols, lawspec.data.TopicPartition tp, lawspec.data.BrokerState b)
   {
     return lawspec.runtime.LawSpecTyped.toNativePartitionLog(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelLogOf(
-            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(tp),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b)));
   }
 
   public static java.lang.Long
-      lawtwinKafkaModelMax64(
-          Map<String, Object> symbols, java.lang.Long value0, java.lang.Long value1)
+      lawtwinKafkaModelMax64(Map<String, Object> symbols, java.lang.Long a, java.lang.Long b)
   {
     return lawspec.runtime.LawSpecTyped.toNativeInt64(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMax64(
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(a),
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(b)));
   }
 
   public static java.lang.Integer
       lawtwinKafkaModelMaxPartitions(
-          Map<String, Object> symbols, lawspec.runtime.LawSpecRuntime.Value value0)
+          Map<String, Object> symbols, lawspec.runtime.LawSpecRuntime.Value u)
   {
     return lawspec.runtime.LawSpecTyped.toNativeInt32(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMaxPartitions(
-            lawspec.runtime.LawSpecTyped.fromNativeUnit(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeUnit(u)));
   }
 
   public static java.util.List<lawspec.data.MemberAssignment>
@@ -4027,483 +4019,478 @@ public final class Kafka
           Map<String, Object> symbols,
           java.util.List<
                   lawspec.data.Entry<
-                          java.lang.String, java.util.List<lawspec.data.TopicPartition>>> value0)
+                          java.lang.String, java.util.List<lawspec.data.TopicPartition>>> a)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListMemberAssignment(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMemberViews(
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextListTopicPartition(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextListTopicPartition(a)));
   }
 
   public static lawspec.data.Pair<
           lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Integer>, lawspec.data.BrokerState>
       lawtwinKafkaModelMetadata(
-          Map<String, Object> symbols, java.lang.String value0, lawspec.data.BrokerState value1)
+          Map<String, Object> symbols, java.lang.String name, lawspec.data.BrokerState b)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairMaybeInt32BrokerState(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMetadata(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(name),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b)));
   }
 
   public static java.lang.Long
-      lawtwinKafkaModelMin64(
-          Map<String, Object> symbols, java.lang.Long value0, java.lang.Long value1)
+      lawtwinKafkaModelMin64(Map<String, Object> symbols, java.lang.Long a, java.lang.Long b)
   {
     return lawspec.runtime.LawSpecTyped.toNativeInt64(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMin64(
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(a),
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(b)));
   }
 
   public static java.lang.Long
       lawtwinKafkaModelMinOf(
-          Map<String, Object> symbols, java.util.List<java.lang.Long> value0, java.lang.Long value1)
+          Map<String, Object> symbols, java.util.List<java.lang.Long> xs, java.lang.Long m)
   {
     return lawspec.runtime.LawSpecTyped.toNativeInt64(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMinOf(
-            lawspec.runtime.LawSpecTyped.fromNativeListInt64(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeListInt64(xs),
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(m)));
   }
 
   public static lawspec.data.Pair<lawspec.data.ProducerIdAndEpoch, lawspec.data.BrokerState>
       lawtwinKafkaModelNewProducer(
           Map<String, Object> symbols,
-          lawspec.runtime.LawSpecRuntime.Maybe<java.lang.String> value0,
-          lawspec.data.BrokerState value1)
+          lawspec.runtime.LawSpecRuntime.Maybe<java.lang.String> txid,
+          lawspec.data.BrokerState b)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairProducerIdAndEpochBrokerState(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelNewProducer(
-            lawspec.runtime.LawSpecTyped.fromNativeMaybeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeMaybeText(txid),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b)));
   }
 
   public static java.lang.Long
       lawtwinKafkaModelNextFetchOffset(
           Map<String, Object> symbols,
-          java.lang.Long value0,
-          java.lang.Long value1,
-          java.util.List<lawspec.data.FetchedRecord> value2,
-          java.util.List<lawspec.data.FetchedRecord> value3)
+          java.lang.Long from,
+          java.lang.Long limit,
+          java.util.List<lawspec.data.FetchedRecord> taken,
+          java.util.List<lawspec.data.FetchedRecord> all)
   {
     return lawspec.runtime.LawSpecTyped.toNativeInt64(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelNextFetchOffset(
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeListFetchedRecord(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeListFetchedRecord(value3)));
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(from),
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(limit),
+            lawspec.runtime.LawSpecTyped.fromNativeListFetchedRecord(taken),
+            lawspec.runtime.LawSpecTyped.fromNativeListFetchedRecord(all)));
   }
 
   public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState>
       lawtwinKafkaModelOffsetCommit(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.lang.String value1,
-          java.lang.Integer value2,
-          java.util.List<lawspec.data.OffsetEntry> value3,
-          lawspec.data.BrokerState value4)
+          java.lang.String g,
+          java.lang.String member,
+          java.lang.Integer generation,
+          java.util.List<lawspec.data.OffsetEntry> offsets,
+          lawspec.data.BrokerState b)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairUnitBrokerState(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelOffsetCommit(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeInt32(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeListOffsetEntry(value3),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value4)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(g),
+            lawspec.runtime.LawSpecTyped.fromNativeText(member),
+            lawspec.runtime.LawSpecTyped.fromNativeInt32(generation),
+            lawspec.runtime.LawSpecTyped.fromNativeListOffsetEntry(offsets),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b)));
   }
 
   public static lawspec.data.Pair<
           lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Long>, lawspec.data.BrokerState>
       lawtwinKafkaModelOffsetFetch(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          lawspec.data.TopicPartition value1,
-          lawspec.data.BrokerState value2)
+          java.lang.String g,
+          lawspec.data.TopicPartition tp,
+          lawspec.data.BrokerState b)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairMaybeInt64BrokerState(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelOffsetFetch(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(g),
+            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(tp),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b)));
   }
 
   public static java.util.List<lawspec.data.TopicPartition>
       lawtwinKafkaModelOffsetPartitions(
-          Map<String, Object> symbols, java.util.List<lawspec.data.OffsetEntry> value0)
+          Map<String, Object> symbols, java.util.List<lawspec.data.OffsetEntry> offsets)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListTopicPartition(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelOffsetPartitions(
-            lawspec.runtime.LawSpecTyped.fromNativeListOffsetEntry(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeListOffsetEntry(offsets)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Integer>
       lawtwinKafkaModelPartitionCountOf(
-          Map<String, Object> symbols, java.lang.String value0, lawspec.data.BrokerState value1)
+          Map<String, Object> symbols, java.lang.String topic, lawspec.data.BrokerState b)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeInt32(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPartitionCountOf(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(topic),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b)));
   }
 
   public static java.util.List<java.lang.Integer>
-      lawtwinKafkaModelPartitionsBelow(Map<String, Object> symbols, java.lang.Integer value0)
+      lawtwinKafkaModelPartitionsBelow(Map<String, Object> symbols, java.lang.Integer n)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListInt32(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPartitionsBelow(
-            lawspec.runtime.LawSpecTyped.fromNativeInt32(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeInt32(n)));
   }
 
   public static java.util.List<lawspec.data.PendingOffset>
       lawtwinKafkaModelPendingFor(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.List<lawspec.data.OffsetEntry> value1,
-          java.util.List<lawspec.data.PendingOffset> value2)
+          java.lang.String group,
+          java.util.List<lawspec.data.OffsetEntry> offsets,
+          java.util.List<lawspec.data.PendingOffset> acc)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListPendingOffset(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPendingFor(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListOffsetEntry(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeListPendingOffset(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(group),
+            lawspec.runtime.LawSpecTyped.fromNativeListOffsetEntry(offsets),
+            lawspec.runtime.LawSpecTyped.fromNativeListPendingOffset(acc)));
   }
 
   public static lawspec.data.Pair<java.lang.Long, lawspec.data.BrokerState>
       lawtwinKafkaModelProduce(
           Map<String, Object> symbols,
-          lawspec.data.TopicPartition value0,
-          lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerTag> value1,
-          java.util.List<lawspec.data.Record> value2,
-          lawspec.data.BrokerState value3)
+          lawspec.data.TopicPartition tp,
+          lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerTag> tag,
+          java.util.List<lawspec.data.Record> rs,
+          lawspec.data.BrokerState b)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairInt64BrokerState(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelProduce(
-            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeMaybeProducerTag(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeListRecord(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value3)));
+            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(tp),
+            lawspec.runtime.LawSpecTyped.fromNativeMaybeProducerTag(tag),
+            lawspec.runtime.LawSpecTyped.fromNativeListRecord(rs),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b)));
   }
 
   public static lawspec.data.Pair<java.lang.Long, lawspec.data.BrokerState>
       lawtwinKafkaModelProduceTagged(
           Map<String, Object> symbols,
-          lawspec.data.TopicPartition value0,
-          lawspec.data.ProducerTag value1,
-          java.util.List<lawspec.data.Record> value2,
-          lawspec.data.PartitionLog value3,
-          lawspec.data.BrokerState value4)
+          lawspec.data.TopicPartition tp,
+          lawspec.data.ProducerTag t,
+          java.util.List<lawspec.data.Record> rs,
+          lawspec.data.PartitionLog l,
+          lawspec.data.BrokerState b)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairInt64BrokerState(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelProduceTagged(
-            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeProducerTag(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeListRecord(value2),
-            lawspec.runtime.LawSpecTyped.fromNativePartitionLog(value3),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value4)));
+            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(tp),
+            lawspec.runtime.LawSpecTyped.fromNativeProducerTag(t),
+            lawspec.runtime.LawSpecTyped.fromNativeListRecord(rs),
+            lawspec.runtime.LawSpecTyped.fromNativePartitionLog(l),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b)));
   }
 
   public static lawspec.data.BrokerState
       lawtwinKafkaModelPutGroup(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          lawspec.data.Group value1,
-          lawspec.data.BrokerState value2)
+          java.lang.String g,
+          lawspec.data.Group group,
+          lawspec.data.BrokerState b)
   {
     return lawspec.runtime.LawSpecTyped.toNativeBrokerState(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPutGroup(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeGroup(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(g),
+            lawspec.runtime.LawSpecTyped.fromNativeGroup(group),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b)));
   }
 
   public static lawspec.data.BrokerState
       lawtwinKafkaModelPutLog(
           Map<String, Object> symbols,
-          lawspec.data.TopicPartition value0,
-          lawspec.data.PartitionLog value1,
-          lawspec.data.BrokerState value2)
+          lawspec.data.TopicPartition tp,
+          lawspec.data.PartitionLog l,
+          lawspec.data.BrokerState b)
   {
     return lawspec.runtime.LawSpecTyped.toNativeBrokerState(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPutLog(
-            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0),
-            lawspec.runtime.LawSpecTyped.fromNativePartitionLog(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(tp),
+            lawspec.runtime.LawSpecTyped.fromNativePartitionLog(l),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b)));
   }
 
   public static lawspec.data.BrokerState
       lawtwinKafkaModelPutProducer(
           Map<String, Object> symbols,
-          java.lang.Long value0,
-          lawspec.data.ProducerEntry value1,
-          lawspec.data.BrokerState value2)
+          java.lang.Long pid,
+          lawspec.data.ProducerEntry entry,
+          lawspec.data.BrokerState b)
   {
     return lawspec.runtime.LawSpecTyped.toNativeBrokerState(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPutProducer(
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeProducerEntry(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(pid),
+            lawspec.runtime.LawSpecTyped.fromNativeProducerEntry(entry),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b)));
   }
 
   public static java.util.List<lawspec.data.FetchedRecord>
       lawtwinKafkaModelReadable(
           Map<String, Object> symbols,
-          java.util.List<lawspec.data.LogEntry> value0,
-          java.lang.Long value1,
-          java.lang.Long value2,
-          java.lang.Boolean value3,
-          java.util.List<lawspec.data.AbortedTxn> value4,
-          java.util.List<lawspec.data.FetchedRecord> value5)
+          java.util.List<lawspec.data.LogEntry> es,
+          java.lang.Long from,
+          java.lang.Long limit,
+          java.lang.Boolean committedOnly,
+          java.util.List<lawspec.data.AbortedTxn> aborted,
+          java.util.List<lawspec.data.FetchedRecord> acc)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListFetchedRecord(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelReadable(
-            lawspec.runtime.LawSpecTyped.fromNativeListLogEntry(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeBool(value3),
-            lawspec.runtime.LawSpecTyped.fromNativeListAbortedTxn(value4),
-            lawspec.runtime.LawSpecTyped.fromNativeListFetchedRecord(value5)));
+            lawspec.runtime.LawSpecTyped.fromNativeListLogEntry(es),
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(from),
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(limit),
+            lawspec.runtime.LawSpecTyped.fromNativeBool(committedOnly),
+            lawspec.runtime.LawSpecTyped.fromNativeListAbortedTxn(aborted),
+            lawspec.runtime.LawSpecTyped.fromNativeListFetchedRecord(acc)));
   }
 
   public static lawspec.data.Group
       lawtwinKafkaModelRebalance(
-          Map<String, Object> symbols, lawspec.data.Group value0, lawspec.data.BrokerState value1)
+          Map<String, Object> symbols, lawspec.data.Group group, lawspec.data.BrokerState b)
   {
     return lawspec.runtime.LawSpecTyped.toNativeGroup(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelRebalance(
-            lawspec.runtime.LawSpecTyped.fromNativeGroup(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeGroup(group),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b)));
   }
 
   public static java.util.Map<java.lang.String, lawspec.data.Group>
       lawtwinKafkaModelRebalanceGroups(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.List<lawspec.data.Entry<java.lang.String, lawspec.data.Group>> value1,
-          lawspec.data.BrokerState value2,
-          java.util.Map<java.lang.String, lawspec.data.Group> value3)
+          java.lang.String topic,
+          java.util.List<lawspec.data.Entry<java.lang.String, lawspec.data.Group>> gs,
+          lawspec.data.BrokerState b,
+          java.util.Map<java.lang.String, lawspec.data.Group> acc)
   {
     return lawspec.runtime.LawSpecTyped.toNativeKeyValTextGroup(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelRebalanceGroups(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextGroup(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextGroup(value3)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(topic),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextGroup(gs),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b),
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValTextGroup(acc)));
   }
 
   public static lawspec.data.BrokerState
       lawtwinKafkaModelRebalanceTopic(
-          Map<String, Object> symbols, java.lang.String value0, lawspec.data.BrokerState value1)
+          Map<String, Object> symbols, java.lang.String topic, lawspec.data.BrokerState b)
   {
     return lawspec.runtime.LawSpecTyped.toNativeBrokerState(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelRebalanceTopic(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(topic),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b)));
   }
 
   public static lawspec.data.PartitionLog
       lawtwinKafkaModelRememberBatch(
           Map<String, Object> symbols,
-          java.lang.Long value0,
-          lawspec.data.BatchMeta value1,
-          lawspec.data.PartitionLog value2)
+          java.lang.Long writer,
+          lawspec.data.BatchMeta meta,
+          lawspec.data.PartitionLog l)
   {
     return lawspec.runtime.LawSpecTyped.toNativePartitionLog(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelRememberBatch(
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeBatchMeta(value1),
-            lawspec.runtime.LawSpecTyped.fromNativePartitionLog(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(writer),
+            lawspec.runtime.LawSpecTyped.fromNativeBatchMeta(meta),
+            lawspec.runtime.LawSpecTyped.fromNativePartitionLog(l)));
   }
 
   public static java.util.List<lawspec.data.PendingOffset>
       lawtwinKafkaModelReversePending(
           Map<String, Object> symbols,
-          java.util.List<lawspec.data.PendingOffset> value0,
-          java.util.List<lawspec.data.PendingOffset> value1)
+          java.util.List<lawspec.data.PendingOffset> os,
+          java.util.List<lawspec.data.PendingOffset> acc)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListPendingOffset(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelReversePending(
-            lawspec.runtime.LawSpecTyped.fromNativeListPendingOffset(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListPendingOffset(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeListPendingOffset(os),
+            lawspec.runtime.LawSpecTyped.fromNativeListPendingOffset(acc)));
   }
 
   public static java.util.Set<java.lang.String>
       lawtwinKafkaModelSubscribedTopics(
           Map<String, Object> symbols,
           java.util.List<
-                  lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value0,
-          java.util.Set<java.lang.String> value1)
+                  lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> subs,
+          java.util.Set<java.lang.String> acc)
   {
     return lawspec.runtime.LawSpecTyped.toNativeSetText(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelSubscribedTopics(
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextListText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeSetText(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextListText(subs),
+            lawspec.runtime.LawSpecTyped.fromNativeSetText(acc)));
   }
 
   public static java.util.List<java.lang.String>
       lawtwinKafkaModelSubscribersOf(
           Map<String, Object> symbols,
-          java.lang.String value0,
+          java.lang.String topic,
           java.util.List<
-                  lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value1)
+                  lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> subs)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListText(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelSubscribersOf(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextListText(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(topic),
+            lawspec.runtime.LawSpecTyped.fromNativeListEntryTextListText(subs)));
   }
 
   public static java.lang.Boolean
       lawtwinKafkaModelSubscribesTo(
-          Map<String, Object> symbols, java.lang.String value0, lawspec.data.Group value1)
+          Map<String, Object> symbols, java.lang.String topic, lawspec.data.Group group)
   {
     return lawspec.runtime.LawSpecTyped.toNativeBool(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelSubscribesTo(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeGroup(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(topic),
+            lawspec.runtime.LawSpecTyped.fromNativeGroup(group)));
   }
 
   public static lawspec.data.Pair<
           java.util.List<lawspec.data.TopicPartition>, lawspec.data.BrokerState>
       lawtwinKafkaModelSyncGroup(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.lang.String value1,
-          java.lang.Integer value2,
-          lawspec.data.BrokerState value3)
+          java.lang.String g,
+          java.lang.String member,
+          java.lang.Integer generation,
+          lawspec.data.BrokerState b)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairListTopicPartitionBrokerState(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelSyncGroup(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeInt32(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value3)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(g),
+            lawspec.runtime.LawSpecTyped.fromNativeText(member),
+            lawspec.runtime.LawSpecTyped.fromNativeInt32(generation),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b)));
   }
 
   public static java.lang.Boolean
       lawtwinKafkaModelTxnHasPartition(
-          Map<String, Object> symbols,
-          lawspec.data.TopicPartition value0,
-          lawspec.data.TxnState value1)
+          Map<String, Object> symbols, lawspec.data.TopicPartition tp, lawspec.data.TxnState txn)
   {
     return lawspec.runtime.LawSpecTyped.toNativeBool(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelTxnHasPartition(
-            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeTxnState(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(tp),
+            lawspec.runtime.LawSpecTyped.fromNativeTxnState(txn)));
   }
 
   public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState>
       lawtwinKafkaModelTxnOffsetCommit(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.lang.Long value1,
-          java.lang.Short value2,
-          java.lang.String value3,
-          java.util.List<lawspec.data.OffsetEntry> value4,
-          lawspec.data.BrokerState value5)
+          java.lang.String txid,
+          java.lang.Long pid,
+          java.lang.Short epoch,
+          java.lang.String group,
+          java.util.List<lawspec.data.OffsetEntry> offsets,
+          lawspec.data.BrokerState b)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairUnitBrokerState(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelTxnOffsetCommit(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeInt16(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value3),
-            lawspec.runtime.LawSpecTyped.fromNativeListOffsetEntry(value4),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value5)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(txid),
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(pid),
+            lawspec.runtime.LawSpecTyped.fromNativeInt16(epoch),
+            lawspec.runtime.LawSpecTyped.fromNativeText(group),
+            lawspec.runtime.LawSpecTyped.fromNativeListOffsetEntry(offsets),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b)));
   }
 
   public static java.util.List<lawspec.data.TopicPartition>
       lawtwinKafkaModelUnionPartitions(
           Map<String, Object> symbols,
-          java.util.List<lawspec.data.TopicPartition> value0,
-          java.util.List<lawspec.data.TopicPartition> value1)
+          java.util.List<lawspec.data.TopicPartition> xs,
+          java.util.List<lawspec.data.TopicPartition> ys)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListTopicPartition(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelUnionPartitions(
-            lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(xs),
+            lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(ys)));
   }
 
   public static java.lang.Boolean
-      lawtwinKafkaModelValidTopicName(Map<String, Object> symbols, java.lang.String value0)
+      lawtwinKafkaModelValidTopicName(Map<String, Object> symbols, java.lang.String name)
   {
     return lawspec.runtime.LawSpecTyped.toNativeBool(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelValidTopicName(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(name)));
   }
 
   public static lawspec.data.PartitionLog
       lawtwinKafkaModelWriteMarker(
           Map<String, Object> symbols,
-          java.lang.Long value0,
-          java.lang.Boolean value1,
-          lawspec.data.PartitionLog value2)
+          java.lang.Long pid,
+          java.lang.Boolean commit,
+          lawspec.data.PartitionLog l)
   {
     return lawspec.runtime.LawSpecTyped.toNativePartitionLog(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelWriteMarker(
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeBool(value1),
-            lawspec.runtime.LawSpecTyped.fromNativePartitionLog(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(pid),
+            lawspec.runtime.LawSpecTyped.fromNativeBool(commit),
+            lawspec.runtime.LawSpecTyped.fromNativePartitionLog(l)));
   }
 
   public static lawspec.data.BrokerState
       lawtwinKafkaModelWriteMarkers(
           Map<String, Object> symbols,
-          java.lang.Long value0,
-          java.lang.Boolean value1,
-          java.util.List<lawspec.data.TopicPartition> value2,
-          lawspec.data.BrokerState value3)
+          java.lang.Long pid,
+          java.lang.Boolean commit,
+          java.util.List<lawspec.data.TopicPartition> tps,
+          lawspec.data.BrokerState b)
   {
     return lawspec.runtime.LawSpecTyped.toNativeBrokerState(
         lawspec.runtime.LawSpecTyped.lawtwinKafkaModelWriteMarkers(
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeBool(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(value3)));
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(pid),
+            lawspec.runtime.LawSpecTyped.fromNativeBool(commit),
+            lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(tps),
+            lawspec.runtime.LawSpecTyped.fromNativeBrokerState(b)));
   }
 
   public static java.lang.Long
-      lawtwinKafkaMul32(Map<String, Object> symbols, java.lang.Long value0, java.lang.Long value1)
+      lawtwinKafkaMul32(Map<String, Object> symbols, java.lang.Long a, java.lang.Long b)
   {
     return lawspec.runtime.LawSpecTyped.toNativeUint32(
         lawspec.runtime.LawSpecTyped.mul32(
-            lawspec.runtime.LawSpecTyped.fromNativeUint32(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeUint32(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeUint32(a),
+            lawspec.runtime.LawSpecTyped.fromNativeUint32(b)));
   }
 
-  public static java.lang.Long lawtwinKafkaMurmur2(Map<String, Object> symbols, byte[] value0)
+  public static java.lang.Long lawtwinKafkaMurmur2(Map<String, Object> symbols, byte[] key)
   {
     return lawspec.runtime.LawSpecTyped.toNativeUint32(
-        lawspec.runtime.LawSpecTyped.murmur2(lawspec.runtime.LawSpecTyped.fromNativeBytes(value0)));
+        lawspec.runtime.LawSpecTyped.murmur2(lawspec.runtime.LawSpecTyped.fromNativeBytes(key)));
   }
 
   public static java.lang.Long
       lawtwinKafkaMurmurChunks(
-          Map<String, Object> symbols,
-          java.util.List<java.lang.Short> value0,
-          java.lang.Long value1)
+          Map<String, Object> symbols, java.util.List<java.lang.Short> octets, java.lang.Long h)
   {
     return lawspec.runtime.LawSpecTyped.toNativeUint32(
         lawspec.runtime.LawSpecTyped.murmurChunks(
-            lawspec.runtime.LawSpecTyped.fromNativeListUint8(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeUint32(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeListUint8(octets),
+            lawspec.runtime.LawSpecTyped.fromNativeUint32(h)));
   }
 
   public static java.lang.Long
-      lawtwinKafkaMurmurM(Map<String, Object> symbols, lawspec.runtime.LawSpecRuntime.Value value0)
+      lawtwinKafkaMurmurM(Map<String, Object> symbols, lawspec.runtime.LawSpecRuntime.Value u)
   {
     return lawspec.runtime.LawSpecTyped.toNativeUint32(
-        lawspec.runtime.LawSpecTyped.murmurM(lawspec.runtime.LawSpecTyped.fromNativeUnit(value0)));
+        lawspec.runtime.LawSpecTyped.murmurM(lawspec.runtime.LawSpecTyped.fromNativeUnit(u)));
   }
 
   public static java.util.List<java.lang.Integer>
       lawtwinKafkaOwnedOf(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.List<lawspec.data.MemberAssignment> value1)
+          java.lang.String t,
+          java.util.List<lawspec.data.MemberAssignment> ms)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListInt32(
         lawspec.runtime.LawSpecTyped.ownedOf(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListMemberAssignment(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(t),
+            lawspec.runtime.LawSpecTyped.fromNativeListMemberAssignment(ms)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Either<
@@ -4512,9 +4499,9 @@ public final class Kafka
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
           lawspec.abilities.lawtwin.Kafka.Partitioner partitioner,
-          java.lang.String value0,
-          lawspec.data.PartitionChoice value1,
-          lawspec.data.Record value2)
+          java.lang.String topic,
+          lawspec.data.PartitionChoice choice,
+          lawspec.data.Record r)
   {
     try
     {
@@ -4525,15 +4512,15 @@ public final class Kafka
               broker,
               "lawtwin.kafka::ability::Partitioner",
               partitioner));
-      var codec0 = SCHEMA.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.partitionChoiceCodec(SCHEMA, 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var codec2 = lawspec.runtime.LawSpecDataCodecs.recordCodec(SCHEMA, 64, symbols);
-      var argument2 = codec2.encode(value2);
+      var topicCodec = SCHEMA.scalar("Text", 64, java.lang.String.class);
+      var topicValue = topicCodec.encode(topic);
+      var choiceCodec = lawspec.runtime.LawSpecDataCodecs.partitionChoiceCodec(SCHEMA, 64, symbols);
+      var choiceValue = choiceCodec.encode(choice);
+      var codecR = lawspec.runtime.LawSpecDataCodecs.recordCodec(SCHEMA, 64, symbols);
+      var valueR = codecR.encode(r);
       var result =
           lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaPartitionOf(
-              symbols, argument0, argument1, argument2);
+              symbols, topicValue, choiceValue, valueR);
       var resultCodec =
           SCHEMA.either(
               lawspec.runtime.LawSpecDataCodecs.kafkaErrorCodec(SCHEMA, 64, symbols),
@@ -4556,13 +4543,13 @@ public final class Kafka
   public static java.util.List<java.lang.Integer>
       lawtwinKafkaPartitionsOfTopic(
           Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.List<lawspec.data.TopicPartition> value1)
+          java.lang.String t,
+          java.util.List<lawspec.data.TopicPartition> tps)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListInt32(
         lawspec.runtime.LawSpecTyped.partitionsOfTopic(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(t),
+            lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(tps)));
   }
 
   public static lawspec.data.Pair<
@@ -4572,34 +4559,34 @@ public final class Kafka
       lawtwinKafkaPollPartitions(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          java.util.List<lawspec.data.TopicPartition> value0,
-          java.lang.Integer value1,
-          lawspec.data.ConsumerState value2,
-          java.util.List<lawspec.data.ConsumerRecord> value3)
+          java.util.List<lawspec.data.TopicPartition> tps,
+          java.lang.Integer n,
+          lawspec.data.ConsumerState c,
+          java.util.List<lawspec.data.ConsumerRecord> acc)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 =
+      var tpsCodec =
           SCHEMA.list(
               lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(SCHEMA, 64, symbols),
               64,
               symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = SCHEMA.scalar("Int32", 64, java.lang.Integer.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(SCHEMA, 64, symbols);
-      var argument2 = codec2.encode(value2);
-      var codec3 =
+      var tpsValue = tpsCodec.encode(tps);
+      var codecN = SCHEMA.scalar("Int32", 64, java.lang.Integer.class);
+      var valueN = codecN.encode(n);
+      var codecC = lawspec.runtime.LawSpecDataCodecs.consumerStateCodec(SCHEMA, 64, symbols);
+      var valueC = codecC.encode(c);
+      var accCodec =
           SCHEMA.list(
               lawspec.runtime.LawSpecDataCodecs.consumerRecordCodec(SCHEMA, 64, symbols),
               64,
               symbols);
-      var argument3 = codec3.encode(value3);
+      var accValue = accCodec.encode(acc);
       var result =
           lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaPollPartitions(
-              symbols, argument0, argument1, argument2, argument3);
+              symbols, tpsValue, valueN, valueC, accValue);
       var resultCodec =
           lawspec.runtime.LawSpecDataCodecs.pairCodec(
               SCHEMA,
@@ -4630,21 +4617,21 @@ public final class Kafka
   public static java.util.List<lawspec.data.OffsetEntry>
       lawtwinKafkaPositionsToCommit(
           Map<String, Object> symbols,
-          java.util.List<lawspec.data.TopicPartition> value0,
-          java.util.Map<lawspec.data.TopicPartition, java.lang.Long> value1)
+          java.util.List<lawspec.data.TopicPartition> tps,
+          java.util.Map<lawspec.data.TopicPartition, java.lang.Long> positions)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListOffsetEntry(
         lawspec.runtime.LawSpecTyped.positionsToCommit(
-            lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValTopicPartitionInt64(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(tps),
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValTopicPartitionInt64(positions)));
   }
 
   public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.ProducerState>
-      lawtwinKafkaProducerFlush(Map<String, Object> symbols, lawspec.data.ProducerState value0)
+      lawtwinKafkaProducerFlush(Map<String, Object> symbols, lawspec.data.ProducerState st)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairUnitProducerState(
         lawspec.runtime.LawSpecTyped.producerFlush(
-            lawspec.runtime.LawSpecTyped.fromNativeProducerState(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeProducerState(st)));
   }
 
   public static lawspec.data.Pair<
@@ -4654,17 +4641,16 @@ public final class Kafka
       lawtwinKafkaProducerIdempotent(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          lawspec.data.ProducerState value0)
+          lawspec.data.ProducerState st)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.producerStateCodec(SCHEMA, 64, symbols);
-      var argument0 = codec0.encode(value0);
+      var stCodec = lawspec.runtime.LawSpecDataCodecs.producerStateCodec(SCHEMA, 64, symbols);
+      var stValue = stCodec.encode(st);
       var result =
-          lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaProducerIdempotent(
-              symbols, argument0);
+          lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaProducerIdempotent(symbols, stValue);
       var resultCodec =
           lawspec.runtime.LawSpecDataCodecs.pairCodec(
               SCHEMA,
@@ -4696,16 +4682,16 @@ public final class Kafka
       lawtwinKafkaProducerRetry(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          lawspec.data.ProducerState value0)
+          lawspec.data.ProducerState st)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.producerStateCodec(SCHEMA, 64, symbols);
-      var argument0 = codec0.encode(value0);
+      var stCodec = lawspec.runtime.LawSpecDataCodecs.producerStateCodec(SCHEMA, 64, symbols);
+      var stValue = stCodec.encode(st);
       var result =
-          lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaProducerRetry(symbols, argument0);
+          lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaProducerRetry(symbols, stValue);
       var resultCodec =
           lawspec.runtime.LawSpecDataCodecs.pairCodec(
               SCHEMA,
@@ -4738,8 +4724,8 @@ public final class Kafka
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
           lawspec.abilities.lawtwin.Kafka.Partitioner partitioner,
-          lawspec.data.ProducerRecord value0,
-          lawspec.data.ProducerState value1)
+          lawspec.data.ProducerRecord pr,
+          lawspec.data.ProducerState st)
   {
     try
     {
@@ -4750,13 +4736,13 @@ public final class Kafka
               broker,
               "lawtwin.kafka::ability::Partitioner",
               partitioner));
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.producerRecordCodec(SCHEMA, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.producerStateCodec(SCHEMA, 64, symbols);
-      var argument1 = codec1.encode(value1);
+      var prCodec = lawspec.runtime.LawSpecDataCodecs.producerRecordCodec(SCHEMA, 64, symbols);
+      var prValue = prCodec.encode(pr);
+      var stCodec = lawspec.runtime.LawSpecDataCodecs.producerStateCodec(SCHEMA, 64, symbols);
+      var stValue = stCodec.encode(st);
       var result =
           lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaProducerSend(
-              symbols, argument0, argument1);
+              symbols, prValue, stValue);
       var resultCodec =
           lawspec.runtime.LawSpecDataCodecs.pairCodec(
               SCHEMA,
@@ -4785,23 +4771,24 @@ public final class Kafka
       lawtwinKafkaReadFrom(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          lawspec.data.TopicPartition value0,
-          java.lang.Long value1,
-          lawspec.data.IsolationLevel value2)
+          lawspec.data.TopicPartition tp,
+          java.lang.Long offset,
+          lawspec.data.IsolationLevel isolation)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(SCHEMA, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = SCHEMA.scalar("Int64", 64, java.lang.Long.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 = lawspec.runtime.LawSpecDataCodecs.isolationLevelCodec(SCHEMA, 64, symbols);
-      var argument2 = codec2.encode(value2);
+      var tpCodec = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(SCHEMA, 64, symbols);
+      var tpValue = tpCodec.encode(tp);
+      var offsetCodec = SCHEMA.scalar("Int64", 64, java.lang.Long.class);
+      var offsetValue = offsetCodec.encode(offset);
+      var isolationCodec =
+          lawspec.runtime.LawSpecDataCodecs.isolationLevelCodec(SCHEMA, 64, symbols);
+      var isolationValue = isolationCodec.encode(isolation);
       var result =
           lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaReadFrom(
-              symbols, argument0, argument1, argument2);
+              symbols, tpValue, offsetValue, isolationValue);
       var resultCodec =
           SCHEMA.list(
               lawspec.runtime.LawSpecDataCodecs.recordCodec(SCHEMA, 64, symbols), 64, symbols);
@@ -4823,37 +4810,37 @@ public final class Kafka
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Consumer consumer,
           lawspec.runtime.LawSpecRuntime.Either<
-                  lawspec.data.KafkaError, lawspec.data.RecordMetadata> value0,
+                  lawspec.data.KafkaError, lawspec.data.RecordMetadata> a,
           lawspec.runtime.LawSpecRuntime.Either<
-                  lawspec.data.KafkaError, lawspec.data.RecordMetadata> value1,
-          lawspec.data.Record value2,
-          lawspec.data.Record value3)
+                  lawspec.data.KafkaError, lawspec.data.RecordMetadata> b,
+          lawspec.data.Record first,
+          lawspec.data.Record second)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Consumer", consumer));
-      var codec0 =
+      var codecA =
           SCHEMA.either(
               lawspec.runtime.LawSpecDataCodecs.kafkaErrorCodec(SCHEMA, 64, symbols),
               lawspec.runtime.LawSpecDataCodecs.recordMetadataCodec(SCHEMA, 64, symbols),
               64,
               symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
+      var valueA = codecA.encode(a);
+      var codecB =
           SCHEMA.either(
               lawspec.runtime.LawSpecDataCodecs.kafkaErrorCodec(SCHEMA, 64, symbols),
               lawspec.runtime.LawSpecDataCodecs.recordMetadataCodec(SCHEMA, 64, symbols),
               64,
               symbols);
-      var argument1 = codec1.encode(value1);
-      var codec2 = lawspec.runtime.LawSpecDataCodecs.recordCodec(SCHEMA, 64, symbols);
-      var argument2 = codec2.encode(value2);
-      var codec3 = lawspec.runtime.LawSpecDataCodecs.recordCodec(SCHEMA, 64, symbols);
-      var argument3 = codec3.encode(value3);
+      var valueB = codecB.encode(b);
+      var firstCodec = lawspec.runtime.LawSpecDataCodecs.recordCodec(SCHEMA, 64, symbols);
+      var firstValue = firstCodec.encode(first);
+      var secondCodec = lawspec.runtime.LawSpecDataCodecs.recordCodec(SCHEMA, 64, symbols);
+      var secondValue = secondCodec.encode(second);
       var result =
           lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaReadInOrder(
-              symbols, argument0, argument1, argument2, argument3);
+              symbols, valueA, valueB, firstValue, secondValue);
       var resultCodec = SCHEMA.scalar("Bool", 64, java.lang.Boolean.class);
       return resultCodec.decode(result);
     }
@@ -4870,55 +4857,55 @@ public final class Kafka
 
   public static java.util.List<java.lang.Long>
       lawtwinKafkaReceivedOffsets(
-          Map<String, Object> symbols, java.util.List<lawspec.data.ConsumerRecord> value0)
+          Map<String, Object> symbols, java.util.List<lawspec.data.ConsumerRecord> rs)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListInt64(
         lawspec.runtime.LawSpecTyped.receivedOffsets(
-            lawspec.runtime.LawSpecTyped.fromNativeListConsumerRecord(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeListConsumerRecord(rs)));
   }
 
   public static java.util.List<lawspec.data.Record>
       lawtwinKafkaReceivedRecords(
-          Map<String, Object> symbols, java.util.List<lawspec.data.ConsumerRecord> value0)
+          Map<String, Object> symbols, java.util.List<lawspec.data.ConsumerRecord> rs)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListRecord(
         lawspec.runtime.LawSpecTyped.receivedRecords(
-            lawspec.runtime.LawSpecTyped.fromNativeListConsumerRecord(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeListConsumerRecord(rs)));
   }
 
   public static java.util.List<lawspec.data.Record>
       lawtwinKafkaRecordsOf(
-          Map<String, Object> symbols, java.util.List<lawspec.data.FetchedRecord> value0)
+          Map<String, Object> symbols, java.util.List<lawspec.data.FetchedRecord> rs)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListRecord(
         lawspec.runtime.LawSpecTyped.recordsOf(
-            lawspec.runtime.LawSpecTyped.fromNativeListFetchedRecord(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeListFetchedRecord(rs)));
   }
 
   public static java.lang.Boolean
       lawtwinKafkaResumesAtCommitted(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Consumer consumer,
-          java.lang.String value0,
-          java.lang.String value1,
-          java.lang.String value2,
-          java.lang.Integer value3)
+          java.lang.String t,
+          java.lang.String g,
+          java.lang.String m,
+          java.lang.Integer n)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Consumer", consumer));
-      var codec0 = SCHEMA.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = SCHEMA.scalar("Text", 64, java.lang.String.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 = SCHEMA.scalar("Text", 64, java.lang.String.class);
-      var argument2 = codec2.encode(value2);
-      var codec3 = SCHEMA.scalar("Int32", 64, java.lang.Integer.class);
-      var argument3 = codec3.encode(value3);
+      var codecT = SCHEMA.scalar("Text", 64, java.lang.String.class);
+      var valueT = codecT.encode(t);
+      var codecG = SCHEMA.scalar("Text", 64, java.lang.String.class);
+      var valueG = codecG.encode(g);
+      var codecM = SCHEMA.scalar("Text", 64, java.lang.String.class);
+      var valueM = codecM.encode(m);
+      var codecN = SCHEMA.scalar("Int32", 64, java.lang.Integer.class);
+      var valueN = codecN.encode(n);
       var result =
           lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaResumesAtCommitted(
-              symbols, argument0, argument1, argument2, argument3);
+              symbols, valueT, valueG, valueM, valueN);
       var resultCodec = SCHEMA.scalar("Bool", 64, java.lang.Boolean.class);
       return resultCodec.decode(result);
     }
@@ -4937,60 +4924,59 @@ public final class Kafka
       lawtwinKafkaSamePartition(
           Map<String, Object> symbols,
           lawspec.runtime.LawSpecRuntime.Either<
-                  lawspec.data.KafkaError, lawspec.data.RecordMetadata> value0,
+                  lawspec.data.KafkaError, lawspec.data.RecordMetadata> a,
           lawspec.runtime.LawSpecRuntime.Either<
-                  lawspec.data.KafkaError, lawspec.data.RecordMetadata> value1)
+                  lawspec.data.KafkaError, lawspec.data.RecordMetadata> b)
   {
     return lawspec.runtime.LawSpecTyped.toNativeBool(
         lawspec.runtime.LawSpecTyped.samePartition(
-            lawspec.runtime.LawSpecTyped.fromNativeEitherKafkaErrorRecordMetadata(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeEitherKafkaErrorRecordMetadata(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeEitherKafkaErrorRecordMetadata(a),
+            lawspec.runtime.LawSpecTyped.fromNativeEitherKafkaErrorRecordMetadata(b)));
   }
 
   public static java.lang.Integer
       lawtwinKafkaSequenceFor(
           Map<String, Object> symbols,
-          lawspec.data.TopicPartition value0,
-          java.util.Map<lawspec.data.TopicPartition, java.lang.Integer> value1)
+          lawspec.data.TopicPartition tp,
+          java.util.Map<lawspec.data.TopicPartition, java.lang.Integer> sequences)
   {
     return lawspec.runtime.LawSpecTyped.toNativeInt32(
         lawspec.runtime.LawSpecTyped.sequenceFor(
-            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeKeyValTopicPartitionInt32(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(tp),
+            lawspec.runtime.LawSpecTyped.fromNativeKeyValTopicPartitionInt32(sequences)));
   }
 
   public static java.lang.Boolean
-      lawtwinKafkaSmallBatch(
-          Map<String, Object> symbols, java.util.List<lawspec.data.Record> value0)
+      lawtwinKafkaSmallBatch(Map<String, Object> symbols, java.util.List<lawspec.data.Record> batch)
   {
     return lawspec.runtime.LawSpecTyped.toNativeBool(
         lawspec.runtime.LawSpecTyped.smallBatch(
-            lawspec.runtime.LawSpecTyped.fromNativeListRecord(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeListRecord(batch)));
   }
 
   public static java.lang.Boolean
       lawtwinKafkaStableBelowHigh(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          java.lang.String value0,
-          java.lang.String value1,
-          java.util.List<lawspec.data.Record> value2)
+          java.lang.String t,
+          java.lang.String txid,
+          java.util.List<lawspec.data.Record> batch)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = SCHEMA.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = SCHEMA.scalar("Text", 64, java.lang.String.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 =
+      var codecT = SCHEMA.scalar("Text", 64, java.lang.String.class);
+      var valueT = codecT.encode(t);
+      var txidCodec = SCHEMA.scalar("Text", 64, java.lang.String.class);
+      var txidValue = txidCodec.encode(txid);
+      var batchCodec =
           SCHEMA.list(
               lawspec.runtime.LawSpecDataCodecs.recordCodec(SCHEMA, 64, symbols), 64, symbols);
-      var argument2 = codec2.encode(value2);
+      var batchValue = batchCodec.encode(batch);
       var result =
           lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaStableBelowHigh(
-              symbols, argument0, argument1, argument2);
+              symbols, valueT, txidValue, batchValue);
       var resultCodec = SCHEMA.scalar("Bool", 64, java.lang.Boolean.class);
       return resultCodec.decode(result);
     }
@@ -5008,61 +4994,59 @@ public final class Kafka
   public static lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerTag>
       lawtwinKafkaTagFor(
           Map<String, Object> symbols,
-          lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerIdAndEpoch> value0,
-          java.lang.Integer value1)
+          lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerIdAndEpoch> identity,
+          java.lang.Integer sequence)
   {
     return lawspec.runtime.LawSpecTyped.toNativeMaybeProducerTag(
         lawspec.runtime.LawSpecTyped.tagFor(
-            lawspec.runtime.LawSpecTyped.fromNativeMaybeProducerIdAndEpoch(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeInt32(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeMaybeProducerIdAndEpoch(identity),
+            lawspec.runtime.LawSpecTyped.fromNativeInt32(sequence)));
   }
 
   public static lawspec.data.ProducerTag
       lawtwinKafkaTagOf(
           Map<String, Object> symbols,
-          lawspec.data.ProducerIdAndEpoch value0,
-          java.lang.Integer value1)
+          lawspec.data.ProducerIdAndEpoch pe,
+          java.lang.Integer sequence)
   {
     return lawspec.runtime.LawSpecTyped.toNativeProducerTag(
         lawspec.runtime.LawSpecTyped.tagOf(
-            lawspec.runtime.LawSpecTyped.fromNativeProducerIdAndEpoch(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeInt32(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeProducerIdAndEpoch(pe),
+            lawspec.runtime.LawSpecTyped.fromNativeInt32(sequence)));
   }
 
-  public static java.lang.Long
-      lawtwinKafkaToPositive(Map<String, Object> symbols, java.lang.Long value0)
+  public static java.lang.Long lawtwinKafkaToPositive(Map<String, Object> symbols, java.lang.Long h)
   {
     return lawspec.runtime.LawSpecTyped.toNativeUint32(
-        lawspec.runtime.LawSpecTyped.toPositive(
-            lawspec.runtime.LawSpecTyped.fromNativeUint32(value0)));
+        lawspec.runtime.LawSpecTyped.toPositive(lawspec.runtime.LawSpecTyped.fromNativeUint32(h)));
   }
 
   public static java.lang.Boolean
       lawtwinKafkaTransactionThenRead(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          java.lang.String value0,
-          java.lang.String value1,
-          java.util.List<lawspec.data.Record> value2,
-          java.lang.Boolean value3)
+          java.lang.String t,
+          java.lang.String txid,
+          java.util.List<lawspec.data.Record> batch,
+          java.lang.Boolean commit)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = SCHEMA.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = SCHEMA.scalar("Text", 64, java.lang.String.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 =
+      var codecT = SCHEMA.scalar("Text", 64, java.lang.String.class);
+      var valueT = codecT.encode(t);
+      var txidCodec = SCHEMA.scalar("Text", 64, java.lang.String.class);
+      var txidValue = txidCodec.encode(txid);
+      var batchCodec =
           SCHEMA.list(
               lawspec.runtime.LawSpecDataCodecs.recordCodec(SCHEMA, 64, symbols), 64, symbols);
-      var argument2 = codec2.encode(value2);
-      var codec3 = SCHEMA.scalar("Bool", 64, java.lang.Boolean.class);
-      var argument3 = codec3.encode(value3);
+      var batchValue = batchCodec.encode(batch);
+      var commitCodec = SCHEMA.scalar("Bool", 64, java.lang.Boolean.class);
+      var commitValue = commitCodec.encode(commit);
       var result =
           lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaTransactionThenRead(
-              symbols, argument0, argument1, argument2, argument3);
+              symbols, valueT, txidValue, batchValue, commitValue);
       var resultCodec = SCHEMA.scalar("Bool", 64, java.lang.Boolean.class);
       return resultCodec.decode(result);
     }
@@ -5081,26 +5065,26 @@ public final class Kafka
       lawtwinKafkaTransactionalOffsets(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          java.lang.String value0,
-          java.lang.String value1,
-          java.lang.String value2,
-          java.lang.Long value3)
+          java.lang.String t,
+          java.lang.String txid,
+          java.lang.String g,
+          java.lang.Long offset)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = SCHEMA.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = SCHEMA.scalar("Text", 64, java.lang.String.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 = SCHEMA.scalar("Text", 64, java.lang.String.class);
-      var argument2 = codec2.encode(value2);
-      var codec3 = SCHEMA.scalar("Int64", 64, java.lang.Long.class);
-      var argument3 = codec3.encode(value3);
+      var codecT = SCHEMA.scalar("Text", 64, java.lang.String.class);
+      var valueT = codecT.encode(t);
+      var txidCodec = SCHEMA.scalar("Text", 64, java.lang.String.class);
+      var txidValue = txidCodec.encode(txid);
+      var codecG = SCHEMA.scalar("Text", 64, java.lang.String.class);
+      var valueG = codecG.encode(g);
+      var offsetCodec = SCHEMA.scalar("Int64", 64, java.lang.Long.class);
+      var offsetValue = offsetCodec.encode(offset);
       var result =
           lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaTransactionalOffsets(
-              symbols, argument0, argument1, argument2, argument3);
+              symbols, valueT, txidValue, valueG, offsetValue);
       var resultCodec = SCHEMA.scalar("Bool", 64, java.lang.Boolean.class);
       return resultCodec.decode(result);
     }
@@ -5122,16 +5106,16 @@ public final class Kafka
       lawtwinKafkaTransactionsAbort(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          lawspec.data.TransactionState value0)
+          lawspec.data.TransactionState st)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.transactionStateCodec(SCHEMA, 64, symbols);
-      var argument0 = codec0.encode(value0);
+      var stCodec = lawspec.runtime.LawSpecDataCodecs.transactionStateCodec(SCHEMA, 64, symbols);
+      var stValue = stCodec.encode(st);
       var result =
-          lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaTransactionsAbort(symbols, argument0);
+          lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaTransactionsAbort(symbols, stValue);
       var resultCodec =
           lawspec.runtime.LawSpecDataCodecs.pairCodec(
               SCHEMA,
@@ -5163,24 +5147,24 @@ public final class Kafka
       lawtwinKafkaTransactionsAdd(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          java.util.List<lawspec.data.TopicPartition> value0,
-          lawspec.data.TransactionState value1)
+          java.util.List<lawspec.data.TopicPartition> tps,
+          lawspec.data.TransactionState st)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 =
+      var tpsCodec =
           SCHEMA.list(
               lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(SCHEMA, 64, symbols),
               64,
               symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.transactionStateCodec(SCHEMA, 64, symbols);
-      var argument1 = codec1.encode(value1);
+      var tpsValue = tpsCodec.encode(tps);
+      var stCodec = lawspec.runtime.LawSpecDataCodecs.transactionStateCodec(SCHEMA, 64, symbols);
+      var stValue = stCodec.encode(st);
       var result =
           lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaTransactionsAdd(
-              symbols, argument0, argument1);
+              symbols, tpsValue, stValue);
       var resultCodec =
           lawspec.runtime.LawSpecDataCodecs.pairCodec(
               SCHEMA,
@@ -5209,12 +5193,11 @@ public final class Kafka
           lawspec.runtime.LawSpecRuntime.Either<
                   lawspec.data.KafkaError, lawspec.runtime.LawSpecRuntime.Value>,
           lawspec.data.TransactionState>
-      lawtwinKafkaTransactionsBegin(
-          Map<String, Object> symbols, lawspec.data.TransactionState value0)
+      lawtwinKafkaTransactionsBegin(Map<String, Object> symbols, lawspec.data.TransactionState st)
   {
     return lawspec.runtime.LawSpecTyped.toNativePairEitherKafkaErrorUnitTransactionState(
         lawspec.runtime.LawSpecTyped.transactionsBegin(
-            lawspec.runtime.LawSpecTyped.fromNativeTransactionState(value0)));
+            lawspec.runtime.LawSpecTyped.fromNativeTransactionState(st)));
   }
 
   public static lawspec.data.Pair<
@@ -5224,17 +5207,16 @@ public final class Kafka
       lawtwinKafkaTransactionsCommit(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          lawspec.data.TransactionState value0)
+          lawspec.data.TransactionState st)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.transactionStateCodec(SCHEMA, 64, symbols);
-      var argument0 = codec0.encode(value0);
+      var stCodec = lawspec.runtime.LawSpecDataCodecs.transactionStateCodec(SCHEMA, 64, symbols);
+      var stValue = stCodec.encode(st);
       var result =
-          lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaTransactionsCommit(
-              symbols, argument0);
+          lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaTransactionsCommit(symbols, stValue);
       var resultCodec =
           lawspec.runtime.LawSpecDataCodecs.pairCodec(
               SCHEMA,
@@ -5266,20 +5248,20 @@ public final class Kafka
       lawtwinKafkaTransactionsEnd(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          java.lang.Boolean value0,
-          lawspec.data.TransactionState value1)
+          java.lang.Boolean commit,
+          lawspec.data.TransactionState st)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = SCHEMA.scalar("Bool", 64, java.lang.Boolean.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.transactionStateCodec(SCHEMA, 64, symbols);
-      var argument1 = codec1.encode(value1);
+      var commitCodec = SCHEMA.scalar("Bool", 64, java.lang.Boolean.class);
+      var commitValue = commitCodec.encode(commit);
+      var stCodec = lawspec.runtime.LawSpecDataCodecs.transactionStateCodec(SCHEMA, 64, symbols);
+      var stValue = stCodec.encode(st);
       var result =
           lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaTransactionsEnd(
-              symbols, argument0, argument1);
+              symbols, commitValue, stValue);
       var resultCodec =
           lawspec.runtime.LawSpecDataCodecs.pairCodec(
               SCHEMA,
@@ -5311,20 +5293,20 @@ public final class Kafka
       lawtwinKafkaTransactionsInit(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          java.lang.String value0,
-          lawspec.data.TransactionState value1)
+          java.lang.String txid,
+          lawspec.data.TransactionState st)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = SCHEMA.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.transactionStateCodec(SCHEMA, 64, symbols);
-      var argument1 = codec1.encode(value1);
+      var txidCodec = SCHEMA.scalar("Text", 64, java.lang.String.class);
+      var txidValue = txidCodec.encode(txid);
+      var stCodec = lawspec.runtime.LawSpecDataCodecs.transactionStateCodec(SCHEMA, 64, symbols);
+      var stValue = stCodec.encode(st);
       var result =
           lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaTransactionsInit(
-              symbols, argument0, argument1);
+              symbols, txidValue, stValue);
       var resultCodec =
           lawspec.runtime.LawSpecDataCodecs.pairCodec(
               SCHEMA,
@@ -5356,25 +5338,25 @@ public final class Kafka
       lawtwinKafkaTransactionsOffsets(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          java.lang.String value0,
-          java.util.List<lawspec.data.OffsetEntry> value1,
-          lawspec.data.TransactionState value2)
+          java.lang.String g,
+          java.util.List<lawspec.data.OffsetEntry> offsets,
+          lawspec.data.TransactionState st)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = SCHEMA.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
+      var codecG = SCHEMA.scalar("Text", 64, java.lang.String.class);
+      var valueG = codecG.encode(g);
+      var offsetsCodec =
           SCHEMA.list(
               lawspec.runtime.LawSpecDataCodecs.offsetEntryCodec(SCHEMA, 64, symbols), 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var codec2 = lawspec.runtime.LawSpecDataCodecs.transactionStateCodec(SCHEMA, 64, symbols);
-      var argument2 = codec2.encode(value2);
+      var offsetsValue = offsetsCodec.encode(offsets);
+      var stCodec = lawspec.runtime.LawSpecDataCodecs.transactionStateCodec(SCHEMA, 64, symbols);
+      var stValue = stCodec.encode(st);
       var result =
           lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaTransactionsOffsets(
-              symbols, argument0, argument1, argument2);
+              symbols, valueG, offsetsValue, stValue);
       var resultCodec =
           lawspec.runtime.LawSpecDataCodecs.pairCodec(
               SCHEMA,
@@ -5407,8 +5389,8 @@ public final class Kafka
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
           lawspec.abilities.lawtwin.Kafka.Partitioner partitioner,
-          lawspec.data.ProducerRecord value0,
-          lawspec.data.TransactionState value1)
+          lawspec.data.ProducerRecord pr,
+          lawspec.data.TransactionState st)
   {
     try
     {
@@ -5419,13 +5401,13 @@ public final class Kafka
               broker,
               "lawtwin.kafka::ability::Partitioner",
               partitioner));
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.producerRecordCodec(SCHEMA, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.transactionStateCodec(SCHEMA, 64, symbols);
-      var argument1 = codec1.encode(value1);
+      var prCodec = lawspec.runtime.LawSpecDataCodecs.producerRecordCodec(SCHEMA, 64, symbols);
+      var prValue = prCodec.encode(pr);
+      var stCodec = lawspec.runtime.LawSpecDataCodecs.transactionStateCodec(SCHEMA, 64, symbols);
+      var stValue = stCodec.encode(st);
       var result =
           lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaTransactionsSend(
-              symbols, argument0, argument1);
+              symbols, prValue, stValue);
       var resultCodec =
           lawspec.runtime.LawSpecDataCodecs.pairCodec(
               SCHEMA,
@@ -5454,20 +5436,20 @@ public final class Kafka
       lawtwinKafkaUncommittedFrom(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          lawspec.data.TopicPartition value0,
-          java.lang.Long value1)
+          lawspec.data.TopicPartition tp,
+          java.lang.Long offset)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(SCHEMA, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = SCHEMA.scalar("Int64", 64, java.lang.Long.class);
-      var argument1 = codec1.encode(value1);
+      var tpCodec = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(SCHEMA, 64, symbols);
+      var tpValue = tpCodec.encode(tp);
+      var offsetCodec = SCHEMA.scalar("Int64", 64, java.lang.Long.class);
+      var offsetValue = offsetCodec.encode(offset);
       var result =
           lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaUncommittedFrom(
-              symbols, argument0, argument1);
+              symbols, tpValue, offsetValue);
       var resultCodec =
           SCHEMA.list(
               lawspec.runtime.LawSpecDataCodecs.recordCodec(SCHEMA, 64, symbols), 64, symbols);
@@ -5486,69 +5468,69 @@ public final class Kafka
 
   public static java.util.List<lawspec.data.TopicPartition>
       lawtwinKafkaViewOf(
-          Map<String, Object> symbols, java.lang.String value0, lawspec.data.GroupView value1)
+          Map<String, Object> symbols, java.lang.String m, lawspec.data.GroupView view)
   {
     return lawspec.runtime.LawSpecTyped.toNativeListTopicPartition(
         lawspec.runtime.LawSpecTyped.viewOf(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeGroupView(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(m),
+            lawspec.runtime.LawSpecTyped.fromNativeGroupView(view)));
   }
 
   public static lawspec.data.ConsumerState
       lawtwinKafkaWithAssignment(
           Map<String, Object> symbols,
-          lawspec.runtime.LawSpecRuntime.Maybe<java.lang.String> value0,
-          java.lang.String value1,
-          java.lang.Integer value2,
-          java.util.List<java.lang.String> value3,
-          java.util.List<lawspec.data.TopicPartition> value4,
-          lawspec.data.ConsumerState value5)
+          lawspec.runtime.LawSpecRuntime.Maybe<java.lang.String> g,
+          java.lang.String m,
+          java.lang.Integer gen,
+          java.util.List<java.lang.String> topics,
+          java.util.List<lawspec.data.TopicPartition> tps,
+          lawspec.data.ConsumerState c)
   {
     return lawspec.runtime.LawSpecTyped.toNativeConsumerState(
         lawspec.runtime.LawSpecTyped.withAssignment(
-            lawspec.runtime.LawSpecTyped.fromNativeMaybeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeInt32(value2),
-            lawspec.runtime.LawSpecTyped.fromNativeListText(value3),
-            lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(value4),
-            lawspec.runtime.LawSpecTyped.fromNativeConsumerState(value5)));
+            lawspec.runtime.LawSpecTyped.fromNativeMaybeText(g),
+            lawspec.runtime.LawSpecTyped.fromNativeText(m),
+            lawspec.runtime.LawSpecTyped.fromNativeInt32(gen),
+            lawspec.runtime.LawSpecTyped.fromNativeListText(topics),
+            lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(tps),
+            lawspec.runtime.LawSpecTyped.fromNativeConsumerState(c)));
   }
 
   public static lawspec.data.ConsumerState
       lawtwinKafkaWithPosition(
           Map<String, Object> symbols,
-          lawspec.data.TopicPartition value0,
-          java.lang.Long value1,
-          lawspec.data.ConsumerState value2)
+          lawspec.data.TopicPartition tp,
+          java.lang.Long offset,
+          lawspec.data.ConsumerState c)
   {
     return lawspec.runtime.LawSpecTyped.toNativeConsumerState(
         lawspec.runtime.LawSpecTyped.withPosition(
-            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeInt64(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeConsumerState(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(tp),
+            lawspec.runtime.LawSpecTyped.fromNativeInt64(offset),
+            lawspec.runtime.LawSpecTyped.fromNativeConsumerState(c)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Long>
       lawtwinKafkaWriteAborted(
           Map<String, Object> symbols,
           lawspec.abilities.lawtwin.Kafka.Broker broker,
-          lawspec.data.TopicPartition value0,
-          java.lang.String value1,
-          lawspec.data.Record value2)
+          lawspec.data.TopicPartition tp,
+          java.lang.String txid,
+          lawspec.data.Record r)
   {
     try
     {
       lawspec.runtime.LawSpecRuntime.installHandlers(
           symbols, java.util.Map.<String, Object>of("lawtwin.kafka::ability::Broker", broker));
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(SCHEMA, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = SCHEMA.scalar("Text", 64, java.lang.String.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 = lawspec.runtime.LawSpecDataCodecs.recordCodec(SCHEMA, 64, symbols);
-      var argument2 = codec2.encode(value2);
+      var tpCodec = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(SCHEMA, 64, symbols);
+      var tpValue = tpCodec.encode(tp);
+      var txidCodec = SCHEMA.scalar("Text", 64, java.lang.String.class);
+      var txidValue = txidCodec.encode(txid);
+      var codecR = lawspec.runtime.LawSpecDataCodecs.recordCodec(SCHEMA, 64, symbols);
+      var valueR = codecR.encode(r);
       var result =
           lawspec.runtime.LawSpecDefinitionBodies.lawtwinKafkaWriteAborted(
-              symbols, argument0, argument1, argument2);
+              symbols, tpValue, txidValue, valueR);
       var resultCodec = SCHEMA.maybe(SCHEMA.scalar("Int64", 64, java.lang.Long.class), 64, symbols);
       return resultCodec.decode(result);
     }
@@ -5564,48 +5546,45 @@ public final class Kafka
   }
 
   public static java.lang.Long
-      lawtwinKafkaXor32(Map<String, Object> symbols, java.lang.Long value0, java.lang.Long value1)
+      lawtwinKafkaXor32(Map<String, Object> symbols, java.lang.Long a, java.lang.Long b)
   {
     return lawspec.runtime.LawSpecTyped.toNativeUint32(
         lawspec.runtime.LawSpecTyped.xor32(
-            lawspec.runtime.LawSpecTyped.fromNativeUint32(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeUint32(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeUint32(a),
+            lawspec.runtime.LawSpecTyped.fromNativeUint32(b)));
   }
 
   public static java.lang.Number
       lawtwinKafkaXorBits(
-          Map<String, Object> symbols,
-          java.lang.Number value0,
-          java.lang.Number value1,
-          java.lang.Number value2)
+          Map<String, Object> symbols, java.lang.Number a, java.lang.Number b, java.lang.Number bit)
   {
     return lawspec.runtime.LawSpecTyped.toNativeInteger(
         lawspec.runtime.LawSpecTyped.xorBits(
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value1),
-            lawspec.runtime.LawSpecTyped.fromNativeInteger(value2)));
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(a),
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(b),
+            lawspec.runtime.LawSpecTyped.fromNativeInteger(bit)));
   }
 
   public static java.lang.Integer
       murmurPartitionerChoosePartition(
           Map<String, Object> symbols,
-          lawspec.runtime.LawSpecRuntime.Maybe<byte[]> value0,
-          java.lang.Integer value1)
+          lawspec.runtime.LawSpecRuntime.Maybe<byte[]> key,
+          java.lang.Integer n)
   {
     return lawspec.runtime.LawSpecTyped.toNativeInt32(
         lawspec.runtime.LawSpecTyped.murmurPartitionerChoosePartition(
-            lawspec.runtime.LawSpecTyped.fromNativeMaybeBytes(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeInt32(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeMaybeBytes(key),
+            lawspec.runtime.LawSpecTyped.fromNativeInt32(n)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Value
-      suiteNamesThePackage(Map<String, Object> symbols, lawspec.runtime.LawSpecRuntime.Value value0)
+      suiteNamesThePackage(Map<String, Object> symbols, lawspec.runtime.LawSpecRuntime.Value u)
   {
     try
     {
-      var codec0 = SCHEMA.supported(new lawspec.runtime.LawSpecSchema.Named("Unit"), 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.suiteNamesThePackage(symbols, argument0);
+      var codecU = SCHEMA.supported(new lawspec.runtime.LawSpecSchema.Named("Unit"), 64, symbols);
+      var valueU = codecU.encode(u);
+      var result = lawspec.runtime.LawSpecDefinitionBodies.suiteNamesThePackage(symbols, valueU);
       var resultCodec =
           SCHEMA.supported(new lawspec.runtime.LawSpecSchema.Named("Unit"), 64, symbols);
       return resultCodec.decode(result);

@@ -473,94 +473,121 @@ def assignment_in(m, ms):
 # clusterAddPartitionsToTxnRequest — ../src/contract.lawspec:283
 def cluster_add_partitions_to_txn_request(
     state,
-    value0,
-    value1,
-    value2,
-    value3,
+    text_1,
+    int64_1,
+    int16_1,
+    list_1,
 ):
     return lawtwin_kafka_model_add_partitions_to_txn(
-        value0,
-        value1,
-        value2,
-        value3,
+        text_1,
+        int64_1,
+        int16_1,
+        list_1,
         state,
     )
 
 
 # clusterCommitOffsets — ../src/contract.lawspec:302
-def cluster_commit_offsets(state, value0, value1, value2, value3):
+def cluster_commit_offsets(state, text_1, text_2, int32_1, list_1):
     return lawtwin_kafka_model_offset_commit(
-        value0,
-        value1,
-        value2,
-        value3,
+        text_1,
+        text_2,
+        int32_1,
+        list_1,
         state,
     )
 
 
 # clusterCreatePartitions — ../src/contract.lawspec:294
-def cluster_create_partitions(state, value0, value1):
-    return lawtwin_kafka_model_create_partitions(value0, value1, state)
+def cluster_create_partitions(state, text_1, int32_1):
+    return lawtwin_kafka_model_create_partitions(text_1, int32_1, state)
 
 
 # clusterCreateTopic — ../src/contract.lawspec:293
-def cluster_create_topic(state, value0, value1):
-    return lawtwin_kafka_model_create_topic(value0, value1, state)
+def cluster_create_topic(state, text_1, int32_1):
+    return lawtwin_kafka_model_create_topic(text_1, int32_1, state)
 
 
 # clusterDescribeGroup — ../src/contract.lawspec:301
-def cluster_describe_group(state, value0):
-    return lawtwin_kafka_model_describe_group(value0, state)
+def cluster_describe_group(state, text_1):
+    return lawtwin_kafka_model_describe_group(text_1, state)
 
 
 # clusterEndTxnRequest — ../src/contract.lawspec:285
-def cluster_end_txn_request(state, value0, value1, value2, value3):
-    return lawtwin_kafka_model_end_txn(value0, value1, value2, value3, state)
+def cluster_end_txn_request(state, text_1, int64_1, int16_1, bool_1):
+    return lawtwin_kafka_model_end_txn(text_1, int64_1, int16_1, bool_1, state)
 
 
 # clusterFetchOffset — ../src/contract.lawspec:303
-def cluster_fetch_offset(state, value0, value1):
-    return lawtwin_kafka_model_offset_fetch(value0, value1, state)
+def cluster_fetch_offset(state, text_1, topic_partition_1):
+    return lawtwin_kafka_model_offset_fetch(text_1, topic_partition_1, state)
 
 
 # clusterFetchRequest — ../src/contract.lawspec:280
-def cluster_fetch_request(state, value0, value1, value2, value3):
-    return lawtwin_kafka_model_fetch(value0, value1, value2, value3, state)
+def cluster_fetch_request(
+    state,
+    topic_partition_1,
+    int64_1,
+    int32_1,
+    isolation_level_1,
+):
+    return lawtwin_kafka_model_fetch(
+        topic_partition_1,
+        int64_1,
+        int32_1,
+        isolation_level_1,
+        state,
+    )
 
 
 # clusterHeartbeat — ../src/contract.lawspec:299
-def cluster_heartbeat(state, value0, value1, value2):
-    return lawtwin_kafka_model_heartbeat(value0, value1, value2, state)
+def cluster_heartbeat(state, text_1, text_2, int32_1):
+    return lawtwin_kafka_model_heartbeat(text_1, text_2, int32_1, state)
 
 
 # clusterInitProducerIdRequest — ../src/contract.lawspec:282
-def cluster_init_producer_id_request(state, value0):
-    return lawtwin_kafka_model_init_producer_id(value0, state)
+def cluster_init_producer_id_request(state, maybe_1):
+    return lawtwin_kafka_model_init_producer_id(maybe_1, state)
 
 
 # clusterJoinGroup — ../src/contract.lawspec:297
-def cluster_join_group(state, value0, value1, value2):
-    return lawtwin_kafka_model_join_group(value0, value1, value2, state)
+def cluster_join_group(state, text_1, text_2, list_1):
+    return lawtwin_kafka_model_join_group(text_1, text_2, list_1, state)
 
 
 # clusterLeaveGroup — ../src/contract.lawspec:300
-def cluster_leave_group(state, value0, value1):
-    return lawtwin_kafka_model_leave_group(value0, value1, state)
+def cluster_leave_group(state, text_1, text_2):
+    return lawtwin_kafka_model_leave_group(text_1, text_2, state)
 
 
 # clusterListOffsets — ../src/contract.lawspec:296
-def cluster_list_offsets(state, value0, value1, value2):
-    return lawtwin_kafka_model_list_offsets(value0, value1, value2, state)
+def cluster_list_offsets(
+    state,
+    topic_partition_1,
+    offset_spec_1,
+    isolation_level_1,
+):
+    return lawtwin_kafka_model_list_offsets(
+        topic_partition_1,
+        offset_spec_1,
+        isolation_level_1,
+        state,
+    )
 
 
 # clusterMetadataRequest — ../src/contract.lawspec:278
-def cluster_metadata_request(state, value0):
-    return lawtwin_kafka_model_metadata(value0, state)
+def cluster_metadata_request(state, text_1):
+    return lawtwin_kafka_model_metadata(text_1, state)
 
 
 # clusterProduceRequest — ../src/contract.lawspec:279
-def cluster_produce_request(state, value0, value1, value2):
-    return lawtwin_kafka_model_produce(value0, value1, value2, state)
+def cluster_produce_request(state, topic_partition_1, maybe_1, list_1):
+    return lawtwin_kafka_model_produce(
+        topic_partition_1,
+        maybe_1,
+        list_1,
+        state,
+    )
 
 
 # clusterStart — ../src/contract.lawspec:274
@@ -569,25 +596,25 @@ def cluster_start(unit):
 
 
 # clusterSyncGroup — ../src/contract.lawspec:298
-def cluster_sync_group(state, value0, value1, value2):
-    return lawtwin_kafka_model_sync_group(value0, value1, value2, state)
+def cluster_sync_group(state, text_1, text_2, int32_1):
+    return lawtwin_kafka_model_sync_group(text_1, text_2, int32_1, state)
 
 
 # clusterTxnOffsetCommitRequest — ../src/contract.lawspec:284
 def cluster_txn_offset_commit_request(
     state,
-    value0,
-    value1,
-    value2,
-    value3,
-    value4,
+    text_1,
+    int64_1,
+    int16_1,
+    text_2,
+    list_1,
 ):
     return lawtwin_kafka_model_txn_offset_commit(
-        value0,
-        value1,
-        value2,
-        value3,
-        value4,
+        text_1,
+        int64_1,
+        int16_1,
+        text_2,
+        list_1,
         state,
     )
 
@@ -1308,8 +1335,8 @@ def join_each(symbols, g, ms, topics):
 
 
 # kafkaConsumerAssign — ../src/contract.lawspec:1382
-def kafka_consumer_assign(consumer_state, value0):
-    return consumer_assign(value0, consumer_state)
+def kafka_consumer_assign(consumer_state, list_1):
+    return consumer_assign(list_1, consumer_state)
 
 
 # kafkaConsumerClose — ../src/contract.lawspec:1390
@@ -1323,28 +1350,28 @@ def kafka_consumer_commit_sync(symbols, consumer_state):
 
 
 # kafkaConsumerCommittedOffset — ../src/contract.lawspec:1388
-def kafka_consumer_committed_offset(symbols, consumer_state, value0):
-    return consumer_committed(symbols, value0, consumer_state)
+def kafka_consumer_committed_offset(symbols, consumer_state, topic_partition_1):
+    return consumer_committed(symbols, topic_partition_1, consumer_state)
 
 
 # kafkaConsumerPoll — ../src/contract.lawspec:1384
-def kafka_consumer_poll(symbols, consumer_state, value0):
-    return consumer_poll(symbols, value0, consumer_state)
+def kafka_consumer_poll(symbols, consumer_state, int32_1):
+    return consumer_poll(symbols, int32_1, consumer_state)
 
 
 # kafkaConsumerPosition — ../src/contract.lawspec:1387
-def kafka_consumer_position(symbols, consumer_state, value0):
-    return consumer_position_of(symbols, value0, consumer_state)
+def kafka_consumer_position(symbols, consumer_state, topic_partition_1):
+    return consumer_position_of(symbols, topic_partition_1, consumer_state)
 
 
 # kafkaConsumerSeek — ../src/contract.lawspec:1386
-def kafka_consumer_seek(consumer_state, value0, value1):
-    return consumer_seek(value0, value1, consumer_state)
+def kafka_consumer_seek(consumer_state, topic_partition_1, int64_1):
+    return consumer_seek(topic_partition_1, int64_1, consumer_state)
 
 
 # kafkaConsumerSetIsolationLevel — ../src/contract.lawspec:1389
-def kafka_consumer_set_isolation_level(consumer_state, value0):
-    return consumer_isolation(value0, consumer_state)
+def kafka_consumer_set_isolation_level(consumer_state, isolation_level_1):
+    return consumer_isolation(isolation_level_1, consumer_state)
 
 
 # kafkaConsumerStart — ../src/contract.lawspec:1380
@@ -1353,8 +1380,8 @@ def kafka_consumer_start(unit):
 
 
 # kafkaConsumerSubscribe — ../src/contract.lawspec:1383
-def kafka_consumer_subscribe(symbols, consumer_state, value0, value1, value2):
-    return consumer_join(symbols, value0, value1, value2, consumer_state)
+def kafka_consumer_subscribe(symbols, consumer_state, text_1, text_2, list_1):
+    return consumer_join(symbols, text_1, text_2, list_1, consumer_state)
 
 
 # kafkaProducerEnableIdempotence — ../src/contract.lawspec:1230
@@ -1378,8 +1405,8 @@ def kafka_producer_retry_last_send(symbols, producer_state):
 
 
 # kafkaProducerSend — ../src/contract.lawspec:1228
-def kafka_producer_send(symbols, producer_state, value0):
-    return producer_send(symbols, value0, producer_state)
+def kafka_producer_send(symbols, producer_state, producer_record_1):
+    return producer_send(symbols, producer_record_1, producer_state)
 
 
 # kafkaProducerStart — ../src/contract.lawspec:1226
@@ -1396,9 +1423,9 @@ def kafka_transactions_abort_transaction(symbols, txn_state):
 def kafka_transactions_add_partitions_to_transaction(
     symbols,
     txn_state,
-    value0,
+    list_1,
 ):
-    return transactions_add(symbols, value0, txn_state)
+    return transactions_add(symbols, list_1, txn_state)
 
 
 # kafkaTransactionsBeginTransaction — ../src/contract.lawspec:1733
@@ -1412,23 +1439,27 @@ def kafka_transactions_commit_transaction(symbols, txn_state):
 
 
 # kafkaTransactionsInitTransactions — ../src/contract.lawspec:1732
-def kafka_transactions_init_transactions(symbols, txn_state, value0):
-    return transactions_init(symbols, value0, txn_state)
+def kafka_transactions_init_transactions(symbols, txn_state, text_1):
+    return transactions_init(symbols, text_1, txn_state)
 
 
 # kafkaTransactionsSendInTransaction — ../src/contract.lawspec:1735
-def kafka_transactions_send_in_transaction(symbols, txn_state, value0):
-    return transactions_send(symbols, value0, txn_state)
+def kafka_transactions_send_in_transaction(
+    symbols,
+    txn_state,
+    producer_record_1,
+):
+    return transactions_send(symbols, producer_record_1, txn_state)
 
 
 # kafkaTransactionsSendOffsetsToTransaction — ../src/contract.lawspec:1736
 def kafka_transactions_send_offsets_to_transaction(
     symbols,
     txn_state,
-    value0,
-    value1,
+    text_1,
+    list_1,
 ):
-    return transactions_offsets(symbols, value0, value1, txn_state)
+    return transactions_offsets(symbols, text_1, list_1, txn_state)
 
 
 # kafkaTransactionsStart — ../src/contract.lawspec:1730

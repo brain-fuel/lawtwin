@@ -16,12 +16,12 @@ type ValueStrategy = proptest::strategy::BoxedStrategy<ls::Value>;
 // connectCluster — ../src/contract.lawspec:30
 fn connect_cluster(ctx: &mut ls::Context, args: Vec<ls::Value>) -> ls::Result<ls::Value>
 {
-    let value0 = args[0].clone();
-    let native_value0 = {
-        let value = ls::native_value(value0.clone(), "Unit")?;
+    let unit_1 = args[0].clone();
+    let native_unit_1 = {
+        let value = ls::native_value(unit_1.clone(), "Unit")?;
         <() as ls::FromValue>::from_value(value)?
     };
-    let native_result = adapter::connectCluster(native_value0);
+    let native_result = adapter::connectCluster(native_unit_1);
     let result = lawspec_schema::schema()?.validate_with_context(
         ls::IntoValue::into_value(native_result),
         &ls::TypeRef::named("lawtwin.kafka::type::Cluster", vec![]),
@@ -34,17 +34,17 @@ fn connect_cluster(ctx: &mut ls::Context, args: Vec<ls::Value>) -> ls::Result<ls
 // disconnectCluster — ../src/contract.lawspec:31
 fn disconnect_cluster(ctx: &mut ls::Context, args: Vec<ls::Value>) -> ls::Result<ls::Value>
 {
-    let value0 = args[0].clone();
-    let native_value0 = {
+    let cluster_1 = args[0].clone();
+    let native_cluster_1 = {
         let value = lawspec_schema::schema()?.native_value_with_context(
-            value0.clone(),
+            cluster_1.clone(),
             &ls::TypeRef::named("lawtwin.kafka::type::Cluster", vec![]),
             64,
             ctx,
         )?;
         <crate::lawspec_data::Cluster as ls::FromValue>::from_value(value)?
     };
-    let native_result = adapter::disconnectCluster(native_value0);
+    let native_result = adapter::disconnectCluster(native_cluster_1);
     let result = ls::validate(ls::IntoValue::into_value(native_result), "Unit", 64)?;
     Ok(result)
 }

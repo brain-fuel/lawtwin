@@ -907,19 +907,19 @@ def assignment_in(symbols, m, ms):
 def cluster_add_partitions_to_txn_request(
     symbols,
     state,
-    value0,
-    value1,
-    value2,
-    value3,
+    text_1,
+    int64_1,
+    int16_1,
+    list_1,
 ):
     try:
         return _typed.to_pair_unit_broker_state(
             _typed.cluster_add_partitions_to_txn_request(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_int64(value1),
-                _typed.from_int16(value2),
-                _typed.from_list_topic_partition(value3),
+                _typed.from_text(text_1),
+                _typed.from_int64(int64_1),
+                _typed.from_int16(int16_1),
+                _typed.from_list_topic_partition(list_1),
             ),
         )
     except (
@@ -934,15 +934,15 @@ def cluster_add_partitions_to_txn_request(
 
 
 # clusterCommitOffsets — ../src/contract.lawspec:302
-def cluster_commit_offsets(symbols, state, value0, value1, value2, value3):
+def cluster_commit_offsets(symbols, state, text_1, text_2, int32_1, list_1):
     try:
         return _typed.to_pair_unit_broker_state(
             _typed.cluster_commit_offsets(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_int32(value2),
-                _typed.from_list_offset_entry(value3),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_int32(int32_1),
+                _typed.from_list_offset_entry(list_1),
             ),
         )
     except (
@@ -956,13 +956,13 @@ def cluster_commit_offsets(symbols, state, value0, value1, value2, value3):
 
 
 # clusterCreatePartitions — ../src/contract.lawspec:294
-def cluster_create_partitions(symbols, state, value0, value1):
+def cluster_create_partitions(symbols, state, text_1, int32_1):
     try:
         return _typed.to_pair_unit_broker_state(
             _typed.cluster_create_partitions(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_int32(value1),
+                _typed.from_text(text_1),
+                _typed.from_int32(int32_1),
             ),
         )
     except (
@@ -976,13 +976,13 @@ def cluster_create_partitions(symbols, state, value0, value1):
 
 
 # clusterCreatePartitionsRequest — ../src/contract.lawspec:277
-def cluster_create_partitions_request(symbols, state, value0, value1):
+def cluster_create_partitions_request(symbols, state, text_1, int32_1):
     try:
         return _typed.to_pair_unit_broker_state(
             _typed.cluster_create_partitions(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_int32(value1),
+                _typed.from_text(text_1),
+                _typed.from_int32(int32_1),
             ),
         )
     except (
@@ -997,13 +997,13 @@ def cluster_create_partitions_request(symbols, state, value0, value1):
 
 
 # clusterCreateTopic — ../src/contract.lawspec:293
-def cluster_create_topic(symbols, state, value0, value1):
+def cluster_create_topic(symbols, state, text_1, int32_1):
     try:
         return _typed.to_pair_unit_broker_state(
             _typed.cluster_create_topic(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_int32(value1),
+                _typed.from_text(text_1),
+                _typed.from_int32(int32_1),
             ),
         )
     except (
@@ -1017,13 +1017,13 @@ def cluster_create_topic(symbols, state, value0, value1):
 
 
 # clusterCreateTopicsRequest — ../src/contract.lawspec:276
-def cluster_create_topics_request(symbols, state, value0, value1):
+def cluster_create_topics_request(symbols, state, text_1, int32_1):
     try:
         return _typed.to_pair_unit_broker_state(
             _typed.cluster_create_topic(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_int32(value1),
+                _typed.from_text(text_1),
+                _typed.from_int32(int32_1),
             ),
         )
     except (
@@ -1038,12 +1038,12 @@ def cluster_create_topics_request(symbols, state, value0, value1):
 
 
 # clusterDescribeGroup — ../src/contract.lawspec:301
-def cluster_describe_group(symbols, state, value0):
+def cluster_describe_group(symbols, state, text_1):
     try:
         return _typed.to_pair_group_view_broker_state(
             _typed.cluster_describe_group(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
+                _typed.from_text(text_1),
             ),
         )
     except (
@@ -1057,12 +1057,12 @@ def cluster_describe_group(symbols, state, value0):
 
 
 # clusterDescribeGroupRequest — ../src/contract.lawspec:290
-def cluster_describe_group_request(symbols, state, value0):
+def cluster_describe_group_request(symbols, state, text_1):
     try:
         return _typed.to_pair_group_view_broker_state(
             _typed.cluster_describe_group(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
+                _typed.from_text(text_1),
             ),
         )
     except (
@@ -1077,15 +1077,15 @@ def cluster_describe_group_request(symbols, state, value0):
 
 
 # clusterEndTxnRequest — ../src/contract.lawspec:285
-def cluster_end_txn_request(symbols, state, value0, value1, value2, value3):
+def cluster_end_txn_request(symbols, state, text_1, int64_1, int16_1, bool_1):
     try:
         return _typed.to_pair_unit_broker_state(
             _typed.cluster_end_txn_request(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_int64(value1),
-                _typed.from_int16(value2),
-                _typed.from_bool(value3),
+                _typed.from_text(text_1),
+                _typed.from_int64(int64_1),
+                _typed.from_int16(int16_1),
+                _typed.from_bool(bool_1),
             ),
         )
     except (
@@ -1099,13 +1099,13 @@ def cluster_end_txn_request(symbols, state, value0, value1, value2, value3):
 
 
 # clusterFetchOffset — ../src/contract.lawspec:303
-def cluster_fetch_offset(symbols, state, value0, value1):
+def cluster_fetch_offset(symbols, state, text_1, topic_partition_1):
     try:
         return _typed.to_pair_maybe_int64_broker_state(
             _typed.cluster_fetch_offset(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_topic_partition(value1),
+                _typed.from_text(text_1),
+                _typed.from_topic_partition(topic_partition_1),
             ),
         )
     except (
@@ -1119,15 +1119,22 @@ def cluster_fetch_offset(symbols, state, value0, value1):
 
 
 # clusterFetchRequest — ../src/contract.lawspec:280
-def cluster_fetch_request(symbols, state, value0, value1, value2, value3):
+def cluster_fetch_request(
+    symbols,
+    state,
+    topic_partition_1,
+    int64_1,
+    int32_1,
+    isolation_level_1,
+):
     try:
         return _typed.to_pair_fetch_result_broker_state(
             _typed.cluster_fetch_request(
                 _typed.from_broker_state(state),
-                _typed.from_topic_partition(value0),
-                _typed.from_int64(value1),
-                _typed.from_int32(value2),
-                _typed.from_isolation_level(value3),
+                _typed.from_topic_partition(topic_partition_1),
+                _typed.from_int64(int64_1),
+                _typed.from_int32(int32_1),
+                _typed.from_isolation_level(isolation_level_1),
             ),
         )
     except (
@@ -1141,14 +1148,14 @@ def cluster_fetch_request(symbols, state, value0, value1, value2, value3):
 
 
 # clusterHeartbeat — ../src/contract.lawspec:299
-def cluster_heartbeat(symbols, state, value0, value1, value2):
+def cluster_heartbeat(symbols, state, text_1, text_2, int32_1):
     try:
         return _typed.to_pair_unit_broker_state(
             _typed.cluster_heartbeat(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_int32(value2),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_int32(int32_1),
             ),
         )
     except (
@@ -1162,14 +1169,14 @@ def cluster_heartbeat(symbols, state, value0, value1, value2):
 
 
 # clusterHeartbeatRequest — ../src/contract.lawspec:288
-def cluster_heartbeat_request(symbols, state, value0, value1, value2):
+def cluster_heartbeat_request(symbols, state, text_1, text_2, int32_1):
     try:
         return _typed.to_pair_unit_broker_state(
             _typed.cluster_heartbeat(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_int32(value2),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_int32(int32_1),
             ),
         )
     except (
@@ -1183,12 +1190,12 @@ def cluster_heartbeat_request(symbols, state, value0, value1, value2):
 
 
 # clusterInitProducerIdRequest — ../src/contract.lawspec:282
-def cluster_init_producer_id_request(symbols, state, value0):
+def cluster_init_producer_id_request(symbols, state, maybe_1):
     try:
         return _typed.to_pair_producer_id_and_epoch_broker_state(
             _typed.cluster_init_producer_id_request(
                 _typed.from_broker_state(state),
-                _typed.from_maybe_text(value0),
+                _typed.from_maybe_text(maybe_1),
             ),
         )
     except (
@@ -1203,14 +1210,14 @@ def cluster_init_producer_id_request(symbols, state, value0):
 
 
 # clusterJoinGroup — ../src/contract.lawspec:297
-def cluster_join_group(symbols, state, value0, value1, value2):
+def cluster_join_group(symbols, state, text_1, text_2, list_1):
     try:
         return _typed.to_pair_int32_broker_state(
             _typed.cluster_join_group(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_list_text(value2),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_list_text(list_1),
             ),
         )
     except (
@@ -1224,14 +1231,14 @@ def cluster_join_group(symbols, state, value0, value1, value2):
 
 
 # clusterJoinGroupRequest — ../src/contract.lawspec:286
-def cluster_join_group_request(symbols, state, value0, value1, value2):
+def cluster_join_group_request(symbols, state, text_1, text_2, list_1):
     try:
         return _typed.to_pair_int32_broker_state(
             _typed.cluster_join_group(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_list_text(value2),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_list_text(list_1),
             ),
         )
     except (
@@ -1245,13 +1252,13 @@ def cluster_join_group_request(symbols, state, value0, value1, value2):
 
 
 # clusterLeaveGroup — ../src/contract.lawspec:300
-def cluster_leave_group(symbols, state, value0, value1):
+def cluster_leave_group(symbols, state, text_1, text_2):
     try:
         return _typed.to_pair_unit_broker_state(
             _typed.cluster_leave_group(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
             ),
         )
     except (
@@ -1265,13 +1272,13 @@ def cluster_leave_group(symbols, state, value0, value1):
 
 
 # clusterLeaveGroupRequest — ../src/contract.lawspec:289
-def cluster_leave_group_request(symbols, state, value0, value1):
+def cluster_leave_group_request(symbols, state, text_1, text_2):
     try:
         return _typed.to_pair_unit_broker_state(
             _typed.cluster_leave_group(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
             ),
         )
     except (
@@ -1285,14 +1292,20 @@ def cluster_leave_group_request(symbols, state, value0, value1):
 
 
 # clusterListOffsets — ../src/contract.lawspec:296
-def cluster_list_offsets(symbols, state, value0, value1, value2):
+def cluster_list_offsets(
+    symbols,
+    state,
+    topic_partition_1,
+    offset_spec_1,
+    isolation_level_1,
+):
     try:
         return _typed.to_pair_int64_broker_state(
             _typed.cluster_list_offsets(
                 _typed.from_broker_state(state),
-                _typed.from_topic_partition(value0),
-                _typed.from_offset_spec(value1),
-                _typed.from_isolation_level(value2),
+                _typed.from_topic_partition(topic_partition_1),
+                _typed.from_offset_spec(offset_spec_1),
+                _typed.from_isolation_level(isolation_level_1),
             ),
         )
     except (
@@ -1306,14 +1319,20 @@ def cluster_list_offsets(symbols, state, value0, value1, value2):
 
 
 # clusterListOffsetsRequest — ../src/contract.lawspec:281
-def cluster_list_offsets_request(symbols, state, value0, value1, value2):
+def cluster_list_offsets_request(
+    symbols,
+    state,
+    topic_partition_1,
+    offset_spec_1,
+    isolation_level_1,
+):
     try:
         return _typed.to_pair_int64_broker_state(
             _typed.cluster_list_offsets(
                 _typed.from_broker_state(state),
-                _typed.from_topic_partition(value0),
-                _typed.from_offset_spec(value1),
-                _typed.from_isolation_level(value2),
+                _typed.from_topic_partition(topic_partition_1),
+                _typed.from_offset_spec(offset_spec_1),
+                _typed.from_isolation_level(isolation_level_1),
             ),
         )
     except (
@@ -1327,12 +1346,12 @@ def cluster_list_offsets_request(symbols, state, value0, value1, value2):
 
 
 # clusterMetadataRequest — ../src/contract.lawspec:278
-def cluster_metadata_request(symbols, state, value0):
+def cluster_metadata_request(symbols, state, text_1):
     try:
         return _typed.to_pair_maybe_int32_broker_state(
             _typed.cluster_metadata_request(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
+                _typed.from_text(text_1),
             ),
         )
     except (
@@ -1349,19 +1368,19 @@ def cluster_metadata_request(symbols, state, value0):
 def cluster_offset_commit_request(
     symbols,
     state,
-    value0,
-    value1,
-    value2,
-    value3,
+    text_1,
+    text_2,
+    int32_1,
+    list_1,
 ):
     try:
         return _typed.to_pair_unit_broker_state(
             _typed.cluster_commit_offsets(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_int32(value2),
-                _typed.from_list_offset_entry(value3),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_int32(int32_1),
+                _typed.from_list_offset_entry(list_1),
             ),
         )
     except (
@@ -1376,13 +1395,13 @@ def cluster_offset_commit_request(
 
 
 # clusterOffsetFetchRequest — ../src/contract.lawspec:292
-def cluster_offset_fetch_request(symbols, state, value0, value1):
+def cluster_offset_fetch_request(symbols, state, text_1, topic_partition_1):
     try:
         return _typed.to_pair_maybe_int64_broker_state(
             _typed.cluster_fetch_offset(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_topic_partition(value1),
+                _typed.from_text(text_1),
+                _typed.from_topic_partition(topic_partition_1),
             ),
         )
     except (
@@ -1396,12 +1415,12 @@ def cluster_offset_fetch_request(symbols, state, value0, value1):
 
 
 # clusterPartitionsFor — ../src/contract.lawspec:295
-def cluster_partitions_for(symbols, state, value0):
+def cluster_partitions_for(symbols, state, text_1):
     try:
         return _typed.to_pair_maybe_int32_broker_state(
             _typed.cluster_metadata_request(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
+                _typed.from_text(text_1),
             ),
         )
     except (
@@ -1415,14 +1434,14 @@ def cluster_partitions_for(symbols, state, value0):
 
 
 # clusterProduceRequest — ../src/contract.lawspec:279
-def cluster_produce_request(symbols, state, value0, value1, value2):
+def cluster_produce_request(symbols, state, topic_partition_1, maybe_1, list_1):
     try:
         return _typed.to_pair_int64_broker_state(
             _typed.cluster_produce_request(
                 _typed.from_broker_state(state),
-                _typed.from_topic_partition(value0),
-                _typed.from_maybe_producer_tag(value1),
-                _typed.from_list_record(value2),
+                _typed.from_topic_partition(topic_partition_1),
+                _typed.from_maybe_producer_tag(maybe_1),
+                _typed.from_list_record(list_1),
             ),
         )
     except (
@@ -1452,14 +1471,14 @@ def cluster_start(symbols, unit):
 
 
 # clusterSyncGroup — ../src/contract.lawspec:298
-def cluster_sync_group(symbols, state, value0, value1, value2):
+def cluster_sync_group(symbols, state, text_1, text_2, int32_1):
     try:
         return _typed.to_pair_list_topic_partition_broker_state(
             _typed.cluster_sync_group(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_int32(value2),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_int32(int32_1),
             ),
         )
     except (
@@ -1473,14 +1492,14 @@ def cluster_sync_group(symbols, state, value0, value1, value2):
 
 
 # clusterSyncGroupRequest — ../src/contract.lawspec:287
-def cluster_sync_group_request(symbols, state, value0, value1, value2):
+def cluster_sync_group_request(symbols, state, text_1, text_2, int32_1):
     try:
         return _typed.to_pair_list_topic_partition_broker_state(
             _typed.cluster_sync_group(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_int32(value2),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_int32(int32_1),
             ),
         )
     except (
@@ -1497,21 +1516,21 @@ def cluster_sync_group_request(symbols, state, value0, value1, value2):
 def cluster_txn_offset_commit_request(
     symbols,
     state,
-    value0,
-    value1,
-    value2,
-    value3,
-    value4,
+    text_1,
+    int64_1,
+    int16_1,
+    text_2,
+    list_1,
 ):
     try:
         return _typed.to_pair_unit_broker_state(
             _typed.cluster_txn_offset_commit_request(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_int64(value1),
-                _typed.from_int16(value2),
-                _typed.from_text(value3),
-                _typed.from_list_offset_entry(value4),
+                _typed.from_text(text_1),
+                _typed.from_int64(int64_1),
+                _typed.from_int16(int16_1),
+                _typed.from_text(text_2),
+                _typed.from_list_offset_entry(list_1),
             ),
         )
     except (
@@ -1987,12 +2006,12 @@ def join_each(symbols, g, ms, topics):
 
 
 # kafkaConsumerAssign — ../src/contract.lawspec:1382
-def kafka_consumer_assign(symbols, consumer_state, value0):
+def kafka_consumer_assign(symbols, consumer_state, list_1):
     try:
         return _typed.to_pair_unit_consumer_state(
             _typed.kafka_consumer_assign(
                 _typed.from_consumer_state(consumer_state),
-                _typed.from_list_topic_partition(value0),
+                _typed.from_list_topic_partition(list_1),
             ),
         )
     except (
@@ -2044,13 +2063,13 @@ def kafka_consumer_commit_sync(symbols, consumer_state):
 
 
 # kafkaConsumerCommittedOffset — ../src/contract.lawspec:1388
-def kafka_consumer_committed_offset(symbols, consumer_state, value0):
+def kafka_consumer_committed_offset(symbols, consumer_state, topic_partition_1):
     try:
         return _typed.to_pair_maybe_int64_consumer_state(
             _typed.kafka_consumer_committed_offset(
                 symbols,
                 _typed.from_consumer_state(consumer_state),
-                _typed.from_topic_partition(value0),
+                _typed.from_topic_partition(topic_partition_1),
             ),
         )
     except (
@@ -2065,13 +2084,13 @@ def kafka_consumer_committed_offset(symbols, consumer_state, value0):
 
 
 # kafkaConsumerPoll — ../src/contract.lawspec:1384
-def kafka_consumer_poll(symbols, consumer_state, value0):
+def kafka_consumer_poll(symbols, consumer_state, int32_1):
     try:
         return _typed.to_pair_either_kafka_error_list_consumer_record_consumer_state(
             _typed.kafka_consumer_poll(
                 symbols,
                 _typed.from_consumer_state(consumer_state),
-                _typed.from_int32(value0),
+                _typed.from_int32(int32_1),
             ),
         )
     except (
@@ -2085,13 +2104,13 @@ def kafka_consumer_poll(symbols, consumer_state, value0):
 
 
 # kafkaConsumerPosition — ../src/contract.lawspec:1387
-def kafka_consumer_position(symbols, consumer_state, value0):
+def kafka_consumer_position(symbols, consumer_state, topic_partition_1):
     try:
         return _typed.to_pair_either_kafka_error_int64_consumer_state(
             _typed.kafka_consumer_position(
                 symbols,
                 _typed.from_consumer_state(consumer_state),
-                _typed.from_topic_partition(value0),
+                _typed.from_topic_partition(topic_partition_1),
             ),
         )
     except (
@@ -2105,13 +2124,13 @@ def kafka_consumer_position(symbols, consumer_state, value0):
 
 
 # kafkaConsumerSeek — ../src/contract.lawspec:1386
-def kafka_consumer_seek(symbols, consumer_state, value0, value1):
+def kafka_consumer_seek(symbols, consumer_state, topic_partition_1, int64_1):
     try:
         return _typed.to_pair_either_kafka_error_unit_consumer_state(
             _typed.kafka_consumer_seek(
                 _typed.from_consumer_state(consumer_state),
-                _typed.from_topic_partition(value0),
-                _typed.from_int64(value1),
+                _typed.from_topic_partition(topic_partition_1),
+                _typed.from_int64(int64_1),
             ),
         )
     except (
@@ -2125,12 +2144,16 @@ def kafka_consumer_seek(symbols, consumer_state, value0, value1):
 
 
 # kafkaConsumerSetIsolationLevel — ../src/contract.lawspec:1389
-def kafka_consumer_set_isolation_level(symbols, consumer_state, value0):
+def kafka_consumer_set_isolation_level(
+    symbols,
+    consumer_state,
+    isolation_level_1,
+):
     try:
         return _typed.to_pair_unit_consumer_state(
             _typed.kafka_consumer_set_isolation_level(
                 _typed.from_consumer_state(consumer_state),
-                _typed.from_isolation_level(value0),
+                _typed.from_isolation_level(isolation_level_1),
             ),
         )
     except (
@@ -2161,15 +2184,15 @@ def kafka_consumer_start(symbols, unit):
 
 
 # kafkaConsumerSubscribe — ../src/contract.lawspec:1383
-def kafka_consumer_subscribe(symbols, consumer_state, value0, value1, value2):
+def kafka_consumer_subscribe(symbols, consumer_state, text_1, text_2, list_1):
     try:
         return _typed.to_pair_either_kafka_error_list_topic_partition_consumer_state(
             _typed.kafka_consumer_subscribe(
                 symbols,
                 _typed.from_consumer_state(consumer_state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_list_text(value2),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_list_text(list_1),
             ),
         )
     except (
@@ -2260,13 +2283,13 @@ def kafka_producer_retry_last_send(symbols, producer_state):
 
 
 # kafkaProducerSend — ../src/contract.lawspec:1228
-def kafka_producer_send(symbols, producer_state, value0):
+def kafka_producer_send(symbols, producer_state, producer_record_1):
     try:
         return _typed.to_pair_either_kafka_error_record_metadata_producer_state(
             _typed.kafka_producer_send(
                 symbols,
                 _typed.from_producer_state(producer_state),
-                _typed.from_producer_record(value0),
+                _typed.from_producer_record(producer_record_1),
             ),
         )
     except (
@@ -2319,14 +2342,14 @@ def kafka_transactions_abort_transaction(symbols, txn_state):
 def kafka_transactions_add_partitions_to_transaction(
     symbols,
     txn_state,
-    value0,
+    list_1,
 ):
     try:
         return _typed.to_pair_either_kafka_error_unit_transaction_state(
             _typed.kafka_transactions_add_partitions_to_transaction(
                 symbols,
                 _typed.from_transaction_state(txn_state),
-                _typed.from_list_topic_partition(value0),
+                _typed.from_list_topic_partition(list_1),
             ),
         )
     except (
@@ -2380,13 +2403,13 @@ def kafka_transactions_commit_transaction(symbols, txn_state):
 
 
 # kafkaTransactionsInitTransactions — ../src/contract.lawspec:1732
-def kafka_transactions_init_transactions(symbols, txn_state, value0):
+def kafka_transactions_init_transactions(symbols, txn_state, text_1):
     try:
         return _typed.to_pair_either_kafka_error_producer_id_and_epoch_transaction_state(
             _typed.kafka_transactions_init_transactions(
                 symbols,
                 _typed.from_transaction_state(txn_state),
-                _typed.from_text(value0),
+                _typed.from_text(text_1),
             ),
         )
     except (
@@ -2401,13 +2424,17 @@ def kafka_transactions_init_transactions(symbols, txn_state, value0):
 
 
 # kafkaTransactionsSendInTransaction — ../src/contract.lawspec:1735
-def kafka_transactions_send_in_transaction(symbols, txn_state, value0):
+def kafka_transactions_send_in_transaction(
+    symbols,
+    txn_state,
+    producer_record_1,
+):
     try:
         return _typed.to_pair_either_kafka_error_record_metadata_transaction_state(
             _typed.kafka_transactions_send_in_transaction(
                 symbols,
                 _typed.from_transaction_state(txn_state),
-                _typed.from_producer_record(value0),
+                _typed.from_producer_record(producer_record_1),
             ),
         )
     except (
@@ -2425,16 +2452,16 @@ def kafka_transactions_send_in_transaction(symbols, txn_state, value0):
 def kafka_transactions_send_offsets_to_transaction(
     symbols,
     txn_state,
-    value0,
-    value1,
+    text_1,
+    list_1,
 ):
     try:
         return _typed.to_pair_either_kafka_error_unit_transaction_state(
             _typed.kafka_transactions_send_offsets_to_transaction(
                 symbols,
                 _typed.from_transaction_state(txn_state),
-                _typed.from_text(value0),
-                _typed.from_list_offset_entry(value1),
+                _typed.from_text(text_1),
+                _typed.from_list_offset_entry(list_1),
             ),
         )
     except (
@@ -11969,19 +11996,19 @@ def write_markers(symbols, pid, commit, tps, b):
 def cluster_add_partitions_to_txn_request_2(
     symbols,
     state,
-    value0,
-    value1,
-    value2,
-    value3,
+    text_1,
+    int64_1,
+    int16_1,
+    list_1,
 ):
     try:
         return _typed.to_pair_unit_broker_state(
             _typed.cluster_add_partitions_to_txn_request(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_int64(value1),
-                _typed.from_int16(value2),
-                _typed.from_list_topic_partition(value3),
+                _typed.from_text(text_1),
+                _typed.from_int64(int64_1),
+                _typed.from_int16(int16_1),
+                _typed.from_list_topic_partition(list_1),
             ),
         )
     except (
@@ -11996,15 +12023,15 @@ def cluster_add_partitions_to_txn_request_2(
 
 
 # clusterCommitOffsets — ../src/contract.lawspec:302
-def cluster_commit_offsets_2(symbols, state, value0, value1, value2, value3):
+def cluster_commit_offsets_2(symbols, state, text_1, text_2, int32_1, list_1):
     try:
         return _typed.to_pair_unit_broker_state(
             _typed.cluster_commit_offsets(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_int32(value2),
-                _typed.from_list_offset_entry(value3),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_int32(int32_1),
+                _typed.from_list_offset_entry(list_1),
             ),
         )
     except (
@@ -12018,13 +12045,13 @@ def cluster_commit_offsets_2(symbols, state, value0, value1, value2, value3):
 
 
 # clusterCreatePartitions — ../src/contract.lawspec:294
-def cluster_create_partitions_2(symbols, state, value0, value1):
+def cluster_create_partitions_2(symbols, state, text_1, int32_1):
     try:
         return _typed.to_pair_unit_broker_state(
             _typed.cluster_create_partitions(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_int32(value1),
+                _typed.from_text(text_1),
+                _typed.from_int32(int32_1),
             ),
         )
     except (
@@ -12039,13 +12066,13 @@ def cluster_create_partitions_2(symbols, state, value0, value1):
 
 
 # clusterCreatePartitionsRequest — ../src/contract.lawspec:277
-def cluster_create_partitions_request_2(symbols, state, value0, value1):
+def cluster_create_partitions_request_2(symbols, state, text_1, int32_1):
     try:
         return _typed.to_pair_unit_broker_state(
             _typed.cluster_create_partitions(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_int32(value1),
+                _typed.from_text(text_1),
+                _typed.from_int32(int32_1),
             ),
         )
     except (
@@ -12060,13 +12087,13 @@ def cluster_create_partitions_request_2(symbols, state, value0, value1):
 
 
 # clusterCreateTopic — ../src/contract.lawspec:293
-def cluster_create_topic_2(symbols, state, value0, value1):
+def cluster_create_topic_2(symbols, state, text_1, int32_1):
     try:
         return _typed.to_pair_unit_broker_state(
             _typed.cluster_create_topic(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_int32(value1),
+                _typed.from_text(text_1),
+                _typed.from_int32(int32_1),
             ),
         )
     except (
@@ -12080,13 +12107,13 @@ def cluster_create_topic_2(symbols, state, value0, value1):
 
 
 # clusterCreateTopicsRequest — ../src/contract.lawspec:276
-def cluster_create_topics_request_2(symbols, state, value0, value1):
+def cluster_create_topics_request_2(symbols, state, text_1, int32_1):
     try:
         return _typed.to_pair_unit_broker_state(
             _typed.cluster_create_topic(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_int32(value1),
+                _typed.from_text(text_1),
+                _typed.from_int32(int32_1),
             ),
         )
     except (
@@ -12101,12 +12128,12 @@ def cluster_create_topics_request_2(symbols, state, value0, value1):
 
 
 # clusterDescribeGroup — ../src/contract.lawspec:301
-def cluster_describe_group_2(symbols, state, value0):
+def cluster_describe_group_2(symbols, state, text_1):
     try:
         return _typed.to_pair_group_view_broker_state(
             _typed.cluster_describe_group(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
+                _typed.from_text(text_1),
             ),
         )
     except (
@@ -12120,12 +12147,12 @@ def cluster_describe_group_2(symbols, state, value0):
 
 
 # clusterDescribeGroupRequest — ../src/contract.lawspec:290
-def cluster_describe_group_request_2(symbols, state, value0):
+def cluster_describe_group_request_2(symbols, state, text_1):
     try:
         return _typed.to_pair_group_view_broker_state(
             _typed.cluster_describe_group(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
+                _typed.from_text(text_1),
             ),
         )
     except (
@@ -12140,15 +12167,15 @@ def cluster_describe_group_request_2(symbols, state, value0):
 
 
 # clusterEndTxnRequest — ../src/contract.lawspec:285
-def cluster_end_txn_request_2(symbols, state, value0, value1, value2, value3):
+def cluster_end_txn_request_2(symbols, state, text_1, int64_1, int16_1, bool_1):
     try:
         return _typed.to_pair_unit_broker_state(
             _typed.cluster_end_txn_request(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_int64(value1),
-                _typed.from_int16(value2),
-                _typed.from_bool(value3),
+                _typed.from_text(text_1),
+                _typed.from_int64(int64_1),
+                _typed.from_int16(int16_1),
+                _typed.from_bool(bool_1),
             ),
         )
     except (
@@ -12162,13 +12189,13 @@ def cluster_end_txn_request_2(symbols, state, value0, value1, value2, value3):
 
 
 # clusterFetchOffset — ../src/contract.lawspec:303
-def cluster_fetch_offset_2(symbols, state, value0, value1):
+def cluster_fetch_offset_2(symbols, state, text_1, topic_partition_1):
     try:
         return _typed.to_pair_maybe_int64_broker_state(
             _typed.cluster_fetch_offset(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_topic_partition(value1),
+                _typed.from_text(text_1),
+                _typed.from_topic_partition(topic_partition_1),
             ),
         )
     except (
@@ -12182,15 +12209,22 @@ def cluster_fetch_offset_2(symbols, state, value0, value1):
 
 
 # clusterFetchRequest — ../src/contract.lawspec:280
-def cluster_fetch_request_2(symbols, state, value0, value1, value2, value3):
+def cluster_fetch_request_2(
+    symbols,
+    state,
+    topic_partition_1,
+    int64_1,
+    int32_1,
+    isolation_level_1,
+):
     try:
         return _typed.to_pair_fetch_result_broker_state(
             _typed.cluster_fetch_request(
                 _typed.from_broker_state(state),
-                _typed.from_topic_partition(value0),
-                _typed.from_int64(value1),
-                _typed.from_int32(value2),
-                _typed.from_isolation_level(value3),
+                _typed.from_topic_partition(topic_partition_1),
+                _typed.from_int64(int64_1),
+                _typed.from_int32(int32_1),
+                _typed.from_isolation_level(isolation_level_1),
             ),
         )
     except (
@@ -12204,14 +12238,14 @@ def cluster_fetch_request_2(symbols, state, value0, value1, value2, value3):
 
 
 # clusterHeartbeat — ../src/contract.lawspec:299
-def cluster_heartbeat_2(symbols, state, value0, value1, value2):
+def cluster_heartbeat_2(symbols, state, text_1, text_2, int32_1):
     try:
         return _typed.to_pair_unit_broker_state(
             _typed.cluster_heartbeat(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_int32(value2),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_int32(int32_1),
             ),
         )
     except (
@@ -12225,14 +12259,14 @@ def cluster_heartbeat_2(symbols, state, value0, value1, value2):
 
 
 # clusterHeartbeatRequest — ../src/contract.lawspec:288
-def cluster_heartbeat_request_2(symbols, state, value0, value1, value2):
+def cluster_heartbeat_request_2(symbols, state, text_1, text_2, int32_1):
     try:
         return _typed.to_pair_unit_broker_state(
             _typed.cluster_heartbeat(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_int32(value2),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_int32(int32_1),
             ),
         )
     except (
@@ -12247,12 +12281,12 @@ def cluster_heartbeat_request_2(symbols, state, value0, value1, value2):
 
 
 # clusterInitProducerIdRequest — ../src/contract.lawspec:282
-def cluster_init_producer_id_request_2(symbols, state, value0):
+def cluster_init_producer_id_request_2(symbols, state, maybe_1):
     try:
         return _typed.to_pair_producer_id_and_epoch_broker_state(
             _typed.cluster_init_producer_id_request(
                 _typed.from_broker_state(state),
-                _typed.from_maybe_text(value0),
+                _typed.from_maybe_text(maybe_1),
             ),
         )
     except (
@@ -12267,14 +12301,14 @@ def cluster_init_producer_id_request_2(symbols, state, value0):
 
 
 # clusterJoinGroup — ../src/contract.lawspec:297
-def cluster_join_group_2(symbols, state, value0, value1, value2):
+def cluster_join_group_2(symbols, state, text_1, text_2, list_1):
     try:
         return _typed.to_pair_int32_broker_state(
             _typed.cluster_join_group(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_list_text(value2),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_list_text(list_1),
             ),
         )
     except (
@@ -12288,14 +12322,14 @@ def cluster_join_group_2(symbols, state, value0, value1, value2):
 
 
 # clusterJoinGroupRequest — ../src/contract.lawspec:286
-def cluster_join_group_request_2(symbols, state, value0, value1, value2):
+def cluster_join_group_request_2(symbols, state, text_1, text_2, list_1):
     try:
         return _typed.to_pair_int32_broker_state(
             _typed.cluster_join_group(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_list_text(value2),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_list_text(list_1),
             ),
         )
     except (
@@ -12310,13 +12344,13 @@ def cluster_join_group_request_2(symbols, state, value0, value1, value2):
 
 
 # clusterLeaveGroup — ../src/contract.lawspec:300
-def cluster_leave_group_2(symbols, state, value0, value1):
+def cluster_leave_group_2(symbols, state, text_1, text_2):
     try:
         return _typed.to_pair_unit_broker_state(
             _typed.cluster_leave_group(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
             ),
         )
     except (
@@ -12330,13 +12364,13 @@ def cluster_leave_group_2(symbols, state, value0, value1):
 
 
 # clusterLeaveGroupRequest — ../src/contract.lawspec:289
-def cluster_leave_group_request_2(symbols, state, value0, value1):
+def cluster_leave_group_request_2(symbols, state, text_1, text_2):
     try:
         return _typed.to_pair_unit_broker_state(
             _typed.cluster_leave_group(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
             ),
         )
     except (
@@ -12351,14 +12385,20 @@ def cluster_leave_group_request_2(symbols, state, value0, value1):
 
 
 # clusterListOffsets — ../src/contract.lawspec:296
-def cluster_list_offsets_2(symbols, state, value0, value1, value2):
+def cluster_list_offsets_2(
+    symbols,
+    state,
+    topic_partition_1,
+    offset_spec_1,
+    isolation_level_1,
+):
     try:
         return _typed.to_pair_int64_broker_state(
             _typed.cluster_list_offsets(
                 _typed.from_broker_state(state),
-                _typed.from_topic_partition(value0),
-                _typed.from_offset_spec(value1),
-                _typed.from_isolation_level(value2),
+                _typed.from_topic_partition(topic_partition_1),
+                _typed.from_offset_spec(offset_spec_1),
+                _typed.from_isolation_level(isolation_level_1),
             ),
         )
     except (
@@ -12372,14 +12412,20 @@ def cluster_list_offsets_2(symbols, state, value0, value1, value2):
 
 
 # clusterListOffsetsRequest — ../src/contract.lawspec:281
-def cluster_list_offsets_request_2(symbols, state, value0, value1, value2):
+def cluster_list_offsets_request_2(
+    symbols,
+    state,
+    topic_partition_1,
+    offset_spec_1,
+    isolation_level_1,
+):
     try:
         return _typed.to_pair_int64_broker_state(
             _typed.cluster_list_offsets(
                 _typed.from_broker_state(state),
-                _typed.from_topic_partition(value0),
-                _typed.from_offset_spec(value1),
-                _typed.from_isolation_level(value2),
+                _typed.from_topic_partition(topic_partition_1),
+                _typed.from_offset_spec(offset_spec_1),
+                _typed.from_isolation_level(isolation_level_1),
             ),
         )
     except (
@@ -12394,12 +12440,12 @@ def cluster_list_offsets_request_2(symbols, state, value0, value1, value2):
 
 
 # clusterMetadataRequest — ../src/contract.lawspec:278
-def cluster_metadata_request_2(symbols, state, value0):
+def cluster_metadata_request_2(symbols, state, text_1):
     try:
         return _typed.to_pair_maybe_int32_broker_state(
             _typed.cluster_metadata_request(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
+                _typed.from_text(text_1),
             ),
         )
     except (
@@ -12417,19 +12463,19 @@ def cluster_metadata_request_2(symbols, state, value0):
 def cluster_offset_commit_request_2(
     symbols,
     state,
-    value0,
-    value1,
-    value2,
-    value3,
+    text_1,
+    text_2,
+    int32_1,
+    list_1,
 ):
     try:
         return _typed.to_pair_unit_broker_state(
             _typed.cluster_commit_offsets(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_int32(value2),
-                _typed.from_list_offset_entry(value3),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_int32(int32_1),
+                _typed.from_list_offset_entry(list_1),
             ),
         )
     except (
@@ -12444,13 +12490,13 @@ def cluster_offset_commit_request_2(
 
 
 # clusterOffsetFetchRequest — ../src/contract.lawspec:292
-def cluster_offset_fetch_request_2(symbols, state, value0, value1):
+def cluster_offset_fetch_request_2(symbols, state, text_1, topic_partition_1):
     try:
         return _typed.to_pair_maybe_int64_broker_state(
             _typed.cluster_fetch_offset(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_topic_partition(value1),
+                _typed.from_text(text_1),
+                _typed.from_topic_partition(topic_partition_1),
             ),
         )
     except (
@@ -12465,12 +12511,12 @@ def cluster_offset_fetch_request_2(symbols, state, value0, value1):
 
 
 # clusterPartitionsFor — ../src/contract.lawspec:295
-def cluster_partitions_for_2(symbols, state, value0):
+def cluster_partitions_for_2(symbols, state, text_1):
     try:
         return _typed.to_pair_maybe_int32_broker_state(
             _typed.cluster_metadata_request(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
+                _typed.from_text(text_1),
             ),
         )
     except (
@@ -12484,14 +12530,20 @@ def cluster_partitions_for_2(symbols, state, value0):
 
 
 # clusterProduceRequest — ../src/contract.lawspec:279
-def cluster_produce_request_2(symbols, state, value0, value1, value2):
+def cluster_produce_request_2(
+    symbols,
+    state,
+    topic_partition_1,
+    maybe_1,
+    list_1,
+):
     try:
         return _typed.to_pair_int64_broker_state(
             _typed.cluster_produce_request(
                 _typed.from_broker_state(state),
-                _typed.from_topic_partition(value0),
-                _typed.from_maybe_producer_tag(value1),
-                _typed.from_list_record(value2),
+                _typed.from_topic_partition(topic_partition_1),
+                _typed.from_maybe_producer_tag(maybe_1),
+                _typed.from_list_record(list_1),
             ),
         )
     except (
@@ -12522,14 +12574,14 @@ def cluster_start_2(symbols, unit):
 
 
 # clusterSyncGroup — ../src/contract.lawspec:298
-def cluster_sync_group_2(symbols, state, value0, value1, value2):
+def cluster_sync_group_2(symbols, state, text_1, text_2, int32_1):
     try:
         return _typed.to_pair_list_topic_partition_broker_state(
             _typed.cluster_sync_group(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_int32(value2),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_int32(int32_1),
             ),
         )
     except (
@@ -12543,14 +12595,14 @@ def cluster_sync_group_2(symbols, state, value0, value1, value2):
 
 
 # clusterSyncGroupRequest — ../src/contract.lawspec:287
-def cluster_sync_group_request_2(symbols, state, value0, value1, value2):
+def cluster_sync_group_request_2(symbols, state, text_1, text_2, int32_1):
     try:
         return _typed.to_pair_list_topic_partition_broker_state(
             _typed.cluster_sync_group(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_int32(value2),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_int32(int32_1),
             ),
         )
     except (
@@ -12568,21 +12620,21 @@ def cluster_sync_group_request_2(symbols, state, value0, value1, value2):
 def cluster_txn_offset_commit_request_2(
     symbols,
     state,
-    value0,
-    value1,
-    value2,
-    value3,
-    value4,
+    text_1,
+    int64_1,
+    int16_1,
+    text_2,
+    list_1,
 ):
     try:
         return _typed.to_pair_unit_broker_state(
             _typed.cluster_txn_offset_commit_request(
                 _typed.from_broker_state(state),
-                _typed.from_text(value0),
-                _typed.from_int64(value1),
-                _typed.from_int16(value2),
-                _typed.from_text(value3),
-                _typed.from_list_offset_entry(value4),
+                _typed.from_text(text_1),
+                _typed.from_int64(int64_1),
+                _typed.from_int16(int16_1),
+                _typed.from_text(text_2),
+                _typed.from_list_offset_entry(list_1),
             ),
         )
     except (
@@ -12597,12 +12649,12 @@ def cluster_txn_offset_commit_request_2(
 
 
 # kafkaConsumerAssign — ../src/contract.lawspec:1382
-def kafka_consumer_assign_2(symbols, consumer_state, value0):
+def kafka_consumer_assign_2(symbols, consumer_state, list_1):
     try:
         return _typed.to_pair_unit_consumer_state(
             _typed.kafka_consumer_assign(
                 _typed.from_consumer_state(consumer_state),
-                _typed.from_list_topic_partition(value0),
+                _typed.from_list_topic_partition(list_1),
             ),
         )
     except (
@@ -12655,13 +12707,17 @@ def kafka_consumer_commit_sync_2(symbols, consumer_state):
 
 
 # kafkaConsumerCommittedOffset — ../src/contract.lawspec:1388
-def kafka_consumer_committed_offset_2(symbols, consumer_state, value0):
+def kafka_consumer_committed_offset_2(
+    symbols,
+    consumer_state,
+    topic_partition_1,
+):
     try:
         return _typed.to_pair_maybe_int64_consumer_state(
             _typed.kafka_consumer_committed_offset(
                 symbols,
                 _typed.from_consumer_state(consumer_state),
-                _typed.from_topic_partition(value0),
+                _typed.from_topic_partition(topic_partition_1),
             ),
         )
     except (
@@ -12676,13 +12732,13 @@ def kafka_consumer_committed_offset_2(symbols, consumer_state, value0):
 
 
 # kafkaConsumerPoll — ../src/contract.lawspec:1384
-def kafka_consumer_poll_2(symbols, consumer_state, value0):
+def kafka_consumer_poll_2(symbols, consumer_state, int32_1):
     try:
         return _typed.to_pair_either_kafka_error_list_consumer_record_consumer_state(
             _typed.kafka_consumer_poll(
                 symbols,
                 _typed.from_consumer_state(consumer_state),
-                _typed.from_int32(value0),
+                _typed.from_int32(int32_1),
             ),
         )
     except (
@@ -12696,13 +12752,13 @@ def kafka_consumer_poll_2(symbols, consumer_state, value0):
 
 
 # kafkaConsumerPosition — ../src/contract.lawspec:1387
-def kafka_consumer_position_2(symbols, consumer_state, value0):
+def kafka_consumer_position_2(symbols, consumer_state, topic_partition_1):
     try:
         return _typed.to_pair_either_kafka_error_int64_consumer_state(
             _typed.kafka_consumer_position(
                 symbols,
                 _typed.from_consumer_state(consumer_state),
-                _typed.from_topic_partition(value0),
+                _typed.from_topic_partition(topic_partition_1),
             ),
         )
     except (
@@ -12717,13 +12773,13 @@ def kafka_consumer_position_2(symbols, consumer_state, value0):
 
 
 # kafkaConsumerSeek — ../src/contract.lawspec:1386
-def kafka_consumer_seek_2(symbols, consumer_state, value0, value1):
+def kafka_consumer_seek_2(symbols, consumer_state, topic_partition_1, int64_1):
     try:
         return _typed.to_pair_either_kafka_error_unit_consumer_state(
             _typed.kafka_consumer_seek(
                 _typed.from_consumer_state(consumer_state),
-                _typed.from_topic_partition(value0),
-                _typed.from_int64(value1),
+                _typed.from_topic_partition(topic_partition_1),
+                _typed.from_int64(int64_1),
             ),
         )
     except (
@@ -12737,12 +12793,16 @@ def kafka_consumer_seek_2(symbols, consumer_state, value0, value1):
 
 
 # kafkaConsumerSetIsolationLevel — ../src/contract.lawspec:1389
-def kafka_consumer_set_isolation_level_2(symbols, consumer_state, value0):
+def kafka_consumer_set_isolation_level_2(
+    symbols,
+    consumer_state,
+    isolation_level_1,
+):
     try:
         return _typed.to_pair_unit_consumer_state(
             _typed.kafka_consumer_set_isolation_level(
                 _typed.from_consumer_state(consumer_state),
-                _typed.from_isolation_level(value0),
+                _typed.from_isolation_level(isolation_level_1),
             ),
         )
     except (
@@ -12773,15 +12833,15 @@ def kafka_consumer_start_2(symbols, unit):
 
 
 # kafkaConsumerSubscribe — ../src/contract.lawspec:1383
-def kafka_consumer_subscribe_2(symbols, consumer_state, value0, value1, value2):
+def kafka_consumer_subscribe_2(symbols, consumer_state, text_1, text_2, list_1):
     try:
         return _typed.to_pair_either_kafka_error_list_topic_partition_consumer_state(
             _typed.kafka_consumer_subscribe(
                 symbols,
                 _typed.from_consumer_state(consumer_state),
-                _typed.from_text(value0),
-                _typed.from_text(value1),
-                _typed.from_list_text(value2),
+                _typed.from_text(text_1),
+                _typed.from_text(text_2),
+                _typed.from_list_text(list_1),
             ),
         )
     except (
@@ -12873,13 +12933,13 @@ def kafka_producer_retry_last_send_2(symbols, producer_state):
 
 
 # kafkaProducerSend — ../src/contract.lawspec:1228
-def kafka_producer_send_2(symbols, producer_state, value0):
+def kafka_producer_send_2(symbols, producer_state, producer_record_1):
     try:
         return _typed.to_pair_either_kafka_error_record_metadata_producer_state(
             _typed.kafka_producer_send(
                 symbols,
                 _typed.from_producer_state(producer_state),
-                _typed.from_producer_record(value0),
+                _typed.from_producer_record(producer_record_1),
             ),
         )
     except (
@@ -12932,14 +12992,14 @@ def kafka_transactions_abort_transaction_2(symbols, txn_state):
 def kafka_transactions_add_partitions_to_transaction_2(
     symbols,
     txn_state,
-    value0,
+    list_1,
 ):
     try:
         return _typed.to_pair_either_kafka_error_unit_transaction_state(
             _typed.kafka_transactions_add_partitions_to_transaction(
                 symbols,
                 _typed.from_transaction_state(txn_state),
-                _typed.from_list_topic_partition(value0),
+                _typed.from_list_topic_partition(list_1),
             ),
         )
     except (
@@ -12993,13 +13053,13 @@ def kafka_transactions_commit_transaction_2(symbols, txn_state):
 
 
 # kafkaTransactionsInitTransactions — ../src/contract.lawspec:1732
-def kafka_transactions_init_transactions_2(symbols, txn_state, value0):
+def kafka_transactions_init_transactions_2(symbols, txn_state, text_1):
     try:
         return _typed.to_pair_either_kafka_error_producer_id_and_epoch_transaction_state(
             _typed.kafka_transactions_init_transactions(
                 symbols,
                 _typed.from_transaction_state(txn_state),
-                _typed.from_text(value0),
+                _typed.from_text(text_1),
             ),
         )
     except (
@@ -13014,13 +13074,17 @@ def kafka_transactions_init_transactions_2(symbols, txn_state, value0):
 
 
 # kafkaTransactionsSendInTransaction — ../src/contract.lawspec:1735
-def kafka_transactions_send_in_transaction_2(symbols, txn_state, value0):
+def kafka_transactions_send_in_transaction_2(
+    symbols,
+    txn_state,
+    producer_record_1,
+):
     try:
         return _typed.to_pair_either_kafka_error_record_metadata_transaction_state(
             _typed.kafka_transactions_send_in_transaction(
                 symbols,
                 _typed.from_transaction_state(txn_state),
-                _typed.from_producer_record(value0),
+                _typed.from_producer_record(producer_record_1),
             ),
         )
     except (
@@ -13038,16 +13102,16 @@ def kafka_transactions_send_in_transaction_2(symbols, txn_state, value0):
 def kafka_transactions_send_offsets_to_transaction_2(
     symbols,
     txn_state,
-    value0,
-    value1,
+    text_1,
+    list_1,
 ):
     try:
         return _typed.to_pair_either_kafka_error_unit_transaction_state(
             _typed.kafka_transactions_send_offsets_to_transaction(
                 symbols,
                 _typed.from_transaction_state(txn_state),
-                _typed.from_text(value0),
-                _typed.from_list_offset_entry(value1),
+                _typed.from_text(text_1),
+                _typed.from_list_offset_entry(list_1),
             ),
         )
     except (

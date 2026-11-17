@@ -24,24 +24,24 @@ object Kafka {
         constructor() : this(mutableMapOf())
 
         @Synchronized
-        override fun createTopicsRequest(value0: kotlin.String, value1: kotlin.Int): Unit {
+        override fun createTopicsRequest(text1: kotlin.String, int32_1: kotlin.Int): Unit {
             val pair =
                 lawspec.runtime.LawSpecTyped.clusterCreateTopic(
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-                    lawspec.runtime.LawSpecTyped.fromNativeInt32(value1),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+                    lawspec.runtime.LawSpecTyped.fromNativeInt32(int32_1),
                 )
             state = pair.second
             val result = pair.first
         }
 
         @Synchronized
-        override fun createPartitionsRequest(value0: kotlin.String, value1: kotlin.Int): Unit {
+        override fun createPartitionsRequest(text1: kotlin.String, int32_1: kotlin.Int): Unit {
             val pair =
                 lawspec.runtime.LawSpecTyped.clusterCreatePartitions(
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-                    lawspec.runtime.LawSpecTyped.fromNativeInt32(value1),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+                    lawspec.runtime.LawSpecTyped.fromNativeInt32(int32_1),
                 )
             state = pair.second
             val result = pair.first
@@ -49,12 +49,12 @@ object Kafka {
 
         @Synchronized
         override fun metadataRequest(
-            value0: kotlin.String
+            text1: kotlin.String
         ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Int> {
             val pair =
                 lawspec.runtime.LawSpecTyped.clusterMetadataRequest(
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value0),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text1),
                 )
             state = pair.second
             val result = pair.first
@@ -63,16 +63,16 @@ object Kafka {
 
         @Synchronized
         override fun produceRequest(
-            value0: lawspec.data.TopicPartition,
-            value1: lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerTag>,
-            value2: kotlin.collections.List<lawspec.data.Record>,
+            topicPartition1: lawspec.data.TopicPartition,
+            maybe1: lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerTag>,
+            list1: kotlin.collections.List<lawspec.data.Record>,
         ): kotlin.Long {
             val pair =
                 lawspec.runtime.LawSpecTyped.clusterProduceRequest(
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0),
-                    lawspec.runtime.LawSpecTyped.fromNativeMaybeProducerTag(value1),
-                    lawspec.runtime.LawSpecTyped.fromNativeListRecord(value2),
+                    lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(topicPartition1),
+                    lawspec.runtime.LawSpecTyped.fromNativeMaybeProducerTag(maybe1),
+                    lawspec.runtime.LawSpecTyped.fromNativeListRecord(list1),
                 )
             state = pair.second
             val result = pair.first
@@ -81,18 +81,18 @@ object Kafka {
 
         @Synchronized
         override fun fetchRequest(
-            value0: lawspec.data.TopicPartition,
-            value1: kotlin.Long,
-            value2: kotlin.Int,
-            value3: lawspec.data.IsolationLevel,
+            topicPartition1: lawspec.data.TopicPartition,
+            int64_1: kotlin.Long,
+            int32_1: kotlin.Int,
+            isolationLevel1: lawspec.data.IsolationLevel,
         ): lawspec.data.FetchResult {
             val pair =
                 lawspec.runtime.LawSpecTyped.clusterFetchRequest(
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0),
-                    lawspec.runtime.LawSpecTyped.fromNativeInt64(value1),
-                    lawspec.runtime.LawSpecTyped.fromNativeInt32(value2),
-                    lawspec.runtime.LawSpecTyped.fromNativeIsolationLevel(value3),
+                    lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(topicPartition1),
+                    lawspec.runtime.LawSpecTyped.fromNativeInt64(int64_1),
+                    lawspec.runtime.LawSpecTyped.fromNativeInt32(int32_1),
+                    lawspec.runtime.LawSpecTyped.fromNativeIsolationLevel(isolationLevel1),
                 )
             state = pair.second
             val result = pair.first
@@ -101,16 +101,16 @@ object Kafka {
 
         @Synchronized
         override fun listOffsetsRequest(
-            value0: lawspec.data.TopicPartition,
-            value1: lawspec.data.OffsetSpec,
-            value2: lawspec.data.IsolationLevel,
+            topicPartition1: lawspec.data.TopicPartition,
+            offsetSpec1: lawspec.data.OffsetSpec,
+            isolationLevel1: lawspec.data.IsolationLevel,
         ): kotlin.Long {
             val pair =
                 lawspec.runtime.LawSpecTyped.clusterListOffsets(
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0),
-                    lawspec.runtime.LawSpecTyped.fromNativeOffsetSpec(value1),
-                    lawspec.runtime.LawSpecTyped.fromNativeIsolationLevel(value2),
+                    lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(topicPartition1),
+                    lawspec.runtime.LawSpecTyped.fromNativeOffsetSpec(offsetSpec1),
+                    lawspec.runtime.LawSpecTyped.fromNativeIsolationLevel(isolationLevel1),
                 )
             state = pair.second
             val result = pair.first
@@ -119,12 +119,12 @@ object Kafka {
 
         @Synchronized
         override fun initProducerIdRequest(
-            value0: lawspec.runtime.LawSpecRuntime.Maybe<kotlin.String>
+            maybe1: lawspec.runtime.LawSpecRuntime.Maybe<kotlin.String>
         ): lawspec.data.ProducerIdAndEpoch {
             val pair =
                 lawspec.runtime.LawSpecTyped.clusterInitProducerIdRequest(
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeMaybeText(value0),
+                    lawspec.runtime.LawSpecTyped.fromNativeMaybeText(maybe1),
                 )
             state = pair.second
             val result = pair.first
@@ -133,18 +133,18 @@ object Kafka {
 
         @Synchronized
         override fun addPartitionsToTxnRequest(
-            value0: kotlin.String,
-            value1: kotlin.Long,
-            value2: kotlin.Short,
-            value3: kotlin.collections.List<lawspec.data.TopicPartition>,
+            text1: kotlin.String,
+            int64_1: kotlin.Long,
+            int16_1: kotlin.Short,
+            list1: kotlin.collections.List<lawspec.data.TopicPartition>,
         ): Unit {
             val pair =
                 lawspec.runtime.LawSpecTyped.clusterAddPartitionsToTxnRequest(
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-                    lawspec.runtime.LawSpecTyped.fromNativeInt64(value1),
-                    lawspec.runtime.LawSpecTyped.fromNativeInt16(value2),
-                    lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(value3),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+                    lawspec.runtime.LawSpecTyped.fromNativeInt64(int64_1),
+                    lawspec.runtime.LawSpecTyped.fromNativeInt16(int16_1),
+                    lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(list1),
                 )
             state = pair.second
             val result = pair.first
@@ -152,20 +152,20 @@ object Kafka {
 
         @Synchronized
         override fun txnOffsetCommitRequest(
-            value0: kotlin.String,
-            value1: kotlin.Long,
-            value2: kotlin.Short,
-            value3: kotlin.String,
-            value4: kotlin.collections.List<lawspec.data.OffsetEntry>,
+            text1: kotlin.String,
+            int64_1: kotlin.Long,
+            int16_1: kotlin.Short,
+            text2: kotlin.String,
+            list1: kotlin.collections.List<lawspec.data.OffsetEntry>,
         ): Unit {
             val pair =
                 lawspec.runtime.LawSpecTyped.clusterTxnOffsetCommitRequest(
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-                    lawspec.runtime.LawSpecTyped.fromNativeInt64(value1),
-                    lawspec.runtime.LawSpecTyped.fromNativeInt16(value2),
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value3),
-                    lawspec.runtime.LawSpecTyped.fromNativeListOffsetEntry(value4),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+                    lawspec.runtime.LawSpecTyped.fromNativeInt64(int64_1),
+                    lawspec.runtime.LawSpecTyped.fromNativeInt16(int16_1),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text2),
+                    lawspec.runtime.LawSpecTyped.fromNativeListOffsetEntry(list1),
                 )
             state = pair.second
             val result = pair.first
@@ -173,18 +173,18 @@ object Kafka {
 
         @Synchronized
         override fun endTxnRequest(
-            value0: kotlin.String,
-            value1: kotlin.Long,
-            value2: kotlin.Short,
-            value3: kotlin.Boolean,
+            text1: kotlin.String,
+            int64_1: kotlin.Long,
+            int16_1: kotlin.Short,
+            bool1: kotlin.Boolean,
         ): Unit {
             val pair =
                 lawspec.runtime.LawSpecTyped.clusterEndTxnRequest(
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-                    lawspec.runtime.LawSpecTyped.fromNativeInt64(value1),
-                    lawspec.runtime.LawSpecTyped.fromNativeInt16(value2),
-                    lawspec.runtime.LawSpecTyped.fromNativeBool(value3),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+                    lawspec.runtime.LawSpecTyped.fromNativeInt64(int64_1),
+                    lawspec.runtime.LawSpecTyped.fromNativeInt16(int16_1),
+                    lawspec.runtime.LawSpecTyped.fromNativeBool(bool1),
                 )
             state = pair.second
             val result = pair.first
@@ -192,16 +192,16 @@ object Kafka {
 
         @Synchronized
         override fun joinGroupRequest(
-            value0: kotlin.String,
-            value1: kotlin.String,
-            value2: kotlin.collections.List<kotlin.String>,
+            text1: kotlin.String,
+            text2: kotlin.String,
+            list1: kotlin.collections.List<kotlin.String>,
         ): kotlin.Int {
             val pair =
                 lawspec.runtime.LawSpecTyped.clusterJoinGroup(
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-                    lawspec.runtime.LawSpecTyped.fromNativeListText(value2),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text2),
+                    lawspec.runtime.LawSpecTyped.fromNativeListText(list1),
                 )
             state = pair.second
             val result = pair.first
@@ -210,16 +210,16 @@ object Kafka {
 
         @Synchronized
         override fun syncGroupRequest(
-            value0: kotlin.String,
-            value1: kotlin.String,
-            value2: kotlin.Int,
+            text1: kotlin.String,
+            text2: kotlin.String,
+            int32_1: kotlin.Int,
         ): kotlin.collections.List<lawspec.data.TopicPartition> {
             val pair =
                 lawspec.runtime.LawSpecTyped.clusterSyncGroup(
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-                    lawspec.runtime.LawSpecTyped.fromNativeInt32(value2),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text2),
+                    lawspec.runtime.LawSpecTyped.fromNativeInt32(int32_1),
                 )
             state = pair.second
             val result = pair.first
@@ -228,39 +228,39 @@ object Kafka {
 
         @Synchronized
         override fun heartbeatRequest(
-            value0: kotlin.String,
-            value1: kotlin.String,
-            value2: kotlin.Int,
+            text1: kotlin.String,
+            text2: kotlin.String,
+            int32_1: kotlin.Int,
         ): Unit {
             val pair =
                 lawspec.runtime.LawSpecTyped.clusterHeartbeat(
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-                    lawspec.runtime.LawSpecTyped.fromNativeInt32(value2),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text2),
+                    lawspec.runtime.LawSpecTyped.fromNativeInt32(int32_1),
                 )
             state = pair.second
             val result = pair.first
         }
 
         @Synchronized
-        override fun leaveGroupRequest(value0: kotlin.String, value1: kotlin.String): Unit {
+        override fun leaveGroupRequest(text1: kotlin.String, text2: kotlin.String): Unit {
             val pair =
                 lawspec.runtime.LawSpecTyped.clusterLeaveGroup(
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value1),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text2),
                 )
             state = pair.second
             val result = pair.first
         }
 
         @Synchronized
-        override fun describeGroupRequest(value0: kotlin.String): lawspec.data.GroupView {
+        override fun describeGroupRequest(text1: kotlin.String): lawspec.data.GroupView {
             val pair =
                 lawspec.runtime.LawSpecTyped.clusterDescribeGroup(
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value0),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text1),
                 )
             state = pair.second
             val result = pair.first
@@ -269,18 +269,18 @@ object Kafka {
 
         @Synchronized
         override fun offsetCommitRequest(
-            value0: kotlin.String,
-            value1: kotlin.String,
-            value2: kotlin.Int,
-            value3: kotlin.collections.List<lawspec.data.OffsetEntry>,
+            text1: kotlin.String,
+            text2: kotlin.String,
+            int32_1: kotlin.Int,
+            list1: kotlin.collections.List<lawspec.data.OffsetEntry>,
         ): Unit {
             val pair =
                 lawspec.runtime.LawSpecTyped.clusterCommitOffsets(
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-                    lawspec.runtime.LawSpecTyped.fromNativeInt32(value2),
-                    lawspec.runtime.LawSpecTyped.fromNativeListOffsetEntry(value3),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text2),
+                    lawspec.runtime.LawSpecTyped.fromNativeInt32(int32_1),
+                    lawspec.runtime.LawSpecTyped.fromNativeListOffsetEntry(list1),
                 )
             state = pair.second
             val result = pair.first
@@ -288,14 +288,14 @@ object Kafka {
 
         @Synchronized
         override fun offsetFetchRequest(
-            value0: kotlin.String,
-            value1: lawspec.data.TopicPartition,
+            text1: kotlin.String,
+            topicPartition1: lawspec.data.TopicPartition,
         ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Long> {
             val pair =
                 lawspec.runtime.LawSpecTyped.clusterFetchOffset(
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-                    lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value1),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+                    lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(topicPartition1),
                 )
             state = pair.second
             val result = pair.first
@@ -303,24 +303,24 @@ object Kafka {
         }
 
         @Synchronized
-        override fun createTopic(value0: kotlin.String, value1: kotlin.Int): Unit {
+        override fun createTopic(text1: kotlin.String, int32_1: kotlin.Int): Unit {
             val pair =
                 lawspec.runtime.LawSpecTyped.clusterCreateTopic(
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-                    lawspec.runtime.LawSpecTyped.fromNativeInt32(value1),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+                    lawspec.runtime.LawSpecTyped.fromNativeInt32(int32_1),
                 )
             state = pair.second
             val result = pair.first
         }
 
         @Synchronized
-        override fun createPartitions(value0: kotlin.String, value1: kotlin.Int): Unit {
+        override fun createPartitions(text1: kotlin.String, int32_1: kotlin.Int): Unit {
             val pair =
                 lawspec.runtime.LawSpecTyped.clusterCreatePartitions(
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-                    lawspec.runtime.LawSpecTyped.fromNativeInt32(value1),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+                    lawspec.runtime.LawSpecTyped.fromNativeInt32(int32_1),
                 )
             state = pair.second
             val result = pair.first
@@ -328,12 +328,12 @@ object Kafka {
 
         @Synchronized
         override fun partitionsFor(
-            value0: kotlin.String
+            text1: kotlin.String
         ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Int> {
             val pair =
                 lawspec.runtime.LawSpecTyped.clusterMetadataRequest(
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value0),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text1),
                 )
             state = pair.second
             val result = pair.first
@@ -342,16 +342,16 @@ object Kafka {
 
         @Synchronized
         override fun listOffsets(
-            value0: lawspec.data.TopicPartition,
-            value1: lawspec.data.OffsetSpec,
-            value2: lawspec.data.IsolationLevel,
+            topicPartition1: lawspec.data.TopicPartition,
+            offsetSpec1: lawspec.data.OffsetSpec,
+            isolationLevel1: lawspec.data.IsolationLevel,
         ): kotlin.Long {
             val pair =
                 lawspec.runtime.LawSpecTyped.clusterListOffsets(
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0),
-                    lawspec.runtime.LawSpecTyped.fromNativeOffsetSpec(value1),
-                    lawspec.runtime.LawSpecTyped.fromNativeIsolationLevel(value2),
+                    lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(topicPartition1),
+                    lawspec.runtime.LawSpecTyped.fromNativeOffsetSpec(offsetSpec1),
+                    lawspec.runtime.LawSpecTyped.fromNativeIsolationLevel(isolationLevel1),
                 )
             state = pair.second
             val result = pair.first
@@ -360,16 +360,16 @@ object Kafka {
 
         @Synchronized
         override fun joinGroup(
-            value0: kotlin.String,
-            value1: kotlin.String,
-            value2: kotlin.collections.List<kotlin.String>,
+            text1: kotlin.String,
+            text2: kotlin.String,
+            list1: kotlin.collections.List<kotlin.String>,
         ): kotlin.Int {
             val pair =
                 lawspec.runtime.LawSpecTyped.clusterJoinGroup(
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-                    lawspec.runtime.LawSpecTyped.fromNativeListText(value2),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text2),
+                    lawspec.runtime.LawSpecTyped.fromNativeListText(list1),
                 )
             state = pair.second
             val result = pair.first
@@ -378,16 +378,16 @@ object Kafka {
 
         @Synchronized
         override fun syncGroup(
-            value0: kotlin.String,
-            value1: kotlin.String,
-            value2: kotlin.Int,
+            text1: kotlin.String,
+            text2: kotlin.String,
+            int32_1: kotlin.Int,
         ): kotlin.collections.List<lawspec.data.TopicPartition> {
             val pair =
                 lawspec.runtime.LawSpecTyped.clusterSyncGroup(
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-                    lawspec.runtime.LawSpecTyped.fromNativeInt32(value2),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text2),
+                    lawspec.runtime.LawSpecTyped.fromNativeInt32(int32_1),
                 )
             state = pair.second
             val result = pair.first
@@ -396,39 +396,39 @@ object Kafka {
 
         @Synchronized
         override fun heartbeat(
-            value0: kotlin.String,
-            value1: kotlin.String,
-            value2: kotlin.Int,
+            text1: kotlin.String,
+            text2: kotlin.String,
+            int32_1: kotlin.Int,
         ): Unit {
             val pair =
                 lawspec.runtime.LawSpecTyped.clusterHeartbeat(
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-                    lawspec.runtime.LawSpecTyped.fromNativeInt32(value2),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text2),
+                    lawspec.runtime.LawSpecTyped.fromNativeInt32(int32_1),
                 )
             state = pair.second
             val result = pair.first
         }
 
         @Synchronized
-        override fun leaveGroup(value0: kotlin.String, value1: kotlin.String): Unit {
+        override fun leaveGroup(text1: kotlin.String, text2: kotlin.String): Unit {
             val pair =
                 lawspec.runtime.LawSpecTyped.clusterLeaveGroup(
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value1),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text2),
                 )
             state = pair.second
             val result = pair.first
         }
 
         @Synchronized
-        override fun describeGroup(value0: kotlin.String): lawspec.data.GroupView {
+        override fun describeGroup(text1: kotlin.String): lawspec.data.GroupView {
             val pair =
                 lawspec.runtime.LawSpecTyped.clusterDescribeGroup(
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value0),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text1),
                 )
             state = pair.second
             val result = pair.first
@@ -437,18 +437,18 @@ object Kafka {
 
         @Synchronized
         override fun commitOffsets(
-            value0: kotlin.String,
-            value1: kotlin.String,
-            value2: kotlin.Int,
-            value3: kotlin.collections.List<lawspec.data.OffsetEntry>,
+            text1: kotlin.String,
+            text2: kotlin.String,
+            int32_1: kotlin.Int,
+            list1: kotlin.collections.List<lawspec.data.OffsetEntry>,
         ): Unit {
             val pair =
                 lawspec.runtime.LawSpecTyped.clusterCommitOffsets(
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-                    lawspec.runtime.LawSpecTyped.fromNativeInt32(value2),
-                    lawspec.runtime.LawSpecTyped.fromNativeListOffsetEntry(value3),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text2),
+                    lawspec.runtime.LawSpecTyped.fromNativeInt32(int32_1),
+                    lawspec.runtime.LawSpecTyped.fromNativeListOffsetEntry(list1),
                 )
             state = pair.second
             val result = pair.first
@@ -456,14 +456,14 @@ object Kafka {
 
         @Synchronized
         override fun fetchOffset(
-            value0: kotlin.String,
-            value1: lawspec.data.TopicPartition,
+            text1: kotlin.String,
+            topicPartition1: lawspec.data.TopicPartition,
         ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Long> {
             val pair =
                 lawspec.runtime.LawSpecTyped.clusterFetchOffset(
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-                    lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value1),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+                    lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(topicPartition1),
                 )
             state = pair.second
             val result = pair.first
@@ -495,11 +495,11 @@ object Kafka {
          * createTopicsRequest, with the failure it raises as an Outcome rather than an exception.
          */
         fun tryCreateTopicsRequest(
-            value0: kotlin.String,
-            value1: kotlin.Int,
+            text1: kotlin.String,
+            int32_1: kotlin.Int,
         ): lawspec.runtime.LawSpecFast.Outcome<Unit, lawspec.data.KafkaError> {
             try {
-                return lawspec.runtime.LawSpecFast.Outcome.success(createTopicsRequest(value0, value1))
+                return lawspec.runtime.LawSpecFast.Outcome.success(createTopicsRequest(text1, int32_1))
             } catch (failure: LawSpecRuntime.Failure) {
                 if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
                     throw failure
@@ -515,11 +515,11 @@ object Kafka {
          * exception.
          */
         fun tryCreatePartitionsRequest(
-            value0: kotlin.String,
-            value1: kotlin.Int,
+            text1: kotlin.String,
+            int32_1: kotlin.Int,
         ): lawspec.runtime.LawSpecFast.Outcome<Unit, lawspec.data.KafkaError> {
             try {
-                return lawspec.runtime.LawSpecFast.Outcome.success(createPartitionsRequest(value0, value1))
+                return lawspec.runtime.LawSpecFast.Outcome.success(createPartitionsRequest(text1, int32_1))
             } catch (failure: LawSpecRuntime.Failure) {
                 if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
                     throw failure
@@ -532,12 +532,12 @@ object Kafka {
 
         /** produceRequest, with the failure it raises as an Outcome rather than an exception. */
         fun tryProduceRequest(
-            value0: lawspec.data.TopicPartition,
-            value1: lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerTag>,
-            value2: kotlin.collections.List<lawspec.data.Record>,
+            topicPartition1: lawspec.data.TopicPartition,
+            maybe1: lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerTag>,
+            list1: kotlin.collections.List<lawspec.data.Record>,
         ): lawspec.runtime.LawSpecFast.Outcome<kotlin.Long, lawspec.data.KafkaError> {
             try {
-                return lawspec.runtime.LawSpecFast.Outcome.success(produceRequest(value0, value1, value2))
+                return lawspec.runtime.LawSpecFast.Outcome.success(produceRequest(topicPartition1, maybe1, list1))
             } catch (failure: LawSpecRuntime.Failure) {
                 if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
                     throw failure
@@ -550,13 +550,13 @@ object Kafka {
 
         /** fetchRequest, with the failure it raises as an Outcome rather than an exception. */
         fun tryFetchRequest(
-            value0: lawspec.data.TopicPartition,
-            value1: kotlin.Long,
-            value2: kotlin.Int,
-            value3: lawspec.data.IsolationLevel,
+            topicPartition1: lawspec.data.TopicPartition,
+            int64_1: kotlin.Long,
+            int32_1: kotlin.Int,
+            isolationLevel1: lawspec.data.IsolationLevel,
         ): lawspec.runtime.LawSpecFast.Outcome<lawspec.data.FetchResult, lawspec.data.KafkaError> {
             try {
-                return lawspec.runtime.LawSpecFast.Outcome.success(fetchRequest(value0, value1, value2, value3))
+                return lawspec.runtime.LawSpecFast.Outcome.success(fetchRequest(topicPartition1, int64_1, int32_1, isolationLevel1))
             } catch (failure: LawSpecRuntime.Failure) {
                 if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
                     throw failure
@@ -571,12 +571,12 @@ object Kafka {
          * listOffsetsRequest, with the failure it raises as an Outcome rather than an exception.
          */
         fun tryListOffsetsRequest(
-            value0: lawspec.data.TopicPartition,
-            value1: lawspec.data.OffsetSpec,
-            value2: lawspec.data.IsolationLevel,
+            topicPartition1: lawspec.data.TopicPartition,
+            offsetSpec1: lawspec.data.OffsetSpec,
+            isolationLevel1: lawspec.data.IsolationLevel,
         ): lawspec.runtime.LawSpecFast.Outcome<kotlin.Long, lawspec.data.KafkaError> {
             try {
-                return lawspec.runtime.LawSpecFast.Outcome.success(listOffsetsRequest(value0, value1, value2))
+                return lawspec.runtime.LawSpecFast.Outcome.success(listOffsetsRequest(topicPartition1, offsetSpec1, isolationLevel1))
             } catch (failure: LawSpecRuntime.Failure) {
                 if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
                     throw failure
@@ -591,10 +591,10 @@ object Kafka {
          * initProducerIdRequest, with the failure it raises as an Outcome rather than an exception.
          */
         fun tryInitProducerIdRequest(
-            value0: lawspec.runtime.LawSpecRuntime.Maybe<kotlin.String>
+            maybe1: lawspec.runtime.LawSpecRuntime.Maybe<kotlin.String>
         ): lawspec.runtime.LawSpecFast.Outcome<lawspec.data.ProducerIdAndEpoch, lawspec.data.KafkaError> {
             try {
-                return lawspec.runtime.LawSpecFast.Outcome.success(initProducerIdRequest(value0))
+                return lawspec.runtime.LawSpecFast.Outcome.success(initProducerIdRequest(maybe1))
             } catch (failure: LawSpecRuntime.Failure) {
                 if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
                     throw failure
@@ -610,13 +610,13 @@ object Kafka {
          * exception.
          */
         fun tryAddPartitionsToTxnRequest(
-            value0: kotlin.String,
-            value1: kotlin.Long,
-            value2: kotlin.Short,
-            value3: kotlin.collections.List<lawspec.data.TopicPartition>,
+            text1: kotlin.String,
+            int64_1: kotlin.Long,
+            int16_1: kotlin.Short,
+            list1: kotlin.collections.List<lawspec.data.TopicPartition>,
         ): lawspec.runtime.LawSpecFast.Outcome<Unit, lawspec.data.KafkaError> {
             try {
-                return lawspec.runtime.LawSpecFast.Outcome.success(addPartitionsToTxnRequest(value0, value1, value2, value3))
+                return lawspec.runtime.LawSpecFast.Outcome.success(addPartitionsToTxnRequest(text1, int64_1, int16_1, list1))
             } catch (failure: LawSpecRuntime.Failure) {
                 if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
                     throw failure
@@ -632,14 +632,14 @@ object Kafka {
          * exception.
          */
         fun tryTxnOffsetCommitRequest(
-            value0: kotlin.String,
-            value1: kotlin.Long,
-            value2: kotlin.Short,
-            value3: kotlin.String,
-            value4: kotlin.collections.List<lawspec.data.OffsetEntry>,
+            text1: kotlin.String,
+            int64_1: kotlin.Long,
+            int16_1: kotlin.Short,
+            text2: kotlin.String,
+            list1: kotlin.collections.List<lawspec.data.OffsetEntry>,
         ): lawspec.runtime.LawSpecFast.Outcome<Unit, lawspec.data.KafkaError> {
             try {
-                return lawspec.runtime.LawSpecFast.Outcome.success(txnOffsetCommitRequest(value0, value1, value2, value3, value4))
+                return lawspec.runtime.LawSpecFast.Outcome.success(txnOffsetCommitRequest(text1, int64_1, int16_1, text2, list1))
             } catch (failure: LawSpecRuntime.Failure) {
                 if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
                     throw failure
@@ -652,13 +652,13 @@ object Kafka {
 
         /** endTxnRequest, with the failure it raises as an Outcome rather than an exception. */
         fun tryEndTxnRequest(
-            value0: kotlin.String,
-            value1: kotlin.Long,
-            value2: kotlin.Short,
-            value3: kotlin.Boolean,
+            text1: kotlin.String,
+            int64_1: kotlin.Long,
+            int16_1: kotlin.Short,
+            bool1: kotlin.Boolean,
         ): lawspec.runtime.LawSpecFast.Outcome<Unit, lawspec.data.KafkaError> {
             try {
-                return lawspec.runtime.LawSpecFast.Outcome.success(endTxnRequest(value0, value1, value2, value3))
+                return lawspec.runtime.LawSpecFast.Outcome.success(endTxnRequest(text1, int64_1, int16_1, bool1))
             } catch (failure: LawSpecRuntime.Failure) {
                 if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
                     throw failure
@@ -671,12 +671,12 @@ object Kafka {
 
         /** joinGroupRequest, with the failure it raises as an Outcome rather than an exception. */
         fun tryJoinGroupRequest(
-            value0: kotlin.String,
-            value1: kotlin.String,
-            value2: kotlin.collections.List<kotlin.String>,
+            text1: kotlin.String,
+            text2: kotlin.String,
+            list1: kotlin.collections.List<kotlin.String>,
         ): lawspec.runtime.LawSpecFast.Outcome<kotlin.Int, lawspec.data.KafkaError> {
             try {
-                return lawspec.runtime.LawSpecFast.Outcome.success(joinGroupRequest(value0, value1, value2))
+                return lawspec.runtime.LawSpecFast.Outcome.success(joinGroupRequest(text1, text2, list1))
             } catch (failure: LawSpecRuntime.Failure) {
                 if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
                     throw failure
@@ -689,14 +689,14 @@ object Kafka {
 
         /** syncGroupRequest, with the failure it raises as an Outcome rather than an exception. */
         fun trySyncGroupRequest(
-            value0: kotlin.String,
-            value1: kotlin.String,
-            value2: kotlin.Int,
+            text1: kotlin.String,
+            text2: kotlin.String,
+            int32_1: kotlin.Int,
         ): lawspec.runtime.LawSpecFast.Outcome<kotlin.collections.List<
             lawspec.data.TopicPartition
         >, lawspec.data.KafkaError> {
             try {
-                return lawspec.runtime.LawSpecFast.Outcome.success(syncGroupRequest(value0, value1, value2))
+                return lawspec.runtime.LawSpecFast.Outcome.success(syncGroupRequest(text1, text2, int32_1))
             } catch (failure: LawSpecRuntime.Failure) {
                 if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
                     throw failure
@@ -709,12 +709,12 @@ object Kafka {
 
         /** heartbeatRequest, with the failure it raises as an Outcome rather than an exception. */
         fun tryHeartbeatRequest(
-            value0: kotlin.String,
-            value1: kotlin.String,
-            value2: kotlin.Int,
+            text1: kotlin.String,
+            text2: kotlin.String,
+            int32_1: kotlin.Int,
         ): lawspec.runtime.LawSpecFast.Outcome<Unit, lawspec.data.KafkaError> {
             try {
-                return lawspec.runtime.LawSpecFast.Outcome.success(heartbeatRequest(value0, value1, value2))
+                return lawspec.runtime.LawSpecFast.Outcome.success(heartbeatRequest(text1, text2, int32_1))
             } catch (failure: LawSpecRuntime.Failure) {
                 if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
                     throw failure
@@ -727,11 +727,11 @@ object Kafka {
 
         /** leaveGroupRequest, with the failure it raises as an Outcome rather than an exception. */
         fun tryLeaveGroupRequest(
-            value0: kotlin.String,
-            value1: kotlin.String,
+            text1: kotlin.String,
+            text2: kotlin.String,
         ): lawspec.runtime.LawSpecFast.Outcome<Unit, lawspec.data.KafkaError> {
             try {
-                return lawspec.runtime.LawSpecFast.Outcome.success(leaveGroupRequest(value0, value1))
+                return lawspec.runtime.LawSpecFast.Outcome.success(leaveGroupRequest(text1, text2))
             } catch (failure: LawSpecRuntime.Failure) {
                 if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
                     throw failure
@@ -746,13 +746,13 @@ object Kafka {
          * offsetCommitRequest, with the failure it raises as an Outcome rather than an exception.
          */
         fun tryOffsetCommitRequest(
-            value0: kotlin.String,
-            value1: kotlin.String,
-            value2: kotlin.Int,
-            value3: kotlin.collections.List<lawspec.data.OffsetEntry>,
+            text1: kotlin.String,
+            text2: kotlin.String,
+            int32_1: kotlin.Int,
+            list1: kotlin.collections.List<lawspec.data.OffsetEntry>,
         ): lawspec.runtime.LawSpecFast.Outcome<Unit, lawspec.data.KafkaError> {
             try {
-                return lawspec.runtime.LawSpecFast.Outcome.success(offsetCommitRequest(value0, value1, value2, value3))
+                return lawspec.runtime.LawSpecFast.Outcome.success(offsetCommitRequest(text1, text2, int32_1, list1))
             } catch (failure: LawSpecRuntime.Failure) {
                 if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
                     throw failure
@@ -765,11 +765,11 @@ object Kafka {
 
         /** createTopic, with the failure it raises as an Outcome rather than an exception. */
         fun tryCreateTopic(
-            value0: kotlin.String,
-            value1: kotlin.Int,
+            text1: kotlin.String,
+            int32_1: kotlin.Int,
         ): lawspec.runtime.LawSpecFast.Outcome<Unit, lawspec.data.KafkaError> {
             try {
-                return lawspec.runtime.LawSpecFast.Outcome.success(createTopic(value0, value1))
+                return lawspec.runtime.LawSpecFast.Outcome.success(createTopic(text1, int32_1))
             } catch (failure: LawSpecRuntime.Failure) {
                 if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
                     throw failure
@@ -782,11 +782,11 @@ object Kafka {
 
         /** createPartitions, with the failure it raises as an Outcome rather than an exception. */
         fun tryCreatePartitions(
-            value0: kotlin.String,
-            value1: kotlin.Int,
+            text1: kotlin.String,
+            int32_1: kotlin.Int,
         ): lawspec.runtime.LawSpecFast.Outcome<Unit, lawspec.data.KafkaError> {
             try {
-                return lawspec.runtime.LawSpecFast.Outcome.success(createPartitions(value0, value1))
+                return lawspec.runtime.LawSpecFast.Outcome.success(createPartitions(text1, int32_1))
             } catch (failure: LawSpecRuntime.Failure) {
                 if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
                     throw failure
@@ -799,12 +799,12 @@ object Kafka {
 
         /** listOffsets, with the failure it raises as an Outcome rather than an exception. */
         fun tryListOffsets(
-            value0: lawspec.data.TopicPartition,
-            value1: lawspec.data.OffsetSpec,
-            value2: lawspec.data.IsolationLevel,
+            topicPartition1: lawspec.data.TopicPartition,
+            offsetSpec1: lawspec.data.OffsetSpec,
+            isolationLevel1: lawspec.data.IsolationLevel,
         ): lawspec.runtime.LawSpecFast.Outcome<kotlin.Long, lawspec.data.KafkaError> {
             try {
-                return lawspec.runtime.LawSpecFast.Outcome.success(listOffsets(value0, value1, value2))
+                return lawspec.runtime.LawSpecFast.Outcome.success(listOffsets(topicPartition1, offsetSpec1, isolationLevel1))
             } catch (failure: LawSpecRuntime.Failure) {
                 if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
                     throw failure
@@ -817,12 +817,12 @@ object Kafka {
 
         /** joinGroup, with the failure it raises as an Outcome rather than an exception. */
         fun tryJoinGroup(
-            value0: kotlin.String,
-            value1: kotlin.String,
-            value2: kotlin.collections.List<kotlin.String>,
+            text1: kotlin.String,
+            text2: kotlin.String,
+            list1: kotlin.collections.List<kotlin.String>,
         ): lawspec.runtime.LawSpecFast.Outcome<kotlin.Int, lawspec.data.KafkaError> {
             try {
-                return lawspec.runtime.LawSpecFast.Outcome.success(joinGroup(value0, value1, value2))
+                return lawspec.runtime.LawSpecFast.Outcome.success(joinGroup(text1, text2, list1))
             } catch (failure: LawSpecRuntime.Failure) {
                 if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
                     throw failure
@@ -835,14 +835,14 @@ object Kafka {
 
         /** syncGroup, with the failure it raises as an Outcome rather than an exception. */
         fun trySyncGroup(
-            value0: kotlin.String,
-            value1: kotlin.String,
-            value2: kotlin.Int,
+            text1: kotlin.String,
+            text2: kotlin.String,
+            int32_1: kotlin.Int,
         ): lawspec.runtime.LawSpecFast.Outcome<kotlin.collections.List<
             lawspec.data.TopicPartition
         >, lawspec.data.KafkaError> {
             try {
-                return lawspec.runtime.LawSpecFast.Outcome.success(syncGroup(value0, value1, value2))
+                return lawspec.runtime.LawSpecFast.Outcome.success(syncGroup(text1, text2, int32_1))
             } catch (failure: LawSpecRuntime.Failure) {
                 if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
                     throw failure
@@ -855,12 +855,12 @@ object Kafka {
 
         /** heartbeat, with the failure it raises as an Outcome rather than an exception. */
         fun tryHeartbeat(
-            value0: kotlin.String,
-            value1: kotlin.String,
-            value2: kotlin.Int,
+            text1: kotlin.String,
+            text2: kotlin.String,
+            int32_1: kotlin.Int,
         ): lawspec.runtime.LawSpecFast.Outcome<Unit, lawspec.data.KafkaError> {
             try {
-                return lawspec.runtime.LawSpecFast.Outcome.success(heartbeat(value0, value1, value2))
+                return lawspec.runtime.LawSpecFast.Outcome.success(heartbeat(text1, text2, int32_1))
             } catch (failure: LawSpecRuntime.Failure) {
                 if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
                     throw failure
@@ -873,11 +873,11 @@ object Kafka {
 
         /** leaveGroup, with the failure it raises as an Outcome rather than an exception. */
         fun tryLeaveGroup(
-            value0: kotlin.String,
-            value1: kotlin.String,
+            text1: kotlin.String,
+            text2: kotlin.String,
         ): lawspec.runtime.LawSpecFast.Outcome<Unit, lawspec.data.KafkaError> {
             try {
-                return lawspec.runtime.LawSpecFast.Outcome.success(leaveGroup(value0, value1))
+                return lawspec.runtime.LawSpecFast.Outcome.success(leaveGroup(text1, text2))
             } catch (failure: LawSpecRuntime.Failure) {
                 if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
                     throw failure
@@ -890,13 +890,13 @@ object Kafka {
 
         /** commitOffsets, with the failure it raises as an Outcome rather than an exception. */
         fun tryCommitOffsets(
-            value0: kotlin.String,
-            value1: kotlin.String,
-            value2: kotlin.Int,
-            value3: kotlin.collections.List<lawspec.data.OffsetEntry>,
+            text1: kotlin.String,
+            text2: kotlin.String,
+            int32_1: kotlin.Int,
+            list1: kotlin.collections.List<lawspec.data.OffsetEntry>,
         ): lawspec.runtime.LawSpecFast.Outcome<Unit, lawspec.data.KafkaError> {
             try {
-                return lawspec.runtime.LawSpecFast.Outcome.success(commitOffsets(value0, value1, value2, value3))
+                return lawspec.runtime.LawSpecFast.Outcome.success(commitOffsets(text1, text2, int32_1, list1))
             } catch (failure: LawSpecRuntime.Failure) {
                 if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)")
                     throw failure
@@ -916,13 +916,13 @@ object Kafka {
 
         @Synchronized
         override fun choosePartition(
-            value0: lawspec.runtime.LawSpecRuntime.Maybe<kotlin.ByteArray>,
-            value1: kotlin.Int,
+            maybe1: lawspec.runtime.LawSpecRuntime.Maybe<kotlin.ByteArray>,
+            int32_1: kotlin.Int,
         ): kotlin.Int {
             val result =
                 lawspec.runtime.LawSpecTyped.murmurPartitionerChoosePartition(
-                    lawspec.runtime.LawSpecTyped.fromNativeMaybeBytes(value0),
-                    lawspec.runtime.LawSpecTyped.fromNativeInt32(value1),
+                    lawspec.runtime.LawSpecTyped.fromNativeMaybeBytes(maybe1),
+                    lawspec.runtime.LawSpecTyped.fromNativeInt32(int32_1),
                 )
             return lawspec.runtime.LawSpecTyped.toNativeInt32(result)
         }
@@ -939,13 +939,13 @@ object Kafka {
 
         @Synchronized
         override fun send(
-            value0: lawspec.data.ProducerRecord
+            producerRecord1: lawspec.data.ProducerRecord
         ): lawspec.runtime.LawSpecRuntime.Either<lawspec.data.KafkaError, lawspec.data.RecordMetadata> {
             val pair =
                 lawspec.runtime.LawSpecTyped.kafkaProducerSend(
                     symbols,
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeProducerRecord(value0),
+                    lawspec.runtime.LawSpecTyped.fromNativeProducerRecord(producerRecord1),
                 )
             state = pair.second
             val result = pair.first
@@ -1015,11 +1015,11 @@ object Kafka {
         constructor() : this(mutableMapOf())
 
         @Synchronized
-        override fun assign(value0: kotlin.collections.List<lawspec.data.TopicPartition>): Unit {
+        override fun assign(list1: kotlin.collections.List<lawspec.data.TopicPartition>): Unit {
             val pair =
                 lawspec.runtime.LawSpecTyped.kafkaConsumerAssign(
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(value0),
+                    lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(list1),
                 )
             state = pair.second
             val result = pair.first
@@ -1027,17 +1027,17 @@ object Kafka {
 
         @Synchronized
         override fun subscribe(
-            value0: kotlin.String,
-            value1: kotlin.String,
-            value2: kotlin.collections.List<kotlin.String>,
+            text1: kotlin.String,
+            text2: kotlin.String,
+            list1: kotlin.collections.List<kotlin.String>,
         ): lawspec.runtime.LawSpecRuntime.Either<lawspec.data.KafkaError, kotlin.collections.List<lawspec.data.TopicPartition>> {
             val pair =
                 lawspec.runtime.LawSpecTyped.kafkaConsumerSubscribe(
                     symbols,
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value1),
-                    lawspec.runtime.LawSpecTyped.fromNativeListText(value2),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text2),
+                    lawspec.runtime.LawSpecTyped.fromNativeListText(list1),
                 )
             state = pair.second
             val result = pair.first
@@ -1046,13 +1046,13 @@ object Kafka {
 
         @Synchronized
         override fun poll(
-            value0: kotlin.Int
+            int32_1: kotlin.Int
         ): lawspec.runtime.LawSpecRuntime.Either<lawspec.data.KafkaError, kotlin.collections.List<lawspec.data.ConsumerRecord>> {
             val pair =
                 lawspec.runtime.LawSpecTyped.kafkaConsumerPoll(
                     symbols,
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeInt32(value0),
+                    lawspec.runtime.LawSpecTyped.fromNativeInt32(int32_1),
                 )
             state = pair.second
             val result = pair.first
@@ -1069,14 +1069,14 @@ object Kafka {
 
         @Synchronized
         override fun seek(
-            value0: lawspec.data.TopicPartition,
-            value1: kotlin.Long,
+            topicPartition1: lawspec.data.TopicPartition,
+            int64_1: kotlin.Long,
         ): lawspec.runtime.LawSpecRuntime.Either<lawspec.data.KafkaError, kotlin.Unit> {
             val pair =
                 lawspec.runtime.LawSpecTyped.kafkaConsumerSeek(
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0),
-                    lawspec.runtime.LawSpecTyped.fromNativeInt64(value1),
+                    lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(topicPartition1),
+                    lawspec.runtime.LawSpecTyped.fromNativeInt64(int64_1),
                 )
             state = pair.second
             val result = pair.first
@@ -1085,13 +1085,13 @@ object Kafka {
 
         @Synchronized
         override fun position(
-            value0: lawspec.data.TopicPartition
+            topicPartition1: lawspec.data.TopicPartition
         ): lawspec.runtime.LawSpecRuntime.Either<lawspec.data.KafkaError, kotlin.Long> {
             val pair =
                 lawspec.runtime.LawSpecTyped.kafkaConsumerPosition(
                     symbols,
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0),
+                    lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(topicPartition1),
                 )
             state = pair.second
             val result = pair.first
@@ -1100,13 +1100,13 @@ object Kafka {
 
         @Synchronized
         override fun committedOffset(
-            value0: lawspec.data.TopicPartition
+            topicPartition1: lawspec.data.TopicPartition
         ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Long> {
             val pair =
                 lawspec.runtime.LawSpecTyped.kafkaConsumerCommittedOffset(
                     symbols,
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(value0),
+                    lawspec.runtime.LawSpecTyped.fromNativeTopicPartition(topicPartition1),
                 )
             state = pair.second
             val result = pair.first
@@ -1114,11 +1114,11 @@ object Kafka {
         }
 
         @Synchronized
-        override fun setIsolationLevel(value0: lawspec.data.IsolationLevel): Unit {
+        override fun setIsolationLevel(isolationLevel1: lawspec.data.IsolationLevel): Unit {
             val pair =
                 lawspec.runtime.LawSpecTyped.kafkaConsumerSetIsolationLevel(
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeIsolationLevel(value0),
+                    lawspec.runtime.LawSpecTyped.fromNativeIsolationLevel(isolationLevel1),
                 )
             state = pair.second
             val result = pair.first
@@ -1164,13 +1164,13 @@ object Kafka {
 
         @Synchronized
         override fun initTransactions(
-            value0: kotlin.String
+            text1: kotlin.String
         ): lawspec.runtime.LawSpecRuntime.Either<lawspec.data.KafkaError, lawspec.data.ProducerIdAndEpoch> {
             val pair =
                 lawspec.runtime.LawSpecTyped.kafkaTransactionsInitTransactions(
                     symbols,
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value0),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text1),
                 )
             state = pair.second
             val result = pair.first
@@ -1187,13 +1187,13 @@ object Kafka {
 
         @Synchronized
         override fun addPartitionsToTransaction(
-            value0: kotlin.collections.List<lawspec.data.TopicPartition>
+            list1: kotlin.collections.List<lawspec.data.TopicPartition>
         ): lawspec.runtime.LawSpecRuntime.Either<lawspec.data.KafkaError, kotlin.Unit> {
             val pair =
                 lawspec.runtime.LawSpecTyped.kafkaTransactionsAddPartitionsToTransaction(
                     symbols,
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(value0),
+                    lawspec.runtime.LawSpecTyped.fromNativeListTopicPartition(list1),
                 )
             state = pair.second
             val result = pair.first
@@ -1202,13 +1202,13 @@ object Kafka {
 
         @Synchronized
         override fun sendInTransaction(
-            value0: lawspec.data.ProducerRecord
+            producerRecord1: lawspec.data.ProducerRecord
         ): lawspec.runtime.LawSpecRuntime.Either<lawspec.data.KafkaError, lawspec.data.RecordMetadata> {
             val pair =
                 lawspec.runtime.LawSpecTyped.kafkaTransactionsSendInTransaction(
                     symbols,
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeProducerRecord(value0),
+                    lawspec.runtime.LawSpecTyped.fromNativeProducerRecord(producerRecord1),
                 )
             state = pair.second
             val result = pair.first
@@ -1217,15 +1217,15 @@ object Kafka {
 
         @Synchronized
         override fun sendOffsetsToTransaction(
-            value0: kotlin.String,
-            value1: kotlin.collections.List<lawspec.data.OffsetEntry>,
+            text1: kotlin.String,
+            list1: kotlin.collections.List<lawspec.data.OffsetEntry>,
         ): lawspec.runtime.LawSpecRuntime.Either<lawspec.data.KafkaError, kotlin.Unit> {
             val pair =
                 lawspec.runtime.LawSpecTyped.kafkaTransactionsSendOffsetsToTransaction(
                     symbols,
                     state,
-                    lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-                    lawspec.runtime.LawSpecTyped.fromNativeListOffsetEntry(value1),
+                    lawspec.runtime.LawSpecTyped.fromNativeText(text1),
+                    lawspec.runtime.LawSpecTyped.fromNativeListOffsetEntry(list1),
                 )
             state = pair.second
             val result = pair.first

@@ -280,159 +280,163 @@ let assignmentIn (m: string) (ms: LawSpec.Data.MemberAssignment list) : LawSpec.
 [<CompiledName("ClusterAddPartitionsToTxnRequest")>]
 let clusterAddPartitionsToTxnRequest
     (state: LawSpec.Data.BrokerState)
-    (value0: string)
-    (value1: int64)
-    (value2: int16)
-    (value3: LawSpec.Data.TopicPartition list)
+    (text1: string)
+    (int641: int64)
+    (int161: int16)
+    (list1: LawSpec.Data.TopicPartition list)
     : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
-    let result = lawtwinKafkaModelAddPartitionsToTxn value0 value1 value2 value3 state
+    let result = lawtwinKafkaModelAddPartitionsToTxn text1 int641 int161 list1 state
     result
 
 /// clusterCommitOffsets — ../src/contract.lawspec:302
 [<CompiledName("ClusterCommitOffsets")>]
 let clusterCommitOffsets
     (state: LawSpec.Data.BrokerState)
-    (value0: string)
-    (value1: string)
-    (value2: int)
-    (value3: LawSpec.Data.OffsetEntry list)
+    (text1: string)
+    (text2: string)
+    (int321: int)
+    (list1: LawSpec.Data.OffsetEntry list)
     : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
-    let result = lawtwinKafkaModelOffsetCommit value0 value1 value2 value3 state
+    let result = lawtwinKafkaModelOffsetCommit text1 text2 int321 list1 state
     result
 
 /// clusterCreatePartitions — ../src/contract.lawspec:294
 [<CompiledName("ClusterCreatePartitions")>]
 let clusterCreatePartitions
     (state: LawSpec.Data.BrokerState)
-    (value0: string)
-    (value1: int)
+    (text1: string)
+    (int321: int)
     : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
-    let result = lawtwinKafkaModelCreatePartitions value0 value1 state
+    let result = lawtwinKafkaModelCreatePartitions text1 int321 state
     result
 
 /// clusterCreateTopic — ../src/contract.lawspec:293
 [<CompiledName("ClusterCreateTopic")>]
 let clusterCreateTopic
     (state: LawSpec.Data.BrokerState)
-    (value0: string)
-    (value1: int)
+    (text1: string)
+    (int321: int)
     : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
-    let result = lawtwinKafkaModelCreateTopic value0 value1 state
+    let result = lawtwinKafkaModelCreateTopic text1 int321 state
     result
 
 /// clusterDescribeGroup — ../src/contract.lawspec:301
 [<CompiledName("ClusterDescribeGroup")>]
 let clusterDescribeGroup
     (state: LawSpec.Data.BrokerState)
-    (value0: string)
+    (text1: string)
     : LawSpec.Data.Pair<LawSpec.Data.GroupView, LawSpec.Data.BrokerState> =
-    let result = lawtwinKafkaModelDescribeGroup value0 state
+    let result = lawtwinKafkaModelDescribeGroup text1 state
     result
 
 /// clusterEndTxnRequest — ../src/contract.lawspec:285
 [<CompiledName("ClusterEndTxnRequest")>]
 let clusterEndTxnRequest
     (state: LawSpec.Data.BrokerState)
-    (value0: string)
-    (value1: int64)
-    (value2: int16)
-    (value3: bool)
+    (text1: string)
+    (int641: int64)
+    (int161: int16)
+    (bool1: bool)
     : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
-    let result = lawtwinKafkaModelEndTxn value0 value1 value2 value3 state
+    let result = lawtwinKafkaModelEndTxn text1 int641 int161 bool1 state
     result
 
 /// clusterFetchOffset — ../src/contract.lawspec:303
 [<CompiledName("ClusterFetchOffset")>]
 let clusterFetchOffset
     (state: LawSpec.Data.BrokerState)
-    (value0: string)
-    (value1: LawSpec.Data.TopicPartition)
+    (text1: string)
+    (topicPartition1: LawSpec.Data.TopicPartition)
     : LawSpec.Data.Pair<int64 option, LawSpec.Data.BrokerState> =
-    let result = lawtwinKafkaModelOffsetFetch value0 value1 state
+    let result = lawtwinKafkaModelOffsetFetch text1 topicPartition1 state
     result
 
 /// clusterFetchRequest — ../src/contract.lawspec:280
 [<CompiledName("ClusterFetchRequest")>]
 let clusterFetchRequest
     (state: LawSpec.Data.BrokerState)
-    (value0: LawSpec.Data.TopicPartition)
-    (value1: int64)
-    (value2: int)
-    (value3: LawSpec.Data.IsolationLevel)
+    (topicPartition1: LawSpec.Data.TopicPartition)
+    (int641: int64)
+    (int321: int)
+    (isolationLevel1: LawSpec.Data.IsolationLevel)
     : LawSpec.Data.Pair<LawSpec.Data.FetchResult, LawSpec.Data.BrokerState> =
-    let result = lawtwinKafkaModelFetch value0 value1 value2 value3 state
+    let result =
+        lawtwinKafkaModelFetch topicPartition1 int641 int321 isolationLevel1 state
+
     result
 
 /// clusterHeartbeat — ../src/contract.lawspec:299
 [<CompiledName("ClusterHeartbeat")>]
 let clusterHeartbeat
     (state: LawSpec.Data.BrokerState)
-    (value0: string)
-    (value1: string)
-    (value2: int)
+    (text1: string)
+    (text2: string)
+    (int321: int)
     : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
-    let result = lawtwinKafkaModelHeartbeat value0 value1 value2 state
+    let result = lawtwinKafkaModelHeartbeat text1 text2 int321 state
     result
 
 /// clusterInitProducerIdRequest — ../src/contract.lawspec:282
 [<CompiledName("ClusterInitProducerIdRequest")>]
 let clusterInitProducerIdRequest
     (state: LawSpec.Data.BrokerState)
-    (value0: string option)
+    (maybe1: string option)
     : LawSpec.Data.Pair<LawSpec.Data.ProducerIdAndEpoch, LawSpec.Data.BrokerState> =
-    let result = lawtwinKafkaModelInitProducerId value0 state
+    let result = lawtwinKafkaModelInitProducerId maybe1 state
     result
 
 /// clusterJoinGroup — ../src/contract.lawspec:297
 [<CompiledName("ClusterJoinGroup")>]
 let clusterJoinGroup
     (state: LawSpec.Data.BrokerState)
-    (value0: string)
-    (value1: string)
-    (value2: string list)
+    (text1: string)
+    (text2: string)
+    (list1: string list)
     : LawSpec.Data.Pair<int, LawSpec.Data.BrokerState> =
-    let result = lawtwinKafkaModelJoinGroup value0 value1 value2 state
+    let result = lawtwinKafkaModelJoinGroup text1 text2 list1 state
     result
 
 /// clusterLeaveGroup — ../src/contract.lawspec:300
 [<CompiledName("ClusterLeaveGroup")>]
 let clusterLeaveGroup
     (state: LawSpec.Data.BrokerState)
-    (value0: string)
-    (value1: string)
+    (text1: string)
+    (text2: string)
     : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
-    let result = lawtwinKafkaModelLeaveGroup value0 value1 state
+    let result = lawtwinKafkaModelLeaveGroup text1 text2 state
     result
 
 /// clusterListOffsets — ../src/contract.lawspec:296
 [<CompiledName("ClusterListOffsets")>]
 let clusterListOffsets
     (state: LawSpec.Data.BrokerState)
-    (value0: LawSpec.Data.TopicPartition)
-    (value1: LawSpec.Data.OffsetSpec)
-    (value2: LawSpec.Data.IsolationLevel)
+    (topicPartition1: LawSpec.Data.TopicPartition)
+    (offsetSpec1: LawSpec.Data.OffsetSpec)
+    (isolationLevel1: LawSpec.Data.IsolationLevel)
     : LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState> =
-    let result = lawtwinKafkaModelListOffsets value0 value1 value2 state
+    let result =
+        lawtwinKafkaModelListOffsets topicPartition1 offsetSpec1 isolationLevel1 state
+
     result
 
 /// clusterMetadataRequest — ../src/contract.lawspec:278
 [<CompiledName("ClusterMetadataRequest")>]
 let clusterMetadataRequest
     (state: LawSpec.Data.BrokerState)
-    (value0: string)
+    (text1: string)
     : LawSpec.Data.Pair<int option, LawSpec.Data.BrokerState> =
-    let result = lawtwinKafkaModelMetadata value0 state
+    let result = lawtwinKafkaModelMetadata text1 state
     result
 
 /// clusterProduceRequest — ../src/contract.lawspec:279
 [<CompiledName("ClusterProduceRequest")>]
 let clusterProduceRequest
     (state: LawSpec.Data.BrokerState)
-    (value0: LawSpec.Data.TopicPartition)
-    (value1: LawSpec.Data.ProducerTag option)
-    (value2: LawSpec.Data.Record list)
+    (topicPartition1: LawSpec.Data.TopicPartition)
+    (maybe1: LawSpec.Data.ProducerTag option)
+    (list1: LawSpec.Data.Record list)
     : LawSpec.Data.Pair<int64, LawSpec.Data.BrokerState> =
-    let result = lawtwinKafkaModelProduce value0 value1 value2 state
+    let result = lawtwinKafkaModelProduce topicPartition1 maybe1 list1 state
     result
 
 /// clusterStart — ../src/contract.lawspec:274
@@ -445,26 +449,24 @@ let clusterStart (unit: unit) : LawSpec.Data.BrokerState =
 [<CompiledName("ClusterSyncGroup")>]
 let clusterSyncGroup
     (state: LawSpec.Data.BrokerState)
-    (value0: string)
-    (value1: string)
-    (value2: int)
+    (text1: string)
+    (text2: string)
+    (int321: int)
     : LawSpec.Data.Pair<LawSpec.Data.TopicPartition list, LawSpec.Data.BrokerState> =
-    let result = lawtwinKafkaModelSyncGroup value0 value1 value2 state
+    let result = lawtwinKafkaModelSyncGroup text1 text2 int321 state
     result
 
 /// clusterTxnOffsetCommitRequest — ../src/contract.lawspec:284
 [<CompiledName("ClusterTxnOffsetCommitRequest")>]
 let clusterTxnOffsetCommitRequest
     (state: LawSpec.Data.BrokerState)
-    (value0: string)
-    (value1: int64)
-    (value2: int16)
-    (value3: string)
-    (value4: LawSpec.Data.OffsetEntry list)
+    (text1: string)
+    (int641: int64)
+    (int161: int16)
+    (text2: string)
+    (list1: LawSpec.Data.OffsetEntry list)
     : LawSpec.Data.Pair<unit, LawSpec.Data.BrokerState> =
-    let result =
-        lawtwinKafkaModelTxnOffsetCommit value0 value1 value2 value3 value4 state
-
+    let result = lawtwinKafkaModelTxnOffsetCommit text1 int641 int161 text2 list1 state
     result
 
 /// committedFrom — ../src/contract.lawspec:377
@@ -1543,9 +1545,9 @@ let joinEach
 [<CompiledName("KafkaConsumerAssign")>]
 let kafkaConsumerAssign
     (consumerState: LawSpec.Data.ConsumerState)
-    (value0: LawSpec.Data.TopicPartition list)
+    (list1: LawSpec.Data.TopicPartition list)
     : LawSpec.Data.Pair<unit, LawSpec.Data.ConsumerState> =
-    let result = consumerAssign value0 consumerState
+    let result = consumerAssign list1 consumerState
     result
 
 /// kafkaConsumerClose — ../src/contract.lawspec:1390
@@ -1574,9 +1576,9 @@ let kafkaConsumerCommittedOffset
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (consumerState: LawSpec.Data.ConsumerState)
-    (value0: LawSpec.Data.TopicPartition)
+    (topicPartition1: LawSpec.Data.TopicPartition)
     : LawSpec.Data.Pair<int64 option, LawSpec.Data.ConsumerState> =
-    let result = consumerCommitted schema symbols value0 consumerState
+    let result = consumerCommitted schema symbols topicPartition1 consumerState
     result
 
 /// kafkaConsumerPoll — ../src/contract.lawspec:1384
@@ -1585,9 +1587,9 @@ let kafkaConsumerPoll
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (consumerState: LawSpec.Data.ConsumerState)
-    (value0: int)
+    (int321: int)
     : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ConsumerRecord list>, LawSpec.Data.ConsumerState> =
-    let result = consumerPoll schema symbols value0 consumerState
+    let result = consumerPoll schema symbols int321 consumerState
     result
 
 /// kafkaConsumerPosition — ../src/contract.lawspec:1387
@@ -1596,28 +1598,28 @@ let kafkaConsumerPosition
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (consumerState: LawSpec.Data.ConsumerState)
-    (value0: LawSpec.Data.TopicPartition)
+    (topicPartition1: LawSpec.Data.TopicPartition)
     : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, int64>, LawSpec.Data.ConsumerState> =
-    let result = consumerPositionOf schema symbols value0 consumerState
+    let result = consumerPositionOf schema symbols topicPartition1 consumerState
     result
 
 /// kafkaConsumerSeek — ../src/contract.lawspec:1386
 [<CompiledName("KafkaConsumerSeek")>]
 let kafkaConsumerSeek
     (consumerState: LawSpec.Data.ConsumerState)
-    (value0: LawSpec.Data.TopicPartition)
-    (value1: int64)
+    (topicPartition1: LawSpec.Data.TopicPartition)
+    (int641: int64)
     : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.ConsumerState> =
-    let result = consumerSeek value0 value1 consumerState
+    let result = consumerSeek topicPartition1 int641 consumerState
     result
 
 /// kafkaConsumerSetIsolationLevel — ../src/contract.lawspec:1389
 [<CompiledName("KafkaConsumerSetIsolationLevel")>]
 let kafkaConsumerSetIsolationLevel
     (consumerState: LawSpec.Data.ConsumerState)
-    (value0: LawSpec.Data.IsolationLevel)
+    (isolationLevel1: LawSpec.Data.IsolationLevel)
     : LawSpec.Data.Pair<unit, LawSpec.Data.ConsumerState> =
-    let result = consumerIsolation value0 consumerState
+    let result = consumerIsolation isolationLevel1 consumerState
     result
 
 /// kafkaConsumerStart — ../src/contract.lawspec:1380
@@ -1632,11 +1634,11 @@ let kafkaConsumerSubscribe
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (consumerState: LawSpec.Data.ConsumerState)
-    (value0: string)
-    (value1: string)
-    (value2: string list)
+    (text1: string)
+    (text2: string)
+    (list1: string list)
     : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.TopicPartition list>, LawSpec.Data.ConsumerState> =
-    let result = consumerJoin schema symbols value0 value1 value2 consumerState
+    let result = consumerJoin schema symbols text1 text2 list1 consumerState
     result
 
 /// kafkaProducerEnableIdempotence — ../src/contract.lawspec:1230
@@ -1681,9 +1683,9 @@ let kafkaProducerSend
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (producerState: LawSpec.Data.ProducerState)
-    (value0: LawSpec.Data.ProducerRecord)
+    (producerRecord1: LawSpec.Data.ProducerRecord)
     : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.ProducerState> =
-    let result = producerSend schema symbols value0 producerState
+    let result = producerSend schema symbols producerRecord1 producerState
     result
 
 /// kafkaProducerStart — ../src/contract.lawspec:1226
@@ -1708,9 +1710,9 @@ let kafkaTransactionsAddPartitionsToTransaction
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (txnState: LawSpec.Data.TransactionState)
-    (value0: LawSpec.Data.TopicPartition list)
+    (list1: LawSpec.Data.TopicPartition list)
     : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
-    let result = transactionsAdd schema symbols value0 txnState
+    let result = transactionsAdd schema symbols list1 txnState
     result
 
 /// kafkaTransactionsBeginTransaction — ../src/contract.lawspec:1733
@@ -1737,9 +1739,9 @@ let kafkaTransactionsInitTransactions
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (txnState: LawSpec.Data.TransactionState)
-    (value0: string)
+    (text1: string)
     : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ProducerIdAndEpoch>, LawSpec.Data.TransactionState> =
-    let result = transactionsInit schema symbols value0 txnState
+    let result = transactionsInit schema symbols text1 txnState
     result
 
 /// kafkaTransactionsSendInTransaction — ../src/contract.lawspec:1735
@@ -1748,9 +1750,9 @@ let kafkaTransactionsSendInTransaction
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (txnState: LawSpec.Data.TransactionState)
-    (value0: LawSpec.Data.ProducerRecord)
+    (producerRecord1: LawSpec.Data.ProducerRecord)
     : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata>, LawSpec.Data.TransactionState> =
-    let result = transactionsSend schema symbols value0 txnState
+    let result = transactionsSend schema symbols producerRecord1 txnState
     result
 
 /// kafkaTransactionsSendOffsetsToTransaction — ../src/contract.lawspec:1736
@@ -1759,10 +1761,10 @@ let kafkaTransactionsSendOffsetsToTransaction
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (txnState: LawSpec.Data.TransactionState)
-    (value0: string)
-    (value1: LawSpec.Data.OffsetEntry list)
+    (text1: string)
+    (list1: LawSpec.Data.OffsetEntry list)
     : LawSpec.Data.Pair<LawSpec.Either<LawSpec.Data.KafkaError, unit>, LawSpec.Data.TransactionState> =
-    let result = transactionsOffsets schema symbols value0 value1 txnState
+    let result = transactionsOffsets schema symbols text1 list1 txnState
     result
 
 /// kafkaTransactionsStart — ../src/contract.lawspec:1730

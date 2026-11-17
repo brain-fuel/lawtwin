@@ -879,6 +879,24 @@ let textTrim (text: string) : string =
 
     text.Substring(first, last - first)
 
+/// Whether every code point is Unicode White_Space; the empty text is.
+[<CompiledName("TextIsUnicodeWhitespace")>]
+let textIsUnicodeWhitespace (text: string) : bool = text |> Seq.forall textWhiteSpace
+
+/// The text without the code points up to U+0020 at its two ends.
+[<CompiledName("TextTrimAsciiControl")>]
+let textTrimAsciiControl (text: string) : string =
+    let mutable first = 0
+    let mutable last = text.Length
+
+    while first < last && text[first] <= '\u0020' do
+        first <- first + 1
+
+    while last > first && text[last - 1] <= '\u0020' do
+        last <- last - 1
+
+    text.Substring(first, last - first)
+
 [<CompiledName("TextWords")>]
 let textWords (text: string) : string list =
     let words = ResizeArray<string>()
@@ -905,6 +923,160 @@ let textLines (text: string) : string list =
     match List.rev pieces with
     | "" :: rest -> List.rev rest
     | _ -> pieces
+
+// ---------------------------------------------------------------------------
+// BLAKE3
+// ---------------------------------------------------------------------------
+
+// BLAKE3 (the BLAKE3 specification, section 2) with its default 32-byte
+// output: the hash, the keyed hash and key derivation, written from the
+// specification and its reference implementation (CC0 1.0 or Apache-2.0).
+// One thread, no SIMD; the official test vectors check every mode (the
+// contracts-digest acceptance suite).
+// Source: https://github.com/BLAKE3-team/BLAKE3, vectors at commit
+// ae3e8e6b3a5ae3190ca5d62820789b17886a0038; CC0 1.0 or Apache-2.0. ref:DEC-blake3-port
+let private blake3Iv: uint32[] =
+    [|
+        0x6a09e667u
+        0xbb67ae85u
+        0x3c6ef372u
+        0xa54ff53au
+        0x510e527fu
+        0x9b05688cu
+        0x1f83d9abu
+        0x5be0cd19u
+    |]
+
+let private blake3Schedule =
+    [| 2; 6; 3; 10; 7; 0; 4; 13; 1; 11; 12; 5; 9; 14; 15; 8 |]
+
+let private blake3ChunkStart = 1u
+let private blake3ChunkEnd = 2u
+let private blake3Parent = 4u
+let private blake3Root = 8u
+let private blake3KeyedHash = 16u
+let private blake3DeriveKeyContext = 32u
+let private blake3DeriveKeyMaterial = 64u
+
+/// Sixteen little-endian words of a block, zero padded to 64 bytes.
+let private blake3Words (data: byte[]) (offset: int) (length: int) : uint32[] =
+    let words = Array.zeroCreate<uint32> 16
+
+    for i in 0 .. length - 1 do
+        words[i / 4] <- words[i / 4] ||| (uint32 data[offset + i] <<< (8 * (i % 4)))
+
+    words
+
+let private blake3Rotate (value: uint32) (count: int) : uint32 =
+    (value >>> count) ||| (value <<< (32 - count))
+
+let private blake3Mix (state: uint32[]) (a: int) (b: int) (c: int) (d: int) (x: uint32) (y: uint32) : unit =
+    state[a] <- state[a] + state[b] + x
+    state[d] <- blake3Rotate (state[d] ^^^ state[a]) 16
+    state[c] <- state[c] + state[d]
+    state[b] <- blake3Rotate (state[b] ^^^ state[c]) 12
+    state[a] <- state[a] + state[b] + y
+    state[d] <- blake3Rotate (state[d] ^^^ state[a]) 8
+    state[c] <- state[c] + state[d]
+    state[b] <- blake3Rotate (state[b] ^^^ state[c]) 7
+
+/// The first eight words of BLAKE3's compression: a chaining value.
+let private blake3Compress (cv: uint32[]) (block: uint32[]) (counter: uint64) (length: int) (flags: uint32) : uint32[] =
+    let state = Array.zeroCreate<uint32> 16
+    Array.blit cv 0 state 0 8
+    Array.blit blake3Iv 0 state 8 4
+    state[12] <- uint32 (counter &&& 0xffffffffUL)
+    state[13] <- uint32 (counter >>> 32)
+    state[14] <- uint32 length
+    state[15] <- flags
+    let mutable m = block
+
+    for round in 0..6 do
+        blake3Mix state 0 4 8 12 m[0] m[1]
+        blake3Mix state 1 5 9 13 m[2] m[3]
+        blake3Mix state 2 6 10 14 m[4] m[5]
+        blake3Mix state 3 7 11 15 m[6] m[7]
+        blake3Mix state 0 5 10 15 m[8] m[9]
+        blake3Mix state 1 6 11 12 m[10] m[11]
+        blake3Mix state 2 7 8 13 m[12] m[13]
+        blake3Mix state 3 4 9 14 m[14] m[15]
+
+        if round < 6 then
+            let current = m
+            m <- Array.init 16 (fun i -> current[blake3Schedule[i]])
+
+    Array.init 8 (fun i -> state[i] ^^^ state[i + 8])
+
+/// A chunk's chaining value; its last block carries the extra flags.
+let private blake3Chunk (key: uint32[]) (mode: uint32) (data: byte[]) (index: int) (last: uint32) : uint32[] =
+    let finish = min data.Length (index * 1024 + 1024)
+    let mutable offset = index * 1024
+    let mutable cv = key
+    let mutable flags = mode ||| blake3ChunkStart
+
+    while finish - offset > 64 do
+        cv <- blake3Compress cv (blake3Words data offset 64) (uint64 index) 64 flags
+        flags <- mode
+        offset <- offset + 64
+
+    let length = finish - offset
+    blake3Compress cv (blake3Words data offset length) (uint64 index) length (flags ||| blake3ChunkEnd ||| last)
+
+/// The 32-byte output from a key of eight words and a mode's flag: the
+/// initial value and no flag hash, a key and KEYED_HASH hash under the key,
+/// and the two DERIVE_KEY flags derive a key. The chunks are merged as the
+/// reference implementation merges them: a stack of subtree chaining
+/// values, one subtree closed per trailing zero of the chunk count.
+let private blake3Digest (key: uint32[]) (mode: uint32) (data: byte[]) : byte[] =
+    let parent (left: uint32[]) (right: uint32[]) (flags: uint32) =
+        blake3Compress key (Array.append left right) 0UL 64 (mode ||| blake3Parent ||| flags)
+
+    let chunks = max 1 ((data.Length + 1023) / 1024)
+    let mutable stack: uint32[] list = []
+
+    for index in 0 .. chunks - 2 do
+        let mutable cv = blake3Chunk key mode data index 0u
+        let mutable total = index + 1
+
+        while total % 2 = 0 do
+            cv <- parent (List.head stack) cv 0u
+            stack <- List.tail stack
+            total <- total / 2
+
+        stack <- cv :: stack
+
+    let root =
+        match stack with
+        | [] -> blake3Chunk key mode data (chunks - 1) blake3Root
+        | _ ->
+            let mutable cv = blake3Chunk key mode data (chunks - 1) 0u
+
+            while List.length stack > 1 do
+                cv <- parent (List.head stack) cv 0u
+                stack <- List.tail stack
+
+            parent (List.head stack) cv blake3Root
+
+    Array.init 32 (fun i -> byte ((root[i / 4] >>> (8 * (i % 4))) &&& 0xffu))
+
+/// The 32-byte BLAKE3 hash of some bytes: LawSpec's `blake3`.
+let blake3 (data: byte[]) : byte[] = blake3Digest blake3Iv 0u data
+
+/// The 32-byte BLAKE3 keyed hash of some bytes under a key of 32 bytes:
+/// LawSpec's `blake3Keyed`.
+let blake3Keyed (key: byte[]) (data: byte[]) : byte[] =
+    if key.Length <> 32 then
+        fail "InvalidKey" "blake3Keyed: the key is 32 bytes"
+
+    blake3Digest (Array.sub (blake3Words key 0 32) 0 8) blake3KeyedHash data
+
+/// The 32 bytes BLAKE3 derives from some key material in a context, which
+/// is a text: LawSpec's `blake3DeriveKey`.
+let blake3DeriveKey (context: string) (material: byte[]) : byte[] =
+    let contextKey =
+        blake3Digest blake3Iv blake3DeriveKeyContext (Encoding.UTF8.GetBytes context)
+
+    blake3Digest (Array.sub (blake3Words contextKey 0 32) 0 8) blake3DeriveKeyMaterial material
 
 /// A built-in helper by name, with its arguments and their type keys.
 [<CompiledName("Helper")>]
@@ -985,6 +1157,11 @@ let helper (name: string) (values: Value list) (types: string list) (bits: int) 
     | "join", [ Text separator; List parts ] -> Text(String.Join(separator, parts |> List.map text))
     | "split", [ Text separator; Text t ] -> List(textSplit separator t |> List.map Text)
     | "trim", [ Text t ] -> Text(textTrim t)
+    | "isUnicodeWhitespace", [ Text t ] -> Bool(textIsUnicodeWhitespace t)
+    | "trimAsciiControl", [ Text t ] -> Text(textTrimAsciiControl t)
+    | "blake3", [ Bytes data ] -> Bytes(blake3 data)
+    | "blake3Keyed", [ Bytes key; Bytes data ] -> Bytes(blake3Keyed key data)
+    | "blake3DeriveKey", [ Text context; Bytes data ] -> Bytes(blake3DeriveKey context data)
     | "words", [ Text t ] -> List(textWords t |> List.map Text)
     | "lines", [ Text t ] -> List(textLines t |> List.map Text)
     | ("quot" | "rem" | "pow"), [ a; b ] -> binary name a b (List.item 0 types) (List.item 1 types)

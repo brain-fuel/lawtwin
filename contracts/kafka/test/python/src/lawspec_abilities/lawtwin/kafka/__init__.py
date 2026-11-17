@@ -24,98 +24,98 @@ class Broker(_typing.Protocol):
 
     def createTopicsRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
+        text_1: _builtins.str,
+        int32_1: _builtins.int,
     ) -> None: ...
     def createPartitionsRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
+        text_1: _builtins.str,
+        int32_1: _builtins.int,
     ) -> None: ...
     def metadataRequest(
         self,
-        value0: _builtins.str,
+        text_1: _builtins.str,
     ) -> _schema.Maybe[_builtins.int]: ...
     def produceRequest(
         self,
-        value0: data.TopicPartition,
-        value1: _schema.Maybe[data.ProducerTag],
-        value2: _builtins.list[data.Record],
+        topic_partition_1: data.TopicPartition,
+        maybe_1: _schema.Maybe[data.ProducerTag],
+        list_1: _builtins.list[data.Record],
     ) -> _builtins.int: ...
     def fetchRequest(
         self,
-        value0: data.TopicPartition,
-        value1: _builtins.int,
-        value2: _builtins.int,
-        value3: data.IsolationLevel,
+        topic_partition_1: data.TopicPartition,
+        int64_1: _builtins.int,
+        int32_1: _builtins.int,
+        isolation_level_1: data.IsolationLevel,
     ) -> data.FetchResult: ...
     def listOffsetsRequest(
         self,
-        value0: data.TopicPartition,
-        value1: data.OffsetSpec,
-        value2: data.IsolationLevel,
+        topic_partition_1: data.TopicPartition,
+        offset_spec_1: data.OffsetSpec,
+        isolation_level_1: data.IsolationLevel,
     ) -> _builtins.int: ...
     def initProducerIdRequest(
         self,
-        value0: _schema.Maybe[_builtins.str],
+        maybe_1: _schema.Maybe[_builtins.str],
     ) -> data.ProducerIdAndEpoch: ...
     def addPartitionsToTxnRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
-        value2: _builtins.int,
-        value3: _builtins.list[data.TopicPartition],
+        text_1: _builtins.str,
+        int64_1: _builtins.int,
+        int16_1: _builtins.int,
+        list_1: _builtins.list[data.TopicPartition],
     ) -> None: ...
     def txnOffsetCommitRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
-        value2: _builtins.int,
-        value3: _builtins.str,
-        value4: _builtins.list[data.OffsetEntry],
+        text_1: _builtins.str,
+        int64_1: _builtins.int,
+        int16_1: _builtins.int,
+        text_2: _builtins.str,
+        list_1: _builtins.list[data.OffsetEntry],
     ) -> None: ...
     def endTxnRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
-        value2: _builtins.int,
-        value3: _builtins.bool,
+        text_1: _builtins.str,
+        int64_1: _builtins.int,
+        int16_1: _builtins.int,
+        bool_1: _builtins.bool,
     ) -> None: ...
     def joinGroupRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.list[_builtins.str],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        list_1: _builtins.list[_builtins.str],
     ) -> _builtins.int: ...
     def syncGroupRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int32_1: _builtins.int,
     ) -> _builtins.list[data.TopicPartition]: ...
     def heartbeatRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int32_1: _builtins.int,
     ) -> None: ...
     def leaveGroupRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
     ) -> None: ...
-    def describeGroupRequest(self, value0: _builtins.str) -> data.GroupView: ...
+    def describeGroupRequest(self, text_1: _builtins.str) -> data.GroupView: ...
     def offsetCommitRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
-        value3: _builtins.list[data.OffsetEntry],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int32_1: _builtins.int,
+        list_1: _builtins.list[data.OffsetEntry],
     ) -> None: ...
     def offsetFetchRequest(
         self,
-        value0: _builtins.str,
-        value1: data.TopicPartition,
+        text_1: _builtins.str,
+        topic_partition_1: data.TopicPartition,
     ) -> _schema.Maybe[_builtins.int]: ...
 
 
@@ -124,23 +124,23 @@ class Admin(_typing.Protocol):
 
     def createTopic(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
+        text_1: _builtins.str,
+        int32_1: _builtins.int,
     ) -> None: ...
     def createPartitions(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
+        text_1: _builtins.str,
+        int32_1: _builtins.int,
     ) -> None: ...
     def partitionsFor(
         self,
-        value0: _builtins.str,
+        text_1: _builtins.str,
     ) -> _schema.Maybe[_builtins.int]: ...
     def listOffsets(
         self,
-        value0: data.TopicPartition,
-        value1: data.OffsetSpec,
-        value2: data.IsolationLevel,
+        topic_partition_1: data.TopicPartition,
+        offset_spec_1: data.OffsetSpec,
+        isolation_level_1: data.IsolationLevel,
     ) -> _builtins.int: ...
 
 
@@ -149,8 +149,8 @@ class Partitioner(_typing.Protocol):
 
     def choosePartition(
         self,
-        value0: _schema.Maybe[_builtins.bytes],
-        value1: _builtins.int,
+        maybe_1: _schema.Maybe[_builtins.bytes],
+        int32_1: _builtins.int,
     ) -> _builtins.int: ...
 
 
@@ -159,7 +159,7 @@ class Producer(_typing.Protocol):
 
     def send(
         self,
-        value0: data.ProducerRecord,
+        producer_record_1: data.ProducerRecord,
     ) -> _schema.Either[data.KafkaError, data.RecordMetadata]: ...
     def flush(self) -> None: ...
     def enableIdempotence(
@@ -174,32 +174,35 @@ class Producer(_typing.Protocol):
 class Consumer(_typing.Protocol):
     """The Consumer ability: a handler answers each of its operations."""
 
-    def assign(self, value0: _builtins.list[data.TopicPartition]) -> None: ...
+    def assign(self, list_1: _builtins.list[data.TopicPartition]) -> None: ...
     def subscribe(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.list[_builtins.str],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        list_1: _builtins.list[_builtins.str],
     ) -> _schema.Either[data.KafkaError, _builtins.list[data.TopicPartition]]: ...
     def poll(
         self,
-        value0: _builtins.int,
+        int32_1: _builtins.int,
     ) -> _schema.Either[data.KafkaError, _builtins.list[data.ConsumerRecord]]: ...
     def commitSync(self) -> _schema.Either[data.KafkaError, ls.Absence]: ...
     def seek(
         self,
-        value0: data.TopicPartition,
-        value1: _builtins.int,
+        topic_partition_1: data.TopicPartition,
+        int64_1: _builtins.int,
     ) -> _schema.Either[data.KafkaError, ls.Absence]: ...
     def position(
         self,
-        value0: data.TopicPartition,
+        topic_partition_1: data.TopicPartition,
     ) -> _schema.Either[data.KafkaError, _builtins.int]: ...
     def committedOffset(
         self,
-        value0: data.TopicPartition,
+        topic_partition_1: data.TopicPartition,
     ) -> _schema.Maybe[_builtins.int]: ...
-    def setIsolationLevel(self, value0: data.IsolationLevel) -> None: ...
+    def setIsolationLevel(
+        self,
+        isolation_level_1: data.IsolationLevel,
+    ) -> None: ...
     def close(self) -> None: ...
 
 
@@ -208,39 +211,39 @@ class GroupCoordinator(_typing.Protocol):
 
     def joinGroup(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.list[_builtins.str],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        list_1: _builtins.list[_builtins.str],
     ) -> _builtins.int: ...
     def syncGroup(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int32_1: _builtins.int,
     ) -> _builtins.list[data.TopicPartition]: ...
     def heartbeat(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int32_1: _builtins.int,
     ) -> None: ...
     def leaveGroup(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
     ) -> None: ...
-    def describeGroup(self, value0: _builtins.str) -> data.GroupView: ...
+    def describeGroup(self, text_1: _builtins.str) -> data.GroupView: ...
     def commitOffsets(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
-        value3: _builtins.list[data.OffsetEntry],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int32_1: _builtins.int,
+        list_1: _builtins.list[data.OffsetEntry],
     ) -> None: ...
     def fetchOffset(
         self,
-        value0: _builtins.str,
-        value1: data.TopicPartition,
+        text_1: _builtins.str,
+        topic_partition_1: data.TopicPartition,
     ) -> _schema.Maybe[_builtins.int]: ...
 
 
@@ -249,23 +252,23 @@ class Transactions(_typing.Protocol):
 
     def initTransactions(
         self,
-        value0: _builtins.str,
+        text_1: _builtins.str,
     ) -> _schema.Either[data.KafkaError, data.ProducerIdAndEpoch]: ...
     def beginTransaction(
         self,
     ) -> _schema.Either[data.KafkaError, ls.Absence]: ...
     def addPartitionsToTransaction(
         self,
-        value0: _builtins.list[data.TopicPartition],
+        list_1: _builtins.list[data.TopicPartition],
     ) -> _schema.Either[data.KafkaError, ls.Absence]: ...
     def sendInTransaction(
         self,
-        value0: data.ProducerRecord,
+        producer_record_1: data.ProducerRecord,
     ) -> _schema.Either[data.KafkaError, data.RecordMetadata]: ...
     def sendOffsetsToTransaction(
         self,
-        value0: _builtins.str,
-        value1: _builtins.list[data.OffsetEntry],
+        text_1: _builtins.str,
+        list_1: _builtins.list[data.OffsetEntry],
     ) -> _schema.Either[data.KafkaError, ls.Absence]: ...
     def commitTransaction(
         self,
@@ -287,493 +290,532 @@ class Cluster:
 
     def createTopicsRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
+        text_1: _builtins.str,
+        int32_1: _builtins.int,
     ) -> None:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_int32(value1, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_int32_1 = _typed.nin_int32(int32_1, symbols)
         with self._lock:
             pair = _typed.cluster_create_topic(
                 self._state,
-                argument0,
-                argument1,
+                typed_text_1,
+                typed_int32_1,
             )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
     def createPartitionsRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
+        text_1: _builtins.str,
+        int32_1: _builtins.int,
     ) -> None:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_int32(value1, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_int32_1 = _typed.nin_int32(int32_1, symbols)
         with self._lock:
             pair = _typed.cluster_create_partitions(
                 self._state,
-                argument0,
-                argument1,
+                typed_text_1,
+                typed_int32_1,
             )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
     def metadataRequest(
         self,
-        value0: _builtins.str,
+        text_1: _builtins.str,
     ) -> _schema.Maybe[_builtins.int]:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
         with self._lock:
-            pair = _typed.cluster_metadata_request(self._state, argument0)
+            pair = _typed.cluster_metadata_request(self._state, typed_text_1)
             self._state = pair[1]
         return _typed.nout_maybe_int32(pair[0], symbols)
 
     def produceRequest(
         self,
-        value0: data.TopicPartition,
-        value1: _schema.Maybe[data.ProducerTag],
-        value2: _builtins.list[data.Record],
+        topic_partition_1: data.TopicPartition,
+        maybe_1: _schema.Maybe[data.ProducerTag],
+        list_1: _builtins.list[data.Record],
     ) -> _builtins.int:
         symbols = self._symbols
-        argument0 = _typed.nin_topic_partition(value0, symbols)
-        argument1 = _typed.nin_maybe_producer_tag(value1, symbols)
-        argument2 = _typed.nin_list_record(value2, symbols)
+        typed_topic_partition_1 = _typed.nin_topic_partition(
+            topic_partition_1,
+            symbols,
+        )
+        typed_maybe_1 = _typed.nin_maybe_producer_tag(maybe_1, symbols)
+        typed_list_1 = _typed.nin_list_record(list_1, symbols)
         with self._lock:
             pair = _typed.cluster_produce_request(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
+                typed_topic_partition_1,
+                typed_maybe_1,
+                typed_list_1,
             )
             self._state = pair[1]
         return _typed.nout_int64(pair[0], symbols)
 
     def fetchRequest(
         self,
-        value0: data.TopicPartition,
-        value1: _builtins.int,
-        value2: _builtins.int,
-        value3: data.IsolationLevel,
+        topic_partition_1: data.TopicPartition,
+        int64_1: _builtins.int,
+        int32_1: _builtins.int,
+        isolation_level_1: data.IsolationLevel,
     ) -> data.FetchResult:
         symbols = self._symbols
-        argument0 = _typed.nin_topic_partition(value0, symbols)
-        argument1 = _typed.nin_int64(value1, symbols)
-        argument2 = _typed.nin_int32(value2, symbols)
-        argument3 = _typed.nin_isolation_level(value3, symbols)
+        typed_topic_partition_1 = _typed.nin_topic_partition(
+            topic_partition_1,
+            symbols,
+        )
+        typed_int64_1 = _typed.nin_int64(int64_1, symbols)
+        typed_int32_1 = _typed.nin_int32(int32_1, symbols)
+        typed_isolation_level_1 = _typed.nin_isolation_level(
+            isolation_level_1,
+            symbols,
+        )
         with self._lock:
             pair = _typed.cluster_fetch_request(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
-                argument3,
+                typed_topic_partition_1,
+                typed_int64_1,
+                typed_int32_1,
+                typed_isolation_level_1,
             )
             self._state = pair[1]
         return _typed.nout_fetch_result(pair[0], symbols)
 
     def listOffsetsRequest(
         self,
-        value0: data.TopicPartition,
-        value1: data.OffsetSpec,
-        value2: data.IsolationLevel,
+        topic_partition_1: data.TopicPartition,
+        offset_spec_1: data.OffsetSpec,
+        isolation_level_1: data.IsolationLevel,
     ) -> _builtins.int:
         symbols = self._symbols
-        argument0 = _typed.nin_topic_partition(value0, symbols)
-        argument1 = _typed.nin_offset_spec(value1, symbols)
-        argument2 = _typed.nin_isolation_level(value2, symbols)
+        typed_topic_partition_1 = _typed.nin_topic_partition(
+            topic_partition_1,
+            symbols,
+        )
+        typed_offset_spec_1 = _typed.nin_offset_spec(offset_spec_1, symbols)
+        typed_isolation_level_1 = _typed.nin_isolation_level(
+            isolation_level_1,
+            symbols,
+        )
         with self._lock:
             pair = _typed.cluster_list_offsets(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
+                typed_topic_partition_1,
+                typed_offset_spec_1,
+                typed_isolation_level_1,
             )
             self._state = pair[1]
         return _typed.nout_int64(pair[0], symbols)
 
     def initProducerIdRequest(
         self,
-        value0: _schema.Maybe[_builtins.str],
+        maybe_1: _schema.Maybe[_builtins.str],
     ) -> data.ProducerIdAndEpoch:
         symbols = self._symbols
-        argument0 = _typed.nin_maybe_text(value0, symbols)
+        typed_maybe_1 = _typed.nin_maybe_text(maybe_1, symbols)
         with self._lock:
             pair = _typed.cluster_init_producer_id_request(
                 self._state,
-                argument0,
+                typed_maybe_1,
             )
             self._state = pair[1]
         return _typed.nout_producer_id_and_epoch(pair[0], symbols)
 
     def addPartitionsToTxnRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
-        value2: _builtins.int,
-        value3: _builtins.list[data.TopicPartition],
+        text_1: _builtins.str,
+        int64_1: _builtins.int,
+        int16_1: _builtins.int,
+        list_1: _builtins.list[data.TopicPartition],
     ) -> None:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_int64(value1, symbols)
-        argument2 = _typed.nin_int16(value2, symbols)
-        argument3 = _typed.nin_list_topic_partition(value3, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_int64_1 = _typed.nin_int64(int64_1, symbols)
+        typed_int16_1 = _typed.nin_int16(int16_1, symbols)
+        typed_list_1 = _typed.nin_list_topic_partition(list_1, symbols)
         with self._lock:
             pair = _typed.cluster_add_partitions_to_txn_request(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
-                argument3,
+                typed_text_1,
+                typed_int64_1,
+                typed_int16_1,
+                typed_list_1,
             )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
     def txnOffsetCommitRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
-        value2: _builtins.int,
-        value3: _builtins.str,
-        value4: _builtins.list[data.OffsetEntry],
+        text_1: _builtins.str,
+        int64_1: _builtins.int,
+        int16_1: _builtins.int,
+        text_2: _builtins.str,
+        list_1: _builtins.list[data.OffsetEntry],
     ) -> None:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_int64(value1, symbols)
-        argument2 = _typed.nin_int16(value2, symbols)
-        argument3 = _typed.nin_text(value3, symbols)
-        argument4 = _typed.nin_list_offset_entry(value4, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_int64_1 = _typed.nin_int64(int64_1, symbols)
+        typed_int16_1 = _typed.nin_int16(int16_1, symbols)
+        typed_text_2 = _typed.nin_text(text_2, symbols)
+        typed_list_1 = _typed.nin_list_offset_entry(list_1, symbols)
         with self._lock:
             pair = _typed.cluster_txn_offset_commit_request(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
-                argument3,
-                argument4,
+                typed_text_1,
+                typed_int64_1,
+                typed_int16_1,
+                typed_text_2,
+                typed_list_1,
             )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
     def endTxnRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
-        value2: _builtins.int,
-        value3: _builtins.bool,
+        text_1: _builtins.str,
+        int64_1: _builtins.int,
+        int16_1: _builtins.int,
+        bool_1: _builtins.bool,
     ) -> None:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_int64(value1, symbols)
-        argument2 = _typed.nin_int16(value2, symbols)
-        argument3 = _typed.nin_bool(value3, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_int64_1 = _typed.nin_int64(int64_1, symbols)
+        typed_int16_1 = _typed.nin_int16(int16_1, symbols)
+        typed_bool_1 = _typed.nin_bool(bool_1, symbols)
         with self._lock:
             pair = _typed.cluster_end_txn_request(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
-                argument3,
+                typed_text_1,
+                typed_int64_1,
+                typed_int16_1,
+                typed_bool_1,
             )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
     def joinGroupRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.list[_builtins.str],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        list_1: _builtins.list[_builtins.str],
     ) -> _builtins.int:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_text(value1, symbols)
-        argument2 = _typed.nin_list_text(value2, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_text_2 = _typed.nin_text(text_2, symbols)
+        typed_list_1 = _typed.nin_list_text(list_1, symbols)
         with self._lock:
             pair = _typed.cluster_join_group(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
+                typed_text_1,
+                typed_text_2,
+                typed_list_1,
             )
             self._state = pair[1]
         return _typed.nout_int32(pair[0], symbols)
 
     def syncGroupRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int32_1: _builtins.int,
     ) -> _builtins.list[data.TopicPartition]:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_text(value1, symbols)
-        argument2 = _typed.nin_int32(value2, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_text_2 = _typed.nin_text(text_2, symbols)
+        typed_int32_1 = _typed.nin_int32(int32_1, symbols)
         with self._lock:
             pair = _typed.cluster_sync_group(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
+                typed_text_1,
+                typed_text_2,
+                typed_int32_1,
             )
             self._state = pair[1]
         return _typed.nout_list_topic_partition(pair[0], symbols)
 
     def heartbeatRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int32_1: _builtins.int,
     ) -> None:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_text(value1, symbols)
-        argument2 = _typed.nin_int32(value2, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_text_2 = _typed.nin_text(text_2, symbols)
+        typed_int32_1 = _typed.nin_int32(int32_1, symbols)
         with self._lock:
             pair = _typed.cluster_heartbeat(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
+                typed_text_1,
+                typed_text_2,
+                typed_int32_1,
             )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
     def leaveGroupRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
     ) -> None:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_text(value1, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_text_2 = _typed.nin_text(text_2, symbols)
         with self._lock:
-            pair = _typed.cluster_leave_group(self._state, argument0, argument1)
+            pair = _typed.cluster_leave_group(
+                self._state,
+                typed_text_1,
+                typed_text_2,
+            )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
-    def describeGroupRequest(self, value0: _builtins.str) -> data.GroupView:
+    def describeGroupRequest(self, text_1: _builtins.str) -> data.GroupView:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
         with self._lock:
-            pair = _typed.cluster_describe_group(self._state, argument0)
+            pair = _typed.cluster_describe_group(self._state, typed_text_1)
             self._state = pair[1]
         return _typed.nout_group_view(pair[0], symbols)
 
     def offsetCommitRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
-        value3: _builtins.list[data.OffsetEntry],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int32_1: _builtins.int,
+        list_1: _builtins.list[data.OffsetEntry],
     ) -> None:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_text(value1, symbols)
-        argument2 = _typed.nin_int32(value2, symbols)
-        argument3 = _typed.nin_list_offset_entry(value3, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_text_2 = _typed.nin_text(text_2, symbols)
+        typed_int32_1 = _typed.nin_int32(int32_1, symbols)
+        typed_list_1 = _typed.nin_list_offset_entry(list_1, symbols)
         with self._lock:
             pair = _typed.cluster_commit_offsets(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
-                argument3,
+                typed_text_1,
+                typed_text_2,
+                typed_int32_1,
+                typed_list_1,
             )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
     def offsetFetchRequest(
         self,
-        value0: _builtins.str,
-        value1: data.TopicPartition,
+        text_1: _builtins.str,
+        topic_partition_1: data.TopicPartition,
     ) -> _schema.Maybe[_builtins.int]:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_topic_partition(value1, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_topic_partition_1 = _typed.nin_topic_partition(
+            topic_partition_1,
+            symbols,
+        )
         with self._lock:
             pair = _typed.cluster_fetch_offset(
                 self._state,
-                argument0,
-                argument1,
+                typed_text_1,
+                typed_topic_partition_1,
             )
             self._state = pair[1]
         return _typed.nout_maybe_int64(pair[0], symbols)
 
-    def createTopic(self, value0: _builtins.str, value1: _builtins.int) -> None:
+    def createTopic(
+        self,
+        text_1: _builtins.str,
+        int32_1: _builtins.int,
+    ) -> None:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_int32(value1, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_int32_1 = _typed.nin_int32(int32_1, symbols)
         with self._lock:
             pair = _typed.cluster_create_topic(
                 self._state,
-                argument0,
-                argument1,
+                typed_text_1,
+                typed_int32_1,
             )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
     def createPartitions(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
+        text_1: _builtins.str,
+        int32_1: _builtins.int,
     ) -> None:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_int32(value1, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_int32_1 = _typed.nin_int32(int32_1, symbols)
         with self._lock:
             pair = _typed.cluster_create_partitions(
                 self._state,
-                argument0,
-                argument1,
+                typed_text_1,
+                typed_int32_1,
             )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
     def partitionsFor(
         self,
-        value0: _builtins.str,
+        text_1: _builtins.str,
     ) -> _schema.Maybe[_builtins.int]:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
         with self._lock:
-            pair = _typed.cluster_metadata_request(self._state, argument0)
+            pair = _typed.cluster_metadata_request(self._state, typed_text_1)
             self._state = pair[1]
         return _typed.nout_maybe_int32(pair[0], symbols)
 
     def listOffsets(
         self,
-        value0: data.TopicPartition,
-        value1: data.OffsetSpec,
-        value2: data.IsolationLevel,
+        topic_partition_1: data.TopicPartition,
+        offset_spec_1: data.OffsetSpec,
+        isolation_level_1: data.IsolationLevel,
     ) -> _builtins.int:
         symbols = self._symbols
-        argument0 = _typed.nin_topic_partition(value0, symbols)
-        argument1 = _typed.nin_offset_spec(value1, symbols)
-        argument2 = _typed.nin_isolation_level(value2, symbols)
+        typed_topic_partition_1 = _typed.nin_topic_partition(
+            topic_partition_1,
+            symbols,
+        )
+        typed_offset_spec_1 = _typed.nin_offset_spec(offset_spec_1, symbols)
+        typed_isolation_level_1 = _typed.nin_isolation_level(
+            isolation_level_1,
+            symbols,
+        )
         with self._lock:
             pair = _typed.cluster_list_offsets(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
+                typed_topic_partition_1,
+                typed_offset_spec_1,
+                typed_isolation_level_1,
             )
             self._state = pair[1]
         return _typed.nout_int64(pair[0], symbols)
 
     def joinGroup(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.list[_builtins.str],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        list_1: _builtins.list[_builtins.str],
     ) -> _builtins.int:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_text(value1, symbols)
-        argument2 = _typed.nin_list_text(value2, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_text_2 = _typed.nin_text(text_2, symbols)
+        typed_list_1 = _typed.nin_list_text(list_1, symbols)
         with self._lock:
             pair = _typed.cluster_join_group(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
+                typed_text_1,
+                typed_text_2,
+                typed_list_1,
             )
             self._state = pair[1]
         return _typed.nout_int32(pair[0], symbols)
 
     def syncGroup(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int32_1: _builtins.int,
     ) -> _builtins.list[data.TopicPartition]:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_text(value1, symbols)
-        argument2 = _typed.nin_int32(value2, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_text_2 = _typed.nin_text(text_2, symbols)
+        typed_int32_1 = _typed.nin_int32(int32_1, symbols)
         with self._lock:
             pair = _typed.cluster_sync_group(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
+                typed_text_1,
+                typed_text_2,
+                typed_int32_1,
             )
             self._state = pair[1]
         return _typed.nout_list_topic_partition(pair[0], symbols)
 
     def heartbeat(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int32_1: _builtins.int,
     ) -> None:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_text(value1, symbols)
-        argument2 = _typed.nin_int32(value2, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_text_2 = _typed.nin_text(text_2, symbols)
+        typed_int32_1 = _typed.nin_int32(int32_1, symbols)
         with self._lock:
             pair = _typed.cluster_heartbeat(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
+                typed_text_1,
+                typed_text_2,
+                typed_int32_1,
             )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
-    def leaveGroup(self, value0: _builtins.str, value1: _builtins.str) -> None:
+    def leaveGroup(self, text_1: _builtins.str, text_2: _builtins.str) -> None:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_text(value1, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_text_2 = _typed.nin_text(text_2, symbols)
         with self._lock:
-            pair = _typed.cluster_leave_group(self._state, argument0, argument1)
+            pair = _typed.cluster_leave_group(
+                self._state,
+                typed_text_1,
+                typed_text_2,
+            )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
-    def describeGroup(self, value0: _builtins.str) -> data.GroupView:
+    def describeGroup(self, text_1: _builtins.str) -> data.GroupView:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
         with self._lock:
-            pair = _typed.cluster_describe_group(self._state, argument0)
+            pair = _typed.cluster_describe_group(self._state, typed_text_1)
             self._state = pair[1]
         return _typed.nout_group_view(pair[0], symbols)
 
     def commitOffsets(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
-        value3: _builtins.list[data.OffsetEntry],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int32_1: _builtins.int,
+        list_1: _builtins.list[data.OffsetEntry],
     ) -> None:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_text(value1, symbols)
-        argument2 = _typed.nin_int32(value2, symbols)
-        argument3 = _typed.nin_list_offset_entry(value3, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_text_2 = _typed.nin_text(text_2, symbols)
+        typed_int32_1 = _typed.nin_int32(int32_1, symbols)
+        typed_list_1 = _typed.nin_list_offset_entry(list_1, symbols)
         with self._lock:
             pair = _typed.cluster_commit_offsets(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
-                argument3,
+                typed_text_1,
+                typed_text_2,
+                typed_int32_1,
+                typed_list_1,
             )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
     def fetchOffset(
         self,
-        value0: _builtins.str,
-        value1: data.TopicPartition,
+        text_1: _builtins.str,
+        topic_partition_1: data.TopicPartition,
     ) -> _schema.Maybe[_builtins.int]:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_topic_partition(value1, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_topic_partition_1 = _typed.nin_topic_partition(
+            topic_partition_1,
+            symbols,
+        )
         with self._lock:
             pair = _typed.cluster_fetch_offset(
                 self._state,
-                argument0,
-                argument1,
+                typed_text_1,
+                typed_topic_partition_1,
             )
             self._state = pair[1]
         return _typed.nout_maybe_int64(pair[0], symbols)
@@ -800,12 +842,12 @@ class Cluster:
 
     def try_createTopicsRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
+        text_1: _builtins.str,
+        int32_1: _builtins.int,
     ) -> _schema.Either[data.KafkaError, None]:
         """createTopicsRequest, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.createTopicsRequest(value0, value1))
+            return _schema.Right(self.createTopicsRequest(text_1, int32_1))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -823,12 +865,12 @@ class Cluster:
 
     def try_createPartitionsRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
+        text_1: _builtins.str,
+        int32_1: _builtins.int,
     ) -> _schema.Either[data.KafkaError, None]:
         """createPartitionsRequest, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.createPartitionsRequest(value0, value1))
+            return _schema.Right(self.createPartitionsRequest(text_1, int32_1))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -846,13 +888,17 @@ class Cluster:
 
     def try_produceRequest(
         self,
-        value0: data.TopicPartition,
-        value1: _schema.Maybe[data.ProducerTag],
-        value2: _builtins.list[data.Record],
+        topic_partition_1: data.TopicPartition,
+        maybe_1: _schema.Maybe[data.ProducerTag],
+        list_1: _builtins.list[data.Record],
     ) -> _schema.Either[data.KafkaError, _builtins.int]:
         """produceRequest, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.produceRequest(value0, value1, value2))
+            return _schema.Right(self.produceRequest(
+                topic_partition_1,
+                maybe_1,
+                list_1,
+            ))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -870,18 +916,18 @@ class Cluster:
 
     def try_fetchRequest(
         self,
-        value0: data.TopicPartition,
-        value1: _builtins.int,
-        value2: _builtins.int,
-        value3: data.IsolationLevel,
+        topic_partition_1: data.TopicPartition,
+        int64_1: _builtins.int,
+        int32_1: _builtins.int,
+        isolation_level_1: data.IsolationLevel,
     ) -> _schema.Either[data.KafkaError, data.FetchResult]:
         """fetchRequest, with the failure it raises as Left rather than an exception."""
         try:
             return _schema.Right(self.fetchRequest(
-                value0,
-                value1,
-                value2,
-                value3,
+                topic_partition_1,
+                int64_1,
+                int32_1,
+                isolation_level_1,
             ))
         except ls.Failure as failure:
             if (
@@ -900,16 +946,16 @@ class Cluster:
 
     def try_listOffsetsRequest(
         self,
-        value0: data.TopicPartition,
-        value1: data.OffsetSpec,
-        value2: data.IsolationLevel,
+        topic_partition_1: data.TopicPartition,
+        offset_spec_1: data.OffsetSpec,
+        isolation_level_1: data.IsolationLevel,
     ) -> _schema.Either[data.KafkaError, _builtins.int]:
         """listOffsetsRequest, with the failure it raises as Left rather than an exception."""
         try:
             return _schema.Right(self.listOffsetsRequest(
-                value0,
-                value1,
-                value2,
+                topic_partition_1,
+                offset_spec_1,
+                isolation_level_1,
             ))
         except ls.Failure as failure:
             if (
@@ -928,11 +974,11 @@ class Cluster:
 
     def try_initProducerIdRequest(
         self,
-        value0: _schema.Maybe[_builtins.str],
+        maybe_1: _schema.Maybe[_builtins.str],
     ) -> _schema.Either[data.KafkaError, data.ProducerIdAndEpoch]:
         """initProducerIdRequest, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.initProducerIdRequest(value0))
+            return _schema.Right(self.initProducerIdRequest(maybe_1))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -950,18 +996,18 @@ class Cluster:
 
     def try_addPartitionsToTxnRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
-        value2: _builtins.int,
-        value3: _builtins.list[data.TopicPartition],
+        text_1: _builtins.str,
+        int64_1: _builtins.int,
+        int16_1: _builtins.int,
+        list_1: _builtins.list[data.TopicPartition],
     ) -> _schema.Either[data.KafkaError, None]:
         """addPartitionsToTxnRequest, with the failure it raises as Left rather than an exception."""
         try:
             return _schema.Right(self.addPartitionsToTxnRequest(
-                value0,
-                value1,
-                value2,
-                value3,
+                text_1,
+                int64_1,
+                int16_1,
+                list_1,
             ))
         except ls.Failure as failure:
             if (
@@ -980,20 +1026,20 @@ class Cluster:
 
     def try_txnOffsetCommitRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
-        value2: _builtins.int,
-        value3: _builtins.str,
-        value4: _builtins.list[data.OffsetEntry],
+        text_1: _builtins.str,
+        int64_1: _builtins.int,
+        int16_1: _builtins.int,
+        text_2: _builtins.str,
+        list_1: _builtins.list[data.OffsetEntry],
     ) -> _schema.Either[data.KafkaError, None]:
         """txnOffsetCommitRequest, with the failure it raises as Left rather than an exception."""
         try:
             return _schema.Right(self.txnOffsetCommitRequest(
-                value0,
-                value1,
-                value2,
-                value3,
-                value4,
+                text_1,
+                int64_1,
+                int16_1,
+                text_2,
+                list_1,
             ))
         except ls.Failure as failure:
             if (
@@ -1012,18 +1058,18 @@ class Cluster:
 
     def try_endTxnRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
-        value2: _builtins.int,
-        value3: _builtins.bool,
+        text_1: _builtins.str,
+        int64_1: _builtins.int,
+        int16_1: _builtins.int,
+        bool_1: _builtins.bool,
     ) -> _schema.Either[data.KafkaError, None]:
         """endTxnRequest, with the failure it raises as Left rather than an exception."""
         try:
             return _schema.Right(self.endTxnRequest(
-                value0,
-                value1,
-                value2,
-                value3,
+                text_1,
+                int64_1,
+                int16_1,
+                bool_1,
             ))
         except ls.Failure as failure:
             if (
@@ -1042,13 +1088,13 @@ class Cluster:
 
     def try_joinGroupRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.list[_builtins.str],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        list_1: _builtins.list[_builtins.str],
     ) -> _schema.Either[data.KafkaError, _builtins.int]:
         """joinGroupRequest, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.joinGroupRequest(value0, value1, value2))
+            return _schema.Right(self.joinGroupRequest(text_1, text_2, list_1))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -1066,13 +1112,13 @@ class Cluster:
 
     def try_syncGroupRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int32_1: _builtins.int,
     ) -> _schema.Either[data.KafkaError, _builtins.list[data.TopicPartition]]:
         """syncGroupRequest, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.syncGroupRequest(value0, value1, value2))
+            return _schema.Right(self.syncGroupRequest(text_1, text_2, int32_1))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -1090,13 +1136,13 @@ class Cluster:
 
     def try_heartbeatRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int32_1: _builtins.int,
     ) -> _schema.Either[data.KafkaError, None]:
         """heartbeatRequest, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.heartbeatRequest(value0, value1, value2))
+            return _schema.Right(self.heartbeatRequest(text_1, text_2, int32_1))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -1114,12 +1160,12 @@ class Cluster:
 
     def try_leaveGroupRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
     ) -> _schema.Either[data.KafkaError, None]:
         """leaveGroupRequest, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.leaveGroupRequest(value0, value1))
+            return _schema.Right(self.leaveGroupRequest(text_1, text_2))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -1137,18 +1183,18 @@ class Cluster:
 
     def try_offsetCommitRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
-        value3: _builtins.list[data.OffsetEntry],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int32_1: _builtins.int,
+        list_1: _builtins.list[data.OffsetEntry],
     ) -> _schema.Either[data.KafkaError, None]:
         """offsetCommitRequest, with the failure it raises as Left rather than an exception."""
         try:
             return _schema.Right(self.offsetCommitRequest(
-                value0,
-                value1,
-                value2,
-                value3,
+                text_1,
+                text_2,
+                int32_1,
+                list_1,
             ))
         except ls.Failure as failure:
             if (
@@ -1167,12 +1213,12 @@ class Cluster:
 
     def try_createTopic(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
+        text_1: _builtins.str,
+        int32_1: _builtins.int,
     ) -> _schema.Either[data.KafkaError, None]:
         """createTopic, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.createTopic(value0, value1))
+            return _schema.Right(self.createTopic(text_1, int32_1))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -1190,12 +1236,12 @@ class Cluster:
 
     def try_createPartitions(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
+        text_1: _builtins.str,
+        int32_1: _builtins.int,
     ) -> _schema.Either[data.KafkaError, None]:
         """createPartitions, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.createPartitions(value0, value1))
+            return _schema.Right(self.createPartitions(text_1, int32_1))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -1213,13 +1259,17 @@ class Cluster:
 
     def try_listOffsets(
         self,
-        value0: data.TopicPartition,
-        value1: data.OffsetSpec,
-        value2: data.IsolationLevel,
+        topic_partition_1: data.TopicPartition,
+        offset_spec_1: data.OffsetSpec,
+        isolation_level_1: data.IsolationLevel,
     ) -> _schema.Either[data.KafkaError, _builtins.int]:
         """listOffsets, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.listOffsets(value0, value1, value2))
+            return _schema.Right(self.listOffsets(
+                topic_partition_1,
+                offset_spec_1,
+                isolation_level_1,
+            ))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -1237,13 +1287,13 @@ class Cluster:
 
     def try_joinGroup(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.list[_builtins.str],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        list_1: _builtins.list[_builtins.str],
     ) -> _schema.Either[data.KafkaError, _builtins.int]:
         """joinGroup, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.joinGroup(value0, value1, value2))
+            return _schema.Right(self.joinGroup(text_1, text_2, list_1))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -1261,13 +1311,13 @@ class Cluster:
 
     def try_syncGroup(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int32_1: _builtins.int,
     ) -> _schema.Either[data.KafkaError, _builtins.list[data.TopicPartition]]:
         """syncGroup, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.syncGroup(value0, value1, value2))
+            return _schema.Right(self.syncGroup(text_1, text_2, int32_1))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -1285,13 +1335,13 @@ class Cluster:
 
     def try_heartbeat(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int32_1: _builtins.int,
     ) -> _schema.Either[data.KafkaError, None]:
         """heartbeat, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.heartbeat(value0, value1, value2))
+            return _schema.Right(self.heartbeat(text_1, text_2, int32_1))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -1309,12 +1359,12 @@ class Cluster:
 
     def try_leaveGroup(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
     ) -> _schema.Either[data.KafkaError, None]:
         """leaveGroup, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.leaveGroup(value0, value1))
+            return _schema.Right(self.leaveGroup(text_1, text_2))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -1332,18 +1382,18 @@ class Cluster:
 
     def try_commitOffsets(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
-        value3: _builtins.list[data.OffsetEntry],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int32_1: _builtins.int,
+        list_1: _builtins.list[data.OffsetEntry],
     ) -> _schema.Either[data.KafkaError, None]:
         """commitOffsets, with the failure it raises as Left rather than an exception."""
         try:
             return _schema.Right(self.commitOffsets(
-                value0,
-                value1,
-                value2,
-                value3,
+                text_1,
+                text_2,
+                int32_1,
+                list_1,
             ))
         except ls.Failure as failure:
             if (
@@ -1371,14 +1421,17 @@ class MurmurPartitioner:
 
     def choosePartition(
         self,
-        value0: _schema.Maybe[_builtins.bytes],
-        value1: _builtins.int,
+        maybe_1: _schema.Maybe[_builtins.bytes],
+        int32_1: _builtins.int,
     ) -> _builtins.int:
         symbols = self._symbols
-        argument0 = _typed.nin_maybe_bytes(value0, symbols)
-        argument1 = _typed.nin_int32(value1, symbols)
+        typed_maybe_1 = _typed.nin_maybe_bytes(maybe_1, symbols)
+        typed_int32_1 = _typed.nin_int32(int32_1, symbols)
         return _typed.nout_int32(
-            _typed.murmur_partitioner_choose_partition(argument0, argument1),
+            _typed.murmur_partitioner_choose_partition(
+                typed_maybe_1,
+                typed_int32_1,
+            ),
             symbols,
         )
 
@@ -1395,12 +1448,19 @@ class KafkaProducer:
 
     def send(
         self,
-        value0: data.ProducerRecord,
+        producer_record_1: data.ProducerRecord,
     ) -> _schema.Either[data.KafkaError, data.RecordMetadata]:
         symbols = self._symbols
-        argument0 = _typed.nin_producer_record(value0, symbols)
+        typed_producer_record_1 = _typed.nin_producer_record(
+            producer_record_1,
+            symbols,
+        )
         with self._lock:
-            pair = _typed.kafka_producer_send(symbols, self._state, argument0)
+            pair = _typed.kafka_producer_send(
+                symbols,
+                self._state,
+                typed_producer_record_1,
+            )
             self._state = pair[1]
         return _typed.nout_either_kafka_error_record_metadata(pair[0], symbols)
 
@@ -1473,31 +1533,31 @@ class KafkaConsumer:
         self._lock = _threading.Lock()
         self._state = _typed.start_kafka_consumer(self._symbols)
 
-    def assign(self, value0: _builtins.list[data.TopicPartition]) -> None:
+    def assign(self, list_1: _builtins.list[data.TopicPartition]) -> None:
         symbols = self._symbols
-        argument0 = _typed.nin_list_topic_partition(value0, symbols)
+        typed_list_1 = _typed.nin_list_topic_partition(list_1, symbols)
         with self._lock:
-            pair = _typed.kafka_consumer_assign(self._state, argument0)
+            pair = _typed.kafka_consumer_assign(self._state, typed_list_1)
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
     def subscribe(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.list[_builtins.str],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        list_1: _builtins.list[_builtins.str],
     ) -> _schema.Either[data.KafkaError, _builtins.list[data.TopicPartition]]:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_text(value1, symbols)
-        argument2 = _typed.nin_list_text(value2, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_text_2 = _typed.nin_text(text_2, symbols)
+        typed_list_1 = _typed.nin_list_text(list_1, symbols)
         with self._lock:
             pair = _typed.kafka_consumer_subscribe(
                 symbols,
                 self._state,
-                argument0,
-                argument1,
-                argument2,
+                typed_text_1,
+                typed_text_2,
+                typed_list_1,
             )
             self._state = pair[1]
         return _typed.nout_either_kafka_error_list_topic_partition(
@@ -1507,12 +1567,16 @@ class KafkaConsumer:
 
     def poll(
         self,
-        value0: _builtins.int,
+        int32_1: _builtins.int,
     ) -> _schema.Either[data.KafkaError, _builtins.list[data.ConsumerRecord]]:
         symbols = self._symbols
-        argument0 = _typed.nin_int32(value0, symbols)
+        typed_int32_1 = _typed.nin_int32(int32_1, symbols)
         with self._lock:
-            pair = _typed.kafka_consumer_poll(symbols, self._state, argument0)
+            pair = _typed.kafka_consumer_poll(
+                symbols,
+                self._state,
+                typed_int32_1,
+            )
             self._state = pair[1]
         return _typed.nout_either_kafka_error_list_consumer_record(
             pair[0],
@@ -1528,54 +1592,70 @@ class KafkaConsumer:
 
     def seek(
         self,
-        value0: data.TopicPartition,
-        value1: _builtins.int,
+        topic_partition_1: data.TopicPartition,
+        int64_1: _builtins.int,
     ) -> _schema.Either[data.KafkaError, ls.Absence]:
         symbols = self._symbols
-        argument0 = _typed.nin_topic_partition(value0, symbols)
-        argument1 = _typed.nin_int64(value1, symbols)
+        typed_topic_partition_1 = _typed.nin_topic_partition(
+            topic_partition_1,
+            symbols,
+        )
+        typed_int64_1 = _typed.nin_int64(int64_1, symbols)
         with self._lock:
-            pair = _typed.kafka_consumer_seek(self._state, argument0, argument1)
+            pair = _typed.kafka_consumer_seek(
+                self._state,
+                typed_topic_partition_1,
+                typed_int64_1,
+            )
             self._state = pair[1]
         return _typed.nout_either_kafka_error_unit(pair[0], symbols)
 
     def position(
         self,
-        value0: data.TopicPartition,
+        topic_partition_1: data.TopicPartition,
     ) -> _schema.Either[data.KafkaError, _builtins.int]:
         symbols = self._symbols
-        argument0 = _typed.nin_topic_partition(value0, symbols)
+        typed_topic_partition_1 = _typed.nin_topic_partition(
+            topic_partition_1,
+            symbols,
+        )
         with self._lock:
             pair = _typed.kafka_consumer_position(
                 symbols,
                 self._state,
-                argument0,
+                typed_topic_partition_1,
             )
             self._state = pair[1]
         return _typed.nout_either_kafka_error_int64(pair[0], symbols)
 
     def committedOffset(
         self,
-        value0: data.TopicPartition,
+        topic_partition_1: data.TopicPartition,
     ) -> _schema.Maybe[_builtins.int]:
         symbols = self._symbols
-        argument0 = _typed.nin_topic_partition(value0, symbols)
+        typed_topic_partition_1 = _typed.nin_topic_partition(
+            topic_partition_1,
+            symbols,
+        )
         with self._lock:
             pair = _typed.kafka_consumer_committed_offset(
                 symbols,
                 self._state,
-                argument0,
+                typed_topic_partition_1,
             )
             self._state = pair[1]
         return _typed.nout_maybe_int64(pair[0], symbols)
 
-    def setIsolationLevel(self, value0: data.IsolationLevel) -> None:
+    def setIsolationLevel(self, isolation_level_1: data.IsolationLevel) -> None:
         symbols = self._symbols
-        argument0 = _typed.nin_isolation_level(value0, symbols)
+        typed_isolation_level_1 = _typed.nin_isolation_level(
+            isolation_level_1,
+            symbols,
+        )
         with self._lock:
             pair = _typed.kafka_consumer_set_isolation_level(
                 self._state,
-                argument0,
+                typed_isolation_level_1,
             )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
@@ -1620,15 +1700,15 @@ class KafkaTransactions:
 
     def initTransactions(
         self,
-        value0: _builtins.str,
+        text_1: _builtins.str,
     ) -> _schema.Either[data.KafkaError, data.ProducerIdAndEpoch]:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
         with self._lock:
             pair = _typed.kafka_transactions_init_transactions(
                 symbols,
                 self._state,
-                argument0,
+                typed_text_1,
             )
             self._state = pair[1]
         return _typed.nout_either_kafka_error_producer_id_and_epoch(
@@ -1645,48 +1725,51 @@ class KafkaTransactions:
 
     def addPartitionsToTransaction(
         self,
-        value0: _builtins.list[data.TopicPartition],
+        list_1: _builtins.list[data.TopicPartition],
     ) -> _schema.Either[data.KafkaError, ls.Absence]:
         symbols = self._symbols
-        argument0 = _typed.nin_list_topic_partition(value0, symbols)
+        typed_list_1 = _typed.nin_list_topic_partition(list_1, symbols)
         with self._lock:
             pair = _typed.kafka_transactions_add_partitions_to_transaction(
                 symbols,
                 self._state,
-                argument0,
+                typed_list_1,
             )
             self._state = pair[1]
         return _typed.nout_either_kafka_error_unit(pair[0], symbols)
 
     def sendInTransaction(
         self,
-        value0: data.ProducerRecord,
+        producer_record_1: data.ProducerRecord,
     ) -> _schema.Either[data.KafkaError, data.RecordMetadata]:
         symbols = self._symbols
-        argument0 = _typed.nin_producer_record(value0, symbols)
+        typed_producer_record_1 = _typed.nin_producer_record(
+            producer_record_1,
+            symbols,
+        )
         with self._lock:
             pair = _typed.kafka_transactions_send_in_transaction(
                 symbols,
                 self._state,
-                argument0,
+                typed_producer_record_1,
             )
             self._state = pair[1]
         return _typed.nout_either_kafka_error_record_metadata(pair[0], symbols)
 
     def sendOffsetsToTransaction(
         self,
-        value0: _builtins.str,
-        value1: _builtins.list[data.OffsetEntry],
+        text_1: _builtins.str,
+        list_1: _builtins.list[data.OffsetEntry],
     ) -> _schema.Either[data.KafkaError, ls.Absence]:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_list_offset_entry(value1, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_list_1 = _typed.nin_list_offset_entry(list_1, symbols)
         with self._lock:
             pair = _typed.kafka_transactions_send_offsets_to_transaction(
                 symbols,
                 self._state,
-                argument0,
-                argument1,
+                typed_text_1,
+                typed_list_1,
             )
             self._state = pair[1]
         return _typed.nout_either_kafka_error_unit(pair[0], symbols)
@@ -1742,8 +1825,8 @@ class BrokerRecording:
 
     def createTopicsRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
+        text_1: _builtins.str,
+        int32_1: _builtins.int,
     ) -> None:
         symbols = self._symbols
         self.calls.append(
@@ -1752,25 +1835,25 @@ class BrokerRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value0,
+                        text_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Int32"),
-                        value1,
+                        int32_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.createTopicsRequest(value0, value1)
+        return self.inner.createTopicsRequest(text_1, int32_1)
 
     def createPartitionsRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
+        text_1: _builtins.str,
+        int32_1: _builtins.int,
     ) -> None:
         symbols = self._symbols
         self.calls.append(
@@ -1779,24 +1862,24 @@ class BrokerRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value0,
+                        text_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Int32"),
-                        value1,
+                        int32_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.createPartitionsRequest(value0, value1)
+        return self.inner.createPartitionsRequest(text_1, int32_1)
 
     def metadataRequest(
         self,
-        value0: _builtins.str,
+        text_1: _builtins.str,
     ) -> _schema.Maybe[_builtins.int]:
         symbols = self._symbols
         self.calls.append(
@@ -1805,20 +1888,20 @@ class BrokerRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value0,
+                        text_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.metadataRequest(value0)
+        return self.inner.metadataRequest(text_1)
 
     def produceRequest(
         self,
-        value0: data.TopicPartition,
-        value1: _schema.Maybe[data.ProducerTag],
-        value2: _builtins.list[data.Record],
+        topic_partition_1: data.TopicPartition,
+        maybe_1: _schema.Maybe[data.ProducerTag],
+        list_1: _builtins.list[data.Record],
     ) -> _builtins.int:
         symbols = self._symbols
         self.calls.append(
@@ -1829,7 +1912,7 @@ class BrokerRecording:
                         _schema.Named(
                             "lawtwin.kafka.model::type::TopicPartition",
                         ),
-                        value0,
+                        topic_partition_1,
                         MACHINE_BITS,
                         symbols,
                     ),
@@ -1842,7 +1925,7 @@ class BrokerRecording:
                                 ),
                             ],
                         ),
-                        value1,
+                        maybe_1,
                         MACHINE_BITS,
                         symbols,
                     ),
@@ -1855,21 +1938,21 @@ class BrokerRecording:
                                 ),
                             ],
                         ),
-                        value2,
+                        list_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.produceRequest(value0, value1, value2)
+        return self.inner.produceRequest(topic_partition_1, maybe_1, list_1)
 
     def fetchRequest(
         self,
-        value0: data.TopicPartition,
-        value1: _builtins.int,
-        value2: _builtins.int,
-        value3: data.IsolationLevel,
+        topic_partition_1: data.TopicPartition,
+        int64_1: _builtins.int,
+        int32_1: _builtins.int,
+        isolation_level_1: data.IsolationLevel,
     ) -> data.FetchResult:
         symbols = self._symbols
         self.calls.append(
@@ -1880,19 +1963,19 @@ class BrokerRecording:
                         _schema.Named(
                             "lawtwin.kafka.model::type::TopicPartition",
                         ),
-                        value0,
+                        topic_partition_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Int64"),
-                        value1,
+                        int64_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Int32"),
-                        value2,
+                        int32_1,
                         MACHINE_BITS,
                         symbols,
                     ),
@@ -1900,20 +1983,25 @@ class BrokerRecording:
                         _schema.Named(
                             "lawtwin.kafka.model::type::IsolationLevel",
                         ),
-                        value3,
+                        isolation_level_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.fetchRequest(value0, value1, value2, value3)
+        return self.inner.fetchRequest(
+            topic_partition_1,
+            int64_1,
+            int32_1,
+            isolation_level_1,
+        )
 
     def listOffsetsRequest(
         self,
-        value0: data.TopicPartition,
-        value1: data.OffsetSpec,
-        value2: data.IsolationLevel,
+        topic_partition_1: data.TopicPartition,
+        offset_spec_1: data.OffsetSpec,
+        isolation_level_1: data.IsolationLevel,
     ) -> _builtins.int:
         symbols = self._symbols
         self.calls.append(
@@ -1924,13 +2012,13 @@ class BrokerRecording:
                         _schema.Named(
                             "lawtwin.kafka.model::type::TopicPartition",
                         ),
-                        value0,
+                        topic_partition_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("lawtwin.kafka.model::type::OffsetSpec"),
-                        value1,
+                        offset_spec_1,
                         MACHINE_BITS,
                         symbols,
                     ),
@@ -1938,18 +2026,22 @@ class BrokerRecording:
                         _schema.Named(
                             "lawtwin.kafka.model::type::IsolationLevel",
                         ),
-                        value2,
+                        isolation_level_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.listOffsetsRequest(value0, value1, value2)
+        return self.inner.listOffsetsRequest(
+            topic_partition_1,
+            offset_spec_1,
+            isolation_level_1,
+        )
 
     def initProducerIdRequest(
         self,
-        value0: _schema.Maybe[_builtins.str],
+        maybe_1: _schema.Maybe[_builtins.str],
     ) -> data.ProducerIdAndEpoch:
         symbols = self._symbols
         self.calls.append(
@@ -1958,21 +2050,21 @@ class BrokerRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Maybe", [_schema.Named("Text")]),
-                        value0,
+                        maybe_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.initProducerIdRequest(value0)
+        return self.inner.initProducerIdRequest(maybe_1)
 
     def addPartitionsToTxnRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
-        value2: _builtins.int,
-        value3: _builtins.list[data.TopicPartition],
+        text_1: _builtins.str,
+        int64_1: _builtins.int,
+        int16_1: _builtins.int,
+        list_1: _builtins.list[data.TopicPartition],
     ) -> None:
         symbols = self._symbols
         self.calls.append(
@@ -1981,19 +2073,19 @@ class BrokerRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value0,
+                        text_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Int64"),
-                        value1,
+                        int64_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Int16"),
-                        value2,
+                        int16_1,
                         MACHINE_BITS,
                         symbols,
                     ),
@@ -2006,7 +2098,7 @@ class BrokerRecording:
                                 ),
                             ],
                         ),
-                        value3,
+                        list_1,
                         MACHINE_BITS,
                         symbols,
                     ),
@@ -2014,19 +2106,19 @@ class BrokerRecording:
             ),
         )
         return self.inner.addPartitionsToTxnRequest(
-            value0,
-            value1,
-            value2,
-            value3,
+            text_1,
+            int64_1,
+            int16_1,
+            list_1,
         )
 
     def txnOffsetCommitRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
-        value2: _builtins.int,
-        value3: _builtins.str,
-        value4: _builtins.list[data.OffsetEntry],
+        text_1: _builtins.str,
+        int64_1: _builtins.int,
+        int16_1: _builtins.int,
+        text_2: _builtins.str,
+        list_1: _builtins.list[data.OffsetEntry],
     ) -> None:
         symbols = self._symbols
         self.calls.append(
@@ -2035,25 +2127,25 @@ class BrokerRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value0,
+                        text_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Int64"),
-                        value1,
+                        int64_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Int16"),
-                        value2,
+                        int16_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value3,
+                        text_2,
                         MACHINE_BITS,
                         symbols,
                     ),
@@ -2066,7 +2158,7 @@ class BrokerRecording:
                                 ),
                             ],
                         ),
-                        value4,
+                        list_1,
                         MACHINE_BITS,
                         symbols,
                     ),
@@ -2074,19 +2166,19 @@ class BrokerRecording:
             ),
         )
         return self.inner.txnOffsetCommitRequest(
-            value0,
-            value1,
-            value2,
-            value3,
-            value4,
+            text_1,
+            int64_1,
+            int16_1,
+            text_2,
+            list_1,
         )
 
     def endTxnRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
-        value2: _builtins.int,
-        value3: _builtins.bool,
+        text_1: _builtins.str,
+        int64_1: _builtins.int,
+        int16_1: _builtins.int,
+        bool_1: _builtins.bool,
     ) -> None:
         symbols = self._symbols
         self.calls.append(
@@ -2095,38 +2187,38 @@ class BrokerRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value0,
+                        text_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Int64"),
-                        value1,
+                        int64_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Int16"),
-                        value2,
+                        int16_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Bool"),
-                        value3,
+                        bool_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.endTxnRequest(value0, value1, value2, value3)
+        return self.inner.endTxnRequest(text_1, int64_1, int16_1, bool_1)
 
     def joinGroupRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.list[_builtins.str],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        list_1: _builtins.list[_builtins.str],
     ) -> _builtins.int:
         symbols = self._symbols
         self.calls.append(
@@ -2135,32 +2227,32 @@ class BrokerRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value0,
+                        text_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value1,
+                        text_2,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("List", [_schema.Named("Text")]),
-                        value2,
+                        list_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.joinGroupRequest(value0, value1, value2)
+        return self.inner.joinGroupRequest(text_1, text_2, list_1)
 
     def syncGroupRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int32_1: _builtins.int,
     ) -> _builtins.list[data.TopicPartition]:
         symbols = self._symbols
         self.calls.append(
@@ -2169,32 +2261,32 @@ class BrokerRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value0,
+                        text_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value1,
+                        text_2,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Int32"),
-                        value2,
+                        int32_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.syncGroupRequest(value0, value1, value2)
+        return self.inner.syncGroupRequest(text_1, text_2, int32_1)
 
     def heartbeatRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int32_1: _builtins.int,
     ) -> None:
         symbols = self._symbols
         self.calls.append(
@@ -2203,31 +2295,31 @@ class BrokerRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value0,
+                        text_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value1,
+                        text_2,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Int32"),
-                        value2,
+                        int32_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.heartbeatRequest(value0, value1, value2)
+        return self.inner.heartbeatRequest(text_1, text_2, int32_1)
 
     def leaveGroupRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
     ) -> None:
         symbols = self._symbols
         self.calls.append(
@@ -2236,22 +2328,22 @@ class BrokerRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value0,
+                        text_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value1,
+                        text_2,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.leaveGroupRequest(value0, value1)
+        return self.inner.leaveGroupRequest(text_1, text_2)
 
-    def describeGroupRequest(self, value0: _builtins.str) -> data.GroupView:
+    def describeGroupRequest(self, text_1: _builtins.str) -> data.GroupView:
         symbols = self._symbols
         self.calls.append(
             (
@@ -2259,21 +2351,21 @@ class BrokerRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value0,
+                        text_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.describeGroupRequest(value0)
+        return self.inner.describeGroupRequest(text_1)
 
     def offsetCommitRequest(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
-        value3: _builtins.list[data.OffsetEntry],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int32_1: _builtins.int,
+        list_1: _builtins.list[data.OffsetEntry],
     ) -> None:
         symbols = self._symbols
         self.calls.append(
@@ -2282,19 +2374,19 @@ class BrokerRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value0,
+                        text_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value1,
+                        text_2,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Int32"),
-                        value2,
+                        int32_1,
                         MACHINE_BITS,
                         symbols,
                     ),
@@ -2307,19 +2399,19 @@ class BrokerRecording:
                                 ),
                             ],
                         ),
-                        value3,
+                        list_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.offsetCommitRequest(value0, value1, value2, value3)
+        return self.inner.offsetCommitRequest(text_1, text_2, int32_1, list_1)
 
     def offsetFetchRequest(
         self,
-        value0: _builtins.str,
-        value1: data.TopicPartition,
+        text_1: _builtins.str,
+        topic_partition_1: data.TopicPartition,
     ) -> _schema.Maybe[_builtins.int]:
         symbols = self._symbols
         self.calls.append(
@@ -2328,7 +2420,7 @@ class BrokerRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value0,
+                        text_1,
                         MACHINE_BITS,
                         symbols,
                     ),
@@ -2336,14 +2428,14 @@ class BrokerRecording:
                         _schema.Named(
                             "lawtwin.kafka.model::type::TopicPartition",
                         ),
-                        value1,
+                        topic_partition_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.offsetFetchRequest(value0, value1)
+        return self.inner.offsetFetchRequest(text_1, topic_partition_1)
 
 
 class AdminRecording:
@@ -2354,7 +2446,11 @@ class AdminRecording:
         self.calls = []
         self._symbols = {} if symbols is None else symbols
 
-    def createTopic(self, value0: _builtins.str, value1: _builtins.int) -> None:
+    def createTopic(
+        self,
+        text_1: _builtins.str,
+        int32_1: _builtins.int,
+    ) -> None:
         symbols = self._symbols
         self.calls.append(
             (
@@ -2362,25 +2458,25 @@ class AdminRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value0,
+                        text_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Int32"),
-                        value1,
+                        int32_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.createTopic(value0, value1)
+        return self.inner.createTopic(text_1, int32_1)
 
     def createPartitions(
         self,
-        value0: _builtins.str,
-        value1: _builtins.int,
+        text_1: _builtins.str,
+        int32_1: _builtins.int,
     ) -> None:
         symbols = self._symbols
         self.calls.append(
@@ -2389,24 +2485,24 @@ class AdminRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value0,
+                        text_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Int32"),
-                        value1,
+                        int32_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.createPartitions(value0, value1)
+        return self.inner.createPartitions(text_1, int32_1)
 
     def partitionsFor(
         self,
-        value0: _builtins.str,
+        text_1: _builtins.str,
     ) -> _schema.Maybe[_builtins.int]:
         symbols = self._symbols
         self.calls.append(
@@ -2415,20 +2511,20 @@ class AdminRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value0,
+                        text_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.partitionsFor(value0)
+        return self.inner.partitionsFor(text_1)
 
     def listOffsets(
         self,
-        value0: data.TopicPartition,
-        value1: data.OffsetSpec,
-        value2: data.IsolationLevel,
+        topic_partition_1: data.TopicPartition,
+        offset_spec_1: data.OffsetSpec,
+        isolation_level_1: data.IsolationLevel,
     ) -> _builtins.int:
         symbols = self._symbols
         self.calls.append(
@@ -2439,13 +2535,13 @@ class AdminRecording:
                         _schema.Named(
                             "lawtwin.kafka.model::type::TopicPartition",
                         ),
-                        value0,
+                        topic_partition_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("lawtwin.kafka.model::type::OffsetSpec"),
-                        value1,
+                        offset_spec_1,
                         MACHINE_BITS,
                         symbols,
                     ),
@@ -2453,14 +2549,18 @@ class AdminRecording:
                         _schema.Named(
                             "lawtwin.kafka.model::type::IsolationLevel",
                         ),
-                        value2,
+                        isolation_level_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.listOffsets(value0, value1, value2)
+        return self.inner.listOffsets(
+            topic_partition_1,
+            offset_spec_1,
+            isolation_level_1,
+        )
 
 
 class PartitionerRecording:
@@ -2473,8 +2573,8 @@ class PartitionerRecording:
 
     def choosePartition(
         self,
-        value0: _schema.Maybe[_builtins.bytes],
-        value1: _builtins.int,
+        maybe_1: _schema.Maybe[_builtins.bytes],
+        int32_1: _builtins.int,
     ) -> _builtins.int:
         symbols = self._symbols
         self.calls.append(
@@ -2483,20 +2583,20 @@ class PartitionerRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                        value0,
+                        maybe_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Int32"),
-                        value1,
+                        int32_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.choosePartition(value0, value1)
+        return self.inner.choosePartition(maybe_1, int32_1)
 
 
 class ProducerRecording:
@@ -2509,7 +2609,7 @@ class ProducerRecording:
 
     def send(
         self,
-        value0: data.ProducerRecord,
+        producer_record_1: data.ProducerRecord,
     ) -> _schema.Either[data.KafkaError, data.RecordMetadata]:
         symbols = self._symbols
         self.calls.append(
@@ -2518,14 +2618,14 @@ class ProducerRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("lawtwin.kafka::type::ProducerRecord"),
-                        value0,
+                        producer_record_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.send(value0)
+        return self.inner.send(producer_record_1)
 
     def flush(self) -> None:
         symbols = self._symbols
@@ -2560,7 +2660,7 @@ class ConsumerRecording:
         self.calls = []
         self._symbols = {} if symbols is None else symbols
 
-    def assign(self, value0: _builtins.list[data.TopicPartition]) -> None:
+    def assign(self, list_1: _builtins.list[data.TopicPartition]) -> None:
         symbols = self._symbols
         self.calls.append(
             (
@@ -2575,20 +2675,20 @@ class ConsumerRecording:
                                 ),
                             ],
                         ),
-                        value0,
+                        list_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.assign(value0)
+        return self.inner.assign(list_1)
 
     def subscribe(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.list[_builtins.str],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        list_1: _builtins.list[_builtins.str],
     ) -> _schema.Either[data.KafkaError, _builtins.list[data.TopicPartition]]:
         symbols = self._symbols
         self.calls.append(
@@ -2597,30 +2697,30 @@ class ConsumerRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value0,
+                        text_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value1,
+                        text_2,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("List", [_schema.Named("Text")]),
-                        value2,
+                        list_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.subscribe(value0, value1, value2)
+        return self.inner.subscribe(text_1, text_2, list_1)
 
     def poll(
         self,
-        value0: _builtins.int,
+        int32_1: _builtins.int,
     ) -> _schema.Either[data.KafkaError, _builtins.list[data.ConsumerRecord]]:
         symbols = self._symbols
         self.calls.append(
@@ -2629,14 +2729,14 @@ class ConsumerRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Int32"),
-                        value0,
+                        int32_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.poll(value0)
+        return self.inner.poll(int32_1)
 
     def commitSync(self) -> _schema.Either[data.KafkaError, ls.Absence]:
         symbols = self._symbols
@@ -2645,8 +2745,8 @@ class ConsumerRecording:
 
     def seek(
         self,
-        value0: data.TopicPartition,
-        value1: _builtins.int,
+        topic_partition_1: data.TopicPartition,
+        int64_1: _builtins.int,
     ) -> _schema.Either[data.KafkaError, ls.Absence]:
         symbols = self._symbols
         self.calls.append(
@@ -2657,24 +2757,24 @@ class ConsumerRecording:
                         _schema.Named(
                             "lawtwin.kafka.model::type::TopicPartition",
                         ),
-                        value0,
+                        topic_partition_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Int64"),
-                        value1,
+                        int64_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.seek(value0, value1)
+        return self.inner.seek(topic_partition_1, int64_1)
 
     def position(
         self,
-        value0: data.TopicPartition,
+        topic_partition_1: data.TopicPartition,
     ) -> _schema.Either[data.KafkaError, _builtins.int]:
         symbols = self._symbols
         self.calls.append(
@@ -2685,18 +2785,18 @@ class ConsumerRecording:
                         _schema.Named(
                             "lawtwin.kafka.model::type::TopicPartition",
                         ),
-                        value0,
+                        topic_partition_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.position(value0)
+        return self.inner.position(topic_partition_1)
 
     def committedOffset(
         self,
-        value0: data.TopicPartition,
+        topic_partition_1: data.TopicPartition,
     ) -> _schema.Maybe[_builtins.int]:
         symbols = self._symbols
         self.calls.append(
@@ -2707,16 +2807,16 @@ class ConsumerRecording:
                         _schema.Named(
                             "lawtwin.kafka.model::type::TopicPartition",
                         ),
-                        value0,
+                        topic_partition_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.committedOffset(value0)
+        return self.inner.committedOffset(topic_partition_1)
 
-    def setIsolationLevel(self, value0: data.IsolationLevel) -> None:
+    def setIsolationLevel(self, isolation_level_1: data.IsolationLevel) -> None:
         symbols = self._symbols
         self.calls.append(
             (
@@ -2726,14 +2826,14 @@ class ConsumerRecording:
                         _schema.Named(
                             "lawtwin.kafka.model::type::IsolationLevel",
                         ),
-                        value0,
+                        isolation_level_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.setIsolationLevel(value0)
+        return self.inner.setIsolationLevel(isolation_level_1)
 
     def close(self) -> None:
         symbols = self._symbols
@@ -2751,9 +2851,9 @@ class GroupCoordinatorRecording:
 
     def joinGroup(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.list[_builtins.str],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        list_1: _builtins.list[_builtins.str],
     ) -> _builtins.int:
         symbols = self._symbols
         self.calls.append(
@@ -2762,32 +2862,32 @@ class GroupCoordinatorRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value0,
+                        text_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value1,
+                        text_2,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("List", [_schema.Named("Text")]),
-                        value2,
+                        list_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.joinGroup(value0, value1, value2)
+        return self.inner.joinGroup(text_1, text_2, list_1)
 
     def syncGroup(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int32_1: _builtins.int,
     ) -> _builtins.list[data.TopicPartition]:
         symbols = self._symbols
         self.calls.append(
@@ -2796,32 +2896,32 @@ class GroupCoordinatorRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value0,
+                        text_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value1,
+                        text_2,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Int32"),
-                        value2,
+                        int32_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.syncGroup(value0, value1, value2)
+        return self.inner.syncGroup(text_1, text_2, int32_1)
 
     def heartbeat(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int32_1: _builtins.int,
     ) -> None:
         symbols = self._symbols
         self.calls.append(
@@ -2830,28 +2930,28 @@ class GroupCoordinatorRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value0,
+                        text_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value1,
+                        text_2,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Int32"),
-                        value2,
+                        int32_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.heartbeat(value0, value1, value2)
+        return self.inner.heartbeat(text_1, text_2, int32_1)
 
-    def leaveGroup(self, value0: _builtins.str, value1: _builtins.str) -> None:
+    def leaveGroup(self, text_1: _builtins.str, text_2: _builtins.str) -> None:
         symbols = self._symbols
         self.calls.append(
             (
@@ -2859,22 +2959,22 @@ class GroupCoordinatorRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value0,
+                        text_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value1,
+                        text_2,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.leaveGroup(value0, value1)
+        return self.inner.leaveGroup(text_1, text_2)
 
-    def describeGroup(self, value0: _builtins.str) -> data.GroupView:
+    def describeGroup(self, text_1: _builtins.str) -> data.GroupView:
         symbols = self._symbols
         self.calls.append(
             (
@@ -2882,21 +2982,21 @@ class GroupCoordinatorRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value0,
+                        text_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.describeGroup(value0)
+        return self.inner.describeGroup(text_1)
 
     def commitOffsets(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
-        value3: _builtins.list[data.OffsetEntry],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int32_1: _builtins.int,
+        list_1: _builtins.list[data.OffsetEntry],
     ) -> None:
         symbols = self._symbols
         self.calls.append(
@@ -2905,19 +3005,19 @@ class GroupCoordinatorRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value0,
+                        text_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value1,
+                        text_2,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Int32"),
-                        value2,
+                        int32_1,
                         MACHINE_BITS,
                         symbols,
                     ),
@@ -2930,19 +3030,19 @@ class GroupCoordinatorRecording:
                                 ),
                             ],
                         ),
-                        value3,
+                        list_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.commitOffsets(value0, value1, value2, value3)
+        return self.inner.commitOffsets(text_1, text_2, int32_1, list_1)
 
     def fetchOffset(
         self,
-        value0: _builtins.str,
-        value1: data.TopicPartition,
+        text_1: _builtins.str,
+        topic_partition_1: data.TopicPartition,
     ) -> _schema.Maybe[_builtins.int]:
         symbols = self._symbols
         self.calls.append(
@@ -2951,7 +3051,7 @@ class GroupCoordinatorRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value0,
+                        text_1,
                         MACHINE_BITS,
                         symbols,
                     ),
@@ -2959,14 +3059,14 @@ class GroupCoordinatorRecording:
                         _schema.Named(
                             "lawtwin.kafka.model::type::TopicPartition",
                         ),
-                        value1,
+                        topic_partition_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.fetchOffset(value0, value1)
+        return self.inner.fetchOffset(text_1, topic_partition_1)
 
 
 class TransactionsRecording:
@@ -2979,7 +3079,7 @@ class TransactionsRecording:
 
     def initTransactions(
         self,
-        value0: _builtins.str,
+        text_1: _builtins.str,
     ) -> _schema.Either[data.KafkaError, data.ProducerIdAndEpoch]:
         symbols = self._symbols
         self.calls.append(
@@ -2988,14 +3088,14 @@ class TransactionsRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value0,
+                        text_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.initTransactions(value0)
+        return self.inner.initTransactions(text_1)
 
     def beginTransaction(self) -> _schema.Either[data.KafkaError, ls.Absence]:
         symbols = self._symbols
@@ -3004,7 +3104,7 @@ class TransactionsRecording:
 
     def addPartitionsToTransaction(
         self,
-        value0: _builtins.list[data.TopicPartition],
+        list_1: _builtins.list[data.TopicPartition],
     ) -> _schema.Either[data.KafkaError, ls.Absence]:
         symbols = self._symbols
         self.calls.append(
@@ -3020,18 +3120,18 @@ class TransactionsRecording:
                                 ),
                             ],
                         ),
-                        value0,
+                        list_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.addPartitionsToTransaction(value0)
+        return self.inner.addPartitionsToTransaction(list_1)
 
     def sendInTransaction(
         self,
-        value0: data.ProducerRecord,
+        producer_record_1: data.ProducerRecord,
     ) -> _schema.Either[data.KafkaError, data.RecordMetadata]:
         symbols = self._symbols
         self.calls.append(
@@ -3040,19 +3140,19 @@ class TransactionsRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("lawtwin.kafka::type::ProducerRecord"),
-                        value0,
+                        producer_record_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.sendInTransaction(value0)
+        return self.inner.sendInTransaction(producer_record_1)
 
     def sendOffsetsToTransaction(
         self,
-        value0: _builtins.str,
-        value1: _builtins.list[data.OffsetEntry],
+        text_1: _builtins.str,
+        list_1: _builtins.list[data.OffsetEntry],
     ) -> _schema.Either[data.KafkaError, ls.Absence]:
         symbols = self._symbols
         self.calls.append(
@@ -3061,7 +3161,7 @@ class TransactionsRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value0,
+                        text_1,
                         MACHINE_BITS,
                         symbols,
                     ),
@@ -3074,14 +3174,14 @@ class TransactionsRecording:
                                 ),
                             ],
                         ),
-                        value1,
+                        list_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.sendOffsetsToTransaction(value0, value1)
+        return self.inner.sendOffsetsToTransaction(text_1, list_1)
 
     def commitTransaction(self) -> _schema.Either[data.KafkaError, ls.Absence]:
         symbols = self._symbols

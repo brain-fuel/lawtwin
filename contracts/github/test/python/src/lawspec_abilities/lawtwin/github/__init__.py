@@ -24,70 +24,70 @@ class IssuesApi(_typing.Protocol):
 
     def issuesListLabelsForRepo(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _schema.Maybe[_builtins.int],
-        value3: _schema.Maybe[_builtins.int],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        maybe_1: _schema.Maybe[_builtins.int],
+        maybe_2: _schema.Maybe[_builtins.int],
     ) -> _builtins.list[data.Label]: ...
     def issuesCreateLabel(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: data.IssuesCreateLabelBody,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        issues_create_label_body_1: data.IssuesCreateLabelBody,
     ) -> data.Label: ...
     def issuesGetLabel(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.str,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        text_3: _builtins.str,
     ) -> data.Label: ...
     def issuesDeleteLabel(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.str,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        text_3: _builtins.str,
     ) -> None: ...
     def issuesUpdateLabel(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.str,
-        value3: _schema.Maybe[data.IssuesUpdateLabelBody],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        text_3: _builtins.str,
+        maybe_1: _schema.Maybe[data.IssuesUpdateLabelBody],
     ) -> data.Label: ...
     def issuesListMilestones(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _schema.Maybe[data.IssuesListMilestonesState],
-        value3: _schema.Maybe[data.IssuesListMilestonesSort],
-        value4: _schema.Maybe[data.IssuesListMilestonesDirection],
-        value5: _schema.Maybe[_builtins.int],
-        value6: _schema.Maybe[_builtins.int],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        maybe_1: _schema.Maybe[data.IssuesListMilestonesState],
+        maybe_2: _schema.Maybe[data.IssuesListMilestonesSort],
+        maybe_3: _schema.Maybe[data.IssuesListMilestonesDirection],
+        maybe_4: _schema.Maybe[_builtins.int],
+        maybe_5: _schema.Maybe[_builtins.int],
     ) -> _builtins.list[data.Milestone]: ...
     def issuesCreateMilestone(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: data.IssuesCreateMilestoneBody,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        issues_create_milestone_body_1: data.IssuesCreateMilestoneBody,
     ) -> data.Milestone: ...
     def issuesGetMilestone(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int64_1: _builtins.int,
     ) -> data.Milestone: ...
     def issuesDeleteMilestone(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int64_1: _builtins.int,
     ) -> None: ...
     def issuesUpdateMilestone(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
-        value3: _schema.Maybe[data.IssuesUpdateMilestoneBody],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int64_1: _builtins.int,
+        maybe_1: _schema.Maybe[data.IssuesUpdateMilestoneBody],
     ) -> data.Milestone: ...
 
 
@@ -103,233 +103,242 @@ class Reference:
 
     def issuesListLabelsForRepo(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _schema.Maybe[_builtins.int],
-        value3: _schema.Maybe[_builtins.int],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        maybe_1: _schema.Maybe[_builtins.int],
+        maybe_2: _schema.Maybe[_builtins.int],
     ) -> _builtins.list[data.Label]:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_text(value1, symbols)
-        argument2 = _typed.nin_maybe_int64(value2, symbols)
-        argument3 = _typed.nin_maybe_int64(value3, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_text_2 = _typed.nin_text(text_2, symbols)
+        typed_maybe_1 = _typed.nin_maybe_int64(maybe_1, symbols)
+        typed_maybe_2 = _typed.nin_maybe_int64(maybe_2, symbols)
         with self._lock:
             pair = _typed.reference_issues_list_labels_for_repo(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
-                argument3,
+                typed_text_1,
+                typed_text_2,
+                typed_maybe_1,
+                typed_maybe_2,
             )
             self._state = pair[1]
         return _typed.nout_list_label(pair[0], symbols)
 
     def issuesCreateLabel(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: data.IssuesCreateLabelBody,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        issues_create_label_body_1: data.IssuesCreateLabelBody,
     ) -> data.Label:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_text(value1, symbols)
-        argument2 = _typed.nin_issues_create_label_body(value2, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_text_2 = _typed.nin_text(text_2, symbols)
+        typed_issues_create_label_body_1 = _typed.nin_issues_create_label_body(
+            issues_create_label_body_1,
+            symbols,
+        )
         with self._lock:
             pair = _typed.reference_issues_create_label(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
+                typed_text_1,
+                typed_text_2,
+                typed_issues_create_label_body_1,
             )
             self._state = pair[1]
         return _typed.nout_label(pair[0], symbols)
 
     def issuesGetLabel(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.str,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        text_3: _builtins.str,
     ) -> data.Label:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_text(value1, symbols)
-        argument2 = _typed.nin_text(value2, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_text_2 = _typed.nin_text(text_2, symbols)
+        typed_text_3 = _typed.nin_text(text_3, symbols)
         with self._lock:
             pair = _typed.reference_issues_get_label(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
+                typed_text_1,
+                typed_text_2,
+                typed_text_3,
             )
             self._state = pair[1]
         return _typed.nout_label(pair[0], symbols)
 
     def issuesDeleteLabel(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.str,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        text_3: _builtins.str,
     ) -> None:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_text(value1, symbols)
-        argument2 = _typed.nin_text(value2, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_text_2 = _typed.nin_text(text_2, symbols)
+        typed_text_3 = _typed.nin_text(text_3, symbols)
         with self._lock:
             pair = _typed.reference_issues_delete_label(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
+                typed_text_1,
+                typed_text_2,
+                typed_text_3,
             )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
     def issuesUpdateLabel(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.str,
-        value3: _schema.Maybe[data.IssuesUpdateLabelBody],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        text_3: _builtins.str,
+        maybe_1: _schema.Maybe[data.IssuesUpdateLabelBody],
     ) -> data.Label:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_text(value1, symbols)
-        argument2 = _typed.nin_text(value2, symbols)
-        argument3 = _typed.nin_maybe_issues_update_label_body(value3, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_text_2 = _typed.nin_text(text_2, symbols)
+        typed_text_3 = _typed.nin_text(text_3, symbols)
+        typed_maybe_1 = _typed.nin_maybe_issues_update_label_body(
+            maybe_1,
+            symbols,
+        )
         with self._lock:
             pair = _typed.reference_issues_update_label(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
-                argument3,
+                typed_text_1,
+                typed_text_2,
+                typed_text_3,
+                typed_maybe_1,
             )
             self._state = pair[1]
         return _typed.nout_label(pair[0], symbols)
 
     def issuesListMilestones(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _schema.Maybe[data.IssuesListMilestonesState],
-        value3: _schema.Maybe[data.IssuesListMilestonesSort],
-        value4: _schema.Maybe[data.IssuesListMilestonesDirection],
-        value5: _schema.Maybe[_builtins.int],
-        value6: _schema.Maybe[_builtins.int],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        maybe_1: _schema.Maybe[data.IssuesListMilestonesState],
+        maybe_2: _schema.Maybe[data.IssuesListMilestonesSort],
+        maybe_3: _schema.Maybe[data.IssuesListMilestonesDirection],
+        maybe_4: _schema.Maybe[_builtins.int],
+        maybe_5: _schema.Maybe[_builtins.int],
     ) -> _builtins.list[data.Milestone]:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_text(value1, symbols)
-        argument2 = _typed.nin_maybe_issues_list_milestones_state(
-            value2,
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_text_2 = _typed.nin_text(text_2, symbols)
+        typed_maybe_1 = _typed.nin_maybe_issues_list_milestones_state(
+            maybe_1,
             symbols,
         )
-        argument3 = _typed.nin_maybe_issues_list_milestones_sort(
-            value3,
+        typed_maybe_2 = _typed.nin_maybe_issues_list_milestones_sort(
+            maybe_2,
             symbols,
         )
-        argument4 = _typed.nin_maybe_issues_list_milestones_direction(
-            value4,
+        typed_maybe_3 = _typed.nin_maybe_issues_list_milestones_direction(
+            maybe_3,
             symbols,
         )
-        argument5 = _typed.nin_maybe_int64(value5, symbols)
-        argument6 = _typed.nin_maybe_int64(value6, symbols)
+        typed_maybe_4 = _typed.nin_maybe_int64(maybe_4, symbols)
+        typed_maybe_5 = _typed.nin_maybe_int64(maybe_5, symbols)
         with self._lock:
             pair = _typed.reference_issues_list_milestones(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
-                argument3,
-                argument4,
-                argument5,
-                argument6,
+                typed_text_1,
+                typed_text_2,
+                typed_maybe_1,
+                typed_maybe_2,
+                typed_maybe_3,
+                typed_maybe_4,
+                typed_maybe_5,
             )
             self._state = pair[1]
         return _typed.nout_list_milestone(pair[0], symbols)
 
     def issuesCreateMilestone(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: data.IssuesCreateMilestoneBody,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        issues_create_milestone_body_1: data.IssuesCreateMilestoneBody,
     ) -> data.Milestone:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_text(value1, symbols)
-        argument2 = _typed.nin_issues_create_milestone_body(value2, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_text_2 = _typed.nin_text(text_2, symbols)
+        typed_issues_create_milestone_body_1 = _typed.nin_issues_create_milestone_body(
+            issues_create_milestone_body_1,
+            symbols,
+        )
         with self._lock:
             pair = _typed.reference_issues_create_milestone(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
+                typed_text_1,
+                typed_text_2,
+                typed_issues_create_milestone_body_1,
             )
             self._state = pair[1]
         return _typed.nout_milestone(pair[0], symbols)
 
     def issuesGetMilestone(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int64_1: _builtins.int,
     ) -> data.Milestone:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_text(value1, symbols)
-        argument2 = _typed.nin_int64(value2, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_text_2 = _typed.nin_text(text_2, symbols)
+        typed_int64_1 = _typed.nin_int64(int64_1, symbols)
         with self._lock:
             pair = _typed.reference_issues_get_milestone(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
+                typed_text_1,
+                typed_text_2,
+                typed_int64_1,
             )
             self._state = pair[1]
         return _typed.nout_milestone(pair[0], symbols)
 
     def issuesDeleteMilestone(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int64_1: _builtins.int,
     ) -> None:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_text(value1, symbols)
-        argument2 = _typed.nin_int64(value2, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_text_2 = _typed.nin_text(text_2, symbols)
+        typed_int64_1 = _typed.nin_int64(int64_1, symbols)
         with self._lock:
             pair = _typed.reference_issues_delete_milestone(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
+                typed_text_1,
+                typed_text_2,
+                typed_int64_1,
             )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
     def issuesUpdateMilestone(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
-        value3: _schema.Maybe[data.IssuesUpdateMilestoneBody],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int64_1: _builtins.int,
+        maybe_1: _schema.Maybe[data.IssuesUpdateMilestoneBody],
     ) -> data.Milestone:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_text(value1, symbols)
-        argument2 = _typed.nin_int64(value2, symbols)
-        argument3 = _typed.nin_maybe_issues_update_milestone_body(
-            value3,
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_text_2 = _typed.nin_text(text_2, symbols)
+        typed_int64_1 = _typed.nin_int64(int64_1, symbols)
+        typed_maybe_1 = _typed.nin_maybe_issues_update_milestone_body(
+            maybe_1,
             symbols,
         )
         with self._lock:
             pair = _typed.reference_issues_update_milestone(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
-                argument3,
+                typed_text_1,
+                typed_text_2,
+                typed_int64_1,
+                typed_maybe_1,
             )
             self._state = pair[1]
         return _typed.nout_milestone(pair[0], symbols)
@@ -356,18 +365,18 @@ class Reference:
 
     def try_issuesListLabelsForRepo(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _schema.Maybe[_builtins.int],
-        value3: _schema.Maybe[_builtins.int],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        maybe_1: _schema.Maybe[_builtins.int],
+        maybe_2: _schema.Maybe[_builtins.int],
     ) -> _schema.Either[data.ApiError, _builtins.list[data.Label]]:
         """issuesListLabelsForRepo, with the failure it raises as Left rather than an exception."""
         try:
             return _schema.Right(self.issuesListLabelsForRepo(
-                value0,
-                value1,
-                value2,
-                value3,
+                text_1,
+                text_2,
+                maybe_1,
+                maybe_2,
             ))
         except ls.Failure as failure:
             if (
@@ -386,13 +395,17 @@ class Reference:
 
     def try_issuesCreateLabel(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: data.IssuesCreateLabelBody,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        issues_create_label_body_1: data.IssuesCreateLabelBody,
     ) -> _schema.Either[data.ApiError, data.Label]:
         """issuesCreateLabel, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.issuesCreateLabel(value0, value1, value2))
+            return _schema.Right(self.issuesCreateLabel(
+                text_1,
+                text_2,
+                issues_create_label_body_1,
+            ))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -410,13 +423,13 @@ class Reference:
 
     def try_issuesGetLabel(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.str,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        text_3: _builtins.str,
     ) -> _schema.Either[data.ApiError, data.Label]:
         """issuesGetLabel, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.issuesGetLabel(value0, value1, value2))
+            return _schema.Right(self.issuesGetLabel(text_1, text_2, text_3))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -434,13 +447,13 @@ class Reference:
 
     def try_issuesDeleteLabel(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.str,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        text_3: _builtins.str,
     ) -> _schema.Either[data.ApiError, None]:
         """issuesDeleteLabel, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.issuesDeleteLabel(value0, value1, value2))
+            return _schema.Right(self.issuesDeleteLabel(text_1, text_2, text_3))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -458,18 +471,18 @@ class Reference:
 
     def try_issuesUpdateLabel(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.str,
-        value3: _schema.Maybe[data.IssuesUpdateLabelBody],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        text_3: _builtins.str,
+        maybe_1: _schema.Maybe[data.IssuesUpdateLabelBody],
     ) -> _schema.Either[data.ApiError, data.Label]:
         """issuesUpdateLabel, with the failure it raises as Left rather than an exception."""
         try:
             return _schema.Right(self.issuesUpdateLabel(
-                value0,
-                value1,
-                value2,
-                value3,
+                text_1,
+                text_2,
+                text_3,
+                maybe_1,
             ))
         except ls.Failure as failure:
             if (
@@ -488,24 +501,24 @@ class Reference:
 
     def try_issuesListMilestones(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _schema.Maybe[data.IssuesListMilestonesState],
-        value3: _schema.Maybe[data.IssuesListMilestonesSort],
-        value4: _schema.Maybe[data.IssuesListMilestonesDirection],
-        value5: _schema.Maybe[_builtins.int],
-        value6: _schema.Maybe[_builtins.int],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        maybe_1: _schema.Maybe[data.IssuesListMilestonesState],
+        maybe_2: _schema.Maybe[data.IssuesListMilestonesSort],
+        maybe_3: _schema.Maybe[data.IssuesListMilestonesDirection],
+        maybe_4: _schema.Maybe[_builtins.int],
+        maybe_5: _schema.Maybe[_builtins.int],
     ) -> _schema.Either[data.ApiError, _builtins.list[data.Milestone]]:
         """issuesListMilestones, with the failure it raises as Left rather than an exception."""
         try:
             return _schema.Right(self.issuesListMilestones(
-                value0,
-                value1,
-                value2,
-                value3,
-                value4,
-                value5,
-                value6,
+                text_1,
+                text_2,
+                maybe_1,
+                maybe_2,
+                maybe_3,
+                maybe_4,
+                maybe_5,
             ))
         except ls.Failure as failure:
             if (
@@ -524,16 +537,16 @@ class Reference:
 
     def try_issuesCreateMilestone(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: data.IssuesCreateMilestoneBody,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        issues_create_milestone_body_1: data.IssuesCreateMilestoneBody,
     ) -> _schema.Either[data.ApiError, data.Milestone]:
         """issuesCreateMilestone, with the failure it raises as Left rather than an exception."""
         try:
             return _schema.Right(self.issuesCreateMilestone(
-                value0,
-                value1,
-                value2,
+                text_1,
+                text_2,
+                issues_create_milestone_body_1,
             ))
         except ls.Failure as failure:
             if (
@@ -552,16 +565,16 @@ class Reference:
 
     def try_issuesGetMilestone(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int64_1: _builtins.int,
     ) -> _schema.Either[data.ApiError, data.Milestone]:
         """issuesGetMilestone, with the failure it raises as Left rather than an exception."""
         try:
             return _schema.Right(self.issuesGetMilestone(
-                value0,
-                value1,
-                value2,
+                text_1,
+                text_2,
+                int64_1,
             ))
         except ls.Failure as failure:
             if (
@@ -580,16 +593,16 @@ class Reference:
 
     def try_issuesDeleteMilestone(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int64_1: _builtins.int,
     ) -> _schema.Either[data.ApiError, None]:
         """issuesDeleteMilestone, with the failure it raises as Left rather than an exception."""
         try:
             return _schema.Right(self.issuesDeleteMilestone(
-                value0,
-                value1,
-                value2,
+                text_1,
+                text_2,
+                int64_1,
             ))
         except ls.Failure as failure:
             if (
@@ -608,18 +621,18 @@ class Reference:
 
     def try_issuesUpdateMilestone(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
-        value3: _schema.Maybe[data.IssuesUpdateMilestoneBody],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int64_1: _builtins.int,
+        maybe_1: _schema.Maybe[data.IssuesUpdateMilestoneBody],
     ) -> _schema.Either[data.ApiError, data.Milestone]:
         """issuesUpdateMilestone, with the failure it raises as Left rather than an exception."""
         try:
             return _schema.Right(self.issuesUpdateMilestone(
-                value0,
-                value1,
-                value2,
-                value3,
+                text_1,
+                text_2,
+                int64_1,
+                maybe_1,
             ))
         except ls.Failure as failure:
             if (
@@ -647,10 +660,10 @@ class IssuesApiRecording:
 
     def issuesListLabelsForRepo(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _schema.Maybe[_builtins.int],
-        value3: _schema.Maybe[_builtins.int],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        maybe_1: _schema.Maybe[_builtins.int],
+        maybe_2: _schema.Maybe[_builtins.int],
     ) -> _builtins.list[data.Label]:
         symbols = self._symbols
         self.calls.append(
@@ -659,25 +672,25 @@ class IssuesApiRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value0,
+                        text_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value1,
+                        text_2,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Maybe", [_schema.Named("Int64")]),
-                        value2,
+                        maybe_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Maybe", [_schema.Named("Int64")]),
-                        value3,
+                        maybe_2,
                         MACHINE_BITS,
                         symbols,
                     ),
@@ -685,17 +698,17 @@ class IssuesApiRecording:
             ),
         )
         return self.inner.issuesListLabelsForRepo(
-            value0,
-            value1,
-            value2,
-            value3,
+            text_1,
+            text_2,
+            maybe_1,
+            maybe_2,
         )
 
     def issuesCreateLabel(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: data.IssuesCreateLabelBody,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        issues_create_label_body_1: data.IssuesCreateLabelBody,
     ) -> data.Label:
         symbols = self._symbols
         self.calls.append(
@@ -704,13 +717,13 @@ class IssuesApiRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value0,
+                        text_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value1,
+                        text_2,
                         MACHINE_BITS,
                         symbols,
                     ),
@@ -718,20 +731,24 @@ class IssuesApiRecording:
                         _schema.Named(
                             "lawtwin.github.model::type::IssuesCreateLabelBody",
                         ),
-                        value2,
+                        issues_create_label_body_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.issuesCreateLabel(value0, value1, value2)
+        return self.inner.issuesCreateLabel(
+            text_1,
+            text_2,
+            issues_create_label_body_1,
+        )
 
     def issuesGetLabel(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.str,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        text_3: _builtins.str,
     ) -> data.Label:
         symbols = self._symbols
         self.calls.append(
@@ -740,32 +757,32 @@ class IssuesApiRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value0,
+                        text_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value1,
+                        text_2,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value2,
+                        text_3,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.issuesGetLabel(value0, value1, value2)
+        return self.inner.issuesGetLabel(text_1, text_2, text_3)
 
     def issuesDeleteLabel(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.str,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        text_3: _builtins.str,
     ) -> None:
         symbols = self._symbols
         self.calls.append(
@@ -774,33 +791,33 @@ class IssuesApiRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value0,
+                        text_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value1,
+                        text_2,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value2,
+                        text_3,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.issuesDeleteLabel(value0, value1, value2)
+        return self.inner.issuesDeleteLabel(text_1, text_2, text_3)
 
     def issuesUpdateLabel(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.str,
-        value3: _schema.Maybe[data.IssuesUpdateLabelBody],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        text_3: _builtins.str,
+        maybe_1: _schema.Maybe[data.IssuesUpdateLabelBody],
     ) -> data.Label:
         symbols = self._symbols
         self.calls.append(
@@ -809,19 +826,19 @@ class IssuesApiRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value0,
+                        text_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value1,
+                        text_2,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value2,
+                        text_3,
                         MACHINE_BITS,
                         symbols,
                     ),
@@ -834,24 +851,24 @@ class IssuesApiRecording:
                                 ),
                             ],
                         ),
-                        value3,
+                        maybe_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.issuesUpdateLabel(value0, value1, value2, value3)
+        return self.inner.issuesUpdateLabel(text_1, text_2, text_3, maybe_1)
 
     def issuesListMilestones(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _schema.Maybe[data.IssuesListMilestonesState],
-        value3: _schema.Maybe[data.IssuesListMilestonesSort],
-        value4: _schema.Maybe[data.IssuesListMilestonesDirection],
-        value5: _schema.Maybe[_builtins.int],
-        value6: _schema.Maybe[_builtins.int],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        maybe_1: _schema.Maybe[data.IssuesListMilestonesState],
+        maybe_2: _schema.Maybe[data.IssuesListMilestonesSort],
+        maybe_3: _schema.Maybe[data.IssuesListMilestonesDirection],
+        maybe_4: _schema.Maybe[_builtins.int],
+        maybe_5: _schema.Maybe[_builtins.int],
     ) -> _builtins.list[data.Milestone]:
         symbols = self._symbols
         self.calls.append(
@@ -860,13 +877,13 @@ class IssuesApiRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value0,
+                        text_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value1,
+                        text_2,
                         MACHINE_BITS,
                         symbols,
                     ),
@@ -879,7 +896,7 @@ class IssuesApiRecording:
                                 ),
                             ],
                         ),
-                        value2,
+                        maybe_1,
                         MACHINE_BITS,
                         symbols,
                     ),
@@ -892,7 +909,7 @@ class IssuesApiRecording:
                                 ),
                             ],
                         ),
-                        value3,
+                        maybe_2,
                         MACHINE_BITS,
                         symbols,
                     ),
@@ -905,19 +922,19 @@ class IssuesApiRecording:
                                 ),
                             ],
                         ),
-                        value4,
+                        maybe_3,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Maybe", [_schema.Named("Int64")]),
-                        value5,
+                        maybe_4,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Maybe", [_schema.Named("Int64")]),
-                        value6,
+                        maybe_5,
                         MACHINE_BITS,
                         symbols,
                     ),
@@ -925,20 +942,20 @@ class IssuesApiRecording:
             ),
         )
         return self.inner.issuesListMilestones(
-            value0,
-            value1,
-            value2,
-            value3,
-            value4,
-            value5,
-            value6,
+            text_1,
+            text_2,
+            maybe_1,
+            maybe_2,
+            maybe_3,
+            maybe_4,
+            maybe_5,
         )
 
     def issuesCreateMilestone(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: data.IssuesCreateMilestoneBody,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        issues_create_milestone_body_1: data.IssuesCreateMilestoneBody,
     ) -> data.Milestone:
         symbols = self._symbols
         self.calls.append(
@@ -947,13 +964,13 @@ class IssuesApiRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value0,
+                        text_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value1,
+                        text_2,
                         MACHINE_BITS,
                         symbols,
                     ),
@@ -961,20 +978,24 @@ class IssuesApiRecording:
                         _schema.Named(
                             "lawtwin.github.model::type::IssuesCreateMilestoneBody",
                         ),
-                        value2,
+                        issues_create_milestone_body_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.issuesCreateMilestone(value0, value1, value2)
+        return self.inner.issuesCreateMilestone(
+            text_1,
+            text_2,
+            issues_create_milestone_body_1,
+        )
 
     def issuesGetMilestone(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int64_1: _builtins.int,
     ) -> data.Milestone:
         symbols = self._symbols
         self.calls.append(
@@ -983,32 +1004,32 @@ class IssuesApiRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value0,
+                        text_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value1,
+                        text_2,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Int64"),
-                        value2,
+                        int64_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.issuesGetMilestone(value0, value1, value2)
+        return self.inner.issuesGetMilestone(text_1, text_2, int64_1)
 
     def issuesDeleteMilestone(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int64_1: _builtins.int,
     ) -> None:
         symbols = self._symbols
         self.calls.append(
@@ -1017,33 +1038,33 @@ class IssuesApiRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value0,
+                        text_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value1,
+                        text_2,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Int64"),
-                        value2,
+                        int64_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.issuesDeleteMilestone(value0, value1, value2)
+        return self.inner.issuesDeleteMilestone(text_1, text_2, int64_1)
 
     def issuesUpdateMilestone(
         self,
-        value0: _builtins.str,
-        value1: _builtins.str,
-        value2: _builtins.int,
-        value3: _schema.Maybe[data.IssuesUpdateMilestoneBody],
+        text_1: _builtins.str,
+        text_2: _builtins.str,
+        int64_1: _builtins.int,
+        maybe_1: _schema.Maybe[data.IssuesUpdateMilestoneBody],
     ) -> data.Milestone:
         symbols = self._symbols
         self.calls.append(
@@ -1052,19 +1073,19 @@ class IssuesApiRecording:
                 [
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value0,
+                        text_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Text"),
-                        value1,
+                        text_2,
                         MACHINE_BITS,
                         symbols,
                     ),
                     ls.handler_schema(_lawspec_schema).from_native(
                         _schema.Named("Int64"),
-                        value2,
+                        int64_1,
                         MACHINE_BITS,
                         symbols,
                     ),
@@ -1077,11 +1098,16 @@ class IssuesApiRecording:
                                 ),
                             ],
                         ),
-                        value3,
+                        maybe_1,
                         MACHINE_BITS,
                         symbols,
                     ),
                 ],
             ),
         )
-        return self.inner.issuesUpdateMilestone(value0, value1, value2, value3)
+        return self.inner.issuesUpdateMilestone(
+            text_1,
+            text_2,
+            int64_1,
+            maybe_1,
+        )

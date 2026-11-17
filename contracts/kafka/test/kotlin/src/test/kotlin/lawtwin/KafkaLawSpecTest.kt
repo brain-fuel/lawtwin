@@ -31,19 +31,19 @@ private val int32Codec = SCHEMA.scalar("Int32", MACHINE_BITS, kotlin.Int::class.
 
 private fun callAdapterConnectCluster(
     symbols: MutableMap<String, Any>,
-    value0: () -> LawSpecRuntime.Value,
+    unit1: () -> LawSpecRuntime.Value,
 ): LawSpecRuntime.Value {
     return LawSpecDataCodecs.clusterCodec(SCHEMA, MACHINE_BITS, symbols)
-        .encode(Kafka.connectCluster(unitCodec.decode(value0())))
+        .encode(Kafka.connectCluster(unitCodec.decode(unit1())))
 }
 
 private fun callAdapterDisconnectCluster(
     symbols: MutableMap<String, Any>,
-    value0: () -> LawSpecRuntime.Value,
+    cluster1: () -> LawSpecRuntime.Value,
 ): LawSpecRuntime.Value {
     return unitCodec.encode(
         Kafka.disconnectCluster(
-            LawSpecDataCodecs.clusterCodec(SCHEMA, MACHINE_BITS, symbols).decode(value0())
+            LawSpecDataCodecs.clusterCodec(SCHEMA, MACHINE_BITS, symbols).decode(cluster1())
         )
     )
 }

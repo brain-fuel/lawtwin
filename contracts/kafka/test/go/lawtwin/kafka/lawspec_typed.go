@@ -658,78 +658,78 @@ func lsfAssignmentIn(m_ string, ms *lsfList[*lsfMemberAssignment]) *lsfList[*lsf
 }
 
 // clusterAddPartitionsToTxnRequest — ../src/contract.lawspec:283.
-func lsfClusterAddPartitionsToTxnRequest(state *lsfBrokerState, value0 string, value1 int64, value2 int16, value3 *lsfList[*lsfTopicPartition]) *lsfPair[lsfUnit, *lsfBrokerState] {
-	return lsfLawtwinKafkaModelAddPartitionsToTxn(value0, value1, value2, value3, state)
+func lsfClusterAddPartitionsToTxnRequest(state *lsfBrokerState, text1 string, int641 int64, int161 int16, list1 *lsfList[*lsfTopicPartition]) *lsfPair[lsfUnit, *lsfBrokerState] {
+	return lsfLawtwinKafkaModelAddPartitionsToTxn(text1, int641, int161, list1, state)
 }
 
 // clusterCommitOffsets — ../src/contract.lawspec:302.
-func lsfClusterCommitOffsets(state *lsfBrokerState, value0 string, value1 string, value2 int32, value3 *lsfList[*lsfOffsetEntry]) *lsfPair[lsfUnit, *lsfBrokerState] {
-	return lsfLawtwinKafkaModelOffsetCommit(value0, value1, value2, value3, state)
+func lsfClusterCommitOffsets(state *lsfBrokerState, text1 string, text2 string, int321 int32, list1 *lsfList[*lsfOffsetEntry]) *lsfPair[lsfUnit, *lsfBrokerState] {
+	return lsfLawtwinKafkaModelOffsetCommit(text1, text2, int321, list1, state)
 }
 
 // clusterCreatePartitions — ../src/contract.lawspec:294.
-func lsfClusterCreatePartitions(state *lsfBrokerState, value0 string, value1 int32) *lsfPair[lsfUnit, *lsfBrokerState] {
-	return lsfLawtwinKafkaModelCreatePartitions(value0, value1, state)
+func lsfClusterCreatePartitions(state *lsfBrokerState, text1 string, int321 int32) *lsfPair[lsfUnit, *lsfBrokerState] {
+	return lsfLawtwinKafkaModelCreatePartitions(text1, int321, state)
 }
 
 // clusterCreateTopic — ../src/contract.lawspec:293.
-func lsfClusterCreateTopic(state *lsfBrokerState, value0 string, value1 int32) *lsfPair[lsfUnit, *lsfBrokerState] {
-	return lsfLawtwinKafkaModelCreateTopic(value0, value1, state)
+func lsfClusterCreateTopic(state *lsfBrokerState, text1 string, int321 int32) *lsfPair[lsfUnit, *lsfBrokerState] {
+	return lsfLawtwinKafkaModelCreateTopic(text1, int321, state)
 }
 
 // clusterDescribeGroup — ../src/contract.lawspec:301.
-func lsfClusterDescribeGroup(state *lsfBrokerState, value0 string) *lsfPair[*lsfGroupView, *lsfBrokerState] {
-	return lsfLawtwinKafkaModelDescribeGroup(value0, state)
+func lsfClusterDescribeGroup(state *lsfBrokerState, text1 string) *lsfPair[*lsfGroupView, *lsfBrokerState] {
+	return lsfLawtwinKafkaModelDescribeGroup(text1, state)
 }
 
 // clusterEndTxnRequest — ../src/contract.lawspec:285.
-func lsfClusterEndTxnRequest(state *lsfBrokerState, value0 string, value1 int64, value2 int16, value3 bool) *lsfPair[lsfUnit, *lsfBrokerState] {
-	return lsfLawtwinKafkaModelEndTxn(value0, value1, value2, value3, state)
+func lsfClusterEndTxnRequest(state *lsfBrokerState, text1 string, int641 int64, int161 int16, bool1 bool) *lsfPair[lsfUnit, *lsfBrokerState] {
+	return lsfLawtwinKafkaModelEndTxn(text1, int641, int161, bool1, state)
 }
 
 // clusterFetchOffset — ../src/contract.lawspec:303.
-func lsfClusterFetchOffset(state *lsfBrokerState, value0 string, value1 *lsfTopicPartition) *lsfPair[lsfMaybe[int64], *lsfBrokerState] {
-	return lsfLawtwinKafkaModelOffsetFetch(value0, value1, state)
+func lsfClusterFetchOffset(state *lsfBrokerState, text1 string, topicPartition1 *lsfTopicPartition) *lsfPair[lsfMaybe[int64], *lsfBrokerState] {
+	return lsfLawtwinKafkaModelOffsetFetch(text1, topicPartition1, state)
 }
 
 // clusterFetchRequest — ../src/contract.lawspec:280.
-func lsfClusterFetchRequest(state *lsfBrokerState, value0 *lsfTopicPartition, value1 int64, value2 int32, value3 lsfIsolationLevel) *lsfPair[*lsfFetchResult, *lsfBrokerState] {
-	return lsfLawtwinKafkaModelFetch(value0, value1, value2, value3, state)
+func lsfClusterFetchRequest(state *lsfBrokerState, topicPartition1 *lsfTopicPartition, int641 int64, int321 int32, isolationLevel1 lsfIsolationLevel) *lsfPair[*lsfFetchResult, *lsfBrokerState] {
+	return lsfLawtwinKafkaModelFetch(topicPartition1, int641, int321, isolationLevel1, state)
 }
 
 // clusterHeartbeat — ../src/contract.lawspec:299.
-func lsfClusterHeartbeat(state *lsfBrokerState, value0 string, value1 string, value2 int32) *lsfPair[lsfUnit, *lsfBrokerState] {
-	return lsfLawtwinKafkaModelHeartbeat(value0, value1, value2, state)
+func lsfClusterHeartbeat(state *lsfBrokerState, text1 string, text2 string, int321 int32) *lsfPair[lsfUnit, *lsfBrokerState] {
+	return lsfLawtwinKafkaModelHeartbeat(text1, text2, int321, state)
 }
 
 // clusterInitProducerIdRequest — ../src/contract.lawspec:282.
-func lsfClusterInitProducerIdRequest(state *lsfBrokerState, value0 lsfMaybe[string]) *lsfPair[*lsfProducerIdAndEpoch, *lsfBrokerState] {
-	return lsfLawtwinKafkaModelInitProducerId(value0, state)
+func lsfClusterInitProducerIdRequest(state *lsfBrokerState, maybe1 lsfMaybe[string]) *lsfPair[*lsfProducerIdAndEpoch, *lsfBrokerState] {
+	return lsfLawtwinKafkaModelInitProducerId(maybe1, state)
 }
 
 // clusterJoinGroup — ../src/contract.lawspec:297.
-func lsfClusterJoinGroup(state *lsfBrokerState, value0 string, value1 string, value2 *lsfList[string]) *lsfPair[int32, *lsfBrokerState] {
-	return lsfLawtwinKafkaModelJoinGroup(value0, value1, value2, state)
+func lsfClusterJoinGroup(state *lsfBrokerState, text1 string, text2 string, list1 *lsfList[string]) *lsfPair[int32, *lsfBrokerState] {
+	return lsfLawtwinKafkaModelJoinGroup(text1, text2, list1, state)
 }
 
 // clusterLeaveGroup — ../src/contract.lawspec:300.
-func lsfClusterLeaveGroup(state *lsfBrokerState, value0 string, value1 string) *lsfPair[lsfUnit, *lsfBrokerState] {
-	return lsfLawtwinKafkaModelLeaveGroup(value0, value1, state)
+func lsfClusterLeaveGroup(state *lsfBrokerState, text1 string, text2 string) *lsfPair[lsfUnit, *lsfBrokerState] {
+	return lsfLawtwinKafkaModelLeaveGroup(text1, text2, state)
 }
 
 // clusterListOffsets — ../src/contract.lawspec:296.
-func lsfClusterListOffsets(state *lsfBrokerState, value0 *lsfTopicPartition, value1 lsfOffsetSpec, value2 lsfIsolationLevel) *lsfPair[int64, *lsfBrokerState] {
-	return lsfLawtwinKafkaModelListOffsets(value0, value1, value2, state)
+func lsfClusterListOffsets(state *lsfBrokerState, topicPartition1 *lsfTopicPartition, offsetSpec1 lsfOffsetSpec, isolationLevel1 lsfIsolationLevel) *lsfPair[int64, *lsfBrokerState] {
+	return lsfLawtwinKafkaModelListOffsets(topicPartition1, offsetSpec1, isolationLevel1, state)
 }
 
 // clusterMetadataRequest — ../src/contract.lawspec:278.
-func lsfClusterMetadataRequest(state *lsfBrokerState, value0 string) *lsfPair[lsfMaybe[int32], *lsfBrokerState] {
-	return lsfLawtwinKafkaModelMetadata(value0, state)
+func lsfClusterMetadataRequest(state *lsfBrokerState, text1 string) *lsfPair[lsfMaybe[int32], *lsfBrokerState] {
+	return lsfLawtwinKafkaModelMetadata(text1, state)
 }
 
 // clusterProduceRequest — ../src/contract.lawspec:279.
-func lsfClusterProduceRequest(state *lsfBrokerState, value0 *lsfTopicPartition, value1 lsfMaybe[*lsfProducerTag], value2 *lsfList[*lsfRecord]) *lsfPair[int64, *lsfBrokerState] {
-	return lsfLawtwinKafkaModelProduce(value0, value1, value2, state)
+func lsfClusterProduceRequest(state *lsfBrokerState, topicPartition1 *lsfTopicPartition, maybe1 lsfMaybe[*lsfProducerTag], list1 *lsfList[*lsfRecord]) *lsfPair[int64, *lsfBrokerState] {
+	return lsfLawtwinKafkaModelProduce(topicPartition1, maybe1, list1, state)
 }
 
 // clusterStart — ../src/contract.lawspec:274.
@@ -738,13 +738,13 @@ func lsfClusterStart(unit lsfUnit) *lsfBrokerState {
 }
 
 // clusterSyncGroup — ../src/contract.lawspec:298.
-func lsfClusterSyncGroup(state *lsfBrokerState, value0 string, value1 string, value2 int32) *lsfPair[*lsfList[*lsfTopicPartition], *lsfBrokerState] {
-	return lsfLawtwinKafkaModelSyncGroup(value0, value1, value2, state)
+func lsfClusterSyncGroup(state *lsfBrokerState, text1 string, text2 string, int321 int32) *lsfPair[*lsfList[*lsfTopicPartition], *lsfBrokerState] {
+	return lsfLawtwinKafkaModelSyncGroup(text1, text2, int321, state)
 }
 
 // clusterTxnOffsetCommitRequest — ../src/contract.lawspec:284.
-func lsfClusterTxnOffsetCommitRequest(state *lsfBrokerState, value0 string, value1 int64, value2 int16, value3 string, value4 *lsfList[*lsfOffsetEntry]) *lsfPair[lsfUnit, *lsfBrokerState] {
-	return lsfLawtwinKafkaModelTxnOffsetCommit(value0, value1, value2, value3, value4, state)
+func lsfClusterTxnOffsetCommitRequest(state *lsfBrokerState, text1 string, int641 int64, int161 int16, text2 string, list1 *lsfList[*lsfOffsetEntry]) *lsfPair[lsfUnit, *lsfBrokerState] {
+	return lsfLawtwinKafkaModelTxnOffsetCommit(text1, int641, int161, text2, list1, state)
 }
 
 // committedFrom — ../src/contract.lawspec:377.
@@ -788,11 +788,11 @@ func lsfConsumerClose(symbols map[string]*LawSpecSymbol, c *lsfConsumerState) *l
 				return func() LawSpecValue {
 					schema := _lawSpecDefinitionSchema
 					bits := 64
-					codec0 := lsScalarCodec[string](schema, bits, "Text")
-					codec1 := lsScalarCodec[string](schema, bits, "Text")
+					text1Codec := lsScalarCodec[string](schema, bits, "Text")
+					text2Codec := lsScalarCodec[string](schema, bits, "Text")
 					resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
 					return func() LawSpecValue {
-						lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).LeaveGroupRequest(codec0.toNative(lsfToValueText(selection)), codec1.toNative(lsfToValueText(value_3)))
+						lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).LeaveGroupRequest(text1Codec.toNative(lsfToValueText(selection)), text2Codec.toNative(lsfToValueText(value_3)))
 						return resultCodec.fromNative(LawSpecUnit{})
 					}()
 				}()
@@ -854,13 +854,13 @@ func lsfConsumerCommit(symbols map[string]*LawSpecSymbol, c *lsfConsumerState) *
 				return func() LawSpecValue {
 					schema := _lawSpecDefinitionSchema
 					bits := 64
-					codec0 := lsScalarCodec[string](schema, bits, "Text")
-					codec1 := lsScalarCodec[string](schema, bits, "Text")
-					codec2 := lsScalarCodec[int32](schema, bits, "Int32")
-					codec3 := lsListCodec(schema, bits, lawSpecOffsetEntryCodec(schema, bits, symbols), symbols)
+					text1Codec := lsScalarCodec[string](schema, bits, "Text")
+					text2Codec := lsScalarCodec[string](schema, bits, "Text")
+					int32_1Codec := lsScalarCodec[int32](schema, bits, "Int32")
+					list1Codec := lsListCodec(schema, bits, lawSpecOffsetEntryCodec(schema, bits, symbols), symbols)
 					resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
 					return func() LawSpecValue {
-						lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).OffsetCommitRequest(codec0.toNative(lsfToValueText(selection)), codec1.toNative(lsfToValueText(value_3)), codec2.toNative(lsfToValueInt32(value_4)), codec3.toNative(lsfToValueListOffsetEntry(lsfPositionsToCommit(value_5, value_6))))
+						lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).OffsetCommitRequest(text1Codec.toNative(lsfToValueText(selection)), text2Codec.toNative(lsfToValueText(value_3)), int32_1Codec.toNative(lsfToValueInt32(value_4)), list1Codec.toNative(lsfToValueListOffsetEntry(lsfPositionsToCommit(value_5, value_6))))
 						return resultCodec.fromNative(LawSpecUnit{})
 					}()
 				}()
@@ -892,10 +892,10 @@ func lsfConsumerCommitted(symbols map[string]*LawSpecSymbol, tp *lsfTopicPartiti
 		performed := lsfFromValueMaybeInt64(func() LawSpecValue {
 			schema := _lawSpecDefinitionSchema
 			bits := 64
-			codec0 := lsScalarCodec[string](schema, bits, "Text")
-			codec1 := lawSpecTopicPartitionCodec(schema, bits, symbols)
+			text1Codec := lsScalarCodec[string](schema, bits, "Text")
+			topicPartition1Codec := lawSpecTopicPartitionCodec(schema, bits, symbols)
 			resultCodec := lsMaybeCodec(schema, bits, lsScalarCodec[int64](schema, bits, "Int64"), symbols)
-			return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).OffsetFetchRequest(codec0.toNative(lsfToValueText(selection)), codec1.toNative(lsfToValueTopicPartition(tp))))
+			return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).OffsetFetchRequest(text1Codec.toNative(lsfToValueText(selection)), topicPartition1Codec.toNative(lsfToValueTopicPartition(tp))))
 		}())
 		return &lsfPair[lsfMaybe[int64], *lsfConsumerState]{performed, c}
 	} else {
@@ -939,11 +939,11 @@ func lsfConsumerJoin(symbols map[string]*LawSpecSymbol, g string, m_ string, top
 			return func() LawSpecValue {
 				schema := _lawSpecDefinitionSchema
 				bits := 64
-				codec0 := lsScalarCodec[string](schema, bits, "Text")
-				codec1 := lsScalarCodec[string](schema, bits, "Text")
-				codec2 := lsListCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
+				text1Codec := lsScalarCodec[string](schema, bits, "Text")
+				text2Codec := lsScalarCodec[string](schema, bits, "Text")
+				list1Codec := lsListCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
 				resultCodec := lsScalarCodec[int32](schema, bits, "Int32")
-				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).JoinGroupRequest(codec0.toNative(lsfToValueText(g)), codec1.toNative(lsfToValueText(m_)), codec2.toNative(lsfToValueListText(topics))))
+				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).JoinGroupRequest(text1Codec.toNative(lsfToValueText(g)), text2Codec.toNative(lsfToValueText(m_)), list1Codec.toNative(lsfToValueListText(topics))))
 			}()
 		}))
 		attempted = lsfRight[lsfKafkaError, int32](performed)
@@ -982,11 +982,11 @@ func lsfConsumerJoin(symbols map[string]*LawSpecSymbol, g string, m_ string, top
 				return func() LawSpecValue {
 					schema := _lawSpecDefinitionSchema
 					bits := 64
-					codec0 := lsScalarCodec[string](schema, bits, "Text")
-					codec1 := lsScalarCodec[string](schema, bits, "Text")
-					codec2 := lsScalarCodec[int32](schema, bits, "Int32")
+					text1Codec := lsScalarCodec[string](schema, bits, "Text")
+					text2Codec := lsScalarCodec[string](schema, bits, "Text")
+					int32_1Codec := lsScalarCodec[int32](schema, bits, "Int32")
 					resultCodec := lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
-					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).SyncGroupRequest(codec0.toNative(lsfToValueText(g)), codec1.toNative(lsfToValueText(m_)), codec2.toNative(lsfToValueInt32(selection_2))))
+					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).SyncGroupRequest(text1Codec.toNative(lsfToValueText(g)), text2Codec.toNative(lsfToValueText(m_)), int32_1Codec.toNative(lsfToValueInt32(selection_2))))
 				}()
 			}))
 			attempted_2 = lsfRight[lsfKafkaError, *lsfList[*lsfTopicPartition]](performed_2)
@@ -1058,10 +1058,10 @@ func lsfConsumerPosition(symbols map[string]*LawSpecSymbol, tp *lsfTopicPartitio
 			performed := lsfFromValueMaybeInt64(func() LawSpecValue {
 				schema := _lawSpecDefinitionSchema
 				bits := 64
-				codec0 := lsScalarCodec[string](schema, bits, "Text")
-				codec1 := lawSpecTopicPartitionCodec(schema, bits, symbols)
+				text1Codec := lsScalarCodec[string](schema, bits, "Text")
+				topicPartition1Codec := lawSpecTopicPartitionCodec(schema, bits, symbols)
 				resultCodec := lsMaybeCodec(schema, bits, lsScalarCodec[int64](schema, bits, "Int64"), symbols)
-				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).OffsetFetchRequest(codec0.toNative(lsfToValueText(selection_2)), codec1.toNative(lsfToValueTopicPartition(tp))))
+				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).OffsetFetchRequest(text1Codec.toNative(lsfToValueText(selection_2)), topicPartition1Codec.toNative(lsfToValueTopicPartition(tp))))
 			}())
 			it_3 := performed
 			if it_3.ok {
@@ -1162,12 +1162,12 @@ func lsfConsumerRefresh(symbols map[string]*LawSpecSymbol, c *lsfConsumerState) 
 				return func() LawSpecValue {
 					schema := _lawSpecDefinitionSchema
 					bits := 64
-					codec0 := lsScalarCodec[string](schema, bits, "Text")
-					codec1 := lsScalarCodec[string](schema, bits, "Text")
-					codec2 := lsScalarCodec[int32](schema, bits, "Int32")
+					text1Codec := lsScalarCodec[string](schema, bits, "Text")
+					text2Codec := lsScalarCodec[string](schema, bits, "Text")
+					int32_1Codec := lsScalarCodec[int32](schema, bits, "Int32")
 					resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
 					return func() LawSpecValue {
-						lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).HeartbeatRequest(codec0.toNative(lsfToValueText(selection)), codec1.toNative(lsfToValueText(value_3)), codec2.toNative(lsfToValueInt32(value_4)))
+						lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).HeartbeatRequest(text1Codec.toNative(lsfToValueText(selection)), text2Codec.toNative(lsfToValueText(value_3)), int32_1Codec.toNative(lsfToValueInt32(value_4)))
 						return resultCodec.fromNative(LawSpecUnit{})
 					}()
 				}()
@@ -1271,11 +1271,11 @@ func lsfCreated(symbols map[string]*LawSpecSymbol, t_ string, n int32) bool {
 			return func() LawSpecValue {
 				schema := _lawSpecDefinitionSchema
 				bits := 64
-				codec0 := lsScalarCodec[string](schema, bits, "Text")
-				codec1 := lsScalarCodec[int32](schema, bits, "Int32")
+				text1Codec := lsScalarCodec[string](schema, bits, "Text")
+				int32_1Codec := lsScalarCodec[int32](schema, bits, "Int32")
 				resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
 				return func() LawSpecValue {
-					lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).CreateTopicsRequest(codec0.toNative(lsfToValueText(t_)), codec1.toNative(lsfToValueInt32(n)))
+					lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).CreateTopicsRequest(text1Codec.toNative(lsfToValueText(t_)), int32_1Codec.toNative(lsfToValueInt32(n)))
 					return resultCodec.fromNative(LawSpecUnit{})
 				}()
 			}()
@@ -1456,11 +1456,11 @@ func lsfJoinAll(symbols map[string]*LawSpecSymbol, g string, ms *lsfList[string]
 				return func() LawSpecValue {
 					schema := _lawSpecDefinitionSchema
 					bits := 64
-					codec0 := lsScalarCodec[string](schema, bits, "Text")
-					codec1 := lsScalarCodec[string](schema, bits, "Text")
-					codec2 := lsListCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
+					text1Codec := lsScalarCodec[string](schema, bits, "Text")
+					text2Codec := lsScalarCodec[string](schema, bits, "Text")
+					list1Codec := lsListCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
 					resultCodec := lsScalarCodec[int32](schema, bits, "Int32")
-					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).JoinGroupRequest(codec0.toNative(lsfToValueText(g)), codec1.toNative(lsfToValueText(selection)), codec2.toNative(lsfToValueListText(topics))))
+					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).JoinGroupRequest(text1Codec.toNative(lsfToValueText(g)), text2Codec.toNative(lsfToValueText(selection)), list1Codec.toNative(lsfToValueListText(topics))))
 				}()
 			}))
 			attempted = lsfRight[lsfKafkaError, int32](performed)
@@ -1512,11 +1512,11 @@ func lsfJoinEach(symbols map[string]*LawSpecSymbol, g string, ms *lsfList[string
 				return func() LawSpecValue {
 					schema := _lawSpecDefinitionSchema
 					bits := 64
-					codec0 := lsScalarCodec[string](schema, bits, "Text")
-					codec1 := lsScalarCodec[string](schema, bits, "Text")
-					codec2 := lsListCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
+					text1Codec := lsScalarCodec[string](schema, bits, "Text")
+					text2Codec := lsScalarCodec[string](schema, bits, "Text")
+					list1Codec := lsListCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
 					resultCodec := lsScalarCodec[int32](schema, bits, "Int32")
-					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::GroupCoordinator").(GroupCoordinator).JoinGroup(codec0.toNative(lsfToValueText(g)), codec1.toNative(lsfToValueText(selection)), codec2.toNative(lsfToValueListText(topics))))
+					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::GroupCoordinator").(GroupCoordinator).JoinGroup(text1Codec.toNative(lsfToValueText(g)), text2Codec.toNative(lsfToValueText(selection)), list1Codec.toNative(lsfToValueListText(topics))))
 				}()
 			}))
 			attempted = lsfRight[lsfKafkaError, int32](performed)
@@ -1540,8 +1540,8 @@ func lsfJoinEach(symbols map[string]*LawSpecSymbol, g string, ms *lsfList[string
 }
 
 // kafkaConsumerAssign — ../src/contract.lawspec:1382.
-func lsfKafkaConsumerAssign(consumerState *lsfConsumerState, value0 *lsfList[*lsfTopicPartition]) *lsfPair[lsfUnit, *lsfConsumerState] {
-	return lsfConsumerAssign(value0, consumerState)
+func lsfKafkaConsumerAssign(consumerState *lsfConsumerState, list1 *lsfList[*lsfTopicPartition]) *lsfPair[lsfUnit, *lsfConsumerState] {
+	return lsfConsumerAssign(list1, consumerState)
 }
 
 // kafkaConsumerClose — ../src/contract.lawspec:1390.
@@ -1555,28 +1555,28 @@ func lsfKafkaConsumerCommitSync(symbols map[string]*LawSpecSymbol, consumerState
 }
 
 // kafkaConsumerCommittedOffset — ../src/contract.lawspec:1388.
-func lsfKafkaConsumerCommittedOffset(symbols map[string]*LawSpecSymbol, consumerState *lsfConsumerState, value0 *lsfTopicPartition) *lsfPair[lsfMaybe[int64], *lsfConsumerState] {
-	return lsfConsumerCommitted(symbols, value0, consumerState)
+func lsfKafkaConsumerCommittedOffset(symbols map[string]*LawSpecSymbol, consumerState *lsfConsumerState, topicPartition1 *lsfTopicPartition) *lsfPair[lsfMaybe[int64], *lsfConsumerState] {
+	return lsfConsumerCommitted(symbols, topicPartition1, consumerState)
 }
 
 // kafkaConsumerPoll — ../src/contract.lawspec:1384.
-func lsfKafkaConsumerPoll(symbols map[string]*LawSpecSymbol, consumerState *lsfConsumerState, value0 int32) *lsfPair[lsfEither[lsfKafkaError, *lsfList[*lsfConsumerRecord]], *lsfConsumerState] {
-	return lsfConsumerPoll(symbols, value0, consumerState)
+func lsfKafkaConsumerPoll(symbols map[string]*LawSpecSymbol, consumerState *lsfConsumerState, int321 int32) *lsfPair[lsfEither[lsfKafkaError, *lsfList[*lsfConsumerRecord]], *lsfConsumerState] {
+	return lsfConsumerPoll(symbols, int321, consumerState)
 }
 
 // kafkaConsumerPosition — ../src/contract.lawspec:1387.
-func lsfKafkaConsumerPosition(symbols map[string]*LawSpecSymbol, consumerState *lsfConsumerState, value0 *lsfTopicPartition) *lsfPair[lsfEither[lsfKafkaError, int64], *lsfConsumerState] {
-	return lsfConsumerPositionOf(symbols, value0, consumerState)
+func lsfKafkaConsumerPosition(symbols map[string]*LawSpecSymbol, consumerState *lsfConsumerState, topicPartition1 *lsfTopicPartition) *lsfPair[lsfEither[lsfKafkaError, int64], *lsfConsumerState] {
+	return lsfConsumerPositionOf(symbols, topicPartition1, consumerState)
 }
 
 // kafkaConsumerSeek — ../src/contract.lawspec:1386.
-func lsfKafkaConsumerSeek(consumerState *lsfConsumerState, value0 *lsfTopicPartition, value1 int64) *lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfConsumerState] {
-	return lsfConsumerSeek(value0, value1, consumerState)
+func lsfKafkaConsumerSeek(consumerState *lsfConsumerState, topicPartition1 *lsfTopicPartition, int641 int64) *lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfConsumerState] {
+	return lsfConsumerSeek(topicPartition1, int641, consumerState)
 }
 
 // kafkaConsumerSetIsolationLevel — ../src/contract.lawspec:1389.
-func lsfKafkaConsumerSetIsolationLevel(consumerState *lsfConsumerState, value0 lsfIsolationLevel) *lsfPair[lsfUnit, *lsfConsumerState] {
-	return lsfConsumerIsolation(value0, consumerState)
+func lsfKafkaConsumerSetIsolationLevel(consumerState *lsfConsumerState, isolationLevel1 lsfIsolationLevel) *lsfPair[lsfUnit, *lsfConsumerState] {
+	return lsfConsumerIsolation(isolationLevel1, consumerState)
 }
 
 // kafkaConsumerStart — ../src/contract.lawspec:1380.
@@ -1585,8 +1585,8 @@ func lsfKafkaConsumerStart(unit lsfUnit) *lsfConsumerState {
 }
 
 // kafkaConsumerSubscribe — ../src/contract.lawspec:1383.
-func lsfKafkaConsumerSubscribe(symbols map[string]*LawSpecSymbol, consumerState *lsfConsumerState, value0 string, value1 string, value2 *lsfList[string]) *lsfPair[lsfEither[lsfKafkaError, *lsfList[*lsfTopicPartition]], *lsfConsumerState] {
-	return lsfConsumerJoin(symbols, value0, value1, value2, consumerState)
+func lsfKafkaConsumerSubscribe(symbols map[string]*LawSpecSymbol, consumerState *lsfConsumerState, text1 string, text2 string, list1 *lsfList[string]) *lsfPair[lsfEither[lsfKafkaError, *lsfList[*lsfTopicPartition]], *lsfConsumerState] {
+	return lsfConsumerJoin(symbols, text1, text2, list1, consumerState)
 }
 
 // kafkaProducerEnableIdempotence — ../src/contract.lawspec:1230.
@@ -1610,8 +1610,8 @@ func lsfKafkaProducerRetryLastSend(symbols map[string]*LawSpecSymbol, producerSt
 }
 
 // kafkaProducerSend — ../src/contract.lawspec:1228.
-func lsfKafkaProducerSend(symbols map[string]*LawSpecSymbol, producerState *lsfProducerState, value0 *lsfProducerRecord) *lsfPair[lsfEither[lsfKafkaError, *lsfRecordMetadata], *lsfProducerState] {
-	return lsfProducerSend(symbols, value0, producerState)
+func lsfKafkaProducerSend(symbols map[string]*LawSpecSymbol, producerState *lsfProducerState, producerRecord1 *lsfProducerRecord) *lsfPair[lsfEither[lsfKafkaError, *lsfRecordMetadata], *lsfProducerState] {
+	return lsfProducerSend(symbols, producerRecord1, producerState)
 }
 
 // kafkaProducerStart — ../src/contract.lawspec:1226.
@@ -1625,8 +1625,8 @@ func lsfKafkaTransactionsAbortTransaction(symbols map[string]*LawSpecSymbol, txn
 }
 
 // kafkaTransactionsAddPartitionsToTransaction — ../src/contract.lawspec:1734.
-func lsfKafkaTransactionsAddPartitionsToTransaction(symbols map[string]*LawSpecSymbol, txnState *lsfTransactionState, value0 *lsfList[*lsfTopicPartition]) *lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState] {
-	return lsfTransactionsAdd(symbols, value0, txnState)
+func lsfKafkaTransactionsAddPartitionsToTransaction(symbols map[string]*LawSpecSymbol, txnState *lsfTransactionState, list1 *lsfList[*lsfTopicPartition]) *lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState] {
+	return lsfTransactionsAdd(symbols, list1, txnState)
 }
 
 // kafkaTransactionsBeginTransaction — ../src/contract.lawspec:1733.
@@ -1640,18 +1640,18 @@ func lsfKafkaTransactionsCommitTransaction(symbols map[string]*LawSpecSymbol, tx
 }
 
 // kafkaTransactionsInitTransactions — ../src/contract.lawspec:1732.
-func lsfKafkaTransactionsInitTransactions(symbols map[string]*LawSpecSymbol, txnState *lsfTransactionState, value0 string) *lsfPair[lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch], *lsfTransactionState] {
-	return lsfTransactionsInit(symbols, value0, txnState)
+func lsfKafkaTransactionsInitTransactions(symbols map[string]*LawSpecSymbol, txnState *lsfTransactionState, text1 string) *lsfPair[lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch], *lsfTransactionState] {
+	return lsfTransactionsInit(symbols, text1, txnState)
 }
 
 // kafkaTransactionsSendInTransaction — ../src/contract.lawspec:1735.
-func lsfKafkaTransactionsSendInTransaction(symbols map[string]*LawSpecSymbol, txnState *lsfTransactionState, value0 *lsfProducerRecord) *lsfPair[lsfEither[lsfKafkaError, *lsfRecordMetadata], *lsfTransactionState] {
-	return lsfTransactionsSend(symbols, value0, txnState)
+func lsfKafkaTransactionsSendInTransaction(symbols map[string]*LawSpecSymbol, txnState *lsfTransactionState, producerRecord1 *lsfProducerRecord) *lsfPair[lsfEither[lsfKafkaError, *lsfRecordMetadata], *lsfTransactionState] {
+	return lsfTransactionsSend(symbols, producerRecord1, txnState)
 }
 
 // kafkaTransactionsSendOffsetsToTransaction — ../src/contract.lawspec:1736.
-func lsfKafkaTransactionsSendOffsetsToTransaction(symbols map[string]*LawSpecSymbol, txnState *lsfTransactionState, value0 string, value1 *lsfList[*lsfOffsetEntry]) *lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState] {
-	return lsfTransactionsOffsets(symbols, value0, value1, txnState)
+func lsfKafkaTransactionsSendOffsetsToTransaction(symbols map[string]*LawSpecSymbol, txnState *lsfTransactionState, text1 string, list1 *lsfList[*lsfOffsetEntry]) *lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState] {
+	return lsfTransactionsOffsets(symbols, text1, list1, txnState)
 }
 
 // kafkaTransactionsStart — ../src/contract.lawspec:1730.
@@ -5257,9 +5257,9 @@ func lsfPartitionOf(symbols map[string]*LawSpecSymbol, topic string, choice lsfP
 	performed := lsfFromValueMaybeInt32(func() LawSpecValue {
 		schema := _lawSpecDefinitionSchema
 		bits := 64
-		codec0 := lsScalarCodec[string](schema, bits, "Text")
+		text1Codec := lsScalarCodec[string](schema, bits, "Text")
 		resultCodec := lsMaybeCodec(schema, bits, lsScalarCodec[int32](schema, bits, "Int32"), symbols)
-		return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).MetadataRequest(codec0.toNative(lsfToValueText(topic))))
+		return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).MetadataRequest(text1Codec.toNative(lsfToValueText(topic))))
 	}())
 	it := performed
 	if it.ok {
@@ -5286,10 +5286,10 @@ func lsfPartitionOf(symbols map[string]*LawSpecSymbol, topic string, choice lsfP
 			performed_2 := lsfFromValueInt32(func() LawSpecValue {
 				schema := _lawSpecDefinitionSchema
 				bits := 64
-				codec0 := lsMaybeCodec(schema, bits, lsScalarCodec[[]byte](schema, bits, "Bytes"), symbols)
-				codec1 := lsScalarCodec[int32](schema, bits, "Int32")
+				maybe1Codec := lsMaybeCodec(schema, bits, lsScalarCodec[[]byte](schema, bits, "Bytes"), symbols)
+				int32_1Codec := lsScalarCodec[int32](schema, bits, "Int32")
 				resultCodec := lsScalarCodec[int32](schema, bits, "Int32")
-				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Partitioner").(Partitioner).ChoosePartition(codec0.toNative(lsfToValueMaybeBytes(value_3)), codec1.toNative(lsfToValueInt32(selection))))
+				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Partitioner").(Partitioner).ChoosePartition(maybe1Codec.toNative(lsfToValueMaybeBytes(value_3)), int32_1Codec.toNative(lsfToValueInt32(selection))))
 			}())
 			recordField_4 := performed_2
 			value_2 = &lsfTopicPartition{recordField_3, recordField_4}
@@ -5364,12 +5364,12 @@ func lsfPollPartitions(symbols map[string]*LawSpecSymbol, tps *lsfList[*lsfTopic
 					return func() LawSpecValue {
 						schema := _lawSpecDefinitionSchema
 						bits := 64
-						codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-						codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-						codec2 := lsScalarCodec[int32](schema, bits, "Int32")
-						codec3 := lawSpecIsolationLevelCodec(schema, bits, symbols)
+						topicPartition1Codec := lawSpecTopicPartitionCodec(schema, bits, symbols)
+						int64_1Codec := lsScalarCodec[int64](schema, bits, "Int64")
+						int32_1Codec := lsScalarCodec[int32](schema, bits, "Int32")
+						isolationLevel1Codec := lawSpecIsolationLevelCodec(schema, bits, symbols)
 						resultCodec := lawSpecFetchResultCodec(schema, bits, symbols)
-						return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).FetchRequest(codec0.toNative(lsfToValueTopicPartition(selection)), codec1.toNative(lsfToValueInt64(value_2)), codec2.toNative(lsfToValueInt32(n)), codec3.toNative(lsfToValueIsolationLevel(value_3))))
+						return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).FetchRequest(topicPartition1Codec.toNative(lsfToValueTopicPartition(selection)), int64_1Codec.toNative(lsfToValueInt64(value_2)), int32_1Codec.toNative(lsfToValueInt32(n)), isolationLevel1Codec.toNative(lsfToValueIsolationLevel(value_3))))
 					}()
 				}))
 				attempted = lsfRight[lsfKafkaError, *lsfFetchResult](performed)
@@ -5465,9 +5465,9 @@ func lsfProducerIdempotent(symbols map[string]*LawSpecSymbol, st *lsfProducerSta
 			return func() LawSpecValue {
 				schema := _lawSpecDefinitionSchema
 				bits := 64
-				codec0 := lsMaybeCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
+				maybe1Codec := lsMaybeCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
 				resultCodec := lawSpecProducerIdAndEpochCodec(schema, bits, symbols)
-				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).InitProducerIdRequest(codec0.toNative(lsfToValueMaybeText(lsfAbsent[string]()))))
+				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).InitProducerIdRequest(maybe1Codec.toNative(lsfToValueMaybeText(lsfAbsent[string]()))))
 			}()
 		}))
 		attempted = lsfRight[lsfKafkaError, *lsfProducerIdAndEpoch](performed)
@@ -5532,11 +5532,11 @@ func lsfProducerRetry(symbols map[string]*LawSpecSymbol, st *lsfProducerState) *
 				return func() LawSpecValue {
 					schema := _lawSpecDefinitionSchema
 					bits := 64
-					codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-					codec1 := lsMaybeCodec(schema, bits, lawSpecProducerTagCodec(schema, bits, symbols), symbols)
-					codec2 := lsListCodec(schema, bits, lawSpecRecordCodec(schema, bits, symbols), symbols)
+					topicPartition1Codec := lawSpecTopicPartitionCodec(schema, bits, symbols)
+					maybe1Codec := lsMaybeCodec(schema, bits, lawSpecProducerTagCodec(schema, bits, symbols), symbols)
+					list1Codec := lsListCodec(schema, bits, lawSpecRecordCodec(schema, bits, symbols), symbols)
 					resultCodec := lsScalarCodec[int64](schema, bits, "Int64")
-					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).ProduceRequest(codec0.toNative(lsfToValueTopicPartition(value_3)), codec1.toNative(lsfToValueMaybeProducerTag(value_4)), codec2.toNative(lsfToValueListRecord(value_5))))
+					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).ProduceRequest(topicPartition1Codec.toNative(lsfToValueTopicPartition(value_3)), maybe1Codec.toNative(lsfToValueMaybeProducerTag(value_4)), list1Codec.toNative(lsfToValueListRecord(value_5))))
 				}()
 			}))
 			attempted = lsfRight[lsfKafkaError, int64](performed)
@@ -5617,11 +5617,11 @@ func lsfProducerSend(symbols map[string]*LawSpecSymbol, pr *lsfProducerRecord, s
 				return func() LawSpecValue {
 					schema := _lawSpecDefinitionSchema
 					bits := 64
-					codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-					codec1 := lsMaybeCodec(schema, bits, lawSpecProducerTagCodec(schema, bits, symbols), symbols)
-					codec2 := lsListCodec(schema, bits, lawSpecRecordCodec(schema, bits, symbols), symbols)
+					topicPartition1Codec := lawSpecTopicPartitionCodec(schema, bits, symbols)
+					maybe1Codec := lsMaybeCodec(schema, bits, lawSpecProducerTagCodec(schema, bits, symbols), symbols)
+					list1Codec := lsListCodec(schema, bits, lawSpecRecordCodec(schema, bits, symbols), symbols)
 					resultCodec := lsScalarCodec[int64](schema, bits, "Int64")
-					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).ProduceRequest(codec0.toNative(lsfToValueTopicPartition(selection_2)), codec1.toNative(lsfToValueMaybeProducerTag(tag)), codec2.toNative(lsfToValueListRecord(lsfCons[*lsfRecord](value_7, (*lsfList[*lsfRecord])(nil))))))
+					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).ProduceRequest(topicPartition1Codec.toNative(lsfToValueTopicPartition(selection_2)), maybe1Codec.toNative(lsfToValueMaybeProducerTag(tag)), list1Codec.toNative(lsfToValueListRecord(lsfCons[*lsfRecord](value_7, (*lsfList[*lsfRecord])(nil))))))
 				}()
 			}))
 			attempted = lsfRight[lsfKafkaError, int64](performed)
@@ -5693,12 +5693,12 @@ func lsfReadFrom(symbols map[string]*LawSpecSymbol, tp *lsfTopicPartition, offse
 			return func() LawSpecValue {
 				schema := _lawSpecDefinitionSchema
 				bits := 64
-				codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-				codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-				codec2 := lsScalarCodec[int32](schema, bits, "Int32")
-				codec3 := lawSpecIsolationLevelCodec(schema, bits, symbols)
+				topicPartition1Codec := lawSpecTopicPartitionCodec(schema, bits, symbols)
+				int64_1Codec := lsScalarCodec[int64](schema, bits, "Int64")
+				int32_1Codec := lsScalarCodec[int32](schema, bits, "Int32")
+				isolationLevel1Codec := lawSpecIsolationLevelCodec(schema, bits, symbols)
 				resultCodec := lawSpecFetchResultCodec(schema, bits, symbols)
-				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).FetchRequest(codec0.toNative(lsfToValueTopicPartition(tp)), codec1.toNative(lsfToValueInt64(offset)), codec2.toNative(lsfToValueInt32(int32(1000))), codec3.toNative(lsfToValueIsolationLevel(isolation))))
+				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).FetchRequest(topicPartition1Codec.toNative(lsfToValueTopicPartition(tp)), int64_1Codec.toNative(lsfToValueInt64(offset)), int32_1Codec.toNative(lsfToValueInt32(int32(1000))), isolationLevel1Codec.toNative(lsfToValueIsolationLevel(isolation))))
 			}()
 		}))
 		attempted = lsfRight[lsfKafkaError, *lsfFetchResult](performed)
@@ -5760,10 +5760,10 @@ func lsfReadInOrder(symbols map[string]*LawSpecSymbol, a lsfEither[lsfKafkaError
 				performed := lsfFromValueUnit(func() LawSpecValue {
 					schema := _lawSpecDefinitionSchema
 					bits := 64
-					codec0 := lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
+					list1Codec := lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
 					resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
 					return func() LawSpecValue {
-						lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).Assign(codec0.toNative(lsfToValueListTopicPartition(lsfCons[*lsfTopicPartition](tp, (*lsfList[*lsfTopicPartition])(nil)))))
+						lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).Assign(list1Codec.toNative(lsfToValueListTopicPartition(lsfCons[*lsfTopicPartition](tp, (*lsfList[*lsfTopicPartition])(nil)))))
 						return resultCodec.fromNative(LawSpecUnit{})
 					}()
 				}())
@@ -5775,10 +5775,10 @@ func lsfReadInOrder(symbols map[string]*LawSpecSymbol, a lsfEither[lsfKafkaError
 				performed_2 := lsfFromValueEitherKafkaErrorUnit(func() LawSpecValue {
 					schema := _lawSpecDefinitionSchema
 					bits := 64
-					codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-					codec1 := lsScalarCodec[int64](schema, bits, "Int64")
+					topicPartition1Codec := lawSpecTopicPartitionCodec(schema, bits, symbols)
+					int64_1Codec := lsScalarCodec[int64](schema, bits, "Int64")
 					resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsScalarCodec[LawSpecUnit](schema, bits, "Unit"), symbols)
-					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).Seek(codec0.toNative(lsfToValueTopicPartition(tp)), codec1.toNative(lsfToValueInt64(value_8))))
+					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).Seek(topicPartition1Codec.toNative(lsfToValueTopicPartition(tp)), int64_1Codec.toNative(lsfToValueInt64(value_8))))
 				}())
 				matched_ := performed_2
 				if !matched_.right {
@@ -5792,9 +5792,9 @@ func lsfReadInOrder(symbols map[string]*LawSpecSymbol, a lsfEither[lsfKafkaError
 					performed_3 := lsfFromValueEitherKafkaErrorListConsumerRecord(func() LawSpecValue {
 						schema := _lawSpecDefinitionSchema
 						bits := 64
-						codec0 := lsScalarCodec[int32](schema, bits, "Int32")
+						int32_1Codec := lsScalarCodec[int32](schema, bits, "Int32")
 						resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsListCodec(schema, bits, lawSpecConsumerRecordCodec(schema, bits, symbols), symbols), symbols)
-						return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).Poll(codec0.toNative(lsfToValueInt32(int32(2)))))
+						return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).Poll(int32_1Codec.toNative(lsfToValueInt32(int32(2)))))
 					}())
 					it_3 := performed_3
 					if !it_3.right {
@@ -5884,19 +5884,19 @@ func lsfResumesAtCommitted(symbols map[string]*LawSpecSymbol, t_ string, g strin
 	performed := lsfFromValueEitherKafkaErrorListTopicPartition(func() LawSpecValue {
 		schema := _lawSpecDefinitionSchema
 		bits := 64
-		codec0 := lsScalarCodec[string](schema, bits, "Text")
-		codec1 := lsScalarCodec[string](schema, bits, "Text")
-		codec2 := lsListCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
+		text1Codec := lsScalarCodec[string](schema, bits, "Text")
+		text2Codec := lsScalarCodec[string](schema, bits, "Text")
+		list1Codec := lsListCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
 		resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols), symbols)
-		return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).Subscribe(codec0.toNative(lsfToValueText(g)), codec1.toNative(lsfToValueText(m_)), codec2.toNative(lsfToValueListText(lsfCons[string](t_, (*lsfList[string])(nil))))))
+		return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).Subscribe(text1Codec.toNative(lsfToValueText(g)), text2Codec.toNative(lsfToValueText(m_)), list1Codec.toNative(lsfToValueListText(lsfCons[string](t_, (*lsfList[string])(nil))))))
 	}())
 	joined := performed
 	performed_2 := lsfFromValueEitherKafkaErrorListConsumerRecord(func() LawSpecValue {
 		schema := _lawSpecDefinitionSchema
 		bits := 64
-		codec0 := lsScalarCodec[int32](schema, bits, "Int32")
+		int32_1Codec := lsScalarCodec[int32](schema, bits, "Int32")
 		resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsListCodec(schema, bits, lawSpecConsumerRecordCodec(schema, bits, symbols), symbols), symbols)
-		return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).Poll(codec0.toNative(lsfToValueInt32(n))))
+		return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).Poll(int32_1Codec.toNative(lsfToValueInt32(n))))
 	}())
 	polled := performed_2
 	performed_3 := lsfFromValueEitherKafkaErrorUnit(func() LawSpecValue {
@@ -5919,35 +5919,35 @@ func lsfResumesAtCommitted(symbols map[string]*LawSpecSymbol, t_ string, g strin
 	performed_5 := lsfFromValueEitherKafkaErrorListTopicPartition(func() LawSpecValue {
 		schema := _lawSpecDefinitionSchema
 		bits := 64
-		codec0 := lsScalarCodec[string](schema, bits, "Text")
-		codec1 := lsScalarCodec[string](schema, bits, "Text")
-		codec2 := lsListCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
+		text1Codec := lsScalarCodec[string](schema, bits, "Text")
+		text2Codec := lsScalarCodec[string](schema, bits, "Text")
+		list1Codec := lsListCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
 		resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols), symbols)
-		return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).Subscribe(codec0.toNative(lsfToValueText(g)), codec1.toNative(lsfToValueText(m_)), codec2.toNative(lsfToValueListText(lsfCons[string](t_, (*lsfList[string])(nil))))))
+		return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).Subscribe(text1Codec.toNative(lsfToValueText(g)), text2Codec.toNative(lsfToValueText(m_)), list1Codec.toNative(lsfToValueListText(lsfCons[string](t_, (*lsfList[string])(nil))))))
 	}())
 	rejoined := performed_5
 	performed_6 := lsfFromValueEitherKafkaErrorInt64(func() LawSpecValue {
 		schema := _lawSpecDefinitionSchema
 		bits := 64
-		codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
+		topicPartition1Codec := lawSpecTopicPartitionCodec(schema, bits, symbols)
 		resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsScalarCodec[int64](schema, bits, "Int64"), symbols)
-		return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).Position(codec0.toNative(lsfToValueTopicPartition(tp))))
+		return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).Position(topicPartition1Codec.toNative(lsfToValueTopicPartition(tp))))
 	}())
 	resumed := performed_6
 	performed_7 := lsfFromValueMaybeInt64(func() LawSpecValue {
 		schema := _lawSpecDefinitionSchema
 		bits := 64
-		codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
+		topicPartition1Codec := lawSpecTopicPartitionCodec(schema, bits, symbols)
 		resultCodec := lsMaybeCodec(schema, bits, lsScalarCodec[int64](schema, bits, "Int64"), symbols)
-		return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).CommittedOffset(codec0.toNative(lsfToValueTopicPartition(tp))))
+		return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).CommittedOffset(topicPartition1Codec.toNative(lsfToValueTopicPartition(tp))))
 	}())
 	after := performed_7
 	performed_8 := lsfFromValueEitherKafkaErrorListConsumerRecord(func() LawSpecValue {
 		schema := _lawSpecDefinitionSchema
 		bits := 64
-		codec0 := lsScalarCodec[int32](schema, bits, "Int32")
+		int32_1Codec := lsScalarCodec[int32](schema, bits, "Int32")
 		resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsListCodec(schema, bits, lawSpecConsumerRecordCodec(schema, bits, symbols), symbols), symbols)
-		return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).Poll(codec0.toNative(lsfToValueInt32(int32(100)))))
+		return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).Poll(int32_1Codec.toNative(lsfToValueInt32(int32(100)))))
 	}())
 	again := performed_8
 	var value_2 bool
@@ -6089,9 +6089,9 @@ func lsfStableBelowHigh(symbols map[string]*LawSpecSymbol, t_ string, txid strin
 			return func() LawSpecValue {
 				schema := _lawSpecDefinitionSchema
 				bits := 64
-				codec0 := lsMaybeCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
+				maybe1Codec := lsMaybeCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
 				resultCodec := lawSpecProducerIdAndEpochCodec(schema, bits, symbols)
-				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).InitProducerIdRequest(codec0.toNative(lsfToValueMaybeText(lsfPresent[string](txid)))))
+				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).InitProducerIdRequest(maybe1Codec.toNative(lsfToValueMaybeText(lsfPresent[string](txid)))))
 			}()
 		}))
 		attempted = lsfRight[lsfKafkaError, *lsfProducerIdAndEpoch](performed)
@@ -6135,13 +6135,13 @@ func lsfStableBelowHigh(symbols map[string]*LawSpecSymbol, t_ string, txid strin
 				return func() LawSpecValue {
 					schema := _lawSpecDefinitionSchema
 					bits := 64
-					codec0 := lsScalarCodec[string](schema, bits, "Text")
-					codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-					codec2 := lsScalarCodec[int16](schema, bits, "Int16")
-					codec3 := lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
+					text1Codec := lsScalarCodec[string](schema, bits, "Text")
+					int64_1Codec := lsScalarCodec[int64](schema, bits, "Int64")
+					int16_1Codec := lsScalarCodec[int16](schema, bits, "Int16")
+					list1Codec := lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
 					resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
 					return func() LawSpecValue {
-						lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).AddPartitionsToTxnRequest(codec0.toNative(lsfToValueText(txid)), codec1.toNative(lsfToValueInt64(value_5)), codec2.toNative(lsfToValueInt16(value_6)), codec3.toNative(lsfToValueListTopicPartition(lsfCons[*lsfTopicPartition](tp, (*lsfList[*lsfTopicPartition])(nil)))))
+						lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).AddPartitionsToTxnRequest(text1Codec.toNative(lsfToValueText(txid)), int64_1Codec.toNative(lsfToValueInt64(value_5)), int16_1Codec.toNative(lsfToValueInt16(value_6)), list1Codec.toNative(lsfToValueListTopicPartition(lsfCons[*lsfTopicPartition](tp, (*lsfList[*lsfTopicPartition])(nil)))))
 						return resultCodec.fromNative(LawSpecUnit{})
 					}()
 				}()
@@ -6177,11 +6177,11 @@ func lsfStableBelowHigh(symbols map[string]*LawSpecSymbol, t_ string, txid strin
 				return func() LawSpecValue {
 					schema := _lawSpecDefinitionSchema
 					bits := 64
-					codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-					codec1 := lsMaybeCodec(schema, bits, lawSpecProducerTagCodec(schema, bits, symbols), symbols)
-					codec2 := lsListCodec(schema, bits, lawSpecRecordCodec(schema, bits, symbols), symbols)
+					topicPartition1Codec := lawSpecTopicPartitionCodec(schema, bits, symbols)
+					maybe1Codec := lsMaybeCodec(schema, bits, lawSpecProducerTagCodec(schema, bits, symbols), symbols)
+					list1Codec := lsListCodec(schema, bits, lawSpecRecordCodec(schema, bits, symbols), symbols)
 					resultCodec := lsScalarCodec[int64](schema, bits, "Int64")
-					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).ProduceRequest(codec0.toNative(lsfToValueTopicPartition(tp)), codec1.toNative(lsfToValueMaybeProducerTag(lsfPresent[*lsfProducerTag](lsfTagOf(selection, int32(0))))), codec2.toNative(lsfToValueListRecord(batch))))
+					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).ProduceRequest(topicPartition1Codec.toNative(lsfToValueTopicPartition(tp)), maybe1Codec.toNative(lsfToValueMaybeProducerTag(lsfPresent[*lsfProducerTag](lsfTagOf(selection, int32(0))))), list1Codec.toNative(lsfToValueListRecord(batch))))
 				}()
 			}))
 			attempted_3 = lsfRight[lsfKafkaError, int64](performed_3)
@@ -6215,12 +6215,12 @@ func lsfStableBelowHigh(symbols map[string]*LawSpecSymbol, t_ string, txid strin
 				return func() LawSpecValue {
 					schema := _lawSpecDefinitionSchema
 					bits := 64
-					codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-					codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-					codec2 := lsScalarCodec[int32](schema, bits, "Int32")
-					codec3 := lawSpecIsolationLevelCodec(schema, bits, symbols)
+					topicPartition1Codec := lawSpecTopicPartitionCodec(schema, bits, symbols)
+					int64_1Codec := lsScalarCodec[int64](schema, bits, "Int64")
+					int32_1Codec := lsScalarCodec[int32](schema, bits, "Int32")
+					isolationLevel1Codec := lawSpecIsolationLevelCodec(schema, bits, symbols)
 					resultCodec := lawSpecFetchResultCodec(schema, bits, symbols)
-					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).FetchRequest(codec0.toNative(lsfToValueTopicPartition(tp)), codec1.toNative(lsfToValueInt64(int64(0))), codec2.toNative(lsfToValueInt32(int32(1000))), codec3.toNative(lsfToValueIsolationLevel(lsfIsolationLevel_ReadUncommitted))))
+					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).FetchRequest(topicPartition1Codec.toNative(lsfToValueTopicPartition(tp)), int64_1Codec.toNative(lsfToValueInt64(int64(0))), int32_1Codec.toNative(lsfToValueInt32(int32(1000))), isolationLevel1Codec.toNative(lsfToValueIsolationLevel(lsfIsolationLevel_ReadUncommitted))))
 				}()
 			}))
 			attempted_4 = lsfRight[lsfKafkaError, *lsfFetchResult](performed_4)
@@ -6347,9 +6347,9 @@ func lsfTransactionThenRead(symbols map[string]*LawSpecSymbol, t_ string, txid s
 			return func() LawSpecValue {
 				schema := _lawSpecDefinitionSchema
 				bits := 64
-				codec0 := lsMaybeCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
+				maybe1Codec := lsMaybeCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
 				resultCodec := lawSpecProducerIdAndEpochCodec(schema, bits, symbols)
-				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).InitProducerIdRequest(codec0.toNative(lsfToValueMaybeText(lsfPresent[string](txid)))))
+				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).InitProducerIdRequest(maybe1Codec.toNative(lsfToValueMaybeText(lsfPresent[string](txid)))))
 			}()
 		}))
 		attempted = lsfRight[lsfKafkaError, *lsfProducerIdAndEpoch](performed)
@@ -6393,13 +6393,13 @@ func lsfTransactionThenRead(symbols map[string]*LawSpecSymbol, t_ string, txid s
 				return func() LawSpecValue {
 					schema := _lawSpecDefinitionSchema
 					bits := 64
-					codec0 := lsScalarCodec[string](schema, bits, "Text")
-					codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-					codec2 := lsScalarCodec[int16](schema, bits, "Int16")
-					codec3 := lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
+					text1Codec := lsScalarCodec[string](schema, bits, "Text")
+					int64_1Codec := lsScalarCodec[int64](schema, bits, "Int64")
+					int16_1Codec := lsScalarCodec[int16](schema, bits, "Int16")
+					list1Codec := lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
 					resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
 					return func() LawSpecValue {
-						lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).AddPartitionsToTxnRequest(codec0.toNative(lsfToValueText(txid)), codec1.toNative(lsfToValueInt64(value_5)), codec2.toNative(lsfToValueInt16(value_6)), codec3.toNative(lsfToValueListTopicPartition(lsfCons[*lsfTopicPartition](tp, (*lsfList[*lsfTopicPartition])(nil)))))
+						lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).AddPartitionsToTxnRequest(text1Codec.toNative(lsfToValueText(txid)), int64_1Codec.toNative(lsfToValueInt64(value_5)), int16_1Codec.toNative(lsfToValueInt16(value_6)), list1Codec.toNative(lsfToValueListTopicPartition(lsfCons[*lsfTopicPartition](tp, (*lsfList[*lsfTopicPartition])(nil)))))
 						return resultCodec.fromNative(LawSpecUnit{})
 					}()
 				}()
@@ -6438,11 +6438,11 @@ func lsfTransactionThenRead(symbols map[string]*LawSpecSymbol, t_ string, txid s
 					return func() LawSpecValue {
 						schema := _lawSpecDefinitionSchema
 						bits := 64
-						codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-						codec1 := lsMaybeCodec(schema, bits, lawSpecProducerTagCodec(schema, bits, symbols), symbols)
-						codec2 := lsListCodec(schema, bits, lawSpecRecordCodec(schema, bits, symbols), symbols)
+						topicPartition1Codec := lawSpecTopicPartitionCodec(schema, bits, symbols)
+						maybe1Codec := lsMaybeCodec(schema, bits, lawSpecProducerTagCodec(schema, bits, symbols), symbols)
+						list1Codec := lsListCodec(schema, bits, lawSpecRecordCodec(schema, bits, symbols), symbols)
 						resultCodec := lsScalarCodec[int64](schema, bits, "Int64")
-						return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).ProduceRequest(codec0.toNative(lsfToValueTopicPartition(tp)), codec1.toNative(lsfToValueMaybeProducerTag(lsfPresent[*lsfProducerTag](lsfTagOf(selection, int32(0))))), codec2.toNative(lsfToValueListRecord(batch))))
+						return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).ProduceRequest(topicPartition1Codec.toNative(lsfToValueTopicPartition(tp)), maybe1Codec.toNative(lsfToValueMaybeProducerTag(lsfPresent[*lsfProducerTag](lsfTagOf(selection, int32(0))))), list1Codec.toNative(lsfToValueListRecord(batch))))
 					}()
 				}))
 				attempted_3 = lsfRight[lsfKafkaError, int64](performed_3)
@@ -6488,13 +6488,13 @@ func lsfTransactionThenRead(symbols map[string]*LawSpecSymbol, t_ string, txid s
 						return func() LawSpecValue {
 							schema := _lawSpecDefinitionSchema
 							bits := 64
-							codec0 := lsScalarCodec[string](schema, bits, "Text")
-							codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-							codec2 := lsScalarCodec[int16](schema, bits, "Int16")
-							codec3 := lsScalarCodec[bool](schema, bits, "Bool")
+							text1Codec := lsScalarCodec[string](schema, bits, "Text")
+							int64_1Codec := lsScalarCodec[int64](schema, bits, "Int64")
+							int16_1Codec := lsScalarCodec[int16](schema, bits, "Int16")
+							bool1Codec := lsScalarCodec[bool](schema, bits, "Bool")
 							resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
 							return func() LawSpecValue {
-								lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).EndTxnRequest(codec0.toNative(lsfToValueText(txid)), codec1.toNative(lsfToValueInt64(value_11)), codec2.toNative(lsfToValueInt16(value_12)), codec3.toNative(lsfToValueBool(commit)))
+								lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).EndTxnRequest(text1Codec.toNative(lsfToValueText(txid)), int64_1Codec.toNative(lsfToValueInt64(value_11)), int16_1Codec.toNative(lsfToValueInt16(value_12)), bool1Codec.toNative(lsfToValueBool(commit)))
 								return resultCodec.fromNative(LawSpecUnit{})
 							}()
 						}()
@@ -6542,10 +6542,10 @@ func lsfTransactionalOffsets(symbols map[string]*LawSpecSymbol, t_ string, txid 
 	performed := lsfFromValueMaybeInt64(func() LawSpecValue {
 		schema := _lawSpecDefinitionSchema
 		bits := 64
-		codec0 := lsScalarCodec[string](schema, bits, "Text")
-		codec1 := lawSpecTopicPartitionCodec(schema, bits, symbols)
+		text1Codec := lsScalarCodec[string](schema, bits, "Text")
+		topicPartition1Codec := lawSpecTopicPartitionCodec(schema, bits, symbols)
 		resultCodec := lsMaybeCodec(schema, bits, lsScalarCodec[int64](schema, bits, "Int64"), symbols)
-		return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).OffsetFetchRequest(codec0.toNative(lsfToValueText(g)), codec1.toNative(lsfToValueTopicPartition(tp))))
+		return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).OffsetFetchRequest(text1Codec.toNative(lsfToValueText(g)), topicPartition1Codec.toNative(lsfToValueTopicPartition(tp))))
 	}())
 	before := performed
 	var value_2 lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch]
@@ -6568,9 +6568,9 @@ func lsfTransactionalOffsets(symbols map[string]*LawSpecSymbol, t_ string, txid 
 			return func() LawSpecValue {
 				schema := _lawSpecDefinitionSchema
 				bits := 64
-				codec0 := lsMaybeCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
+				maybe1Codec := lsMaybeCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
 				resultCodec := lawSpecProducerIdAndEpochCodec(schema, bits, symbols)
-				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).InitProducerIdRequest(codec0.toNative(lsfToValueMaybeText(lsfPresent[string](txid)))))
+				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).InitProducerIdRequest(maybe1Codec.toNative(lsfToValueMaybeText(lsfPresent[string](txid)))))
 			}()
 		}))
 		attempted = lsfRight[lsfKafkaError, *lsfProducerIdAndEpoch](performed_2)
@@ -6618,14 +6618,14 @@ func lsfTransactionalOffsets(symbols map[string]*LawSpecSymbol, t_ string, txid 
 				return func() LawSpecValue {
 					schema := _lawSpecDefinitionSchema
 					bits := 64
-					codec0 := lsScalarCodec[string](schema, bits, "Text")
-					codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-					codec2 := lsScalarCodec[int16](schema, bits, "Int16")
-					codec3 := lsScalarCodec[string](schema, bits, "Text")
-					codec4 := lsListCodec(schema, bits, lawSpecOffsetEntryCodec(schema, bits, symbols), symbols)
+					text1Codec := lsScalarCodec[string](schema, bits, "Text")
+					int64_1Codec := lsScalarCodec[int64](schema, bits, "Int64")
+					int16_1Codec := lsScalarCodec[int16](schema, bits, "Int16")
+					text2Codec := lsScalarCodec[string](schema, bits, "Text")
+					list1Codec := lsListCodec(schema, bits, lawSpecOffsetEntryCodec(schema, bits, symbols), symbols)
 					resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
 					return func() LawSpecValue {
-						lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).TxnOffsetCommitRequest(codec0.toNative(lsfToValueText(txid)), codec1.toNative(lsfToValueInt64(value_5)), codec2.toNative(lsfToValueInt16(value_6)), codec3.toNative(lsfToValueText(g)), codec4.toNative(lsfToValueListOffsetEntry(lsfCons[*lsfOffsetEntry](value_7, (*lsfList[*lsfOffsetEntry])(nil)))))
+						lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).TxnOffsetCommitRequest(text1Codec.toNative(lsfToValueText(txid)), int64_1Codec.toNative(lsfToValueInt64(value_5)), int16_1Codec.toNative(lsfToValueInt16(value_6)), text2Codec.toNative(lsfToValueText(g)), list1Codec.toNative(lsfToValueListOffsetEntry(lsfCons[*lsfOffsetEntry](value_7, (*lsfList[*lsfOffsetEntry])(nil)))))
 						return resultCodec.fromNative(LawSpecUnit{})
 					}()
 				}()
@@ -6667,13 +6667,13 @@ func lsfTransactionalOffsets(symbols map[string]*LawSpecSymbol, t_ string, txid 
 				return func() LawSpecValue {
 					schema := _lawSpecDefinitionSchema
 					bits := 64
-					codec0 := lsScalarCodec[string](schema, bits, "Text")
-					codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-					codec2 := lsScalarCodec[int16](schema, bits, "Int16")
-					codec3 := lsScalarCodec[bool](schema, bits, "Bool")
+					text1Codec := lsScalarCodec[string](schema, bits, "Text")
+					int64_1Codec := lsScalarCodec[int64](schema, bits, "Int64")
+					int16_1Codec := lsScalarCodec[int16](schema, bits, "Int16")
+					bool1Codec := lsScalarCodec[bool](schema, bits, "Bool")
 					resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
 					return func() LawSpecValue {
-						lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).EndTxnRequest(codec0.toNative(lsfToValueText(txid)), codec1.toNative(lsfToValueInt64(value_10)), codec2.toNative(lsfToValueInt16(value_11)), codec3.toNative(lsfToValueBool(false)))
+						lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).EndTxnRequest(text1Codec.toNative(lsfToValueText(txid)), int64_1Codec.toNative(lsfToValueInt64(value_10)), int16_1Codec.toNative(lsfToValueInt16(value_11)), bool1Codec.toNative(lsfToValueBool(false)))
 						return resultCodec.fromNative(LawSpecUnit{})
 					}()
 				}()
@@ -6692,10 +6692,10 @@ func lsfTransactionalOffsets(symbols map[string]*LawSpecSymbol, t_ string, txid 
 		performed_5 := lsfFromValueMaybeInt64(func() LawSpecValue {
 			schema := _lawSpecDefinitionSchema
 			bits := 64
-			codec0 := lsScalarCodec[string](schema, bits, "Text")
-			codec1 := lawSpecTopicPartitionCodec(schema, bits, symbols)
+			text1Codec := lsScalarCodec[string](schema, bits, "Text")
+			topicPartition1Codec := lawSpecTopicPartitionCodec(schema, bits, symbols)
 			resultCodec := lsMaybeCodec(schema, bits, lsScalarCodec[int64](schema, bits, "Int64"), symbols)
-			return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).OffsetFetchRequest(codec0.toNative(lsfToValueText(g)), codec1.toNative(lsfToValueTopicPartition(tp))))
+			return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).OffsetFetchRequest(text1Codec.toNative(lsfToValueText(g)), topicPartition1Codec.toNative(lsfToValueTopicPartition(tp))))
 		}())
 		afterAbort := performed_5
 		var value_13 lsfEither[lsfKafkaError, lsfUnit]
@@ -6728,14 +6728,14 @@ func lsfTransactionalOffsets(symbols map[string]*LawSpecSymbol, t_ string, txid 
 				return func() LawSpecValue {
 					schema := _lawSpecDefinitionSchema
 					bits := 64
-					codec0 := lsScalarCodec[string](schema, bits, "Text")
-					codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-					codec2 := lsScalarCodec[int16](schema, bits, "Int16")
-					codec3 := lsScalarCodec[string](schema, bits, "Text")
-					codec4 := lsListCodec(schema, bits, lawSpecOffsetEntryCodec(schema, bits, symbols), symbols)
+					text1Codec := lsScalarCodec[string](schema, bits, "Text")
+					int64_1Codec := lsScalarCodec[int64](schema, bits, "Int64")
+					int16_1Codec := lsScalarCodec[int16](schema, bits, "Int16")
+					text2Codec := lsScalarCodec[string](schema, bits, "Text")
+					list1Codec := lsListCodec(schema, bits, lawSpecOffsetEntryCodec(schema, bits, symbols), symbols)
 					resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
 					return func() LawSpecValue {
-						lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).TxnOffsetCommitRequest(codec0.toNative(lsfToValueText(txid)), codec1.toNative(lsfToValueInt64(value_14)), codec2.toNative(lsfToValueInt16(value_15)), codec3.toNative(lsfToValueText(g)), codec4.toNative(lsfToValueListOffsetEntry(lsfCons[*lsfOffsetEntry](value_16, (*lsfList[*lsfOffsetEntry])(nil)))))
+						lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).TxnOffsetCommitRequest(text1Codec.toNative(lsfToValueText(txid)), int64_1Codec.toNative(lsfToValueInt64(value_14)), int16_1Codec.toNative(lsfToValueInt16(value_15)), text2Codec.toNative(lsfToValueText(g)), list1Codec.toNative(lsfToValueListOffsetEntry(lsfCons[*lsfOffsetEntry](value_16, (*lsfList[*lsfOffsetEntry])(nil)))))
 						return resultCodec.fromNative(LawSpecUnit{})
 					}()
 				}()
@@ -6777,13 +6777,13 @@ func lsfTransactionalOffsets(symbols map[string]*LawSpecSymbol, t_ string, txid 
 				return func() LawSpecValue {
 					schema := _lawSpecDefinitionSchema
 					bits := 64
-					codec0 := lsScalarCodec[string](schema, bits, "Text")
-					codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-					codec2 := lsScalarCodec[int16](schema, bits, "Int16")
-					codec3 := lsScalarCodec[bool](schema, bits, "Bool")
+					text1Codec := lsScalarCodec[string](schema, bits, "Text")
+					int64_1Codec := lsScalarCodec[int64](schema, bits, "Int64")
+					int16_1Codec := lsScalarCodec[int16](schema, bits, "Int16")
+					bool1Codec := lsScalarCodec[bool](schema, bits, "Bool")
 					resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
 					return func() LawSpecValue {
-						lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).EndTxnRequest(codec0.toNative(lsfToValueText(txid)), codec1.toNative(lsfToValueInt64(value_19)), codec2.toNative(lsfToValueInt16(value_20)), codec3.toNative(lsfToValueBool(true)))
+						lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).EndTxnRequest(text1Codec.toNative(lsfToValueText(txid)), int64_1Codec.toNative(lsfToValueInt64(value_19)), int16_1Codec.toNative(lsfToValueInt16(value_20)), bool1Codec.toNative(lsfToValueBool(true)))
 						return resultCodec.fromNative(LawSpecUnit{})
 					}()
 				}()
@@ -6846,10 +6846,10 @@ func lsfTransactionalOffsets(symbols map[string]*LawSpecSymbol, t_ string, txid 
 			performed_8 := lsfFromValueMaybeInt64(func() LawSpecValue {
 				schema := _lawSpecDefinitionSchema
 				bits := 64
-				codec0 := lsScalarCodec[string](schema, bits, "Text")
-				codec1 := lawSpecTopicPartitionCodec(schema, bits, symbols)
+				text1Codec := lsScalarCodec[string](schema, bits, "Text")
+				topicPartition1Codec := lawSpecTopicPartitionCodec(schema, bits, symbols)
 				resultCodec := lsMaybeCodec(schema, bits, lsScalarCodec[int64](schema, bits, "Int64"), symbols)
-				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).OffsetFetchRequest(codec0.toNative(lsfToValueText(g)), codec1.toNative(lsfToValueTopicPartition(tp))))
+				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).OffsetFetchRequest(text1Codec.toNative(lsfToValueText(g)), topicPartition1Codec.toNative(lsfToValueTopicPartition(tp))))
 			}())
 			logic_4 = (lsfEqualMaybeInt64(performed_8, lsfPresent[int64](offset)))
 		} else {
@@ -6920,13 +6920,13 @@ func lsfTransactionsAdd(symbols map[string]*LawSpecSymbol, tps *lsfList[*lsfTopi
 						return func() LawSpecValue {
 							schema := _lawSpecDefinitionSchema
 							bits := 64
-							codec0 := lsScalarCodec[string](schema, bits, "Text")
-							codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-							codec2 := lsScalarCodec[int16](schema, bits, "Int16")
-							codec3 := lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
+							text1Codec := lsScalarCodec[string](schema, bits, "Text")
+							int64_1Codec := lsScalarCodec[int64](schema, bits, "Int64")
+							int16_1Codec := lsScalarCodec[int16](schema, bits, "Int16")
+							list1Codec := lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
 							resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
 							return func() LawSpecValue {
-								lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).AddPartitionsToTxnRequest(codec0.toNative(lsfToValueText(value_6)), codec1.toNative(lsfToValueInt64(value_7)), codec2.toNative(lsfToValueInt16(value_8)), codec3.toNative(lsfToValueListTopicPartition(missing)))
+								lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).AddPartitionsToTxnRequest(text1Codec.toNative(lsfToValueText(value_6)), int64_1Codec.toNative(lsfToValueInt64(value_7)), int16_1Codec.toNative(lsfToValueInt16(value_8)), list1Codec.toNative(lsfToValueListTopicPartition(missing)))
 								return resultCodec.fromNative(LawSpecUnit{})
 							}()
 						}()
@@ -7108,13 +7108,13 @@ func lsfTransactionsEnd(symbols map[string]*LawSpecSymbol, commit bool, st *lsfT
 						return func() LawSpecValue {
 							schema := _lawSpecDefinitionSchema
 							bits := 64
-							codec0 := lsScalarCodec[string](schema, bits, "Text")
-							codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-							codec2 := lsScalarCodec[int16](schema, bits, "Int16")
-							codec3 := lsScalarCodec[bool](schema, bits, "Bool")
+							text1Codec := lsScalarCodec[string](schema, bits, "Text")
+							int64_1Codec := lsScalarCodec[int64](schema, bits, "Int64")
+							int16_1Codec := lsScalarCodec[int16](schema, bits, "Int16")
+							bool1Codec := lsScalarCodec[bool](schema, bits, "Bool")
 							resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
 							return func() LawSpecValue {
-								lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).EndTxnRequest(codec0.toNative(lsfToValueText(value_10)), codec1.toNative(lsfToValueInt64(value_11)), codec2.toNative(lsfToValueInt16(value_12)), codec3.toNative(lsfToValueBool(commit)))
+								lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).EndTxnRequest(text1Codec.toNative(lsfToValueText(value_10)), int64_1Codec.toNative(lsfToValueInt64(value_11)), int16_1Codec.toNative(lsfToValueInt16(value_12)), bool1Codec.toNative(lsfToValueBool(commit)))
 								return resultCodec.fromNative(LawSpecUnit{})
 							}()
 						}()
@@ -7191,9 +7191,9 @@ func lsfTransactionsInit(symbols map[string]*LawSpecSymbol, txid string, st *lsf
 			return func() LawSpecValue {
 				schema := _lawSpecDefinitionSchema
 				bits := 64
-				codec0 := lsMaybeCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
+				maybe1Codec := lsMaybeCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
 				resultCodec := lawSpecProducerIdAndEpochCodec(schema, bits, symbols)
-				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).InitProducerIdRequest(codec0.toNative(lsfToValueMaybeText(lsfPresent[string](txid)))))
+				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).InitProducerIdRequest(maybe1Codec.toNative(lsfToValueMaybeText(lsfPresent[string](txid)))))
 			}()
 		}))
 		attempted = lsfRight[lsfKafkaError, *lsfProducerIdAndEpoch](performed)
@@ -7267,14 +7267,14 @@ func lsfTransactionsOffsets(symbols map[string]*LawSpecSymbol, g string, offsets
 					return func() LawSpecValue {
 						schema := _lawSpecDefinitionSchema
 						bits := 64
-						codec0 := lsScalarCodec[string](schema, bits, "Text")
-						codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-						codec2 := lsScalarCodec[int16](schema, bits, "Int16")
-						codec3 := lsScalarCodec[string](schema, bits, "Text")
-						codec4 := lsListCodec(schema, bits, lawSpecOffsetEntryCodec(schema, bits, symbols), symbols)
+						text1Codec := lsScalarCodec[string](schema, bits, "Text")
+						int64_1Codec := lsScalarCodec[int64](schema, bits, "Int64")
+						int16_1Codec := lsScalarCodec[int16](schema, bits, "Int16")
+						text2Codec := lsScalarCodec[string](schema, bits, "Text")
+						list1Codec := lsListCodec(schema, bits, lawSpecOffsetEntryCodec(schema, bits, symbols), symbols)
 						resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
 						return func() LawSpecValue {
-							lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).TxnOffsetCommitRequest(codec0.toNative(lsfToValueText(value_4)), codec1.toNative(lsfToValueInt64(value_5)), codec2.toNative(lsfToValueInt16(value_6)), codec3.toNative(lsfToValueText(g)), codec4.toNative(lsfToValueListOffsetEntry(offsets)))
+							lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).TxnOffsetCommitRequest(text1Codec.toNative(lsfToValueText(value_4)), int64_1Codec.toNative(lsfToValueInt64(value_5)), int16_1Codec.toNative(lsfToValueInt16(value_6)), text2Codec.toNative(lsfToValueText(g)), list1Codec.toNative(lsfToValueListOffsetEntry(offsets)))
 							return resultCodec.fromNative(LawSpecUnit{})
 						}()
 					}()
@@ -7377,11 +7377,11 @@ func lsfTransactionsSend(symbols map[string]*LawSpecSymbol, pr *lsfProducerRecor
 					return func() LawSpecValue {
 						schema := _lawSpecDefinitionSchema
 						bits := 64
-						codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-						codec1 := lsMaybeCodec(schema, bits, lawSpecProducerTagCodec(schema, bits, symbols), symbols)
-						codec2 := lsListCodec(schema, bits, lawSpecRecordCodec(schema, bits, symbols), symbols)
+						topicPartition1Codec := lawSpecTopicPartitionCodec(schema, bits, symbols)
+						maybe1Codec := lsMaybeCodec(schema, bits, lawSpecProducerTagCodec(schema, bits, symbols), symbols)
+						list1Codec := lsListCodec(schema, bits, lawSpecRecordCodec(schema, bits, symbols), symbols)
 						resultCodec := lsScalarCodec[int64](schema, bits, "Int64")
-						return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).ProduceRequest(codec0.toNative(lsfToValueTopicPartition(selection_2)), codec1.toNative(lsfToValueMaybeProducerTag(lsfTagFor(value_9, sequence))), codec2.toNative(lsfToValueListRecord(lsfCons[*lsfRecord](value_11, (*lsfList[*lsfRecord])(nil))))))
+						return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).ProduceRequest(topicPartition1Codec.toNative(lsfToValueTopicPartition(selection_2)), maybe1Codec.toNative(lsfToValueMaybeProducerTag(lsfTagFor(value_9, sequence))), list1Codec.toNative(lsfToValueListRecord(lsfCons[*lsfRecord](value_11, (*lsfList[*lsfRecord])(nil))))))
 					}()
 				}))
 				attempted = lsfRight[lsfKafkaError, int64](performed)
@@ -7547,9 +7547,9 @@ func lsfWriteAborted(symbols map[string]*LawSpecSymbol, tp *lsfTopicPartition, t
 			return func() LawSpecValue {
 				schema := _lawSpecDefinitionSchema
 				bits := 64
-				codec0 := lsMaybeCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
+				maybe1Codec := lsMaybeCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
 				resultCodec := lawSpecProducerIdAndEpochCodec(schema, bits, symbols)
-				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).InitProducerIdRequest(codec0.toNative(lsfToValueMaybeText(lsfPresent[string](txid)))))
+				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).InitProducerIdRequest(maybe1Codec.toNative(lsfToValueMaybeText(lsfPresent[string](txid)))))
 			}()
 		}))
 		attempted = lsfRight[lsfKafkaError, *lsfProducerIdAndEpoch](performed)
@@ -7593,13 +7593,13 @@ func lsfWriteAborted(symbols map[string]*LawSpecSymbol, tp *lsfTopicPartition, t
 				return func() LawSpecValue {
 					schema := _lawSpecDefinitionSchema
 					bits := 64
-					codec0 := lsScalarCodec[string](schema, bits, "Text")
-					codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-					codec2 := lsScalarCodec[int16](schema, bits, "Int16")
-					codec3 := lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
+					text1Codec := lsScalarCodec[string](schema, bits, "Text")
+					int64_1Codec := lsScalarCodec[int64](schema, bits, "Int64")
+					int16_1Codec := lsScalarCodec[int16](schema, bits, "Int16")
+					list1Codec := lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
 					resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
 					return func() LawSpecValue {
-						lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).AddPartitionsToTxnRequest(codec0.toNative(lsfToValueText(txid)), codec1.toNative(lsfToValueInt64(value_4)), codec2.toNative(lsfToValueInt16(value_5)), codec3.toNative(lsfToValueListTopicPartition(lsfCons[*lsfTopicPartition](tp, (*lsfList[*lsfTopicPartition])(nil)))))
+						lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).AddPartitionsToTxnRequest(text1Codec.toNative(lsfToValueText(txid)), int64_1Codec.toNative(lsfToValueInt64(value_4)), int16_1Codec.toNative(lsfToValueInt16(value_5)), list1Codec.toNative(lsfToValueListTopicPartition(lsfCons[*lsfTopicPartition](tp, (*lsfList[*lsfTopicPartition])(nil)))))
 						return resultCodec.fromNative(LawSpecUnit{})
 					}()
 				}()
@@ -7635,11 +7635,11 @@ func lsfWriteAborted(symbols map[string]*LawSpecSymbol, tp *lsfTopicPartition, t
 				return func() LawSpecValue {
 					schema := _lawSpecDefinitionSchema
 					bits := 64
-					codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-					codec1 := lsMaybeCodec(schema, bits, lawSpecProducerTagCodec(schema, bits, symbols), symbols)
-					codec2 := lsListCodec(schema, bits, lawSpecRecordCodec(schema, bits, symbols), symbols)
+					topicPartition1Codec := lawSpecTopicPartitionCodec(schema, bits, symbols)
+					maybe1Codec := lsMaybeCodec(schema, bits, lawSpecProducerTagCodec(schema, bits, symbols), symbols)
+					list1Codec := lsListCodec(schema, bits, lawSpecRecordCodec(schema, bits, symbols), symbols)
 					resultCodec := lsScalarCodec[int64](schema, bits, "Int64")
-					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).ProduceRequest(codec0.toNative(lsfToValueTopicPartition(tp)), codec1.toNative(lsfToValueMaybeProducerTag(lsfPresent[*lsfProducerTag](lsfTagOf(selection, int32(0))))), codec2.toNative(lsfToValueListRecord(lsfCons[*lsfRecord](r, (*lsfList[*lsfRecord])(nil))))))
+					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).ProduceRequest(topicPartition1Codec.toNative(lsfToValueTopicPartition(tp)), maybe1Codec.toNative(lsfToValueMaybeProducerTag(lsfPresent[*lsfProducerTag](lsfTagOf(selection, int32(0))))), list1Codec.toNative(lsfToValueListRecord(lsfCons[*lsfRecord](r, (*lsfList[*lsfRecord])(nil))))))
 				}()
 			}))
 			attempted_3 = lsfRight[lsfKafkaError, int64](performed_3)
@@ -7683,13 +7683,13 @@ func lsfWriteAborted(symbols map[string]*LawSpecSymbol, tp *lsfTopicPartition, t
 					return func() LawSpecValue {
 						schema := _lawSpecDefinitionSchema
 						bits := 64
-						codec0 := lsScalarCodec[string](schema, bits, "Text")
-						codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-						codec2 := lsScalarCodec[int16](schema, bits, "Int16")
-						codec3 := lsScalarCodec[bool](schema, bits, "Bool")
+						text1Codec := lsScalarCodec[string](schema, bits, "Text")
+						int64_1Codec := lsScalarCodec[int64](schema, bits, "Int64")
+						int16_1Codec := lsScalarCodec[int16](schema, bits, "Int16")
+						bool1Codec := lsScalarCodec[bool](schema, bits, "Bool")
 						resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
 						return func() LawSpecValue {
-							lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).EndTxnRequest(codec0.toNative(lsfToValueText(txid)), codec1.toNative(lsfToValueInt64(value_10)), codec2.toNative(lsfToValueInt16(value_11)), codec3.toNative(lsfToValueBool(false)))
+							lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).EndTxnRequest(text1Codec.toNative(lsfToValueText(txid)), int64_1Codec.toNative(lsfToValueInt64(value_10)), int16_1Codec.toNative(lsfToValueInt16(value_11)), bool1Codec.toNative(lsfToValueBool(false)))
 							return resultCodec.fromNative(LawSpecUnit{})
 						}()
 					}()

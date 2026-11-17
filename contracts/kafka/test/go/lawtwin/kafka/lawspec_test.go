@@ -25,14 +25,14 @@ func init() {
 }
 
 // lawspecConnectCluster calls the adapter ConnectCluster on logical values — ../src/contract.lawspec:30.
-func lawspecConnectCluster(symbols map[string]*lawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsHandleCodec[any](_lawspecSchema, lawspecMachineBits, "lawtwin.kafka::type::Cluster", symbols).fromNative(ConnectCluster(value0))
+func lawspecConnectCluster(symbols map[string]*lawSpecSymbol, unit1 LawSpecValue) LawSpecValue {
+	return lsHandleCodec[any](_lawspecSchema, lawspecMachineBits, "lawtwin.kafka::type::Cluster", symbols).fromNative(ConnectCluster(unit1))
 }
 
 // lawspecDisconnectCluster calls the adapter DisconnectCluster on logical values — ../src/contract.lawspec:31.
-func lawspecDisconnectCluster(symbols map[string]*lawSpecSymbol, value0 LawSpecValue) LawSpecValue {
+func lawspecDisconnectCluster(symbols map[string]*lawSpecSymbol, cluster1 LawSpecValue) LawSpecValue {
 	return func() LawSpecValue {
-		DisconnectCluster(lsHandleCodec[any](_lawspecSchema, lawspecMachineBits, "lawtwin.kafka::type::Cluster", symbols).toNative(value0))
+		DisconnectCluster(lsHandleCodec[any](_lawspecSchema, lawspecMachineBits, "lawtwin.kafka::type::Cluster", symbols).toNative(cluster1))
 		return lsAbsent("Unit")
 	}()
 }

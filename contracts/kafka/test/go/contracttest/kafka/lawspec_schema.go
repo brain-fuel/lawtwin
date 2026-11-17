@@ -9,6 +9,7 @@
 package kafka
 
 import (
+	"encoding/hex"
 	"fmt"
 	"math/big"
 	"reflect"
@@ -1110,4 +1111,83 @@ func (s *lawSpecSchema) checkNativeProfile(t lawSpecTypeRef, bits int) {
 		}
 	}
 	check(t)
+}
+
+// Replaying kept values needs the schema, so it lives with it.
+func LawSpecKeptReplay(law, spec string, descriptors []string, schema *lawSpecSchema,
+	references []lawSpecTypeRef, bits int, check LawSpecSearchCase) {
+	file := ""
+	if lsKeptCap(spec) > 0 {
+		file = lsKeptFile(spec)
+	}
+	if file == "" {
+		return
+	}
+	dropped := map[string]bool{}
+	used := map[string]bool{}
+	defer func() {
+		if len(dropped) != 0 || len(used) != 0 {
+			lsKeptUpdate(file, spec, func(entries []lsKeptEntry) []lsKeptEntry {
+				kept := []lsKeptEntry{}
+				for _, entry := range entries {
+					id := strings.Join(entry.Inputs, ",")
+					if dropped[id] {
+						continue
+					}
+					if used[id] {
+						entry.Used++
+					}
+					kept = append(kept, entry)
+				}
+				return kept
+			})
+		}
+		if len(used) != 0 {
+			fmt.Printf("%s: ran %d kept value(s) found by earlier runs in .lawspec/found\n", law, len(used))
+		}
+	}()
+	entries := lsKeptRead(file)
+	if limit := lsKeptCap(spec); len(entries) > limit {
+		entries = entries[len(entries)-limit:]
+	}
+	for _, entry := range entries {
+		id := strings.Join(entry.Inputs, ",")
+		values := lsKeptDecode(descriptors, schema, references, bits, entry.Inputs)
+		if values == nil {
+			dropped[id] = true
+			continue
+		}
+		if _, admitted := check(values); !admitted {
+			dropped[id] = true
+		} else {
+			used[id] = true
+		}
+	}
+}
+
+// The values of one entry, checked against the current definitions; nil when
+// they no longer decode or meet them.
+func lsKeptDecode(descriptors []string, schema *lawSpecSchema, references []lawSpecTypeRef,
+	bits int, inputs []string) (values []LawSpecValue) {
+	defer func() {
+		if recover() != nil {
+			values = nil
+		}
+	}()
+	if len(inputs) != len(descriptors) {
+		return nil
+	}
+	for i, text := range descriptors {
+		table, d := lsValuesFrom(text)
+		raw, err := hex.DecodeString(inputs[i])
+		if err != nil {
+			return nil
+		}
+		value, err := LawSpecWireDecode(table, d, raw)
+		if err != nil || !schema.accepts(references[i], value, bits) {
+			return nil
+		}
+		values = append(values, value)
+	}
+	return values
 }

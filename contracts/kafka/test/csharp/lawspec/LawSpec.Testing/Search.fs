@@ -118,6 +118,211 @@ let replay (law: string) (descriptors: string list) (check: Value list -> Value 
 
         File.Delete file
 
+// The kept-values store (docs/reference/cli.md, "Kept values"). A run that
+// draws a case holding a value of a restricted type records the case's inputs
+// in the wire encoding under .lawspec/found, in a file named by a hash of the
+// definitions its inputs reach, so a changed restriction makes the old values
+// unreachable. A later run replays them as extra cases of the law after
+// checking each against the current definitions; one that no longer meets
+// them is dropped. A spec is "KEY CAP TAG...": the cap is how many values a
+// key keeps (0 keeps none), the tags are the constructors of the restricted
+// types.
+type private KeptEntry = { Inputs: string list; Used: int }
+
+let private keptRecorded =
+    System.Collections.Concurrent.ConcurrentDictionary<string, bool>()
+
+let private keptWords (spec: string) = spec.Split ' '
+
+let private keptCap (spec: string) =
+    let words = keptWords spec
+    if words.Length > 1 then int words.[1] else 0
+
+let private keptFile (spec: string) =
+    let directory =
+        match Environment.GetEnvironmentVariable "LAWSPEC_FOUND" with
+        | null
+        | "" ->
+            match Environment.GetEnvironmentVariable "LAWSPEC_FAILURES" with
+            | null
+            | "" -> None
+            // The failure database is .lawspec/failures/<target>/<project>.
+            | failures -> Some(Path.GetFullPath(Path.Combine(failures, "..", "..", "..", "found")))
+        | found -> Some found
+
+    directory
+    |> Option.map (fun d -> Path.Combine(d, (keptWords spec).[0] + ".json"))
+
+let private keptRead (file: string) : KeptEntry list =
+    try
+        let record = JsonNode.Parse(File.ReadAllText file)
+
+        record.["values"].AsArray()
+        |> Seq.map (fun n ->
+            {
+                Inputs = n.["inputs"].AsArray() |> Seq.map (fun i -> i.GetValue<string>()) |> List.ofSeq
+                Used = n.["used"].GetValue<int>()
+            })
+        |> List.ofSeq
+    with _ ->
+        []
+
+// Merge into what is on disk now, since another target's run may have
+// written since this one read: write a temporary file, then rename it.
+let private keptUpdate (file: string) (spec: string) (change: KeptEntry list -> KeptEntry list) =
+    let entries = change (keptRead file)
+    let cap = keptCap spec
+
+    let kept =
+        if entries.Length > cap then
+            List.skip (entries.Length - cap) entries
+        else
+            entries
+
+    let directory = Path.GetDirectoryName file
+
+    if not (Directory.Exists directory) then
+        Directory.CreateDirectory directory |> ignore
+        File.WriteAllText(Path.Combine(directory, ".gitignore"), "*\n")
+
+    let values = JsonArray()
+
+    for entry in kept do
+        let inputs = JsonArray()
+
+        for input in entry.Inputs do
+            inputs.Add(JsonValue.Create input)
+
+        let node = JsonObject()
+        node.["inputs"] <- inputs
+        node.["used"] <- JsonValue.Create entry.Used
+        values.Add node
+
+    let record = JsonObject()
+    record.["key"] <- JsonValue.Create((keptWords spec).[0])
+    record.["values"] <- values
+
+    let temporary =
+        file
+        + "."
+        + string Environment.ProcessId
+        + "."
+        + Guid.NewGuid().ToString("N")
+        + ".tmp"
+
+    try
+        File.WriteAllText(temporary, record.ToJsonString() + "\n")
+        File.Move(temporary, file, true)
+    finally
+        if File.Exists temporary then
+            File.Delete temporary
+
+let rec private keptHolds (tags: Set<string>) (value: Value) =
+    match value with
+    | Data(tag, fields) -> tags.Contains tag || List.exists (keptHolds tags) fields
+    | List items -> List.exists (keptHolds tags) items
+    | Presence(_, Some inner) -> keptHolds tags inner
+    | _ -> false
+
+/// Keep the case's inputs when it holds a value of a restricted type, once
+/// per run.
+[<CompiledName("KeptRecord")>]
+let keptRecord (spec: string) (descriptors: string list) (values: Value list) =
+    if not (keptRecorded.ContainsKey spec) then
+        match keptFile spec with
+        | Some file when keptCap spec > 0 ->
+            let tags = keptWords spec |> Array.skip 2 |> Set.ofArray
+
+            if List.exists (keptHolds tags) values then
+                keptRecorded.[spec] <- true
+
+                try
+                    let inputs =
+                        List.map2
+                            (fun descriptor value ->
+                                let table, d = Descriptors.fromText descriptor
+                                Convert.ToHexString(Descriptors.encode d value table).ToLowerInvariant())
+                            descriptors
+                            values
+
+                    keptUpdate file spec (fun entries ->
+                        let same = entries |> List.tryFind (fun e -> e.Inputs = inputs)
+
+                        (entries |> List.filter (fun e -> e.Inputs <> inputs))
+                        @ [ defaultArg same { Inputs = inputs; Used = 0 } ])
+                with _ ->
+                    ()
+        | _ -> keptRecorded.[spec] <- true
+
+/// Run the law on the cases earlier runs kept, after checking each against
+/// the current definitions; a case that no longer meets them is dropped.
+/// `check` answers None for a case outside the law's own refinements.
+[<CompiledName("KeptReplay")>]
+let keptReplay
+    (law: string)
+    (spec: string)
+    (descriptors: string list)
+    (schema: Schema.Schema)
+    (references: TypeRef list)
+    (check: Value list -> Value option)
+    =
+    match keptFile spec with
+    | Some file when keptCap spec > 0 ->
+        let all = keptRead file
+
+        let considered =
+            if all.Length > keptCap spec then
+                List.skip (all.Length - keptCap spec) all
+            else
+                all
+
+        let mutable dropped = []
+        let mutable used = []
+
+        try
+            for entry in considered do
+                let values =
+                    try
+                        if entry.Inputs.Length <> descriptors.Length then
+                            None
+                        else
+                            Some(
+                                List.map3
+                                    (fun descriptor reference (hex: string) ->
+                                        let table, d = Descriptors.fromText descriptor
+
+                                        Schema.validate
+                                            (Descriptors.decode d (Convert.FromHexString hex) table)
+                                            reference
+                                            schema)
+                                    descriptors
+                                    references
+                                    entry.Inputs
+                            )
+                    with _ ->
+                        None
+
+                match values with
+                | None -> dropped <- entry.Inputs :: dropped
+                | Some values ->
+                    match check values with
+                    | None -> dropped <- entry.Inputs :: dropped
+                    | Some _ -> used <- entry.Inputs :: used
+        finally
+            if not dropped.IsEmpty || not used.IsEmpty then
+                keptUpdate file spec (fun entries ->
+                    entries
+                    |> List.filter (fun e -> not (List.contains e.Inputs dropped))
+                    |> List.map (fun e ->
+                        if List.contains e.Inputs used then
+                            { e with Used = e.Used + 1 }
+                        else
+                            e))
+
+        if not used.IsEmpty then
+            eprintfn "%s: ran %d kept value(s) found by earlier runs in .lawspec/found" law used.Length
+    | _ -> ()
+
 let private bounds (d: Descriptors.Descriptor) =
     let number =
         function

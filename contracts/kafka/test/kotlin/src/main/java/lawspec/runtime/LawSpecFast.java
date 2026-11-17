@@ -424,6 +424,16 @@ public final class LawSpecFast
     return lawspec.runtime.LawSpecRuntime.textTrim(text);
   }
 
+  public static boolean isUnicodeWhitespace(String text)
+  {
+    return lawspec.runtime.LawSpecRuntime.textIsUnicodeWhitespace(text);
+  }
+
+  public static String trimAsciiControl(String text)
+  {
+    return lawspec.runtime.LawSpecRuntime.textTrimAsciiControl(text);
+  }
+
   public static List<String> words(String text)
   {
     return List.of(lawspec.runtime.LawSpecRuntime.textWords(text));

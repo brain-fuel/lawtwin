@@ -2521,7 +2521,7 @@ def lawtwinPetstoreModelValidOrder(
 def referenceAddPet(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.State,
-    value0: data.Pet,
+    pet_1: data.Pet,
 ) -> data.Pair[data.Pet, data.State]:
     try:
         state = _lawspec_schema.from_native(
@@ -2530,13 +2530,13 @@ def referenceAddPet(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        pet_1 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.petstore.model::type::Pet"),
-            value0,
+            pet_1,
             MACHINE_BITS,
             symbols,
         )
-        result = _definitions.reference_add_pet(symbols, state, value0)
+        result = _definitions.reference_add_pet(symbols, state, pet_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -2563,7 +2563,7 @@ def referenceAddPet(
 def referenceCreateUser(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.State,
-    value0: _schema.Maybe[data.User],
+    maybe_1: _schema.Maybe[data.User],
 ) -> data.Pair[data.User, data.State]:
     try:
         state = _lawspec_schema.from_native(
@@ -2572,16 +2572,16 @@ def referenceCreateUser(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        maybe_1 = _lawspec_schema.from_native(
             _schema.Named(
                 "Maybe",
                 [_schema.Named("lawtwin.petstore.model::type::User")],
             ),
-            value0,
+            maybe_1,
             MACHINE_BITS,
             symbols,
         )
-        result = _definitions.reference_create_user(symbols, state, value0)
+        result = _definitions.reference_create_user(symbols, state, maybe_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -2608,7 +2608,7 @@ def referenceCreateUser(
 def referenceCreateUsersWithListInput(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.State,
-    value0: _schema.Maybe[_builtins.list[data.User]],
+    maybe_1: _schema.Maybe[_builtins.list[data.User]],
 ) -> data.Pair[data.User, data.State]:
     try:
         state = _lawspec_schema.from_native(
@@ -2617,7 +2617,7 @@ def referenceCreateUsersWithListInput(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        maybe_1 = _lawspec_schema.from_native(
             _schema.Named(
                 "Maybe",
                 [
@@ -2627,14 +2627,14 @@ def referenceCreateUsersWithListInput(
                     ),
                 ],
             ),
-            value0,
+            maybe_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.reference_create_users_with_list_input(
             symbols,
             state,
-            value0,
+            maybe_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -2663,7 +2663,7 @@ def referenceCreateUsersWithListInput(
 def referenceDeleteOrder(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.State,
-    value0: _builtins.int,
+    int64_1: _builtins.int,
 ) -> data.Pair[ls.Absence, data.State]:
     try:
         state = _lawspec_schema.from_native(
@@ -2672,13 +2672,13 @@ def referenceDeleteOrder(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        int64_1 = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value0,
+            int64_1,
             MACHINE_BITS,
             symbols,
         )
-        result = _definitions.reference_delete_order(symbols, state, value0)
+        result = _definitions.reference_delete_order(symbols, state, int64_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -2705,8 +2705,8 @@ def referenceDeleteOrder(
 def referenceDeletePet(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.State,
-    value0: _builtins.int,
-    value1: _schema.Maybe[_builtins.str],
+    int64_1: _builtins.int,
+    maybe_1: _schema.Maybe[_builtins.str],
 ) -> data.Pair[ls.Absence, data.State]:
     try:
         state = _lawspec_schema.from_native(
@@ -2715,23 +2715,23 @@ def referenceDeletePet(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        int64_1 = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value0,
+            int64_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        maybe_1 = _lawspec_schema.from_native(
             _schema.Named("Maybe", [_schema.Named("Text")]),
-            value1,
+            maybe_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.reference_delete_pet(
             symbols,
             state,
-            value0,
-            value1,
+            int64_1,
+            maybe_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -2759,7 +2759,7 @@ def referenceDeletePet(
 def referenceDeleteUser(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.State,
-    value0: _builtins.str,
+    text_1: _builtins.str,
 ) -> data.Pair[ls.Absence, data.State]:
     try:
         state = _lawspec_schema.from_native(
@@ -2768,13 +2768,13 @@ def referenceDeleteUser(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        result = _definitions.reference_delete_user(symbols, state, value0)
+        result = _definitions.reference_delete_user(symbols, state, text_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -2801,7 +2801,7 @@ def referenceDeleteUser(
 def referenceFindPetsByStatus(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.State,
-    value0: data.PetStatus,
+    pet_status_1: data.PetStatus,
 ) -> data.Pair[_builtins.list[data.Pet], data.State]:
     try:
         state = _lawspec_schema.from_native(
@@ -2810,16 +2810,16 @@ def referenceFindPetsByStatus(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        pet_status_1 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.petstore.model::type::PetStatus"),
-            value0,
+            pet_status_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.reference_find_pets_by_status(
             symbols,
             state,
-            value0,
+            pet_status_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -2851,7 +2851,7 @@ def referenceFindPetsByStatus(
 def referenceFindPetsByTags(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.State,
-    value0: _builtins.list[_builtins.str],
+    list_1: _builtins.list[_builtins.str],
 ) -> data.Pair[_builtins.list[data.Pet], data.State]:
     try:
         state = _lawspec_schema.from_native(
@@ -2860,16 +2860,16 @@ def referenceFindPetsByTags(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        list_1 = _lawspec_schema.from_native(
             _schema.Named("List", [_schema.Named("Text")]),
-            value0,
+            list_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.reference_find_pets_by_tags(
             symbols,
             state,
-            value0,
+            list_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -2939,7 +2939,7 @@ def referenceGetInventory(
 def referenceGetOrderById(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.State,
-    value0: _builtins.int,
+    int64_1: _builtins.int,
 ) -> data.Pair[data.Order, data.State]:
     try:
         state = _lawspec_schema.from_native(
@@ -2948,13 +2948,13 @@ def referenceGetOrderById(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        int64_1 = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value0,
+            int64_1,
             MACHINE_BITS,
             symbols,
         )
-        result = _definitions.reference_get_order_by_id(symbols, state, value0)
+        result = _definitions.reference_get_order_by_id(symbols, state, int64_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -2981,7 +2981,7 @@ def referenceGetOrderById(
 def referenceGetPetById(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.State,
-    value0: _builtins.int,
+    int64_1: _builtins.int,
 ) -> data.Pair[data.Pet, data.State]:
     try:
         state = _lawspec_schema.from_native(
@@ -2990,13 +2990,13 @@ def referenceGetPetById(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        int64_1 = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value0,
+            int64_1,
             MACHINE_BITS,
             symbols,
         )
-        result = _definitions.reference_get_pet_by_id(symbols, state, value0)
+        result = _definitions.reference_get_pet_by_id(symbols, state, int64_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -3023,7 +3023,7 @@ def referenceGetPetById(
 def referenceGetUserByName(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.State,
-    value0: _builtins.str,
+    text_1: _builtins.str,
 ) -> data.Pair[data.User, data.State]:
     try:
         state = _lawspec_schema.from_native(
@@ -3032,13 +3032,13 @@ def referenceGetUserByName(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        result = _definitions.reference_get_user_by_name(symbols, state, value0)
+        result = _definitions.reference_get_user_by_name(symbols, state, text_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -3065,8 +3065,8 @@ def referenceGetUserByName(
 def referenceLoginUser(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.State,
-    value0: _schema.Maybe[_builtins.str],
-    value1: _schema.Maybe[_builtins.str],
+    maybe_1: _schema.Maybe[_builtins.str],
+    maybe_2: _schema.Maybe[_builtins.str],
 ) -> data.Pair[_builtins.str, data.State]:
     try:
         state = _lawspec_schema.from_native(
@@ -3075,23 +3075,23 @@ def referenceLoginUser(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        maybe_1 = _lawspec_schema.from_native(
             _schema.Named("Maybe", [_schema.Named("Text")]),
-            value0,
+            maybe_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        maybe_2 = _lawspec_schema.from_native(
             _schema.Named("Maybe", [_schema.Named("Text")]),
-            value1,
+            maybe_2,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.reference_login_user(
             symbols,
             state,
-            value0,
-            value1,
+            maybe_1,
+            maybe_2,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -3154,7 +3154,7 @@ def referenceLogoutUser(
 def referencePlaceOrder(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.State,
-    value0: _schema.Maybe[data.Order],
+    maybe_1: _schema.Maybe[data.Order],
 ) -> data.Pair[data.Order, data.State]:
     try:
         state = _lawspec_schema.from_native(
@@ -3163,16 +3163,16 @@ def referencePlaceOrder(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        maybe_1 = _lawspec_schema.from_native(
             _schema.Named(
                 "Maybe",
                 [_schema.Named("lawtwin.petstore.model::type::Order")],
             ),
-            value0,
+            maybe_1,
             MACHINE_BITS,
             symbols,
         )
-        result = _definitions.reference_place_order(symbols, state, value0)
+        result = _definitions.reference_place_order(symbols, state, maybe_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -3228,7 +3228,7 @@ def referenceStart(
 def referenceUpdatePet(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.State,
-    value0: data.Pet,
+    pet_1: data.Pet,
 ) -> data.Pair[data.Pet, data.State]:
     try:
         state = _lawspec_schema.from_native(
@@ -3237,13 +3237,13 @@ def referenceUpdatePet(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        pet_1 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.petstore.model::type::Pet"),
-            value0,
+            pet_1,
             MACHINE_BITS,
             symbols,
         )
-        result = _definitions.reference_update_pet(symbols, state, value0)
+        result = _definitions.reference_update_pet(symbols, state, pet_1)
         return _lawspec_schema.to_native(
             _schema.Named(
                 "lawspec.collections::type::Pair",
@@ -3270,9 +3270,9 @@ def referenceUpdatePet(
 def referenceUpdatePetWithForm(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.State,
-    value0: _builtins.int,
-    value1: _schema.Maybe[_builtins.str],
-    value2: _schema.Maybe[_builtins.str],
+    int64_1: _builtins.int,
+    maybe_1: _schema.Maybe[_builtins.str],
+    maybe_2: _schema.Maybe[_builtins.str],
 ) -> data.Pair[data.Pet, data.State]:
     try:
         state = _lawspec_schema.from_native(
@@ -3281,30 +3281,30 @@ def referenceUpdatePetWithForm(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        int64_1 = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value0,
+            int64_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        maybe_1 = _lawspec_schema.from_native(
             _schema.Named("Maybe", [_schema.Named("Text")]),
-            value1,
+            maybe_1,
             MACHINE_BITS,
             symbols,
         )
-        value2 = _lawspec_schema.from_native(
+        maybe_2 = _lawspec_schema.from_native(
             _schema.Named("Maybe", [_schema.Named("Text")]),
-            value2,
+            maybe_2,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.reference_update_pet_with_form(
             symbols,
             state,
-            value0,
-            value1,
-            value2,
+            int64_1,
+            maybe_1,
+            maybe_2,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -3333,8 +3333,8 @@ def referenceUpdatePetWithForm(
 def referenceUpdateUser(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.State,
-    value0: _builtins.str,
-    value1: _schema.Maybe[data.User],
+    text_1: _builtins.str,
+    maybe_1: _schema.Maybe[data.User],
 ) -> data.Pair[ls.Absence, data.State]:
     try:
         state = _lawspec_schema.from_native(
@@ -3343,26 +3343,26 @@ def referenceUpdateUser(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        maybe_1 = _lawspec_schema.from_native(
             _schema.Named(
                 "Maybe",
                 [_schema.Named("lawtwin.petstore.model::type::User")],
             ),
-            value1,
+            maybe_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.reference_update_user(
             symbols,
             state,
-            value0,
-            value1,
+            text_1,
+            maybe_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -3390,9 +3390,9 @@ def referenceUpdateUser(
 def referenceUploadFile(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.State,
-    value0: _builtins.int,
-    value1: _schema.Maybe[_builtins.str],
-    value2: _schema.Maybe[_builtins.bytes],
+    int64_1: _builtins.int,
+    maybe_1: _schema.Maybe[_builtins.str],
+    maybe_2: _schema.Maybe[_builtins.bytes],
 ) -> data.Pair[data.ApiResponse, data.State]:
     try:
         state = _lawspec_schema.from_native(
@@ -3401,30 +3401,30 @@ def referenceUploadFile(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        int64_1 = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value0,
+            int64_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        maybe_1 = _lawspec_schema.from_native(
             _schema.Named("Maybe", [_schema.Named("Text")]),
-            value1,
+            maybe_1,
             MACHINE_BITS,
             symbols,
         )
-        value2 = _lawspec_schema.from_native(
+        maybe_2 = _lawspec_schema.from_native(
             _schema.Named("Maybe", [_schema.Named("Bytes")]),
-            value2,
+            maybe_2,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.reference_upload_file(
             symbols,
             state,
-            value0,
-            value1,
-            value2,
+            int64_1,
+            maybe_1,
+            maybe_2,
         )
         return _lawspec_schema.to_native(
             _schema.Named(

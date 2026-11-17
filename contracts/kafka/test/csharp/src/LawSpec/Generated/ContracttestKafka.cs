@@ -21,20 +21,20 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value state,
-      Value value0,
-      Value value1,
-      Value value2,
-      Value value3)
+      Value text1,
+      Value int641,
+      Value int161,
+      Value list1)
   {
     return Runtime.Contextual("contracttest.kafka::clusterAddPartitionsToTxnRequest", Fn.F0(() =>
     {
       return LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).FromNative.Invoke(
           LawSpec.TypedProgram.ClusterAddPartitionsToTxnRequest(
               LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(state),
-              Codecs.Text.ToNative.Invoke(value0),
-              Codecs.Int64.ToNative.Invoke(value1),
-              Codecs.Int16.ToNative.Invoke(value2),
-              Codecs.List(LawSpec.Data.Codecs.TopicPartition()).ToNative.Invoke(value3)));
+              Codecs.Text.ToNative.Invoke(text1),
+              Codecs.Int64.ToNative.Invoke(int641),
+              Codecs.Int16.ToNative.Invoke(int161),
+              Codecs.List(LawSpec.Data.Codecs.TopicPartition()).ToNative.Invoke(list1)));
     }));
   }
 
@@ -43,20 +43,20 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value state,
-      Value value0,
-      Value value1,
-      Value value2,
-      Value value3)
+      Value text1,
+      Value text2,
+      Value int321,
+      Value list1)
   {
     return Runtime.Contextual("contracttest.kafka::clusterCommitOffsets", Fn.F0(() =>
     {
       return LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).FromNative.Invoke(
           LawSpec.TypedProgram.ClusterCommitOffsets(
               LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(state),
-              Codecs.Text.ToNative.Invoke(value0),
-              Codecs.Text.ToNative.Invoke(value1),
-              Codecs.Int32.ToNative.Invoke(value2),
-              Codecs.List(LawSpec.Data.Codecs.OffsetEntry()).ToNative.Invoke(value3)));
+              Codecs.Text.ToNative.Invoke(text1),
+              Codecs.Text.ToNative.Invoke(text2),
+              Codecs.Int32.ToNative.Invoke(int321),
+              Codecs.List(LawSpec.Data.Codecs.OffsetEntry()).ToNative.Invoke(list1)));
     }));
   }
 
@@ -65,16 +65,16 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value state,
-      Value value0,
-      Value value1)
+      Value text1,
+      Value int321)
   {
     return Runtime.Contextual("contracttest.kafka::clusterCreatePartitions", Fn.F0(() =>
     {
       return LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).FromNative.Invoke(
           LawSpec.TypedProgram.ClusterCreatePartitions(
               LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(state),
-              Codecs.Text.ToNative.Invoke(value0),
-              Codecs.Int32.ToNative.Invoke(value1)));
+              Codecs.Text.ToNative.Invoke(text1),
+              Codecs.Int32.ToNative.Invoke(int321)));
     }));
   }
 
@@ -83,16 +83,16 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value state,
-      Value value0,
-      Value value1)
+      Value text1,
+      Value int321)
   {
     return Runtime.Contextual("contracttest.kafka::clusterCreatePartitionsRequest", Fn.F0(() =>
     {
       return LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).FromNative.Invoke(
           LawSpec.TypedProgram.ClusterCreatePartitions(
               LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(state),
-              Codecs.Text.ToNative.Invoke(value0),
-              Codecs.Int32.ToNative.Invoke(value1)));
+              Codecs.Text.ToNative.Invoke(text1),
+              Codecs.Int32.ToNative.Invoke(int321)));
     }));
   }
 
@@ -101,16 +101,16 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value state,
-      Value value0,
-      Value value1)
+      Value text1,
+      Value int321)
   {
     return Runtime.Contextual("contracttest.kafka::clusterCreateTopic", Fn.F0(() =>
     {
       return LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).FromNative.Invoke(
           LawSpec.TypedProgram.ClusterCreateTopic(
               LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(state),
-              Codecs.Text.ToNative.Invoke(value0),
-              Codecs.Int32.ToNative.Invoke(value1)));
+              Codecs.Text.ToNative.Invoke(text1),
+              Codecs.Int32.ToNative.Invoke(int321)));
     }));
   }
 
@@ -119,16 +119,16 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value state,
-      Value value0,
-      Value value1)
+      Value text1,
+      Value int321)
   {
     return Runtime.Contextual("contracttest.kafka::clusterCreateTopicsRequest", Fn.F0(() =>
     {
       return LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).FromNative.Invoke(
           LawSpec.TypedProgram.ClusterCreateTopic(
               LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(state),
-              Codecs.Text.ToNative.Invoke(value0),
-              Codecs.Int32.ToNative.Invoke(value1)));
+              Codecs.Text.ToNative.Invoke(text1),
+              Codecs.Int32.ToNative.Invoke(int321)));
     }));
   }
 
@@ -137,14 +137,14 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value state,
-      Value value0)
+      Value text1)
   {
     return Runtime.Contextual("contracttest.kafka::clusterDescribeGroup", Fn.F0(() =>
     {
       return LawSpec.Data.Codecs.Pair(LawSpec.Data.Codecs.GroupView(), LawSpec.Data.Codecs.BrokerState()).FromNative.Invoke(
           LawSpec.TypedProgram.ClusterDescribeGroup(
               LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(state),
-              Codecs.Text.ToNative.Invoke(value0)));
+              Codecs.Text.ToNative.Invoke(text1)));
     }));
   }
 
@@ -153,14 +153,14 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value state,
-      Value value0)
+      Value text1)
   {
     return Runtime.Contextual("contracttest.kafka::clusterDescribeGroupRequest", Fn.F0(() =>
     {
       return LawSpec.Data.Codecs.Pair(LawSpec.Data.Codecs.GroupView(), LawSpec.Data.Codecs.BrokerState()).FromNative.Invoke(
           LawSpec.TypedProgram.ClusterDescribeGroup(
               LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(state),
-              Codecs.Text.ToNative.Invoke(value0)));
+              Codecs.Text.ToNative.Invoke(text1)));
     }));
   }
 
@@ -169,20 +169,20 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value state,
-      Value value0,
-      Value value1,
-      Value value2,
-      Value value3)
+      Value text1,
+      Value int641,
+      Value int161,
+      Value bool1)
   {
     return Runtime.Contextual("contracttest.kafka::clusterEndTxnRequest", Fn.F0(() =>
     {
       return LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).FromNative.Invoke(
           LawSpec.TypedProgram.ClusterEndTxnRequest(
               LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(state),
-              Codecs.Text.ToNative.Invoke(value0),
-              Codecs.Int64.ToNative.Invoke(value1),
-              Codecs.Int16.ToNative.Invoke(value2),
-              Codecs.Bool.ToNative.Invoke(value3)));
+              Codecs.Text.ToNative.Invoke(text1),
+              Codecs.Int64.ToNative.Invoke(int641),
+              Codecs.Int16.ToNative.Invoke(int161),
+              Codecs.Bool.ToNative.Invoke(bool1)));
     }));
   }
 
@@ -191,16 +191,16 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value state,
-      Value value0,
-      Value value1)
+      Value text1,
+      Value topicPartition1)
   {
     return Runtime.Contextual("contracttest.kafka::clusterFetchOffset", Fn.F0(() =>
     {
       return LawSpec.Data.Codecs.Pair(Codecs.Maybe(Codecs.Int64), LawSpec.Data.Codecs.BrokerState()).FromNative.Invoke(
           LawSpec.TypedProgram.ClusterFetchOffset(
               LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(state),
-              Codecs.Text.ToNative.Invoke(value0),
-              LawSpec.Data.Codecs.TopicPartition().ToNative.Invoke(value1)));
+              Codecs.Text.ToNative.Invoke(text1),
+              LawSpec.Data.Codecs.TopicPartition().ToNative.Invoke(topicPartition1)));
     }));
   }
 
@@ -209,20 +209,20 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value state,
-      Value value0,
-      Value value1,
-      Value value2,
-      Value value3)
+      Value topicPartition1,
+      Value int641,
+      Value int321,
+      Value isolationLevel1)
   {
     return Runtime.Contextual("contracttest.kafka::clusterFetchRequest", Fn.F0(() =>
     {
       return LawSpec.Data.Codecs.Pair(LawSpec.Data.Codecs.FetchResult(), LawSpec.Data.Codecs.BrokerState()).FromNative.Invoke(
           LawSpec.TypedProgram.ClusterFetchRequest(
               LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(state),
-              LawSpec.Data.Codecs.TopicPartition().ToNative.Invoke(value0),
-              Codecs.Int64.ToNative.Invoke(value1),
-              Codecs.Int32.ToNative.Invoke(value2),
-              LawSpec.Data.Codecs.IsolationLevel().ToNative.Invoke(value3)));
+              LawSpec.Data.Codecs.TopicPartition().ToNative.Invoke(topicPartition1),
+              Codecs.Int64.ToNative.Invoke(int641),
+              Codecs.Int32.ToNative.Invoke(int321),
+              LawSpec.Data.Codecs.IsolationLevel().ToNative.Invoke(isolationLevel1)));
     }));
   }
 
@@ -231,18 +231,18 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value state,
-      Value value0,
-      Value value1,
-      Value value2)
+      Value text1,
+      Value text2,
+      Value int321)
   {
     return Runtime.Contextual("contracttest.kafka::clusterHeartbeat", Fn.F0(() =>
     {
       return LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).FromNative.Invoke(
           LawSpec.TypedProgram.ClusterHeartbeat(
               LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(state),
-              Codecs.Text.ToNative.Invoke(value0),
-              Codecs.Text.ToNative.Invoke(value1),
-              Codecs.Int32.ToNative.Invoke(value2)));
+              Codecs.Text.ToNative.Invoke(text1),
+              Codecs.Text.ToNative.Invoke(text2),
+              Codecs.Int32.ToNative.Invoke(int321)));
     }));
   }
 
@@ -251,18 +251,18 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value state,
-      Value value0,
-      Value value1,
-      Value value2)
+      Value text1,
+      Value text2,
+      Value int321)
   {
     return Runtime.Contextual("contracttest.kafka::clusterHeartbeatRequest", Fn.F0(() =>
     {
       return LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).FromNative.Invoke(
           LawSpec.TypedProgram.ClusterHeartbeat(
               LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(state),
-              Codecs.Text.ToNative.Invoke(value0),
-              Codecs.Text.ToNative.Invoke(value1),
-              Codecs.Int32.ToNative.Invoke(value2)));
+              Codecs.Text.ToNative.Invoke(text1),
+              Codecs.Text.ToNative.Invoke(text2),
+              Codecs.Int32.ToNative.Invoke(int321)));
     }));
   }
 
@@ -271,14 +271,14 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value state,
-      Value value0)
+      Value maybe1)
   {
     return Runtime.Contextual("contracttest.kafka::clusterInitProducerIdRequest", Fn.F0(() =>
     {
       return LawSpec.Data.Codecs.Pair(LawSpec.Data.Codecs.ProducerIdAndEpoch(), LawSpec.Data.Codecs.BrokerState()).FromNative.Invoke(
           LawSpec.TypedProgram.ClusterInitProducerIdRequest(
               LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(state),
-              Codecs.Maybe(Codecs.Text).ToNative.Invoke(value0)));
+              Codecs.Maybe(Codecs.Text).ToNative.Invoke(maybe1)));
     }));
   }
 
@@ -287,18 +287,18 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value state,
-      Value value0,
-      Value value1,
-      Value value2)
+      Value text1,
+      Value text2,
+      Value list1)
   {
     return Runtime.Contextual("contracttest.kafka::clusterJoinGroup", Fn.F0(() =>
     {
       return LawSpec.Data.Codecs.Pair(Codecs.Int32, LawSpec.Data.Codecs.BrokerState()).FromNative.Invoke(
           LawSpec.TypedProgram.ClusterJoinGroup(
               LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(state),
-              Codecs.Text.ToNative.Invoke(value0),
-              Codecs.Text.ToNative.Invoke(value1),
-              Codecs.List(Codecs.Text).ToNative.Invoke(value2)));
+              Codecs.Text.ToNative.Invoke(text1),
+              Codecs.Text.ToNative.Invoke(text2),
+              Codecs.List(Codecs.Text).ToNative.Invoke(list1)));
     }));
   }
 
@@ -307,18 +307,18 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value state,
-      Value value0,
-      Value value1,
-      Value value2)
+      Value text1,
+      Value text2,
+      Value list1)
   {
     return Runtime.Contextual("contracttest.kafka::clusterJoinGroupRequest", Fn.F0(() =>
     {
       return LawSpec.Data.Codecs.Pair(Codecs.Int32, LawSpec.Data.Codecs.BrokerState()).FromNative.Invoke(
           LawSpec.TypedProgram.ClusterJoinGroup(
               LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(state),
-              Codecs.Text.ToNative.Invoke(value0),
-              Codecs.Text.ToNative.Invoke(value1),
-              Codecs.List(Codecs.Text).ToNative.Invoke(value2)));
+              Codecs.Text.ToNative.Invoke(text1),
+              Codecs.Text.ToNative.Invoke(text2),
+              Codecs.List(Codecs.Text).ToNative.Invoke(list1)));
     }));
   }
 
@@ -327,16 +327,16 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value state,
-      Value value0,
-      Value value1)
+      Value text1,
+      Value text2)
   {
     return Runtime.Contextual("contracttest.kafka::clusterLeaveGroup", Fn.F0(() =>
     {
       return LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).FromNative.Invoke(
           LawSpec.TypedProgram.ClusterLeaveGroup(
               LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(state),
-              Codecs.Text.ToNative.Invoke(value0),
-              Codecs.Text.ToNative.Invoke(value1)));
+              Codecs.Text.ToNative.Invoke(text1),
+              Codecs.Text.ToNative.Invoke(text2)));
     }));
   }
 
@@ -345,16 +345,16 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value state,
-      Value value0,
-      Value value1)
+      Value text1,
+      Value text2)
   {
     return Runtime.Contextual("contracttest.kafka::clusterLeaveGroupRequest", Fn.F0(() =>
     {
       return LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).FromNative.Invoke(
           LawSpec.TypedProgram.ClusterLeaveGroup(
               LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(state),
-              Codecs.Text.ToNative.Invoke(value0),
-              Codecs.Text.ToNative.Invoke(value1)));
+              Codecs.Text.ToNative.Invoke(text1),
+              Codecs.Text.ToNative.Invoke(text2)));
     }));
   }
 
@@ -363,18 +363,18 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value state,
-      Value value0,
-      Value value1,
-      Value value2)
+      Value topicPartition1,
+      Value offsetSpec1,
+      Value isolationLevel1)
   {
     return Runtime.Contextual("contracttest.kafka::clusterListOffsets", Fn.F0(() =>
     {
       return LawSpec.Data.Codecs.Pair(Codecs.Int64, LawSpec.Data.Codecs.BrokerState()).FromNative.Invoke(
           LawSpec.TypedProgram.ClusterListOffsets(
               LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(state),
-              LawSpec.Data.Codecs.TopicPartition().ToNative.Invoke(value0),
-              LawSpec.Data.Codecs.OffsetSpec().ToNative.Invoke(value1),
-              LawSpec.Data.Codecs.IsolationLevel().ToNative.Invoke(value2)));
+              LawSpec.Data.Codecs.TopicPartition().ToNative.Invoke(topicPartition1),
+              LawSpec.Data.Codecs.OffsetSpec().ToNative.Invoke(offsetSpec1),
+              LawSpec.Data.Codecs.IsolationLevel().ToNative.Invoke(isolationLevel1)));
     }));
   }
 
@@ -383,18 +383,18 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value state,
-      Value value0,
-      Value value1,
-      Value value2)
+      Value topicPartition1,
+      Value offsetSpec1,
+      Value isolationLevel1)
   {
     return Runtime.Contextual("contracttest.kafka::clusterListOffsetsRequest", Fn.F0(() =>
     {
       return LawSpec.Data.Codecs.Pair(Codecs.Int64, LawSpec.Data.Codecs.BrokerState()).FromNative.Invoke(
           LawSpec.TypedProgram.ClusterListOffsets(
               LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(state),
-              LawSpec.Data.Codecs.TopicPartition().ToNative.Invoke(value0),
-              LawSpec.Data.Codecs.OffsetSpec().ToNative.Invoke(value1),
-              LawSpec.Data.Codecs.IsolationLevel().ToNative.Invoke(value2)));
+              LawSpec.Data.Codecs.TopicPartition().ToNative.Invoke(topicPartition1),
+              LawSpec.Data.Codecs.OffsetSpec().ToNative.Invoke(offsetSpec1),
+              LawSpec.Data.Codecs.IsolationLevel().ToNative.Invoke(isolationLevel1)));
     }));
   }
 
@@ -403,14 +403,14 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value state,
-      Value value0)
+      Value text1)
   {
     return Runtime.Contextual("contracttest.kafka::clusterMetadataRequest", Fn.F0(() =>
     {
       return LawSpec.Data.Codecs.Pair(Codecs.Maybe(Codecs.Int32), LawSpec.Data.Codecs.BrokerState()).FromNative.Invoke(
           LawSpec.TypedProgram.ClusterMetadataRequest(
               LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(state),
-              Codecs.Text.ToNative.Invoke(value0)));
+              Codecs.Text.ToNative.Invoke(text1)));
     }));
   }
 
@@ -419,20 +419,20 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value state,
-      Value value0,
-      Value value1,
-      Value value2,
-      Value value3)
+      Value text1,
+      Value text2,
+      Value int321,
+      Value list1)
   {
     return Runtime.Contextual("contracttest.kafka::clusterOffsetCommitRequest", Fn.F0(() =>
     {
       return LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).FromNative.Invoke(
           LawSpec.TypedProgram.ClusterCommitOffsets(
               LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(state),
-              Codecs.Text.ToNative.Invoke(value0),
-              Codecs.Text.ToNative.Invoke(value1),
-              Codecs.Int32.ToNative.Invoke(value2),
-              Codecs.List(LawSpec.Data.Codecs.OffsetEntry()).ToNative.Invoke(value3)));
+              Codecs.Text.ToNative.Invoke(text1),
+              Codecs.Text.ToNative.Invoke(text2),
+              Codecs.Int32.ToNative.Invoke(int321),
+              Codecs.List(LawSpec.Data.Codecs.OffsetEntry()).ToNative.Invoke(list1)));
     }));
   }
 
@@ -441,16 +441,16 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value state,
-      Value value0,
-      Value value1)
+      Value text1,
+      Value topicPartition1)
   {
     return Runtime.Contextual("contracttest.kafka::clusterOffsetFetchRequest", Fn.F0(() =>
     {
       return LawSpec.Data.Codecs.Pair(Codecs.Maybe(Codecs.Int64), LawSpec.Data.Codecs.BrokerState()).FromNative.Invoke(
           LawSpec.TypedProgram.ClusterFetchOffset(
               LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(state),
-              Codecs.Text.ToNative.Invoke(value0),
-              LawSpec.Data.Codecs.TopicPartition().ToNative.Invoke(value1)));
+              Codecs.Text.ToNative.Invoke(text1),
+              LawSpec.Data.Codecs.TopicPartition().ToNative.Invoke(topicPartition1)));
     }));
   }
 
@@ -459,14 +459,14 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value state,
-      Value value0)
+      Value text1)
   {
     return Runtime.Contextual("contracttest.kafka::clusterPartitionsFor", Fn.F0(() =>
     {
       return LawSpec.Data.Codecs.Pair(Codecs.Maybe(Codecs.Int32), LawSpec.Data.Codecs.BrokerState()).FromNative.Invoke(
           LawSpec.TypedProgram.ClusterMetadataRequest(
               LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(state),
-              Codecs.Text.ToNative.Invoke(value0)));
+              Codecs.Text.ToNative.Invoke(text1)));
     }));
   }
 
@@ -475,18 +475,18 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value state,
-      Value value0,
-      Value value1,
-      Value value2)
+      Value topicPartition1,
+      Value maybe1,
+      Value list1)
   {
     return Runtime.Contextual("contracttest.kafka::clusterProduceRequest", Fn.F0(() =>
     {
       return LawSpec.Data.Codecs.Pair(Codecs.Int64, LawSpec.Data.Codecs.BrokerState()).FromNative.Invoke(
           LawSpec.TypedProgram.ClusterProduceRequest(
               LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(state),
-              LawSpec.Data.Codecs.TopicPartition().ToNative.Invoke(value0),
-              Codecs.Maybe(LawSpec.Data.Codecs.ProducerTag()).ToNative.Invoke(value1),
-              Codecs.List(LawSpec.Data.Codecs.Record()).ToNative.Invoke(value2)));
+              LawSpec.Data.Codecs.TopicPartition().ToNative.Invoke(topicPartition1),
+              Codecs.Maybe(LawSpec.Data.Codecs.ProducerTag()).ToNative.Invoke(maybe1),
+              Codecs.List(LawSpec.Data.Codecs.Record()).ToNative.Invoke(list1)));
     }));
   }
 
@@ -508,18 +508,18 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value state,
-      Value value0,
-      Value value1,
-      Value value2)
+      Value text1,
+      Value text2,
+      Value int321)
   {
     return Runtime.Contextual("contracttest.kafka::clusterSyncGroup", Fn.F0(() =>
     {
       return LawSpec.Data.Codecs.Pair(Codecs.List(LawSpec.Data.Codecs.TopicPartition()), LawSpec.Data.Codecs.BrokerState()).FromNative.Invoke(
           LawSpec.TypedProgram.ClusterSyncGroup(
               LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(state),
-              Codecs.Text.ToNative.Invoke(value0),
-              Codecs.Text.ToNative.Invoke(value1),
-              Codecs.Int32.ToNative.Invoke(value2)));
+              Codecs.Text.ToNative.Invoke(text1),
+              Codecs.Text.ToNative.Invoke(text2),
+              Codecs.Int32.ToNative.Invoke(int321)));
     }));
   }
 
@@ -528,18 +528,18 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value state,
-      Value value0,
-      Value value1,
-      Value value2)
+      Value text1,
+      Value text2,
+      Value int321)
   {
     return Runtime.Contextual("contracttest.kafka::clusterSyncGroupRequest", Fn.F0(() =>
     {
       return LawSpec.Data.Codecs.Pair(Codecs.List(LawSpec.Data.Codecs.TopicPartition()), LawSpec.Data.Codecs.BrokerState()).FromNative.Invoke(
           LawSpec.TypedProgram.ClusterSyncGroup(
               LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(state),
-              Codecs.Text.ToNative.Invoke(value0),
-              Codecs.Text.ToNative.Invoke(value1),
-              Codecs.Int32.ToNative.Invoke(value2)));
+              Codecs.Text.ToNative.Invoke(text1),
+              Codecs.Text.ToNative.Invoke(text2),
+              Codecs.Int32.ToNative.Invoke(int321)));
     }));
   }
 
@@ -548,22 +548,22 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value state,
-      Value value0,
-      Value value1,
-      Value value2,
-      Value value3,
-      Value value4)
+      Value text1,
+      Value int641,
+      Value int161,
+      Value text2,
+      Value list1)
   {
     return Runtime.Contextual("contracttest.kafka::clusterTxnOffsetCommitRequest", Fn.F0(() =>
     {
       return LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.BrokerState()).FromNative.Invoke(
           LawSpec.TypedProgram.ClusterTxnOffsetCommitRequest(
               LawSpec.Data.Codecs.BrokerState().ToNative.Invoke(state),
-              Codecs.Text.ToNative.Invoke(value0),
-              Codecs.Int64.ToNative.Invoke(value1),
-              Codecs.Int16.ToNative.Invoke(value2),
-              Codecs.Text.ToNative.Invoke(value3),
-              Codecs.List(LawSpec.Data.Codecs.OffsetEntry()).ToNative.Invoke(value4)));
+              Codecs.Text.ToNative.Invoke(text1),
+              Codecs.Int64.ToNative.Invoke(int641),
+              Codecs.Int16.ToNative.Invoke(int161),
+              Codecs.Text.ToNative.Invoke(text2),
+              Codecs.List(LawSpec.Data.Codecs.OffsetEntry()).ToNative.Invoke(list1)));
     }));
   }
 
@@ -572,14 +572,14 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value consumerState,
-      Value value0)
+      Value list1)
   {
     return Runtime.Contextual("contracttest.kafka::kafkaConsumerAssign", Fn.F0(() =>
     {
       return LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.ConsumerState()).FromNative.Invoke(
           LawSpec.TypedProgram.KafkaConsumerAssign(
               LawSpec.Data.Codecs.ConsumerState().ToNative.Invoke(consumerState),
-              Codecs.List(LawSpec.Data.Codecs.TopicPartition()).ToNative.Invoke(value0)));
+              Codecs.List(LawSpec.Data.Codecs.TopicPartition()).ToNative.Invoke(list1)));
     }));
   }
 
@@ -620,7 +620,7 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value consumerState,
-      Value value0)
+      Value topicPartition1)
   {
     return Runtime.Contextual("contracttest.kafka::kafkaConsumerCommittedOffset", Fn.F0(() =>
     {
@@ -629,7 +629,7 @@ public static class ContracttestKafka
               schema,
               symbols,
               LawSpec.Data.Codecs.ConsumerState().ToNative.Invoke(consumerState),
-              LawSpec.Data.Codecs.TopicPartition().ToNative.Invoke(value0)));
+              LawSpec.Data.Codecs.TopicPartition().ToNative.Invoke(topicPartition1)));
     }));
   }
 
@@ -638,7 +638,7 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value consumerState,
-      Value value0)
+      Value int321)
   {
     return Runtime.Contextual("contracttest.kafka::kafkaConsumerPoll", Fn.F0(() =>
     {
@@ -647,7 +647,7 @@ public static class ContracttestKafka
               schema,
               symbols,
               LawSpec.Data.Codecs.ConsumerState().ToNative.Invoke(consumerState),
-              Codecs.Int32.ToNative.Invoke(value0)));
+              Codecs.Int32.ToNative.Invoke(int321)));
     }));
   }
 
@@ -656,7 +656,7 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value consumerState,
-      Value value0)
+      Value topicPartition1)
   {
     return Runtime.Contextual("contracttest.kafka::kafkaConsumerPosition", Fn.F0(() =>
     {
@@ -665,7 +665,7 @@ public static class ContracttestKafka
               schema,
               symbols,
               LawSpec.Data.Codecs.ConsumerState().ToNative.Invoke(consumerState),
-              LawSpec.Data.Codecs.TopicPartition().ToNative.Invoke(value0)));
+              LawSpec.Data.Codecs.TopicPartition().ToNative.Invoke(topicPartition1)));
     }));
   }
 
@@ -674,16 +674,16 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value consumerState,
-      Value value0,
-      Value value1)
+      Value topicPartition1,
+      Value int641)
   {
     return Runtime.Contextual("contracttest.kafka::kafkaConsumerSeek", Fn.F0(() =>
     {
       return LawSpec.Data.Codecs.Pair(Codecs.Either(LawSpec.Data.Codecs.KafkaError(), Codecs.Unit), LawSpec.Data.Codecs.ConsumerState()).FromNative.Invoke(
           LawSpec.TypedProgram.KafkaConsumerSeek(
               LawSpec.Data.Codecs.ConsumerState().ToNative.Invoke(consumerState),
-              LawSpec.Data.Codecs.TopicPartition().ToNative.Invoke(value0),
-              Codecs.Int64.ToNative.Invoke(value1)));
+              LawSpec.Data.Codecs.TopicPartition().ToNative.Invoke(topicPartition1),
+              Codecs.Int64.ToNative.Invoke(int641)));
     }));
   }
 
@@ -692,14 +692,14 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value consumerState,
-      Value value0)
+      Value isolationLevel1)
   {
     return Runtime.Contextual("contracttest.kafka::kafkaConsumerSetIsolationLevel", Fn.F0(() =>
     {
       return LawSpec.Data.Codecs.Pair(Codecs.Unit, LawSpec.Data.Codecs.ConsumerState()).FromNative.Invoke(
           LawSpec.TypedProgram.KafkaConsumerSetIsolationLevel(
               LawSpec.Data.Codecs.ConsumerState().ToNative.Invoke(consumerState),
-              LawSpec.Data.Codecs.IsolationLevel().ToNative.Invoke(value0)));
+              LawSpec.Data.Codecs.IsolationLevel().ToNative.Invoke(isolationLevel1)));
     }));
   }
 
@@ -721,9 +721,9 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value consumerState,
-      Value value0,
-      Value value1,
-      Value value2)
+      Value text1,
+      Value text2,
+      Value list1)
   {
     return Runtime.Contextual("contracttest.kafka::kafkaConsumerSubscribe", Fn.F0(() =>
     {
@@ -732,9 +732,9 @@ public static class ContracttestKafka
               schema,
               symbols,
               LawSpec.Data.Codecs.ConsumerState().ToNative.Invoke(consumerState),
-              Codecs.Text.ToNative.Invoke(value0),
-              Codecs.Text.ToNative.Invoke(value1),
-              Codecs.List(Codecs.Text).ToNative.Invoke(value2)));
+              Codecs.Text.ToNative.Invoke(text1),
+              Codecs.Text.ToNative.Invoke(text2),
+              Codecs.List(Codecs.Text).ToNative.Invoke(list1)));
     }));
   }
 
@@ -803,7 +803,7 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value producerState,
-      Value value0)
+      Value producerRecord1)
   {
     return Runtime.Contextual("contracttest.kafka::kafkaProducerSend", Fn.F0(() =>
     {
@@ -812,7 +812,7 @@ public static class ContracttestKafka
               schema,
               symbols,
               LawSpec.Data.Codecs.ProducerState().ToNative.Invoke(producerState),
-              LawSpec.Data.Codecs.ProducerRecord().ToNative.Invoke(value0)));
+              LawSpec.Data.Codecs.ProducerRecord().ToNative.Invoke(producerRecord1)));
     }));
   }
 
@@ -850,7 +850,7 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value txnState,
-      Value value0)
+      Value list1)
   {
     return Runtime.Contextual(
         "contracttest.kafka::kafkaTransactionsAddPartitionsToTransaction",
@@ -861,7 +861,7 @@ public static class ContracttestKafka
                   schema,
                   symbols,
                   LawSpec.Data.Codecs.TransactionState().ToNative.Invoke(txnState),
-                  Codecs.List(LawSpec.Data.Codecs.TopicPartition()).ToNative.Invoke(value0)));
+                  Codecs.List(LawSpec.Data.Codecs.TopicPartition()).ToNative.Invoke(list1)));
         }));
   }
 
@@ -902,7 +902,7 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value txnState,
-      Value value0)
+      Value text1)
   {
     return Runtime.Contextual("contracttest.kafka::kafkaTransactionsInitTransactions", Fn.F0(() =>
     {
@@ -911,7 +911,7 @@ public static class ContracttestKafka
               schema,
               symbols,
               LawSpec.Data.Codecs.TransactionState().ToNative.Invoke(txnState),
-              Codecs.Text.ToNative.Invoke(value0)));
+              Codecs.Text.ToNative.Invoke(text1)));
     }));
   }
 
@@ -920,7 +920,7 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value txnState,
-      Value value0)
+      Value producerRecord1)
   {
     return Runtime.Contextual(
         "contracttest.kafka::kafkaTransactionsSendInTransaction",
@@ -931,7 +931,7 @@ public static class ContracttestKafka
                   schema,
                   symbols,
                   LawSpec.Data.Codecs.TransactionState().ToNative.Invoke(txnState),
-                  LawSpec.Data.Codecs.ProducerRecord().ToNative.Invoke(value0)));
+                  LawSpec.Data.Codecs.ProducerRecord().ToNative.Invoke(producerRecord1)));
         }));
   }
 
@@ -940,8 +940,8 @@ public static class ContracttestKafka
       Schema.Schema schema,
       Scalar.SymbolContext symbols,
       Value txnState,
-      Value value0,
-      Value value1)
+      Value text1,
+      Value list1)
   {
     return Runtime.Contextual(
         "contracttest.kafka::kafkaTransactionsSendOffsetsToTransaction",
@@ -952,8 +952,8 @@ public static class ContracttestKafka
                   schema,
                   symbols,
                   LawSpec.Data.Codecs.TransactionState().ToNative.Invoke(txnState),
-                  Codecs.Text.ToNative.Invoke(value0),
-                  Codecs.List(LawSpec.Data.Codecs.OffsetEntry()).ToNative.Invoke(value1)));
+                  Codecs.Text.ToNative.Invoke(text1),
+                  Codecs.List(LawSpec.Data.Codecs.OffsetEntry()).ToNative.Invoke(list1)));
         }));
   }
 

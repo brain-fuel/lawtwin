@@ -14,12 +14,11 @@ public final class Matchers
       lawspec.runtime.LawSpecDataSchema.create();
 
   public static java.lang.Boolean
-      matchersMatchesRegex(
-          Map<String, Object> symbols, java.lang.String value0, lawspec.data.Regex value1)
+      matchersMatchesRegex(Map<String, Object> symbols, java.lang.String t, lawspec.data.Regex r)
   {
     return lawspec.runtime.LawSpecTyped.toNativeBool(
         lawspec.runtime.LawSpecTyped.matchersMatchesRegex(
-            lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-            lawspec.runtime.LawSpecTyped.fromNativeRegex(value1)));
+            lawspec.runtime.LawSpecTyped.fromNativeText(t),
+            lawspec.runtime.LawSpecTyped.fromNativeRegex(r)));
   }
 }

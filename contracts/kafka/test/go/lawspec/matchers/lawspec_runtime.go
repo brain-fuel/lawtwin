@@ -503,6 +503,40 @@ func lsMatchEither(value LawSpecValue, left, right func(LawSpecValue) LawSpecVal
 	}
 }
 
+// BLAKE3's three modes with the default 32-byte output. They are
+// goforge.dev/blake3sum's: lawspec_blake3.go, which the generator writes
+// beside this file for a program that reaches them, registers them in its
+// init, so a program that does not hash needs no such module.
+// ref:DEC-blake3-port
+var (
+	lsBlake3          func(data []byte) []byte
+	lsBlake3Keyed     func(key, data []byte) []byte
+	lsBlake3DeriveKey func(context string, material []byte) []byte
+)
+
+func lsBlake3Registered() {
+	if lsBlake3 == nil {
+		panic("LawSpec: BLAKE3 is not linked; regenerate the project so that lawspec_blake3.go is written beside lawspec_runtime.go")
+	}
+}
+
+func lsOctets(value LawSpecValue) []byte {
+	units := value.Data.([]int)
+	octets := make([]byte, len(units))
+	for i, unit := range units {
+		octets[i] = byte(unit)
+	}
+	return octets
+}
+
+func lsBytesValue(octets []byte) LawSpecValue {
+	units := make([]int, len(octets))
+	for i, octet := range octets {
+		units[i] = int(octet)
+	}
+	return LawSpecValue{"Bytes", units}
+}
+
 // Sequences: Text and Bytes hold their units, a List its values. Indices
 // count code points, octets or items, and a slice is clamped.
 func lsSequenceHelper(n string, args []LawSpecValue) (LawSpecValue, bool) {
@@ -589,6 +623,24 @@ func lsSequenceHelper(n string, args []LawSpecValue) (LawSpecValue, bool) {
 		return lsTextList(lsTextSplit(lsCodePointsText(args[0].Data.([]int)), lsCodePointsText(args[1].Data.([]int)))), true
 	case "trim":
 		return LawSpecValue{"Text", lsTextUnits(lsTextTrim(lsCodePointsText(args[0].Data.([]int))))}, true
+	case "isUnicodeWhitespace":
+		return lsBool(lsTextIsUnicodeWhitespace(lsCodePointsText(args[0].Data.([]int)))), true
+	case "trimAsciiControl":
+		return LawSpecValue{"Text", lsTextUnits(lsTextTrimASCIIControl(lsCodePointsText(args[0].Data.([]int))))}, true
+	case "blake3":
+		lsBlake3Registered()
+		return lsBytesValue(lsBlake3(lsOctets(args[0]))), true
+	case "blake3Keyed":
+		lsBlake3Registered()
+		key := lsOctets(args[0])
+		if len(key) != 32 {
+			panic("blake3Keyed: the key is 32 bytes")
+		}
+		return lsBytesValue(lsBlake3Keyed(key, lsOctets(args[1]))), true
+	case "blake3DeriveKey":
+		lsBlake3Registered()
+		context := lsCodePointsText(args[0].Data.([]int))
+		return lsBytesValue(lsBlake3DeriveKey(context, lsOctets(args[1]))), true
 	case "words":
 		return lsTextList(lsTextWords(lsCodePointsText(args[0].Data.([]int)))), true
 	case "lines":
@@ -7822,6 +7874,149 @@ func LawSpecSearchReplay(law string, descriptors []string, check LawSpecSearchCa
 	_ = os.Remove(file)
 }
 
+// The kept-values store (docs/reference/cli.md, "Kept values"). A run that
+// draws a case holding a value of a restricted type records the case's inputs
+// in the wire encoding under .lawspec/found, in a file named by a hash of the
+// definitions its inputs reach, so a changed restriction makes the old values
+// unreachable. A later run replays them as extra cases of the law after
+// checking each against the current definitions; one that no longer meets
+// them is dropped. A spec is "KEY CAP TAG...": the cap is how many values a
+// key keeps (0 keeps none), the tags are the constructors of the restricted
+// types.
+var lsKeptRecorded sync.Map
+
+type lsKeptEntry struct {
+	Inputs []string `json:"inputs"`
+	Used   int      `json:"used"`
+}
+
+func lsKeptFile(spec string) string {
+	directory := os.Getenv("LAWSPEC_FOUND")
+	if directory == "" {
+		failures := os.Getenv("LAWSPEC_FAILURES")
+		if failures == "" {
+			return ""
+		}
+		// The failure database is .lawspec/failures/<target>/<project>.
+		directory = filepath.Join(failures, "..", "..", "..", "found")
+	}
+	return filepath.Join(directory, strings.Fields(spec)[0]+".json")
+}
+
+func lsKeptCap(spec string) int {
+	limit, _ := strconv.Atoi(strings.Fields(spec)[1])
+	return limit
+}
+
+func lsKeptRead(file string) []lsKeptEntry {
+	data, err := os.ReadFile(file)
+	if err != nil {
+		return nil
+	}
+	var stored struct {
+		Values []lsKeptEntry `json:"values"`
+	}
+	if json.Unmarshal(data, &stored) != nil {
+		return nil
+	}
+	return stored.Values
+}
+
+// Merge into what is on disk now, since another target's run may have
+// written since this one read: write a temporary file, then rename it.
+func lsKeptUpdate(file, spec string, change func([]lsKeptEntry) []lsKeptEntry) {
+	entries := change(lsKeptRead(file))
+	if limit := lsKeptCap(spec); len(entries) > limit {
+		entries = entries[len(entries)-limit:]
+	}
+	if entries == nil {
+		entries = []lsKeptEntry{}
+	}
+	directory := filepath.Dir(file)
+	if _, err := os.Stat(directory); err != nil {
+		if os.MkdirAll(directory, 0o755) != nil {
+			return
+		}
+		_ = os.WriteFile(filepath.Join(directory, ".gitignore"), []byte("*\n"), 0o644)
+	}
+	data, err := json.Marshal(map[string]any{"key": strings.Fields(spec)[0], "values": entries})
+	if err != nil {
+		return
+	}
+	temporary := fmt.Sprintf("%s.%d.tmp", file, os.Getpid())
+	if os.WriteFile(temporary, append(data, '\n'), 0o644) == nil {
+		_ = os.Rename(temporary, file)
+	}
+}
+
+func lsKeptHolds(value LawSpecValue, tags map[string]bool) bool {
+	switch data := value.Data.(type) {
+	case lawSpecData:
+		if tags[data.tag] {
+			return true
+		}
+		for _, field := range data.fields {
+			if lsKeptHolds(field, tags) {
+				return true
+			}
+		}
+	case []LawSpecValue:
+		for _, item := range data {
+			if lsKeptHolds(item, tags) {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+func LawSpecKeptRecord(spec string, descriptors []string, values []LawSpecValue) {
+	if _, done := lsKeptRecorded.Load(spec); done {
+		return
+	}
+	file := ""
+	if lsKeptCap(spec) > 0 {
+		file = lsKeptFile(spec)
+	}
+	if file == "" {
+		lsKeptRecorded.Store(spec, true)
+		return
+	}
+	tags := map[string]bool{}
+	for _, tag := range strings.Fields(spec)[2:] {
+		tags[tag] = true
+	}
+	holds := false
+	for _, value := range values {
+		holds = holds || lsKeptHolds(value, tags)
+	}
+	if !holds {
+		return
+	}
+	lsKeptRecorded.Store(spec, true)
+	inputs := []string{}
+	for i, text := range descriptors {
+		table, d := lsValuesFrom(text)
+		encoded, err := LawSpecWireEncode(table, d, values[i])
+		if err != nil {
+			return
+		}
+		inputs = append(inputs, fmt.Sprintf("%x", encoded))
+	}
+	lsKeptUpdate(file, spec, func(entries []lsKeptEntry) []lsKeptEntry {
+		kept := []lsKeptEntry{}
+		same := lsKeptEntry{Inputs: inputs}
+		for _, entry := range entries {
+			if strings.Join(entry.Inputs, ",") == strings.Join(inputs, ",") {
+				same = entry
+			} else {
+				kept = append(kept, entry)
+			}
+		}
+		return append(kept, same)
+	})
+}
+
 // Each value with one integer moved, wherever it sits in the value.
 func (s lawSpecValues) searchMoves(d any, v LawSpecValue) []LawSpecValue {
 	form := s.resolve(d)
@@ -9877,6 +10072,23 @@ func lsTextSplit(separator, text string) []string {
 
 func lsTextTrim(text string) string {
 	return strings.TrimFunc(text, lsTextWhiteSpace)
+}
+
+// lsTextIsUnicodeWhitespace reports whether every code point is Unicode
+// White_Space; the empty text is.
+func lsTextIsUnicodeWhitespace(text string) bool {
+	for _, point := range text {
+		if !lsTextWhiteSpace(point) {
+			return false
+		}
+	}
+	return true
+}
+
+// lsTextTrimASCIIControl gives the text without the code points up to U+0020
+// at its two ends.
+func lsTextTrimASCIIControl(text string) string {
+	return strings.TrimFunc(text, func(point rune) bool { return point <= 0x20 })
 }
 
 func lsTextWords(text string) []string {

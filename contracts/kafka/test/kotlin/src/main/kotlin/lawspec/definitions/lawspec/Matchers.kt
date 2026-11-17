@@ -10,13 +10,13 @@ object Matchers {
 
     fun matchersMatchesRegex(
         symbols: MutableMap<String, Any>,
-        value0: kotlin.String,
-        value1: lawspec.data.Regex,
+        t: kotlin.String,
+        r: lawspec.data.Regex,
     ): kotlin.Boolean =
         lawspec.runtime.LawSpecTyped.toNativeBool(
             lawspec.runtime.LawSpecTyped.matchersMatchesRegex(
-                lawspec.runtime.LawSpecTyped.fromNativeText(value0),
-                lawspec.runtime.LawSpecTyped.fromNativeRegex(value1),
+                lawspec.runtime.LawSpecTyped.fromNativeText(t),
+                lawspec.runtime.LawSpecTyped.fromNativeRegex(r),
             )
         )
 }

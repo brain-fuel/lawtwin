@@ -1661,6 +1661,18 @@ impl Schema
             .any(|predicates| !predicates.is_empty())
     }
 
+    /// Whether a constructor of the type carries a predicate.
+    pub fn restricted(&self, ty: &TypeRef) -> Result<bool>
+    {
+        Ok(self.constructor_fields(ty)?.is_some_and(|constructors| {
+            constructors.iter().any(|constructor| {
+                self.contracts
+                    .get(constructor.tag)
+                    .is_some_and(|predicates| !predicates.is_empty())
+            })
+        }))
+    }
+
     pub fn new(definitions: Vec<DataSchema>) -> Result<Self>
     {
         Self::with_contracts(definitions, vec![])
@@ -4390,6 +4402,14 @@ fn sequence_helper(name: &str, args: &[Value]) -> Result<Option<Value>>
                 .collect(),
         ),
         ("trim", [Text(text)]) => Text(text_trim(text).to_string()),
+        ("isUnicodeWhitespace", [Text(text)]) => Bool(text_is_unicode_whitespace(text)),
+        ("trimAsciiControl", [Text(text)]) => Text(text_trim_ascii_control(text).to_string()),
+        ("blake3", [Bytes(data)]) => Bytes(blake3(data).to_vec()),
+        ("blake3Keyed", [Bytes(key), Bytes(data)]) => Bytes(blake3_keyed(key, data)?.to_vec()),
+        ("blake3DeriveKey", [Text(context), Bytes(data)]) =>
+        {
+            Bytes(blake3_derive_key(context, data).to_vec())
+        }
         ("words", [Text(text)]) => List(
             text_words(text)
                 .into_iter()
@@ -4436,9 +4456,219 @@ pub fn text_split<'a>(separator: &str, text: &'a str) -> Vec<&'a str>
     text.split(separator).collect()
 }
 
+// BLAKE3 (the BLAKE3 specification, section 2) with its default 32-byte
+// output: the hash, the keyed hash and key derivation, written from the
+// specification and its reference implementation (CC0 1.0 or Apache-2.0).
+// One thread, no SIMD; the official test vectors check every mode (the
+// contracts-digest acceptance suite).
+// Source: https://github.com/BLAKE3-team/BLAKE3, vectors at commit
+// ae3e8e6b3a5ae3190ca5d62820789b17886a0038; CC0 1.0 or Apache-2.0. ref:DEC-blake3-port
+const BLAKE3_IV: [u32; 8] = [
+    0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19,
+];
+const BLAKE3_SCHEDULE: [usize; 16] = [2, 6, 3, 10, 7, 0, 4, 13, 1, 11, 12, 5, 9, 14, 15, 8];
+const BLAKE3_CHUNK_START: u32 = 1;
+const BLAKE3_CHUNK_END: u32 = 2;
+const BLAKE3_PARENT: u32 = 4;
+const BLAKE3_ROOT: u32 = 8;
+const BLAKE3_KEYED_HASH: u32 = 16;
+const BLAKE3_DERIVE_KEY_CONTEXT: u32 = 32;
+const BLAKE3_DERIVE_KEY_MATERIAL: u32 = 64;
+
+/// Sixteen little-endian words of a block, zero padded to 64 bytes.
+fn blake3_words(block: &[u8]) -> [u32; 16]
+{
+    let mut padded = [0u8; 64];
+    padded[..block.len()].copy_from_slice(block);
+    std::array::from_fn(|i| {
+        u32::from_le_bytes([
+            padded[4 * i],
+            padded[4 * i + 1],
+            padded[4 * i + 2],
+            padded[4 * i + 3],
+        ])
+    })
+}
+
+fn blake3_mix(state: &mut [u32; 16], at: [usize; 4], x: u32, y: u32)
+{
+    let [a, b, c, d] = at;
+    state[a] = state[a].wrapping_add(state[b]).wrapping_add(x);
+    state[d] = (state[d] ^ state[a]).rotate_right(16);
+    state[c] = state[c].wrapping_add(state[d]);
+    state[b] = (state[b] ^ state[c]).rotate_right(12);
+    state[a] = state[a].wrapping_add(state[b]).wrapping_add(y);
+    state[d] = (state[d] ^ state[a]).rotate_right(8);
+    state[c] = state[c].wrapping_add(state[d]);
+    state[b] = (state[b] ^ state[c]).rotate_right(7);
+}
+
+/// The first eight words of BLAKE3's compression: a chaining value.
+fn blake3_compress(
+    cv: &[u32; 8],
+    block: &[u32; 16],
+    counter: u64,
+    length: u32,
+    flags: u32,
+) -> [u32; 8]
+{
+    let mut state = [0u32; 16];
+    state[..8].copy_from_slice(cv);
+    state[8..12].copy_from_slice(&BLAKE3_IV[..4]);
+    state[12] = counter as u32;
+    state[13] = (counter >> 32) as u32;
+    state[14] = length;
+    state[15] = flags;
+    let mut m = *block;
+    for round in 0..7
+    {
+        blake3_mix(&mut state, [0, 4, 8, 12], m[0], m[1]);
+        blake3_mix(&mut state, [1, 5, 9, 13], m[2], m[3]);
+        blake3_mix(&mut state, [2, 6, 10, 14], m[4], m[5]);
+        blake3_mix(&mut state, [3, 7, 11, 15], m[6], m[7]);
+        blake3_mix(&mut state, [0, 5, 10, 15], m[8], m[9]);
+        blake3_mix(&mut state, [1, 6, 11, 12], m[10], m[11]);
+        blake3_mix(&mut state, [2, 7, 8, 13], m[12], m[13]);
+        blake3_mix(&mut state, [3, 4, 9, 14], m[14], m[15]);
+        if round < 6
+        {
+            m = std::array::from_fn(|i| m[BLAKE3_SCHEDULE[i]]);
+        }
+    }
+    std::array::from_fn(|i| state[i] ^ state[i + 8])
+}
+
+/// A chunk's chaining value; its last block carries the extra flags.
+fn blake3_chunk(key: &[u32; 8], mode: u32, data: &[u8], index: usize, last: u32) -> [u32; 8]
+{
+    let end = data.len().min(index * 1024 + 1024);
+    let mut offset = index * 1024;
+    let mut cv = *key;
+    let mut flags = mode | BLAKE3_CHUNK_START;
+    while end - offset > 64
+    {
+        cv = blake3_compress(
+            &cv,
+            &blake3_words(&data[offset..offset + 64]),
+            index as u64,
+            64,
+            flags,
+        );
+        flags = mode;
+        offset += 64;
+    }
+    let length = (end - offset) as u32;
+    let flags = flags | BLAKE3_CHUNK_END | last;
+    blake3_compress(
+        &cv,
+        &blake3_words(&data[offset..end]),
+        index as u64,
+        length,
+        flags,
+    )
+}
+
+fn blake3_parent(key: &[u32; 8], left: &[u32; 8], right: &[u32; 8], flags: u32) -> [u32; 8]
+{
+    let mut block = [0u32; 16];
+    block[..8].copy_from_slice(left);
+    block[8..].copy_from_slice(right);
+    blake3_compress(key, &block, 0, 64, flags | BLAKE3_PARENT)
+}
+
+/// The 32-byte output from a key of eight words and a mode's flag: the
+/// initial value and no flag hash, a key and KEYED_HASH hash under the key,
+/// and the two DERIVE_KEY flags derive a key. The chunks are merged as the
+/// reference implementation merges them: a stack of subtree chaining
+/// values, one subtree closed per trailing zero of the chunk count.
+fn blake3_digest(key: &[u32; 8], mode: u32, data: &[u8]) -> [u8; 32]
+{
+    let chunks = data.len().div_ceil(1024).max(1);
+    let mut stack: Vec<[u32; 8]> = Vec::new();
+    for index in 0..chunks - 1
+    {
+        let mut cv = blake3_chunk(key, mode, data, index, 0);
+        let mut total = index + 1;
+        while total % 2 == 0
+        {
+            let left = stack.pop().unwrap_or(*key);
+            cv = blake3_parent(key, &left, &cv, mode);
+            total /= 2;
+        }
+        stack.push(cv);
+    }
+    let root = if stack.is_empty()
+    {
+        blake3_chunk(key, mode, data, chunks - 1, BLAKE3_ROOT)
+    }
+    else
+    {
+        let mut cv = blake3_chunk(key, mode, data, chunks - 1, 0);
+        while stack.len() > 1
+        {
+            let left = stack.pop().unwrap_or(*key);
+            cv = blake3_parent(key, &left, &cv, mode);
+        }
+        blake3_parent(key, &stack[0], &cv, mode | BLAKE3_ROOT)
+    };
+    let mut out = [0u8; 32];
+    for (i, word) in root.iter().enumerate()
+    {
+        out[4 * i..4 * i + 4].copy_from_slice(&word.to_le_bytes());
+    }
+    out
+}
+
+fn blake3_key(key: &[u8]) -> [u32; 8]
+{
+    let words = blake3_words(key);
+    std::array::from_fn(|i| words[i])
+}
+
+/// The 32-byte BLAKE3 hash of some bytes: LawSpec's `blake3`.
+pub fn blake3(data: &[u8]) -> [u8; 32]
+{
+    blake3_digest(&BLAKE3_IV, 0, data)
+}
+
+/// The 32-byte BLAKE3 keyed hash of some bytes under a key of 32 bytes:
+/// LawSpec's `blake3Keyed`.
+pub fn blake3_keyed(key: &[u8], data: &[u8]) -> Result<[u8; 32]>
+{
+    if key.len() != 32
+    {
+        return Err("blake3Keyed: the key is 32 bytes".into());
+    }
+    Ok(blake3_digest(&blake3_key(key), BLAKE3_KEYED_HASH, data))
+}
+
+/// The 32 bytes BLAKE3 derives from some key material in a context, which
+/// is a text: LawSpec's `blake3DeriveKey`.
+pub fn blake3_derive_key(context: &str, material: &[u8]) -> [u8; 32]
+{
+    let context_key = blake3_digest(&BLAKE3_IV, BLAKE3_DERIVE_KEY_CONTEXT, context.as_bytes());
+    blake3_digest(
+        &blake3_key(&context_key),
+        BLAKE3_DERIVE_KEY_MATERIAL,
+        material,
+    )
+}
+
 pub fn text_trim(text: &str) -> &str
 {
     text.trim_matches(text_white_space)
+}
+
+/// Whether every code point is Unicode White_Space; the empty text is.
+pub fn text_is_unicode_whitespace(text: &str) -> bool
+{
+    text.chars().all(text_white_space)
+}
+
+/// The text without the code points up to U+0020 at its two ends.
+pub fn text_trim_ascii_control(text: &str) -> &str
+{
+    text.trim_matches(|point: char| point as u32 <= 0x20)
 }
 
 pub fn text_words(text: &str) -> Vec<&str>
@@ -6276,6 +6506,310 @@ pub fn search_replay(
     }
     let _ = std::fs::remove_file(&file);
     Ok(())
+}
+
+// The kept-values store (docs/reference/cli.md, "Kept values"). A run that
+// draws a case holding a value of a restricted type records the case's inputs
+// in the wire encoding under .lawspec/found, in a file named by a hash of the
+// definitions its inputs reach, so a changed restriction makes the old values
+// unreachable. A later run replays them as extra cases of the law after
+// checking each against the current definitions; one that no longer meets
+// them is dropped. A spec is "KEY CAP TAG...": the cap is how many values a
+// key keeps (0 keeps none), the tags are the constructors of the restricted
+// types.
+static KEPT_RECORDED: std::sync::Mutex<Vec<String>> = std::sync::Mutex::new(Vec::new());
+
+struct KeptEntry
+{
+    inputs: Vec<String>,
+    used: u64,
+}
+
+fn kept_file(spec: &str) -> Option<std::path::PathBuf>
+{
+    let directory = match std::env::var("LAWSPEC_FOUND")
+        .ok()
+        .filter(|d| !d.is_empty())
+    {
+        Some(directory) => std::path::PathBuf::from(directory),
+        // The failure database is .lawspec/failures/<target>/<project>.
+        None => std::path::Path::new(
+            &std::env::var("LAWSPEC_FAILURES")
+                .ok()
+                .filter(|d| !d.is_empty())?,
+        )
+        .join("..")
+        .join("..")
+        .join("..")
+        .join("found"),
+    };
+    Some(directory.join(format!("{}.json", spec.split(' ').next()?)))
+}
+
+fn kept_cap(spec: &str) -> usize
+{
+    spec.split(' ')
+        .nth(1)
+        .and_then(|cap| cap.parse().ok())
+        .unwrap_or(0)
+}
+
+fn kept_read(file: &std::path::Path) -> Vec<KeptEntry>
+{
+    let Ok(text) = std::fs::read_to_string(file)
+    else
+    {
+        return Vec::new();
+    };
+    let mut entries = Vec::new();
+    for chunk in text.split("{\"inputs\":[").skip(1)
+    {
+        let Some((inputs, rest)) = chunk.split_once("],\"used\":")
+        else
+        {
+            continue;
+        };
+        let used: String = rest.chars().take_while(|c| c.is_ascii_digit()).collect();
+        entries.push(KeptEntry {
+            inputs: inputs
+                .split('"')
+                .skip(1)
+                .step_by(2)
+                .map(str::to_string)
+                .collect(),
+            used: used.parse().unwrap_or(0),
+        });
+    }
+    entries
+}
+
+// Merge into what is on disk now, since another target's run may have
+// written since this one read: write a temporary file, then rename it.
+fn kept_update(
+    file: &std::path::Path,
+    spec: &str,
+    change: impl FnOnce(Vec<KeptEntry>) -> Vec<KeptEntry>,
+)
+{
+    let mut entries = change(kept_read(file));
+    let limit = kept_cap(spec);
+    if entries.len() > limit
+    {
+        entries.drain(..entries.len() - limit);
+    }
+    let Some(directory) = file.parent()
+    else
+    {
+        return;
+    };
+    if !directory.exists()
+    {
+        if std::fs::create_dir_all(directory).is_err()
+        {
+            return;
+        }
+        let _ = std::fs::write(directory.join(".gitignore"), "*\n");
+    }
+    let values: Vec<String> = entries
+        .iter()
+        .map(|entry| {
+            format!(
+                "{{\"inputs\":[{}],\"used\":{}}}",
+                entry
+                    .inputs
+                    .iter()
+                    .map(|hex| format!("\"{hex}\""))
+                    .collect::<Vec<_>>()
+                    .join(","),
+                entry.used
+            )
+        })
+        .collect();
+    let temporary = file.with_extension(format!("json.{}.tmp", std::process::id()));
+    let text = format!(
+        "{{\"key\":\"{}\",\"values\":[{}]}}\n",
+        spec.split(' ').next().unwrap_or(""),
+        values.join(",")
+    );
+    if std::fs::write(&temporary, text).is_ok()
+    {
+        let _ = std::fs::rename(&temporary, file);
+    }
+}
+
+fn kept_holds(value: &Value, tags: &[&str]) -> bool
+{
+    match value
+    {
+        Value::Data(tag, fields) =>
+        {
+            tags.contains(&tag.as_str()) || fields.iter().any(|field| kept_holds(field, tags))
+        }
+        Value::List(items) => items.iter().any(|item| kept_holds(item, tags)),
+        Value::Maybe(Some(inner))
+        | Value::Nullable(Some(inner))
+        | Value::Optional(Some(inner))
+        | Value::Left(inner)
+        | Value::Right(inner) => kept_holds(inner, tags),
+        _ => false,
+    }
+}
+
+pub fn kept_record(spec: &str, descriptors: &[&str], values: &[Value])
+{
+    let Ok(mut recorded) = KEPT_RECORDED.lock()
+    else
+    {
+        return;
+    };
+    if recorded.iter().any(|done| done == spec)
+    {
+        return;
+    }
+    let file = if kept_cap(spec) > 0
+    {
+        kept_file(spec)
+    }
+    else
+    {
+        None
+    };
+    let Some(file) = file
+    else
+    {
+        recorded.push(spec.to_string());
+        return;
+    };
+    let tags: Vec<&str> = spec.split(' ').skip(2).collect();
+    if !values.iter().any(|value| kept_holds(value, &tags))
+    {
+        return;
+    }
+    recorded.push(spec.to_string());
+    let mut inputs = Vec::new();
+    for (text, value) in descriptors.iter().zip(values)
+    {
+        let (table, d) = values_from(text);
+        match net::wire_encode(&table, &d, value)
+        {
+            Ok(bytes) => inputs.push(bytes.iter().map(|b| format!("{b:02x}")).collect::<String>()),
+            Err(_) => return,
+        }
+    }
+    kept_update(&file, spec, |entries| {
+        let (same, mut kept): (Vec<_>, Vec<_>) = entries
+            .into_iter()
+            .partition(|entry| entry.inputs == inputs);
+        kept.push(same.into_iter().next().unwrap_or(KeptEntry {
+            inputs: inputs.clone(),
+            used: 0,
+        }));
+        kept
+    });
+}
+
+/// The values of one kept entry, checked against the current definitions;
+/// None when they no longer decode or meet them.
+fn kept_decode(
+    descriptors: &[&str],
+    schema: &Schema,
+    references: &[TypeRef],
+    bits: u32,
+    inputs: &[String],
+) -> Option<Vec<Value>>
+{
+    if inputs.len() != descriptors.len() || references.len() != descriptors.len()
+    {
+        return None;
+    }
+    let mut values = Vec::new();
+    for ((descriptor, reference), hex) in descriptors.iter().zip(references).zip(inputs)
+    {
+        let bytes: Option<Vec<u8>> = (0..hex.len() / 2)
+            .map(|k| u8::from_str_radix(hex.get(2 * k..2 * k + 2)?, 16).ok())
+            .collect();
+        let (table, d) = values_from(descriptor);
+        let value = net::wire_decode(&table, &d, &bytes?).ok()?;
+        match schema.check_with_context(value, reference, bits, &mut Context::default())
+        {
+            Ok(ValueCheck::Accepted(value)) => values.push(value),
+            _ => return None,
+        }
+    }
+    Some(values)
+}
+
+pub fn kept_replay(
+    law: &str,
+    spec: &str,
+    descriptors: &[&str],
+    schema: &Schema,
+    references: &[TypeRef],
+    bits: u32,
+    mut check: impl FnMut(&[Value]) -> Result<Option<f64>>,
+) -> Result<()>
+{
+    let file = if kept_cap(spec) > 0
+    {
+        kept_file(spec)
+    }
+    else
+    {
+        None
+    };
+    let Some(file) = file
+    else
+    {
+        return Ok(());
+    };
+    let entries = kept_read(&file);
+    let skipped = entries.len().saturating_sub(kept_cap(spec));
+    let mut dropped: Vec<Vec<String>> = Vec::new();
+    let mut used: Vec<Vec<String>> = Vec::new();
+    let mut outcome = Ok(());
+    for entry in entries.iter().skip(skipped)
+    {
+        let Some(values) = kept_decode(descriptors, schema, references, bits, &entry.inputs)
+        else
+        {
+            dropped.push(entry.inputs.clone());
+            continue;
+        };
+        match check(&values)
+        {
+            Ok(None) => dropped.push(entry.inputs.clone()),
+            Ok(Some(_)) => used.push(entry.inputs.clone()),
+            Err(error) =>
+            {
+                outcome = Err(error);
+                break;
+            }
+        }
+    }
+    if !dropped.is_empty() || !used.is_empty()
+    {
+        kept_update(&file, spec, |entries| {
+            entries
+                .into_iter()
+                .filter(|entry| !dropped.contains(&entry.inputs))
+                .map(|mut entry| {
+                    if used.contains(&entry.inputs)
+                    {
+                        entry.used += 1;
+                    }
+                    entry
+                })
+                .collect()
+        });
+    }
+    if !used.is_empty()
+    {
+        println!(
+            "{law}: ran {} kept value(s) found by earlier runs in .lawspec/found",
+            used.len()
+        );
+    }
+    outcome
 }
 
 // Each value with one integer moved, wherever it sits in the value.
@@ -17943,6 +18477,16 @@ pub mod fast
     pub fn trim(text: &str) -> Text
     {
         Arc::from(super::text_trim(text))
+    }
+
+    pub fn is_unicode_whitespace(text: &str) -> bool
+    {
+        super::text_is_unicode_whitespace(text)
+    }
+
+    pub fn trim_ascii_control(text: &str) -> Text
+    {
+        Arc::from(super::text_trim_ascii_control(text))
     }
 
     pub fn words(text: &str) -> List<Text>

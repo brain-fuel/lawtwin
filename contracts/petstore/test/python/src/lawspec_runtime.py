@@ -98,13 +98,367 @@ class Presence:
     value: object = None
 
 
-@dataclass(eq=False, frozen=True)
+# The fields a masking block hides, by constructor tag and position. The
+# generated data module registers them (mask_fields); everything this runtime
+# prints about a failure shows such a field as ***, whatever its mask. A
+# counterexample is replayed by its seed or its kept inputs, never by what
+# was printed.
+_MASKED_FIELDS = {}
+
+
+class _Concealed:
+    def __repr__(self):
+        return "***"
+
+    __str__ = __repr__
+
+
+_CONCEALED = _Concealed()
+
+
+def mask_fields(tag, positions):
+    _MASKED_FIELDS[tag] = frozenset(positions)
+
+
+# The fields a masking block shows as digest, by constructor tag and
+# position, each with its context: a failure shows such a field's digest,
+# which is what the record's own rendering shows.
+_DIGEST_FIELDS = {}
+
+
+class _Digest:
+    def __init__(self, text):
+        self.text = text
+
+    def __repr__(self):
+        return self.text
+
+    __str__ = __repr__
+
+
+def digest_fields(tag, contexts):
+    _DIGEST_FIELDS[tag] = dict(contexts)
+
+
+@dataclass(eq=False, frozen=True, repr=False)
 class DataValue:
     tag: str
     fields: tuple
 
     def __post_init__(self):
         object.__setattr__(self, "fields", tuple(self.fields))
+
+    # Hypothesis and pytest print a failing value with repr.
+    def __repr__(self):
+        hidden = concealed(self)
+        return f"DataValue(tag={hidden.tag!r}, fields={hidden.fields!r})"
+
+
+def mask_last(count, value):
+    """Three stars and the last characters; a text no longer than that is
+    not shown at all. As rulesMaskLast of lawspec.rules."""
+    text = str(value)
+    return "***" if len(text) <= count else "***" + text[len(text) - count :]
+
+
+def mask_email(value):
+    """The first character before the first at sign, three stars, and what
+    follows the last at sign; a text without one is not shown at all. As
+    rulesMaskEmail of lawspec.rules."""
+    text = str(value)
+    if "@" not in text:
+        return "***"
+    return text.split("@")[0][:1] + "***@" + text.rsplit("@", 1)[1]
+
+
+_BLAKE3_IV = (
+    0x6A09E667,
+    0xBB67AE85,
+    0x3C6EF372,
+    0xA54FF53A,
+    0x510E527F,
+    0x9B05688C,
+    0x1F83D9AB,
+    0x5BE0CD19,
+)
+_BLAKE3_SCHEDULE = (2, 6, 3, 10, 7, 0, 4, 13, 1, 11, 12, 5, 9, 14, 15, 8)
+_BLAKE3_ROUND = (
+    (0, 4, 8, 12),
+    (1, 5, 9, 13),
+    (2, 6, 10, 14),
+    (3, 7, 11, 15),
+    (0, 5, 10, 15),
+    (1, 6, 11, 12),
+    (2, 7, 8, 13),
+    (3, 4, 9, 14),
+)
+_BLAKE3_CHUNK_START = 1
+_BLAKE3_CHUNK_END = 2
+_BLAKE3_PARENT = 4
+_BLAKE3_ROOT = 8
+_BLAKE3_KEYED_HASH = 16
+_BLAKE3_DERIVE_KEY_CONTEXT = 32
+_BLAKE3_DERIVE_KEY_MATERIAL = 64
+_WORD = 0xFFFFFFFF
+
+
+def _blake3_words(block):
+    """Sixteen little-endian words of a block, zero padded to 64 bytes."""
+    padded = block + bytes(64 - len(block))
+    return [
+        int.from_bytes(padded[i : i + 4], "little") for i in range(0, 64, 4)
+    ]
+
+
+def _blake3_compress(cv, words, counter, length, flags):
+    """The first eight words of BLAKE3's compression: a chaining value."""
+    state = list(cv) + list(_BLAKE3_IV[:4])
+    state += [counter & _WORD, (counter >> 32) & _WORD, length, flags]
+    m = words
+    for _ in range(7):
+        for step, (a, b, c, d) in enumerate(_BLAKE3_ROUND):
+            for message, first, second in (
+                (m[2 * step], 16, 12),
+                (m[2 * step + 1], 8, 7),
+            ):
+                state[a] = (state[a] + state[b] + message) & _WORD
+                mixed = state[d] ^ state[a]
+                state[d] = ((mixed >> first) | (mixed << (32 - first))) & _WORD
+                state[c] = (state[c] + state[d]) & _WORD
+                mixed = state[b] ^ state[c]
+                state[b] = (
+                    (mixed >> second) | (mixed << (32 - second))
+                ) & _WORD
+        m = [m[i] for i in _BLAKE3_SCHEDULE]
+    return [state[i] ^ state[i + 8] for i in range(8)]
+
+
+def _blake3_digest(key, mode, data):
+    """The 32-byte BLAKE3 output of some bytes from a key of eight words
+    and a mode's flag (the BLAKE3 specification, section 2: the initial
+    value and no flag hash, a key and KEYED_HASH hash under the key, and the
+    two DERIVE_KEY flags derive a key). The chunks are merged as the
+    reference implementation merges them: a stack of subtree chaining
+    values, one subtree closed per trailing zero of the chunk count. One
+    thread, no SIMD; the official test vectors check it for every mode
+    (the contracts-digest acceptance suite). Source:
+    https://github.com/BLAKE3-team/BLAKE3, vectors at commit
+    ae3e8e6b3a5ae3190ca5d62820789b17886a0038; CC0 1.0 or Apache-2.0.
+    ref:DEC-blake3-port"""
+
+    def chunk(index):
+        end = min(len(data), index * 1024 + 1024)
+        offset = index * 1024
+        cv = key
+        flags = mode | _BLAKE3_CHUNK_START
+        while end - offset > 64:
+            words = _blake3_words(data[offset : offset + 64])
+            cv = _blake3_compress(cv, words, index, 64, flags)
+            flags = mode
+            offset += 64
+        words = _blake3_words(data[offset:end])
+        return (cv, words, index, end - offset, flags | _BLAKE3_CHUNK_END)
+
+    def parent(left, right):
+        return (key, left + right, 0, 64, mode | _BLAKE3_PARENT)
+
+    chunks = max(1, (len(data) + 1023) // 1024)
+    stack = []
+    for index in range(chunks - 1):
+        cv = _blake3_compress(*chunk(index))
+        total = index + 1
+        while total % 2 == 0:
+            cv = _blake3_compress(*parent(stack.pop(), cv))
+            total //= 2
+        stack.append(cv)
+    node = chunk(chunks - 1)
+    while stack:
+        node = parent(stack.pop(), _blake3_compress(*node))
+    cv, words, counter, length, flags = node
+    root = _blake3_compress(cv, words, counter, length, flags | _BLAKE3_ROOT)
+    return b"".join(word.to_bytes(4, "little") for word in root)
+
+
+def blake3(data):
+    """The 32-byte BLAKE3 hash of some bytes: LawSpec's `blake3`."""
+    return _blake3_digest(_BLAKE3_IV, 0, bytes(data))
+
+
+def blake3_keyed(key, data):
+    """The 32-byte BLAKE3 keyed hash of some bytes under a key of 32 bytes:
+    LawSpec's `blake3Keyed`."""
+    if not isinstance(key, (bytes, bytearray)) or len(key) != 32:
+        raise TypeError("blake3Keyed: the key is 32 bytes")
+    words = _blake3_words(bytes(key))[:8]
+    return _blake3_digest(words, _BLAKE3_KEYED_HASH, bytes(data))
+
+
+def blake3_derive_key(context, material):
+    """The 32 bytes BLAKE3 derives from some key material in a context,
+    which is a text: LawSpec's `blake3DeriveKey`."""
+    context_key = _blake3_digest(
+        _BLAKE3_IV, _BLAKE3_DERIVE_KEY_CONTEXT, _mask_text_bytes(context)
+    )
+    words = _blake3_words(context_key)[:8]
+    return _blake3_digest(words, _BLAKE3_DERIVE_KEY_MATERIAL, bytes(material))
+
+
+_MASK_HASH_KEY = None
+
+
+def set_mask_hash_key(key):
+    """Sets the key of the `hash` mask: 32 secret bytes the application
+    loads when it starts. LawSpec never writes a key into generated code,
+    and has no default."""
+    global _MASK_HASH_KEY
+    if not isinstance(key, (bytes, bytearray)) or len(key) != 32:
+        raise TypeError("LawSpec masking: the hash key is 32 bytes")
+    _MASK_HASH_KEY = bytes(key)
+
+
+def mask_star(_value):
+    """What a hidden value shows: three stars, whatever the value."""
+    return "***"
+
+
+def _mask_text_bytes(value):
+    """A text's UTF-8 bytes, a lone surrogate encoded as U+FFFD."""
+    text = "".join(
+        "\ufffd" if 0xD800 <= ord(c) <= 0xDFFF else c for c in str(value)
+    )
+    return text.encode("utf-8")
+
+
+def mask_hash_blake3(value):
+    """`hash:` and the BLAKE3 keyed hash of the text's UTF-8 bytes, under
+    the key the application set: equal values show alike, and the value
+    cannot be found without the key, even by trying candidates. Without a
+    key it raises; it never falls back to showing or hiding."""
+    if _MASK_HASH_KEY is None:
+        raise RuntimeError(
+            "LawSpec masking: a field is shown as hash and no key is set;"
+            " call set_mask_hash_key with 32 secret bytes when the"
+            " application starts"
+        )
+    return mask_hash_blake3_with(_MASK_HASH_KEY, value)
+
+
+# The hash mask of this version's default algorithm, BLAKE3. A version that
+# changes the default says so as a breaking change; name the algorithm
+# (mask_hash_blake3) where the digests must stay comparable.
+mask_hash = mask_hash_blake3
+
+
+def mask_hash_blake3_with(key, value):
+    """mask_hash_blake3 under a key given with the call: LawSpec's own
+    `maskHashBlake3 key text`, which is pure. The key is 32 bytes."""
+    if not isinstance(key, (bytes, bytearray)) or len(key) != 32:
+        raise TypeError("LawSpec masking: the hash key is 32 bytes")
+    return "hash:" + blake3_keyed(key, _mask_text_bytes(value)).hex()
+
+
+# As mask_hash, under a key given with the call.
+mask_hash_with = mask_hash_blake3_with
+
+
+def mask_digest_blake3(value):
+    """`digest:` and the BLAKE3 hash of the text's UTF-8 bytes: LawSpec's
+    `maskDigestBlake3 text`, and what b3sum prints for the same bytes. It
+    needs no key, so whoever can guess the text can check the guess."""
+    return "digest:" + blake3(_mask_text_bytes(value)).hex()
+
+
+def mask_digest_blake3_in(context, value):
+    """The digest of a text within a context, by BLAKE3's key derivation:
+    LawSpec's `maskDigestBlake3In context text`. A field shown as digest
+    is rendered in the context `<unit>.<Record>.<field>`, so one text has
+    unrelated digests in two fields."""
+    derived = blake3_derive_key(
+        "lawspec 0.34 mask " + str(context), _mask_text_bytes(value)
+    )
+    return "digest:" + derived.hex()
+
+
+# The digest masks of this version's default algorithm, BLAKE3.
+mask_digest = mask_digest_blake3
+mask_digest_in = mask_digest_blake3_in
+
+
+def rfc822_uncommented(text):
+    """An RFC 822 address without its comments, as Mail::RFC822::Address's
+    valid() removes them before it matches: while a comment with no comment
+    inside it starts where the quoted strings before it are closed, the last
+    such comment becomes one space. A backslash quotes the next character.
+    The rfc822Address format matches the result (LawSpec.Formats)."""
+    source = str(text)
+    while True:
+        shorter = _without_last_comment(source)
+        if shorter is None:
+            return source
+        source = shorter
+
+
+def _without_last_comment(source):
+    # Whether a comment may start at each position: outside quoted strings
+    # and not straight after a backslash.
+    outside = {}
+    quoted = False
+    at = 0
+    while True:
+        outside[at] = not quoted
+        if at >= len(source):
+            break
+        if source[at] == "\\":
+            if at + 1 >= len(source):
+                break
+            outside[at + 1] = False
+            at += 2
+            continue
+        if source[at] == '"':
+            quoted = not quoted
+        at += 1
+    for start in sorted(outside, reverse=True):
+        if not outside[start] or source[start : start + 1] != "(":
+            continue
+        end = start + 1
+        while end < len(source) and source[end] not in "()":
+            end += 2 if source[end] == "\\" else 1
+        if end < len(source) and source[end] == ")":
+            return source[:start] + " " + source[end + 1 :]
+    return None
+
+
+def plain(value):
+    """A field that is not masked, as the checked renderer writes it."""
+    if isinstance(value, bool):
+        return "true" if value else "false"
+    return str(value)
+
+
+def concealed(v):
+    """A value with every masked field replaced by a marker that prints as
+    ***."""
+    if not _MASKED_FIELDS:
+        return v
+    if isinstance(v, list):
+        return [concealed(x) for x in v]
+    if isinstance(v, tuple):
+        return tuple(concealed(x) for x in v)
+    if isinstance(v, DataValue) and not is_handle(v):
+        masked = _MASKED_FIELDS.get(v.tag, ())
+        digests = _DIGEST_FIELDS.get(v.tag, {})
+        return DataValue(
+            v.tag,
+            tuple(
+                _Digest(mask_digest_in(digests[i], x))
+                if i in digests and isinstance(x, str)
+                else _CONCEALED
+                if i in masked
+                else concealed(x)
+                for i, x in enumerate(v.fields)
+            ),
+        )
+    return v
 
 
 @dataclass(frozen=True)
@@ -750,6 +1104,21 @@ def _text_trim(text):
     return text[start:end]
 
 
+def _text_is_unicode_whitespace(text):
+    """Whether every code point is Unicode White_Space; the empty text is."""
+    return all(ord(character) in _TEXT_WHITE_SPACE for character in text)
+
+
+def _text_trim_ascii_control(text):
+    """The text without the code points up to U+0020 at its two ends."""
+    start, end = 0, len(text)
+    while start < end and ord(text[start]) <= 0x20:
+        start += 1
+    while end > start and ord(text[end - 1]) <= 0x20:
+        end -= 1
+    return text[start:end]
+
+
 def _text_words(text):
     out, word = [], []
     for character in text:
@@ -776,6 +1145,12 @@ _SEQUENCE_HELPERS = {
     "join": lambda separator, parts: separator.join(parts),
     "split": lambda separator, text: _text_split(separator, text),
     "trim": lambda text: _text_trim(text),
+    "isUnicodeWhitespace": lambda text: _text_is_unicode_whitespace(text),
+    "trimAsciiControl": lambda text: _text_trim_ascii_control(text),
+    "rfc822Uncommented": lambda text: rfc822_uncommented(text),
+    "blake3": lambda data: blake3(data),
+    "blake3Keyed": lambda key, data: blake3_keyed(key, data),
+    "blake3DeriveKey": lambda context, data: blake3_derive_key(context, data),
     "words": lambda text: _text_words(text),
     "lines": lambda text: _text_lines(text),
 }
@@ -2789,7 +3164,22 @@ def render(v):
 
 def difference(actual, expected):
     """Where a structured actual value first differs from the expected one,
-    by the portable rendering: '' when they agree or neither has parts."""
+    by the portable rendering: '' when they agree or neither has parts.
+    Masked fields are compared as equal: a difference only in them is
+    reported without saying where or what."""
+    a, b = concealed(actual), concealed(expected)
+    found = _difference_between(a, b)
+    if (
+        found == ""
+        and _MASKED_FIELDS
+        and render(a) == render(b)
+        and render(actual) != render(expected)
+    ):
+        return " | the values differ only in masked fields"
+    return found
+
+
+def _difference_between(actual, expected):
     path = []
     a, b = actual, expected
     while True:
@@ -3858,7 +4248,7 @@ def _execute(model, run):
             if not command.unit and compare_values(result, wanted) != 0:
                 return (
                     step,
-                    f"returned {render(result)}; the model returns {render(wanted)}",
+                    f"returned {render(concealed(result))}; the model returns {render(concealed(wanted))}",
                 )
             failure = _check_state(model, symbols, state, expected)
             if failure:
@@ -3874,7 +4264,7 @@ def _check_state(model, symbols, state, expected):
     if model.abstract is not None:
         actual = model.abstract(symbols, state)
         if compare_values(actual, expected) != 0:
-            return f"the state is {render(actual)}; the model is {render(expected)}"
+            return f"the state is {render(concealed(actual))}; the model is {render(concealed(expected))}"
     for kind, invariant in model.invariants:
         if not invariant(symbols, expected if kind == "model" else state):
             return f"an invariant on the {kind} fails"
@@ -4160,7 +4550,7 @@ def _execute_parallel(model, case, shake):
     if _linearizable(model, symbols, branches, history, expected, final, state):
         return None
     observed = "; ".join(
-        f"{_branch_name(i)}: {model.commands[branches[i][k][0]].name}() returned {render(history[i][k][2])}"
+        f"{_branch_name(i)}: {model.commands[branches[i][k][0]].name}() returned {render(concealed(history[i][k][2]))}"
         for i in range(len(branches))
         for k in range(len(branches[i]))
     )
@@ -4985,7 +5375,7 @@ def _run_scenario(model, spec, shake, crash=False, network=False):
                 actual, wanted = env.get(str(act[1])), _constant(act[2])
                 if actual is None or compare_values(actual, wanted) != 0:
                     failures.append(
-                        f"expect {act[1]} = {render(wanted)} failed: {act[1]} is {render(actual)}"
+                        f"expect {act[1]} = {render(concealed(wanted))} failed: {act[1]} is {render(concealed(actual))}"
                     )
                     return "failed"
         if victim is not None and victim == (identity, len(acts)):
@@ -5009,7 +5399,7 @@ def _run_scenario(model, spec, shake, crash=False, network=False):
     )
     if not _linearizes_history(model, symbols, history, expected, final, state):
         observed = "; ".join(
-            f"{c.name}({', '.join(render(a) for a in args)}) returned {render(r)}"
+            f"{c.name}({', '.join(render(concealed(a)) for a in args)}) returned {render(concealed(r))}"
             for c, args, r, *_ in sorted(history, key=lambda h: h[3])
         )
         return (
@@ -5489,6 +5879,60 @@ def wire_encoded(text, seed, size, count):
     ]
 
 
+# Reach: how many generated cases satisfied each guard of a law's claim
+# (docs/reference/refinements.md, "Guards and reach"). A generated test
+# passes each guard's value through reach, which counts it and returns it
+# unchanged, so a guard, and any adapter it calls, is evaluated exactly once.
+# The counts of each law are written when the interpreter exits, as one JSON
+# file under LAWSPEC_STATS, which lawspec test reads. Example tests are not
+# generated cases and are not counted.
+_reach_counts = {}
+_reach_lock = threading.Lock()
+
+
+def _write_law_reach(directory, law, sites):
+    import json
+    import os
+
+    safe = "".join(c if c.isalnum() or c in "-_" else "_" for c in law)
+    name = f"reach_{safe}_{os.getpid()}.json"
+    counts = [{"evaluated": e, "held": h} for e, h in sites]
+    with open(os.path.join(directory, name), "w", encoding="utf-8") as out:
+        json.dump({"law": law, "reach": counts}, out)
+
+
+def _write_reach():
+    import os
+
+    directory = os.environ.get("LAWSPEC_STATS")
+    try:
+        os.makedirs(directory, exist_ok=True)
+        with _reach_lock:
+            for law, sites in _reach_counts.items():
+                _write_law_reach(directory, law, sites)
+    except Exception:  # noqa: BLE001 - statistics never fail a run
+        pass
+
+
+def reach(law, site, held, generated):
+    import os
+
+    if not generated or not os.environ.get("LAWSPEC_STATS"):
+        return held
+    with _reach_lock:
+        if not _reach_counts:
+            import atexit
+
+            atexit.register(_write_reach)
+        sites = _reach_counts.setdefault(law, [])
+        while len(sites) <= site:
+            sites.append([0, 0])
+        sites[site][0] += 1
+        if held:
+            sites[site][1] += 1
+    return held
+
+
 # The failure database's inputs (see LawSpec.Search): a failing case's
 # inputs, each in the wire encoding of its descriptor, kept under
 # LAWSPEC_FAILURES/inputs and replayed before the law's next generated cases.
@@ -5545,6 +5989,167 @@ def search_replay(law, descriptors, case):
         print(f"{law}: replaying the failing inputs kept in .lawspec/failures")
         case(values)
     os.remove(path)
+
+
+# The kept-values store (docs/reference/cli.md, "Kept values"). A run that
+# draws a case holding a value of a restricted type records the case's inputs
+# in the wire encoding under .lawspec/found, in a file named by a hash of the
+# definitions its inputs reach, so a changed restriction makes the old values
+# unreachable. A later run replays them as extra cases of the law after
+# checking each against the current definitions; one that no longer meets
+# them is dropped. A spec is "KEY CAP TAG...": the cap is how many values a
+# key keeps (0 keeps none), the tags are the constructors of the restricted
+# types.
+_kept_recorded = set()
+
+
+def _kept_file(spec):
+    import os
+
+    directory = os.environ.get("LAWSPEC_FOUND")
+    if not directory:
+        failures = os.environ.get("LAWSPEC_FAILURES")
+        if not failures:
+            return None
+        # The failure database is .lawspec/failures/<target>/<project>.
+        directory = os.path.normpath(
+            os.path.join(failures, "..", "..", "..", "found")
+        )
+    return os.path.join(directory, spec.split(" ")[0] + ".json")
+
+
+def _kept_read(path):
+    import json
+
+    try:
+        with open(path, encoding="utf-8") as source:
+            return [
+                entry
+                for entry in json.load(source)["values"]
+                if isinstance(entry.get("inputs"), list)
+                and isinstance(entry.get("used"), int)
+            ]
+    except (OSError, ValueError, KeyError, TypeError):
+        return []
+
+
+def _kept_update(path, spec, change):
+    """Merges into what is on disk now, since another target's run may have
+    written since this one read: a temporary file is renamed over it."""
+    import json
+    import os
+
+    words = spec.split(" ")
+    cap = int(words[1])
+    entries = change(_kept_read(path))[-cap:]
+    directory = os.path.dirname(path)
+    if not os.path.isdir(directory):
+        os.makedirs(directory, exist_ok=True)
+        with open(
+            os.path.join(directory, ".gitignore"), "w", encoding="utf-8"
+        ) as ignore:
+            ignore.write("*\n")
+    temporary = f"{path}.{os.getpid()}.tmp"
+    with open(temporary, "w", encoding="utf-8") as out:
+        json.dump({"key": words[0], "values": entries}, out)
+        out.write("\n")
+    os.replace(temporary, path)
+
+
+def _kept_holds(value, tags):
+    if isinstance(value, (list, tuple)):
+        return any(_kept_holds(item, tags) for item in value)
+    if isinstance(value, DataValue):
+        return value.tag in tags or any(
+            _kept_holds(item, tags) for item in value.fields
+        )
+    return False
+
+
+def kept_record(spec, descriptors, values):
+    """Keeps the first passing case of a run that holds a value of a
+    restricted type."""
+    if spec in _kept_recorded:
+        return
+    words = spec.split(" ")
+    path = _kept_file(spec) if int(words[1]) > 0 else None
+    if path is None:
+        _kept_recorded.add(spec)
+        return
+    if not _kept_holds(list(values), set(words[2:])):
+        return
+    _kept_recorded.add(spec)
+    try:
+        inputs = []
+        for text, value in zip(descriptors, values):
+            table, d = values_from(text)
+            inputs.append(wire_encode(table, d, value).hex())
+    except Exception:  # noqa: BLE001 - a value the wire cannot encode is not kept
+        return
+
+    def change(entries):
+        same = [entry for entry in entries if entry["inputs"] == inputs]
+        return [entry for entry in entries if entry["inputs"] != inputs] + (
+            same or [{"inputs": inputs, "used": 0}]
+        )
+
+    try:
+        _kept_update(path, spec, change)
+    except OSError:
+        pass
+
+
+def kept_replay(law, spec, descriptors, schema, references, bits, case):
+    """Runs the law on the values earlier runs kept, after checking them
+    against the current definitions; a value that no longer meets them is
+    dropped."""
+    words = spec.split(" ")
+    path = _kept_file(spec) if int(words[1]) > 0 else None
+    if path is None:
+        return
+    dropped = []
+    used = []
+    try:
+        for entry in _kept_read(path)[-int(words[1]) :]:
+            try:
+                values = []
+                for text, reference, encoded in zip(
+                    descriptors, references, entry["inputs"]
+                ):
+                    table, d = values_from(text)
+                    values.append(
+                        schema.validate(
+                            reference,
+                            wire_decode(table, d, bytes.fromhex(encoded)),
+                            bits,
+                        )
+                    )
+                if len(values) != len(descriptors):
+                    raise ValueError("fewer inputs than the law takes")
+            except Exception:  # noqa: BLE001 - a stale value is dropped
+                dropped.append(entry["inputs"])
+                continue
+            if case(values) is None:
+                dropped.append(entry["inputs"])
+            else:
+                used.append(entry["inputs"])
+    finally:
+        if dropped or used:
+            _kept_update(
+                path,
+                spec,
+                lambda entries: [
+                    {**entry, "used": entry["used"] + 1}
+                    if entry["inputs"] in used
+                    else entry
+                    for entry in entries
+                    if entry["inputs"] not in dropped
+                ],
+            )
+    if used:
+        print(
+            f"{law}: ran {len(used)} kept value(s) found by earlier runs in .lawspec/found"
+        )
 
 
 def wire_round_trips(text, seed, size, count):

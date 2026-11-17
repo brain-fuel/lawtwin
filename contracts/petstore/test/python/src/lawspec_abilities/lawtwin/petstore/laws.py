@@ -29,105 +29,108 @@ class Reference:
         self._lock = _threading.Lock()
         self._state = _typed.start_reference_2(self._symbols)
 
-    def updatePet(self, value0: data.Pet) -> data.Pet:
+    def updatePet(self, pet_1: data.Pet) -> data.Pet:
         symbols = self._symbols
-        argument0 = _typed.nin_pet(value0, symbols)
+        typed_pet_1 = _typed.nin_pet(pet_1, symbols)
         with self._lock:
-            pair = _typed.reference_update_pet(self._state, argument0)
+            pair = _typed.reference_update_pet(self._state, typed_pet_1)
             self._state = pair[1]
         return _typed.nout_pet(pair[0], symbols)
 
-    def addPet(self, value0: data.Pet) -> data.Pet:
+    def addPet(self, pet_1: data.Pet) -> data.Pet:
         symbols = self._symbols
-        argument0 = _typed.nin_pet(value0, symbols)
+        typed_pet_1 = _typed.nin_pet(pet_1, symbols)
         with self._lock:
-            pair = _typed.reference_add_pet(self._state, argument0)
+            pair = _typed.reference_add_pet(self._state, typed_pet_1)
             self._state = pair[1]
         return _typed.nout_pet(pair[0], symbols)
 
     def findPetsByStatus(
         self,
-        value0: data.PetStatus,
+        pet_status_1: data.PetStatus,
     ) -> _builtins.list[data.Pet]:
         symbols = self._symbols
-        argument0 = _typed.nin_pet_status(value0, symbols)
+        typed_pet_status_1 = _typed.nin_pet_status(pet_status_1, symbols)
         with self._lock:
-            pair = _typed.reference_find_pets_by_status(self._state, argument0)
+            pair = _typed.reference_find_pets_by_status(
+                self._state,
+                typed_pet_status_1,
+            )
             self._state = pair[1]
         return _typed.nout_list_pet(pair[0], symbols)
 
     def findPetsByTags(
         self,
-        value0: _builtins.list[_builtins.str],
+        list_1: _builtins.list[_builtins.str],
     ) -> _builtins.list[data.Pet]:
         symbols = self._symbols
-        argument0 = _typed.nin_list_text(value0, symbols)
+        typed_list_1 = _typed.nin_list_text(list_1, symbols)
         with self._lock:
-            pair = _typed.reference_find_pets_by_tags(self._state, argument0)
+            pair = _typed.reference_find_pets_by_tags(self._state, typed_list_1)
             self._state = pair[1]
         return _typed.nout_list_pet(pair[0], symbols)
 
-    def getPetById(self, value0: _builtins.int) -> data.Pet:
+    def getPetById(self, int64_1: _builtins.int) -> data.Pet:
         symbols = self._symbols
-        argument0 = _typed.nin_int64(value0, symbols)
+        typed_int64_1 = _typed.nin_int64(int64_1, symbols)
         with self._lock:
-            pair = _typed.reference_get_pet_by_id(self._state, argument0)
+            pair = _typed.reference_get_pet_by_id(self._state, typed_int64_1)
             self._state = pair[1]
         return _typed.nout_pet(pair[0], symbols)
 
     def updatePetWithForm(
         self,
-        value0: _builtins.int,
-        value1: _schema.Maybe[_builtins.str],
-        value2: _schema.Maybe[_builtins.str],
+        int64_1: _builtins.int,
+        maybe_1: _schema.Maybe[_builtins.str],
+        maybe_2: _schema.Maybe[_builtins.str],
     ) -> data.Pet:
         symbols = self._symbols
-        argument0 = _typed.nin_int64(value0, symbols)
-        argument1 = _typed.nin_maybe_text(value1, symbols)
-        argument2 = _typed.nin_maybe_text(value2, symbols)
+        typed_int64_1 = _typed.nin_int64(int64_1, symbols)
+        typed_maybe_1 = _typed.nin_maybe_text(maybe_1, symbols)
+        typed_maybe_2 = _typed.nin_maybe_text(maybe_2, symbols)
         with self._lock:
             pair = _typed.reference_update_pet_with_form(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
+                typed_int64_1,
+                typed_maybe_1,
+                typed_maybe_2,
             )
             self._state = pair[1]
         return _typed.nout_pet(pair[0], symbols)
 
     def deletePet(
         self,
-        value0: _builtins.int,
-        value1: _schema.Maybe[_builtins.str],
+        int64_1: _builtins.int,
+        maybe_1: _schema.Maybe[_builtins.str],
     ) -> None:
         symbols = self._symbols
-        argument0 = _typed.nin_int64(value0, symbols)
-        argument1 = _typed.nin_maybe_text(value1, symbols)
+        typed_int64_1 = _typed.nin_int64(int64_1, symbols)
+        typed_maybe_1 = _typed.nin_maybe_text(maybe_1, symbols)
         with self._lock:
             pair = _typed.reference_delete_pet(
                 self._state,
-                argument0,
-                argument1,
+                typed_int64_1,
+                typed_maybe_1,
             )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
     def uploadFile(
         self,
-        value0: _builtins.int,
-        value1: _schema.Maybe[_builtins.str],
-        value2: _schema.Maybe[_builtins.bytes],
+        int64_1: _builtins.int,
+        maybe_1: _schema.Maybe[_builtins.str],
+        maybe_2: _schema.Maybe[_builtins.bytes],
     ) -> data.ApiResponse:
         symbols = self._symbols
-        argument0 = _typed.nin_int64(value0, symbols)
-        argument1 = _typed.nin_maybe_text(value1, symbols)
-        argument2 = _typed.nin_maybe_bytes(value2, symbols)
+        typed_int64_1 = _typed.nin_int64(int64_1, symbols)
+        typed_maybe_1 = _typed.nin_maybe_text(maybe_1, symbols)
+        typed_maybe_2 = _typed.nin_maybe_bytes(maybe_2, symbols)
         with self._lock:
             pair = _typed.reference_upload_file(
                 self._state,
-                argument0,
-                argument1,
-                argument2,
+                typed_int64_1,
+                typed_maybe_1,
+                typed_maybe_2,
             )
             self._state = pair[1]
         return _typed.nout_api_response(pair[0], symbols)
@@ -139,65 +142,65 @@ class Reference:
             self._state = pair[1]
         return _typed.nout_key_val_text_int32(pair[0], symbols)
 
-    def placeOrder(self, value0: _schema.Maybe[data.Order]) -> data.Order:
+    def placeOrder(self, maybe_1: _schema.Maybe[data.Order]) -> data.Order:
         symbols = self._symbols
-        argument0 = _typed.nin_maybe_order(value0, symbols)
+        typed_maybe_1 = _typed.nin_maybe_order(maybe_1, symbols)
         with self._lock:
-            pair = _typed.reference_place_order(self._state, argument0)
+            pair = _typed.reference_place_order(self._state, typed_maybe_1)
             self._state = pair[1]
         return _typed.nout_order(pair[0], symbols)
 
-    def getOrderById(self, value0: _builtins.int) -> data.Order:
+    def getOrderById(self, int64_1: _builtins.int) -> data.Order:
         symbols = self._symbols
-        argument0 = _typed.nin_int64(value0, symbols)
+        typed_int64_1 = _typed.nin_int64(int64_1, symbols)
         with self._lock:
-            pair = _typed.reference_get_order_by_id(self._state, argument0)
+            pair = _typed.reference_get_order_by_id(self._state, typed_int64_1)
             self._state = pair[1]
         return _typed.nout_order(pair[0], symbols)
 
-    def deleteOrder(self, value0: _builtins.int) -> None:
+    def deleteOrder(self, int64_1: _builtins.int) -> None:
         symbols = self._symbols
-        argument0 = _typed.nin_int64(value0, symbols)
+        typed_int64_1 = _typed.nin_int64(int64_1, symbols)
         with self._lock:
-            pair = _typed.reference_delete_order(self._state, argument0)
+            pair = _typed.reference_delete_order(self._state, typed_int64_1)
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
-    def createUser(self, value0: _schema.Maybe[data.User]) -> data.User:
+    def createUser(self, maybe_1: _schema.Maybe[data.User]) -> data.User:
         symbols = self._symbols
-        argument0 = _typed.nin_maybe_user(value0, symbols)
+        typed_maybe_1 = _typed.nin_maybe_user(maybe_1, symbols)
         with self._lock:
-            pair = _typed.reference_create_user(self._state, argument0)
+            pair = _typed.reference_create_user(self._state, typed_maybe_1)
             self._state = pair[1]
         return _typed.nout_user(pair[0], symbols)
 
     def createUsersWithListInput(
         self,
-        value0: _schema.Maybe[_builtins.list[data.User]],
+        maybe_1: _schema.Maybe[_builtins.list[data.User]],
     ) -> data.User:
         symbols = self._symbols
-        argument0 = _typed.nin_maybe_list_user(value0, symbols)
+        typed_maybe_1 = _typed.nin_maybe_list_user(maybe_1, symbols)
         with self._lock:
             pair = _typed.reference_create_users_with_list_input(
                 self._state,
-                argument0,
+                typed_maybe_1,
             )
             self._state = pair[1]
         return _typed.nout_user(pair[0], symbols)
 
     def loginUser(
         self,
-        value0: _schema.Maybe[_builtins.str],
-        value1: _schema.Maybe[_builtins.str],
+        maybe_1: _schema.Maybe[_builtins.str],
+        maybe_2: _schema.Maybe[_builtins.str],
     ) -> _builtins.str:
         symbols = self._symbols
-        argument0 = _typed.nin_maybe_text(value0, symbols)
-        argument1 = _typed.nin_maybe_text(value1, symbols)
+        typed_maybe_1 = _typed.nin_maybe_text(maybe_1, symbols)
+        typed_maybe_2 = _typed.nin_maybe_text(maybe_2, symbols)
         with self._lock:
             pair = _typed.reference_login_user(
                 self._state,
-                argument0,
-                argument1,
+                typed_maybe_1,
+                typed_maybe_2,
             )
             self._state = pair[1]
         return _typed.nout_text(pair[0], symbols)
@@ -209,36 +212,36 @@ class Reference:
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
-    def getUserByName(self, value0: _builtins.str) -> data.User:
+    def getUserByName(self, text_1: _builtins.str) -> data.User:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
         with self._lock:
-            pair = _typed.reference_get_user_by_name(self._state, argument0)
+            pair = _typed.reference_get_user_by_name(self._state, typed_text_1)
             self._state = pair[1]
         return _typed.nout_user(pair[0], symbols)
 
     def updateUser(
         self,
-        value0: _builtins.str,
-        value1: _schema.Maybe[data.User],
+        text_1: _builtins.str,
+        maybe_1: _schema.Maybe[data.User],
     ) -> None:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
-        argument1 = _typed.nin_maybe_user(value1, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
+        typed_maybe_1 = _typed.nin_maybe_user(maybe_1, symbols)
         with self._lock:
             pair = _typed.reference_update_user(
                 self._state,
-                argument0,
-                argument1,
+                typed_text_1,
+                typed_maybe_1,
             )
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
-    def deleteUser(self, value0: _builtins.str) -> None:
+    def deleteUser(self, text_1: _builtins.str) -> None:
         symbols = self._symbols
-        argument0 = _typed.nin_text(value0, symbols)
+        typed_text_1 = _typed.nin_text(text_1, symbols)
         with self._lock:
-            pair = _typed.reference_delete_user(self._state, argument0)
+            pair = _typed.reference_delete_user(self._state, typed_text_1)
             self._state = pair[1]
         return _typed.nout_unit(pair[0], symbols)
 
@@ -264,11 +267,11 @@ class Reference:
 
     def try_updatePet(
         self,
-        value0: data.Pet,
+        pet_1: data.Pet,
     ) -> _schema.Either[data.ApiError, data.Pet]:
         """updatePet, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.updatePet(value0))
+            return _schema.Right(self.updatePet(pet_1))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -286,11 +289,11 @@ class Reference:
 
     def try_addPet(
         self,
-        value0: data.Pet,
+        pet_1: data.Pet,
     ) -> _schema.Either[data.ApiError, data.Pet]:
         """addPet, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.addPet(value0))
+            return _schema.Right(self.addPet(pet_1))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -308,11 +311,11 @@ class Reference:
 
     def try_findPetsByStatus(
         self,
-        value0: data.PetStatus,
+        pet_status_1: data.PetStatus,
     ) -> _schema.Either[data.ApiError, _builtins.list[data.Pet]]:
         """findPetsByStatus, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.findPetsByStatus(value0))
+            return _schema.Right(self.findPetsByStatus(pet_status_1))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -330,11 +333,11 @@ class Reference:
 
     def try_findPetsByTags(
         self,
-        value0: _builtins.list[_builtins.str],
+        list_1: _builtins.list[_builtins.str],
     ) -> _schema.Either[data.ApiError, _builtins.list[data.Pet]]:
         """findPetsByTags, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.findPetsByTags(value0))
+            return _schema.Right(self.findPetsByTags(list_1))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -352,11 +355,11 @@ class Reference:
 
     def try_getPetById(
         self,
-        value0: _builtins.int,
+        int64_1: _builtins.int,
     ) -> _schema.Either[data.ApiError, data.Pet]:
         """getPetById, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.getPetById(value0))
+            return _schema.Right(self.getPetById(int64_1))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -374,13 +377,17 @@ class Reference:
 
     def try_updatePetWithForm(
         self,
-        value0: _builtins.int,
-        value1: _schema.Maybe[_builtins.str],
-        value2: _schema.Maybe[_builtins.str],
+        int64_1: _builtins.int,
+        maybe_1: _schema.Maybe[_builtins.str],
+        maybe_2: _schema.Maybe[_builtins.str],
     ) -> _schema.Either[data.ApiError, data.Pet]:
         """updatePetWithForm, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.updatePetWithForm(value0, value1, value2))
+            return _schema.Right(self.updatePetWithForm(
+                int64_1,
+                maybe_1,
+                maybe_2,
+            ))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -398,12 +405,12 @@ class Reference:
 
     def try_deletePet(
         self,
-        value0: _builtins.int,
-        value1: _schema.Maybe[_builtins.str],
+        int64_1: _builtins.int,
+        maybe_1: _schema.Maybe[_builtins.str],
     ) -> _schema.Either[data.ApiError, None]:
         """deletePet, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.deletePet(value0, value1))
+            return _schema.Right(self.deletePet(int64_1, maybe_1))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -421,13 +428,13 @@ class Reference:
 
     def try_uploadFile(
         self,
-        value0: _builtins.int,
-        value1: _schema.Maybe[_builtins.str],
-        value2: _schema.Maybe[_builtins.bytes],
+        int64_1: _builtins.int,
+        maybe_1: _schema.Maybe[_builtins.str],
+        maybe_2: _schema.Maybe[_builtins.bytes],
     ) -> _schema.Either[data.ApiError, data.ApiResponse]:
         """uploadFile, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.uploadFile(value0, value1, value2))
+            return _schema.Right(self.uploadFile(int64_1, maybe_1, maybe_2))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -466,11 +473,11 @@ class Reference:
 
     def try_placeOrder(
         self,
-        value0: _schema.Maybe[data.Order],
+        maybe_1: _schema.Maybe[data.Order],
     ) -> _schema.Either[data.ApiError, data.Order]:
         """placeOrder, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.placeOrder(value0))
+            return _schema.Right(self.placeOrder(maybe_1))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -488,11 +495,11 @@ class Reference:
 
     def try_getOrderById(
         self,
-        value0: _builtins.int,
+        int64_1: _builtins.int,
     ) -> _schema.Either[data.ApiError, data.Order]:
         """getOrderById, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.getOrderById(value0))
+            return _schema.Right(self.getOrderById(int64_1))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -510,11 +517,11 @@ class Reference:
 
     def try_deleteOrder(
         self,
-        value0: _builtins.int,
+        int64_1: _builtins.int,
     ) -> _schema.Either[data.ApiError, None]:
         """deleteOrder, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.deleteOrder(value0))
+            return _schema.Right(self.deleteOrder(int64_1))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -532,11 +539,11 @@ class Reference:
 
     def try_createUser(
         self,
-        value0: _schema.Maybe[data.User],
+        maybe_1: _schema.Maybe[data.User],
     ) -> _schema.Either[data.ApiError, data.User]:
         """createUser, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.createUser(value0))
+            return _schema.Right(self.createUser(maybe_1))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -554,11 +561,11 @@ class Reference:
 
     def try_createUsersWithListInput(
         self,
-        value0: _schema.Maybe[_builtins.list[data.User]],
+        maybe_1: _schema.Maybe[_builtins.list[data.User]],
     ) -> _schema.Either[data.ApiError, data.User]:
         """createUsersWithListInput, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.createUsersWithListInput(value0))
+            return _schema.Right(self.createUsersWithListInput(maybe_1))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -576,12 +583,12 @@ class Reference:
 
     def try_loginUser(
         self,
-        value0: _schema.Maybe[_builtins.str],
-        value1: _schema.Maybe[_builtins.str],
+        maybe_1: _schema.Maybe[_builtins.str],
+        maybe_2: _schema.Maybe[_builtins.str],
     ) -> _schema.Either[data.ApiError, _builtins.str]:
         """loginUser, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.loginUser(value0, value1))
+            return _schema.Right(self.loginUser(maybe_1, maybe_2))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -618,11 +625,11 @@ class Reference:
 
     def try_getUserByName(
         self,
-        value0: _builtins.str,
+        text_1: _builtins.str,
     ) -> _schema.Either[data.ApiError, data.User]:
         """getUserByName, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.getUserByName(value0))
+            return _schema.Right(self.getUserByName(text_1))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -640,12 +647,12 @@ class Reference:
 
     def try_updateUser(
         self,
-        value0: _builtins.str,
-        value1: _schema.Maybe[data.User],
+        text_1: _builtins.str,
+        maybe_1: _schema.Maybe[data.User],
     ) -> _schema.Either[data.ApiError, None]:
         """updateUser, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.updateUser(value0, value1))
+            return _schema.Right(self.updateUser(text_1, maybe_1))
         except ls.Failure as failure:
             if (
                 failure.ability
@@ -663,11 +670,11 @@ class Reference:
 
     def try_deleteUser(
         self,
-        value0: _builtins.str,
+        text_1: _builtins.str,
     ) -> _schema.Either[data.ApiError, None]:
         """deleteUser, with the failure it raises as Left rather than an exception."""
         try:
-            return _schema.Right(self.deleteUser(value0))
+            return _schema.Right(self.deleteUser(text_1))
         except ls.Failure as failure:
             if (
                 failure.ability

@@ -182,8 +182,9 @@ object LawSpecKotlinStrategies {
         schema.isScalar(type)
         val builder = Builder(schema, bits, scalar, symbols, maxAttempts, factories)
         witnesses.forEach { builder.addWitness(type, schema.validate(type, it, bits, symbols)) }
+        // The root's own witnesses always fit, whatever budget the caller states.
         val source =
-            requireNotNull(builder.build(type, budget)) {
+            requireNotNull(builder.root(type, maxOf(budget, builder.reservation(type)))) {
                 "no value of ${LawSpecSchema.key(type)} within structural node budget $budget"
             }
         return capture(
@@ -233,6 +234,9 @@ object LawSpecKotlinStrategies {
             }
         }
 
+    private const val PROBE_SEED = 0x4c61775370656cL
+    private const val PROBE_MINIMUM = 100
+    private const val PROBE_ATTEMPTS = 10_000
     private const val INDEX_SLACK = 16L
     private const val INDEX_CHOICES = 6
 
@@ -474,7 +478,7 @@ object LawSpecKotlinStrategies {
                                 if (target != null) {
                                     generate(field.type() as Named, target)
                                 } else {
-                                    requireNotNull(builder.build(field.type() as Named, budget))
+                                    builder.within(field.type() as Named, budget)
                                 }
                             }
                             children
@@ -500,6 +504,25 @@ object LawSpecKotlinStrategies {
 
     private data class Request(val type: Named, val budget: Int)
 
+    /**
+     * A law's inputs are planned again for every case it draws, and a probe's answer is the same
+     * each time: a witness that fits needs no probe, and each plan starts from no symbols.
+     */
+    private data class Probe(
+        val schema: LawSpecSchema,
+        val request: Request,
+        val bits: Int,
+        val attempts: Int,
+    )
+
+    private val PROBES = java.util.concurrent.ConcurrentHashMap<Probe, Boolean>()
+
+    /** A restricted type no witness and no probe shows a value of fails its law. */
+    private fun unproven(type: Named, attempts: Int): Nothing =
+        throw IllegalStateException(
+            "LawSpec: no value of ${LawSpecSchema.key(type)} found in $attempts draws, so no case of this law could hold one. Give the law an example whose input holds one, or bind a generator."
+        )
+
     private class Builder(
         val schema: LawSpecSchema,
         val bits: Int,
@@ -510,6 +533,65 @@ object LawSpecKotlinStrategies {
     ) {
         val witnesses = mutableMapOf<Named, MutableList<Value>>()
         val cache = mutableMapOf<Request, Arb<Value>?>()
+        val reservations = mutableMapOf<Named, Int>()
+        var limit = 0
+        val proofs = mutableMapOf<Named, Boolean>()
+        val proving = mutableSetOf<Named>()
+
+        /** The generator of the law's own input, whose budget is the most any part of it gets. */
+        fun root(type: Named, budget: Int): Arb<Value>? {
+            limit = budget
+            return build(type, budget)
+        }
+
+        /**
+         * Whether a probe that found no value of a type at some budget is to be believed: one found
+         * a value at the law's whole budget, so it is the smaller budget that has none. A type no
+         * probe finds a value of at the whole budget fails the law. A type met again inside its own
+         * proof is taken as proven.
+         */
+        fun proven(type: Named): Boolean =
+            proofs[type]
+                ?: if (!proving.add(type)) true
+                else {
+                    build(type, limit)
+                    proving.remove(type)
+                    proofs.getOrPut(type) { true }
+                }
+
+        /**
+         * Whether a restricted type has a value at this budget: one of as many draws as the filter
+         * may make (at least [PROBE_MINIMUM], at most [PROBE_ATTEMPTS]) from a fixed seed passes
+         * its restriction. A budget that only holds shapes the restriction refuses (an empty list
+         * in a wrapper that needs an element) is then no budget for the type, so an enclosing
+         * constructor gives it more or is left out, and no draw of a law meets it. The probe draws
+         * from its own source, so a law's values for a seed do not depend on it. A draw that fails
+         * for another reason decides nothing.
+         */
+        fun inhabited(
+            type: Named,
+            candidates: Arb<Value>,
+            context: MutableMap<String, Any>,
+        ): Boolean {
+            val source = RandomSource.seeded(PROBE_SEED)
+            repeat(maxAttempts.coerceIn(PROBE_MINIMUM, PROBE_ATTEMPTS)) {
+                try {
+                    val value = candidates.sample(source).value
+                    if (schema.check(type, value, bits, context) is LawSpecSchema.Accepted) {
+                        return true
+                    }
+                } catch (error: RuntimeException) {
+                    return true
+                }
+            }
+            return false
+        }
+
+        /** The generator at the largest budget, at most [available], that has a value. */
+        fun within(type: Named, available: Int): Arb<Value> =
+            requireNotNull((available downTo 1).firstNotNullOfOrNull { build(type, it) }) {
+                "no value of ${LawSpecSchema.key(type)} within structural node budget $available"
+            }
 
         fun addWitness(type: Named, value: Value) {
             witnesses.getOrPut(type) { mutableListOf() }.add(value)
@@ -536,6 +618,19 @@ object LawSpecKotlinStrategies {
             }
         }
 
+        /**
+         * The nodes a restricted type reserves: the size of its smallest witness, which stands for
+         * its smallest value. The smallest shape of such a type (an empty list in a wrapper that
+         * refuses one) need not be a value, so a budget below this has nothing to generate. A type
+         * with no restriction, or no witness, reserves nothing beyond its smallest shape.
+         */
+        fun reservation(type: Named): Int =
+            reservations.getOrPut(type) {
+                val seeds = witnesses[type].orEmpty()
+                if (schema.isScalar(type) || !schema.restricted(type)) 0
+                else seeds.minOfOrNull { nodes(it) } ?: 0
+            }
+
         fun minimum(type: Named, limit: Int): Int? =
             (1..limit).firstOrNull { build(type, it) != null }
 
@@ -552,7 +647,7 @@ object LawSpecKotlinStrategies {
         }
 
         fun build(type: Named, available: Int): Arb<Value>? {
-            if (available < 1) return null
+            if (available < 1 || available < reservation(type)) return null
             val request = Request(type, available)
             if (cache.containsKey(request)) return cache[request]
             factories[type.name()]?.let { factory ->
@@ -601,7 +696,7 @@ object LawSpecKotlinStrategies {
                                     val children = fields.mapIndexed { index, field ->
                                         val fieldType = field.type() as Named
                                         val cost = costs[index]
-                                        val child = requireNotNull(build(fieldType, cost))
+                                        val child = within(fieldType, cost)
                                         // Retain small sets as growing raw lists saturate finite
                                         // domains.
                                         if (
@@ -609,12 +704,7 @@ object LawSpecKotlinStrategies {
                                                 cost > 3
                                         ) {
                                             requireNotNull(
-                                                choice(
-                                                    listOf(
-                                                        requireNotNull(build(fieldType, 3)),
-                                                        child,
-                                                    )
-                                                )
+                                                choice(listOf(within(fieldType, 3), child))
                                             )
                                         } else child
                                     }
@@ -656,6 +746,23 @@ object LawSpecKotlinStrategies {
                     val sample = Arb.int(seeds.indices).map { seeds[it] }
                     result = lawspecChoice(result, sample)
                 }
+                val candidates = result
+                if (!schema.isScalar(type) && schema.restricted(type)) {
+                    val found =
+                        seeds.isNotEmpty() ||
+                            PROBES.getOrPut(Probe(schema, request, bits, maxAttempts)) {
+                                inhabited(type, candidates, symbols)
+                            }
+                    if (available == limit) {
+                        proofs[type] = found
+                        if (!found) {
+                            unproven(type, maxAttempts.coerceIn(PROBE_MINIMUM, PROBE_ATTEMPTS))
+                        }
+                    } else if (!found && proven(type)) {
+                        cache[request] = null
+                        return null
+                    }
+                }
                 result =
                     bounded(result, maxAttempts, LawSpecSchema.key(type)) { value ->
                         try {
@@ -681,11 +788,9 @@ object LawSpecKotlinStrategies {
                     if (length == 0) {
                         Arb.constant(Value(LawSpecSchema.key(type), emptyList<Value>()))
                     } else {
-                        lawspecList(
-                                requireNotNull(build(element, remaining / length)),
-                                length..length,
-                            )
-                            .map { Value(LawSpecSchema.key(type), it) }
+                        lawspecList(within(element, remaining / length), length..length).map {
+                            Value(LawSpecSchema.key(type), it)
+                        }
                     }
                 }
             return lawspecFlatMap(Arb.int(0..maximum)) { sizes[it] }

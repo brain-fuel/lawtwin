@@ -349,6 +349,18 @@ public final class LawSpecSchema
             || constructor.indices().stream().anyMatch(LawSpecSchema::isIndexGuard));
   }
 
+  /**
+   * Whether the type states a restriction of its own (a field predicate or an index guard), so
+   * that a value built from valid fields may still not be a value of it.
+   */
+  public boolean restricted(Named type)
+  {
+    var definition = definitions.get(type.name());
+    return definition != null && definition.constructors().stream()
+        .anyMatch(constructor -> !constructor.predicates().isEmpty()
+            || constructor.indices().stream().anyMatch(LawSpecSchema::isIndexGuard));
+  }
+
   private void checkType(TypeRef type, int parameters)
   {
     if (type instanceof Parameter variable)
@@ -873,6 +885,12 @@ public final class LawSpecSchema
     return true;
   }
 
+  /** The check a kept value passes before a run uses it: each input against its type. */
+  public LawSpecRuntime.KeptAdmit kept(List<? extends TypeRef> types, int bits)
+  {
+    return (index, value) -> validate((Named) types.get(index), value, bits);
+  }
+
   public Value validate(Named type, Value value, int bits)
   {
     return validate(type, value, bits, new HashMap<>());
@@ -1096,7 +1114,7 @@ public final class LawSpecSchema
     }
     catch (RuntimeException error)
     {
-      throw new AssertionError(context, error);
+      throw new AssertionError(context + " | " + LawSpecRuntime.failureCause(error), error);
     }
   }
 

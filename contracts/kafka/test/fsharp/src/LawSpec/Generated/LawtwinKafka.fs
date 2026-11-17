@@ -5,21 +5,21 @@ module rec LawSpec.Generated.LawtwinKafka
 open LawSpec.Runtime
 
 /// connectCluster — ../src/contract.lawspec:30
-let connectCluster (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (argument0: Value) : Value =
+let connectCluster (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (unit1: Value) : Value =
     Runtime.contextual "lawtwin.kafka::connectCluster" (fun () ->
         Schema.validate
             (Codec.fromNative
                 (LawSpec.Data.Codecs.cluster ())
-                (Lawtwin.Kafka.connectCluster (Codec.unit.ToNative argument0)))
+                (Lawtwin.Kafka.connectCluster (Codec.unit.ToNative unit1)))
             (Scalar.typeOf "lawtwin.kafka::type::Cluster")
             schema)
 
 /// disconnectCluster — ../src/contract.lawspec:31
-let disconnectCluster (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (argument0: Value) : Value =
+let disconnectCluster (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (cluster1: Value) : Value =
     Runtime.contextual "lawtwin.kafka::disconnectCluster" (fun () ->
         Schema.validate
             (Codec.unit.FromNative(
-                Lawtwin.Kafka.disconnectCluster (Codec.toNative (LawSpec.Data.Codecs.cluster ()) argument0)
+                Lawtwin.Kafka.disconnectCluster (Codec.toNative (LawSpec.Data.Codecs.cluster ()) cluster1)
             ))
             (Scalar.typeOf "Unit")
             schema)
@@ -45,424 +45,414 @@ let clusterAddPartitionsToTxnRequest
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (state: Value)
-    (value0: Value)
-    (value1: Value)
-    (value2: Value)
-    (value3: Value)
+    (text1: Value)
+    (int641: Value)
+    (int161: Value)
+    (list1: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::clusterAddPartitionsToTxnRequest" (fun () ->
         Codec.fromNative
             (LawSpec.Data.Codecs.pair Codec.unit (LawSpec.Data.Codecs.brokerState ()))
             (LawSpec.TypedProgram.clusterAddPartitionsToTxnRequest
                 (Codec.toNative (LawSpec.Data.Codecs.brokerState ()) state)
-                (Codec.text.ToNative value0)
-                (Codec.int64.ToNative value1)
-                (Codec.int16.ToNative value2)
-                (Codec.toNative (Codec.list (LawSpec.Data.Codecs.topicPartition ())) value3)))
+                (Codec.text.ToNative text1)
+                (Codec.int64.ToNative int641)
+                (Codec.int16.ToNative int161)
+                (Codec.toNative (Codec.list (LawSpec.Data.Codecs.topicPartition ())) list1)))
 
 /// clusterCommitOffsets — ../src/contract.lawspec:302
 let clusterCommitOffsets
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (state: Value)
-    (value0: Value)
-    (value1: Value)
-    (value2: Value)
-    (value3: Value)
+    (text1: Value)
+    (text2: Value)
+    (int321: Value)
+    (list1: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::clusterCommitOffsets" (fun () ->
         Codec.fromNative
             (LawSpec.Data.Codecs.pair Codec.unit (LawSpec.Data.Codecs.brokerState ()))
             (LawSpec.TypedProgram.clusterCommitOffsets
                 (Codec.toNative (LawSpec.Data.Codecs.brokerState ()) state)
-                (Codec.text.ToNative value0)
-                (Codec.text.ToNative value1)
-                (Codec.int32.ToNative value2)
-                (Codec.toNative (Codec.list (LawSpec.Data.Codecs.offsetEntry ())) value3)))
+                (Codec.text.ToNative text1)
+                (Codec.text.ToNative text2)
+                (Codec.int32.ToNative int321)
+                (Codec.toNative (Codec.list (LawSpec.Data.Codecs.offsetEntry ())) list1)))
 
 /// clusterCreatePartitions — ../src/contract.lawspec:294
 let clusterCreatePartitions
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (state: Value)
-    (value0: Value)
-    (value1: Value)
+    (text1: Value)
+    (int321: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::clusterCreatePartitions" (fun () ->
         Codec.fromNative
             (LawSpec.Data.Codecs.pair Codec.unit (LawSpec.Data.Codecs.brokerState ()))
             (LawSpec.TypedProgram.clusterCreatePartitions
                 (Codec.toNative (LawSpec.Data.Codecs.brokerState ()) state)
-                (Codec.text.ToNative value0)
-                (Codec.int32.ToNative value1)))
+                (Codec.text.ToNative text1)
+                (Codec.int32.ToNative int321)))
 
 /// clusterCreatePartitionsRequest — ../src/contract.lawspec:277
 let clusterCreatePartitionsRequest
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (state: Value)
-    (value0: Value)
-    (value1: Value)
+    (text1: Value)
+    (int321: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::clusterCreatePartitionsRequest" (fun () ->
         Codec.fromNative
             (LawSpec.Data.Codecs.pair Codec.unit (LawSpec.Data.Codecs.brokerState ()))
             (LawSpec.TypedProgram.clusterCreatePartitions
                 (Codec.toNative (LawSpec.Data.Codecs.brokerState ()) state)
-                (Codec.text.ToNative value0)
-                (Codec.int32.ToNative value1)))
+                (Codec.text.ToNative text1)
+                (Codec.int32.ToNative int321)))
 
 /// clusterCreateTopic — ../src/contract.lawspec:293
 let clusterCreateTopic
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (state: Value)
-    (value0: Value)
-    (value1: Value)
+    (text1: Value)
+    (int321: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::clusterCreateTopic" (fun () ->
         Codec.fromNative
             (LawSpec.Data.Codecs.pair Codec.unit (LawSpec.Data.Codecs.brokerState ()))
             (LawSpec.TypedProgram.clusterCreateTopic
                 (Codec.toNative (LawSpec.Data.Codecs.brokerState ()) state)
-                (Codec.text.ToNative value0)
-                (Codec.int32.ToNative value1)))
+                (Codec.text.ToNative text1)
+                (Codec.int32.ToNative int321)))
 
 /// clusterCreateTopicsRequest — ../src/contract.lawspec:276
 let clusterCreateTopicsRequest
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (state: Value)
-    (value0: Value)
-    (value1: Value)
+    (text1: Value)
+    (int321: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::clusterCreateTopicsRequest" (fun () ->
         Codec.fromNative
             (LawSpec.Data.Codecs.pair Codec.unit (LawSpec.Data.Codecs.brokerState ()))
             (LawSpec.TypedProgram.clusterCreateTopic
                 (Codec.toNative (LawSpec.Data.Codecs.brokerState ()) state)
-                (Codec.text.ToNative value0)
-                (Codec.int32.ToNative value1)))
+                (Codec.text.ToNative text1)
+                (Codec.int32.ToNative int321)))
 
 /// clusterDescribeGroup — ../src/contract.lawspec:301
-let clusterDescribeGroup
-    (schema: Schema.Schema)
-    (symbols: Scalar.SymbolContext)
-    (state: Value)
-    (value0: Value)
-    : Value =
+let clusterDescribeGroup (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (state: Value) (text1: Value) : Value =
     Runtime.contextual "lawtwin.kafka::clusterDescribeGroup" (fun () ->
         Codec.fromNative
             (LawSpec.Data.Codecs.pair (LawSpec.Data.Codecs.groupView ()) (LawSpec.Data.Codecs.brokerState ()))
             (LawSpec.TypedProgram.clusterDescribeGroup
                 (Codec.toNative (LawSpec.Data.Codecs.brokerState ()) state)
-                (Codec.text.ToNative value0)))
+                (Codec.text.ToNative text1)))
 
 /// clusterDescribeGroupRequest — ../src/contract.lawspec:290
 let clusterDescribeGroupRequest
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (state: Value)
-    (value0: Value)
+    (text1: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::clusterDescribeGroupRequest" (fun () ->
         Codec.fromNative
             (LawSpec.Data.Codecs.pair (LawSpec.Data.Codecs.groupView ()) (LawSpec.Data.Codecs.brokerState ()))
             (LawSpec.TypedProgram.clusterDescribeGroup
                 (Codec.toNative (LawSpec.Data.Codecs.brokerState ()) state)
-                (Codec.text.ToNative value0)))
+                (Codec.text.ToNative text1)))
 
 /// clusterEndTxnRequest — ../src/contract.lawspec:285
 let clusterEndTxnRequest
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (state: Value)
-    (value0: Value)
-    (value1: Value)
-    (value2: Value)
-    (value3: Value)
+    (text1: Value)
+    (int641: Value)
+    (int161: Value)
+    (bool1: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::clusterEndTxnRequest" (fun () ->
         Codec.fromNative
             (LawSpec.Data.Codecs.pair Codec.unit (LawSpec.Data.Codecs.brokerState ()))
             (LawSpec.TypedProgram.clusterEndTxnRequest
                 (Codec.toNative (LawSpec.Data.Codecs.brokerState ()) state)
-                (Codec.text.ToNative value0)
-                (Codec.int64.ToNative value1)
-                (Codec.int16.ToNative value2)
-                (Codec.bool.ToNative value3)))
+                (Codec.text.ToNative text1)
+                (Codec.int64.ToNative int641)
+                (Codec.int16.ToNative int161)
+                (Codec.bool.ToNative bool1)))
 
 /// clusterFetchOffset — ../src/contract.lawspec:303
 let clusterFetchOffset
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (state: Value)
-    (value0: Value)
-    (value1: Value)
+    (text1: Value)
+    (topicPartition1: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::clusterFetchOffset" (fun () ->
         Codec.fromNative
             (LawSpec.Data.Codecs.pair (Codec.option Codec.int64) (LawSpec.Data.Codecs.brokerState ()))
             (LawSpec.TypedProgram.clusterFetchOffset
                 (Codec.toNative (LawSpec.Data.Codecs.brokerState ()) state)
-                (Codec.text.ToNative value0)
-                (Codec.toNative (LawSpec.Data.Codecs.topicPartition ()) value1)))
+                (Codec.text.ToNative text1)
+                (Codec.toNative (LawSpec.Data.Codecs.topicPartition ()) topicPartition1)))
 
 /// clusterFetchRequest — ../src/contract.lawspec:280
 let clusterFetchRequest
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (state: Value)
-    (value0: Value)
-    (value1: Value)
-    (value2: Value)
-    (value3: Value)
+    (topicPartition1: Value)
+    (int641: Value)
+    (int321: Value)
+    (isolationLevel1: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::clusterFetchRequest" (fun () ->
         Codec.fromNative
             (LawSpec.Data.Codecs.pair (LawSpec.Data.Codecs.fetchResult ()) (LawSpec.Data.Codecs.brokerState ()))
             (LawSpec.TypedProgram.clusterFetchRequest
                 (Codec.toNative (LawSpec.Data.Codecs.brokerState ()) state)
-                (Codec.toNative (LawSpec.Data.Codecs.topicPartition ()) value0)
-                (Codec.int64.ToNative value1)
-                (Codec.int32.ToNative value2)
-                (Codec.toNative (LawSpec.Data.Codecs.isolationLevel ()) value3)))
+                (Codec.toNative (LawSpec.Data.Codecs.topicPartition ()) topicPartition1)
+                (Codec.int64.ToNative int641)
+                (Codec.int32.ToNative int321)
+                (Codec.toNative (LawSpec.Data.Codecs.isolationLevel ()) isolationLevel1)))
 
 /// clusterHeartbeat — ../src/contract.lawspec:299
 let clusterHeartbeat
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (state: Value)
-    (value0: Value)
-    (value1: Value)
-    (value2: Value)
+    (text1: Value)
+    (text2: Value)
+    (int321: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::clusterHeartbeat" (fun () ->
         Codec.fromNative
             (LawSpec.Data.Codecs.pair Codec.unit (LawSpec.Data.Codecs.brokerState ()))
             (LawSpec.TypedProgram.clusterHeartbeat
                 (Codec.toNative (LawSpec.Data.Codecs.brokerState ()) state)
-                (Codec.text.ToNative value0)
-                (Codec.text.ToNative value1)
-                (Codec.int32.ToNative value2)))
+                (Codec.text.ToNative text1)
+                (Codec.text.ToNative text2)
+                (Codec.int32.ToNative int321)))
 
 /// clusterHeartbeatRequest — ../src/contract.lawspec:288
 let clusterHeartbeatRequest
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (state: Value)
-    (value0: Value)
-    (value1: Value)
-    (value2: Value)
+    (text1: Value)
+    (text2: Value)
+    (int321: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::clusterHeartbeatRequest" (fun () ->
         Codec.fromNative
             (LawSpec.Data.Codecs.pair Codec.unit (LawSpec.Data.Codecs.brokerState ()))
             (LawSpec.TypedProgram.clusterHeartbeat
                 (Codec.toNative (LawSpec.Data.Codecs.brokerState ()) state)
-                (Codec.text.ToNative value0)
-                (Codec.text.ToNative value1)
-                (Codec.int32.ToNative value2)))
+                (Codec.text.ToNative text1)
+                (Codec.text.ToNative text2)
+                (Codec.int32.ToNative int321)))
 
 /// clusterInitProducerIdRequest — ../src/contract.lawspec:282
 let clusterInitProducerIdRequest
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (state: Value)
-    (value0: Value)
+    (maybe1: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::clusterInitProducerIdRequest" (fun () ->
         Codec.fromNative
             (LawSpec.Data.Codecs.pair (LawSpec.Data.Codecs.producerIdAndEpoch ()) (LawSpec.Data.Codecs.brokerState ()))
             (LawSpec.TypedProgram.clusterInitProducerIdRequest
                 (Codec.toNative (LawSpec.Data.Codecs.brokerState ()) state)
-                (Codec.toNative (Codec.option Codec.text) value0)))
+                (Codec.toNative (Codec.option Codec.text) maybe1)))
 
 /// clusterJoinGroup — ../src/contract.lawspec:297
 let clusterJoinGroup
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (state: Value)
-    (value0: Value)
-    (value1: Value)
-    (value2: Value)
+    (text1: Value)
+    (text2: Value)
+    (list1: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::clusterJoinGroup" (fun () ->
         Codec.fromNative
             (LawSpec.Data.Codecs.pair Codec.int32 (LawSpec.Data.Codecs.brokerState ()))
             (LawSpec.TypedProgram.clusterJoinGroup
                 (Codec.toNative (LawSpec.Data.Codecs.brokerState ()) state)
-                (Codec.text.ToNative value0)
-                (Codec.text.ToNative value1)
-                (Codec.toNative (Codec.list Codec.text) value2)))
+                (Codec.text.ToNative text1)
+                (Codec.text.ToNative text2)
+                (Codec.toNative (Codec.list Codec.text) list1)))
 
 /// clusterJoinGroupRequest — ../src/contract.lawspec:286
 let clusterJoinGroupRequest
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (state: Value)
-    (value0: Value)
-    (value1: Value)
-    (value2: Value)
+    (text1: Value)
+    (text2: Value)
+    (list1: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::clusterJoinGroupRequest" (fun () ->
         Codec.fromNative
             (LawSpec.Data.Codecs.pair Codec.int32 (LawSpec.Data.Codecs.brokerState ()))
             (LawSpec.TypedProgram.clusterJoinGroup
                 (Codec.toNative (LawSpec.Data.Codecs.brokerState ()) state)
-                (Codec.text.ToNative value0)
-                (Codec.text.ToNative value1)
-                (Codec.toNative (Codec.list Codec.text) value2)))
+                (Codec.text.ToNative text1)
+                (Codec.text.ToNative text2)
+                (Codec.toNative (Codec.list Codec.text) list1)))
 
 /// clusterLeaveGroup — ../src/contract.lawspec:300
 let clusterLeaveGroup
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (state: Value)
-    (value0: Value)
-    (value1: Value)
+    (text1: Value)
+    (text2: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::clusterLeaveGroup" (fun () ->
         Codec.fromNative
             (LawSpec.Data.Codecs.pair Codec.unit (LawSpec.Data.Codecs.brokerState ()))
             (LawSpec.TypedProgram.clusterLeaveGroup
                 (Codec.toNative (LawSpec.Data.Codecs.brokerState ()) state)
-                (Codec.text.ToNative value0)
-                (Codec.text.ToNative value1)))
+                (Codec.text.ToNative text1)
+                (Codec.text.ToNative text2)))
 
 /// clusterLeaveGroupRequest — ../src/contract.lawspec:289
 let clusterLeaveGroupRequest
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (state: Value)
-    (value0: Value)
-    (value1: Value)
+    (text1: Value)
+    (text2: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::clusterLeaveGroupRequest" (fun () ->
         Codec.fromNative
             (LawSpec.Data.Codecs.pair Codec.unit (LawSpec.Data.Codecs.brokerState ()))
             (LawSpec.TypedProgram.clusterLeaveGroup
                 (Codec.toNative (LawSpec.Data.Codecs.brokerState ()) state)
-                (Codec.text.ToNative value0)
-                (Codec.text.ToNative value1)))
+                (Codec.text.ToNative text1)
+                (Codec.text.ToNative text2)))
 
 /// clusterListOffsets — ../src/contract.lawspec:296
 let clusterListOffsets
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (state: Value)
-    (value0: Value)
-    (value1: Value)
-    (value2: Value)
+    (topicPartition1: Value)
+    (offsetSpec1: Value)
+    (isolationLevel1: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::clusterListOffsets" (fun () ->
         Codec.fromNative
             (LawSpec.Data.Codecs.pair Codec.int64 (LawSpec.Data.Codecs.brokerState ()))
             (LawSpec.TypedProgram.clusterListOffsets
                 (Codec.toNative (LawSpec.Data.Codecs.brokerState ()) state)
-                (Codec.toNative (LawSpec.Data.Codecs.topicPartition ()) value0)
-                (Codec.toNative (LawSpec.Data.Codecs.offsetSpec ()) value1)
-                (Codec.toNative (LawSpec.Data.Codecs.isolationLevel ()) value2)))
+                (Codec.toNative (LawSpec.Data.Codecs.topicPartition ()) topicPartition1)
+                (Codec.toNative (LawSpec.Data.Codecs.offsetSpec ()) offsetSpec1)
+                (Codec.toNative (LawSpec.Data.Codecs.isolationLevel ()) isolationLevel1)))
 
 /// clusterListOffsetsRequest — ../src/contract.lawspec:281
 let clusterListOffsetsRequest
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (state: Value)
-    (value0: Value)
-    (value1: Value)
-    (value2: Value)
+    (topicPartition1: Value)
+    (offsetSpec1: Value)
+    (isolationLevel1: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::clusterListOffsetsRequest" (fun () ->
         Codec.fromNative
             (LawSpec.Data.Codecs.pair Codec.int64 (LawSpec.Data.Codecs.brokerState ()))
             (LawSpec.TypedProgram.clusterListOffsets
                 (Codec.toNative (LawSpec.Data.Codecs.brokerState ()) state)
-                (Codec.toNative (LawSpec.Data.Codecs.topicPartition ()) value0)
-                (Codec.toNative (LawSpec.Data.Codecs.offsetSpec ()) value1)
-                (Codec.toNative (LawSpec.Data.Codecs.isolationLevel ()) value2)))
+                (Codec.toNative (LawSpec.Data.Codecs.topicPartition ()) topicPartition1)
+                (Codec.toNative (LawSpec.Data.Codecs.offsetSpec ()) offsetSpec1)
+                (Codec.toNative (LawSpec.Data.Codecs.isolationLevel ()) isolationLevel1)))
 
 /// clusterMetadataRequest — ../src/contract.lawspec:278
 let clusterMetadataRequest
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (state: Value)
-    (value0: Value)
+    (text1: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::clusterMetadataRequest" (fun () ->
         Codec.fromNative
             (LawSpec.Data.Codecs.pair (Codec.option Codec.int32) (LawSpec.Data.Codecs.brokerState ()))
             (LawSpec.TypedProgram.clusterMetadataRequest
                 (Codec.toNative (LawSpec.Data.Codecs.brokerState ()) state)
-                (Codec.text.ToNative value0)))
+                (Codec.text.ToNative text1)))
 
 /// clusterOffsetCommitRequest — ../src/contract.lawspec:291
 let clusterOffsetCommitRequest
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (state: Value)
-    (value0: Value)
-    (value1: Value)
-    (value2: Value)
-    (value3: Value)
+    (text1: Value)
+    (text2: Value)
+    (int321: Value)
+    (list1: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::clusterOffsetCommitRequest" (fun () ->
         Codec.fromNative
             (LawSpec.Data.Codecs.pair Codec.unit (LawSpec.Data.Codecs.brokerState ()))
             (LawSpec.TypedProgram.clusterCommitOffsets
                 (Codec.toNative (LawSpec.Data.Codecs.brokerState ()) state)
-                (Codec.text.ToNative value0)
-                (Codec.text.ToNative value1)
-                (Codec.int32.ToNative value2)
-                (Codec.toNative (Codec.list (LawSpec.Data.Codecs.offsetEntry ())) value3)))
+                (Codec.text.ToNative text1)
+                (Codec.text.ToNative text2)
+                (Codec.int32.ToNative int321)
+                (Codec.toNative (Codec.list (LawSpec.Data.Codecs.offsetEntry ())) list1)))
 
 /// clusterOffsetFetchRequest — ../src/contract.lawspec:292
 let clusterOffsetFetchRequest
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (state: Value)
-    (value0: Value)
-    (value1: Value)
+    (text1: Value)
+    (topicPartition1: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::clusterOffsetFetchRequest" (fun () ->
         Codec.fromNative
             (LawSpec.Data.Codecs.pair (Codec.option Codec.int64) (LawSpec.Data.Codecs.brokerState ()))
             (LawSpec.TypedProgram.clusterFetchOffset
                 (Codec.toNative (LawSpec.Data.Codecs.brokerState ()) state)
-                (Codec.text.ToNative value0)
-                (Codec.toNative (LawSpec.Data.Codecs.topicPartition ()) value1)))
+                (Codec.text.ToNative text1)
+                (Codec.toNative (LawSpec.Data.Codecs.topicPartition ()) topicPartition1)))
 
 /// clusterPartitionsFor — ../src/contract.lawspec:295
-let clusterPartitionsFor
-    (schema: Schema.Schema)
-    (symbols: Scalar.SymbolContext)
-    (state: Value)
-    (value0: Value)
-    : Value =
+let clusterPartitionsFor (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (state: Value) (text1: Value) : Value =
     Runtime.contextual "lawtwin.kafka::clusterPartitionsFor" (fun () ->
         Codec.fromNative
             (LawSpec.Data.Codecs.pair (Codec.option Codec.int32) (LawSpec.Data.Codecs.brokerState ()))
             (LawSpec.TypedProgram.clusterMetadataRequest
                 (Codec.toNative (LawSpec.Data.Codecs.brokerState ()) state)
-                (Codec.text.ToNative value0)))
+                (Codec.text.ToNative text1)))
 
 /// clusterProduceRequest — ../src/contract.lawspec:279
 let clusterProduceRequest
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (state: Value)
-    (value0: Value)
-    (value1: Value)
-    (value2: Value)
+    (topicPartition1: Value)
+    (maybe1: Value)
+    (list1: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::clusterProduceRequest" (fun () ->
         Codec.fromNative
             (LawSpec.Data.Codecs.pair Codec.int64 (LawSpec.Data.Codecs.brokerState ()))
             (LawSpec.TypedProgram.clusterProduceRequest
                 (Codec.toNative (LawSpec.Data.Codecs.brokerState ()) state)
-                (Codec.toNative (LawSpec.Data.Codecs.topicPartition ()) value0)
-                (Codec.toNative (Codec.option (LawSpec.Data.Codecs.producerTag ())) value1)
-                (Codec.toNative (Codec.list (LawSpec.Data.Codecs.record ())) value2)))
+                (Codec.toNative (LawSpec.Data.Codecs.topicPartition ()) topicPartition1)
+                (Codec.toNative (Codec.option (LawSpec.Data.Codecs.producerTag ())) maybe1)
+                (Codec.toNative (Codec.list (LawSpec.Data.Codecs.record ())) list1)))
 
 /// clusterStart — ../src/contract.lawspec:274
 let clusterStart (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (lawspecUnit: Value) : Value =
@@ -476,58 +466,58 @@ let clusterSyncGroup
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (state: Value)
-    (value0: Value)
-    (value1: Value)
-    (value2: Value)
+    (text1: Value)
+    (text2: Value)
+    (int321: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::clusterSyncGroup" (fun () ->
         Codec.fromNative
             (LawSpec.Data.Codecs.pair (Codec.list (LawSpec.Data.Codecs.topicPartition ())) (LawSpec.Data.Codecs.brokerState ()))
             (LawSpec.TypedProgram.clusterSyncGroup
                 (Codec.toNative (LawSpec.Data.Codecs.brokerState ()) state)
-                (Codec.text.ToNative value0)
-                (Codec.text.ToNative value1)
-                (Codec.int32.ToNative value2)))
+                (Codec.text.ToNative text1)
+                (Codec.text.ToNative text2)
+                (Codec.int32.ToNative int321)))
 
 /// clusterSyncGroupRequest — ../src/contract.lawspec:287
 let clusterSyncGroupRequest
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (state: Value)
-    (value0: Value)
-    (value1: Value)
-    (value2: Value)
+    (text1: Value)
+    (text2: Value)
+    (int321: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::clusterSyncGroupRequest" (fun () ->
         Codec.fromNative
             (LawSpec.Data.Codecs.pair (Codec.list (LawSpec.Data.Codecs.topicPartition ())) (LawSpec.Data.Codecs.brokerState ()))
             (LawSpec.TypedProgram.clusterSyncGroup
                 (Codec.toNative (LawSpec.Data.Codecs.brokerState ()) state)
-                (Codec.text.ToNative value0)
-                (Codec.text.ToNative value1)
-                (Codec.int32.ToNative value2)))
+                (Codec.text.ToNative text1)
+                (Codec.text.ToNative text2)
+                (Codec.int32.ToNative int321)))
 
 /// clusterTxnOffsetCommitRequest — ../src/contract.lawspec:284
 let clusterTxnOffsetCommitRequest
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (state: Value)
-    (value0: Value)
-    (value1: Value)
-    (value2: Value)
-    (value3: Value)
-    (value4: Value)
+    (text1: Value)
+    (int641: Value)
+    (int161: Value)
+    (text2: Value)
+    (list1: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::clusterTxnOffsetCommitRequest" (fun () ->
         Codec.fromNative
             (LawSpec.Data.Codecs.pair Codec.unit (LawSpec.Data.Codecs.brokerState ()))
             (LawSpec.TypedProgram.clusterTxnOffsetCommitRequest
                 (Codec.toNative (LawSpec.Data.Codecs.brokerState ()) state)
-                (Codec.text.ToNative value0)
-                (Codec.int64.ToNative value1)
-                (Codec.int16.ToNative value2)
-                (Codec.text.ToNative value3)
-                (Codec.toNative (Codec.list (LawSpec.Data.Codecs.offsetEntry ())) value4)))
+                (Codec.text.ToNative text1)
+                (Codec.int64.ToNative int641)
+                (Codec.int16.ToNative int161)
+                (Codec.text.ToNative text2)
+                (Codec.toNative (Codec.list (LawSpec.Data.Codecs.offsetEntry ())) list1)))
 
 /// committedFrom — ../src/contract.lawspec:377
 let committedFrom (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (tp: Value) (offset: Value) : Value =
@@ -786,14 +776,14 @@ let kafkaConsumerAssign
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (consumerState: Value)
-    (value0: Value)
+    (list1: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::kafkaConsumerAssign" (fun () ->
         Codec.fromNative
             (LawSpec.Data.Codecs.pair Codec.unit (LawSpec.Data.Codecs.consumerState ()))
             (LawSpec.TypedProgram.kafkaConsumerAssign
                 (Codec.toNative (LawSpec.Data.Codecs.consumerState ()) consumerState)
-                (Codec.toNative (Codec.list (LawSpec.Data.Codecs.topicPartition ())) value0)))
+                (Codec.toNative (Codec.list (LawSpec.Data.Codecs.topicPartition ())) list1)))
 
 /// kafkaConsumerClose — ../src/contract.lawspec:1390
 let kafkaConsumerClose (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (consumerState: Value) : Value =
@@ -820,7 +810,7 @@ let kafkaConsumerCommittedOffset
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (consumerState: Value)
-    (value0: Value)
+    (topicPartition1: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::kafkaConsumerCommittedOffset" (fun () ->
         Codec.fromNative
@@ -829,14 +819,14 @@ let kafkaConsumerCommittedOffset
                 schema
                 symbols
                 (Codec.toNative (LawSpec.Data.Codecs.consumerState ()) consumerState)
-                (Codec.toNative (LawSpec.Data.Codecs.topicPartition ()) value0)))
+                (Codec.toNative (LawSpec.Data.Codecs.topicPartition ()) topicPartition1)))
 
 /// kafkaConsumerPoll — ../src/contract.lawspec:1384
 let kafkaConsumerPoll
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (consumerState: Value)
-    (value0: Value)
+    (int321: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::kafkaConsumerPoll" (fun () ->
         Codec.fromNative
@@ -845,14 +835,14 @@ let kafkaConsumerPoll
                 schema
                 symbols
                 (Codec.toNative (LawSpec.Data.Codecs.consumerState ()) consumerState)
-                (Codec.int32.ToNative value0)))
+                (Codec.int32.ToNative int321)))
 
 /// kafkaConsumerPosition — ../src/contract.lawspec:1387
 let kafkaConsumerPosition
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (consumerState: Value)
-    (value0: Value)
+    (topicPartition1: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::kafkaConsumerPosition" (fun () ->
         Codec.fromNative
@@ -861,37 +851,37 @@ let kafkaConsumerPosition
                 schema
                 symbols
                 (Codec.toNative (LawSpec.Data.Codecs.consumerState ()) consumerState)
-                (Codec.toNative (LawSpec.Data.Codecs.topicPartition ()) value0)))
+                (Codec.toNative (LawSpec.Data.Codecs.topicPartition ()) topicPartition1)))
 
 /// kafkaConsumerSeek — ../src/contract.lawspec:1386
 let kafkaConsumerSeek
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (consumerState: Value)
-    (value0: Value)
-    (value1: Value)
+    (topicPartition1: Value)
+    (int641: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::kafkaConsumerSeek" (fun () ->
         Codec.fromNative
             (LawSpec.Data.Codecs.pair (Codec.either (LawSpec.Data.Codecs.kafkaError ()) Codec.unit) (LawSpec.Data.Codecs.consumerState ()))
             (LawSpec.TypedProgram.kafkaConsumerSeek
                 (Codec.toNative (LawSpec.Data.Codecs.consumerState ()) consumerState)
-                (Codec.toNative (LawSpec.Data.Codecs.topicPartition ()) value0)
-                (Codec.int64.ToNative value1)))
+                (Codec.toNative (LawSpec.Data.Codecs.topicPartition ()) topicPartition1)
+                (Codec.int64.ToNative int641)))
 
 /// kafkaConsumerSetIsolationLevel — ../src/contract.lawspec:1389
 let kafkaConsumerSetIsolationLevel
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (consumerState: Value)
-    (value0: Value)
+    (isolationLevel1: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::kafkaConsumerSetIsolationLevel" (fun () ->
         Codec.fromNative
             (LawSpec.Data.Codecs.pair Codec.unit (LawSpec.Data.Codecs.consumerState ()))
             (LawSpec.TypedProgram.kafkaConsumerSetIsolationLevel
                 (Codec.toNative (LawSpec.Data.Codecs.consumerState ()) consumerState)
-                (Codec.toNative (LawSpec.Data.Codecs.isolationLevel ()) value0)))
+                (Codec.toNative (LawSpec.Data.Codecs.isolationLevel ()) isolationLevel1)))
 
 /// kafkaConsumerStart — ../src/contract.lawspec:1380
 let kafkaConsumerStart (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (lawspecUnit: Value) : Value =
@@ -905,9 +895,9 @@ let kafkaConsumerSubscribe
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (consumerState: Value)
-    (value0: Value)
-    (value1: Value)
-    (value2: Value)
+    (text1: Value)
+    (text2: Value)
+    (list1: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::kafkaConsumerSubscribe" (fun () ->
         Codec.fromNative
@@ -916,9 +906,9 @@ let kafkaConsumerSubscribe
                 schema
                 symbols
                 (Codec.toNative (LawSpec.Data.Codecs.consumerState ()) consumerState)
-                (Codec.text.ToNative value0)
-                (Codec.text.ToNative value1)
-                (Codec.toNative (Codec.list Codec.text) value2)))
+                (Codec.text.ToNative text1)
+                (Codec.text.ToNative text2)
+                (Codec.toNative (Codec.list Codec.text) list1)))
 
 /// kafkaProducerEnableIdempotence — ../src/contract.lawspec:1230
 let kafkaProducerEnableIdempotence
@@ -971,7 +961,7 @@ let kafkaProducerSend
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (producerState: Value)
-    (value0: Value)
+    (producerRecord1: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::kafkaProducerSend" (fun () ->
         Codec.fromNative
@@ -980,7 +970,7 @@ let kafkaProducerSend
                 schema
                 symbols
                 (Codec.toNative (LawSpec.Data.Codecs.producerState ()) producerState)
-                (Codec.toNative (LawSpec.Data.Codecs.producerRecord ()) value0)))
+                (Codec.toNative (LawSpec.Data.Codecs.producerRecord ()) producerRecord1)))
 
 /// kafkaProducerStart — ../src/contract.lawspec:1226
 let kafkaProducerStart (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (lawspecUnit: Value) : Value =
@@ -1008,7 +998,7 @@ let kafkaTransactionsAddPartitionsToTransaction
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (txnState: Value)
-    (value0: Value)
+    (list1: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::kafkaTransactionsAddPartitionsToTransaction" (fun () ->
         Codec.fromNative
@@ -1017,7 +1007,7 @@ let kafkaTransactionsAddPartitionsToTransaction
                 schema
                 symbols
                 (Codec.toNative (LawSpec.Data.Codecs.transactionState ()) txnState)
-                (Codec.toNative (Codec.list (LawSpec.Data.Codecs.topicPartition ())) value0)))
+                (Codec.toNative (Codec.list (LawSpec.Data.Codecs.topicPartition ())) list1)))
 
 /// kafkaTransactionsBeginTransaction — ../src/contract.lawspec:1733
 let kafkaTransactionsBeginTransaction
@@ -1051,7 +1041,7 @@ let kafkaTransactionsInitTransactions
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (txnState: Value)
-    (value0: Value)
+    (text1: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::kafkaTransactionsInitTransactions" (fun () ->
         Codec.fromNative
@@ -1060,14 +1050,14 @@ let kafkaTransactionsInitTransactions
                 schema
                 symbols
                 (Codec.toNative (LawSpec.Data.Codecs.transactionState ()) txnState)
-                (Codec.text.ToNative value0)))
+                (Codec.text.ToNative text1)))
 
 /// kafkaTransactionsSendInTransaction — ../src/contract.lawspec:1735
 let kafkaTransactionsSendInTransaction
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (txnState: Value)
-    (value0: Value)
+    (producerRecord1: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::kafkaTransactionsSendInTransaction" (fun () ->
         Codec.fromNative
@@ -1076,15 +1066,15 @@ let kafkaTransactionsSendInTransaction
                 schema
                 symbols
                 (Codec.toNative (LawSpec.Data.Codecs.transactionState ()) txnState)
-                (Codec.toNative (LawSpec.Data.Codecs.producerRecord ()) value0)))
+                (Codec.toNative (LawSpec.Data.Codecs.producerRecord ()) producerRecord1)))
 
 /// kafkaTransactionsSendOffsetsToTransaction — ../src/contract.lawspec:1736
 let kafkaTransactionsSendOffsetsToTransaction
     (schema: Schema.Schema)
     (symbols: Scalar.SymbolContext)
     (txnState: Value)
-    (value0: Value)
-    (value1: Value)
+    (text1: Value)
+    (list1: Value)
     : Value =
     Runtime.contextual "lawtwin.kafka::kafkaTransactionsSendOffsetsToTransaction" (fun () ->
         Codec.fromNative
@@ -1093,8 +1083,8 @@ let kafkaTransactionsSendOffsetsToTransaction
                 schema
                 symbols
                 (Codec.toNative (LawSpec.Data.Codecs.transactionState ()) txnState)
-                (Codec.text.ToNative value0)
-                (Codec.toNative (Codec.list (LawSpec.Data.Codecs.offsetEntry ())) value1)))
+                (Codec.text.ToNative text1)
+                (Codec.toNative (Codec.list (LawSpec.Data.Codecs.offsetEntry ())) list1)))
 
 /// kafkaTransactionsStart — ../src/contract.lawspec:1730
 let kafkaTransactionsStart (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (lawspecUnit: Value) : Value =

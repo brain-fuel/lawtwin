@@ -2252,9 +2252,9 @@ def noHandWrittenLawsYet(
 def referenceIssuesCreateLabel(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.State,
-    value0: _builtins.str,
-    value1: _builtins.str,
-    value2: data.IssuesCreateLabelBody,
+    text_1: _builtins.str,
+    text_2: _builtins.str,
+    issues_create_label_body_1: data.IssuesCreateLabelBody,
 ) -> data.Pair[data.Label, data.State]:
     try:
         state = _lawspec_schema.from_native(
@@ -2263,30 +2263,30 @@ def referenceIssuesCreateLabel(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        text_2 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value1,
+            text_2,
             MACHINE_BITS,
             symbols,
         )
-        value2 = _lawspec_schema.from_native(
+        issues_create_label_body_1 = _lawspec_schema.from_native(
             _schema.Named("lawtwin.github.model::type::IssuesCreateLabelBody"),
-            value2,
+            issues_create_label_body_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.reference_issues_create_label_2(
             symbols,
             state,
-            value0,
-            value1,
-            value2,
+            text_1,
+            text_2,
+            issues_create_label_body_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -2315,9 +2315,9 @@ def referenceIssuesCreateLabel(
 def referenceIssuesCreateMilestone(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.State,
-    value0: _builtins.str,
-    value1: _builtins.str,
-    value2: data.IssuesCreateMilestoneBody,
+    text_1: _builtins.str,
+    text_2: _builtins.str,
+    issues_create_milestone_body_1: data.IssuesCreateMilestoneBody,
 ) -> data.Pair[data.Milestone, data.State]:
     try:
         state = _lawspec_schema.from_native(
@@ -2326,32 +2326,32 @@ def referenceIssuesCreateMilestone(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        text_2 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value1,
+            text_2,
             MACHINE_BITS,
             symbols,
         )
-        value2 = _lawspec_schema.from_native(
+        issues_create_milestone_body_1 = _lawspec_schema.from_native(
             _schema.Named(
                 "lawtwin.github.model::type::IssuesCreateMilestoneBody",
             ),
-            value2,
+            issues_create_milestone_body_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.reference_issues_create_milestone_2(
             symbols,
             state,
-            value0,
-            value1,
-            value2,
+            text_1,
+            text_2,
+            issues_create_milestone_body_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -2380,9 +2380,9 @@ def referenceIssuesCreateMilestone(
 def referenceIssuesDeleteLabel(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.State,
-    value0: _builtins.str,
-    value1: _builtins.str,
-    value2: _builtins.str,
+    text_1: _builtins.str,
+    text_2: _builtins.str,
+    text_3: _builtins.str,
 ) -> data.Pair[ls.Absence, data.State]:
     try:
         state = _lawspec_schema.from_native(
@@ -2391,30 +2391,30 @@ def referenceIssuesDeleteLabel(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        text_2 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value1,
+            text_2,
             MACHINE_BITS,
             symbols,
         )
-        value2 = _lawspec_schema.from_native(
+        text_3 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value2,
+            text_3,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.reference_issues_delete_label_2(
             symbols,
             state,
-            value0,
-            value1,
-            value2,
+            text_1,
+            text_2,
+            text_3,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -2443,9 +2443,9 @@ def referenceIssuesDeleteLabel(
 def referenceIssuesDeleteMilestone(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.State,
-    value0: _builtins.str,
-    value1: _builtins.str,
-    value2: _builtins.int,
+    text_1: _builtins.str,
+    text_2: _builtins.str,
+    int64_1: _builtins.int,
 ) -> data.Pair[ls.Absence, data.State]:
     try:
         state = _lawspec_schema.from_native(
@@ -2454,30 +2454,30 @@ def referenceIssuesDeleteMilestone(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        text_2 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value1,
+            text_2,
             MACHINE_BITS,
             symbols,
         )
-        value2 = _lawspec_schema.from_native(
+        int64_1 = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value2,
+            int64_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.reference_issues_delete_milestone_2(
             symbols,
             state,
-            value0,
-            value1,
-            value2,
+            text_1,
+            text_2,
+            int64_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -2506,9 +2506,9 @@ def referenceIssuesDeleteMilestone(
 def referenceIssuesGetLabel(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.State,
-    value0: _builtins.str,
-    value1: _builtins.str,
-    value2: _builtins.str,
+    text_1: _builtins.str,
+    text_2: _builtins.str,
+    text_3: _builtins.str,
 ) -> data.Pair[data.Label, data.State]:
     try:
         state = _lawspec_schema.from_native(
@@ -2517,30 +2517,30 @@ def referenceIssuesGetLabel(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        text_2 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value1,
+            text_2,
             MACHINE_BITS,
             symbols,
         )
-        value2 = _lawspec_schema.from_native(
+        text_3 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value2,
+            text_3,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.reference_issues_get_label_2(
             symbols,
             state,
-            value0,
-            value1,
-            value2,
+            text_1,
+            text_2,
+            text_3,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -2569,9 +2569,9 @@ def referenceIssuesGetLabel(
 def referenceIssuesGetMilestone(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.State,
-    value0: _builtins.str,
-    value1: _builtins.str,
-    value2: _builtins.int,
+    text_1: _builtins.str,
+    text_2: _builtins.str,
+    int64_1: _builtins.int,
 ) -> data.Pair[data.Milestone, data.State]:
     try:
         state = _lawspec_schema.from_native(
@@ -2580,30 +2580,30 @@ def referenceIssuesGetMilestone(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        text_2 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value1,
+            text_2,
             MACHINE_BITS,
             symbols,
         )
-        value2 = _lawspec_schema.from_native(
+        int64_1 = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value2,
+            int64_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.reference_issues_get_milestone_2(
             symbols,
             state,
-            value0,
-            value1,
-            value2,
+            text_1,
+            text_2,
+            int64_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -2632,10 +2632,10 @@ def referenceIssuesGetMilestone(
 def referenceIssuesListLabelsForRepo(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.State,
-    value0: _builtins.str,
-    value1: _builtins.str,
-    value2: _schema.Maybe[_builtins.int],
-    value3: _schema.Maybe[_builtins.int],
+    text_1: _builtins.str,
+    text_2: _builtins.str,
+    maybe_1: _schema.Maybe[_builtins.int],
+    maybe_2: _schema.Maybe[_builtins.int],
 ) -> data.Pair[_builtins.list[data.Label], data.State]:
     try:
         state = _lawspec_schema.from_native(
@@ -2644,37 +2644,37 @@ def referenceIssuesListLabelsForRepo(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        text_2 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value1,
+            text_2,
             MACHINE_BITS,
             symbols,
         )
-        value2 = _lawspec_schema.from_native(
+        maybe_1 = _lawspec_schema.from_native(
             _schema.Named("Maybe", [_schema.Named("Int64")]),
-            value2,
+            maybe_1,
             MACHINE_BITS,
             symbols,
         )
-        value3 = _lawspec_schema.from_native(
+        maybe_2 = _lawspec_schema.from_native(
             _schema.Named("Maybe", [_schema.Named("Int64")]),
-            value3,
+            maybe_2,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.reference_issues_list_labels_for_repo_2(
             symbols,
             state,
-            value0,
-            value1,
-            value2,
-            value3,
+            text_1,
+            text_2,
+            maybe_1,
+            maybe_2,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -2706,13 +2706,13 @@ def referenceIssuesListLabelsForRepo(
 def referenceIssuesListMilestones(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.State,
-    value0: _builtins.str,
-    value1: _builtins.str,
-    value2: _schema.Maybe[data.IssuesListMilestonesState],
-    value3: _schema.Maybe[data.IssuesListMilestonesSort],
-    value4: _schema.Maybe[data.IssuesListMilestonesDirection],
-    value5: _schema.Maybe[_builtins.int],
-    value6: _schema.Maybe[_builtins.int],
+    text_1: _builtins.str,
+    text_2: _builtins.str,
+    maybe_1: _schema.Maybe[data.IssuesListMilestonesState],
+    maybe_2: _schema.Maybe[data.IssuesListMilestonesSort],
+    maybe_3: _schema.Maybe[data.IssuesListMilestonesDirection],
+    maybe_4: _schema.Maybe[_builtins.int],
+    maybe_5: _schema.Maybe[_builtins.int],
 ) -> data.Pair[_builtins.list[data.Milestone], data.State]:
     try:
         state = _lawspec_schema.from_native(
@@ -2721,19 +2721,19 @@ def referenceIssuesListMilestones(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        text_2 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value1,
+            text_2,
             MACHINE_BITS,
             symbols,
         )
-        value2 = _lawspec_schema.from_native(
+        maybe_1 = _lawspec_schema.from_native(
             _schema.Named(
                 "Maybe",
                 [
@@ -2742,11 +2742,11 @@ def referenceIssuesListMilestones(
                     ),
                 ],
             ),
-            value2,
+            maybe_1,
             MACHINE_BITS,
             symbols,
         )
-        value3 = _lawspec_schema.from_native(
+        maybe_2 = _lawspec_schema.from_native(
             _schema.Named(
                 "Maybe",
                 [
@@ -2755,11 +2755,11 @@ def referenceIssuesListMilestones(
                     ),
                 ],
             ),
-            value3,
+            maybe_2,
             MACHINE_BITS,
             symbols,
         )
-        value4 = _lawspec_schema.from_native(
+        maybe_3 = _lawspec_schema.from_native(
             _schema.Named(
                 "Maybe",
                 [
@@ -2768,32 +2768,32 @@ def referenceIssuesListMilestones(
                     ),
                 ],
             ),
-            value4,
+            maybe_3,
             MACHINE_BITS,
             symbols,
         )
-        value5 = _lawspec_schema.from_native(
+        maybe_4 = _lawspec_schema.from_native(
             _schema.Named("Maybe", [_schema.Named("Int64")]),
-            value5,
+            maybe_4,
             MACHINE_BITS,
             symbols,
         )
-        value6 = _lawspec_schema.from_native(
+        maybe_5 = _lawspec_schema.from_native(
             _schema.Named("Maybe", [_schema.Named("Int64")]),
-            value6,
+            maybe_5,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.reference_issues_list_milestones_2(
             symbols,
             state,
-            value0,
-            value1,
-            value2,
-            value3,
-            value4,
-            value5,
-            value6,
+            text_1,
+            text_2,
+            maybe_1,
+            maybe_2,
+            maybe_3,
+            maybe_4,
+            maybe_5,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -2829,10 +2829,10 @@ def referenceIssuesListMilestones(
 def referenceIssuesUpdateLabel(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.State,
-    value0: _builtins.str,
-    value1: _builtins.str,
-    value2: _builtins.str,
-    value3: _schema.Maybe[data.IssuesUpdateLabelBody],
+    text_1: _builtins.str,
+    text_2: _builtins.str,
+    text_3: _builtins.str,
+    maybe_1: _schema.Maybe[data.IssuesUpdateLabelBody],
 ) -> data.Pair[data.Label, data.State]:
     try:
         state = _lawspec_schema.from_native(
@@ -2841,25 +2841,25 @@ def referenceIssuesUpdateLabel(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        text_2 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value1,
+            text_2,
             MACHINE_BITS,
             symbols,
         )
-        value2 = _lawspec_schema.from_native(
+        text_3 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value2,
+            text_3,
             MACHINE_BITS,
             symbols,
         )
-        value3 = _lawspec_schema.from_native(
+        maybe_1 = _lawspec_schema.from_native(
             _schema.Named(
                 "Maybe",
                 [
@@ -2868,17 +2868,17 @@ def referenceIssuesUpdateLabel(
                     ),
                 ],
             ),
-            value3,
+            maybe_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.reference_issues_update_label_2(
             symbols,
             state,
-            value0,
-            value1,
-            value2,
-            value3,
+            text_1,
+            text_2,
+            text_3,
+            maybe_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(
@@ -2907,10 +2907,10 @@ def referenceIssuesUpdateLabel(
 def referenceIssuesUpdateMilestone(
     symbols: _builtins.dict[_builtins.str, _builtins.object],
     state: data.State,
-    value0: _builtins.str,
-    value1: _builtins.str,
-    value2: _builtins.int,
-    value3: _schema.Maybe[data.IssuesUpdateMilestoneBody],
+    text_1: _builtins.str,
+    text_2: _builtins.str,
+    int64_1: _builtins.int,
+    maybe_1: _schema.Maybe[data.IssuesUpdateMilestoneBody],
 ) -> data.Pair[data.Milestone, data.State]:
     try:
         state = _lawspec_schema.from_native(
@@ -2919,25 +2919,25 @@ def referenceIssuesUpdateMilestone(
             MACHINE_BITS,
             symbols,
         )
-        value0 = _lawspec_schema.from_native(
+        text_1 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value0,
+            text_1,
             MACHINE_BITS,
             symbols,
         )
-        value1 = _lawspec_schema.from_native(
+        text_2 = _lawspec_schema.from_native(
             _schema.Named("Text"),
-            value1,
+            text_2,
             MACHINE_BITS,
             symbols,
         )
-        value2 = _lawspec_schema.from_native(
+        int64_1 = _lawspec_schema.from_native(
             _schema.Named("Int64"),
-            value2,
+            int64_1,
             MACHINE_BITS,
             symbols,
         )
-        value3 = _lawspec_schema.from_native(
+        maybe_1 = _lawspec_schema.from_native(
             _schema.Named(
                 "Maybe",
                 [
@@ -2946,17 +2946,17 @@ def referenceIssuesUpdateMilestone(
                     ),
                 ],
             ),
-            value3,
+            maybe_1,
             MACHINE_BITS,
             symbols,
         )
         result = _definitions.reference_issues_update_milestone_2(
             symbols,
             state,
-            value0,
-            value1,
-            value2,
-            value3,
+            text_1,
+            text_2,
+            int64_1,
+            maybe_1,
         )
         return _lawspec_schema.to_native(
             _schema.Named(

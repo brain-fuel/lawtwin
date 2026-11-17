@@ -21,48 +21,50 @@ type Cluster(schema: Schema.Schema, symbols: Scalar.SymbolContext) =
         and set (value: LawSpec.Data.BrokerState) = lock gate (fun () -> state <- value)
 
     /// CreateTopicsRequest: its failure as a Result.
-    member _.CreateTopicsRequest(value0: string, value1: int) : Result<unit, LawSpec.Data.KafkaError> =
+    member _.CreateTopicsRequest(text1: string, int32_1: int) : Result<unit, LawSpec.Data.KafkaError> =
         lock gate (fun () ->
             Typed.tryResult
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
                 (fun () ->
-                    let pair = LawSpec.TypedProgram.clusterCreateTopic state value0 value1
+                    let pair = LawSpec.TypedProgram.clusterCreateTopic state text1 int32_1
                     state <- pair.Second
                     pair.First))
 
     /// CreatePartitionsRequest: its failure as a Result.
-    member _.CreatePartitionsRequest(value0: string, value1: int) : Result<unit, LawSpec.Data.KafkaError> =
+    member _.CreatePartitionsRequest(text1: string, int32_1: int) : Result<unit, LawSpec.Data.KafkaError> =
         lock gate (fun () ->
             Typed.tryResult
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
                 (fun () ->
-                    let pair = LawSpec.TypedProgram.clusterCreatePartitions state value0 value1
+                    let pair = LawSpec.TypedProgram.clusterCreatePartitions state text1 int32_1
                     state <- pair.Second
                     pair.First))
 
     /// MetadataRequest.
-    member _.MetadataRequest(value0: string) : int option =
+    member _.MetadataRequest(text1: string) : int option =
         lock gate (fun () ->
-            let pair = LawSpec.TypedProgram.clusterMetadataRequest state value0
+            let pair = LawSpec.TypedProgram.clusterMetadataRequest state text1
             state <- pair.Second
             pair.First)
 
     /// ProduceRequest: its failure as a Result.
-    member _.ProduceRequest(value0: LawSpec.Data.TopicPartition, value1: LawSpec.Data.ProducerTag option, value2: LawSpec.Data.Record list)
+    member _.ProduceRequest(topicPartition1: LawSpec.Data.TopicPartition, maybe1: LawSpec.Data.ProducerTag option, list1: LawSpec.Data.Record list)
         : Result<int64, LawSpec.Data.KafkaError> =
         lock gate (fun () ->
             Typed.tryResult
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
                 (fun () ->
-                    let pair = LawSpec.TypedProgram.clusterProduceRequest state value0 value1 value2
+                    let pair =
+                        LawSpec.TypedProgram.clusterProduceRequest state topicPartition1 maybe1 list1
+
                     state <- pair.Second
                     pair.First))
 
     /// FetchRequest: its failure as a Result.
-    member _.FetchRequest(value0: LawSpec.Data.TopicPartition, value1: int64, value2: int, value3: LawSpec.Data.IsolationLevel)
+    member _.FetchRequest(topicPartition1: LawSpec.Data.TopicPartition, int64_1: int64, int32_1: int, isolationLevel1: LawSpec.Data.IsolationLevel)
         : Result<LawSpec.Data.FetchResult, LawSpec.Data.KafkaError> =
         lock gate (fun () ->
             Typed.tryResult
@@ -70,37 +72,39 @@ type Cluster(schema: Schema.Schema, symbols: Scalar.SymbolContext) =
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
                 (fun () ->
                     let pair =
-                        LawSpec.TypedProgram.clusterFetchRequest state value0 value1 value2 value3
+                        LawSpec.TypedProgram.clusterFetchRequest state topicPartition1 int64_1 int32_1 isolationLevel1
 
                     state <- pair.Second
                     pair.First))
 
     /// ListOffsetsRequest: its failure as a Result.
-    member _.ListOffsetsRequest(value0: LawSpec.Data.TopicPartition, value1: LawSpec.Data.OffsetSpec, value2: LawSpec.Data.IsolationLevel)
+    member _.ListOffsetsRequest(topicPartition1: LawSpec.Data.TopicPartition, offsetSpec1: LawSpec.Data.OffsetSpec, isolationLevel1: LawSpec.Data.IsolationLevel)
         : Result<int64, LawSpec.Data.KafkaError> =
         lock gate (fun () ->
             Typed.tryResult
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
                 (fun () ->
-                    let pair = LawSpec.TypedProgram.clusterListOffsets state value0 value1 value2
+                    let pair =
+                        LawSpec.TypedProgram.clusterListOffsets state topicPartition1 offsetSpec1 isolationLevel1
+
                     state <- pair.Second
                     pair.First))
 
     /// InitProducerIdRequest: its failure as a Result.
-    member _.InitProducerIdRequest(value0: string option)
+    member _.InitProducerIdRequest(maybe1: string option)
         : Result<LawSpec.Data.ProducerIdAndEpoch, LawSpec.Data.KafkaError> =
         lock gate (fun () ->
             Typed.tryResult
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
                 (fun () ->
-                    let pair = LawSpec.TypedProgram.clusterInitProducerIdRequest state value0
+                    let pair = LawSpec.TypedProgram.clusterInitProducerIdRequest state maybe1
                     state <- pair.Second
                     pair.First))
 
     /// AddPartitionsToTxnRequest: its failure as a Result.
-    member _.AddPartitionsToTxnRequest(value0: string, value1: int64, value2: int16, value3: LawSpec.Data.TopicPartition list)
+    member _.AddPartitionsToTxnRequest(text1: string, int64_1: int64, int16_1: int16, list1: LawSpec.Data.TopicPartition list)
         : Result<unit, LawSpec.Data.KafkaError> =
         lock gate (fun () ->
             Typed.tryResult
@@ -108,13 +112,13 @@ type Cluster(schema: Schema.Schema, symbols: Scalar.SymbolContext) =
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
                 (fun () ->
                     let pair =
-                        LawSpec.TypedProgram.clusterAddPartitionsToTxnRequest state value0 value1 value2 value3
+                        LawSpec.TypedProgram.clusterAddPartitionsToTxnRequest state text1 int64_1 int16_1 list1
 
                     state <- pair.Second
                     pair.First))
 
     /// TxnOffsetCommitRequest: its failure as a Result.
-    member _.TxnOffsetCommitRequest(value0: string, value1: int64, value2: int16, value3: string, value4: LawSpec.Data.OffsetEntry list)
+    member _.TxnOffsetCommitRequest(text1: string, int64_1: int64, int16_1: int16, text2: string, list1: LawSpec.Data.OffsetEntry list)
         : Result<unit, LawSpec.Data.KafkaError> =
         lock gate (fun () ->
             Typed.tryResult
@@ -122,13 +126,13 @@ type Cluster(schema: Schema.Schema, symbols: Scalar.SymbolContext) =
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
                 (fun () ->
                     let pair =
-                        LawSpec.TypedProgram.clusterTxnOffsetCommitRequest state value0 value1 value2 value3 value4
+                        LawSpec.TypedProgram.clusterTxnOffsetCommitRequest state text1 int64_1 int16_1 text2 list1
 
                     state <- pair.Second
                     pair.First))
 
     /// EndTxnRequest: its failure as a Result.
-    member _.EndTxnRequest(value0: string, value1: int64, value2: int16, value3: bool)
+    member _.EndTxnRequest(text1: string, int64_1: int64, int16_1: int16, bool1: bool)
         : Result<unit, LawSpec.Data.KafkaError> =
         lock gate (fun () ->
             Typed.tryResult
@@ -136,232 +140,229 @@ type Cluster(schema: Schema.Schema, symbols: Scalar.SymbolContext) =
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
                 (fun () ->
                     let pair =
-                        LawSpec.TypedProgram.clusterEndTxnRequest state value0 value1 value2 value3
+                        LawSpec.TypedProgram.clusterEndTxnRequest state text1 int64_1 int16_1 bool1
 
                     state <- pair.Second
                     pair.First))
 
     /// JoinGroupRequest: its failure as a Result.
-    member _.JoinGroupRequest(value0: string, value1: string, value2: string list)
-        : Result<int, LawSpec.Data.KafkaError> =
+    member _.JoinGroupRequest(text1: string, text2: string, list1: string list) : Result<int, LawSpec.Data.KafkaError> =
         lock gate (fun () ->
             Typed.tryResult
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
                 (fun () ->
-                    let pair = LawSpec.TypedProgram.clusterJoinGroup state value0 value1 value2
+                    let pair = LawSpec.TypedProgram.clusterJoinGroup state text1 text2 list1
                     state <- pair.Second
                     pair.First))
 
     /// SyncGroupRequest: its failure as a Result.
-    member _.SyncGroupRequest(value0: string, value1: string, value2: int)
+    member _.SyncGroupRequest(text1: string, text2: string, int32_1: int)
         : Result<LawSpec.Data.TopicPartition list, LawSpec.Data.KafkaError> =
         lock gate (fun () ->
             Typed.tryResult
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
                 (fun () ->
-                    let pair = LawSpec.TypedProgram.clusterSyncGroup state value0 value1 value2
+                    let pair = LawSpec.TypedProgram.clusterSyncGroup state text1 text2 int32_1
                     state <- pair.Second
                     pair.First))
 
     /// HeartbeatRequest: its failure as a Result.
-    member _.HeartbeatRequest(value0: string, value1: string, value2: int) : Result<unit, LawSpec.Data.KafkaError> =
+    member _.HeartbeatRequest(text1: string, text2: string, int32_1: int) : Result<unit, LawSpec.Data.KafkaError> =
         lock gate (fun () ->
             Typed.tryResult
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
                 (fun () ->
-                    let pair = LawSpec.TypedProgram.clusterHeartbeat state value0 value1 value2
+                    let pair = LawSpec.TypedProgram.clusterHeartbeat state text1 text2 int32_1
                     state <- pair.Second
                     pair.First))
 
     /// LeaveGroupRequest: its failure as a Result.
-    member _.LeaveGroupRequest(value0: string, value1: string) : Result<unit, LawSpec.Data.KafkaError> =
+    member _.LeaveGroupRequest(text1: string, text2: string) : Result<unit, LawSpec.Data.KafkaError> =
         lock gate (fun () ->
             Typed.tryResult
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
                 (fun () ->
-                    let pair = LawSpec.TypedProgram.clusterLeaveGroup state value0 value1
+                    let pair = LawSpec.TypedProgram.clusterLeaveGroup state text1 text2
                     state <- pair.Second
                     pair.First))
 
     /// DescribeGroupRequest.
-    member _.DescribeGroupRequest(value0: string) : LawSpec.Data.GroupView =
+    member _.DescribeGroupRequest(text1: string) : LawSpec.Data.GroupView =
         lock gate (fun () ->
-            let pair = LawSpec.TypedProgram.clusterDescribeGroup state value0
+            let pair = LawSpec.TypedProgram.clusterDescribeGroup state text1
             state <- pair.Second
             pair.First)
 
     /// OffsetCommitRequest: its failure as a Result.
-    member _.OffsetCommitRequest(value0: string, value1: string, value2: int, value3: LawSpec.Data.OffsetEntry list)
+    member _.OffsetCommitRequest(text1: string, text2: string, int32_1: int, list1: LawSpec.Data.OffsetEntry list)
         : Result<unit, LawSpec.Data.KafkaError> =
         lock gate (fun () ->
             Typed.tryResult
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
                 (fun () ->
-                    let pair =
-                        LawSpec.TypedProgram.clusterCommitOffsets state value0 value1 value2 value3
-
+                    let pair = LawSpec.TypedProgram.clusterCommitOffsets state text1 text2 int32_1 list1
                     state <- pair.Second
                     pair.First))
 
     /// OffsetFetchRequest.
-    member _.OffsetFetchRequest(value0: string, value1: LawSpec.Data.TopicPartition) : int64 option =
+    member _.OffsetFetchRequest(text1: string, topicPartition1: LawSpec.Data.TopicPartition) : int64 option =
         lock gate (fun () ->
-            let pair = LawSpec.TypedProgram.clusterFetchOffset state value0 value1
+            let pair = LawSpec.TypedProgram.clusterFetchOffset state text1 topicPartition1
             state <- pair.Second
             pair.First)
 
     /// CreateTopic: its failure as a Result.
-    member _.CreateTopic(value0: string, value1: int) : Result<unit, LawSpec.Data.KafkaError> =
+    member _.CreateTopic(text1: string, int32_1: int) : Result<unit, LawSpec.Data.KafkaError> =
         lock gate (fun () ->
             Typed.tryResult
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
                 (fun () ->
-                    let pair = LawSpec.TypedProgram.clusterCreateTopic state value0 value1
+                    let pair = LawSpec.TypedProgram.clusterCreateTopic state text1 int32_1
                     state <- pair.Second
                     pair.First))
 
     /// CreatePartitions: its failure as a Result.
-    member _.CreatePartitions(value0: string, value1: int) : Result<unit, LawSpec.Data.KafkaError> =
+    member _.CreatePartitions(text1: string, int32_1: int) : Result<unit, LawSpec.Data.KafkaError> =
         lock gate (fun () ->
             Typed.tryResult
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
                 (fun () ->
-                    let pair = LawSpec.TypedProgram.clusterCreatePartitions state value0 value1
+                    let pair = LawSpec.TypedProgram.clusterCreatePartitions state text1 int32_1
                     state <- pair.Second
                     pair.First))
 
     /// PartitionsFor.
-    member _.PartitionsFor(value0: string) : int option =
+    member _.PartitionsFor(text1: string) : int option =
         lock gate (fun () ->
-            let pair = LawSpec.TypedProgram.clusterMetadataRequest state value0
+            let pair = LawSpec.TypedProgram.clusterMetadataRequest state text1
             state <- pair.Second
             pair.First)
 
     /// ListOffsets: its failure as a Result.
-    member _.ListOffsets(value0: LawSpec.Data.TopicPartition, value1: LawSpec.Data.OffsetSpec, value2: LawSpec.Data.IsolationLevel)
+    member _.ListOffsets(topicPartition1: LawSpec.Data.TopicPartition, offsetSpec1: LawSpec.Data.OffsetSpec, isolationLevel1: LawSpec.Data.IsolationLevel)
         : Result<int64, LawSpec.Data.KafkaError> =
         lock gate (fun () ->
             Typed.tryResult
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
                 (fun () ->
-                    let pair = LawSpec.TypedProgram.clusterListOffsets state value0 value1 value2
+                    let pair =
+                        LawSpec.TypedProgram.clusterListOffsets state topicPartition1 offsetSpec1 isolationLevel1
+
                     state <- pair.Second
                     pair.First))
 
     /// JoinGroup: its failure as a Result.
-    member _.JoinGroup(value0: string, value1: string, value2: string list) : Result<int, LawSpec.Data.KafkaError> =
+    member _.JoinGroup(text1: string, text2: string, list1: string list) : Result<int, LawSpec.Data.KafkaError> =
         lock gate (fun () ->
             Typed.tryResult
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
                 (fun () ->
-                    let pair = LawSpec.TypedProgram.clusterJoinGroup state value0 value1 value2
+                    let pair = LawSpec.TypedProgram.clusterJoinGroup state text1 text2 list1
                     state <- pair.Second
                     pair.First))
 
     /// SyncGroup: its failure as a Result.
-    member _.SyncGroup(value0: string, value1: string, value2: int)
+    member _.SyncGroup(text1: string, text2: string, int32_1: int)
         : Result<LawSpec.Data.TopicPartition list, LawSpec.Data.KafkaError> =
         lock gate (fun () ->
             Typed.tryResult
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
                 (fun () ->
-                    let pair = LawSpec.TypedProgram.clusterSyncGroup state value0 value1 value2
+                    let pair = LawSpec.TypedProgram.clusterSyncGroup state text1 text2 int32_1
                     state <- pair.Second
                     pair.First))
 
     /// Heartbeat: its failure as a Result.
-    member _.Heartbeat(value0: string, value1: string, value2: int) : Result<unit, LawSpec.Data.KafkaError> =
+    member _.Heartbeat(text1: string, text2: string, int32_1: int) : Result<unit, LawSpec.Data.KafkaError> =
         lock gate (fun () ->
             Typed.tryResult
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
                 (fun () ->
-                    let pair = LawSpec.TypedProgram.clusterHeartbeat state value0 value1 value2
+                    let pair = LawSpec.TypedProgram.clusterHeartbeat state text1 text2 int32_1
                     state <- pair.Second
                     pair.First))
 
     /// LeaveGroup: its failure as a Result.
-    member _.LeaveGroup(value0: string, value1: string) : Result<unit, LawSpec.Data.KafkaError> =
+    member _.LeaveGroup(text1: string, text2: string) : Result<unit, LawSpec.Data.KafkaError> =
         lock gate (fun () ->
             Typed.tryResult
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
                 (fun () ->
-                    let pair = LawSpec.TypedProgram.clusterLeaveGroup state value0 value1
+                    let pair = LawSpec.TypedProgram.clusterLeaveGroup state text1 text2
                     state <- pair.Second
                     pair.First))
 
     /// DescribeGroup.
-    member _.DescribeGroup(value0: string) : LawSpec.Data.GroupView =
+    member _.DescribeGroup(text1: string) : LawSpec.Data.GroupView =
         lock gate (fun () ->
-            let pair = LawSpec.TypedProgram.clusterDescribeGroup state value0
+            let pair = LawSpec.TypedProgram.clusterDescribeGroup state text1
             state <- pair.Second
             pair.First)
 
     /// CommitOffsets: its failure as a Result.
-    member _.CommitOffsets(value0: string, value1: string, value2: int, value3: LawSpec.Data.OffsetEntry list)
+    member _.CommitOffsets(text1: string, text2: string, int32_1: int, list1: LawSpec.Data.OffsetEntry list)
         : Result<unit, LawSpec.Data.KafkaError> =
         lock gate (fun () ->
             Typed.tryResult
                 "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)"
                 (Codec.toNative (LawSpec.Data.Codecs.kafkaError ()))
                 (fun () ->
-                    let pair =
-                        LawSpec.TypedProgram.clusterCommitOffsets state value0 value1 value2 value3
-
+                    let pair = LawSpec.TypedProgram.clusterCommitOffsets state text1 text2 int32_1 list1
                     state <- pair.Second
                     pair.First))
 
     /// FetchOffset.
-    member _.FetchOffset(value0: string, value1: LawSpec.Data.TopicPartition) : int64 option =
+    member _.FetchOffset(text1: string, topicPartition1: LawSpec.Data.TopicPartition) : int64 option =
         lock gate (fun () ->
-            let pair = LawSpec.TypedProgram.clusterFetchOffset state value0 value1
+            let pair = LawSpec.TypedProgram.clusterFetchOffset state text1 topicPartition1
             state <- pair.Second
             pair.First)
 
     interface LawSpec.Abilities.LawtwinKafka.IBroker with
-        member this.CreateTopicsRequest(value0, value1) = this.CreateTopicsRequest(value0, value1)
-        member this.CreatePartitionsRequest(value0, value1) = this.CreatePartitionsRequest(value0, value1)
-        member this.MetadataRequest(value0) = this.MetadataRequest(value0)
-        member this.ProduceRequest(value0, value1, value2) = this.ProduceRequest(value0, value1, value2)
-        member this.FetchRequest(value0, value1, value2, value3) = this.FetchRequest(value0, value1, value2, value3)
-        member this.ListOffsetsRequest(value0, value1, value2) = this.ListOffsetsRequest(value0, value1, value2)
-        member this.InitProducerIdRequest(value0) = this.InitProducerIdRequest(value0)
-        member this.AddPartitionsToTxnRequest(value0, value1, value2, value3) = this.AddPartitionsToTxnRequest(value0, value1, value2, value3)
-        member this.TxnOffsetCommitRequest(value0, value1, value2, value3, value4) = this.TxnOffsetCommitRequest(value0, value1, value2, value3, value4)
-        member this.EndTxnRequest(value0, value1, value2, value3) = this.EndTxnRequest(value0, value1, value2, value3)
-        member this.JoinGroupRequest(value0, value1, value2) = this.JoinGroupRequest(value0, value1, value2)
-        member this.SyncGroupRequest(value0, value1, value2) = this.SyncGroupRequest(value0, value1, value2)
-        member this.HeartbeatRequest(value0, value1, value2) = this.HeartbeatRequest(value0, value1, value2)
-        member this.LeaveGroupRequest(value0, value1) = this.LeaveGroupRequest(value0, value1)
-        member this.DescribeGroupRequest(value0) = this.DescribeGroupRequest(value0)
-        member this.OffsetCommitRequest(value0, value1, value2, value3) = this.OffsetCommitRequest(value0, value1, value2, value3)
-        member this.OffsetFetchRequest(value0, value1) = this.OffsetFetchRequest(value0, value1)
+        member this.CreateTopicsRequest(text1, int32_1) = this.CreateTopicsRequest(text1, int32_1)
+        member this.CreatePartitionsRequest(text1, int32_1) = this.CreatePartitionsRequest(text1, int32_1)
+        member this.MetadataRequest(text1) = this.MetadataRequest(text1)
+        member this.ProduceRequest(topicPartition1, maybe1, list1) = this.ProduceRequest(topicPartition1, maybe1, list1)
+        member this.FetchRequest(topicPartition1, int64_1, int32_1, isolationLevel1) = this.FetchRequest(topicPartition1, int64_1, int32_1, isolationLevel1)
+        member this.ListOffsetsRequest(topicPartition1, offsetSpec1, isolationLevel1) = this.ListOffsetsRequest(topicPartition1, offsetSpec1, isolationLevel1)
+        member this.InitProducerIdRequest(maybe1) = this.InitProducerIdRequest(maybe1)
+        member this.AddPartitionsToTxnRequest(text1, int64_1, int16_1, list1) = this.AddPartitionsToTxnRequest(text1, int64_1, int16_1, list1)
+        member this.TxnOffsetCommitRequest(text1, int64_1, int16_1, text2, list1) = this.TxnOffsetCommitRequest(text1, int64_1, int16_1, text2, list1)
+        member this.EndTxnRequest(text1, int64_1, int16_1, bool1) = this.EndTxnRequest(text1, int64_1, int16_1, bool1)
+        member this.JoinGroupRequest(text1, text2, list1) = this.JoinGroupRequest(text1, text2, list1)
+        member this.SyncGroupRequest(text1, text2, int32_1) = this.SyncGroupRequest(text1, text2, int32_1)
+        member this.HeartbeatRequest(text1, text2, int32_1) = this.HeartbeatRequest(text1, text2, int32_1)
+        member this.LeaveGroupRequest(text1, text2) = this.LeaveGroupRequest(text1, text2)
+        member this.DescribeGroupRequest(text1) = this.DescribeGroupRequest(text1)
+        member this.OffsetCommitRequest(text1, text2, int32_1, list1) = this.OffsetCommitRequest(text1, text2, int32_1, list1)
+        member this.OffsetFetchRequest(text1, topicPartition1) = this.OffsetFetchRequest(text1, topicPartition1)
 
     interface LawSpec.Abilities.LawtwinKafka.IAdmin with
-        member this.CreateTopic(value0, value1) = this.CreateTopic(value0, value1)
-        member this.CreatePartitions(value0, value1) = this.CreatePartitions(value0, value1)
-        member this.PartitionsFor(value0) = this.PartitionsFor(value0)
-        member this.ListOffsets(value0, value1, value2) = this.ListOffsets(value0, value1, value2)
+        member this.CreateTopic(text1, int32_1) = this.CreateTopic(text1, int32_1)
+        member this.CreatePartitions(text1, int32_1) = this.CreatePartitions(text1, int32_1)
+        member this.PartitionsFor(text1) = this.PartitionsFor(text1)
+        member this.ListOffsets(topicPartition1, offsetSpec1, isolationLevel1) = this.ListOffsets(topicPartition1, offsetSpec1, isolationLevel1)
 
     interface LawSpec.Abilities.LawtwinKafka.IGroupCoordinator with
-        member this.JoinGroup(value0, value1, value2) = this.JoinGroup(value0, value1, value2)
-        member this.SyncGroup(value0, value1, value2) = this.SyncGroup(value0, value1, value2)
-        member this.Heartbeat(value0, value1, value2) = this.Heartbeat(value0, value1, value2)
-        member this.LeaveGroup(value0, value1) = this.LeaveGroup(value0, value1)
-        member this.DescribeGroup(value0) = this.DescribeGroup(value0)
-        member this.CommitOffsets(value0, value1, value2, value3) = this.CommitOffsets(value0, value1, value2, value3)
-        member this.FetchOffset(value0, value1) = this.FetchOffset(value0, value1)
+        member this.JoinGroup(text1, text2, list1) = this.JoinGroup(text1, text2, list1)
+        member this.SyncGroup(text1, text2, int32_1) = this.SyncGroup(text1, text2, int32_1)
+        member this.Heartbeat(text1, text2, int32_1) = this.Heartbeat(text1, text2, int32_1)
+        member this.LeaveGroup(text1, text2) = this.LeaveGroup(text1, text2)
+        member this.DescribeGroup(text1) = this.DescribeGroup(text1)
+        member this.CommitOffsets(text1, text2, int32_1, list1) = this.CommitOffsets(text1, text2, int32_1, list1)
+        member this.FetchOffset(text1, topicPartition1) = this.FetchOffset(text1, topicPartition1)
 
 /// The spec handler murmurPartitioner for Partitioner. It runs typed: its state is native, and shared, not copied, by a snapshot.
 [<Sealed>]
@@ -372,11 +373,11 @@ type MurmurPartitioner(schema: Schema.Schema, symbols: Scalar.SymbolContext) =
     new() = MurmurPartitioner(LawSpec.Generated.Program.schema, Scalar.SymbolContext())
 
     /// ChoosePartition.
-    member _.ChoosePartition(value0: byte[] option, value1: int) : int =
-        lock gate (fun () -> LawSpec.TypedProgram.murmurPartitionerChoosePartition value0 value1)
+    member _.ChoosePartition(maybe1: byte[] option, int32_1: int) : int =
+        lock gate (fun () -> LawSpec.TypedProgram.murmurPartitionerChoosePartition maybe1 int32_1)
 
     interface LawSpec.Abilities.LawtwinKafka.IPartitioner with
-        member this.ChoosePartition(value0, value1) = this.ChoosePartition(value0, value1)
+        member this.ChoosePartition(maybe1, int32_1) = this.ChoosePartition(maybe1, int32_1)
 
 /// The spec handler kafkaProducer for Producer. It runs typed: its state is native, and shared, not copied, by a snapshot.
 [<Sealed>]
@@ -395,10 +396,12 @@ type KafkaProducer(schema: Schema.Schema, symbols: Scalar.SymbolContext) =
         and set (value: LawSpec.Data.ProducerState) = lock gate (fun () -> state <- value)
 
     /// Send.
-    member _.Send(value0: LawSpec.Data.ProducerRecord)
+    member _.Send(producerRecord1: LawSpec.Data.ProducerRecord)
         : LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata> =
         lock gate (fun () ->
-            let pair = LawSpec.TypedProgram.kafkaProducerSend schema symbols state value0
+            let pair =
+                LawSpec.TypedProgram.kafkaProducerSend schema symbols state producerRecord1
+
             state <- pair.Second
             pair.First)
 
@@ -431,7 +434,7 @@ type KafkaProducer(schema: Schema.Schema, symbols: Scalar.SymbolContext) =
             pair.First)
 
     interface LawSpec.Abilities.LawtwinKafka.IProducer with
-        member this.Send(value0) = this.Send(value0)
+        member this.Send(producerRecord1) = this.Send(producerRecord1)
         member this.Flush() = this.Flush()
         member this.EnableIdempotence() = this.EnableIdempotence()
         member this.RetryLastSend() = this.RetryLastSend()
@@ -454,26 +457,26 @@ type KafkaConsumer(schema: Schema.Schema, symbols: Scalar.SymbolContext) =
         and set (value: LawSpec.Data.ConsumerState) = lock gate (fun () -> state <- value)
 
     /// Assign.
-    member _.Assign(value0: LawSpec.Data.TopicPartition list) : unit =
+    member _.Assign(list1: LawSpec.Data.TopicPartition list) : unit =
         lock gate (fun () ->
-            let pair = LawSpec.TypedProgram.kafkaConsumerAssign state value0
+            let pair = LawSpec.TypedProgram.kafkaConsumerAssign state list1
             state <- pair.Second
             pair.First)
 
     /// Subscribe.
-    member _.Subscribe(value0: string, value1: string, value2: string list)
+    member _.Subscribe(text1: string, text2: string, list1: string list)
         : LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.TopicPartition list> =
         lock gate (fun () ->
             let pair =
-                LawSpec.TypedProgram.kafkaConsumerSubscribe schema symbols state value0 value1 value2
+                LawSpec.TypedProgram.kafkaConsumerSubscribe schema symbols state text1 text2 list1
 
             state <- pair.Second
             pair.First)
 
     /// Poll.
-    member _.Poll(value0: int) : LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ConsumerRecord list> =
+    member _.Poll(int32_1: int) : LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ConsumerRecord list> =
         lock gate (fun () ->
-            let pair = LawSpec.TypedProgram.kafkaConsumerPoll schema symbols state value0
+            let pair = LawSpec.TypedProgram.kafkaConsumerPoll schema symbols state int32_1
             state <- pair.Second
             pair.First)
 
@@ -485,32 +488,35 @@ type KafkaConsumer(schema: Schema.Schema, symbols: Scalar.SymbolContext) =
             pair.First)
 
     /// Seek.
-    member _.Seek(value0: LawSpec.Data.TopicPartition, value1: int64) : LawSpec.Either<LawSpec.Data.KafkaError, unit> =
+    member _.Seek(topicPartition1: LawSpec.Data.TopicPartition, int64_1: int64)
+        : LawSpec.Either<LawSpec.Data.KafkaError, unit> =
         lock gate (fun () ->
-            let pair = LawSpec.TypedProgram.kafkaConsumerSeek state value0 value1
+            let pair = LawSpec.TypedProgram.kafkaConsumerSeek state topicPartition1 int64_1
             state <- pair.Second
             pair.First)
 
     /// Position.
-    member _.Position(value0: LawSpec.Data.TopicPartition) : LawSpec.Either<LawSpec.Data.KafkaError, int64> =
+    member _.Position(topicPartition1: LawSpec.Data.TopicPartition) : LawSpec.Either<LawSpec.Data.KafkaError, int64> =
         lock gate (fun () ->
-            let pair = LawSpec.TypedProgram.kafkaConsumerPosition schema symbols state value0
+            let pair =
+                LawSpec.TypedProgram.kafkaConsumerPosition schema symbols state topicPartition1
+
             state <- pair.Second
             pair.First)
 
     /// CommittedOffset.
-    member _.CommittedOffset(value0: LawSpec.Data.TopicPartition) : int64 option =
+    member _.CommittedOffset(topicPartition1: LawSpec.Data.TopicPartition) : int64 option =
         lock gate (fun () ->
             let pair =
-                LawSpec.TypedProgram.kafkaConsumerCommittedOffset schema symbols state value0
+                LawSpec.TypedProgram.kafkaConsumerCommittedOffset schema symbols state topicPartition1
 
             state <- pair.Second
             pair.First)
 
     /// SetIsolationLevel.
-    member _.SetIsolationLevel(value0: LawSpec.Data.IsolationLevel) : unit =
+    member _.SetIsolationLevel(isolationLevel1: LawSpec.Data.IsolationLevel) : unit =
         lock gate (fun () ->
-            let pair = LawSpec.TypedProgram.kafkaConsumerSetIsolationLevel state value0
+            let pair = LawSpec.TypedProgram.kafkaConsumerSetIsolationLevel state isolationLevel1
             state <- pair.Second
             pair.First)
 
@@ -522,14 +528,14 @@ type KafkaConsumer(schema: Schema.Schema, symbols: Scalar.SymbolContext) =
             pair.First)
 
     interface LawSpec.Abilities.LawtwinKafka.IConsumer with
-        member this.Assign(value0) = this.Assign(value0)
-        member this.Subscribe(value0, value1, value2) = this.Subscribe(value0, value1, value2)
-        member this.Poll(value0) = this.Poll(value0)
+        member this.Assign(list1) = this.Assign(list1)
+        member this.Subscribe(text1, text2, list1) = this.Subscribe(text1, text2, list1)
+        member this.Poll(int32_1) = this.Poll(int32_1)
         member this.CommitSync() = this.CommitSync()
-        member this.Seek(value0, value1) = this.Seek(value0, value1)
-        member this.Position(value0) = this.Position(value0)
-        member this.CommittedOffset(value0) = this.CommittedOffset(value0)
-        member this.SetIsolationLevel(value0) = this.SetIsolationLevel(value0)
+        member this.Seek(topicPartition1, int64_1) = this.Seek(topicPartition1, int64_1)
+        member this.Position(topicPartition1) = this.Position(topicPartition1)
+        member this.CommittedOffset(topicPartition1) = this.CommittedOffset(topicPartition1)
+        member this.SetIsolationLevel(isolationLevel1) = this.SetIsolationLevel(isolationLevel1)
         member this.Close() = this.Close()
 
 /// The spec handler kafkaTransactions for Transactions. It runs typed: its state is native, and shared, not copied, by a snapshot.
@@ -549,11 +555,11 @@ type KafkaTransactions(schema: Schema.Schema, symbols: Scalar.SymbolContext) =
         and set (value: LawSpec.Data.TransactionState) = lock gate (fun () -> state <- value)
 
     /// InitTransactions.
-    member _.InitTransactions(value0: string)
+    member _.InitTransactions(text1: string)
         : LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.ProducerIdAndEpoch> =
         lock gate (fun () ->
             let pair =
-                LawSpec.TypedProgram.kafkaTransactionsInitTransactions schema symbols state value0
+                LawSpec.TypedProgram.kafkaTransactionsInitTransactions schema symbols state text1
 
             state <- pair.Second
             pair.First)
@@ -566,31 +572,31 @@ type KafkaTransactions(schema: Schema.Schema, symbols: Scalar.SymbolContext) =
             pair.First)
 
     /// AddPartitionsToTransaction.
-    member _.AddPartitionsToTransaction(value0: LawSpec.Data.TopicPartition list)
+    member _.AddPartitionsToTransaction(list1: LawSpec.Data.TopicPartition list)
         : LawSpec.Either<LawSpec.Data.KafkaError, unit> =
         lock gate (fun () ->
             let pair =
-                LawSpec.TypedProgram.kafkaTransactionsAddPartitionsToTransaction schema symbols state value0
+                LawSpec.TypedProgram.kafkaTransactionsAddPartitionsToTransaction schema symbols state list1
 
             state <- pair.Second
             pair.First)
 
     /// SendInTransaction.
-    member _.SendInTransaction(value0: LawSpec.Data.ProducerRecord)
+    member _.SendInTransaction(producerRecord1: LawSpec.Data.ProducerRecord)
         : LawSpec.Either<LawSpec.Data.KafkaError, LawSpec.Data.RecordMetadata> =
         lock gate (fun () ->
             let pair =
-                LawSpec.TypedProgram.kafkaTransactionsSendInTransaction schema symbols state value0
+                LawSpec.TypedProgram.kafkaTransactionsSendInTransaction schema symbols state producerRecord1
 
             state <- pair.Second
             pair.First)
 
     /// SendOffsetsToTransaction.
-    member _.SendOffsetsToTransaction(value0: string, value1: LawSpec.Data.OffsetEntry list)
+    member _.SendOffsetsToTransaction(text1: string, list1: LawSpec.Data.OffsetEntry list)
         : LawSpec.Either<LawSpec.Data.KafkaError, unit> =
         lock gate (fun () ->
             let pair =
-                LawSpec.TypedProgram.kafkaTransactionsSendOffsetsToTransaction schema symbols state value0 value1
+                LawSpec.TypedProgram.kafkaTransactionsSendOffsetsToTransaction schema symbols state text1 list1
 
             state <- pair.Second
             pair.First)
@@ -614,10 +620,10 @@ type KafkaTransactions(schema: Schema.Schema, symbols: Scalar.SymbolContext) =
             pair.First)
 
     interface LawSpec.Abilities.LawtwinKafka.ITransactions with
-        member this.InitTransactions(value0) = this.InitTransactions(value0)
+        member this.InitTransactions(text1) = this.InitTransactions(text1)
         member this.BeginTransaction() = this.BeginTransaction()
-        member this.AddPartitionsToTransaction(value0) = this.AddPartitionsToTransaction(value0)
-        member this.SendInTransaction(value0) = this.SendInTransaction(value0)
-        member this.SendOffsetsToTransaction(value0, value1) = this.SendOffsetsToTransaction(value0, value1)
+        member this.AddPartitionsToTransaction(list1) = this.AddPartitionsToTransaction(list1)
+        member this.SendInTransaction(producerRecord1) = this.SendInTransaction(producerRecord1)
+        member this.SendOffsetsToTransaction(text1, list1) = this.SendOffsetsToTransaction(text1, list1)
         member this.CommitTransaction() = this.CommitTransaction()
         member this.AbortTransaction() = this.AbortTransaction()

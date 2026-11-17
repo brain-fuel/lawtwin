@@ -170,6 +170,7 @@ let generation (schema: Schema.Schema) (symbols: Scalar.SymbolContext) (attempts
         Symbols = symbols
         Factories = Map.empty
         Attempts = attempts
+        Seeds = []
     }
 
 /// As generation, with the application's generators (bound in lawspec.edn)
@@ -186,6 +187,7 @@ let generationWith
         Symbols = symbols
         Factories = Map.ofList factories
         Attempts = attempts
+        Seeds = []
     }
 
 /// Each boundary case, in order; the first that fails names its position.

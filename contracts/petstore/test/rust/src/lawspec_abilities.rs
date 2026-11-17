@@ -8,29 +8,29 @@ pub mod lawtwin_petstore
     /// The PetApi ability: a handler answers each of its operations.
     pub trait PetApi: Send + Sync
     {
-        fn updatePet(&self, value0: crate::lawspec_data::Pet) -> crate::lawspec_data::Pet;
-        fn addPet(&self, value0: crate::lawspec_data::Pet) -> crate::lawspec_data::Pet;
+        fn updatePet(&self, pet_1: crate::lawspec_data::Pet) -> crate::lawspec_data::Pet;
+        fn addPet(&self, pet_1: crate::lawspec_data::Pet) -> crate::lawspec_data::Pet;
         fn findPetsByStatus(
             &self,
-            value0: crate::lawspec_data::PetStatus,
+            pet_status_1: crate::lawspec_data::PetStatus,
         ) -> std::vec::Vec<crate::lawspec_data::Pet>;
         fn findPetsByTags(
             &self,
-            value0: std::vec::Vec<std::string::String>,
+            list_1: std::vec::Vec<std::string::String>,
         ) -> std::vec::Vec<crate::lawspec_data::Pet>;
-        fn getPetById(&self, value0: i64) -> crate::lawspec_data::Pet;
+        fn getPetById(&self, int64_1: i64) -> crate::lawspec_data::Pet;
         fn updatePetWithForm(
             &self,
-            value0: i64,
-            value1: std::option::Option<std::string::String>,
-            value2: std::option::Option<std::string::String>,
+            int64_1: i64,
+            maybe_1: std::option::Option<std::string::String>,
+            maybe_2: std::option::Option<std::string::String>,
         ) -> crate::lawspec_data::Pet;
-        fn deletePet(&self, value0: i64, value1: std::option::Option<std::string::String>) -> ();
+        fn deletePet(&self, int64_1: i64, maybe_1: std::option::Option<std::string::String>) -> ();
         fn uploadFile(
             &self,
-            value0: i64,
-            value1: std::option::Option<std::string::String>,
-            value2: std::option::Option<std::vec::Vec<u8>>,
+            int64_1: i64,
+            maybe_1: std::option::Option<std::string::String>,
+            maybe_2: std::option::Option<std::vec::Vec<u8>>,
         ) -> crate::lawspec_data::ApiResponse;
     }
 
@@ -40,10 +40,10 @@ pub mod lawtwin_petstore
         fn getInventory(&self) -> std::collections::BTreeMap<std::string::String, i32>;
         fn placeOrder(
             &self,
-            value0: std::option::Option<crate::lawspec_data::Order>,
+            maybe_1: std::option::Option<crate::lawspec_data::Order>,
         ) -> crate::lawspec_data::Order;
-        fn getOrderById(&self, value0: i64) -> crate::lawspec_data::Order;
-        fn deleteOrder(&self, value0: i64) -> ();
+        fn getOrderById(&self, int64_1: i64) -> crate::lawspec_data::Order;
+        fn deleteOrder(&self, int64_1: i64) -> ();
     }
 
     /// The UserApi ability: a handler answers each of its operations.
@@ -51,25 +51,25 @@ pub mod lawtwin_petstore
     {
         fn createUser(
             &self,
-            value0: std::option::Option<crate::lawspec_data::User>,
+            maybe_1: std::option::Option<crate::lawspec_data::User>,
         ) -> crate::lawspec_data::User;
         fn createUsersWithListInput(
             &self,
-            value0: std::option::Option<std::vec::Vec<crate::lawspec_data::User>>,
+            maybe_1: std::option::Option<std::vec::Vec<crate::lawspec_data::User>>,
         ) -> crate::lawspec_data::User;
         fn loginUser(
             &self,
-            value0: std::option::Option<std::string::String>,
-            value1: std::option::Option<std::string::String>,
+            maybe_1: std::option::Option<std::string::String>,
+            maybe_2: std::option::Option<std::string::String>,
         ) -> std::string::String;
         fn logoutUser(&self) -> ();
-        fn getUserByName(&self, value0: std::string::String) -> crate::lawspec_data::User;
+        fn getUserByName(&self, text_1: std::string::String) -> crate::lawspec_data::User;
         fn updateUser(
             &self,
-            value0: std::string::String,
-            value1: std::option::Option<crate::lawspec_data::User>,
+            text_1: std::string::String,
+            maybe_1: std::option::Option<crate::lawspec_data::User>,
         ) -> ();
-        fn deleteUser(&self, value0: std::string::String) -> ();
+        fn deleteUser(&self, text_1: std::string::String) -> ();
     }
 
     /// The spec handler reference for PetApi, StoreApi, UserApi, with its state typed.
@@ -131,14 +131,14 @@ pub mod lawtwin_petstore
         /// updatePet, with the failure it raises as Err rather than a panic.
         pub fn try_updatePet(
             &self,
-            value0: crate::lawspec_data::Pet,
+            pet_1: crate::lawspec_data::Pet,
         ) -> std::result::Result<crate::lawspec_data::Pet, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::PetApi>::updatePet(
-                        self, value0,
+                        self, pet_1,
                     ))
                 },
             )
@@ -166,14 +166,14 @@ pub mod lawtwin_petstore
         /// addPet, with the failure it raises as Err rather than a panic.
         pub fn try_addPet(
             &self,
-            value0: crate::lawspec_data::Pet,
+            pet_1: crate::lawspec_data::Pet,
         ) -> std::result::Result<crate::lawspec_data::Pet, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::PetApi>::addPet(
-                        self, value0,
+                        self, pet_1,
                     ))
                 },
             )
@@ -201,7 +201,7 @@ pub mod lawtwin_petstore
         /// findPetsByStatus, with the failure it raises as Err rather than a panic.
         pub fn try_findPetsByStatus(
             &self,
-            value0: crate::lawspec_data::PetStatus,
+            pet_status_1: crate::lawspec_data::PetStatus,
         ) -> std::result::Result<
             std::vec::Vec<crate::lawspec_data::Pet>,
             crate::lawspec_data::ApiError,
@@ -211,7 +211,8 @@ pub mod lawtwin_petstore
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::PetApi>::findPetsByStatus(
-                        self, value0,
+                        self,
+                        pet_status_1,
                     ))
                 },
             )
@@ -239,7 +240,7 @@ pub mod lawtwin_petstore
         /// findPetsByTags, with the failure it raises as Err rather than a panic.
         pub fn try_findPetsByTags(
             &self,
-            value0: std::vec::Vec<std::string::String>,
+            list_1: std::vec::Vec<std::string::String>,
         ) -> std::result::Result<
             std::vec::Vec<crate::lawspec_data::Pet>,
             crate::lawspec_data::ApiError,
@@ -249,7 +250,7 @@ pub mod lawtwin_petstore
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::PetApi>::findPetsByTags(
-                        self, value0,
+                        self, list_1,
                     ))
                 },
             )
@@ -277,14 +278,14 @@ pub mod lawtwin_petstore
         /// getPetById, with the failure it raises as Err rather than a panic.
         pub fn try_getPetById(
             &self,
-            value0: i64,
+            int64_1: i64,
         ) -> std::result::Result<crate::lawspec_data::Pet, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::PetApi>::getPetById(
-                        self, value0,
+                        self, int64_1,
                     ))
                 },
             )
@@ -312,9 +313,9 @@ pub mod lawtwin_petstore
         /// updatePetWithForm, with the failure it raises as Err rather than a panic.
         pub fn try_updatePetWithForm(
             &self,
-            value0: i64,
-            value1: std::option::Option<std::string::String>,
-            value2: std::option::Option<std::string::String>,
+            int64_1: i64,
+            maybe_1: std::option::Option<std::string::String>,
+            maybe_2: std::option::Option<std::string::String>,
         ) -> std::result::Result<crate::lawspec_data::Pet, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
@@ -322,7 +323,7 @@ pub mod lawtwin_petstore
                 || {
                     Ok(
                         <Self as super::lawtwin_petstore::PetApi>::updatePetWithForm(
-                            self, value0, value1, value2,
+                            self, int64_1, maybe_1, maybe_2,
                         ),
                     )
                 },
@@ -351,15 +352,15 @@ pub mod lawtwin_petstore
         /// deletePet, with the failure it raises as Err rather than a panic.
         pub fn try_deletePet(
             &self,
-            value0: i64,
-            value1: std::option::Option<std::string::String>,
+            int64_1: i64,
+            maybe_1: std::option::Option<std::string::String>,
         ) -> std::result::Result<(), crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::PetApi>::deletePet(
-                        self, value0, value1,
+                        self, int64_1, maybe_1,
                     ))
                 },
             )
@@ -387,16 +388,16 @@ pub mod lawtwin_petstore
         /// uploadFile, with the failure it raises as Err rather than a panic.
         pub fn try_uploadFile(
             &self,
-            value0: i64,
-            value1: std::option::Option<std::string::String>,
-            value2: std::option::Option<std::vec::Vec<u8>>,
+            int64_1: i64,
+            maybe_1: std::option::Option<std::string::String>,
+            maybe_2: std::option::Option<std::vec::Vec<u8>>,
         ) -> std::result::Result<crate::lawspec_data::ApiResponse, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::PetApi>::uploadFile(
-                        self, value0, value1, value2,
+                        self, int64_1, maybe_1, maybe_2,
                     ))
                 },
             )
@@ -461,14 +462,14 @@ pub mod lawtwin_petstore
         /// placeOrder, with the failure it raises as Err rather than a panic.
         pub fn try_placeOrder(
             &self,
-            value0: std::option::Option<crate::lawspec_data::Order>,
+            maybe_1: std::option::Option<crate::lawspec_data::Order>,
         ) -> std::result::Result<crate::lawspec_data::Order, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::StoreApi>::placeOrder(
-                        self, value0,
+                        self, maybe_1,
                     ))
                 },
             )
@@ -496,14 +497,14 @@ pub mod lawtwin_petstore
         /// getOrderById, with the failure it raises as Err rather than a panic.
         pub fn try_getOrderById(
             &self,
-            value0: i64,
+            int64_1: i64,
         ) -> std::result::Result<crate::lawspec_data::Order, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::StoreApi>::getOrderById(
-                        self, value0,
+                        self, int64_1,
                     ))
                 },
             )
@@ -531,14 +532,14 @@ pub mod lawtwin_petstore
         /// deleteOrder, with the failure it raises as Err rather than a panic.
         pub fn try_deleteOrder(
             &self,
-            value0: i64,
+            int64_1: i64,
         ) -> std::result::Result<(), crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::StoreApi>::deleteOrder(
-                        self, value0,
+                        self, int64_1,
                     ))
                 },
             )
@@ -566,14 +567,14 @@ pub mod lawtwin_petstore
         /// createUser, with the failure it raises as Err rather than a panic.
         pub fn try_createUser(
             &self,
-            value0: std::option::Option<crate::lawspec_data::User>,
+            maybe_1: std::option::Option<crate::lawspec_data::User>,
         ) -> std::result::Result<crate::lawspec_data::User, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::UserApi>::createUser(
-                        self, value0,
+                        self, maybe_1,
                     ))
                 },
             )
@@ -601,7 +602,7 @@ pub mod lawtwin_petstore
         /// createUsersWithListInput, with the failure it raises as Err rather than a panic.
         pub fn try_createUsersWithListInput(
             &self,
-            value0: std::option::Option<std::vec::Vec<crate::lawspec_data::User>>,
+            maybe_1: std::option::Option<std::vec::Vec<crate::lawspec_data::User>>,
         ) -> std::result::Result<crate::lawspec_data::User, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
@@ -609,7 +610,7 @@ pub mod lawtwin_petstore
                 || {
                     Ok(
                         <Self as super::lawtwin_petstore::UserApi>::createUsersWithListInput(
-                            self, value0,
+                            self, maybe_1,
                         ),
                     )
                 },
@@ -638,15 +639,15 @@ pub mod lawtwin_petstore
         /// loginUser, with the failure it raises as Err rather than a panic.
         pub fn try_loginUser(
             &self,
-            value0: std::option::Option<std::string::String>,
-            value1: std::option::Option<std::string::String>,
+            maybe_1: std::option::Option<std::string::String>,
+            maybe_2: std::option::Option<std::string::String>,
         ) -> std::result::Result<std::string::String, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::UserApi>::loginUser(
-                        self, value0, value1,
+                        self, maybe_1, maybe_2,
                     ))
                 },
             )
@@ -702,14 +703,14 @@ pub mod lawtwin_petstore
         /// getUserByName, with the failure it raises as Err rather than a panic.
         pub fn try_getUserByName(
             &self,
-            value0: std::string::String,
+            text_1: std::string::String,
         ) -> std::result::Result<crate::lawspec_data::User, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::UserApi>::getUserByName(
-                        self, value0,
+                        self, text_1,
                     ))
                 },
             )
@@ -737,15 +738,15 @@ pub mod lawtwin_petstore
         /// updateUser, with the failure it raises as Err rather than a panic.
         pub fn try_updateUser(
             &self,
-            value0: std::string::String,
-            value1: std::option::Option<crate::lawspec_data::User>,
+            text_1: std::string::String,
+            maybe_1: std::option::Option<crate::lawspec_data::User>,
         ) -> std::result::Result<(), crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::UserApi>::updateUser(
-                        self, value0, value1,
+                        self, text_1, maybe_1,
                     ))
                 },
             )
@@ -773,14 +774,14 @@ pub mod lawtwin_petstore
         /// deleteUser, with the failure it raises as Err rather than a panic.
         pub fn try_deleteUser(
             &self,
-            value0: std::string::String,
+            text_1: std::string::String,
         ) -> std::result::Result<(), crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::UserApi>::deleteUser(
-                        self, value0,
+                        self, text_1,
                     ))
                 },
             )
@@ -808,12 +809,12 @@ pub mod lawtwin_petstore
 
     impl super::lawtwin_petstore::PetApi for Reference
     {
-        fn updatePet(&self, value0: crate::lawspec_data::Pet) -> crate::lawspec_data::Pet
+        fn updatePet(&self, pet_1: crate::lawspec_data::Pet) -> crate::lawspec_data::Pet
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::reference_update_pet(
                 state.clone(),
-                <crate::lawspec_definitions::typed::Pet as ls::fast::Public>::from_native(value0),
+                <crate::lawspec_definitions::typed::Pet as ls::fast::Public>::from_native(pet_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -821,12 +822,12 @@ pub mod lawtwin_petstore
             ls::fast::Public::to_native(&result)
         }
 
-        fn addPet(&self, value0: crate::lawspec_data::Pet) -> crate::lawspec_data::Pet
+        fn addPet(&self, pet_1: crate::lawspec_data::Pet) -> crate::lawspec_data::Pet
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::reference_add_pet(
                 state.clone(),
-                <crate::lawspec_definitions::typed::Pet as ls::fast::Public>::from_native(value0),
+                <crate::lawspec_definitions::typed::Pet as ls::fast::Public>::from_native(pet_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -836,7 +837,7 @@ pub mod lawtwin_petstore
 
         fn findPetsByStatus(
             &self,
-            value0: crate::lawspec_data::PetStatus,
+            pet_status_1: crate::lawspec_data::PetStatus,
         ) -> std::vec::Vec<crate::lawspec_data::Pet>
         {
             let mut state = ls::locked(&self.state);
@@ -844,7 +845,7 @@ pub mod lawtwin_petstore
                 crate::lawspec_definitions::typed::reference_find_pets_by_status(
                     state.clone(),
                     <crate::lawspec_definitions::typed::PetStatus as ls::fast::Public>::from_native(
-                        value0,
+                        pet_status_1,
                     ),
                 ),
             );
@@ -856,14 +857,14 @@ pub mod lawtwin_petstore
 
         fn findPetsByTags(
             &self,
-            value0: std::vec::Vec<std::string::String>,
+            list_1: std::vec::Vec<std::string::String>,
         ) -> std::vec::Vec<crate::lawspec_data::Pet>
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_find_pets_by_tags(
                     state.clone(),
-                    <ls::fast::List<ls::fast::Text> as ls::fast::Public>::from_native(value0),
+                    <ls::fast::List<ls::fast::Text> as ls::fast::Public>::from_native(list_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -872,12 +873,12 @@ pub mod lawtwin_petstore
             ls::fast::Public::to_native(&result)
         }
 
-        fn getPetById(&self, value0: i64) -> crate::lawspec_data::Pet
+        fn getPetById(&self, int64_1: i64) -> crate::lawspec_data::Pet
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::reference_get_pet_by_id(
                 state.clone(),
-                <i64 as ls::fast::Public>::from_native(value0),
+                <i64 as ls::fast::Public>::from_native(int64_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -887,18 +888,18 @@ pub mod lawtwin_petstore
 
         fn updatePetWithForm(
             &self,
-            value0: i64,
-            value1: std::option::Option<std::string::String>,
-            value2: std::option::Option<std::string::String>,
+            int64_1: i64,
+            maybe_1: std::option::Option<std::string::String>,
+            maybe_2: std::option::Option<std::string::String>,
         ) -> crate::lawspec_data::Pet
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_update_pet_with_form(
                     state.clone(),
-                    <i64 as ls::fast::Public>::from_native(value0),
-                    <Option<ls::fast::Text> as ls::fast::Public>::from_native(value1),
-                    <Option<ls::fast::Text> as ls::fast::Public>::from_native(value2),
+                    <i64 as ls::fast::Public>::from_native(int64_1),
+                    <Option<ls::fast::Text> as ls::fast::Public>::from_native(maybe_1),
+                    <Option<ls::fast::Text> as ls::fast::Public>::from_native(maybe_2),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -907,13 +908,13 @@ pub mod lawtwin_petstore
             ls::fast::Public::to_native(&result)
         }
 
-        fn deletePet(&self, value0: i64, value1: std::option::Option<std::string::String>) -> ()
+        fn deletePet(&self, int64_1: i64, maybe_1: std::option::Option<std::string::String>) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::reference_delete_pet(
                 state.clone(),
-                <i64 as ls::fast::Public>::from_native(value0),
-                <Option<ls::fast::Text> as ls::fast::Public>::from_native(value1),
+                <i64 as ls::fast::Public>::from_native(int64_1),
+                <Option<ls::fast::Text> as ls::fast::Public>::from_native(maybe_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -923,17 +924,17 @@ pub mod lawtwin_petstore
 
         fn uploadFile(
             &self,
-            value0: i64,
-            value1: std::option::Option<std::string::String>,
-            value2: std::option::Option<std::vec::Vec<u8>>,
+            int64_1: i64,
+            maybe_1: std::option::Option<std::string::String>,
+            maybe_2: std::option::Option<std::vec::Vec<u8>>,
         ) -> crate::lawspec_data::ApiResponse
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::reference_upload_file(
                 state.clone(),
-                <i64 as ls::fast::Public>::from_native(value0),
-                <Option<ls::fast::Text> as ls::fast::Public>::from_native(value1),
-                <Option<ls::fast::Bytes> as ls::fast::Public>::from_native(value2),
+                <i64 as ls::fast::Public>::from_native(int64_1),
+                <Option<ls::fast::Text> as ls::fast::Public>::from_native(maybe_1),
+                <Option<ls::fast::Bytes> as ls::fast::Public>::from_native(maybe_2),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -958,7 +959,7 @@ pub mod lawtwin_petstore
 
         fn placeOrder(
             &self,
-            value0: std::option::Option<crate::lawspec_data::Order>,
+            maybe_1: std::option::Option<crate::lawspec_data::Order>,
         ) -> crate::lawspec_data::Order
         {
             let mut state = ls::locked(&self.state);
@@ -966,7 +967,7 @@ pub mod lawtwin_petstore
                 state.clone(),
                 <Option<
                     crate::lawspec_definitions::typed::Order,
-                > as ls::fast::Public>::from_native(value0),
+                > as ls::fast::Public>::from_native(maybe_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -974,13 +975,13 @@ pub mod lawtwin_petstore
             ls::fast::Public::to_native(&result)
         }
 
-        fn getOrderById(&self, value0: i64) -> crate::lawspec_data::Order
+        fn getOrderById(&self, int64_1: i64) -> crate::lawspec_data::Order
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_get_order_by_id(
                     state.clone(),
-                    <i64 as ls::fast::Public>::from_native(value0),
+                    <i64 as ls::fast::Public>::from_native(int64_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -989,12 +990,12 @@ pub mod lawtwin_petstore
             ls::fast::Public::to_native(&result)
         }
 
-        fn deleteOrder(&self, value0: i64) -> ()
+        fn deleteOrder(&self, int64_1: i64) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::reference_delete_order(
                 state.clone(),
-                <i64 as ls::fast::Public>::from_native(value0),
+                <i64 as ls::fast::Public>::from_native(int64_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -1007,14 +1008,14 @@ pub mod lawtwin_petstore
     {
         fn createUser(
             &self,
-            value0: std::option::Option<crate::lawspec_data::User>,
+            maybe_1: std::option::Option<crate::lawspec_data::User>,
         ) -> crate::lawspec_data::User
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::reference_create_user(
                 state.clone(),
                 <Option<crate::lawspec_definitions::typed::User> as ls::fast::Public>::from_native(
-                    value0,
+                    maybe_1,
                 ),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -1025,7 +1026,7 @@ pub mod lawtwin_petstore
 
         fn createUsersWithListInput(
             &self,
-            value0: std::option::Option<std::vec::Vec<crate::lawspec_data::User>>,
+            maybe_1: std::option::Option<std::vec::Vec<crate::lawspec_data::User>>,
         ) -> crate::lawspec_data::User
         {
             let mut state = ls::locked(&self.state);
@@ -1034,7 +1035,7 @@ pub mod lawtwin_petstore
                     state.clone(),
                     <Option<
                         ls::fast::List<crate::lawspec_definitions::typed::User>,
-                    > as ls::fast::Public>::from_native(value0),
+                    > as ls::fast::Public>::from_native(maybe_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -1045,15 +1046,15 @@ pub mod lawtwin_petstore
 
         fn loginUser(
             &self,
-            value0: std::option::Option<std::string::String>,
-            value1: std::option::Option<std::string::String>,
+            maybe_1: std::option::Option<std::string::String>,
+            maybe_2: std::option::Option<std::string::String>,
         ) -> std::string::String
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::reference_login_user(
                 state.clone(),
-                <Option<ls::fast::Text> as ls::fast::Public>::from_native(value0),
-                <Option<ls::fast::Text> as ls::fast::Public>::from_native(value1),
+                <Option<ls::fast::Text> as ls::fast::Public>::from_native(maybe_1),
+                <Option<ls::fast::Text> as ls::fast::Public>::from_native(maybe_2),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -1073,13 +1074,13 @@ pub mod lawtwin_petstore
             ls::fast::Public::to_native(&result)
         }
 
-        fn getUserByName(&self, value0: std::string::String) -> crate::lawspec_data::User
+        fn getUserByName(&self, text_1: std::string::String) -> crate::lawspec_data::User
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_get_user_by_name(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -1090,16 +1091,16 @@ pub mod lawtwin_petstore
 
         fn updateUser(
             &self,
-            value0: std::string::String,
-            value1: std::option::Option<crate::lawspec_data::User>,
+            text_1: std::string::String,
+            maybe_1: std::option::Option<crate::lawspec_data::User>,
         ) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::reference_update_user(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
                 <Option<crate::lawspec_definitions::typed::User> as ls::fast::Public>::from_native(
-                    value1,
+                    maybe_1,
                 ),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -1108,12 +1109,12 @@ pub mod lawtwin_petstore
             ls::fast::Public::to_native(&result)
         }
 
-        fn deleteUser(&self, value0: std::string::String) -> ()
+        fn deleteUser(&self, text_1: std::string::String) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::reference_delete_user(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -1142,99 +1143,99 @@ pub mod lawtwin_petstore
 
     impl PetApi for PetApiRecording
     {
-        fn updatePet(&self, value0: crate::lawspec_data::Pet) -> crate::lawspec_data::Pet
+        fn updatePet(&self, pet_1: crate::lawspec_data::Pet) -> crate::lawspec_data::Pet
         {
             self.calls
-                .record("updatePet", vec![ls::IntoValue::into_value(value0.clone())]);
-            self.inner.updatePet(value0)
+                .record("updatePet", vec![ls::IntoValue::into_value(pet_1.clone())]);
+            self.inner.updatePet(pet_1)
         }
 
-        fn addPet(&self, value0: crate::lawspec_data::Pet) -> crate::lawspec_data::Pet
+        fn addPet(&self, pet_1: crate::lawspec_data::Pet) -> crate::lawspec_data::Pet
         {
             self.calls
-                .record("addPet", vec![ls::IntoValue::into_value(value0.clone())]);
-            self.inner.addPet(value0)
+                .record("addPet", vec![ls::IntoValue::into_value(pet_1.clone())]);
+            self.inner.addPet(pet_1)
         }
 
         fn findPetsByStatus(
             &self,
-            value0: crate::lawspec_data::PetStatus,
+            pet_status_1: crate::lawspec_data::PetStatus,
         ) -> std::vec::Vec<crate::lawspec_data::Pet>
         {
             self.calls.record(
                 "findPetsByStatus",
-                vec![ls::IntoValue::into_value(value0.clone())],
+                vec![ls::IntoValue::into_value(pet_status_1.clone())],
             );
-            self.inner.findPetsByStatus(value0)
+            self.inner.findPetsByStatus(pet_status_1)
         }
 
         fn findPetsByTags(
             &self,
-            value0: std::vec::Vec<std::string::String>,
+            list_1: std::vec::Vec<std::string::String>,
         ) -> std::vec::Vec<crate::lawspec_data::Pet>
         {
             self.calls.record(
                 "findPetsByTags",
-                vec![ls::IntoValue::into_value(value0.clone())],
+                vec![ls::IntoValue::into_value(list_1.clone())],
             );
-            self.inner.findPetsByTags(value0)
+            self.inner.findPetsByTags(list_1)
         }
 
-        fn getPetById(&self, value0: i64) -> crate::lawspec_data::Pet
+        fn getPetById(&self, int64_1: i64) -> crate::lawspec_data::Pet
         {
             self.calls.record(
                 "getPetById",
-                vec![ls::IntoValue::into_value(value0.clone())],
+                vec![ls::IntoValue::into_value(int64_1.clone())],
             );
-            self.inner.getPetById(value0)
+            self.inner.getPetById(int64_1)
         }
 
         fn updatePetWithForm(
             &self,
-            value0: i64,
-            value1: std::option::Option<std::string::String>,
-            value2: std::option::Option<std::string::String>,
+            int64_1: i64,
+            maybe_1: std::option::Option<std::string::String>,
+            maybe_2: std::option::Option<std::string::String>,
         ) -> crate::lawspec_data::Pet
         {
             self.calls.record(
                 "updatePetWithForm",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
-                    ls::IntoValue::into_value(value2.clone()),
+                    ls::IntoValue::into_value(int64_1.clone()),
+                    ls::IntoValue::into_value(maybe_1.clone()),
+                    ls::IntoValue::into_value(maybe_2.clone()),
                 ],
             );
-            self.inner.updatePetWithForm(value0, value1, value2)
+            self.inner.updatePetWithForm(int64_1, maybe_1, maybe_2)
         }
 
-        fn deletePet(&self, value0: i64, value1: std::option::Option<std::string::String>) -> ()
+        fn deletePet(&self, int64_1: i64, maybe_1: std::option::Option<std::string::String>) -> ()
         {
             self.calls.record(
                 "deletePet",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
+                    ls::IntoValue::into_value(int64_1.clone()),
+                    ls::IntoValue::into_value(maybe_1.clone()),
                 ],
             );
-            self.inner.deletePet(value0, value1)
+            self.inner.deletePet(int64_1, maybe_1)
         }
 
         fn uploadFile(
             &self,
-            value0: i64,
-            value1: std::option::Option<std::string::String>,
-            value2: std::option::Option<std::vec::Vec<u8>>,
+            int64_1: i64,
+            maybe_1: std::option::Option<std::string::String>,
+            maybe_2: std::option::Option<std::vec::Vec<u8>>,
         ) -> crate::lawspec_data::ApiResponse
         {
             self.calls.record(
                 "uploadFile",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
-                    ls::IntoValue::into_value(value2.clone()),
+                    ls::IntoValue::into_value(int64_1.clone()),
+                    ls::IntoValue::into_value(maybe_1.clone()),
+                    ls::IntoValue::into_value(maybe_2.clone()),
                 ],
             );
-            self.inner.uploadFile(value0, value1, value2)
+            self.inner.uploadFile(int64_1, maybe_1, maybe_2)
         }
     }
 
@@ -1266,32 +1267,32 @@ pub mod lawtwin_petstore
 
         fn placeOrder(
             &self,
-            value0: std::option::Option<crate::lawspec_data::Order>,
+            maybe_1: std::option::Option<crate::lawspec_data::Order>,
         ) -> crate::lawspec_data::Order
         {
             self.calls.record(
                 "placeOrder",
-                vec![ls::IntoValue::into_value(value0.clone())],
+                vec![ls::IntoValue::into_value(maybe_1.clone())],
             );
-            self.inner.placeOrder(value0)
+            self.inner.placeOrder(maybe_1)
         }
 
-        fn getOrderById(&self, value0: i64) -> crate::lawspec_data::Order
+        fn getOrderById(&self, int64_1: i64) -> crate::lawspec_data::Order
         {
             self.calls.record(
                 "getOrderById",
-                vec![ls::IntoValue::into_value(value0.clone())],
+                vec![ls::IntoValue::into_value(int64_1.clone())],
             );
-            self.inner.getOrderById(value0)
+            self.inner.getOrderById(int64_1)
         }
 
-        fn deleteOrder(&self, value0: i64) -> ()
+        fn deleteOrder(&self, int64_1: i64) -> ()
         {
             self.calls.record(
                 "deleteOrder",
-                vec![ls::IntoValue::into_value(value0.clone())],
+                vec![ls::IntoValue::into_value(int64_1.clone())],
             );
-            self.inner.deleteOrder(value0)
+            self.inner.deleteOrder(int64_1)
         }
     }
 
@@ -1317,42 +1318,42 @@ pub mod lawtwin_petstore
     {
         fn createUser(
             &self,
-            value0: std::option::Option<crate::lawspec_data::User>,
+            maybe_1: std::option::Option<crate::lawspec_data::User>,
         ) -> crate::lawspec_data::User
         {
             self.calls.record(
                 "createUser",
-                vec![ls::IntoValue::into_value(value0.clone())],
+                vec![ls::IntoValue::into_value(maybe_1.clone())],
             );
-            self.inner.createUser(value0)
+            self.inner.createUser(maybe_1)
         }
 
         fn createUsersWithListInput(
             &self,
-            value0: std::option::Option<std::vec::Vec<crate::lawspec_data::User>>,
+            maybe_1: std::option::Option<std::vec::Vec<crate::lawspec_data::User>>,
         ) -> crate::lawspec_data::User
         {
             self.calls.record(
                 "createUsersWithListInput",
-                vec![ls::IntoValue::into_value(value0.clone())],
+                vec![ls::IntoValue::into_value(maybe_1.clone())],
             );
-            self.inner.createUsersWithListInput(value0)
+            self.inner.createUsersWithListInput(maybe_1)
         }
 
         fn loginUser(
             &self,
-            value0: std::option::Option<std::string::String>,
-            value1: std::option::Option<std::string::String>,
+            maybe_1: std::option::Option<std::string::String>,
+            maybe_2: std::option::Option<std::string::String>,
         ) -> std::string::String
         {
             self.calls.record(
                 "loginUser",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
+                    ls::IntoValue::into_value(maybe_1.clone()),
+                    ls::IntoValue::into_value(maybe_2.clone()),
                 ],
             );
-            self.inner.loginUser(value0, value1)
+            self.inner.loginUser(maybe_1, maybe_2)
         }
 
         fn logoutUser(&self) -> ()
@@ -1361,38 +1362,38 @@ pub mod lawtwin_petstore
             self.inner.logoutUser()
         }
 
-        fn getUserByName(&self, value0: std::string::String) -> crate::lawspec_data::User
+        fn getUserByName(&self, text_1: std::string::String) -> crate::lawspec_data::User
         {
             self.calls.record(
                 "getUserByName",
-                vec![ls::IntoValue::into_value(value0.clone())],
+                vec![ls::IntoValue::into_value(text_1.clone())],
             );
-            self.inner.getUserByName(value0)
+            self.inner.getUserByName(text_1)
         }
 
         fn updateUser(
             &self,
-            value0: std::string::String,
-            value1: std::option::Option<crate::lawspec_data::User>,
+            text_1: std::string::String,
+            maybe_1: std::option::Option<crate::lawspec_data::User>,
         ) -> ()
         {
             self.calls.record(
                 "updateUser",
                 vec![
-                    ls::IntoValue::into_value(value0.clone()),
-                    ls::IntoValue::into_value(value1.clone()),
+                    ls::IntoValue::into_value(text_1.clone()),
+                    ls::IntoValue::into_value(maybe_1.clone()),
                 ],
             );
-            self.inner.updateUser(value0, value1)
+            self.inner.updateUser(text_1, maybe_1)
         }
 
-        fn deleteUser(&self, value0: std::string::String) -> ()
+        fn deleteUser(&self, text_1: std::string::String) -> ()
         {
             self.calls.record(
                 "deleteUser",
-                vec![ls::IntoValue::into_value(value0.clone())],
+                vec![ls::IntoValue::into_value(text_1.clone())],
             );
-            self.inner.deleteUser(value0)
+            self.inner.deleteUser(text_1)
         }
     }
 
@@ -1411,11 +1412,11 @@ pub mod lawtwin_petstore
             64,
             ctx,
         )?;
-        let native_0 = <crate::lawspec_data::Pet as ls::FromValue>::from_value(value)?;
+        let pet_1 = <crate::lawspec_data::Pet as ls::FromValue>::from_value(value)?;
         let native_result = ls::native_failures::<crate::lawspec_data::ApiError, _>(
             "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.updatePet(native_0),
+            || handler.updatePet(pet_1),
             vec![],
         );
         schema.validate_with_context(
@@ -1441,11 +1442,11 @@ pub mod lawtwin_petstore
             64,
             ctx,
         )?;
-        let native_0 = <crate::lawspec_data::Pet as ls::FromValue>::from_value(value)?;
+        let pet_1 = <crate::lawspec_data::Pet as ls::FromValue>::from_value(value)?;
         let native_result = ls::native_failures::<crate::lawspec_data::ApiError, _>(
             "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.addPet(native_0),
+            || handler.addPet(pet_1),
             vec![],
         );
         schema.validate_with_context(
@@ -1471,11 +1472,11 @@ pub mod lawtwin_petstore
             64,
             ctx,
         )?;
-        let native_0 = <crate::lawspec_data::PetStatus as ls::FromValue>::from_value(value)?;
+        let pet_status_1 = <crate::lawspec_data::PetStatus as ls::FromValue>::from_value(value)?;
         let native_result = ls::native_failures::<crate::lawspec_data::ApiError, _>(
             "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.findPetsByStatus(native_0),
+            || handler.findPetsByStatus(pet_status_1),
             vec![],
         );
         schema.validate_with_context(
@@ -1507,11 +1508,11 @@ pub mod lawtwin_petstore
             64,
             ctx,
         )?;
-        let native_0 = <std::vec::Vec<std::string::String> as ls::FromValue>::from_value(value)?;
+        let list_1 = <std::vec::Vec<std::string::String> as ls::FromValue>::from_value(value)?;
         let native_result = ls::native_failures::<crate::lawspec_data::ApiError, _>(
             "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.findPetsByTags(native_0),
+            || handler.findPetsByTags(list_1),
             vec![],
         );
         schema.validate_with_context(
@@ -1543,11 +1544,11 @@ pub mod lawtwin_petstore
             64,
             ctx,
         )?;
-        let native_0 = <i64 as ls::FromValue>::from_value(value)?;
+        let int64_1 = <i64 as ls::FromValue>::from_value(value)?;
         let native_result = ls::native_failures::<crate::lawspec_data::ApiError, _>(
             "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.getPetById(native_0),
+            || handler.getPetById(int64_1),
             vec![],
         );
         schema.validate_with_context(
@@ -1573,14 +1574,14 @@ pub mod lawtwin_petstore
             64,
             ctx,
         )?;
-        let native_0 = <i64 as ls::FromValue>::from_value(value)?;
+        let int64_1 = <i64 as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("Maybe", vec![ls::TypeRef::named("Text", vec![])]),
             64,
             ctx,
         )?;
-        let native_1 =
+        let maybe_1 =
             <std::option::Option<std::string::String> as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[2].clone(),
@@ -1588,12 +1589,12 @@ pub mod lawtwin_petstore
             64,
             ctx,
         )?;
-        let native_2 =
+        let maybe_2 =
             <std::option::Option<std::string::String> as ls::FromValue>::from_value(value)?;
         let native_result = ls::native_failures::<crate::lawspec_data::ApiError, _>(
             "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.updatePetWithForm(native_0, native_1, native_2),
+            || handler.updatePetWithForm(int64_1, maybe_1, maybe_2),
             vec![],
         );
         schema.validate_with_context(
@@ -1619,19 +1620,19 @@ pub mod lawtwin_petstore
             64,
             ctx,
         )?;
-        let native_0 = <i64 as ls::FromValue>::from_value(value)?;
+        let int64_1 = <i64 as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("Maybe", vec![ls::TypeRef::named("Text", vec![])]),
             64,
             ctx,
         )?;
-        let native_1 =
+        let maybe_1 =
             <std::option::Option<std::string::String> as ls::FromValue>::from_value(value)?;
         ls::native_failures::<crate::lawspec_data::ApiError, _>(
             "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.deletePet(native_0, native_1),
+            || handler.deletePet(int64_1, maybe_1),
             vec![],
         );
         Ok(ls::Value::Unit)
@@ -1652,14 +1653,14 @@ pub mod lawtwin_petstore
             64,
             ctx,
         )?;
-        let native_0 = <i64 as ls::FromValue>::from_value(value)?;
+        let int64_1 = <i64 as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named("Maybe", vec![ls::TypeRef::named("Text", vec![])]),
             64,
             ctx,
         )?;
-        let native_1 =
+        let maybe_1 =
             <std::option::Option<std::string::String> as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[2].clone(),
@@ -1667,12 +1668,11 @@ pub mod lawtwin_petstore
             64,
             ctx,
         )?;
-        let native_2 =
-            <std::option::Option<std::vec::Vec<u8>> as ls::FromValue>::from_value(value)?;
+        let maybe_2 = <std::option::Option<std::vec::Vec<u8>> as ls::FromValue>::from_value(value)?;
         let native_result = ls::native_failures::<crate::lawspec_data::ApiError, _>(
             "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.uploadFile(native_0, native_1, native_2),
+            || handler.uploadFile(int64_1, maybe_1, maybe_2),
             vec![],
         );
         schema.validate_with_context(
@@ -1733,12 +1733,12 @@ pub mod lawtwin_petstore
             64,
             ctx,
         )?;
-        let native_0 =
+        let maybe_1 =
             <std::option::Option<crate::lawspec_data::Order> as ls::FromValue>::from_value(value)?;
         let native_result = ls::native_failures::<crate::lawspec_data::ApiError, _>(
             "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.placeOrder(native_0),
+            || handler.placeOrder(maybe_1),
             vec![],
         );
         schema.validate_with_context(
@@ -1764,11 +1764,11 @@ pub mod lawtwin_petstore
             64,
             ctx,
         )?;
-        let native_0 = <i64 as ls::FromValue>::from_value(value)?;
+        let int64_1 = <i64 as ls::FromValue>::from_value(value)?;
         let native_result = ls::native_failures::<crate::lawspec_data::ApiError, _>(
             "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.getOrderById(native_0),
+            || handler.getOrderById(int64_1),
             vec![],
         );
         schema.validate_with_context(
@@ -1794,11 +1794,11 @@ pub mod lawtwin_petstore
             64,
             ctx,
         )?;
-        let native_0 = <i64 as ls::FromValue>::from_value(value)?;
+        let int64_1 = <i64 as ls::FromValue>::from_value(value)?;
         ls::native_failures::<crate::lawspec_data::ApiError, _>(
             "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.deleteOrder(native_0),
+            || handler.deleteOrder(int64_1),
             vec![],
         );
         Ok(ls::Value::Unit)
@@ -1825,12 +1825,12 @@ pub mod lawtwin_petstore
             64,
             ctx,
         )?;
-        let native_0 =
+        let maybe_1 =
             <std::option::Option<crate::lawspec_data::User> as ls::FromValue>::from_value(value)?;
         let native_result = ls::native_failures::<crate::lawspec_data::ApiError, _>(
             "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.createUser(native_0),
+            || handler.createUser(maybe_1),
             vec![],
         );
         schema.validate_with_context(
@@ -1865,13 +1865,13 @@ pub mod lawtwin_petstore
             64,
             ctx,
         )?;
-        let native_0 = <std::option::Option<
+        let maybe_1 = <std::option::Option<
             std::vec::Vec<crate::lawspec_data::User>,
         > as ls::FromValue>::from_value(value)?;
         let native_result = ls::native_failures::<crate::lawspec_data::ApiError, _>(
             "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.createUsersWithListInput(native_0),
+            || handler.createUsersWithListInput(maybe_1),
             vec![],
         );
         schema.validate_with_context(
@@ -1897,7 +1897,7 @@ pub mod lawtwin_petstore
             64,
             ctx,
         )?;
-        let native_0 =
+        let maybe_1 =
             <std::option::Option<std::string::String> as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
@@ -1905,12 +1905,12 @@ pub mod lawtwin_petstore
             64,
             ctx,
         )?;
-        let native_1 =
+        let maybe_2 =
             <std::option::Option<std::string::String> as ls::FromValue>::from_value(value)?;
         let native_result = ls::native_failures::<crate::lawspec_data::ApiError, _>(
             "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.loginUser(native_0, native_1),
+            || handler.loginUser(maybe_1, maybe_2),
             vec![],
         );
         schema.validate_with_context(
@@ -1953,11 +1953,11 @@ pub mod lawtwin_petstore
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
         let native_result = ls::native_failures::<crate::lawspec_data::ApiError, _>(
             "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.getUserByName(native_0),
+            || handler.getUserByName(text_1),
             vec![],
         );
         schema.validate_with_context(
@@ -1983,7 +1983,7 @@ pub mod lawtwin_petstore
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
         let value = schema.native_value_with_context(
             arguments[1].clone(),
             &ls::TypeRef::named(
@@ -1996,12 +1996,12 @@ pub mod lawtwin_petstore
             64,
             ctx,
         )?;
-        let native_1 =
+        let maybe_1 =
             <std::option::Option<crate::lawspec_data::User> as ls::FromValue>::from_value(value)?;
         ls::native_failures::<crate::lawspec_data::ApiError, _>(
             "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.updateUser(native_0, native_1),
+            || handler.updateUser(text_1, maybe_1),
             vec![],
         );
         Ok(ls::Value::Unit)
@@ -2022,11 +2022,11 @@ pub mod lawtwin_petstore
             64,
             ctx,
         )?;
-        let native_0 = <std::string::String as ls::FromValue>::from_value(value)?;
+        let text_1 = <std::string::String as ls::FromValue>::from_value(value)?;
         ls::native_failures::<crate::lawspec_data::ApiError, _>(
             "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
             |native| ls::IntoValue::into_value(native),
-            || handler.deleteUser(native_0),
+            || handler.deleteUser(text_1),
             vec![],
         );
         Ok(ls::Value::Unit)
@@ -2096,14 +2096,14 @@ pub mod lawtwin_petstore_laws
         /// updatePet, with the failure it raises as Err rather than a panic.
         pub fn try_updatePet(
             &self,
-            value0: crate::lawspec_data::Pet,
+            pet_1: crate::lawspec_data::Pet,
         ) -> std::result::Result<crate::lawspec_data::Pet, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::PetApi>::updatePet(
-                        self, value0,
+                        self, pet_1,
                     ))
                 },
             )
@@ -2131,14 +2131,14 @@ pub mod lawtwin_petstore_laws
         /// addPet, with the failure it raises as Err rather than a panic.
         pub fn try_addPet(
             &self,
-            value0: crate::lawspec_data::Pet,
+            pet_1: crate::lawspec_data::Pet,
         ) -> std::result::Result<crate::lawspec_data::Pet, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::PetApi>::addPet(
-                        self, value0,
+                        self, pet_1,
                     ))
                 },
             )
@@ -2166,7 +2166,7 @@ pub mod lawtwin_petstore_laws
         /// findPetsByStatus, with the failure it raises as Err rather than a panic.
         pub fn try_findPetsByStatus(
             &self,
-            value0: crate::lawspec_data::PetStatus,
+            pet_status_1: crate::lawspec_data::PetStatus,
         ) -> std::result::Result<
             std::vec::Vec<crate::lawspec_data::Pet>,
             crate::lawspec_data::ApiError,
@@ -2176,7 +2176,8 @@ pub mod lawtwin_petstore_laws
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::PetApi>::findPetsByStatus(
-                        self, value0,
+                        self,
+                        pet_status_1,
                     ))
                 },
             )
@@ -2204,7 +2205,7 @@ pub mod lawtwin_petstore_laws
         /// findPetsByTags, with the failure it raises as Err rather than a panic.
         pub fn try_findPetsByTags(
             &self,
-            value0: std::vec::Vec<std::string::String>,
+            list_1: std::vec::Vec<std::string::String>,
         ) -> std::result::Result<
             std::vec::Vec<crate::lawspec_data::Pet>,
             crate::lawspec_data::ApiError,
@@ -2214,7 +2215,7 @@ pub mod lawtwin_petstore_laws
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::PetApi>::findPetsByTags(
-                        self, value0,
+                        self, list_1,
                     ))
                 },
             )
@@ -2242,14 +2243,14 @@ pub mod lawtwin_petstore_laws
         /// getPetById, with the failure it raises as Err rather than a panic.
         pub fn try_getPetById(
             &self,
-            value0: i64,
+            int64_1: i64,
         ) -> std::result::Result<crate::lawspec_data::Pet, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::PetApi>::getPetById(
-                        self, value0,
+                        self, int64_1,
                     ))
                 },
             )
@@ -2277,9 +2278,9 @@ pub mod lawtwin_petstore_laws
         /// updatePetWithForm, with the failure it raises as Err rather than a panic.
         pub fn try_updatePetWithForm(
             &self,
-            value0: i64,
-            value1: std::option::Option<std::string::String>,
-            value2: std::option::Option<std::string::String>,
+            int64_1: i64,
+            maybe_1: std::option::Option<std::string::String>,
+            maybe_2: std::option::Option<std::string::String>,
         ) -> std::result::Result<crate::lawspec_data::Pet, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
@@ -2287,7 +2288,7 @@ pub mod lawtwin_petstore_laws
                 || {
                     Ok(
                         <Self as super::lawtwin_petstore::PetApi>::updatePetWithForm(
-                            self, value0, value1, value2,
+                            self, int64_1, maybe_1, maybe_2,
                         ),
                     )
                 },
@@ -2316,15 +2317,15 @@ pub mod lawtwin_petstore_laws
         /// deletePet, with the failure it raises as Err rather than a panic.
         pub fn try_deletePet(
             &self,
-            value0: i64,
-            value1: std::option::Option<std::string::String>,
+            int64_1: i64,
+            maybe_1: std::option::Option<std::string::String>,
         ) -> std::result::Result<(), crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::PetApi>::deletePet(
-                        self, value0, value1,
+                        self, int64_1, maybe_1,
                     ))
                 },
             )
@@ -2352,16 +2353,16 @@ pub mod lawtwin_petstore_laws
         /// uploadFile, with the failure it raises as Err rather than a panic.
         pub fn try_uploadFile(
             &self,
-            value0: i64,
-            value1: std::option::Option<std::string::String>,
-            value2: std::option::Option<std::vec::Vec<u8>>,
+            int64_1: i64,
+            maybe_1: std::option::Option<std::string::String>,
+            maybe_2: std::option::Option<std::vec::Vec<u8>>,
         ) -> std::result::Result<crate::lawspec_data::ApiResponse, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::PetApi>::uploadFile(
-                        self, value0, value1, value2,
+                        self, int64_1, maybe_1, maybe_2,
                     ))
                 },
             )
@@ -2426,14 +2427,14 @@ pub mod lawtwin_petstore_laws
         /// placeOrder, with the failure it raises as Err rather than a panic.
         pub fn try_placeOrder(
             &self,
-            value0: std::option::Option<crate::lawspec_data::Order>,
+            maybe_1: std::option::Option<crate::lawspec_data::Order>,
         ) -> std::result::Result<crate::lawspec_data::Order, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::StoreApi>::placeOrder(
-                        self, value0,
+                        self, maybe_1,
                     ))
                 },
             )
@@ -2461,14 +2462,14 @@ pub mod lawtwin_petstore_laws
         /// getOrderById, with the failure it raises as Err rather than a panic.
         pub fn try_getOrderById(
             &self,
-            value0: i64,
+            int64_1: i64,
         ) -> std::result::Result<crate::lawspec_data::Order, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::StoreApi>::getOrderById(
-                        self, value0,
+                        self, int64_1,
                     ))
                 },
             )
@@ -2496,14 +2497,14 @@ pub mod lawtwin_petstore_laws
         /// deleteOrder, with the failure it raises as Err rather than a panic.
         pub fn try_deleteOrder(
             &self,
-            value0: i64,
+            int64_1: i64,
         ) -> std::result::Result<(), crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::StoreApi>::deleteOrder(
-                        self, value0,
+                        self, int64_1,
                     ))
                 },
             )
@@ -2531,14 +2532,14 @@ pub mod lawtwin_petstore_laws
         /// createUser, with the failure it raises as Err rather than a panic.
         pub fn try_createUser(
             &self,
-            value0: std::option::Option<crate::lawspec_data::User>,
+            maybe_1: std::option::Option<crate::lawspec_data::User>,
         ) -> std::result::Result<crate::lawspec_data::User, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::UserApi>::createUser(
-                        self, value0,
+                        self, maybe_1,
                     ))
                 },
             )
@@ -2566,7 +2567,7 @@ pub mod lawtwin_petstore_laws
         /// createUsersWithListInput, with the failure it raises as Err rather than a panic.
         pub fn try_createUsersWithListInput(
             &self,
-            value0: std::option::Option<std::vec::Vec<crate::lawspec_data::User>>,
+            maybe_1: std::option::Option<std::vec::Vec<crate::lawspec_data::User>>,
         ) -> std::result::Result<crate::lawspec_data::User, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
@@ -2574,7 +2575,7 @@ pub mod lawtwin_petstore_laws
                 || {
                     Ok(
                         <Self as super::lawtwin_petstore::UserApi>::createUsersWithListInput(
-                            self, value0,
+                            self, maybe_1,
                         ),
                     )
                 },
@@ -2603,15 +2604,15 @@ pub mod lawtwin_petstore_laws
         /// loginUser, with the failure it raises as Err rather than a panic.
         pub fn try_loginUser(
             &self,
-            value0: std::option::Option<std::string::String>,
-            value1: std::option::Option<std::string::String>,
+            maybe_1: std::option::Option<std::string::String>,
+            maybe_2: std::option::Option<std::string::String>,
         ) -> std::result::Result<std::string::String, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::UserApi>::loginUser(
-                        self, value0, value1,
+                        self, maybe_1, maybe_2,
                     ))
                 },
             )
@@ -2667,14 +2668,14 @@ pub mod lawtwin_petstore_laws
         /// getUserByName, with the failure it raises as Err rather than a panic.
         pub fn try_getUserByName(
             &self,
-            value0: std::string::String,
+            text_1: std::string::String,
         ) -> std::result::Result<crate::lawspec_data::User, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::UserApi>::getUserByName(
-                        self, value0,
+                        self, text_1,
                     ))
                 },
             )
@@ -2702,15 +2703,15 @@ pub mod lawtwin_petstore_laws
         /// updateUser, with the failure it raises as Err rather than a panic.
         pub fn try_updateUser(
             &self,
-            value0: std::string::String,
-            value1: std::option::Option<crate::lawspec_data::User>,
+            text_1: std::string::String,
+            maybe_1: std::option::Option<crate::lawspec_data::User>,
         ) -> std::result::Result<(), crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::UserApi>::updateUser(
-                        self, value0, value1,
+                        self, text_1, maybe_1,
                     ))
                 },
             )
@@ -2738,14 +2739,14 @@ pub mod lawtwin_petstore_laws
         /// deleteUser, with the failure it raises as Err rather than a panic.
         pub fn try_deleteUser(
             &self,
-            value0: std::string::String,
+            text_1: std::string::String,
         ) -> std::result::Result<(), crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::UserApi>::deleteUser(
-                        self, value0,
+                        self, text_1,
                     ))
                 },
             )
@@ -2773,12 +2774,12 @@ pub mod lawtwin_petstore_laws
 
     impl super::lawtwin_petstore::PetApi for Reference
     {
-        fn updatePet(&self, value0: crate::lawspec_data::Pet) -> crate::lawspec_data::Pet
+        fn updatePet(&self, pet_1: crate::lawspec_data::Pet) -> crate::lawspec_data::Pet
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::reference_update_pet(
                 state.clone(),
-                <crate::lawspec_definitions::typed::Pet as ls::fast::Public>::from_native(value0),
+                <crate::lawspec_definitions::typed::Pet as ls::fast::Public>::from_native(pet_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -2786,12 +2787,12 @@ pub mod lawtwin_petstore_laws
             ls::fast::Public::to_native(&result)
         }
 
-        fn addPet(&self, value0: crate::lawspec_data::Pet) -> crate::lawspec_data::Pet
+        fn addPet(&self, pet_1: crate::lawspec_data::Pet) -> crate::lawspec_data::Pet
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::reference_add_pet(
                 state.clone(),
-                <crate::lawspec_definitions::typed::Pet as ls::fast::Public>::from_native(value0),
+                <crate::lawspec_definitions::typed::Pet as ls::fast::Public>::from_native(pet_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -2801,7 +2802,7 @@ pub mod lawtwin_petstore_laws
 
         fn findPetsByStatus(
             &self,
-            value0: crate::lawspec_data::PetStatus,
+            pet_status_1: crate::lawspec_data::PetStatus,
         ) -> std::vec::Vec<crate::lawspec_data::Pet>
         {
             let mut state = ls::locked(&self.state);
@@ -2809,7 +2810,7 @@ pub mod lawtwin_petstore_laws
                 crate::lawspec_definitions::typed::reference_find_pets_by_status(
                     state.clone(),
                     <crate::lawspec_definitions::typed::PetStatus as ls::fast::Public>::from_native(
-                        value0,
+                        pet_status_1,
                     ),
                 ),
             );
@@ -2821,14 +2822,14 @@ pub mod lawtwin_petstore_laws
 
         fn findPetsByTags(
             &self,
-            value0: std::vec::Vec<std::string::String>,
+            list_1: std::vec::Vec<std::string::String>,
         ) -> std::vec::Vec<crate::lawspec_data::Pet>
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_find_pets_by_tags(
                     state.clone(),
-                    <ls::fast::List<ls::fast::Text> as ls::fast::Public>::from_native(value0),
+                    <ls::fast::List<ls::fast::Text> as ls::fast::Public>::from_native(list_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -2837,12 +2838,12 @@ pub mod lawtwin_petstore_laws
             ls::fast::Public::to_native(&result)
         }
 
-        fn getPetById(&self, value0: i64) -> crate::lawspec_data::Pet
+        fn getPetById(&self, int64_1: i64) -> crate::lawspec_data::Pet
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::reference_get_pet_by_id(
                 state.clone(),
-                <i64 as ls::fast::Public>::from_native(value0),
+                <i64 as ls::fast::Public>::from_native(int64_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -2852,18 +2853,18 @@ pub mod lawtwin_petstore_laws
 
         fn updatePetWithForm(
             &self,
-            value0: i64,
-            value1: std::option::Option<std::string::String>,
-            value2: std::option::Option<std::string::String>,
+            int64_1: i64,
+            maybe_1: std::option::Option<std::string::String>,
+            maybe_2: std::option::Option<std::string::String>,
         ) -> crate::lawspec_data::Pet
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_update_pet_with_form(
                     state.clone(),
-                    <i64 as ls::fast::Public>::from_native(value0),
-                    <Option<ls::fast::Text> as ls::fast::Public>::from_native(value1),
-                    <Option<ls::fast::Text> as ls::fast::Public>::from_native(value2),
+                    <i64 as ls::fast::Public>::from_native(int64_1),
+                    <Option<ls::fast::Text> as ls::fast::Public>::from_native(maybe_1),
+                    <Option<ls::fast::Text> as ls::fast::Public>::from_native(maybe_2),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -2872,13 +2873,13 @@ pub mod lawtwin_petstore_laws
             ls::fast::Public::to_native(&result)
         }
 
-        fn deletePet(&self, value0: i64, value1: std::option::Option<std::string::String>) -> ()
+        fn deletePet(&self, int64_1: i64, maybe_1: std::option::Option<std::string::String>) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::reference_delete_pet(
                 state.clone(),
-                <i64 as ls::fast::Public>::from_native(value0),
-                <Option<ls::fast::Text> as ls::fast::Public>::from_native(value1),
+                <i64 as ls::fast::Public>::from_native(int64_1),
+                <Option<ls::fast::Text> as ls::fast::Public>::from_native(maybe_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -2888,17 +2889,17 @@ pub mod lawtwin_petstore_laws
 
         fn uploadFile(
             &self,
-            value0: i64,
-            value1: std::option::Option<std::string::String>,
-            value2: std::option::Option<std::vec::Vec<u8>>,
+            int64_1: i64,
+            maybe_1: std::option::Option<std::string::String>,
+            maybe_2: std::option::Option<std::vec::Vec<u8>>,
         ) -> crate::lawspec_data::ApiResponse
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::reference_upload_file(
                 state.clone(),
-                <i64 as ls::fast::Public>::from_native(value0),
-                <Option<ls::fast::Text> as ls::fast::Public>::from_native(value1),
-                <Option<ls::fast::Bytes> as ls::fast::Public>::from_native(value2),
+                <i64 as ls::fast::Public>::from_native(int64_1),
+                <Option<ls::fast::Text> as ls::fast::Public>::from_native(maybe_1),
+                <Option<ls::fast::Bytes> as ls::fast::Public>::from_native(maybe_2),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -2923,7 +2924,7 @@ pub mod lawtwin_petstore_laws
 
         fn placeOrder(
             &self,
-            value0: std::option::Option<crate::lawspec_data::Order>,
+            maybe_1: std::option::Option<crate::lawspec_data::Order>,
         ) -> crate::lawspec_data::Order
         {
             let mut state = ls::locked(&self.state);
@@ -2931,7 +2932,7 @@ pub mod lawtwin_petstore_laws
                 state.clone(),
                 <Option<
                     crate::lawspec_definitions::typed::Order,
-                > as ls::fast::Public>::from_native(value0),
+                > as ls::fast::Public>::from_native(maybe_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -2939,13 +2940,13 @@ pub mod lawtwin_petstore_laws
             ls::fast::Public::to_native(&result)
         }
 
-        fn getOrderById(&self, value0: i64) -> crate::lawspec_data::Order
+        fn getOrderById(&self, int64_1: i64) -> crate::lawspec_data::Order
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_get_order_by_id(
                     state.clone(),
-                    <i64 as ls::fast::Public>::from_native(value0),
+                    <i64 as ls::fast::Public>::from_native(int64_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -2954,12 +2955,12 @@ pub mod lawtwin_petstore_laws
             ls::fast::Public::to_native(&result)
         }
 
-        fn deleteOrder(&self, value0: i64) -> ()
+        fn deleteOrder(&self, int64_1: i64) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::reference_delete_order(
                 state.clone(),
-                <i64 as ls::fast::Public>::from_native(value0),
+                <i64 as ls::fast::Public>::from_native(int64_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -2972,14 +2973,14 @@ pub mod lawtwin_petstore_laws
     {
         fn createUser(
             &self,
-            value0: std::option::Option<crate::lawspec_data::User>,
+            maybe_1: std::option::Option<crate::lawspec_data::User>,
         ) -> crate::lawspec_data::User
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::reference_create_user(
                 state.clone(),
                 <Option<crate::lawspec_definitions::typed::User> as ls::fast::Public>::from_native(
-                    value0,
+                    maybe_1,
                 ),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -2990,7 +2991,7 @@ pub mod lawtwin_petstore_laws
 
         fn createUsersWithListInput(
             &self,
-            value0: std::option::Option<std::vec::Vec<crate::lawspec_data::User>>,
+            maybe_1: std::option::Option<std::vec::Vec<crate::lawspec_data::User>>,
         ) -> crate::lawspec_data::User
         {
             let mut state = ls::locked(&self.state);
@@ -2999,7 +3000,7 @@ pub mod lawtwin_petstore_laws
                     state.clone(),
                     <Option<
                         ls::fast::List<crate::lawspec_definitions::typed::User>,
-                    > as ls::fast::Public>::from_native(value0),
+                    > as ls::fast::Public>::from_native(maybe_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -3010,15 +3011,15 @@ pub mod lawtwin_petstore_laws
 
         fn loginUser(
             &self,
-            value0: std::option::Option<std::string::String>,
-            value1: std::option::Option<std::string::String>,
+            maybe_1: std::option::Option<std::string::String>,
+            maybe_2: std::option::Option<std::string::String>,
         ) -> std::string::String
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::reference_login_user(
                 state.clone(),
-                <Option<ls::fast::Text> as ls::fast::Public>::from_native(value0),
-                <Option<ls::fast::Text> as ls::fast::Public>::from_native(value1),
+                <Option<ls::fast::Text> as ls::fast::Public>::from_native(maybe_1),
+                <Option<ls::fast::Text> as ls::fast::Public>::from_native(maybe_2),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -3038,13 +3039,13 @@ pub mod lawtwin_petstore_laws
             ls::fast::Public::to_native(&result)
         }
 
-        fn getUserByName(&self, value0: std::string::String) -> crate::lawspec_data::User
+        fn getUserByName(&self, text_1: std::string::String) -> crate::lawspec_data::User
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_get_user_by_name(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -3055,16 +3056,16 @@ pub mod lawtwin_petstore_laws
 
         fn updateUser(
             &self,
-            value0: std::string::String,
-            value1: std::option::Option<crate::lawspec_data::User>,
+            text_1: std::string::String,
+            maybe_1: std::option::Option<crate::lawspec_data::User>,
         ) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::reference_update_user(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
                 <Option<crate::lawspec_definitions::typed::User> as ls::fast::Public>::from_native(
-                    value1,
+                    maybe_1,
                 ),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -3073,12 +3074,12 @@ pub mod lawtwin_petstore_laws
             ls::fast::Public::to_native(&result)
         }
 
-        fn deleteUser(&self, value0: std::string::String) -> ()
+        fn deleteUser(&self, text_1: std::string::String) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::reference_delete_user(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -3151,14 +3152,14 @@ pub mod contracttest_petstore
         /// updatePet, with the failure it raises as Err rather than a panic.
         pub fn try_updatePet(
             &self,
-            value0: crate::lawspec_data::Pet,
+            pet_1: crate::lawspec_data::Pet,
         ) -> std::result::Result<crate::lawspec_data::Pet, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::PetApi>::updatePet(
-                        self, value0,
+                        self, pet_1,
                     ))
                 },
             )
@@ -3186,14 +3187,14 @@ pub mod contracttest_petstore
         /// addPet, with the failure it raises as Err rather than a panic.
         pub fn try_addPet(
             &self,
-            value0: crate::lawspec_data::Pet,
+            pet_1: crate::lawspec_data::Pet,
         ) -> std::result::Result<crate::lawspec_data::Pet, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::PetApi>::addPet(
-                        self, value0,
+                        self, pet_1,
                     ))
                 },
             )
@@ -3221,7 +3222,7 @@ pub mod contracttest_petstore
         /// findPetsByStatus, with the failure it raises as Err rather than a panic.
         pub fn try_findPetsByStatus(
             &self,
-            value0: crate::lawspec_data::PetStatus,
+            pet_status_1: crate::lawspec_data::PetStatus,
         ) -> std::result::Result<
             std::vec::Vec<crate::lawspec_data::Pet>,
             crate::lawspec_data::ApiError,
@@ -3231,7 +3232,8 @@ pub mod contracttest_petstore
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::PetApi>::findPetsByStatus(
-                        self, value0,
+                        self,
+                        pet_status_1,
                     ))
                 },
             )
@@ -3259,7 +3261,7 @@ pub mod contracttest_petstore
         /// findPetsByTags, with the failure it raises as Err rather than a panic.
         pub fn try_findPetsByTags(
             &self,
-            value0: std::vec::Vec<std::string::String>,
+            list_1: std::vec::Vec<std::string::String>,
         ) -> std::result::Result<
             std::vec::Vec<crate::lawspec_data::Pet>,
             crate::lawspec_data::ApiError,
@@ -3269,7 +3271,7 @@ pub mod contracttest_petstore
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::PetApi>::findPetsByTags(
-                        self, value0,
+                        self, list_1,
                     ))
                 },
             )
@@ -3297,14 +3299,14 @@ pub mod contracttest_petstore
         /// getPetById, with the failure it raises as Err rather than a panic.
         pub fn try_getPetById(
             &self,
-            value0: i64,
+            int64_1: i64,
         ) -> std::result::Result<crate::lawspec_data::Pet, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::PetApi>::getPetById(
-                        self, value0,
+                        self, int64_1,
                     ))
                 },
             )
@@ -3332,9 +3334,9 @@ pub mod contracttest_petstore
         /// updatePetWithForm, with the failure it raises as Err rather than a panic.
         pub fn try_updatePetWithForm(
             &self,
-            value0: i64,
-            value1: std::option::Option<std::string::String>,
-            value2: std::option::Option<std::string::String>,
+            int64_1: i64,
+            maybe_1: std::option::Option<std::string::String>,
+            maybe_2: std::option::Option<std::string::String>,
         ) -> std::result::Result<crate::lawspec_data::Pet, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
@@ -3342,7 +3344,7 @@ pub mod contracttest_petstore
                 || {
                     Ok(
                         <Self as super::lawtwin_petstore::PetApi>::updatePetWithForm(
-                            self, value0, value1, value2,
+                            self, int64_1, maybe_1, maybe_2,
                         ),
                     )
                 },
@@ -3371,15 +3373,15 @@ pub mod contracttest_petstore
         /// deletePet, with the failure it raises as Err rather than a panic.
         pub fn try_deletePet(
             &self,
-            value0: i64,
-            value1: std::option::Option<std::string::String>,
+            int64_1: i64,
+            maybe_1: std::option::Option<std::string::String>,
         ) -> std::result::Result<(), crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::PetApi>::deletePet(
-                        self, value0, value1,
+                        self, int64_1, maybe_1,
                     ))
                 },
             )
@@ -3407,16 +3409,16 @@ pub mod contracttest_petstore
         /// uploadFile, with the failure it raises as Err rather than a panic.
         pub fn try_uploadFile(
             &self,
-            value0: i64,
-            value1: std::option::Option<std::string::String>,
-            value2: std::option::Option<std::vec::Vec<u8>>,
+            int64_1: i64,
+            maybe_1: std::option::Option<std::string::String>,
+            maybe_2: std::option::Option<std::vec::Vec<u8>>,
         ) -> std::result::Result<crate::lawspec_data::ApiResponse, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::PetApi>::uploadFile(
-                        self, value0, value1, value2,
+                        self, int64_1, maybe_1, maybe_2,
                     ))
                 },
             )
@@ -3481,14 +3483,14 @@ pub mod contracttest_petstore
         /// placeOrder, with the failure it raises as Err rather than a panic.
         pub fn try_placeOrder(
             &self,
-            value0: std::option::Option<crate::lawspec_data::Order>,
+            maybe_1: std::option::Option<crate::lawspec_data::Order>,
         ) -> std::result::Result<crate::lawspec_data::Order, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::StoreApi>::placeOrder(
-                        self, value0,
+                        self, maybe_1,
                     ))
                 },
             )
@@ -3516,14 +3518,14 @@ pub mod contracttest_petstore
         /// getOrderById, with the failure it raises as Err rather than a panic.
         pub fn try_getOrderById(
             &self,
-            value0: i64,
+            int64_1: i64,
         ) -> std::result::Result<crate::lawspec_data::Order, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::StoreApi>::getOrderById(
-                        self, value0,
+                        self, int64_1,
                     ))
                 },
             )
@@ -3551,14 +3553,14 @@ pub mod contracttest_petstore
         /// deleteOrder, with the failure it raises as Err rather than a panic.
         pub fn try_deleteOrder(
             &self,
-            value0: i64,
+            int64_1: i64,
         ) -> std::result::Result<(), crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::StoreApi>::deleteOrder(
-                        self, value0,
+                        self, int64_1,
                     ))
                 },
             )
@@ -3586,14 +3588,14 @@ pub mod contracttest_petstore
         /// createUser, with the failure it raises as Err rather than a panic.
         pub fn try_createUser(
             &self,
-            value0: std::option::Option<crate::lawspec_data::User>,
+            maybe_1: std::option::Option<crate::lawspec_data::User>,
         ) -> std::result::Result<crate::lawspec_data::User, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::UserApi>::createUser(
-                        self, value0,
+                        self, maybe_1,
                     ))
                 },
             )
@@ -3621,7 +3623,7 @@ pub mod contracttest_petstore
         /// createUsersWithListInput, with the failure it raises as Err rather than a panic.
         pub fn try_createUsersWithListInput(
             &self,
-            value0: std::option::Option<std::vec::Vec<crate::lawspec_data::User>>,
+            maybe_1: std::option::Option<std::vec::Vec<crate::lawspec_data::User>>,
         ) -> std::result::Result<crate::lawspec_data::User, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
@@ -3629,7 +3631,7 @@ pub mod contracttest_petstore
                 || {
                     Ok(
                         <Self as super::lawtwin_petstore::UserApi>::createUsersWithListInput(
-                            self, value0,
+                            self, maybe_1,
                         ),
                     )
                 },
@@ -3658,15 +3660,15 @@ pub mod contracttest_petstore
         /// loginUser, with the failure it raises as Err rather than a panic.
         pub fn try_loginUser(
             &self,
-            value0: std::option::Option<std::string::String>,
-            value1: std::option::Option<std::string::String>,
+            maybe_1: std::option::Option<std::string::String>,
+            maybe_2: std::option::Option<std::string::String>,
         ) -> std::result::Result<std::string::String, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::UserApi>::loginUser(
-                        self, value0, value1,
+                        self, maybe_1, maybe_2,
                     ))
                 },
             )
@@ -3722,14 +3724,14 @@ pub mod contracttest_petstore
         /// getUserByName, with the failure it raises as Err rather than a panic.
         pub fn try_getUserByName(
             &self,
-            value0: std::string::String,
+            text_1: std::string::String,
         ) -> std::result::Result<crate::lawspec_data::User, crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::UserApi>::getUserByName(
-                        self, value0,
+                        self, text_1,
                     ))
                 },
             )
@@ -3757,15 +3759,15 @@ pub mod contracttest_petstore
         /// updateUser, with the failure it raises as Err rather than a panic.
         pub fn try_updateUser(
             &self,
-            value0: std::string::String,
-            value1: std::option::Option<crate::lawspec_data::User>,
+            text_1: std::string::String,
+            maybe_1: std::option::Option<crate::lawspec_data::User>,
         ) -> std::result::Result<(), crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::UserApi>::updateUser(
-                        self, value0, value1,
+                        self, text_1, maybe_1,
                     ))
                 },
             )
@@ -3793,14 +3795,14 @@ pub mod contracttest_petstore
         /// deleteUser, with the failure it raises as Err rather than a panic.
         pub fn try_deleteUser(
             &self,
-            value0: std::string::String,
+            text_1: std::string::String,
         ) -> std::result::Result<(), crate::lawspec_data::ApiError>
         {
             match ls::fast::attempt(
                 "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)",
                 || {
                     Ok(<Self as super::lawtwin_petstore::UserApi>::deleteUser(
-                        self, value0,
+                        self, text_1,
                     ))
                 },
             )
@@ -3828,12 +3830,12 @@ pub mod contracttest_petstore
 
     impl super::lawtwin_petstore::PetApi for Reference
     {
-        fn updatePet(&self, value0: crate::lawspec_data::Pet) -> crate::lawspec_data::Pet
+        fn updatePet(&self, pet_1: crate::lawspec_data::Pet) -> crate::lawspec_data::Pet
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::reference_update_pet(
                 state.clone(),
-                <crate::lawspec_definitions::typed::Pet as ls::fast::Public>::from_native(value0),
+                <crate::lawspec_definitions::typed::Pet as ls::fast::Public>::from_native(pet_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -3841,12 +3843,12 @@ pub mod contracttest_petstore
             ls::fast::Public::to_native(&result)
         }
 
-        fn addPet(&self, value0: crate::lawspec_data::Pet) -> crate::lawspec_data::Pet
+        fn addPet(&self, pet_1: crate::lawspec_data::Pet) -> crate::lawspec_data::Pet
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::reference_add_pet(
                 state.clone(),
-                <crate::lawspec_definitions::typed::Pet as ls::fast::Public>::from_native(value0),
+                <crate::lawspec_definitions::typed::Pet as ls::fast::Public>::from_native(pet_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -3856,7 +3858,7 @@ pub mod contracttest_petstore
 
         fn findPetsByStatus(
             &self,
-            value0: crate::lawspec_data::PetStatus,
+            pet_status_1: crate::lawspec_data::PetStatus,
         ) -> std::vec::Vec<crate::lawspec_data::Pet>
         {
             let mut state = ls::locked(&self.state);
@@ -3864,7 +3866,7 @@ pub mod contracttest_petstore
                 crate::lawspec_definitions::typed::reference_find_pets_by_status(
                     state.clone(),
                     <crate::lawspec_definitions::typed::PetStatus as ls::fast::Public>::from_native(
-                        value0,
+                        pet_status_1,
                     ),
                 ),
             );
@@ -3876,14 +3878,14 @@ pub mod contracttest_petstore
 
         fn findPetsByTags(
             &self,
-            value0: std::vec::Vec<std::string::String>,
+            list_1: std::vec::Vec<std::string::String>,
         ) -> std::vec::Vec<crate::lawspec_data::Pet>
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_find_pets_by_tags(
                     state.clone(),
-                    <ls::fast::List<ls::fast::Text> as ls::fast::Public>::from_native(value0),
+                    <ls::fast::List<ls::fast::Text> as ls::fast::Public>::from_native(list_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -3892,12 +3894,12 @@ pub mod contracttest_petstore
             ls::fast::Public::to_native(&result)
         }
 
-        fn getPetById(&self, value0: i64) -> crate::lawspec_data::Pet
+        fn getPetById(&self, int64_1: i64) -> crate::lawspec_data::Pet
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::reference_get_pet_by_id(
                 state.clone(),
-                <i64 as ls::fast::Public>::from_native(value0),
+                <i64 as ls::fast::Public>::from_native(int64_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -3907,18 +3909,18 @@ pub mod contracttest_petstore
 
         fn updatePetWithForm(
             &self,
-            value0: i64,
-            value1: std::option::Option<std::string::String>,
-            value2: std::option::Option<std::string::String>,
+            int64_1: i64,
+            maybe_1: std::option::Option<std::string::String>,
+            maybe_2: std::option::Option<std::string::String>,
         ) -> crate::lawspec_data::Pet
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_update_pet_with_form(
                     state.clone(),
-                    <i64 as ls::fast::Public>::from_native(value0),
-                    <Option<ls::fast::Text> as ls::fast::Public>::from_native(value1),
-                    <Option<ls::fast::Text> as ls::fast::Public>::from_native(value2),
+                    <i64 as ls::fast::Public>::from_native(int64_1),
+                    <Option<ls::fast::Text> as ls::fast::Public>::from_native(maybe_1),
+                    <Option<ls::fast::Text> as ls::fast::Public>::from_native(maybe_2),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -3927,13 +3929,13 @@ pub mod contracttest_petstore
             ls::fast::Public::to_native(&result)
         }
 
-        fn deletePet(&self, value0: i64, value1: std::option::Option<std::string::String>) -> ()
+        fn deletePet(&self, int64_1: i64, maybe_1: std::option::Option<std::string::String>) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::reference_delete_pet(
                 state.clone(),
-                <i64 as ls::fast::Public>::from_native(value0),
-                <Option<ls::fast::Text> as ls::fast::Public>::from_native(value1),
+                <i64 as ls::fast::Public>::from_native(int64_1),
+                <Option<ls::fast::Text> as ls::fast::Public>::from_native(maybe_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -3943,17 +3945,17 @@ pub mod contracttest_petstore
 
         fn uploadFile(
             &self,
-            value0: i64,
-            value1: std::option::Option<std::string::String>,
-            value2: std::option::Option<std::vec::Vec<u8>>,
+            int64_1: i64,
+            maybe_1: std::option::Option<std::string::String>,
+            maybe_2: std::option::Option<std::vec::Vec<u8>>,
         ) -> crate::lawspec_data::ApiResponse
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::reference_upload_file(
                 state.clone(),
-                <i64 as ls::fast::Public>::from_native(value0),
-                <Option<ls::fast::Text> as ls::fast::Public>::from_native(value1),
-                <Option<ls::fast::Bytes> as ls::fast::Public>::from_native(value2),
+                <i64 as ls::fast::Public>::from_native(int64_1),
+                <Option<ls::fast::Text> as ls::fast::Public>::from_native(maybe_1),
+                <Option<ls::fast::Bytes> as ls::fast::Public>::from_native(maybe_2),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -3978,7 +3980,7 @@ pub mod contracttest_petstore
 
         fn placeOrder(
             &self,
-            value0: std::option::Option<crate::lawspec_data::Order>,
+            maybe_1: std::option::Option<crate::lawspec_data::Order>,
         ) -> crate::lawspec_data::Order
         {
             let mut state = ls::locked(&self.state);
@@ -3986,7 +3988,7 @@ pub mod contracttest_petstore
                 state.clone(),
                 <Option<
                     crate::lawspec_definitions::typed::Order,
-                > as ls::fast::Public>::from_native(value0),
+                > as ls::fast::Public>::from_native(maybe_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -3994,13 +3996,13 @@ pub mod contracttest_petstore
             ls::fast::Public::to_native(&result)
         }
 
-        fn getOrderById(&self, value0: i64) -> crate::lawspec_data::Order
+        fn getOrderById(&self, int64_1: i64) -> crate::lawspec_data::Order
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_get_order_by_id(
                     state.clone(),
-                    <i64 as ls::fast::Public>::from_native(value0),
+                    <i64 as ls::fast::Public>::from_native(int64_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -4009,12 +4011,12 @@ pub mod contracttest_petstore
             ls::fast::Public::to_native(&result)
         }
 
-        fn deleteOrder(&self, value0: i64) -> ()
+        fn deleteOrder(&self, int64_1: i64) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::reference_delete_order(
                 state.clone(),
-                <i64 as ls::fast::Public>::from_native(value0),
+                <i64 as ls::fast::Public>::from_native(int64_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -4027,14 +4029,14 @@ pub mod contracttest_petstore
     {
         fn createUser(
             &self,
-            value0: std::option::Option<crate::lawspec_data::User>,
+            maybe_1: std::option::Option<crate::lawspec_data::User>,
         ) -> crate::lawspec_data::User
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::reference_create_user(
                 state.clone(),
                 <Option<crate::lawspec_definitions::typed::User> as ls::fast::Public>::from_native(
-                    value0,
+                    maybe_1,
                 ),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -4045,7 +4047,7 @@ pub mod contracttest_petstore
 
         fn createUsersWithListInput(
             &self,
-            value0: std::option::Option<std::vec::Vec<crate::lawspec_data::User>>,
+            maybe_1: std::option::Option<std::vec::Vec<crate::lawspec_data::User>>,
         ) -> crate::lawspec_data::User
         {
             let mut state = ls::locked(&self.state);
@@ -4054,7 +4056,7 @@ pub mod contracttest_petstore
                     state.clone(),
                     <Option<
                         ls::fast::List<crate::lawspec_definitions::typed::User>,
-                    > as ls::fast::Public>::from_native(value0),
+                    > as ls::fast::Public>::from_native(maybe_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -4065,15 +4067,15 @@ pub mod contracttest_petstore
 
         fn loginUser(
             &self,
-            value0: std::option::Option<std::string::String>,
-            value1: std::option::Option<std::string::String>,
+            maybe_1: std::option::Option<std::string::String>,
+            maybe_2: std::option::Option<std::string::String>,
         ) -> std::string::String
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::reference_login_user(
                 state.clone(),
-                <Option<ls::fast::Text> as ls::fast::Public>::from_native(value0),
-                <Option<ls::fast::Text> as ls::fast::Public>::from_native(value1),
+                <Option<ls::fast::Text> as ls::fast::Public>::from_native(maybe_1),
+                <Option<ls::fast::Text> as ls::fast::Public>::from_native(maybe_2),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
@@ -4093,13 +4095,13 @@ pub mod contracttest_petstore
             ls::fast::Public::to_native(&result)
         }
 
-        fn getUserByName(&self, value0: std::string::String) -> crate::lawspec_data::User
+        fn getUserByName(&self, text_1: std::string::String) -> crate::lawspec_data::User
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(
                 crate::lawspec_definitions::typed::reference_get_user_by_name(
                     state.clone(),
-                    <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                    <ls::fast::Text as ls::fast::Public>::from_native(text_1),
                 ),
             );
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -4110,16 +4112,16 @@ pub mod contracttest_petstore
 
         fn updateUser(
             &self,
-            value0: std::string::String,
-            value1: std::option::Option<crate::lawspec_data::User>,
+            text_1: std::string::String,
+            maybe_1: std::option::Option<crate::lawspec_data::User>,
         ) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::reference_update_user(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
                 <Option<crate::lawspec_definitions::typed::User> as ls::fast::Public>::from_native(
-                    value1,
+                    maybe_1,
                 ),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -4128,12 +4130,12 @@ pub mod contracttest_petstore
             ls::fast::Public::to_native(&result)
         }
 
-        fn deleteUser(&self, value0: std::string::String) -> ()
+        fn deleteUser(&self, text_1: std::string::String) -> ()
         {
             let mut state = ls::locked(&self.state);
             let pair = ls::answered(crate::lawspec_definitions::typed::reference_delete_user(
                 state.clone(),
-                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(text_1),
             ));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
             *state = next;
